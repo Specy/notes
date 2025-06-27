@@ -1,7 +1,8 @@
-Benvenuto alle note di università
-Estensioni:
+# Estensioni
+
 - Git
 - Excalidraw
 - Linter
 ## Optional 
+
 - clear unused images
