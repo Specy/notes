@@ -237,7 +237,7 @@ $$
 
 In parole, trovare la probabilità totale di A è uguale a considerare quanto è probabile A nello scenario $E_i$, per poi moltiplicarlo per quanto è probabile che $E_i$ accada.
 
-## Esempio:
+## Esempio
 
 Ci sono 5 ristoranti: $R_1, R_2, R_3, R_4, R_5$ e ogniuno è aperto con probabilità $\frac{1}{5}$
 
@@ -248,11 +248,12 @@ Quale è la probabilità che trascorrendo la strada io trovi un ristorante apert
 
 $$
 \begin{aligned}
-P(A) &= P\left((A_1, S) + (A_2, S) + (A_3, D) + (A_4, D) + (A_5, D)\right) = \\
-&= \frac{1}{5} \cdot 2 \cdot \frac{1}{5} \cdot 5 = \frac{1}{2}
+P(A) &= P(A_1, S) + P(A_2, S) + P(A_3, D) + P(A_4, D) + P(A_5, D) = \\
+&= \left(\frac{1}{5} \cdot \frac{1}{2}\right) \cdot 2 + \left(\frac{1}{5} \cdot \frac{1}{2}\right) \cdot 3 = \frac{1}{2}
+\end{aligned}
 $$
 
-Però possiamo usare il problema delle probabilità parziali
+Però possiamo usare la probabilità totale, partizionando in base alla scelta di andare a sinistra o a destra:
 
 $$
 \begin{aligned}
@@ -264,6 +265,19 @@ $$
 Mettendo tutto insieme usando la formula otteniamo
 
 $$
-P(A) = P(A | \text{vado a sinistra})P(S) +
-P(A | \text{vado a destra})P(D) = \frac{1}{2}\left(\frac{3}{5} + \frac{2}{5} \right) = \frac{1}{2}
+\begin{aligned}
+P(A) &= P(A | \text{vado a sinistra})P(S) +
+P(A | \text{vado a destra})P(D) \\ 
+&= \frac{1}{2}\left(\frac{3}{5} + \frac{2}{5} \right) \\
+&= \frac{1}{2}
+\end{aligned}
 $$
+
+# Proprietà della probabilità condizionata
+
+- Se $E \subset F$, allora $P(E | F) = \frac{P(E)}{P(F)}$
+- Se $P(E | F) = 1$, allora $E \subseteq F$
+- Se $E \cap F = \emptyset$, allora $P(E | F) = 0$
+- $P(E^c | F) = 1 - P(E | F)$
+- $P(F) = P(F \cap E) + P(F \cap E^c)$
+- Per due eventi $E_1, E_2$ con $E_1 \cap E_2 \ne \emptyset$, allora $P(E_1 \cup E_2 |F) = P(E_1 | F) + P(E_2 | F) - P(E_1 \cap E_2 | F)$
