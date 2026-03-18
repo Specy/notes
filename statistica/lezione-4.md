@@ -278,3 +278,39 @@ Ma possiamo generalizzarlo a n eventi:
 $$
 P(A_1 \cap A_2 \cap ... \cap A_n) = P(A_1) \cdot P(A_2|A_1) \cdot P(A_3|A_1 \cap A_2) \cdot ... \cdot P(A_n|A_1 \cap A_2 \cap ... \cap A_{n-1})
 $$
+
+# Esercizio
+
+In un esame a risposta multipla uno studente può conoscere la risposta o tentare a caso. Se $p$ è la probabilità che lo studente conosca la risposta, e $m$ il numero di possibili risposte, sapendo che lo studente ha risposto correttamente a una domanda, qual è la probabilità che conoscesse la risposta?
+
+- $p$ probabilità che lo studente conosca la risposta
+- $1-p$ probabilità che lo studente non conosca la risposta e quindi tenti a caso
+- $m$ numero di possibili risposte
+- $c$ è l'evento "lo studente risponde correttamente"
+- $k$ è l'evento "lo studente conosce la risposta"
+
+Allora dobbiamo calcolare $P(k|c)$, ovvero la probabilità che lo studente conoscesse la risposta dato che ha risposto correttamente.
+
+Applichiamo Bayes:
+$$
+\begin{aligned}
+P(k|c) &= \frac{P(c|k) \cdot P(k)}{P(c)} \\
+&= \frac{1 \cdot p}{P(c)}\\
+\end{aligned}
+$$
+
+Dobbiamo calcolare $P(c)$, ovvero la probabilità che lo studente risponda correttamente. Questa può accadere in due modi:
+1. Lo studente conosce la risposta e risponde correttamente (con probabilità $p$)
+2. Lo studente non conosce la risposta e tenta a caso
+
+Allora usiamo la probabilità totale per calcolare $P(c)$:
+$$
+\begin{aligned}
+P(c) &= P(c|k) \cdot P(k) + P(c|k^c) \cdot P(k^c) \\
+&= 1 \cdot p + \frac{1}{m} \cdot (1-p) \\
+&= p + \frac{1-p}{m} \\
+&= \frac{pm + 1 - p}{m} \\
+&= \frac{1 + p(m-1)}{m}
+\end{aligned}
+$$
+
