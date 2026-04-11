@@ -17,11 +17,13 @@ Inizialmente $P(A) = P(B) = P(C) = \frac{1}{3}$
 Ma poi il conduttore apre una scatola vuota, facciamo sia la $C$. 
 
 Allora analizziamo i casi:
+
 | Scenario | La tua scelta iniziale | Azione di Monty (scatola aperta) | Risultato se CAMBI |
-| :--- | :--- | :--- | :--- |
+| --- | --- | --- | --- |
 | **1** | Scegli la **Scatola Vuota A** | Apre la Scatola Vuota B | **VINCI la Scatola Premio** |
 | **2** | Scegli la **Scatola Vuota B** | Apre la Scatola Vuota A | **VINCI la Scatola Premio** |
 | **3** | Scegli la **Scatola Premio** | Apre una delle scatole vuote | **PERDI (Prendi Scatola Vuota)** |
+
 
 Ora calcoliamolo formalmente:
 - $A$ = probabilità che il premio è nella scatola A
@@ -192,3 +194,111 @@ Se per $P(x) = P(-x) \ \forall x$, allora $\mathbb{E}[X] = 0$.
 # Distrubuzione congiuntiva e indipendenza di variabili aleatorie
 
 Sia $(X_1, ..., X_n)$ un vettore di variabili aleatorie, allora definiamo la distribuzione di probabilità **Congiunta** delle variabili aleatorie $X_1, ..., X_n$ come la probabilità con:
+
+$$
+X_i \in \Omega_i \quad \Omega = \Omega_1 \times ... \times \Omega_n
+$$
+
+Vuol dire che un risultato della distribuzione congiunta è un vettore di valori, uno per ogni variabile aleatoria $(x_1, ..., x_n)$.
+
+e quindi che:
+$$
+P_{X_1, ..., X_n}(x_1, ..., x_n) = P(\{X_1 = x_1\} \cap ... \cap \{X_n = x_n\})
+$$
+
+Tale che valgano le seguenti proprietà:
+a) $0 < P_{\underline{X}}(\underline{x}) < 1 \quad \forall \underline{x} \in \Omega$
+b) $\sum_{\underline{x} \in \Omega} P_{\underline{X}}(\underline{x}) = 1$
+
+Allora le variabili aleatorie (X_1, ..., X_n) di distribuzione congiunte $P_{X_1, ..., X_n}(x_1, ..., x_n)$ sono dette **indipendenti** se e solo se:
+
+$$
+P_{X_1, ..., X_n}(x_1, ..., x_n) = \prod_{i=1}^n P_{X_i}(x_i)
+$$
+
+Questo ci dice che se le variabili sono indipendenti, sapere il valore di una variabile non ci dà nessuna informazione sul valore dell'altra variabile, e quindi la probabilità congiunta è semplicemente il prodotto delle probabilità marginali $P_{X_i}(x_i)$.
+
+## DEF - Distribuzioni Marginali
+
+Data la distribuzione congiunta di $n$ v.a., definiamo $n$ **marginali**:
+
+$$
+\begin{cases}
+P_{X_1}(\cdot) := \sum_{x_2, \ldots, x_n} P_{\underline{X}}(\cdot, x_2, \ldots, x_n) = \sum_{i \neq 1} P_{\underline{X}}(\cdot, x_2, \ldots, x_n) \\
+\vdots \\
+P_{X_n}(\cdot) := \sum_{x_1, \ldots, x_{n-1}} P_{\underline{X}}(x_1, \ldots, x_{n-1}, \cdot)
+\end{cases}
+$$
+
+Data la distribuzione congiunta si ottengono le marginali, ma non viceversa: se ho $n$ distribuzioni marginali senza altre informazioni, non posso ricostruire la distribuzione congiunta (mi serve sapere come dipendono tra loro).
+
+**le marginali sono normalizzate.** Poiché $P_{\underline{X}}$ è una distribuzione di probabilità (quindi normalizzata a 1), anche ogni marginale lo è. Infatti, sommando la marginale $P_{X_1}$ su tutti i valori di $x_1$:
+$$
+\begin{aligned}
+\sum_{x_1 \in \Omega_1} P_{X_1}(x_1) &= \sum_{x_1 \in \Omega_1} \sum_{\substack{x_2, \ldots, x_n \\ \in \Omega_2 \times \cdots \times \Omega_n}} P_{\underline{X}}(x_1, \ldots, x_n) \\
+&= 1
+\end{aligned}
+$$
+La doppia somma scorre su **tutti** gli elementi di $\Omega = \Omega_1 \times \cdots \times \Omega_n$, quindi il risultato è la somma di tutta la distribuzione congiunta, che vale 1. Lo stesso argomento vale per ogni marginale $P_{X_i}$.
+
+## Esempio - Dado singolo vs. due dadi
+
+Definiamo due variabili aleatorie:
+- $X = 1$ se esce un numero **dispari**, $X = 0$ altrimenti (numeri pari: $\{2,4,6\}$, numeri dispari: $\{1,3,5\}$)
+- $Y = 1$ se esce uno dei **primi 3 numeri** $\{1,2,3\}$, $Y = 0$ altrimenti ($\{4,5,6\}$)
+
+Analizziamo due scenari distinti:
+
+### Caso 1: stesso dado (variabili dipendenti)
+
+$X$ e $Y$ sono definite sullo stesso lancio, quindi sono in generale **dipendenti**. Lo spazio campionario è $\Omega = \{1,2,3,4,5,6\}$, equiprobabile con $P(\omega) = \frac{1}{6}$.
+
+Tabella della distribuzione congiunta $P_{X,Y}(x,y) = P(X=x, Y=y)$:
+
+|  | $Y=0$ | $Y=1$ |
+|--|-------|-------|
+| $X=0$ | $P(\{4,6\}) = \frac{2}{6}$ | $P(\{2\}) = \frac{1}{6}$ |
+| $X=1$ | $P(\{5\}) = \frac{1}{6}$ | $P(\{1,3\}) = \frac{2}{6}$ |
+
+Le marginali si ricavano sommando per righe/colonne:
+- $P_X(0) = \frac{2}{6} + \frac{1}{6} = \frac{3}{6} = \frac{1}{2}$, $\quad P_X(1) = \frac{1}{6} + \frac{2}{6} = \frac{1}{2}$
+- $P_Y(0) = \frac{2}{6} + \frac{1}{6} = \frac{1}{2}$, $\quad P_Y(1) = \frac{1}{6} + \frac{2}{6} = \frac{1}{2}$
+
+Verifichiamo se sono indipendenti: dovrebbe valere $P_{X,Y}(x,y) = P_X(x) \cdot P_Y(y)$ per ogni coppia. Controlliamo su $(X=0, Y=0)$:
+$$
+P_X(0) \cdot P_Y(0) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4} \neq \frac{2}{6} = \frac{1}{3}
+$$
+Quindi $X$ e $Y$ sono **dipendenti** quando definite sullo stesso dado.
+
+### Caso 2: due dadi diversi (variabili indipendenti)
+
+$X$ è definita sul primo dado, $Y$ sul secondo. I due lanci sono indipendenti, quindi lo spazio campionario è $\Omega = \{1,...,6\}^2$ con $36$ esiti equiprobabili.
+
+Poiché i lanci sono fisicamente indipendenti, la distribuzione congiunta fattorizza:
+$$
+P_{X,Y}(x,y) = P_X(x) \cdot P_Y(y) = \frac{1}{2} \cdot \frac{1}{2} = \frac{1}{4} \quad \forall (x,y) \in \{0,1\}^2
+$$
+In questo caso $X$ e $Y$ sono **indipendenti**: il risultato di un dado non ci dà informazioni sull'altro.
+
+# Proprietà del valore atteso
+
+## Linearità
+$\mathbb{E}[aX] = a \cdot \mathbb{E}[X]$ per ogni $a \in \mathbb{R}$
+
+Se $\mathbb{E}[|X|] < \infty$ e $\mathbb{E}[|Y|] < \infty$, cioè se $X$ e $Y$ sono variabili aleatorie con valore atteso finito, allora $\mathbb{E}[X + Y] = \mathbb{E}[X] + \mathbb{E}[Y]$ che esso stesso è finito.
+
+## 2.1
+Se:
+- $\mathbb{E}[|X|] < \infty$
+- $\mathbb{E}[|Y|] < \infty$
+- $P_{XY}(X \ge Y) = 1$
+Allora $\mathbb{E}[X] \ge \mathbb{E}[Y]$.
+
+## 2.2
+$\mathbb{E}[X] = \mathbb{E}[Y]$ se e solo se $P_{XY}(X = Y) = 1$.
+
+## 2.3
+$|\mathbb{E}[X]| \le \mathbb{E}[|X|]$.
+
+## 2.4
+$P(X > Y) = 1$ allora $P(X - Y > 0) = 1$
