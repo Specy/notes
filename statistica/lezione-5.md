@@ -161,7 +161,7 @@ $$
 \end{aligned}
 $$
 
-# Media di una variabile aleatoria
+# Valore atteso: Media di una variabile aleatoria
 
 Data una variabile aleatoria $x \in \mathbb{R}$ chiamiamo valore atteso la media pesata dei valori della variabile, cioè:
 
@@ -218,7 +218,7 @@ $$
 
 Questo ci dice che se le variabili sono indipendenti, sapere il valore di una variabile non ci dà nessuna informazione sul valore dell'altra variabile, e quindi la probabilità congiunta è semplicemente il prodotto delle probabilità marginali $P_{X_i}(x_i)$.
 
-## DEF - Distribuzioni Marginali
+## Distribuzioni Marginali
 
 Data la distribuzione congiunta di $n$ v.a., definiamo $n$ **marginali**:
 
@@ -302,3 +302,4 @@ $|\mathbb{E}[X]| \le \mathbb{E}[|X|]$.
 
 ## 2.4
 $P(X > Y) = 1$ allora $P(X - Y > 0) = 1$
+
