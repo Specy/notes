@@ -257,3 +257,147 @@ Otteniamo quindi esattamente l'espressione analitica della distribuzione di Pois
 $$ = \frac{\lambda^k}{k!} e^{-\lambda} = P_\lambda(k) \quad \text{C.V.D.} $$
 
 Questo dimostra perché continuiamo a usare la distribuzione di Poisson per eventi molto rari distribuiti su un grande orizzonte di osservazione: è l'equivalente intrinseco e asintotico a descrivere un fenomeno binario il cui numero di tentativi tende a infinito con una probabilità di successo che infimamente scompare, ma in modo tale che il tasso totale medio ($np$) rimanga costante e pari a $\lambda$.
+
+# Distribuzione Uniforme
+
+$$
+\large{X \sim \text{Unif}(\{x_1, \dots, x_n\})}
+$$
+
+**Idea concettuale:** assegna la stessa probabilità a ciascuno degli $n$ valori possibili: ogni esito è equiprobabile.
+
+**Quando si usa:** quando non c'è ragione di preferire un esito rispetto agli altri, cioè tutti gli esiti sono ugualmente plausibili. Es. lancio di un dado equo, scelta casuale di un numero intero in un intervallo finito, estrazione a caso da un'urna in cui tutte le palline hanno la stessa probabilità di essere estratte.
+
+Una variabile aleatoria $X(\omega): \Omega \to \mathbb{R}$ dove $\{\omega_1, \dots, \omega_k\} = \Omega$ e $\{x_1, \dots, x_n\} = \mathbb{R}$ è detta **Uniforme** se $P(X = x_i) = \frac{1}{n}$ per ogni $i \in \{1, \dots, n\}$.
+
+Abbiamo che:
+
+$$
+\mathbb{E}[X] = \frac{1}{n} \sum_{i=1}^n x_i
+$$
+
+$$
+\begin{aligned}
+\text{var}(X) &= \frac{1}{n} \sum_{i=1}^n (x_i - \mathbb{E}[X])^2 \\&= \frac{1}{n} \sum_{i=1}^n \left(x_i^2 - \left(\frac{1}{n} \sum_{i=1}^n x_i\right)^2 \right)
+\end{aligned}
+$$
+
+# Distribuzione Ipergeometrica
+
+$$
+\large{X \sim \text{Hyper}(N, K, n)}
+$$
+
+**Idea concettuale:** modella il **numero di elementi di un certo tipo** in un campione estratto **senza rimpiazzo** da una popolazione finita. A differenza della Binomiale, le estrazioni non sono indipendenti: la probabilità di successo cambia ad ogni passo perché la popolazione si riduce.
+
+**Quando si usa:** quando si estrae un campione senza rimpiazzo da una popolazione finita di dimensione nota e si vuole contare quanti elementi appartengono a una categoria specifica. Es. numero di palline rosse estratte senza rimpiazzo da un'urna, numero di componenti difettosi in un campione prelevato da un lotto finito, numero di carte di cuori estratte da un mazzo.
+
+I parametri sono:
+- $N$: dimensione totale della popolazione
+- $K$: numero di elementi della categoria di interesse nella popolazione
+- $n$: numero di estrazioni effettuate (senza rimpiazzo)
+
+La PMF è:
+
+$$
+P(X = k) = \frac{\dbinom{K}{k}\dbinom{N-K}{n-k}}{\dbinom{N}{n}}
+$$
+
+Il numeratore conta il numero di modi di scegliere $k$ successi tra i $K$ disponibili e $n-k$ fallimenti tra gli $N-K$ rimanenti; il denominatore è il numero totale di campioni di taglia $n$ estraibili da $N$.
+
+Il valore di $k$ non può essere qualsiasi intero tra $0$ e $n$: entrambi i fattori del numeratore devono avere senso come coefficienti binomiali, cioè i valori "in basso" devono essere $\geq 0$ e $\leq$ i valori "in alto". Questo impone:
+
+- $k \leq K$ — non posso estrarre più successi di quanti ne esistano nella popolazione
+- $n - k \leq N - K$ — i fallimenti estratti non possono superare i fallimenti disponibili, equivalente a $k \geq n - (N-K)$
+
+Unendo i due vincoli:
+
+$$
+k \in \{\max(0,\; n-(N-K)),\; \dots,\; \min(n,\, K)\}
+$$
+
+In pratica, per la maggior parte degli esempi concreti (quando $n$ non è troppo grande rispetto a $N-K$ e $K$), il range si riduce semplicemente a $k \in \{0, 1, \dots, n\}$.
+
+- $\mathbb{E}[X] = n \dfrac{K}{N}$
+- $\text{var}(X) = n \dfrac{K}{N} \cdot \dfrac{N-K}{N} \cdot \dfrac{N-n}{N-1}$
+
+Il fattore $\frac{N-n}{N-1}$ è detto **fattore di correzione per popolazioni finite**: vale 1 quando $n \ll N$ (campionamento quasi indipendente) e si annulla quando $n = N$ (varianza nulla, si estraggono tutti gli elementi). Quando $N \to \infty$ con $K/N \to p$, la distribuzione Ipergeometrica converge alla Binomiale $\mathcal{B}(n, p)$.
+
+# Esempio
+
+Abbiamo $x_r$ palline rosse e $x_b$ palline bianche in un'urna, con $N = x_r + x_b$. 
+
+Considerando $n$ estrazioni senza rimpiazzo ($n \leq N$), voglio sapere quante palline rosse ho estratto tramite la variabile aleatoria $S_n(Y)$ che assume i valori $0,... n$ dove $Y$ è la somma di variabili di bernoulli non indipendenti. $Y=\{y_1, \dots, y_n\}$ dove non indipendenti.
+
+$$
+P_n(S_n = k) = \frac{\dbinom{x_r}{k}\dbinom{x_b}{n-k}}{\dbinom{N}{n}}
+$$
+
+$$
+\mathbb{E}[S_n] = \sum_{k=0}^n k \cdot \frac{\dbinom{x_r}{k}\dbinom{x_b}{n-k}}{\dbinom{N}{n}}
+$$
+
+Questa è la definizione formale, però, sfruttando la linearità del valore atteso, possiamo calcolare il valore atteso della somma in modo molto più agevole. Abbiamo definito la somma come $S_n = \sum_{i=1}^n y_i$, per cui:
+
+$$
+\mathbb{E}[S_n] = \mathbb{E}\left[\sum_{i=1}^n y_i\right] = \sum_{i=1}^n \mathbb{E}[y_i]
+$$
+
+Anche se le variabili $y_i$ **non sono indipendenti** (essendo l'estrazione non reintrodotta), la prima proprietà da ricordare è che la linearità del valore atteso continua a valere. Calcoliamo $\mathbb{E}[y_1]$ usando la somma sulle probabilità marginali:
+
+$$
+\mathbb{E}[y_1] = \sum_{y_1} \dots \sum_{y_n} y_1 P(y_1, \dots, y_n) = \sum_{y_1=0}^1 y_1 P_{y_1}(y_1)
+$$
+
+Sostituiamo i due casi (0 o 1):
+$$
+= 1 \cdot \frac{x_r}{x_r+x_b} + 0 \cdot \frac{x_b}{x_r+x_b} = \frac{x_r}{x_r + (N - x_r)} = \frac{x_r}{N} = p
+$$
+
+Allo stesso modo, il valore atteso per l'estrazione successiva (es. $y_2$) si ricava marginalizzando le restanti variabili:
+
+$$
+\mathbb{E}[y_2] = \sum_{y_1, y_3, \dots, y_n} \dots \sum_{y_2=0}^1 y_2 P(y_1, \dots, y_n) = \sum_{y_2=0}^1 y_2 P_{y_2}(y_2)
+$$
+$$
+= 0 \cdot P_{y_2}(0) + 1 \cdot P_{y_2}(1) = P_{y_2}(y_2=1)
+$$
+
+Dato che $P_{y_2}(1)$ rappresenta semplicemente la probabilità marginale di avere successo alla seconda estrazione senza condizionare gli eventi passati (che quindi, per simmetria, rimane invariata ed è pari a $x_r/N$), otteniamo ancora $\mathbb{E}[y_i] = \frac{x_r}{N}$.
+
+Di conseguenza, rimettendo tutto nella sommatoria:
+$$
+\mathbb{E}[S_n] = \sum_{i=1}^n \frac{x_r}{N} = n \frac{x_r}{N}
+$$
+Confermando il risultato della media dell'Ipergeometrica.
+
+# Esempio 
+
+Consideriamo 5 estrazioni da un urna con 19 palline, di cui 10 rosse e 9 bianche. Qual è la probabilità di estrarre esattamente 3 palline rosse e 2 bianche?
+
+$$
+Y_r = \mathbb{1}_{\{\text{estrazione } i \text{ è rossa}\}} \quad \forall i \in \{1, 2, 3, 4, 5\}
+$$
+Allora 
+$$
+P(S_5 = 3) = \frac{\dbinom{10}{3}\dbinom{9}{2}}{\dbinom{19}{5}}
+$$
+
+# Distribuzione Geometrica
+
+**Idea concettuale:** modella il **numero di prove necessarie** per ottenere il primo successo in una sequenza di esperimenti Bernoulli i.i.d., ciascuno con probabilità di successo $p$.
+
+**Quando si usa:** quando si vuole sapere quante volte bisogna ripetere un esperimento binario prima di osservare il primo successo. Es. numero di lanci di una moneta fino alla prima testa, numero di tentativi prima di indovinare una password, numero di componenti testati prima di trovare il primo difettoso.
+
+Una variabile aleatoria $X$ è distribuita geometricamente se assume valori in $\mathbb{N}^+ \cup \{\infty\}$ con PMF:
+
+$$
+P_p(X = k) = (1-p)^{k-1} p \quad \text{per } k = 1, 2, 3, \dots
+$$
+
+L'interpretazione è diretta: per avere il primo successo esattamente al $k$-esimo tentativo, i primi $k-1$ devono essere fallimenti (ciascuno con probabilità $1-p$) e il $k$-esimo deve essere un successo (con probabilità $p$). La probabilità di non avere mai successo ($k = \infty$) vale $0$ se $p > 0$.
+
+- $\mathbb{E}[X] = \dfrac{1}{p}$
+- $\text{var}(X) = \dfrac{1-p}{p^2}$
+
+Il valore atteso $\frac{1}{p}$ ha un'interpretazione intuitiva: se ogni tentativo ha probabilità $p$ di successo, in media servono $\frac{1}{p}$ tentativi. Per esempio, con un dado equo la probabilità di ottenere un 6 è $p = \frac{1}{6}$, quindi in media occorrono 6 lanci.
