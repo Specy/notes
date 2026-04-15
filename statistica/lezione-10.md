@@ -32,8 +32,8 @@ Con $X \in \{0, 1\}$, abbiamo che:
 
 In forma compatta (PMF): $P(X = x) = p^x(1-p)^{1-x}$ per $x \in \{0,1\}$
 
-- $\mathbb{E}[X] = 0 \cdot P_X(X = 0) + 1 \cdot P_X(X = 1) = 0 \cdot (1-p) + 1 \cdot p = \bold{p}$
-- $\text{var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$. Poiché $X^2 = X = 0^2*(1-p) + 1^2\cdotp - p^2 = p - p^2 = \bold{p(1-p)}$
+- $\mathbb{E}[X] = 0 \cdot P_X(X = 0) + 1 \cdot P_X(X = 1) = 0 \cdot (1-p) + 1 \cdot p = p$
+- $\text{var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2$. Poiché $X^2 = X = 0^2*(1-p) + 1^2\cdotp - p^2 = p - p^2 = p(1-p)$
 
 ## Esempio
 
@@ -297,7 +297,6 @@ I parametri sono:
 - $K$: numero di elementi della categoria di interesse nella popolazione
 - $n$: numero di estrazioni effettuate (senza rimpiazzo)
 
-La PMF è:
 
 $$
 P(X = k) = \frac{\dbinom{K}{k}\dbinom{N-K}{n-k}}{\dbinom{N}{n}}
@@ -389,7 +388,7 @@ $$
 
 **Quando si usa:** quando si vuole sapere quante volte bisogna ripetere un esperimento binario prima di osservare il primo successo. Es. numero di lanci di una moneta fino alla prima testa, numero di tentativi prima di indovinare una password, numero di componenti testati prima di trovare il primo difettoso.
 
-Una variabile aleatoria $X$ è distribuita geometricamente se assume valori in $\mathbb{N}^+ \cup \{\infty\}$ con PMF:
+Una variabile aleatoria $X$ è distribuita geometricamente se assume valori in $\mathbb{N}^+ \cup \{\infty\}$:
 
 $$
 P_p(X = k) = (1-p)^{k-1} p \quad \text{per } k = 1, 2, 3, \dots
