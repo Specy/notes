@@ -160,3 +160,70 @@ $$ = (1 \cdot 2 + 2 \cdot 2 + 1 \cdot 3 + 2 \cdot 3)\frac{1}{6} + (3 \cdot 3)\fr
 
 Infine, calcoliamo la covarianza:
 $$ \text{Cov}(X,Y) = \frac{11}{2} - \frac{8}{3} \cdot 2 = \frac{33 - 32}{6} = \frac{1}{6} $$
+
+# Distribuzione del Min e Max
+
+Sia $Z = \min(X, Y)$ con $X$ e $Y$ variabili aleatorie discrete, anche $Z$ sarà una variabile aleatoria discreta. Per trovare la distribuzione di $Z$ calcoliamo:
+
+$$
+P(Z = z) = P(\min(X, Y) = z) = P(X = z, Y \ge z) + P(X \gt z, Y = z)
+$$
+
+Se le variabili $X$ e $Y$ sono indipendenti, possiamo riscrivere la formula come:
+
+$$
+P(Z = z) = P(X = z) P(Y \ge z) + P(X \gt z) P(Y = z)
+$$
+
+--- 
+
+Alalogamente per $Z = \max(X, Y)$:
+$$
+P(Z = z) = P(\max(X, Y) = z) = P(X = z, Y \le z) + P(X \lt z, Y = z)
+$$
+Se $X$ e $Y$ sono indipendenti:
+$$
+P(Z = z) = P(X = z) P(Y \le z) + P(X \lt z) P(Y = z)
+$$
+
+---
+
+Se $X$ e $Y$ sono due geometriche di prove ripetute di parametro $p$ e $q$, allora anche il minimo di $X$ e $Y$ è una geometrica, con parametro $p + q - pq$.
+
+---
+
+Date due geometriche $X$ e $Y$ indipendenti con parametri $p$ e $q$, la distribuzione del massimo è data da:
+
+$$
+P_{max(X,Y)}(k) = P_{X,p}(k) + P_{Y,q}(k) - P_{min(X,Y), p+q-pq}(k)
+$$
+
+# Esercizio
+
+Ad un tavolo rotondo ci sono 10 posti, gli ospiti si siedono a caso, quale è la probabilità che $A$ e $B$ si siedano vicini?
+
+possiamo considerare tutte le scelte equiprobabili dato che si siedono a caso. La soluzione è data dal rapporto del numero di casi favorevoli a quelli totali. 
+
+- I casi totali sono 10 posti per il primo e 9 per il secondo: $10 \cdot 9$.
+- I casi favorevoli sono 10 posti per il primo e 2 posti vicini per il secondo (alla sua destra o sinistra): $10 \cdot 2$. 
+
+E quindi la probabilità è:
+$$
+P = \frac{10 \cdot 2}{10 \cdot 9} = \frac{2}{9}
+$$
+
+# Esercizio
+
+Dati due dadi:
+
+- $A = \{ X_1, X_2 : | X_1 - X_2| = 2 \}$, ovvero la differenza tra i due dadi è 2
+- $B = \{ \text{esce dispari su almeno uno dei dadi} \}$
+- $C = \{ \text{esce dispari solo su un dado} \}$
+
+Calcolare la probabilità di $A$, $B$, $C$ e poi la probabilità di $P(A \cap B)$ e $P(A \cup B)$.
+
+- $P(A) = \frac{8}{36} = \frac{2}{9}$ semplicemente contando i casi favorevoli fratto quelli totali
+- $P(B) = P(X_1 \text { è dispari } \cup X_2 \text{ è dispari }) = \frac{1}{2} + \frac{1}{2} - P(X_1 \text{ è dispari } \cap X_2 \text{ è dispari }) = 1 - \frac{1}{4} = \frac{3}{4}$
+- $P(C) = P(B) - P(X_1 \text{ è dispari } \cap X_2 \text{ è dispari }) = \frac{3}{4} - \frac{1}{4} = \frac{1}{2}$
+- $P(A \cap B) = P(\text{la differenza è 2 e almeno uno è dispari}) = \frac{P(A)}{2} = \frac{1}{9}$, perché tra i 8 casi favorevoli di $A$ la metà ha almeno un dado dispari (che succede solo se entrambi i dadi sono dispari, dato che diciamo che almeno uno dei due deve essere dispari. Non è possibile creare un numero con differenza pari tramite un numero pari e uno dispari)
+- $P(A \cup B) = P(A) + P(B) - P(A \cap B) = \frac{2}{9} + \frac{3}{4} - \frac{1}{9} = \frac{31}{36}$
