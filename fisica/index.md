@@ -27,7 +27,7 @@ Appunti del corso, una nota per ogni lezione. Ogni file integra i contenuti dell
 - [[L17]] · Equazione di stato dei gas perfetti *(PV = nRT, Boltzmann, reversibilità)*
 - [[L18]] · Il primo principio della termodinamica *(energia interna, Cv/Cp, Mayer)*
 - [[L19]] · Trasformazioni, cicli e macchine termiche *(adiabatica, rendimento, Carnot)*
-- [[L20]] ·
-- [[L21]] ·
-- [[L22]] ·
-- [[L23]] ·
+- [[L20]] · Politropiche, macchine frigorifere e attrito *(PV^k, COP, Carnot reale)*
+- [[L21]] · Cicli termodinamici e il secondo principio *(Kelvin-Planck, Clausius)*
+- [[L22]] · Entropia e secondo principio *(teorema di Carnot, ΔS universo ≥ 0)*
+- [[L23]] · Esercizi d'esame di termodinamica *(entropia, cicli, rendimento)*
