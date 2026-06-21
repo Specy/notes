@@ -17,7 +17,7 @@ da un urna con 6 palline numerate voglio calcolare la probabilità di estrarre l
 Poichè tutte le coppie sono equiprobabili, c'è un solo modo per ottenere le palline 1 e 2, e ci sono $\binom{6}{2}$ coppie, allora $P(\{1, 2\}) = \frac{1}{\binom{6}{2}} = \frac{1}{15}$.
 
 ## Esempio 
-Quante sono le targhe con 7 simboli dove ci sono 2 lettere (26 totali) e 5 numeri (10 totali) nel caso in cui io possa ripetere i simboli?
+Quante sono le targhe con 7 simboli dove ci sono 2 lettere (26 totali) e 5 numeri (10 totali) nel caso in cui io possa ripetere i simboli? E se non potessi ripeterli?
 
 Nel primo caso ho disposizioni con ripetizione, allora $26*26*10*10*10*10*10 = 26^2 * 10^5$.
 
@@ -26,7 +26,7 @@ Nel secondo caso, senza ripetizione: $\frac{26!}{(26 -2)!} \cdot \frac{10!}{(10 
 ## Esempio 
 Quale è la probabilità di estrarre la coppia 2 di fiori e 3 di quadri in un mazzo da poker senza reinserire le carte nel mazzo?
 
-Dato che non stiamo reinserendo le carte, consideriamo le disposizioni senza ripetizione, cioè che $P = \frac{(52-2)!}{52!}$, lo possiamo vedere anche come "quante coppie di combinazioni di coppie ci sono?" che sono $\binom{52}{2}$. e dato che la coppia che cerchiamo è una, abbiamo che laa probabilità è $P = \frac{1}{\binom{52}{2}}$.
+Dato che non stiamo reinserendo le carte, consideriamo le disposizioni senza ripetizione, cioè che $P = \frac{(52-2)!}{52!}$, lo possiamo vedere anche come "quante coppie di combinazioni di coppie ci sono?" che sono $\binom{52}{2}$. e dato che la coppia che cerchiamo è una, abbiamo che la probabilità è $P = \frac{1}{\binom{52}{2}}$.
 
 ## Esempio
 Quale è la probabilità di pescare da un urna contenente 7 palline di cui 4 nere e 3 bianche, 1 pallina nera e una bianca, indifferentemente dall'ordine e senza reinserire le palline?
@@ -50,7 +50,7 @@ Allora la nostra probabilità è:
 $$
 P(A \cup B \cup C) = P(A) + P(B) + P(C)
 $$
-oppure possiamo vedere il complemento, cioè l'unico caso che non è presente fra di questi, cioè ch tutte le palline siano nere (NNN)
+oppure possiamo vedere il complemento, cioè l'unico caso che non è presente fra di questi, cioè che tutte le palline siano nere (NNN)
 
 ## Esempio
 
@@ -60,7 +60,7 @@ Provo a risolverlo posizionando prima le antenne buone che sono $n - m$, e poi i
 
 Quindi gli allineamenti possibili sono $\binom{n-m+1}{m}$, cioè numero di posti totali e numero di posti da occupare.
 
-Prendendo come esempio $n = 5$ e $m <= 3$ (m <=3) perchè non posso metterne più di 3 
+Prendendo come esempio $n = 5$ e $m <= 3$ (m <=3 perchè non posso metterne più di 3)
 
 Allora abbiamo che $\binom{5-2+1}{2} = \binom{4}{2} = \frac{4!}{2! \cdot 2!} = 3 \cdot 2 \cdot 1 = 6$.
 
@@ -69,7 +69,7 @@ Allora abbiamo che $\binom{5-2+1}{2} = \binom{4}{2} = \frac{4!}{2! \cdot 2!} = 3
 Una gelateria offre 9 gusti di gelato e ogni cono può avere **massimo** 3 palline di gelato. Quante sono le combinazioni di gusti tutti diversi?
 
 $$
-\text{Numero combinazioni} = \binom{9}{1} + \binom{9}{2} + \binom{9}{3} = 
+\text{Numero combinazioni} = \binom{9}{1} + \binom{9}{2} + \binom{9}{3}
 $$
 
 # Combinazioni con ripetizioni

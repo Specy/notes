@@ -210,7 +210,7 @@ Tale che valgano le seguenti proprietà:
 a) $0 < P_{\underline{X}}(\underline{x}) < 1 \quad \forall \underline{x} \in \Omega$
 b) $\sum_{\underline{x} \in \Omega} P_{\underline{X}}(\underline{x}) = 1$
 
-Allora le variabili aleatorie (X_1, ..., X_n) di distribuzione congiunte $P_{X_1, ..., X_n}(x_1, ..., x_n)$ sono dette **indipendenti** se e solo se:
+Allora le variabili aleatorie $(X_1, ..., X_n)$ di distribuzione congiunte $P_{X_1, ..., X_n}(x_1, ..., x_n)$ sono dette **indipendenti** se e solo se:
 
 $$
 P_{X_1, ..., X_n}(x_1, ..., x_n) = \prod_{i=1}^n P_{X_i}(x_i)

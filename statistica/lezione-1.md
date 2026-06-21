@@ -223,7 +223,7 @@ $$
 Per definizione $0! = 1! = 1$.
 
 # Calcolo della cardinalità di insiemi
-Ci sono vari modi per calcolre laa cardinalità di insiemi:
+Ci sono vari modi per calcolare la cardinalità di insiemi:
 
 ## Disposizioni con ripetizioni
 dispongo gli elementi in uno specifico ordine, cioè le sequnze di tipo $AB \ne BA$. Posso scegliere un elemento anche più di una volta, tipo $AA$. Se ho $n$ elementi e voglio formare sequenze di $k$ elementi, allora il numero di sequenze è dato da $n^k$.

@@ -1,5 +1,3 @@
-Problema delle 3 carte.
-
 Ho 3 carte: 
 
 - b/b che ha entrambi i lati bianchi
@@ -11,7 +9,7 @@ Allora pesco una carta a caso e guardo uno dei lati che è bianco. Qual è la pr
 Cioè:
 
 - $\{b/b\}$ evento in cui estraggo una carta con due lati bianchi
-- $\{b\}$ evento in cui estracco una carta con almeno un lato bianco.
+- $\{b\}$ evento in cui estraggo una carta con almeno un lato bianco.
 
 Allora voglio calcolare $P(b/b|b)$.
 
@@ -57,7 +55,7 @@ $$
 P(A|B) = \frac{P(B|A)P(A)}{P(B)}
 $$
 
-### Esempio pratico: Il test medico
+### Esempio
 
 Immagina di sottoporti a un test medico per una malattia rara che colpisce solo 1 persona su 1000 ($P(Malattia) = 0.001$). 
 
@@ -143,7 +141,7 @@ Lo spazio di un lancio è $\Omega = \{T, C\}$, quindi per 5 lanci lo spazio è $
 La probabilità dell'evento è data da 
 $$
 \begin{aligned}
-P(T_5|T_1 \cap T_2 \cap T_3 \cap T_4) &= \frac{P(T_5 \cap T_1 \cap T_2 \cap T_3 \cap T_4)}{P(X \cap T_1 \cap T_2 \cap T_3 \cap T_4)} = \quad \text{probabilità totale} \\
+P(T_5|T_1 \cap T_2 \cap T_3 \cap T_4) &= \frac{P(T_5 \cap T_1 \cap T_2 \cap T_3 \cap T_4)}{P(X \cap T_1 \cap T_2 \cap T_3 \cap T_4)} = \\
 &= \frac{P(T_5 \cap T_1 \cap T_2 \cap T_3 \cap T_4)}{P(T_5 \cap T_1 \cap T_2 \cap T_3 \cap T_4) + P(C \cap T_1 \cap T_2 \cap T_3 \cap T_4)} = \\
 &= \frac{(1/2)^5}{(1/2)^5 + (1/2)^5} = \frac{1/32}{1/16} = 1/2
 \end{aligned}
@@ -153,7 +151,7 @@ $$
 Poiché gli eventi (i lanci) sono indipendenti, sapere che nei primi 4 lanci è uscita croce non altera la probabilità del quinto lancio. Analogo al caso precedente.
 $$
 \begin{aligned}
-P(T_5|C_1 \cap C_2 \cap C_3 \cap C_4) &= \frac{P(T_5 \cap C_1 \cap C_2 \cap C_3 \cap C_4)}{P(X \cap C_1 \cap C_2 \cap C_3 \cap C_4)} = \quad \text{probabilità totale} \\
+P(T_5|C_1 \cap C_2 \cap C_3 \cap C_4) &= \frac{P(T_5 \cap C_1 \cap C_2 \cap C_3 \cap C_4)}{P(X \cap C_1 \cap C_2 \cap C_3 \cap C_4)} = \\
 &= \frac{P(T_5 \cap C_1 \cap C_2 \cap C_3 \cap C_4)}{P(T_5 \cap C_1 \cap C_2 \cap C_3 \cap C_4) + P(C \cap C_1 \cap C_2 \cap C_3 \cap C_4)} = \\
 &= \frac{(1/2)^5}{(1/2)^5 + (1/2)^5} = \frac{1/32}{1/16} = 1/2
 \end{aligned}
@@ -174,7 +172,7 @@ Date delle coppie, se ogni coppia di evento $A$ e $B$ è indipendente, non è de
 
 Per esempio:
 
-- $\Omega = \{1, 2, 3, 4\}$ equiprobabili
+- $\Omega = \{1, 2, 3, 4\}$ equiprobabili 
 - $P(1) = P(2) = P(3) = P(4) = 1/4$
 - Gli eventi:
     - $A = \{1 \cup 2\}$
@@ -251,7 +249,7 @@ $$
 
 # Esercizio
 
-Susanna è indecisa se frequentare il corso di francese o quello di chimica. Se susanna basa la sua decisione sull'esito di una monet anon truccata, e se ha la probabilità di $\frac{1}{2}$ di prendere più di 27 e probabilità di $\frac{2}{3}$ di prendere più di 27 se frequenta chimica, con quale probabilità prenderà più di 27 all'esame di chimica? Con quale probabilità prenderà più di 27?
+Susanna è indecisa se frequentare il corso di francese o quello di chimica. Se susanna basa la sua decisione sull'esito di una moneta non truccata, e se ha la probabilità di $\frac{1}{2}$ di prendere più di 27 se frequenta francese e probabilità di $\frac{2}{3}$ di prendere più di 27 se frequenta chimica, con quale probabilità prenderà più di 27 all'esame di chimica? Con quale probabilità prenderà più di 27?
 
 - $E_f$ è l'evento "Susanna frequenta francese"
 - $E_c$ è l'evento "Susanna frequenta chimica"
@@ -262,11 +260,11 @@ Il problema chiede 2 cose:
 - $P(A)$: la probabilità che Susanna prenda più di 27, indipendentemente dal corso che frequenta
 
 Allora:
-- $P(E_p) = P(E_c) = 1/2$ perché Susanna decide con una moneta truccata
+- $P(E_f) = P(E_c) = 1/2$ perché Susanna decide con una moneta non truccata
 - $P(A|E_c) = 2/3$ perché se frequenta chimica ha questa probabilità di prendere più di 27
 - $P(A|E_f) = 1/2$ perché se frequenta francese ha questa probabilità di prendere più di 27
 $P(E_c \cap A) = P(A|E_c) \cdot P(E_c) = (2/3) \cdot (1/2) = 1/3$
-- $E_c \cup E_f = \Omega$ perché Susanna deve scegliere uno dei due corsi, quindi possiamo applicare la probabilit à totale: $P(A) = P(A|E_c) \cdot P(E_c) + P(A|E_f) \cdot P(E_f) = (2/3) \cdot (1/2) + (1/2) \cdot (1/2) = 7/12$.
+- $E_c \cup E_f = \Omega$ perché Susanna deve scegliere uno dei due corsi, quindi possiamo applicare la probabilità totale: $P(A) = P(A|E_c) \cdot P(E_c) + P(A|E_f) \cdot P(E_f) = (2/3) \cdot (1/2) + (1/2) \cdot (1/2) = 7/12$.
 
 # Regola del prodotto
 Se $A$ e $B$ sono eventi, allora:

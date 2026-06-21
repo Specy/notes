@@ -400,3 +400,9 @@ L'interpretazione è diretta: per avere il primo successo esattamente al $k$-esi
 - $\text{var}(X) = \dfrac{1-p}{p^2}$
 
 Il valore atteso $\frac{1}{p}$ ha un'interpretazione intuitiva: se ogni tentativo ha probabilità $p$ di successo, in media servono $\frac{1}{p}$ tentativi. Per esempio, con un dado equo la probabilità di ottenere un 6 è $p = \frac{1}{6}$, quindi in media occorrono 6 lanci.
+
+$$
+P_p(X \ge k) = (1-p)^{k-1}
+$$
+
+Basta che togliamo l'ultimo evento positivo $p$
