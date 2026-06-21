@@ -92,7 +92,7 @@ C'è un solo modo per fare scala reale, cioè A-K-Q-J-10, e 4 modi per scegliere
 
 # Paradosso dei compleanni
 
-Date $k$ persone, quale è la probabilità che due persone aabbiano il compleanno nello stesso giorno?
+Date $k$ persone, quale è la probabilità che due persone abbiano il compleanno nello stesso giorno?
 
 Vogliamo sapere per quale valore $k$ la probabilità è maggiore di 0.5, cioè $P(A) > 0.5$.
 
@@ -179,7 +179,7 @@ A questo punto, aggiungiamo un informazione, cioè che il dado è truccato e il 
 
 Noi dobbiamo stabilire le leggi di probabilità in base alle informazioni che sappiamo del sistema, ogni volta che aggiungo un informazione su un evento che posso considerare "certo" (come in questo caso di avere solo le facciate dispari), posso dire di avere una probabilità condizionata, assumendo che quell'evento si sia relizzato.
 
-Allora chiamiamo la nostra nuova probabilità condizionata come $\tilde{P}$, allora il suo nuovo inieme sarà
+Allora chiamiamo la nostra nuova probabilità condizionata come $\tilde{P}$, allora il suo nuovo insieme sarà
 - $B = \{1,3,5\}$
 - $B^c = \{2,4,6\}$
 - $B \cup B^c = \Omega$
@@ -209,7 +209,7 @@ $$
 |A \cap B| \le |B| \le |A| \implies \frac{P(A \cap B)}{P(B)} \le 1
 $$
 
-Quindi la probabilità condizionata non è altro che la probabilità aaggiungendo l'informazione che accade un evento certo
+Quindi la probabilità condizionata non è altro che la probabilità aggiungendo l'informazione che accade un evento certo
 
 # Probabilità totale
 
