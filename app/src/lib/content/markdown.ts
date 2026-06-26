@@ -17,6 +17,7 @@ import rehypeMermaid from './rehypeMermaid.js';
 export type LinkResolver = {
   note(target: string): string;
   asset(target: string): string;
+  noteLabel(target: string): string | null;
 };
 
 export function createProcessor(resolve: LinkResolver) {

@@ -57,6 +57,7 @@ export async function renderNode(lang: string, path: string) {
 export function withLang(resolve: Context['resolve'], lang: string): Context['resolve'] {
   return {
     asset: resolve.asset,
+    noteLabel: resolve.noteLabel,
     note(target: string) {
       const href = resolve.note(target);
       if (href.startsWith('/') || href.startsWith('#') || href.startsWith('http')) return href;
