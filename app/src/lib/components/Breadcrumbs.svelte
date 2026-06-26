@@ -1,20 +1,17 @@
 <script lang="ts">
-  let { lang, path, title }: { lang: string; path: string; title: string } = $props();
-
-  const segments = $derived(path ? path.split('/') : []);
-  const crumbs = $derived(segments.map((seg, i) => ({
-    label: seg,
-    href: `/${lang}/${segments.slice(0, i + 1).join('/')}`
-  })));
+  let { breadcrumbs, current }:
+    { breadcrumbs: { title: string; url: string }[]; current: string } = $props();
 </script>
 
 <nav aria-label="Breadcrumb" class="breadcrumbs">
   <ol>
-    <li><a href="/{lang}">Home</a></li>
-    {#each crumbs.slice(0, -1) as crumb}
-      <li><span aria-hidden="true">/</span><a href={crumb.href}>{crumb.label}</a></li>
+    {#each breadcrumbs as crumb, i}
+      <li>
+        {#if i > 0}<span aria-hidden="true">/</span>{/if}
+        <a href={crumb.url}>{crumb.title}</a>
+      </li>
     {/each}
-    <li><span aria-hidden="true">/</span><span aria-current="page">{title}</span></li>
+    <li><span aria-hidden="true">/</span><span aria-current="page">{current}</span></li>
   </ol>
 </nav>
 

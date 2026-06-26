@@ -1,7 +1,7 @@
 // app/src/lib/content/index.ts
 import { files, assets } from 'virtual:vault';
 import readingTime from 'reading-time';
-import { buildContext, getNodeByPath, listRoutes, extractToc, siblings } from './context';
+import { buildContext, getNodeByPath, listRoutes, extractToc, siblings, breadcrumbsFor } from './context';
 import { groupChildren } from './tree';
 import { renderMarkdown } from './markdown';
 import { toPlainText } from './plainText';
@@ -22,10 +22,12 @@ export async function renderNode(lang: string, path: string) {
   const node = path === '' ? c.root : getNodeByPath(c.root, path.split('/'));
   if (!node) throw new Error(`404 ${lang}/${path}`);
 
+  const breadcrumbs = breadcrumbsFor(c.root, node.path, lang);
+
   if (node.kind === 'folder') {
     const html = node.content ? await renderMarkdown(node.content, c.resolve) : '';
     const g = groupChildren(node);
-    return { kind: 'folder' as const, lang, node: stripBody(node), html, groups: prefixGroups(g, lang) };
+    return { kind: 'folder' as const, lang, node: stripBody(node), html, groups: prefixGroups(g, lang), breadcrumbs };
   }
   const html = await renderMarkdown(node.content, c.resolve);
   const stats = readingTime(toPlainText(node.content));
@@ -35,7 +37,8 @@ export async function renderNode(lang: string, path: string) {
     node: { ...node, content: '' },
     html, toc: extractToc(html), readingText: stats.text,
     prev: sib.prev && { title: sib.prev.title, path: `/${lang}/${sib.prev.path}` },
-    next: sib.next && { title: sib.next.title, path: `/${lang}/${sib.next.path}` }
+    next: sib.next && { title: sib.next.title, path: `/${lang}/${sib.next.path}` },
+    breadcrumbs
   };
 }
 
