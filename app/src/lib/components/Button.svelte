@@ -36,16 +36,16 @@
   .secondary {
     background: color-mix(in srgb, var(--secondary) 80%, transparent);
     color: var(--background-text);
-    border: 1px solid var(--accent2);
+    box-shadow: 0 1px 3px var(--shadow-color);
   }
   .secondary:hover {
-    border-color: var(--accent);
+    background: color-mix(in srgb, var(--secondary) 100%, transparent);
+    box-shadow: 0 6px 18px var(--shadow-color);
   }
 
   .accent {
     background: var(--accent);
     color: #fff;
-    border: 1px solid var(--accent);
   }
   .accent:hover {
     filter: brightness(1.15);

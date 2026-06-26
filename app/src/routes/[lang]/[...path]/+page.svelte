@@ -84,11 +84,12 @@
     padding: 0.6rem 0.9rem;
     border-radius: 0.5rem;
     background: color-mix(in srgb, var(--secondary) 70%, transparent);
-    border: 1px solid var(--accent2);
-    transition: border-color 0.2s;
+    box-shadow: 0 1px 3px var(--shadow-color);
+    transition: background 0.2s, box-shadow 0.2s;
   }
   .list li:hover {
-    border-color: var(--accent);
+    background: color-mix(in srgb, var(--secondary) 95%, transparent);
+    box-shadow: 0 6px 18px var(--shadow-color);
   }
   .list a {
     color: var(--background-text);
