@@ -155,3 +155,28 @@ npm run build  → ✓ built in 28.60s, Wrote site to "build" ✔ done
 find build -name '*.html' | wc -l  → 53
 build/it/ and build/it/fisica/ present with content
 ```
+
+---
+
+## Wikilink-label fix
+
+**Commit**: `4954a97` — `feat(app): wikilinks display the resolved note title, not the slug`
+**Date**: 2026-06-26
+
+**Root cause**: Non-aliased wikilinks (`[[terzo-principio-della-dinamica-e-gravitazione-universale]]`) used the raw target string as link text, rendering an ugly kebab slug instead of the note's human-readable title.
+
+**Changes**:
+1. `app/src/lib/content/markdown.ts`: added `noteLabel(target: string): string | null` to the `LinkResolver` type.
+2. `app/src/lib/content/context.ts` (`makeResolver`): implemented `noteLabel` — extracts the page part (before `#`), looks it up via `titleMap` then `slugMap` (same logic as `note()`), returns the matched node's `title` or `null` if unresolved.
+3. `app/src/lib/content/index.ts` (`withLang`): added `noteLabel: resolve.noteLabel` passthrough — it is language-independent (no lang prefix needed).
+4. `app/src/lib/content/remarkObsidianLinks.ts`: for non-embed wikilinks, link text is now `alias ?? resolve.noteLabel?.(trimmedTarget) ?? trimmedTarget` (alias wins; else resolved title; else raw slug fallback).
+5. Updated all test resolver stubs (`markdown.test.ts`, `remarkCallouts.test.ts`, `withLang.test.ts`) to include `noteLabel: (_t) => null` to satisfy the updated `LinkResolver` type.
+6. `remarkObsidianLinks.test.ts`: added 3 new tests — resolved title is used, alias overrides title, unresolved slug falls back to raw target.
+
+**Verification**:
+```
+npx vitest run → 12 passed (12), 51 passed (51)
+npm run check  → 746 FILES 0 ERRORS 0 WARNINGS
+npm run build  → ✓ built in 33.11s, Wrote site to "build" ✔ done
+find build -name '*.html' | wc -l  → 53
+```
