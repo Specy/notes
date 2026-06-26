@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [vaultPlugin(), sveltekit()],
   server: { fs: { allow: ['..', VAULT_DIR] } },
   test: {
-    include: ['src/**/*.{test,spec}.{js,ts}', '*.{test,spec}.{js,ts}'],
+    include: ['src/**/*.{test,spec}.{js,ts,mjs}', '*.{test,spec}.{js,ts,mjs}', 'scripts/**/*.{test,spec}.{js,ts,mjs}'],
     environment: 'node',
     testTimeout: 30000
   }
