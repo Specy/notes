@@ -33,7 +33,8 @@ export async function renderNode(lang: string, path: string) {
   if (node.kind === 'folder') {
     const html = node.content ? await renderMarkdown(node.content, resolve) : '';
     const g = groupChildren(node);
-    return { kind: 'folder' as const, lang, node: stripBody(node), html, groups: prefixGroups(g, lang), breadcrumbs };
+    const folderNode = { ...stripBody(node), image: node.image ? resolve.asset(node.image) : undefined };
+    return { kind: 'folder' as const, lang, node: folderNode, html, groups: prefixGroups(g, lang, resolve), breadcrumbs };
   }
   const html = await renderMarkdown(node.content, resolve);
   const stats = readingTime(toPlainText(node.content));
@@ -66,8 +67,8 @@ export function withLang(resolve: Context['resolve'], lang: string): Context['re
 
 // helpers prefix child paths with /lang and drop heavy bodies for the payload
 function stripBody(f: any) { return { ...f, content: '', children: undefined }; }
-function prefixGroups(g: any, lang: string) {
+function prefixGroups(g: any, lang: string, resolve: Context['resolve']) {
   const map = (n: any) => ({ slug: n.slug, title: n.title, description: n.description,
-    image: n.image, type: n.type, url: `/${lang}/${n.path}` });
+    image: n.image ? resolve.asset(n.image) : undefined, type: n.type, url: `/${lang}/${n.path}` });
   return { modules: g.modules.map(map), lectures: g.lectures.map(map), resources: g.resources.map(map) };
 }
