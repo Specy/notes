@@ -70,9 +70,17 @@ export async function buildManifest(vaultDir, assetDestDir) {
     return { files: [], assets: {} };
   }
 
-  // Clean asset destination so deleted images don't linger.
+  // Clean asset destination so deleted images don't linger — but PRESERVE the
+  // excalidraw artifacts written by the prebuild (scripts/buildExcalidraw.mjs),
+  // which populates this same dir (excalidraw/*.svg + excalidraw-map.json)
+  // BEFORE vite build runs. A blanket rm here would wipe them before the map is
+  // read below, so clean entry-by-entry and skip the excalidraw outputs.
   if (existsSync(assetDestDir)) {
-    await rm(assetDestDir, { recursive: true, force: true });
+    const PRESERVE = new Set(['excalidraw', 'excalidraw-map.json']);
+    for (const entry of await readdir(assetDestDir)) {
+      if (PRESERVE.has(entry)) continue;
+      await rm(path.join(assetDestDir, entry), { recursive: true, force: true });
+    }
   }
 
   // Walk markdown files.
