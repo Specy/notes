@@ -313,7 +313,8 @@ html[data-theme="dark"] .excalidraw-dark {
   display: block;
   overflow-x: auto;
   white-space: nowrap;
-  width: 100%;
+  width: fit-content;     /* Shrinks the table block to fit the actual columns */
+  max-width: 100%;
 }
 
 /* Inner grid lines: each cell draws its bottom + right border; the table's own
