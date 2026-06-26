@@ -5,6 +5,7 @@
   import NoteNav from '$lib/components/NoteNav.svelte';
   import Toc from '$lib/components/Toc.svelte';
   import { t } from '$lib/i18n';
+  import RenderedMarkdown from '$lib/components/RenderedMarkdown.svelte';
   let { data }: PageProps = $props();
 </script>
 
@@ -14,7 +15,7 @@
   <article class="content">
     <h1>{data.node.title}</h1>
     <p class="desc">{data.node.description}</p>
-    {#if data.html}<div class="md">{@html data.html}</div>{/if}
+    {#if data.html}<RenderedMarkdown html={data.html} />{/if}
     {#if data.groups.modules.length}
       <h2>{t(data.lang, 'course.modules')}</h2>
       <div class="grid">
@@ -40,7 +41,7 @@
   <article class="content note">
     <header><h1>{data.node.title}</h1><p class="meta">{data.readingText} · {data.node.description}</p></header>
     {#if data.toc.length}<Toc items={data.toc} lang={data.lang} />{/if}
-    <div class="md">{@html data.html}</div>
+    <RenderedMarkdown html={data.html} />
     <NoteNav prev={data.prev} next={data.next} lang={data.lang} />
   </article>
 {/if}
