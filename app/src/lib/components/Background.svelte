@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { themeState } from '$lib/theme.svelte';
+  import { page } from '$app/state';
 
   interface Props {
     children?: import('svelte').Snippet;
@@ -152,7 +153,7 @@
     return getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
   }
 
-  function initCanvas(c: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
+  function initCanvas(c: HTMLCanvasElement, ctx: CanvasRenderingContext2D): Animation {
     const sizes = calculateSizes();
     width = sizes.width;
     height = sizes.height;
@@ -179,7 +180,7 @@
     const color = getAccentColor();
     drawCanvas(matrix, ctx, color, true, width, height);
 
-    c.animate(
+    const animation = c.animate(
       [
         { opacity: firstTime ? 0 : hasFilter ? 0.5 : 0.2 },
         { opacity: hasFilter ? 1 : 0.5 },
@@ -187,6 +188,7 @@
       { duration: 1000, easing: 'cubic-bezier(.2,.7,.46,1.01)' },
     );
     firstTime = false;
+    return animation;
   }
 
   // ── lifecycle ─────────────────────────────────────────────────────────────
@@ -197,14 +199,19 @@
     offCtx = offCanvas.getContext('2d');
   });
 
-  // Re-run whenever the canvas element is bound OR the theme changes.
+  // Re-run whenever the canvas element is bound, the theme changes, or the page changes.
   $effect(() => {
     // Depend on themeState.name so we re-run on theme toggle.
     const _theme = themeState.name;
+    // Depend on pathname so a fresh frame is drawn on each navigation.
+    const _pathname = page.url.pathname;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx || !offCtx) return;
-    initCanvas(canvas, ctx);
+    const animation = initCanvas(canvas, ctx);
+    return () => {
+      animation?.cancel();
+    };
   });
 </script>
 
