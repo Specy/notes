@@ -1,3 +1,9 @@
+---
+title: Distribuzioni congiunte, varianza e covarianza
+description: "Distribuzioni congiunte di variabili aleatorie discrete, distribuzioni marginali, indipendenza, varianza e covarianza con proprietà e applicazioni a estrazioni con e senza rimpiazzo."
+type: lecture
+---
+
 # Esempio: distribuzione congiunta di due variabili di Bernoulli
 
 Consideriamo due variabili aleatorie $X$ e $Y$, entrambe funzioni indicatrici definite sugli esiti del lancio di un dado:
