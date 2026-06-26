@@ -28,4 +28,38 @@ describe('context', () => {
     expect(prev?.slug).toBe('a');
     expect(next).toBeNull();
   });
+  it('title map takes precedence over slug map when title and slug collide', () => {
+    // Node A: file '01-a.md', title='Collision', slug='a' (from filename)
+    // Node B: file '02-other.md', title='A', slug='other' (from filename)
+    // titleMap: { 'collision' -> A, 'a' -> B }
+    // slugMap:  { 'a' -> A, 'other' -> B }
+    // Resolving 'a': titleMap.get('a') = B (title='A'), slugMap.get('a') = A (slug='a')
+    // Title wins -> should return B's path 'fisica/other'
+    const filesWithCollision: RawFile[] = [
+      { relPath: '01-fisica/index.md', frontmatter: { title: 'Fisica', description: 'd' }, content: 'o' },
+      { relPath: '01-fisica/01-a.md', frontmatter: { title: 'Collision', description: 'd', type: 'lecture' }, content: 'x' },
+      { relPath: '01-fisica/02-other.md', frontmatter: { title: 'A', description: 'd', type: 'lecture' }, content: 'z' }
+    ];
+    const { resolve } = buildContext(filesWithCollision, {});
+    // 'a' matches node B by title ('A'.toLowerCase() === 'a'), should win over node A's slug ('a')
+    expect(resolve.note('a')).toBe('fisica/other');
+  });
+  it('siblings: first note has prev=null and next non-null', () => {
+    const { root } = buildContext(files, {});
+    const { prev, next } = siblings(root, 'fisica/a');
+    expect(prev).toBeNull();
+    expect(next?.slug).toBe('b');
+  });
+  it('siblings: middle note has both prev and next non-null', () => {
+    const filesWithThree: RawFile[] = [
+      { relPath: '01-fisica/index.md', frontmatter: { title: 'Fisica', description: 'd' }, content: 'o' },
+      { relPath: '01-fisica/01-a.md', frontmatter: { title: 'A', description: 'd', type: 'lecture' }, content: 'x' },
+      { relPath: '01-fisica/02-b.md', frontmatter: { title: 'B', description: 'd', type: 'lecture' }, content: 'y' },
+      { relPath: '01-fisica/03-c.md', frontmatter: { title: 'C', description: 'd', type: 'lecture' }, content: 'z' }
+    ];
+    const { root } = buildContext(filesWithThree, {});
+    const { prev, next } = siblings(root, 'fisica/b');
+    expect(prev?.slug).toBe('a');
+    expect(next?.slug).toBe('c');
+  });
 });
