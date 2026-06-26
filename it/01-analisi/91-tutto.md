@@ -1,0 +1,2057 @@
+---
+title: Tutto
+description: Riepilogo completo del corso di Analisi Matematica, con definizioni, teoremi ed esempi su serie, successioni, limiti, derivate, studio di funzione, integrali e funzioni a due variabili.
+type: summary
+---
+# Serie, Successioni e limiti
+
+## Tipi di successioni
+Data una successione $a_n$, allora si dice che la successione è:
+- **Convergente** se per il limite con $n \to \infty$, la successione tende a $l$
+- **Infinitesima** uguale alla convergente, ma con $l = 0$ 
+- **Divergente** se per $n \to \infty$, la successione tende a $\pm \infty$ 
+- **Limitate** se esiste $M > 0$ tale che $|a_n| < M$ per ogni $n$, per esempio la funzione seno è limitata in $[-1, 1]$  
+- **Monotona** crescente se $a_{n + 1} \ge a_n$, o monotona decrescente se $a_{n + 1} \le a_n$
+- **Oscillante** se non hanno un verso (per esempio verso l'infinito positivo o negativo) e possono essere limitate, se sono racchiuse in un intervallo, o non limitate se non sono racchiuse in un intervallo
+## 🟢 Successione monotona
+
+Una successione $(a_n)$ è detta:
+- monotona crescente se $a_{n+1} \ge a_n$ per ogni $n$
+- monotona decrescente se $a_{n+1} \le a_n$ per ogni $n$
+- Strettamente crescente/decrescente se le disegualianze sono strette, $>, <$ 
+##  🟢 Successione geometrica
+
+![[Pasted image 20250622182144.png]]
+![[Pasted image 20250622182807.png]]
+##  🟢 Successione armonica
+
+![[Pasted image 20250622182159.png]]
+![[Pasted image 20250622182819.png]]
+
+In generale:
+
+![[Pasted image 20250623092940.png]]
+##  🟢 Principio di sostituzione
+
+Se per due successioni $a_n$ e $b_n$ si ha che $\lim_{n \to \infty}\frac{a_n}{b_n} = 1$ allora si dice che $a_n$ e $b_n$ sono asintotiche e si scrive $a_n \sim b_n$ per $n \to \infty$.
+
+Se $a_n \sim b_n$ per $n \to \infty$, allora $(a_n)_{n \in \mathbb{N}}$ e $(b_n)_{n \in \mathbb{N}}$  hanno lo stesso comportamento asintotico, cioè che:
+
+![[Pasted image 20250622182525.png]]
+
+Allora definiamo il principio di sostituzione, in ==**prodotti e rapporti**== si possono sostituire successioni con altre successioni asintotiche, senza cambiare il comportamento asintotico, e sopratutto, non cambierà il valore del limite, se esiste.
+
+![[Pasted image 20250622182716.png]]
+
+## 🟢 Teorema sul limite delle successioni monotone
+
+Il teorema ci dice che ogni successione monotona di numeri reali ha un limite.
+Questo limite può essere:
+- **Finito**: se la successione è anche limitata. A questo punto:
+  - Se è monotona crescente e limitata superiormente, il suo limite è l'estremo superiore della successione
+  - Se è monotona decrescente e limitata inferiormente, il suo limite è l'estremo inferiore della successione
+- **Infinito**: se la successione è illimitata. A questo punto:
+  - Se la successione è monotona crescente e illimitata superiormente, il suo limite è $+\infty$ 
+  -  Se la successione è monotona decrescente e illimitata inferiormente, il suo limite è $-\infty$ 
+
+## 🟢 Serie di mengoli
+
+![[Pasted image 20250622182847.png]]
+
+## 🟢 Somma telescopica 
+
+Quando ci troviamo con serie i cui termini sono somme parziali della forma:
+
+$$
+s_n = \sum_{k=1}^{n}(A_{k+1}-A_k) = (\cancel{A_2} - A_1) + (\cancel{A_3} + \cancel A_2) + \dots + (\cancel A_n + \cancel A_{n-1}) + (A_{n+1} + \cancel A_n)
+$$
+Allora semplificando i termini intermedi, il calcolo della serie si riduce al trovare il limite di:
+$$
+\lim_{n \to \infty} A_{n+1} - A_1 = \ ?
+$$
+## 🟢 Condizione di convergenza
+
+Una condizione necessaria (ma non sufficiente) per la convergenza di una serie è che:
+Se 
+$$
+\sum_{k = 0}^{\infty}{a_k}
+$$
+ converge, allora
+$$
+\lim_{k \to \infty}{a_k} = 0
+$$
+
+Mentre quando studiamo:
+$$
+\lim_{n \to \infty} \sum_{k = 0}^{n}a_k = s_n
+$$
+
+- Se $\lim_{n \to +\infty}s_n = s$, si dice che la serie numerica converge alla somma $s$, e allora $\sum_{k = 0}^{\infty}{a_k} = s$
+- Se $\lim_{n \to \pm\infty}s_n = \pm \infty$, si dice che la serie numerica diverge a $\pm \infty$ e allora $\sum_{k = 0}^{\infty}{a_k} = \pm \infty$
+- Si dice irregolare o oscillante se $(s_n)_{n \in \mathbb N}$ è irregolare
+## 🟢 Convergenza di una successione 
+
+![[Screenshot_2025-07-04-07-16-33-31_40deb401b9ffe8e1df2f1cc5ba480b12.jpg]]
+## 🟢Continuità di una funzione
+
+Una funzione $f(x)$ è detta continua sull'intervallo $[a,b]$ sul punto $x_0$ se:
+- Esiste il limite $l$ per $x \to x_0$ di $f(x)$, cioè il limite destro e sinistro sono finiti e uguali.
+- Questo limite $l$ è uguale al valore della funzione su $x_0$, cioè che $l = f(x_0)$  
+
+## 🟢 Serie a termini positivi 
+
+Diciamo che una successione è limitata, se $\forall n \in \mathbb{N}$, $\exists M > 0$ tale che $|S_n| \le M$. Quindi che tutte le successioni sono limitate superiormente da un certo $M$ 
+
+Se $a_k \ge 0$ per ogni $k \in \mathbb{N}$, allora la serie:
+
+![[Pasted image 20250622183826.png]]
+
+## 🟢 Convergenza assoluta
+Notiamo che: 
+
+![[Pasted image 20250623094523.png]]
+
+![[Pasted image 20250623094607.png]]
+
+## 🟢 Criterio del confronto
+
+![[Pasted image 20250623092317.png]]
+![[Pasted image 20250623092346.png]]
+## 🟢 Criterio della radice
+
+Sia $a_k \ge 0$ definitivamente, se esiste:
+$$
+\huge{q :=\lim_{k \to \infty}{\sqrt[k]{a_k}}}
+$$
+Allora la serie $\sum_{k=0}^\infty a_k$:
+
+- Converge se $q < 1$
+- Diverge se $q > 1$
+- Non possiamo concludere altro se $q = 1$
+
+Molto utile quando stiamo studiando il limite di serie elevate alla $n$, per esempio 
+$$
+ \frac{n^n}{(2n+1)^n}
+$$
+A questo punto ci basta mettere tutto sotto radice $n$-esima e semplificare le potenze. Infine calcolando il limite otteniamo $\frac{1}{2}$, quindi converge.
+## 🟢 Criterio del rapporto
+
+Sia $a_k > 0$ definitivamente, se esiste:
+$$
+\huge{q :=\lim_{k \to \infty}{\frac{a_{k+1}}{a_k}}}
+$$
+Allora la serie $\sum_{k=0}^\infty a_k$:
+- Converge se $q < 1$
+- Diverge se $q > 1$
+- Non si può concludere nulla se $q = 1$
+
+Utile quando troviamo un esponenziale o c'è una potenza con indice all'esponente ($\alpha^n$) con $\alpha$ un numero reale. 
+Per esempio:
+$$
+a_n = \frac{n^2 + 1}{3^n}
+$$
+Che è a termini positivi, allora calcoliamo $a_{n + 1}$ sostituendo ad $n$:
+$$
+a_{n + 1} = \frac{(n + 1)^2 + 1}{3^{(n + 1)}} = \frac{n^2 + 2n + 2}{3 \cdot 3^n}
+$$
+A questo punto applichiamo il criterio del rapporto:
+$$
+\begin{aligned}
+\lim_{n \to \infty}{\left(\frac{a_{n+1}}{a_n} \right)} 
+&= \lim_{n \to \infty} \left( \frac{\frac{n^2 + 2n + 2}{3 \cdot 3^n}}{\frac{n^2 + 1}{3^n}}\right) \\ \\
+&= \lim_{n \to \infty} \left [(\frac{n^2 + 2n + 2}{3 \cdot 3^n})\cdot(\frac{3^n}{n^2 + 1}) \right] \\ \\
+&= \lim_{n \to \infty} \left(\frac{n^2 + 2n + 2}{3n^2 + 3} \right) \\ \\
+&= \frac{1}{3}
+\end{aligned}
+$$
+Dove  $\frac{1}{3}\lt 1$, quindi la serie converge. 
+
+
+## 🟢  Criterio di leibniz
+
+Prendiamo la serie di leibniz:
+$$
+\sum_{k=1}^{\infty}(-1)^k \cdot \frac{1}{k}
+$$
+Osserviamo la sua convergenza:
+
+![[Pasted image 20250623093152.png]]
+
+Allora il criterio di Leibniz ci dice che se la successione $(a_k)_{k \in \mathbb{N}}$ é **decrescente** e **infinitesima**, allora la serie:
+$$
+s :=\sum_{k=1}^{\infty}(-1)^k \cdot a_k
+$$
+Converge, e vale che $|s - s_n| \lt a_{n+1}$ per ogni $n \in \mathbb{N}$ 
+
+## 🟠 Forme indeterminate dei limiti
+
+Per poter dire che un limite converge/diverge ad un valore, dobbiamo evitare le forme indeterminate, cioè forme che non ci permettono di usare le regole dei limiti:
+
+![[Pasted image 20250705150630.png]]
+
+
+## 🟢 Tecniche di studio di convergenza
+
+Applichiamo eventuali modifiche algebriche e poi applichiamo i vari criteri per poter raggiungere una conclusione sulla serie che stiamo considerando.
+
+Per esempio, proviamo a risolvere: 
+$$
+\sum_{k = 1}^{\infty}\frac{\sqrt{k + 1} - \sqrt{k}}{k}
+$$
+Possiamo modificare l'espressione cercando di portare le radici al denominatore:
+$$
+\begin{aligned}
+\sum_{k = 1}^{\infty}\frac{\sqrt{k + 1} - \sqrt{k}}{k} &= 
+\sum_{k = 1}^{\infty}\frac{\sqrt{k + 1} - \sqrt{k}}{k} \cdot \frac{\sqrt{k + 1} - \sqrt{k}}{\sqrt{k + 1} - \sqrt{k}} \\
+&= \frac{(k + 1) - k}{k(\sqrt{k+1} + \sqrt{k})} \\
+&= \frac{1}{k(\sqrt{k + 1} + \sqrt{k})}
+\end{aligned}
+$$
+A questo punto possiamo utilizzare il criterio di confronto asintotico per $k \to \infty$ dove $\sqrt{k + 1} \approx \sqrt{x}$
+Allora:
+$$
+\sqrt{k+1} + \sqrt{k} \approx \sqrt k + \sqrt k = 2\sqrt k
+$$
+Ottenendo quindi:
+$$
+a_k = \frac{1}{k(\sqrt{k + 1} + \sqrt{k})} = \frac{1}{k(2\sqrt k)} = \frac{1}{2k^{\frac{3}{2}}}
+$$
+Ora confrontiamole con le serie che già conosciamo, questa è una serie armonica generalizzata con $\alpha = 3/2 > 1$, e quindi questa serie converge. Per il criterio di confronto asintotico, anche la serie originale converge.
+
+---
+# Funzioni 
+
+## 🟢 Punto di accumulazione
+
+Un punto $c \in \overline{\mathbb{R}}$ dell'insieme $X \subseteq \mathbb R$ si dice di accumulazione se esiste una successione $(x_n)_{n \in \mathbb N}$ con:
+- $x_n \in X$ per ogni $n \in \mathbb N$ 
+- $x_n \ne c$ per ogni $n \in \mathbb{N}$ 
+- $\lim_{n \to \infty}x_n = c$ 
+In poche parole, ci si avvicina a piacere verso $c$ senza mai toccarlo.
+## 🟠 Asintoti
+
+- Se $\lim_{x \to c^{(\pm)}} f(x) = \pm \infty$, con $c \in \mathbb{R}$, allora si dice che $f$ ha un asintoto verticale in $x = c$ 
+- Se $\lim_{x \to \pm \infty} f(x) = l$, con $l \in \mathbb{R}$, allora si dice che $f$ ha un asintoto orizzontale in $y = l$ 
+- Un asintoto obliquo è una retta $y = mx + b$ tale che: 
+$$
+\lim_{x \to \pm \infty}\left[f(x) - (mx + b)  \right] = 0
+$$
+## 🟠 Teorema del confronto e carabinieri
+
+Nota: $\mathbb{\overline R} = \mathbb{R}\cup\{+\infty, -\infty\}$
+
+Se $a_n \to l_1$ e $b_n \to l2$ per $n \to \infty$, con limiti $l_1, l_2 \in \mathbb{\overline R}$ e $a_n \le b_n$, per ogni $n \in \mathbb{N}$, allora:
+
+- **Teorema del confronto**: $l_1 \le l_2$ 
+- **Teorema dei carabinieri**: se $a_n \le c_n \le b_n$ per ogni $n \in \mathbb N$ e $l_1 = l_2$, allora anche $c_n \to l_1 = l_2$ per $n \to \infty$  
+
+## 🟢 Studio di Monotonia
+
+Per studiare la monotonia di una funzione, dobbiamo studiarne la derivata prima
+
+É analogo allo studio di funzione dove troviamo i punti critici della funzione, infatti nei punti in cui la derivata è 0, la funzione cambia segno da crescente o decrescente, o viceversa. 
+
+In questi intervalli è dove la funzione sarà monotona, crescente o decrescente in base al segno della derivata.
+
+Se in un intervallo la derivata è 0, allora la funzione non è ne crescente ne decrescente.
+
+Per esempio, studiamo la funzione $f(x) = x^3 + 2x^2 + 3$ la cui derivata prima è $f'(x) = 3x^2 +4x = x(3x + 4)$.
+
+Sappiamo che la derivata prima è uguale a 0 nei casi in cui $x  = 0$ e $x = - \frac{4}{3}$, allora possiamo studiare il segno negli intervalli $-\frac{4}{3} < x < 0$, $x < -\frac{4}{3}$,  $x > 0$  
+
+È importante notare che questo studio è valido solo su intervalli, e che l'unione di intervalli con lo stesso andamento non implica lo stesso andamento per l'unione. Per esempio se c'è un punto in cui la funzione non è definita.
+
+
+## 🟢 Teorema degli zeri
+
+Sia $f: [a,b] \to \mathbb R$ continua, tale che $f(a)$ e $f(b)$ abbiano segno opposto, cioè che $f(a) \cdot f(b) \lt 0$, allora esiste $c \in (a,b)$ tale che $f(c) = 0$  
+
+## 🟢 Teorema dei valori intermedi
+
+è una generalizzazione del teorema degli zeri:
+- Sia $I \subseteq \mathbb R$ un intervallo qualsiasi, non necessariamente chiuso
+- $f: I \to \mathbb R$ continua
+- $m:= inf \ f := inf \ \{f(x): x \in I \}$   
+- $M:= sup \ f := sup \ \{f(x): x \in I \}$   
+Allora per ogni $y \in (m, M)$ esiste $x \in I$ tale che $f(x) = y$, cioè che nell'intervallo I, f(x) assume tutti i valori presenti fra $m$ e $M$ 
+
+## 🟢 Teorema di weierstrass
+
+Se $f \in C[a,b]$ allora esistono $m = min \ f$ e $M = max \ f$ e in oltre:
+- f è limitata
+- $f(m) \le f(x) \le f(M)$ per ogni $x \in [a,b]$ 
+- per ogni $y \in [m, M]$ esiste $x \in [a,b]$ tale che $f(x) = y$
+
+
+---
+
+# Derivate
+
+La derivata è la pendenza della retta tangente di una funzione ad un certo punto 
+
+![[Pasted image 20250613095559.png]]
+
+Quello che vogliamo fare è trovare la pendenza della retta di due punti a, b dove a è il punto in cui vogliamo studiare la pendenza, e b è un punto molto vicino (la cui distanza con a tende a 0).
+
+L'equazione per la pendenza è:
+
+$$
+\dfrac{\Delta y}{\Delta x} = \dfrac{f(b) - f(a)}{b - a} 
+$$
+
+I nostri due punti sono $(x_0, f(x_0))$ e $(x_0+h, f(x_0+h))$ dove $h$ è un numero tendente a 0
+
+Questo è esattamente uguale a trovare il limite tendente a 0 di 
+$$
+\dfrac{\Delta y}{\Delta x} = \dfrac{f(x_0 + h) - f(x_0)}{(x_0 + h) - x_0} = \dfrac{f(x_0 + h) - f(x_0)}{h}
+$$
+
+Quindi chiamiamo derivata la funzione:
+$$
+f'(x) = \lim_{h \to 0}{\dfrac{f(x + h) - f(x)}{h}} 
+$$
+
+Possiamo trovare il valore della derivata ad un certo punto, oppure semplificare la funzione della derivata per poterla usare per qualsiasi punto della funzione originaria.
+
+Nel primo caso sostituiamo $x$ con il valore che vogliamo trovare, e poi risolviamo il limite per trovare il valore
+
+Nel secondo caso, facciamo un esempio:
+
+Troviamo la derivata di $f(x) = x^2$, la funzione per la derivata sarà:
+
+$$
+\begin{aligned}
+f'(x) &= 
+\lim_{h \to 0}{\dfrac{f(x + h) - f(x)}{h}} \\ &=
+\lim_{h \to 0}{\dfrac{(x + h)^2 - x^2}{h}} \\ &=
+\lim_{h \to 0}{\dfrac{\cancel{x^2} + 2xh + h^2 - \cancel{x^2}}{h}} \\ &=
+\lim_{h \to 0}{\dfrac{2x\cancel{h} + h^\cancel{2}}{\cancel{h}}} \\ &=
+\lim_{h \to 0}{2x+ h} \\ &=
+2x
+\end{aligned}
+$$
+
+## 🟢Regola della Potenza
+
+$$
+\dfrac{d}{dx}x^n = n x^{n-1}
+$$
+O in maniera più generale tramite $f(x)$:
+$$
+\frac{d}{dx}f(x)^n = n f(x)^{n -1} \cdot f'(x)
+$$
+Esempio:
+$$
+\dfrac{d}{dx}x^4 = 4 x^{3}
+$$
+## 🟢Moltiplicazione per costanti 
+
+$A$ costante
+$$
+\dfrac{d}{dx} A f(x) = A \dfrac{d}{dx}  f(x)
+$$
+Esempio:
+$$
+\dfrac{d}{dx} 5x^2 = 5\dfrac{d}{dx} x^2 = 5 \cdot 2x = 10x
+$$
+
+## 🟢Regola dell'addizione
+$$
+\dfrac{d}{dx}\bigg( f(x) + g(x) \bigg) = \dfrac{d}{dx}f(x) + \dfrac{d}{dx}g(x)
+$$
+Esempio:
+$$
+\dfrac{d}{dx}3x^2 + 5x + 3 = \dfrac{d}{dx} 3x^2 + \dfrac{d}{dx} 5x + \dfrac{d}{dx} 3
+= 6x + 5 + 0
+$$
+
+
+## 🟢Regola della catena
+
+Se la nostra funzione è nella forma:
+$$
+f(x) = h(g(x))
+$$
+Allora la sua derivata sarà:
+$$
+f'(x) = g'(x) \cdot h'(g(x))
+$$
+Per esempio:
+$$
+\begin{aligned}
+f(x) &= (x^2 + 5x + 3)^5 \\
+\\
+h(a) &= a^5 \\
+h'(a) &= 5a^4 \\
+\\
+g(b) &= b^2 + 5b + 3 \\
+g'(b) &= 2b + 5 \\
+\\
+f'(x) &= g'(x) \cdot h'(g(x)) \\
+&= (2x + 5) \cdot 5(x^2 + 5x + 3)^4
+\end{aligned}
+$$
+Un altro esempio:
+$$
+\begin{align}
+f(x) &= 5(-x^8+x^{-8})^5 \\ \\
+f'(x) &= (-8x^7 -8x^{-9}) \cdot 25(-x^8 + x^{-8})^4 
+\end{align}
+$$
+## 🟢Regola della moltiplicazione
+
+Se la nostra funzione è della forma:
+$$
+f(x) = h(x) \cdot g(x)
+$$
+Allora la sua derivata sarà
+$$
+f'(x) = h'(x) \cdot g(x) + h(x) \cdot g'(x)
+$$
+Per esempio:
+$$
+\begin{align}
+f(x) &= (5x^5 - x^7)(20x^2 + 3x^{-7}) \\ \\
+f'(x) &= (25x^4 - 7x^6)(20x^2 + 3x^{-7}) + (5x^5 - x^7) (40x - 21x^{-8})
+\end{align} 
+$$
+
+## 🟢Regola della divisione
+
+$$
+\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right) = \frac{g(x)f'(x) - f(x)g'(x)}{(g(x))^2}
+$$
+Oppure possiamo convertire la divisione in una moltiplicazione:
+
+$$
+\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right) = f(x) \cdot g(x)^{-1}
+$$
+Esempio:
+$$
+\begin{align}
+\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right) &= 
+\frac{d}{dx} \left( \dfrac{(x^3-5x^5)^3}{(2x+5)^5} \right) \\ &= 
+\frac{d}{dx} \left( (x^3-5x^5)^3 \cdot (2x+5)^{-5} \right) \\ &= 
+((3x^2-25x^4) \cdot 3(x^3-5x^5)^2 \cdot (2x+5)^{-5}) \cdot ((x^3-5x^5)^3 \cdot 2 \cdot -5(2x+5)^{-5})
+\end{align}
+$$
+
+## 🟢Teorema di fermat
+
+Sia $x_0 \in (a,b)$ un punto di estremo locale di $f: [a,b] \to \mathbb{R}$.
+
+Se $f$ è derivabile in $x_0$, allora $f'(x) = 0$.
+
+L'implicazione al contrario non è valida, è necessaria ma non sufficiente, se la derivata di un punto è 0, allora il punto è un candidato per essere un estremo locale. Se calcoliamo la derivata e la poniamo a 0, troviamo anche l'equazione per i possibili punti di estremo locale. Essi vengono chiamati punti critici o stazionari. 
+
+## 🟢Teorema di rolle
+
+Sia $f \in C[a, b]$ una funzione continua tra $a$ e $b$, derivabile in $(a,b)$. 
+Se $f(a) = f(b)$, allora esiste $c \in (a,b)$ tale che $f'(c) = 0$ 
+
+![[Pasted image 20250622161546.png]]
+
+In pratica, se $f(a) = f(b)$ vuol dire che la funzione sarà andata verso l'alto/basso e poi tornata al punto iniziale, oppure che è una retta. In entrambi i casi, c'è almeno un punto in cui c'è stato un cambio di direzione della funzione (oppure essendo una retta costante, la derivata è 0)
+## 🟢Teorema di lagrange
+
+Sia $f \in C[a, b]$ una funzione continua tra $a$ e $b$, derivabile in $(a,b)$. 
+Allora esiste un punto $c \in (a,b)$ tale che:
+
+![[Pasted image 20250622164213.png]]
+Simile all'intuizione precedente.
+
+Se $f \in C[a,b]$ è derivabile in $(a,b)$ allora per ogni $x_1, x_2 \in [a,b]$ esiste $c$ tra $x_1$ e $x_2$ tale che:
+
+![[Screenshot_2025-07-01-17-04-58-91_40deb401b9ffe8e1df2f1cc5ba480b12.jpg]]
+
+Esempio: Trova un punto di Lagrange per $f:[0,2] \to \mathbb R, f(x) = x^3 - x$ 
+Allora: 
+- f è derivabile in $[a,b]$ 
+- $f(a) = f(0) = 0$
+- $f(b) = f(2) = 6$
+- $f'(x) = 3x^2 - 1$
+
+Quindi cerchiamo $x = c \in (0,2)$ tale che:
+
+$$
+f'(c) = \frac{f(b) - f(a)}{b - a}
+$$
+$$
+\begin{aligned}
+3c^2 - 1 &= \frac{6 - 0}{2 - 0} \\
+3c^2 &= 4 \\
+c^2 &= \frac{4}{3} \\
+C &= + \sqrt{\frac{4}{3}}
+\end{aligned}
+$$
+Nota, mettiamo solo la radice positiva dato che quella negativa è fuori dal dominio $(0,2)$ 
+
+## 🟢Test di monotonia
+
+Sia $f \in C[a, b]$ e derivabile in $(a, b)$. Allora:
+
+- $f$ è **crescente** $\Leftrightarrow f'(x) \geq 0$ per ogni $x \in (a, b)$;
+- $f$ è **decrescente** $\Leftrightarrow f'(x) \leq 0$ per ogni $x \in (a, b)$;
+- $f'(x) > 0$ per ogni $x \in (a, b)$ $\Rightarrow f$ è **strettamente crescente**;
+- $f'(x) < 0$ per ogni $x \in (a, b)$ $\Rightarrow f$ è **strettamente decrescente**.
+
+## 🟢Criterio per estremi locali
+
+Sia $f: (a,b) \in \mathbb{R}$ derivabile, e sia $x_0 \in (a,b)$ un punto critico in $f$ (possiamo trovarli tramite il teorema di fermat, cioè quando la derivata è 0), allora $x_0$ è:
+
+- Un punto di *massimo locale* se $f'(x)$ in $x_0$ cambia di segno da + a -
+- Un punto di *minimo locale* se  $f'(x)$ in $x_0$ cambia di segno da - a +
+
+![[Pasted image 20250622165225.png]]
+##  🟢Teorema di Hôpital
+
+Questa regola ci aiuta a trovare i limiti di certe forme indeterminate, cioè quando accade che durante la sostituzione abbiamo $\dfrac{0}{0}$ oppure $\dfrac{\pm \infty}{\pm \infty}$. Da fare attenzione però che le forme indeterminate $\frac{0}{0}$ sono considerate tali solo se gli 0 sono causati dalla variabile del limite che porta il termine a 0. Per esempio, non è indeterminato $\lim_{y \to 0}\frac{(1 - 1)y}{y} = 0$ dato che $(1-1)y = 0$ indifferentemente dal valore di $y$
+
+Quindi il teorema ci dice che se:
+$$
+\begin{aligned}
+\lim_{x \to c}{f(x)} &= 0 \quad and \\
+\lim_{x \to c}{g(x)} &= 0 \quad and \\
+\lim_{x \to c}{\dfrac{f'(x)}{g'(x)}} &= L \quad then \\ \\
+\lim_{x \to c}{\dfrac{f(x)}{g(x)}} &= L
+\end{aligned}
+$$
+oppure:
+$$
+\begin{aligned}
+\lim_{x \to c}{f(x)} &= \pm \infty \quad and \\
+\lim_{x \to c}{g(x)} &= \pm \infty \quad and \\
+\lim_{x \to c}{\dfrac{f'(x)}{g'(x)}} &= L \quad then \\ \\
+\lim_{x \to c}{\dfrac{f(x)}{g(x)}} &= L
+\end{aligned}
+$$
+Per esempio:
+$$
+\lim_{x \to 0} \frac{sin x}{x} = \frac{0}{0}
+$$
+Allora:
+$$
+\begin{aligned}
+f'(x) &= cos(x) \\
+g'(x) &= 1 \\ 
+\\
+\lim_{x \to 0}{\dfrac{f'(x)}{g'(x)}} &= \lim_{x \to 0}\frac{cos(x)}{1}  \\
+&= 1\\
+&= \lim_{x \to 0}{\dfrac{sin(x)}{x}}
+\end{aligned}
+$$
+E naturalmente possiamo applicare il teorema a catena fino ad arrivare al caso base.
+
+![[Pasted image 20250613163905.png]]
+
+![[Pasted image 20250613164251.png]]
+
+Alcune volte non è possibile applicare la regola di Hopital direttamente, ma si può manipolare l'espressione per poterla far applicare:
+
+![[Pasted image 20250613164619.png]]
+
+## 🟢 Equivalenze asintotiche dei limiti
+
+Se abbiamo che: 
+$$
+\lim_{x \to x_0} \frac{f(x)}{g(x)} = 1
+$$
+Allora diciamo che $f(x) \sim g(x)$  per $x \to x_0$ cioè che $f$ è asintoticamente equivalente a $g$ per $x \to x_0$ 
+
+Inoltre abbiamo che se $f(x) \sim g(x)$ per $x \to x_0$, allora
+$$
+\lim_{x \to x_0}f(x) = \lim_{x \to x_0} g(x)
+$$
+
+Per esempio:
+$$
+\lim_{x \to 0}\frac{sin(x)}{x} = 1
+$$
+E quindi, $x \sim sin(x)$ per $x \to 0$:
+$$
+\lim_{x \to 0} x = \lim_{x \to 0} sin(x) = 0
+$$
+
+## 🟢Simbolo di landau e $o(\cdot)$ piccolo
+
+Se
+$$
+\huge\lim_{x \to x_0}{\frac{f(x)}{g(x)} = 0}
+$$
+Allora diciamo che $f$ è un $o$ piccolo di $g$ per $x$ che tende a $x_0$. 
+Allora scriviamo: $f(x) = o(g(x))$ per $x \to x_0$.
+
+$f = o(g(x))$ per $f(x) \to x_0$ significa che:
+-  (Infinitesimi) $f(x)$ tende a 0 più velocemente rispetto a quanto $g(x)$ tende a 0  
+- (infiniti) $f(x)$ tende a $\pm \infty$ più lentamente che $g(x) \to \pm\infty$
+
+Esempi:
+- $ln(x) = o(x)$ per $x \to \infty$ perchè $\frac{ln(x)}{x} \to 0$ per $x \to \infty$ 
+- $x = o(x^2)$ per $x \to \pm \infty$, mentre $x^2 = o(x)$ per $x \to 0$  
+
+## 🟢 Formula di taylor e maclaurin
+
+Data $f: (a,b) \to \mathbb{R}$ e $x_0 \in (a,b)$ e $n \in \mathbb{N}$, vogliamo approssimare $f(x)$ con x vicino a $x_0$ con un polinomio $T_n(x)$ di grado $\le n$ 
+
+### Caso n = 1
+Per $f$ derivabile in $x_0$, la retta tangente è data dell'equazione:
+$$
+t(x) = f(x) + f'(x) \cdot(x - x_0)
+$$
+Questa funzione avrà naturalmente un errore rispetto alla funzione originaria, allora: 
+$$
+f(x) = t(x) + r(x)
+$$
+Dove $r(x)$ è l'errore dell'approssimazione: 
+
+![[Pasted image 20250622175303.png]]
+
+E naturalmente, con $x \to x_0$ il resto $r(x)$ tende a 0, e nel punto $r(x_0) = 0$. Questa funzione è la migliore approssimante per $n = 1$
+
+### Caso n > 1
+
+Se possiamo fare la derivata di una funzione $n$ volte (derivata della derivata etc...), ed è anche continua, cioè che $f \in C^{n}(a,b)$  , allora dichiamo che la funzione è derivabile $n$ volte con continuità.
+
+Allora supponendo che $f$ sia $n$ volte derivabile con continuità, cerchiamo un polinomio $T_n$ che fino all'n-esimo termine ha il valore in $x_0$ in comune con tutte le derivate, cioè che:
+
+![[Pasted image 20250622180617.png]]
+
+Se $f \in C^n(a,b)$ e $x_0 \in (a,b)$, allora esiste un unico polinomio $T_n$ di grado $\le n$ che ha contatto di ordine $n$ in $x_0$ con $f$. Questo polinomio si chiama **Polinomio di Taylor** di ordine $n$ centrato su $x_0$, ed è dato da:
+
+![[Pasted image 20250622180848.png]]
+Se $x_0 = 0$ allora $T_n$ viene chiamato **Polinomio di Maclaurin** 
+
+![[Pasted image 20250622180951.png]]
+
+## 🟢Formula di taylor
+Ora ci chiediamo, nella approssimazione del polinomio di taylor, quanto vale l'errore? Cioè:
+$$
+\huge{R_n(x) = f(x) - T_n(x) = \ ?}
+$$
+
+- Nel caso $n = 0$, con il teorema di lagrange sappiamo che esiste $c$ tra $x$ e $x_0$ tale che 
+  ![[Pasted image 20250622181352.png]]
+- Nel caso $n = 1$, abbiamo visto che $T_1(x) = t(x)$
+  ![[Pasted image 20250622181529.png]]
+- Nel caso $n \gt 1$, abbiamo la **Formula di taylor**:
+  Sia $f \in C^{(n+1)}(a,b)$ e sia $x_0 \in (a,b)$, allora per $R_n(x) = f(x) - T_n(x)$ vale che: 
+  ![[Pasted image 20250622181847.png]]
+Il resto di Peano ci dice che la velocità del resto tende a 0 per $x \to x_0$, mentre il resto di lagrange ci dice quanto è grande il resto 
+## 🔴 Applicazioni di taylor
+
+---
+
+# Studio di funzione
+
+## 🟢 Invertibilità, suriettività, continuità
+Una funzione $f: X \to Y$ si dice:
+
+- **Iniettiva**: se per ogni $x_1, x_2 \in X$, con $x_1 \ne x_2$, si ha $f(x_1) \ne f(x_2)$, cioè se per ogni $y \in Y$ esiste al più un $x \in X$ con $f(x) = y$.
+- **Suriettiva**: se per ogni $y \in Y$ esiste almeno un $x \in X$ con $f(x) = y$.
+- **Biettiva**: se $f$ è iniettiva e suriettiva, cioè se per ogni $y \in Y$ esiste un unico $x \in X$ con $f(x) = y$.
+
+
+
+Sia $I \subseteq \mathbb R$ un intervallo, e sia $f \in C(I)$, allora anche $J := f(I) = \{f(x): x \in I\}$ è un intervallo, ed in oltre:
+- $f: I \to J$ è **invertibile** $\Leftrightarrow$  $f$ è strettamente crescente/decrescente 
+- se $f$ è **invertibile**, $f^{-1}: J \to I$ è continua
+
+
+- $f$ è **iniettiva** $\Leftrightarrow$ ogni retta orizzontale attraverso un punto $y \in Y$ interseca $C(f)$ al più una volta.
+
+- $f$ è **suriettiva** $\Leftrightarrow$ ogni retta orizzontale attraverso un punto $y \in Y$ interseca $C(f)$ almeno una volta.
+- $f$ è **biettiva** $\Leftrightarrow$ ogni retta orizzontale attraverso un punto $y \in Y$ interseca $C(f)$ un’unica volta.
+  
+ 
+![[Pasted image 20250626150114.png]]
+## 🟢 Trovare il dominio
+
+Data una funzione $f$, vogliamo studiarne il dominio. 
+Vogliamo escludere tutti i valori non validi dalla funzione come per esempio:
+
+- I denominatori non possono essere 0
+- Le radici pari non possono avere un espressione negativa
+- Le espressioni nei logaritmi devono essere maggiore di 0, ed in generale tutte le funzioni trigonometriche con dominio limitato
+
+Per esempio, studiamo la funzione $f(x) = \frac{1}{log(2x - x^2)}$ 
+Allora:
+- $2x - x^2 \gt 0$
+- $log(2x-x^2) \ne 0 \implies 2x-x^2 \ne 1$ 
+
+Risolviamo i due:
+$$
+x(2 - x) > 0 \implies 0 \lt x \lt 2
+$$
+Per il secondo prendiamo i valori in cui è uguale a 1
+$$
+\begin{aligned}
+2x - x^2 &= 1 \\ 
+&\implies 2x - x^2 - 1 = 0 \\
+&\implies (x-1)^2 = 0 \\
+&\implies \text{per} \ x = 1 \ \text{,} \ (x-1)^2 = 0
+\end{aligned}
+$$
+Allora i vincoli del nostro dominio sono: $0 \lt x \lt 2$ e $x \ne 1$ 
+E quindi:
+$$
+\huge D = (0,1) \cup (1,2)
+$$
+
+## 🟢 Punti critici
+
+Vogliamo studiare una funzione per trovare i punti estremi, cioè punti in cui il valore della funzione è al minimo/massimo locale. Si può anche vedere come il punto in cui viene cambiata "direzione" della funzione (da crescente a decrescente, etc...)
+
+![[Pasted image 20250613165605.png]]
+
+Per trovare i punti critici della funzione $f(x)$ ci basta: 
+- trovare i punti dove l'equazione della derivata prima $f'(x) = 0$ dove i punti x sono definiti su $f(x)$ 
+- I punti in cui la funzione $f'(x)$ non esiste. 
+- Gli estremi del domino.
+
+## 🟢 Trovare simmetrie
+
+Data una funzione $f$:
+
+- Per vedere se una funzione è simmetrica rispetto l'asse Y (funzione pari), allora deve essere vero che:
+$$
+\huge{f(x) = f(-x)}
+$$
+- Per vedere se una funzione è simmetrica rispetto l'origine (funzione dispari), allora deve essere vero che:
+$$
+f(-x) = -f(x)
+$$
+Esempi:
+- Funzione pari: $f(x) = x^2$ allora $f(x) = f(-x)$, $x^2 = (- x)^2$, e dato che un numero elevato ad un numero pari è sempre positivo, l'eguaglianza regge, e la funzione è pari rispetto l'asse X.
+- Funzione dispari: $f(x) = x^3$ allora $f(-x) = f(x)$, $-x^3 = - x^3$, allora è dispari rispetto l'origine
+## 🟠 Trovare intersezioni con gli assi
+
+Data una funzione $f$:
+
+- Per vedere l'intersezione con l'asse X, risolvere l'equazione $f(x) = 0$ 
+- Per vedere l'intersezione con l'asse Y, se $0 \in X$, calcolare $f(0)$ 
+
+
+## 🟠 Segno della funzione
+
+Data una funzione $f$, per scoprire il segno della funzione basta risolvere l'equazione $f(x) > 0$ oppure $f(x) < 0$.
+Oppure possiamo studiare i punti critici e poi vedere i valori della funzione dentro gli intervalli fra i punti critici.
+
+## 🟠 Trovare asintoti verticali/orizzontali
+
+Si calcolano i limiti (da destra e sinistra) di $f(x)$ nei punti estremi del dominio $X$. A questo punto:
+
+- Se $\lim_{x \to c^{(\pm)}} f(x) = \pm \infty$, con $c \in \mathbb R$, allora si dice che $f$ ha un asintoto verticale $x = c$. 
+  I punti $c$ che dobbiamo analizzare sono i punti in cui la funzione non è definita (i punti estremi di $X$). Si calcola il limite, se il limite tende da una parte a $-\infty$ e l'altra a $+\infty$, allora c'è un asintoto verticale a $x = c$.
+- Se $\lim_{x \to \pm \infty} f(x) = l \in \mathbb R$, allora si dice che $f$ ha un asintoto orizzontale $y = l$. 
+  Calcoliamo il limite a $+\infty$ e $-\infty$, se entrambi sono uguali (chiamiamolo $l$) allora $y = l$ è l'asintoto orizzontale.
+
+## 🟠 Trovare asintoti obliqui
+
+Se esistono $m \ne 0$ e $q \in \mathbb R$ tale che:
+$$ 
+\lim_{x \to +\infty / -\infty} (f(x) - (m \cdot x + q)) = 0
+$$
+($+\infty / - \infty$ vuol dire uno o l'altro, o entrambi).
+
+Allora si dice che la retta $y  = m \cdot x + q$ è asintoto obliquo per $f$ a $+\infty$ e/o $-\infty$.
+Graficamente vuol dire che la distanza tra il grafico di $f$ e la retta $y = m \cdot x + q$ tende a $0$ per $x \to \pm \infty$.
+
+Per poterlo svolgere eseguiamo i passaggi:
+
+1) Si verifica se esiste (ed è finito) il limite: 
+   $\huge{\lim_{x \to \pm \infty} \frac{f(x)}{x}=: m}$ 
+   E verifichiamo che non sia uguale a 0. Questa sarà la **Pendenza** dell'asintoto
+2) Se esiste $m \ne 0$, allora si verifica se esiste il limite (ed è finito):
+   $\huge{\lim_{x \to \pm \infty} (f(x) - mx})=: q$
+   Che sarà l'ordinata all'origine dell'asintoto
+
+Se entrambi esistono e sono finiti, allora $y = mx + q$ è un asintoto obliquo di $f$ per $x \to \pm \infty$ 
+
+![[Screenshot_2025-07-01-19-14-16-27_40deb401b9ffe8e1df2f1cc5ba480b12.jpg]]
+
+## 🟠 Punti angolosi 
+
+Un punto angoloso è un punto nella funzione che è continuo ma non derivabile, perchè i limiti destro e sinistro esistono ma sono diversi.
+
+Per verificare se un punto è angoloso, basta verificare se:
+$$
+\lim_{x \to ^-c} f'(x) \ne \lim_{x \to ^+c} f'(x)
+$$
+Se sono diversi, allora vuol dire che il punto $c$ è un punto angoloso
+
+## 🟠 Punti di flesso
+
+Un punto $x_0 \in (a, b)$ si chiama punto di flesso in $f: (a,b) \to \mathbb R$ se $f$ è continua in $(a,b)$, derivabile in $(a,b) \setminus \{ x_0 \}$ e se:
+- $f$ ammette retta tangente in $x_0$ (esiste derivata prima)
+- la concavità è opposta a destra/sinistra di $x_0$ 
+## 🟠 Studio derivata prima (crescenza/decrescenza, punti critici ed estremi locali)
+
+Data una funzione $f$, calcoliamo la derivata prima $f'(x)$ e il corrispettivo dominio. 
+
+- Risolvendo l'equazione $f'(x) = 0$ troviamo l'equazione dei punti in cui la funzione cambia di segno. 
+  - Studiando il cambiamento di segno nell'intervallo precedente/successivo di questo punto, possiamo trovare se è un minimo/massimo locale
+  - Infine possiamo studiare il segno di $f'(x)$ per ottenere informazioni sulla monotonia di $f$
+
+## 🟠 Studio derivata seconda (concavità/convessità)
+
+![[Pasted image 20250626165353.png]]
+
+Per capire la concavità del punto (cioè se il punto fa parte di un minimo o massimo locale) allora dobbiamo studiare la derivata seconda nel punto di flesso.
+- Se la derivata seconda è positiva, allora siamo in un minimo locale (concavità verso l'alto). 
+- Se è negativa, allora siamo in un massimo locale (concavità verso il basso). 
+- Se è 0, allora il test è inconcludente, il punto non è un estremo.
+
+## 🟠 Studio monotonia 
+
+Con $f(x)$ una funzione definita su intervallo $I$ (aperto, chiuso o nessuno dei due), allora:
+- $f$ è detto monotono crescente se per ogni coppia $x_1, x_2$ dell'intervallo dove $x_1 < x_2$, allora $f(x_1) < f(x_2)$ 
+- $f$  è detto monotono decrescente se per ogni coppia $x_1, x_2$ dell'intervallo dell'intervallo dove $x_1 < x_2$, allora $f(x_1) > f(x_2)$ 
+- $f$  è detto strettamente monotono se non è ne crescente ne decrescente
+
+Per il teorema della monotonia, se $f$ è una funzione continua sull'intervallo $I$ e differenziabile ovunque in $I$, allora:
+- Se $f'(x) > 0$ per ogni $x$ nell'intervallo, allora $f$ è crescente in quell'intervallo
+- Se $f'(x) < 0$ per ogni x nell'intervallo, allora $f$ è decrescente in quell'intervallo
+### Esempio
+
+Studiamo la funzione $f(x) = 3x^4-4 x^3+2$ 
+
+La prima cosa che vogliamo trovare sono i punti critici, cioè tutti i punti in cui $f'(x)= 0$ oppure non è definita. Prima troviamo la sua derivata: 
+
+$$
+f'(x) = 12x^3 - 12x^2
+$$
+Questa funzione è definita su tutti i punti, allora troviamo quando $f'(x)= 0$:
+$$
+\begin{aligned}
+f'(x) &= 12x^3 - 12x^2 \\
+& = 12x^2(x - 1) \\
+\end{aligned}
+$$
+Questa funzione è uguale a 0 quando $x = 0$ oppure $x = 1$. 
+
+Questi punti critici possono essere punti di flesso, punti minimi/massimi, ma per poterlo capire dobbiamo continuare a studiarli. 
+
+Prima di tutto proviamo la concavità su questi punti. Lo facciamo vedendo il segno della seconda derivata su questi punti.
+
+$$
+f''(x) = 36x^2 - 24x
+$$
+Allora valutiamoli sui due punti estremi, $x=0$ e $x=1$:
+$$
+\begin{aligned}
+f''(0) &= 0 \\
+f''(1) &= 12
+\end{aligned}
+$$
+- Nel punto $0$, la derivata seconda è 0, allora non ci troviamo ne in concavità verso l'alto ne basso. Questo potrebbe essere un punto di flesso, lo studieremo dopo
+- Nel punto 1, la derivata seconda è positiva, allora ci troviamo in concavità verso l'alto, e quindi questo punto è un punto di minimo locale
+
+Ora abbiamo visto che $f''(0) = 0$, il che è uno dei requisiti di un punto di flesso, vediamo se esistono altri punti in cui la derivata seconda è 0, cioè dove $36x^2 - 24x = 0$:
+$$
+\begin{aligned}
+f''(x) &= 36x^2 - 24x \\
+&= 12x(3x - 2)
+\end{aligned}
+$$
+Questa funzione è uguale a 0 sui punti $x = 0$ e $x = \frac{2}{3}$ 
+
+Ora, i punti di flesso sono tutti quei punti dove $f''(x) = 0$ e c'è un cambio di direzione della funzione a quel punto (da positivo a negativo, o viceversa). Allora controlliamo, per entrambi i punti, i valori maggiori e minori di esso.
+
+Nel caso in cui $x = \frac{2}{3}$ vediamo il segno per $x > \frac{2}{3}$ e $x < \frac{2}{3}$ 
+
+![[Pasted image 20250614120427.png]]
+
+Nel primo caso, per qualsiasi valore $x > \frac{2}{3}$, $f''(x)$ è positiva.
+Nel secondo caso, per qualsiasi valore $0 <x < \frac{2}{3}$, $f''(x)$ è negativa
+
+Allora effettivamente questo punto è un punto di flesso
+
+Nel caso in cui $x = 0$ vediamo il segno per $x > 0$ e $x < 0$ 
+
+![[Pasted image 20250614120708.png]]
+
+Nel primo caso, per qualsiasi valore $\frac{2}{3} > x > 0$, $f''(x)$ è negativa.
+Nel secondo caso, per qualsiasi valore $x < 0$, $f''(x)$ è positiva. 
+
+Per riassumere:
+- $x = 1$ la derivata prima è 0, ed è concava verso l'alto, $f(1) = 1$ 
+- $x = 0$ la derivata prima è 0, ed è un punto di flesso, a sinistra verso l'alto, e a destra verso il basso, $f(2)  = 2$
+- $x = \frac{2}{3}$, non ha derivata prima a 0, ma è un punto di flesso, a sinistra verso il basso e a destra verso l'alto, $f(\frac{2}{3})$ è un numero reale, quindi non lo scrivo qui.
+
+A questo punto possiamo disegnare la funzione:
+
+![[Pasted image 20250614121458.png]]
+
+
+---
+# Integrali
+
+## 🟢 Integrabilità di riemann
+
+![[Pasted image 20250623095057.png]]
+
+Per ogni partizione P di $[a,b]$ vale che $s(f, P) \lt A \lt S(f,P)$ 
+
+
+Sia $f : [a,b] \to \mathbb{R}$ limitata, Se:
+$$
+\sup{\{ s(f, P): P \ \text{partizione di} \ [a,b]} \} = \inf{\{ s(f, P): P \ \text{partizione di} \ [a,b]} \} =: I
+$$
+Allora $f$ si dice integrabile secondo Riemann, e l'area $A$ della partizione $P$ sarà proprio $I$:
+$$
+I =: \int_a^b f(x)dx
+$$
+E si chiama *integrale di $f$* in $[a,b]$ 
+
+
+## 🟢 Proprietà degli integrali
+
+![[Pasted image 20250623095517.png]]
+![[Pasted image 20250623095551.png]]
+![[Pasted image 20250623095618.png]]
+
+## 🟢 Teorema della media
+Se $f \in C[a,b]$, allora esiste un $c \in [a,b]$ tale che:
+
+$$
+\huge\int^b_a f(x) = f(c) \cdot (b-a)
+$$
+![[Pasted image 20250623095830.png]]
+
+Per esempio, troviamo il punto $c$ per la funzione $f(x) = \frac{1}{x}$ nell'intervallo $[1, e^2]$ 
+
+Per prima cosa calcoliamo l'integrale:
+$$
+\int_a^b \frac{1}{x} = ln(x) |^{e^2}_1 = ln(e^2) - ln(1) = 2
+$$
+A questo punto risolviamo l'equazione:
+$$
+\begin{aligned}
+\huge\int^b_a f(x) &= f(c) \cdot (b-a) \\
+2 &= \frac{1}{c} \cdot (e^2 - 1) \\
+2 &= \frac{e^2 - 1}{c} \\
+c &= \frac{(e^2 - 1)}{2}
+\end{aligned}
+$$
+
+## 🟢 Teorema fondamentale del calcolo integrale
+
+Sia $f \in C[a,b]$ allora la funzione 
+$$
+F: [A,B] \to \mathbb{R}, \ \ \ 
+F(x) = \int_a^x{f(s)ds}
+$$
+è derivabile, con $F'(x) = f(x)$ per ogni $x \in [a,b]$ 
+
+Questo ci dice che l'integrazione è l'operazione inversa della derivazione
+## 🟢 Integrali indefiniti
+
+L'integrale indefinito di una funzione $f(x)$ è l'insieme di funzioni $F(x)$, dette primitive di $f(x)$, la cui derivata è uguale a $f(x)$
+
+## 🟢 Integrali definiti
+
+L'integrale definito di una funzione $f(x)$ su intervallo $[a,b]$ è un numero reale, che rappresenta l'area della regione di piano compresa sull'intervallo $[a,b]$.
+
+Per poter trovare quest'area, bisogna trovare una primitiva $F(x)$ di $f(x)$, a questo punto:
+$$
+\int^b_a{f(x)dx} = F(b) - F(a)
+$$
+
+Se dobbiamo integrare un integrale su un intervallo (a,b) e la funzione da integrare non è definita su $a$, possiamo trovare il limite per $c \to a$ dell'integrale nell'intervallo $(c, b)$.
+Per esempio l'integrale di $\frac{1}{x}$ nell'intervallo $(0,5)$, possiamo calcolarlo come il limite per $c \to 0$:
+$$
+\lim_{c \to 0}\int_c^5 \frac{1}{x}
+$$
+##  🟢 Integrazione per parti (definita/indefinita)
+
+L'integrazione per parti è utile quando stiamo integrando un prodotto:
+Iniziamo dalla regola del prodotto
+
+$$
+\huge\frac{d}{dx} \left[ f(x)g(x) \right] = f'(x)g(x) + f(x)g'(x)
+$$
+
+Integriamo da entrambe le parti
+
+$$
+\huge f(x)g(x) = \int f'(x)g(x)\,dx + \int f(x)g'(x)\,dx
+$$
+
+Spostiamo le parti, ottenendo la formula dell' **integrazione per parti**:
+
+$$
+\huge\int f(x)g'(x)\,dx = f(x)g(x) - \int f'(x)g(x)\,dx
+$$
+Per esempio:
+
+$$
+\begin{aligned}
+\huge\int x^2 e^x
+\end{aligned}
+$$
+Applichiamo l'integrazione per parti
+$$
+\huge{x^2e^x - \int { 2x e^x}}
+$$
+Nell'integrale possiamo ancora applicare l'integrazione per parti
+$$
+\huge{x^2e^x - 2x e^x - \int 2e^x}
+$$
+A questo punto possiamo togliere la costante da dentro l'integrale
+$$
+\huge{x^2e^x - 2x e^x - 2\int e^x}
+$$
+E l'integrale di $e^x$ è semplicemente $e^x$, quindi:
+$$
+\huge{x^2e^x - 2x e^x - 2e^x}
+$$
+
+##  🟢 Integrazione per u sostituzione (definita/indefinita)
+
+Utile quando stiamo cercando di ricondurci ad una forma conosciuta che è facile da integrare, o per modificare l'espressione per poter essere più facilmente integrabile.
+
+###  Indefinito 
+$$
+\huge\int \frac{sin (x)}{(cos(x))^2} dx
+$$
+Possiamo sostituire $u = cos(x)$, e se applichiamo la derivata da entrambe le parti: 
+$$
+\begin{aligned}
+\frac{d}{dx}(u) &= \frac{d}{dx}(cos(x))\\
+\frac{du}{dx} &= -sin(x)
+\end{aligned}
+$$
+
+Allora moltiplichiamo da entrambe le parti per $dx$,  e spostando il segno $-$, otteniamo:
+$$
+-du = sin(x) dx
+$$
+
+A questo punto riscriviamo l'integrale originale sostituendo $u = cos(x)$, per poi sostituire $sin(x) dx$ per $-du$
+$$
+\begin{aligned}
+\int \frac{sin (x)}{(cos(x))^2} dx &= 
+\int \frac{sin (x)}{u^2} dx \\
+&= \int \frac{sin(x) dx }{u^2} \\
+&= \int \frac{-du}{u^2} \\
+&= \int - \frac{1}{u^2} du \\
+&= \int -u^{-2}du \\
+&= u^{-1} \\
+& = \frac{1}{u} \\
+& = \frac{1}{cos(x)}
+\end{aligned}
+$$
+###  Definito 
+
+$$
+\huge\int_{\frac{\pi}{2}}^{\pi} -\cos^2(x)\sin(x)\, dx
+$$
+Allora:
+$$
+u = \cos(x)
+\quad \Rightarrow \quad
+\frac{du}{dx} = -\sin(x)
+\quad \Rightarrow \quad
+du = -\sin(x)\, dx
+$$
+ Così possiamo riscrivere l'integrale sostituendo:
+
+- $cos^2(x) = u^2$
+- $-\sin(x)\, dx = du$
+
+Ottenendo:
+$$
+\huge\int u^2\, du
+$$
+L'integrale originale ha limiti di integrazione da $\frac{\pi}{2}$ a $\pi$:
+$$
+\huge\int_{x=\frac{\pi}{2}}^{x=\pi}
+$$
+Però ora il nostro integrale è verso $u$ non $x$, e dato che $u = cos(x)$, i nostri nuovi limiti di integrazione saranno:
+$$
+\huge\int_{u=cos(\frac{\pi}{2})}^{u=cos(\pi)} = \int_{0}^{-1}
+$$
+
+Allora riscriviamo l'integrale finale:
+$$
+\int_0^{-1} u^2\, du
+$$
+La cui primitiva è:
+$$
+\int u^2\, du = \frac{u^3}{3}
+$$
+A questo punto valutiamola sull'intervallo $0$ e $-1$ 
+
+$$
+\begin{aligned}
+\left[\frac{u^3}{3}\right]_{0}^{-1} 
+&= \frac{(-1)^3}{3} - \frac{0^3}{3} \\
+&= -\frac{1}{3} - 0 \\
+&= -\frac{1}{3}
+\end{aligned}
+$$
+Più formalmente:
+
+![[Pasted image 20250616104303.png]]
+
+## 🟠 Integrazione per scomposizione in fratti semplici
+
+è utile quando abbiamo un integrale di una funzione razionale di due polinomi $p$ e $q$, cioè $$\int \frac{p(x)}{q(x)}$$
+Per esempio:
+$$
+\int \frac{x^4-2x^2+10}{x^2-3x+2}dx
+$$
+Quello che vogliamo fare è scomporre la funzione in una somma tra un polinomio e fratti semplici, cosi che sia facile applicare gli integrali notevoli. di $x^r$.
+
+### 1) divisione
+
+Se $grado(p) \ge grado(q)$, allora dividiamo $p$ per $q$ con resto, ottenendo i polinomi $s$ (risultato della divisione), e $r$ (resto). A questo punto:
+- $p = s \cdot q + r$ 
+- $grado(r) \lt grado(q)$ 
+cioè che:
+$$
+\frac{p(x)}{q(x)} = s(x) + \frac{r(x)}{q(x)}
+$$
+![[Pasted image 20250628112227.png]]
+
+### 2) linearità
+Sfruttando la linearità dell'integrale si ottiene:
+$$
+\int \frac{p(x)}{q(x)}dx = \int s(x)dx + \int \frac{r(x)}{q(x)}dx
+$$
+Dove il $\int s(x)dx$ è facile da calcolare, dato che è somma di polinomi
+
+![[Pasted image 20250628112442.png]]
+
+### 3) decomposizione in fratti semplici
+
+Ora finiamo calcolando $\int \frac{r(x)}{q(x)}dx$, considereremo solo i casi in cui $grado(q) = 2$, e cioè della forma: $q(x) = ax^2 + bx + c$, e quindi $r(x) = dx + e$ (qui la $e$ è solo una lettera, non il numero di eulero)
+
+Abbiamo 3 casi da considerare:
+- $b^2 - 4ac > 0$, cioè $q(x)$ ha due zeri reali distinti $x_1, x_2$ 
+- $b^2 - 4ac = 0$, cioè $q(x)$ ha soltato uno zero reale $x_0$ 
+- $b^2 - 4ac < 0$, cioè $q(x)$ non ha zeri reali.
+
+### 3.1)
+I due zeri distinti di $q(x)$ sono dati da:
+$$
+x_1,2 = \frac{-b\pm\sqrt{b^2-4ac}}{2a}
+$$
+Allora possiamo trovare due costanti $A, B \in \mathbb R$ uniche, tali che:
+$$
+\begin{aligned}
+\frac{r(x)}{q(x)} &= \frac{A}{x-x_1} + \frac{B}{x - x_2}  \\
+&\implies \int\frac{r(x)}{q(x)} dx \\
+&=A \cdot ln |x-x_1| + B \cdot ln |x - x_2 | + c
+\end{aligned}
+$$
+
+![[Pasted image 20250628115247.png]]
+
+### 3.2)
+L'unico zero di $q(x)$ è dato da:
+$$
+x_0 = - \frac{b}{2a}
+$$
+Allora si possono trovare due costanti $A,B \in \mathbb R$ tali che:
+$$
+\begin{aligned}
+\frac{r(x)}{q(x)} &= \frac{A}{x-x_0} + \frac{B}{(x - x_0)^2} \\
+&\implies \int \frac{r(x)}{q(x)}dx \\
+&= A \cdot ln|x - x_0| - \frac{B}{x - x_0} + c
+\end{aligned}
+$$
+![[Pasted image 20250628115715.png]]
+
+### 3.3)
+
+In questo caso, $q(x)$ non ha zeri reali. Allora si possono trovare due costanti $A, B \in \mathbb R$ tai che:
+$$
+\begin{aligned}
+\frac{r(x)}{q(x)} &= \frac{A \cdot q'(x)}{q(x)} + \frac{B}{q(x)} \\
+&\implies \int \frac{r(x)}{q(x)}dx \\
+&=A \cdot ln|q(x)| + B\int\frac{1}{q(x)}dx
+\end{aligned}
+$$
+Sappiamo che
+$$
+\int \frac{1}{q(x)}dx = \int\frac{1}{ax^2 + bx + c}dx
+$$
+Allora cerchiamo 3 costanti $\alpha, \beta, \gamma \in \mathbb R$ tale che
+$$
+q(x) = ax^2 + bx + c = \gamma \cdot\left(1 + \left(\frac{x+\alpha}{\beta}\right)^2\right)
+$$
+Sostituendo otteniamo:
+$$
+t := \frac{x+\alpha}{\beta} \implies \frac{dt}{dx} = \frac{1}{\beta} \implies dx = \beta \cdot dt
+$$
+E risulta che:
+$$
+\begin{aligned}
+\int \frac{1}{q(x)}dx &= \int \frac{dx}{\gamma \cdot \left(1 + \left(\frac{x+\alpha}{\beta} \right)^2\right)} \\
+&=\frac{\beta}{\gamma} \int\frac{dt}{1+t^2} = \frac{\beta}{\gamma} \cdot arctan(t) + c \\
+&= \frac{\beta}{\gamma} \cdot arctan \left(\frac{x + \alpha}{\beta} \right) + c 
+\end{aligned}
+$$
+**==Riassumendo==**, otteniamo:
+$$
+\int \frac{r(x)}{q(x)} = A \cdot ln | q(x) | + \frac{\beta \cdot B}{\gamma} \cdot arctan\left( \frac{x + \alpha}{\beta} \right) + c
+$$
+Dove:
+$$
+\frac{r(x)}{q(x)} = \frac{A \cdot q'(x) + B}{q(x)}
+$$
+e
+$$
+q(x) =  \gamma \cdot\left(1 + \left(\frac{x+\alpha}{\beta}\right)^2\right)
+$$
+![[Pasted image 20250628122301.png]]
+![[Pasted image 20250628122412.png]]
+
+##  🟢 Integrazione per equazione di ricorrenza
+
+è utile quando dobbiamo integrare una funzione che cicla in un certo periodo, cioè che ritorna alla forma originale.
+
+$$
+\huge{\int e^x cos(x)}
+$$
+Applichiamo l'integrazione per parti
+$$
+\huge\int e^x cos(x) = e^x cos(x) - \int{e^x \cdot (- sin(x))}
+$$
+Semplifichiamo il -
+$$
+\huge\int e^x cos(x) = e^x cos(x) + \int{e^x sin(x)}
+$$
+A questo punto riapplichiamo l'integrazioni per parti
+$$
+\huge\int e^x cos(x) = e^x cos(x) + e^x sin(x) - \int{e^x cos(x)}
+$$
+A questo punto potremmo continuare a fare integrazione per parti, ma come abbiamo appena visto, l'integrale cicla, quindi non riusciremo mai a finire il ciclo di integrazione. Ma possiamo spostare il secondo integrale a sinistra dell'equazione:
+$$
+\huge\int e^x cos(x) +  \int{e^x cos(x)} = e^x cos(x) + e^x sin(x)
+$$
+Semplifichiamo unendo i due integrali, ottenendo $2\int{e^x cos(x)}$, per poi dividere tutto per 2:
+$$
+\huge\int e^x cos(x) = \frac{e^x cos(x) + e^x sin(x)}{2}
+$$
+
+## 🟢Identità trigonometriche
+
+$$
+\huge\int\frac{1}{\sqrt{3-2x^2}}dx
+$$
+Non è immediata la sostituzione, ma possiamo lavorare sul denominatore per cercare di semplificare l'espressione cosi che sia più facilmente trattabile.
+
+Sappiamo che $sin^2\theta+cos^2\theta = 1$, e quindi che $cos^2\theta = 1 - \sin^2\theta$ 
+
+Proviamo a modificare l'integrale cosi da poter applicare qualcosa:
+$$
+\huge\int\frac{1}{\sqrt{3(1-\frac{2}{3}x^2)}}dx
+$$
+Il che ha la stessa forma di $cos^2\theta = 1 - \sin^2\theta$ allora proviamo a sostituire $\frac{2}{3}x^2=sin^2\theta$ cosi che siano identiche:
+
+$$
+\begin{aligned}
+\frac{2}{3}x^2&=sin^2\theta \\
+\frac{\sqrt2}{\sqrt3}x&=sin\theta \\
+x &=\frac{\sqrt3}{\sqrt2}sin\theta
+\end{aligned}
+$$
+Facciamo anche la derivata di questa:
+$$
+\frac{dx}{d\theta} = \frac{\sqrt3}{\sqrt2}cos\theta
+$$
+Il ciò implica che:
+$$
+dx = \frac{\sqrt3}{\sqrt2}cos\theta \ d\theta
+$$
+A questo punto possiamo rimpiazzare i termini nell'integrale originale 
+$$
+\huge\int\frac{dx}{\sqrt{3(1-\frac{2}{3}x^2)}} = 
+\huge\int\frac{\frac{\sqrt3}{\sqrt2}cos\theta \ d\theta}{\sqrt{3(1-sin^2\theta)}}
+$$
+
+E abbiamo visto che $cos^2 = 1-sin^2\theta$, rimpiazziamolo:
+$$
+\begin{aligned}
+\huge\int\frac{\frac{\sqrt3}{\sqrt2}cos\theta \ d\theta}{\sqrt{3cos^2\theta}} &= 
+\huge\int\frac{\frac{\sqrt3}{\sqrt2}cos\theta \ d\theta}{\sqrt{3}\sqrt{cos^2\theta}} \\
+&= \huge\int\frac{\frac{\cancel{\sqrt3}}{\sqrt2}\cancel{cos\theta} \ d\theta}{\cancel{\sqrt{3}} \ \cancel{cos\theta}} \\
+&= \int \frac{1}{\sqrt2 \ }d\theta \\
+&=  \frac{1}{\sqrt2} \int d\theta \\
+	&= \frac{1}{\sqrt2}\theta
+\end{aligned}
+$$
+Ma dobbiamo risolvere per $x$. Tornando alla sostituzione che abbiamo fatto prima:
+$x =\frac{\sqrt3}{\sqrt2}sin\theta$, possiamo ricavare che:
+$$
+\huge\theta = arcsin\left(\frac{\sqrt2}{\sqrt3}x\right)
+$$ 
+Allora facciamo la sostituzione inversa:
+$$
+\huge\frac{1}{\sqrt2}\theta =\frac{1}{\sqrt2} arcsin\left(\frac{\sqrt2}{\sqrt3}x\right)
+$$
+Che è la nostra soluzione finale.
+![[Pasted image 20250616112118.png]]
+
+## 🟢 Integrali impropri
+
+Sia $f: [a,b) \to \mathbb R$ con $a \in \mathbb R$ e $b \in \mathbb R \cup \{+\infty\}$ tale che $f$ è integrabile in $[a,c]$ per ogni $a \lt c \lt b$, allora se converge:
+$$
+\lim_{c \to b^-} \int^c_a f(x) dx =: A
+$$
+Si dice che l'integrale:
+$$
+\int^c_a f(x) dx =: A
+$$
+è chiamato "integrale improprio" o "generalizzato".
+
+Un integrale "converge" se esiste il limite $A$ scritto prima. 
+
+
+Per esempio:
+$$
+\int_1^{+\infty} \frac{1}{x(ln(x) + 2)^3}dx
+$$
+Risolviamo per sostituzione $u = ln(x)$, allora $du = \frac{1}{x}dx$ 
+$$
+\begin{aligned}
+\int \frac{1}{x(ln(x) + 2)^3}dx &= \int \frac{1}{(ln(x) + 2)^3} \cdot \frac{1}{x}dx  \\ 
+& = \int \frac{1}{(u + 2)^3}du  \\
+& = \int(u+2)^{-3}du \\
+& = \frac{(u+2)^{-2}}{-2} \\
+& = \frac{-1}{2(ln(x) + 2)^2}
+\end{aligned}
+$$
+
+A questo punto per trovare il valore dell'integrale improprio, risolviamo il limite valutando  l'integrale:
+$$
+\begin{aligned}
+\lim_{b \to \infty} \left[ \frac{-1}{2(ln(x) + 2)^2} \right]^b_1 &= \lim_{b \to \infty} \frac{-1}{2(ln(b) + 2)^2} - \frac{-1}{2(ln(1) + 2)^2} \\
+&= 0  + \frac{1}{2(0 + 2)^2} = \frac{1}{8}
+\end{aligned}
+$$
+## 🟠 Teorema del confronto per gli integrali impropri
+
+Siano $f, g : [a, b) \to \mathbb{R}$ con $a \in \mathbb{R}$, $b \in \mathbb{R} \cup \{+\infty\}$ e tali che per ogni $a < c < b$, $f$ e $g$ siano integrabili su $[a, c]$.
+
+Se:
+- $|f(x)| \leq g(x)$ per ogni $x \in [a, b)$ (cioè $g$ è un maggiorante di $|f|$)
+- $\int_a^b g(x) \, dx$ converge
+allora converge anche $\int_a^b f(x) \, dx$.
+
+Un risultato simile vale anche per $f, g : (a, b] \to \mathbb{R}$ con $a \in \mathbb{R} \cup \{-\infty\}$, $b \in \mathbb{R}$.
+
+
+L'intuizione è che $g(x)$ è una funzione "più grande" rispetto $|f(x)|$, ed ha area finita. Allora di sicuro anche l'area sotto $f(x)$, che è più piccola, deve essere finita. 
+## 🟢 Criterio integrale per le serie
+
+Se $f : [1, +\infty] \to [0, +\infty]$ è decrescente e $a_k := f(k)$, allora:
+$$
+\sum_{k = 1}^{+\infty} a_k \quad \text{converge} \qquad \Leftrightarrow \qquad \int_1^{+\infty} f(x)dx \quad \text{converge}
+$$
+
+---
+
+# Funzioni a due parametri
+
+Definiamo l'insieme $\mathbb R^2 := \{(x,y): x,y \in \mathbb R\}$, gli elementi $(x,y)$ sono chiamati **vettori** (o punti) in $\mathbb R^2$. Questi vettori hanno operazioni:
+- **Somma**: $(x_1,y_1) + (x_2,y_2) = (x_1+x_2, y_1+y_2)$
+- **Prodotto per uno scalare**: $\alpha \cdot (x,y) = (\alpha x, \alpha y)$
+
+Per misurare la distanza di un punto $(x,y)$ dall'origine $(0,0)$, usiamo la **norma**:
+$$
+\| (x,y) \| = \sqrt{x^2 + y^2}
+$$
+Che ha le seguenti proprietà:
+- $\| (x,y) \| \geq 0$ per ogni $(x,y) \in \mathbb R^2$, e $\| (x,y) \| = 0$ se e solo se $(x,y) = (0,0)$
+- $\| \alpha \cdot (x,y) \|\ = \|\alpha| \cdot \| (x,y) \|$ per ogni $\alpha \in \mathbb R$
+- $\| (x_1,y_1) + (x_2,y_2) \| \leq \| (x_1,y_1) \| + \| (x_2,y_2) \|$ per ogni $(x_1,y_1), (x_2,y_2) \in \mathbb R^2$ (disuguaglianza triangolare)
+
+Possiamo misurare la distanza tra due punti $(x_1,y_1)$ e $(x_2,y_2)$ come:
+$$
+\| (x_1,y_1) - (x_2,y_2) \| = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}
+$$
+Infine definiamo il prodotto scalare tra due vettori $(x_1,y_1)$ e $(x_2,y_2)$ come:
+$$
+(x_1,y_1) \cdot (x_2,y_2) = x_1x_2 + y_1y_2
+$$
+
+
+
+## 🟠 Limiti di funzioni a due parametri
+
+Diremo che la successione di vettori $\{(x_n,y_n)_{n\in\mathbb N} \subset R^2\}$ converge al vettore $(x_0,y_0)$ se:
+$$
+\| (x_n,y_n) - (x_0,y_0) \| \to 0 \quad \text{per} \ n \to +\infty
+$$
+Allora scriviamo:
+$$ 
+lim_{n \to +\infty} (x_n,y_n) = (x_0,y_0)
+$$
+
+E vale che:
+$$
+\lim_{n \to +\infty} (x_n,y_n) = (x_0,y_0) \quad \Leftrightarrow \quad \left \{
+\begin{aligned}
+\lim_{n \to +\infty} x_n = x_0 \\
+\lim_{n \to +\infty} y_n = y_0
+\end{aligned}  
+\right.
+$$
+
+Possiamo fare lo stesso per le funzioni $f: \mathbb X \subseteq \mathbb R^2 \to \mathbb R$. 
+
+Alcune osservazioni:
+- La definizione di limite a due variabili può essere data solo per $(x_0, y_0) \in \mathbb R^2$, cioè al finito, quindi escludiamo i punti all'infinito. 
+- Il limite se esiste, è unico.
+- Valgono le regole per il calcolo dei limiti, come la linearità, il prodotto, il quoziente, etc...
+## 🟢 NON Esistenza del limite
+
+Una condizione per la **NON** esistenza del limite di una funzione a due variabili è che il limite:
+$$
+\lim_{(x,y) \to (x_0,y_0)} f(x,y) = l
+$$
+Cioè che per ogni avvicinamento all'origine, risulta che il limite deve convergere allo stesso valore $l$.
+
+In altre parole, se esistono due o più avvicinamenti all'origine con valori di limite diversi, allora il limite non esiste.
+
+Per generalizzare possiamo dire che se il limite $\lim_{x \to 0} f(x, mx)$ esiste ma dipende da $m \in \mathbb R$ (cioè se x = 0, posso scegliere $m$ come voglio per cambiare il valore del limite), allora il limite:
+$$
+\lim_{(x,y) \to (0,0)} f(x,y)
+$$
+non esiste.
+
+Per esempio, consideriamo il limite:
+$$
+\lim_{(x,y) \to (0,0)} \frac{xy}{x^2 + y^2}
+$$
+ponendo $y = mx$, otteniamo:
+$$
+\lim_{x \to 0} f(x, mx) = \lim_{x \to 0} \frac{mx^2}{x^2 + m^2x^2} = \lim_{x \to 0} \frac{m}{1 + m^2} = \frac{m}{1 + m^2}
+$$
+Che dipende da $m$, quindi il limite non esiste.
+
+Ricordiamo che questo è una condizione sufficiente per la non esistenza del limite, ma non è l'unica. 
+Infatti, se il limite di $x \to 0$ di $f(x, mx)$ esiste, non significa che il limite di $f(x,y)$ esiste.
+
+Facciamo un altro esempio, consideriamo il limite:
+$$
+\lim_{(x,y) \to (0,0)} \frac{x^2y}{x^4 + y^2}
+$$
+Ponendo $y = mx$, otteniamo:
+$$
+\lim_{x \to 0} f(x, mx) = \lim_{x \to 0} \frac{x^2(mx)}{x^4 + (mx)^2} = \lim_{x \to 0} \frac{mx^3}{x^4 + m^2x^2} = \lim_{x \to 0} \frac{mx}{x^2 + m^2} = 0
+$$
+Quindi tutti i limiti di $f(x, mx)$ sono uguali a 0, ma questo non implica che il limite di $f(x,y)$ esista, ma se esiste, deve essere necessariamente 0. Infatti, se proviamo a calcolare il limite con $y = x^2$, otteniamo:
+$$
+\lim_{x \to 0} f(x, x^2) = \lim_{x \to 0} \frac{x^2(x^2)}{x^4 + (x^2)^2} = \lim_{x \to 0} \frac{x^4}{x^4 + x^4} = \lim_{x \to 0} \frac{1}{2} = \frac{1}{2} \ne 0 = \lim_{x \to 0} f(x, x)!!
+$$
+Che sono due avvicinamenti diversi all'origine, dove $y = x^2$ ha limite $\frac{1}{2}$, mentre $y = x$ ha limite 0. Allora il limite di $f(x,y)$ non esiste.
+
+
+
+## 🟢 Coordinate polari
+
+Un punto $P$ nel piano può essere rappresentato sia in coordinate cartesiane $(x,y)$ che in coordinate polari $(\rho,\theta)$:
+
+![[Pasted image 20250627101957.png]]
+E possiamo passare da coordinate cartesiane a polari e viceversa tramite:
+$$
+\left \{
+\begin{aligned}
+x &= \rho \cos(\theta) \\
+y &= \rho \sin(\theta) \\
+\end{aligned}
+\right. 
+\qquad
+\left\{
+\begin{aligned}
+&\rho = \sqrt{x^2 + y^2} \\
+&\tan(\theta) = \frac{y}{x} \\
+\end{aligned}
+\right.
+$$
+## 🟢 Esistenza del limite di una funzione a due parametri
+
+La relazione $tan \theta = \frac{y}{x}$ non può essere usata per calcolare $\theta$ dato che la funzione $tan$ non è invertibile in $[0, 2\pi)$. Da notare che $(x, y) \to (0,0) \Leftrightarrow \rho \to 0^+$.
+Il che vuol dire che passando da coordinate cartesiani a polari, il limite di due variabili si trasforma in un limite di una variabile. A questo punto diciamo:
+
+Se esiste $l \in \mathbb R$ e una funzione $g(\rho)$ **INDIPENDENTE DA $\theta$** (sennò il limite non esiste), tale che:
+![[Pasted image 20250627102913.png]]
+
+Con $g(\rho) \to 0$ per $\rho \to 0^+$, allora il limite:
+$$
+\lim_{(x,y) \to (0,0)} f(x,y) = l
+$$
+
+Facciamo un esempio, consideriamo il limite:
+$$
+\lim_{(x,y) \to (0,0)} \frac{2x^2y}{x^2 + y^2} := l
+$$
+Analogamente al limite precedente, $\lim_{x \to 0} f(x, mx) = 0$, passiamo alle coordinate polari:
+
+![[Pasted image 20250627103403.png]]
+
+E quindi segue che il limite è 0
+
+Facciamo un altro esempio:
+
+![[Pasted image 20250627103506.png]]
+
+## 🟢 Calcolo del limite di una funzione a due parametri
+
+Calcola (se esiste) il limite 
+$$
+\lim_{(x,y) \to (0,0)} \frac{sin^2(xy)}{x^2 + y^2}
+$$
+Per prima cosa, sappiamo che il limite è unico, allora proviamo a risolvere il limite per $y = mx$, questo ci dà anche condizione di esistenza del limite. Infatti, se il limite dipende da $m$, allora il limite originario non esiste.
+
+Poniamo $y = mx$
+$$
+\begin{aligned}
+\frac{sin^2(xy)}{x^2 + y^2}& \quad \text {poniamo}  \quad  y=mx \\
+& = \frac{sin^2(x \cdot mx)}{x^2 + m^2x^2} \\\\
+& = \frac{sin(mx^2)}{(1 + m^2)x^2} \\ \\
+& \text{dato che stiamo approcciando} \quad x \to 0 \quad \text{sappiamo che} \quad sin(x) \sim x \\ \\
+
+&\sim \frac{(mx^2)^2}{1+m^2}x^2 \\ \\
+&= \frac{m^2}{1+m^2}x^2
+\end{aligned}
+$$
+e per $x \to 0$, il limite tende a $0$, che non dipende da $m$, allora se il limite esiste, deve necessariamente essere $0$.
+
+Ora che abbiamo trovato il "potenziale" limite, andiamo a verificarlo.
+
+Passiamo prima alle coordinate polari:
+$$
+\begin{aligned}
+f(x,y) &= f(\rho cos(\theta), \rho sin(\theta)) \\ \\
+&= \frac{sin^2(\rho cos(\theta)\cdot\rho sin(\theta))}{(\rho cos(\theta))^2 + (\rho sin (\theta))^2} \\ \\
+&= \frac{sin^2(\rho^2cos(\theta)sin(\theta))}{\rho^2(cos^2(\theta)sin^2(\theta))} \\ \\
+&= \frac{sin^2(\rho^2cos(\theta)sin(\theta))}{\rho^2} \\ 
+\end{aligned} 
+$$
+Ora applichiamo $|f(\rho cos(\theta), \rho sin(\theta)) - l| \le g(\rho)$.
+Sappiamo che $l = 0$ e che $|sin x| \le |x|$, allora:
+$$
+\begin{aligned}
+\left|\frac{sin^2(\rho^2cos(\theta)sin(\theta))}{\rho^2} \right| &\le \frac{(\rho^2cos(\theta)sin(\theta))^2}{\rho^2} \\
+&= \frac{\rho^{\cancel{4}^2}(cos(\theta)sin(\theta))^2}{\cancel{\rho^2}} \\
+& = \rho^2(cos(\theta)sin(\theta))^2 \\ \\
+\end{aligned}
+$$
+Sappiamo che $|\cos(x)\sin(x)| = |cos(x)| \ |sin(x)| \le 1 \cdot 1 = 1$ 
+Allora possiamo dire che
+$$
+\rho^2(cos(\theta)sin(\theta)) \le \rho^2
+$$
+E dato che per $\rho \to 0$ abbiamo che $\rho^2 \to 0$, allora il limite converge a $0$, quello che avevamo supposto prima. Allora il limite esiste ed è $0$   
+## 🟠 Controllo sulla continuità
+
+- La funzione $f$ è continua in $(x_0, y_0) \Leftrightarrow$ $\forall \epsilon > 0$ esiste  $\delta > 0$ tale che:
+  - $\| f(x,y) - f(x_0,y_0) \| < \epsilon$ per ogni $(x,y) \in \mathbb R^2$
+  - $\| (x,y) - (x_0,y_0) \| < \delta$
+- La funzione $f$ è definita sul punto $(x_0, y_0)$
+- La funzione $f$ è continua in $(x_0, y_0) \Leftrightarrow$ $\lim_{(x,y) \to (x_0,y_0)} f(x,y) = f(x_0,y_0)$
+- Somme, differenze, prodotti e quozienti di funzioni continue sono continue. 
+
+## 🟠 Controllo della Derivabilità
+
+Siano $f: X \subset \mathbb R^2 \to \mathbb R$ e $(x_0,y_0) \in X$, allora:
+- $f$ è derivabile in $(x_0,y_0)$ rispetto a $x$ se esiste il limite (derivabilità parziale per x):
+$$
+\lim_{h \to 0} \frac{f(x_0 + h, y_0) - f(x_0,y_0)}{h}
+$$
+- $f$ è derivabile in $(x_0,y_0)$ rispetto a $y$ se esiste il limite (derivabilità parziale per y):
+$$
+\lim_{k \to 0} \frac{f(x_0, y_0 + k) - f(x_0,y_0)}{k}
+$$
+Queste derivate le chiamiamo derivate parziali rispetto a $x$ o $y$ in $(x_0,y_0)$ e le chiamiamo $f_x(x_0,y_0)$ e $f_y(x_0,y_0)$ rispettivamente.
+
+Per calcolare la derivata parziale rispetto a $x$ o $y$ basta derivare rispetto a $x$ o $y$ come se fosse una funzione di una variabile, considerando l'altra variabile come una costante. Per esempio:
+
+- $f(x,y) = 2x^3y - y^2 + 3xy$ allora $f_x(x,y) = 6x^2y + 3y$ e $f_y(x,y) = 2x^3 - 2y + 3x$
+- $f(x,y) = e^{xy} + y^2$ allora $f_x(x,y) = y e^{xy}$ e $f_y(x,y) = x e^{xy} + 2y$
+
+Se però queste funzioni non sono derivabili, dobbiamo passare per la definizione, per esempio, per $f(x,y) = | x | y$ sul punto $(0,y)$
+$$
+f_x(0,y) = \lim_{h \to 0}\frac{f(0 + h, y) - f(0,y)}{h} = \lim_{h \to 0} \frac{|h| \cdot y}{h} = \left\{ 
+\begin{aligned}
+&\not\exists \quad \text{se} \quad y \ne 0 \\  
+&0 \quad \text{se} \quad y = 0
+\end{aligned}
+\right.
+$$
+A differenza delle derivate a una variabile, la derivabilità non implica la continuità
+
+Per esempio, troviamo la derivabilità parziale in $(0,0)$ di $f(x,y) = |x-1| \cdot (|y| + 1)$ 
+
+Prima facciamo $f_x(0,0)$
+$$
+f_x(0,0) = \lim_{h \to 0} \frac{f(h, 0) - f(0,0)}{h} = \lim_{h \to 0}\frac{|h - 1|\cdot 1 - 1}{h} = -1
+$$
+Poi $f_y(0,0)$
+
+$$
+f_y(0,0) = \lim_{k \to 0} \frac{f(0, k) - f(0,0)}{k} = \lim_{k \to 0}\frac{|-1| \cdot (|k|+1) - 1}{k} = \lim_{k \to 0}\frac{|h|}{h} = \text{non esiste}
+$$
+Allora $f$ non è derivabile parzialmente (in questo caso perchè almeno una delle due derivate non esiste). 
+
+## 🟠 Controllo sulla differenziabilità
+
+![[Pasted image 20250627120040.png]]
+
+Alternativamente, se $f: X \subset \mathbb R^2$ è derivabile con continuità (cioè le derivate $f_x$ e $f_y$ di $f$ esistono e sono continue), allora $f$ è differenziabie 
+
+Esempio: $f(x,y) := sin(x^2 \cdot e^y)$, calcoliamo le derivate parziali:
+
+- $f_x(x,y) = cos(x^2 \cdot e^y) \cdot 2x \cdot e^y$ 
+- $f_y(x,y) = cos(x^2, e^y) \cdot x^2 \cdot e^y$ 
+
+Sono entrambe continue, allora $f(x,y)$ è differenziabile 
+
+![[Pasted image 20250627120507.png]]
+## 🟢 Equazione del piano tangente
+
+Prendendo il termine lineare nella definizione di differenziabilità ci dà l'equazione del piano tangente $p$ nel punto $(x_0, y_0)$: 
+$$
+z = p(x,y) = f(x_0,y_0) + f_x(x_0, y_0) \cdot (x - x_0) + f_y(x_0, y_0) \cdot (y - y_0) 
+$$
+![[Pasted image 20250705165927.png]]
+### Esempio
+
+Sia $f(x,y) = 2x^3y - y^2 + 3xy$.  
+Punto base: $(x_0, y_0) = (1,1)$.
+
+**Valutazione della funzione in $(1,1)$:**
+
+$$
+f(1,1) = 2(1)^3(1) - (1)^2 + 3(1)(1) = 2 - 1 + 3 = 4
+$$
+
+Derivata parziale rispetto a $x$:
+$$
+f_x(x,y) = \frac{\partial}{\partial x}(2x^3y - y^2 + 3xy) = 6x^2y + 3y
+$$
+$$
+f_x(1,1) = 6(1)^2(1) + 3(1) = 6 + 3 = 9
+$$
+
+Derivata parziale rispetto a $y$:
+
+$$
+f_y(x,y) = \frac{\partial}{\partial y}(2x^3y - y^2 + 3xy) = 2x^3 - 2y + 3x
+$$
+$$
+f_y(1,1) = 2(1)^3 - 2(1) + 3(1) = 2 - 2 + 3 = 3
+$$
+
+**Costruzione del piano**
+
+$$
+p(x,y) = f(1,1) + f_x(1,1)(x - 1) + f_y(1,1)(y - 1)
+$$
+$$
+p(x,y) = 4 + 9(x - 1) + 3(y - 1)
+$$
+
+### Esempio 2
+
+In quale punto $(x_0, y_0) \in \mathbb R^2$ il piano $z = 2 + x - y$  è tangente al grafico di $f(x,y) = 1 + xy$?
+
+Per prima cosa calcoliamo le derivate parziali:
+- $f_x = y$
+- $f_y = x$ 
+A questo punto scriviamo la formula del piano tangente:
+$$
+\begin{aligned}
+p(x,y) &= f(x_0, y_0) + f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0) \\
+&= 1 + x_0y_0 + y_0(x-x_0) + x_0(y - y_0) \\
+&= 1 + \cancel{x_0y_0} + y_0x \cancel{- y_0x_0} + x_0y - x_0y_0\\
+&= 1 - x_0y_0 + y_0 \cdot  x + x_0\cdot y
+\end{aligned}
+$$
+Ora confrontiamo questo risultato con $z = 2 + 1\cdot x + (-1) \cdot y$, dobbiamo confrontare i coefficienti di $p(x,y)$ per i coefficienti di $z$, devono essere uguali, allora scriviamo:
+- $1 - x_0y_0 = 2$ 
+- $y_0 = 1$
+- $x_0 = -1$
+Dato che le ultime due equazioni non hanno bisongo di altri calcoli per trovare i valori di $x_0$ e $y_0$, e la prima equazione è valida per questi due valori, abbiamo trovato il punto $(-1, 1)$ tale che $z$  è tangente a $f$
+## 🟢 Derivate direzionali
+
+Sia $f: X \subset \mathbb R^2 \to \mathbb R$ e $P = (x_0,y_0) \in X$ punto, e $v = (v_0, v_1)$ un versore, cioè che la sua norma è 1 $\|v\| = \sqrt{v_0^2 + v_1^2} = 1$. Se converge:
+
+$$
+\lim_{h \to 0}\frac{f(P_0 + h \cdot v) - f(P_0)}{h} = 
+\lim_{h \to 0}\frac{f(x_0 + h \cdot v_0, y_0 + h \cdot v_1) - f(x_0, y_0)}{h} = \frac{\partial f}{\partial v}(x_0,y_0)
+$$
+
+allora si dice che $f$ è **derivabile verso la direzione** $v$ in $P$, con **derivata direzionale** $\frac{\partial f}{\partial v}(x_0,y_0)$.
+
+Usando le coordinate polari, tutti i versori $v \in \mathbb R^2$ si possono rappresentare come $v = (\cos(\theta), \sin(\theta))$ per qualche $\theta \in [0, 2\pi)$.
+
+![[Pasted image 20250627133409.png]]
+
+Per calcolare la derivata direzionale $D_vf(x_0, y_0)$ per $v = (v_0, v_1)$ usiamo:
+$$
+D_vf(x_0, y_0) = f_x(x_0, y_0)\cdot v_0 + f_y(x_0, y_0) \cdot v_1
+$$
+Dove $f_x$ e $f_y$ sono le derivate parziale rispetto $x$ e $y$. 
+
+### Esempio
+Trova la derivata direzionale $D_vf(2,1)$ per $f(x,y) = \frac{9y}{x + y}$ e il versore $v = (\frac{4}{5}, \frac{3}{5})$ 
+
+Calcoliamo per prima cosa le derivate parziali rispetto a $x$ e $y$
+
+$$
+\begin{aligned}
+f_x(x,y) &= \frac{d}{dx}\left( \frac{9y}{x + y}\right) \\
+&= \frac{d}{dx}\left( 9y \cdot (x+y)^{-1}\right) \\
+&= 0 \cdot(x+y)^{-1} + (-9y(x+y)^2) \\
+&= \frac{-9y}{(x+y)^2}
+
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+f_y(x,y) &= \frac{d}{dy}\left( \frac{9y}{x + y}\right) \\
+&= \frac{d}{dy}\left( 9y \cdot (x+y)^{-1}\right) \\
+&= 9(x+y)^{-1} + 9y(-(x + y)^{-2}) \\
+&= \frac{9}{x+y} - \frac{9y}{(x+y)^2} \\
+&= \frac{9x}{(x+y)^2}
+\end{aligned}
+$$
+
+A questo punto valutiamo:
+$$
+\begin{aligned}
+D_vf(x_0, y_0) &= f_x(x_0, y_0)\cdot v_0 + f_y(x_0, y_0) \cdot v_1 \\
+D_vf(2,1) &= f_x(2,1) \cdot \frac{4}{5} + f_y(2,1)\cdot\frac{3}{5} \\
+&= \frac{-9}{9}\cdot\frac{4}{5} + \frac{18}{9}\cdot\frac{3}{5} \\
+&= \frac{2}{5}
+\end{aligned}
+$$
+
+## 🟠 Teorema del gradiente
+
+è un modo per calcolare facilmente la derivata direzionale.
+
+Sia $f: X \subset R^2 \to R$, $(x_0, y_0) \in X$ e $v = (v_0, v_1) \in \mathbb R^2$ un versore. Se $f$ è differenziabile in $(x_0, y_0)$ allora:
+
+$$
+\begin{aligned}
+\frac{\partial f}{\partial v}(x_0,y_0) &= 
+\left( \frac{\partial f}{\partial x}(x_0,y_0), \frac{\partial f}{\partial y}(x_0,y_0) \right) \cdot (v_0, v_1) \\
+&= \frac{\partial f}{\partial x}(x_0,y_0) \cdot v_0 + \frac{\partial f}{\partial y}(x_0,y_0) \cdot v_1
+\end{aligned}
+$$
+Dove $\cdot$ è il prodotto scalare.
+
+Da questo teorema deriva che se $f$ è differenziabile in $(x_0, y_0)$ allora in $(x_0, y_0)$ esistono le derivate direzionali secondo ogni direzione $v$.
+
+Esempio, sia $f(x,y) = 2x^3 - y^2 +3xy$ e $v = (\frac{1}{\sqrt 2}, \frac{1}{\sqrt 2})$ e $(x_0, y_0) = (1,1)$, allora:
+$$
+\begin{aligned}
+\frac{\partial f}{\partial v}(1,1) &=
+\left( \frac{\partial f}{\partial x}(1,1), \frac{\partial f}{\partial y}(1,1) \right) \cdot (v_0, v_1) \\
+&= (\frac{1}{\sqrt 2} \frac{1}{\sqrt 2}) \cdot (9, 3) \\
+&= \frac{9}{\sqrt 2} + \frac{3}{\sqrt 2} \\
+&= \frac{12}{\sqrt 2} \\
+&= 6\sqrt 2
+\end{aligned}
+$$
+
+Il gradiente può essere scritto come $Df(x, y)$, e:
+- Punta nella direzione di massima crescita della funzione
+- La sua norma è il tasso di crescita della funzione in quella direzione. 
+- Negando il gradiente, otteniamo la direzione di massima decrescita della funzione.
+
+![[Pasted image 20250627135939.png]]
+
+#  🟢 Integrali a due parametri
+
+Data una funzione $f: X \subset \mathbb R^2 \to \mathbb R$, vogliamo trovare il volume $V$ fra il piano xy e il grafico di $f$.
+
+Come abbiamo fatto nel caso degli integrali ad una variabile, vogliamo approssimare il volume tramite la differenza delle somme superiori e inferiori. Ma in questo caso, non abbiamo una singola retta, ma un rettangolo.
+
+Allora scegliamo un rettangolo $R = [a,b] \times [c,d]$ tale che $X \subseteq \mathbb R$ e definiamo:
+$$
+\overline f(x,y) = \left\{
+\begin{aligned}
+f(x,y) &\quad \text{se} \ (x,y) \in R \\
+0 &\quad \text{se} \ (x,y) \in R \setminus X
+\end{aligned}
+\right.
+$$
+cioè estendiamo f, ponendo 0 per i punti fuori da $X$. I volumi delle due funzioni saranno uguali.
+A questo punto partizioniamo il rettangolo $R$ nei suoi due assi $x$ e $y$:
+
+![[Pasted image 20250628131002.png]]
+![[Pasted image 20250628131036.png]]
+
+Cioè le somme inferiori sono sempre approssimazioni in difetto di V, mentre le somme superiori sono approssimazioni in eccesso di V. 
+
+Se non c'è differenza tra la migliore approssimazione da sotto e sopra, allora abbiamo risolto il problema, dato che abbiamo trovato $V$, e quindi $f$ si dice integrabile.
+
+Più formalmente:
+
+Sia $f : X \subset \mathbb{R}^2 \to \mathbb{R}$ limitata. Se per $\bar{f}$ definita in $(*)$ vale
+
+$$
+\sup\{ s(\bar{f}, P_{xy}) : P_{xy} \text{ partizione di } R \} = \inf\{ S(\bar{f}, P_{xy}) : P_{xy} \text{ partizione di } R \} =: I
+$$
+
+allora $f$ si dice *integrabile* (secondo Riemann). In questo caso $V = I$ e si definisce *l'integrale doppio*
+
+$$
+\iint_X f(x, y)\, dx\, dy := I
+$$
+
+della funzione integranda $f$ nel dominio dell’integrazione $X$.
+
+
+## 🟢 Disegnare un insieme
+
+![[Pasted image 20250703143853.png]]
+
+Troviamo tutti i vincoli:
+- $x \in [-1, 3]$ ci dice che i valori sull'asse X sono compresi fra $-1$ e $3$, allora dovremmo contare solo i valori in questo intervallo
+
+- $x - 1 \le y$ vuol dire che i valori dell'asse y sono più grandi di $x - 1$, quindi disegneremo la retta $y = x - 1$ che rappresenta il "bordo" di questo vincolo
+
+- $y \le \sqrt{x +1}$ vuol dire che i valori di $y$ sono più piccoli di $\sqrt{x + 1}$, quindi disegneremo  $y = \sqrt{x + 1}$ che rappresenta il "bordo" di questo vincolo, questo bordo è rappresentato da una "parabola" schiacciata verso destra
+
+L'insieme X sarà tutti i valori dentro questi vincoli:
+
+![[Pasted image 20250703144237.png]]
+
+## 🟢 Integrale doppio con coordinate polari
+
+Per domini $X$ "circolari" di integrazione conviene spesso di passare dalle coordinate cartesiane $(x, y)$ alle coordinate polari $(\rho, \vartheta)$ per semplificare la rappresentazione di $X$. Per fare ciò serve il seguente risultato.
+
+Sia $f : X \subset \mathbb{R}^2 \to \mathbb{R}$ integrabile. Se il dominio $X$ in coordinate cartesiane $(x, y)$ corrisponde al dominio $X'$ in coordinate polari $(\rho, \vartheta)$, allora
+
+$$
+\begin{aligned}
+x &= \rho \cdot \cos(\theta) \\
+y &= \rho \cdot \sin(\theta)
+\end{aligned}
+\quad \longrightarrow \quad
+\iint_X f(x, y) \, dx \, dy = \iint_{X'} f(\rho \cdot \cos(\vartheta), \rho \cdot \sin(\vartheta)) \cdot \rho \, d\rho \, d\vartheta
+$$
+
+Passando alle coordinate polari l'elemento infinitesimale di area $dx \, dy$ si trasforma in $\rho \cdot d\rho \, d\vartheta$
+
+Dobbiamo anche ricordarci di trasformare il dominio X in coordinate polari, cioè applicare le stesse equazioni che abbiamo usato per $x$ e $y$ 
+
+Per esempio, risolviamo l'integrale doppio:
+
+$$
+{\int \int}_X  \frac{x^2\cdot y}{\sqrt{x^2 + y^2}}
+$$
+Nell'insieme: 
+$$
+X = \left \{(x,y)\in \mathbb R : 1 \leq x^2 + y^2 \leq 9, 0 \le y \le x \right\}
+$$
+![[Pasted image 20260119163238.jpg]]
+Allora poniamo 
+$$
+\begin{aligned}
+x &= \rho \cdot \cos(\theta) \\
+y &= \rho \cdot \sin(\theta)
+\end{aligned}
+$$
+Prima di tutto riscriviamo l'insieme, abbiamo $x^2 + y^2$ che diventa $\rho^2 \cdot cos^2(\theta) + \rho^2 \cdot sin^2(\theta)$ , isolando il $\rho$ otteniamo $\rho^2 \cdot (cos^2(\theta) + sin^2(\theta))$ la somma del seno e coseno al quadrato è 1, facendo rimanere solo $\rho^2$, quindi il vincolo diventa $1 \le \rho^2 \le 9$, sapendo che $\rho$ è una quantità positiva, allora possiamo semplificare e dire che $1 \le \rho \le 3$.
+
+A questo punto andiamo al secondo vincolo $0 \le y \le x$.  Da dominio $x$ e $y$ sono valori positivi, allora si trovano nel primo quadrante del piano cartesiano. Abbiamo inoltre che $y \le x$ quindi i valori si trovano al disotto della retta $y = x$ che taglia il quadrante a metà orizzontalmente (a 45 gradi, cioè $\frac{\pi}{4}$). 
+Oppure in maniera analitica, applichiamo la sostituzione di nuovo:
+$$
+0 \le \rho \cdot sin(\theta) \le \rho \cdot cos(\theta)
+$$
+Allora analizziamo i due pezzi, possiamo semplificare il $\rho$, che sapendo essere positiva non cambia il segno della disequazione: 
+$$
+0 \le sin(\theta) \le cos(\theta)
+$$
+E ora ci interessa isolare $\theta$, quindi dividiamo per $cos(\theta)$, che anche essa nel quadrante positivo è positivo quindi non cambia il segno della disequazione:
+$$
+\tan(\theta) = \frac{\sin(\theta)}{cos(\theta)} \le 1
+$$
+ 
+E sappiamo che la tangente è uguale a 1 quando $\theta = \frac{\pi}{4}$
+
+E quindi il nostro nuovo dominio è:
+$$
+X'=\left \{ (\rho, \theta) \ | \ 1 \le \rho \le 3 \ , \ 0 \le \theta \le \frac{\pi}{4}  \right\} = [1,3] \times \left[0, \frac{\pi}{4} \right]
+$$
+ 
+A questo punto possiamo sviluppare l'integrale. Prima di tutto convertiamo in coordinate polari e semplifichiamo:
+ 
+Allora applicando:
+Otteniamo 
+$$
+\iint_{X'} (\rho^2 \cos(\theta) \cdot \sin^2(\theta)) \cdot \rho \ \partial \theta \ \partial \rho = \iint_{X'} \rho^3 \cos(\theta) \cdot \sin^2(\theta) \ \partial \theta \ \partial \rho
+$$
+Che nell'insieme $X'$ diventa:
+$$
+\int_1^3 \int_0^{\frac{\pi}{4}} \rho^3 \cos(\theta) \cdot \sin^2(\theta) \ \partial \theta \ \partial \rho
+$$
+
+Essendo gli estremi di integrazione costanti e la funzione a variabili separabili, possiamo spezzare l'integrale:
+$$
+\int_1^3 \rho^3 \ \partial \rho \cdot \int_0^{\frac{\pi}{4}} \cos(\theta) \sin^2(\theta) \ \partial \theta
+$$
+
+Risolviamo la parte angolare applicando la sostituzione:
+$$
+\begin{aligned}
+t &= \sin(\theta) \\ &\implies dt = \cos(\theta) \ \partial \theta
+\end{aligned}
+$$
+Aggiorniamo gli estremi di integrazione:
+
+* Se $\theta = 0 \implies t = 0$
+* Se $\theta = \frac{\pi}{4} \implies t = \frac{\sqrt{2}}{2}$
+
+L'integrale diventa quindi:
+$$
+\begin{aligned}
+&= \left[ \frac{1}{4}\rho^4 \right]_1^3 \cdot \int_0^{\frac{\sqrt{2}}{2}} t^2 \ dt \\
+ &= \left( \frac{1}{4} \cdot 3^4 - \frac{1}{4} \cdot 1^4 \right) \cdot \left[ \frac{1}{3}t^3 \right]_0^{\frac{\sqrt{2}}{2}}
+ \\ &= \left( \frac{81}{4} - \frac{1}{4} \right) \cdot \left( \frac{1}{3} \cdot \left(\frac{\sqrt{2}}{2}\right)^3 - 0 \right)  \\
+&= \frac{80}{4} \cdot \frac{1}{3} \cdot \frac{2\sqrt{2}}{8} \\
+&= 20 \cdot \frac{1}{3} \cdot \frac{\sqrt{2}}{4} \\
+& = \frac{5\sqrt{2}}{3}
+\end{aligned}
+$$
+
+
+## 🟠 Area di una funzione a due parametri
+
+Se vogliamo trovare l'area di una funzione, e non il volume, possiamo trovare il volume di altezza $1$ 
+
+Se $X \subset \mathbb R^2$ è un insieme limitato tale che la funzione $\mathbb 1: X \to \mathbb R, \mathbb 1(x,y) = 1$ è integrabile, allora si dice che $X$ è misurabile e si pone:
+$$
+|X| := \int\int_X 1 \ dx \ dy = \text{misura (= area) di $X$}
+$$
+
+## 🟢 Proprietà integrali doppi
+
+![[Pasted image 20250628132158.png]]
+## 🟢 Teorema di fubini tonelli
+
+Un insieme $X \subseteq \mathbb R^2$ limitato si dice:
+
+1. **y-semplice** se esistono due funzioni continue $g_1, g_2: [a,b] \to \mathbb R$ tali che
+$$
+X = \left\{(x,y) \in \mathbb R^2 : x\in [a,b], \ \ g_1(x) \le y \le g_2(x)   \right\}
+$$
+2. **x-semplice** se esistono due funzioni continue $h_1, h_2: [c,d] \to \mathbb R$ tali che:
+$$
+X = \left\{(x,y) \in \mathbb R^2 : y\in [c,d], \ \ h_1(y) \le x \le h_2(y)   \right\}
+$$
+3. **semplice** se è x-semplice o y-semplice
+4. **regolare** se è l'unione di un numero finito di domini semplici
+
+![[Pasted image 20250628142609.png]]
+Lo scopo è quello di mostrare che il calcolo dell'integrale doppio è equivalente al calcolo in successione di due integrali in una variabile
+
+Allora, sia $f: X \subset \mathbb R^2 \to \mathbb R$ una funzione continua e $X$ un dominio semplice, allora $f$ è integraile su $X$, e inoltre:
+
+![[Pasted image 20250628142945.png]]
+
+L'idea del teorema per calcolare $V$ è quelloo di decomporlo in una unione di fette di spessore infinitesimale e poi sommare il volume di ogniuna di queste fette. 
+Per esempio:
+![[Pasted image 20250628143133.png]]
+
+
+Per esempio, $X = \left\{(x,y)\in \mathbb R^2 : x \in [-1, 3], x-1 \le y \le \sqrt{x+1}  \right \}$ 
+L'insieme è $y$ semplice dato che $y$ è vincolata da due funzioni $x -1$ e $\sqrt{x + 1}$. Allora 
+
+$$
+\int\int_X{2xy} \ dx \ dy = \int_{x = -1}^3\left(\int_{y = x -1}^{\sqrt{x + 1}}2xy \ dy\right)dx
+$$
+l'integrale interno è $xy^2$, valutandolo su $x-1$ e $\sqrt{x + 1}$ otteniamo:
+$$
+x(\sqrt{x +1})^2 - x(x - 1)^2 = -x^3 + 3x^2
+$$
+A questo punto dobbiamo risolvere l'integrale esterno:
+$$
+\int_{x = -1}^3 -x^3 + 3x^2 = \left [ -\frac{x}{4}^4 + x^3 \right]_{-1}^{3} = - \frac{3}{4}^4+ 3^3 - \left(-\frac{(-1)^4}{4} + (-1)^4 \right)  = \frac{32}{4} = 8
+$$
+
+## 🟢Risoluzione integrali a due variabili
+
+Prendiamo l'integrale 
+$$
+\iint 3x^2 + 4y \ dx \ dy
+$$
+Per prima cosa integriamo per $x$, naturalmente $3x^2$ diventa $x^3$, ma dobbiamo fare attenzione quando troviamo un altra variabile.
+
+Quando troviamo una variabile diversa da quella su cui stiamo integrando, allora la consideriamo come una costante, possiamo quindi portarla fuori dall'integrale sfruttando la linearità, consideriamo solo quella per ora, allora:
+$$
+\int 4y \ dx = 4y\int1 \ dx = 4y \cdot x
+$$
+A questo punto mettiamo tutto insieme e otteniamo
+$$
+\int x^3 + 4xy \ dy
+$$
+Sempre usando la linearità, otteniamo:
+$$
+\begin{aligned}
+\int x^3 + 4xy \ dy &= \int x^3 \ dy \ + \int 4xy \ dy \\ &= x^3 \int 1 \ dy \ + 4x\int y \ dy \\ &= x^3y + 4x \frac{1}{2}y^2 \\ &= x^3 + 2xy^2
+\end{aligned}
+$$
+Possiamo naturalmente saltare tutti questi step intermedi e invece fare direttamente a mente.
+
+## 🟢Risoluzione integrali a due variabili con separazione
+
+Alternativamente, se la funzione che dobbiamo integrare può essere (sempre grazie alla linearità) separata in funzioni, una che dipende solo da x e l'altra che dipende solo da y, allora possiamo dividerli in due integrali, uno dipendente solo da x e l'altra dipendente solo da y.
+Possiamo applicare questa divisione insieme a quello che abbiamo mostrato prima per risolvere gli integrali doppi (eccetto se uno degli estremi dell'integrale dipende dall'integrale esterno).
+$$
+\iint f(x)\cdot g(y) \ dx \ dy = \int f(x) \ dx \ \cdot \int g(y) \ dy   
+$$
+Per esempio:
+$$
+\iint cos(x)\cdot sin^2(y) \ dx \ dy = \int cos(x) \ dx \cdot \int sin^2(y) \ dy  
+$$
+
+---
+
+# Extra 
+
+## 🟢 Note
+
+- $\huge{a^b = \left( \frac{1}{a} \right)^{-b}}$ 
+
+## 🟢 Limiti notevoli
+
+![[Pasted image 20250619130907.png]]
+![[Pasted image 20250619130920.png]]
+![[Pasted image 20250626143714.png]]
+![[Pasted image 20250626143723.png]]
+![[Pasted image 20250626143738.png]]
+
+## 🟢 Derivate notevoli
+
+![[Pasted image 20250626143913.png]]
+![[Pasted image 20250626143935.png]]
+![[Pasted image 20250626143945.png]]
+
+
+## 🟢 Integrali notevoli
+
+![[Pasted image 20250626144142.png]]
+![[Pasted image 20250626144203.png]]
+
+
+## 🟢 Sviluppi di taylor/maclaurin
+
+Sviluppi di maclaurin con $x \to 0$ 
+
+![[Pasted image 20250626144300.png]]
+
+
+![[Pasted image 20250626144445.png]]
+
