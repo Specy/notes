@@ -1,3 +1,9 @@
+---
+title: "Modello Relazionale"
+description: "Definizioni di dominio, relazione, schema e tupla nel modello relazionale; vincoli di integrità intra e inter-relazionali, superchiave, chiave primaria e chiave esterna."
+type: lecture
+---
+
 # Definizioni
 
 ## Dominio

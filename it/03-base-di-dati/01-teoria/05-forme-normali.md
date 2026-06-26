@@ -1,3 +1,9 @@
+---
+title: "Forme Normali"
+description: "Dipendenze funzionali, prima, seconda e terza forma normale (1NF, 2NF, 3NF) e forma normale di Boyce-Codd; decomposizione senza perdita per eliminare ridondanza e anomalie."
+type: lecture
+---
+
 Una forma normale è una proprietà che deve essere soddisfatta dagli attributi di ogni schema di relazione in un database, esse garantiscono la "qualità" di un database, perchè quando non nomralizzato, un database può contenere ridondanza e crea problemi in fase di aggiornamento dei dati
 
 Le principali problematiche sono date dalla Ridondanza, che da anomalie di aggiornamento, cancellazione e inserimento.

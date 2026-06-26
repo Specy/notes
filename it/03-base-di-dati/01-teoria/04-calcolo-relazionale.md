@@ -1,3 +1,9 @@
+---
+title: "Calcolo Relazionale"
+description: "Rappresentazione alternativa all'algebra relazionale tramite calcolo su domini e calcolo su ennuple con dichiarazioni di range; esempi di query e il concetto di chiusura transitiva."
+type: lecture
+---
+
 Possiamo rappresentare l'algebra relazionale usando il calcolo relazionale, esso ha due varianti 
 - [[#Calcolo relazionale su domini]]
 - [[#Calcolo su ennuple con dichiarazioni di range]]
