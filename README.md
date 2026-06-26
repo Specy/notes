@@ -1,13 +1,12 @@
-# Learn — university notes
+# Learn
 
-A public, browsable website of my university computer-science notes, live at
+A public website of my university computer-science notes, live at
 **[learn.specy.app](https://learn.specy.app)**.
 
 It turns an Obsidian vault of lecture notes into a fast, themeable course/lecture
 site for students: pick a subject, read the notes, with full math, diagrams,
 callouts and code rendering. The content is currently in Italian; the site is
-built i18n-ready (an English content root can be added later with no code
-changes).
+built i18n-ready (an English content root can be added later).
 
 ## Repository layout
 
