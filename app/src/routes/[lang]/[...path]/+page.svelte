@@ -12,21 +12,26 @@
 
 	const keywords = $derived(
 		(() => {
-			if (data.kind !== "note") return [];
-			const node = data.node as any;
-			const raw = node.frontmatter?.topics || node.frontmatter?.tags || node.frontmatter?.keywords;
-			if (!raw) return [];
-			if (Array.isArray(raw)) return raw.map(String);
-			if (typeof raw === "string") return raw.split(",").map((s) => s.trim());
-			return [];
-		})()
-	);
+			if (data.kind !== "note") return []
+			const node = data.node as any
+			const raw =
+				node.frontmatter?.topics ||
+				node.frontmatter?.tags ||
+				node.frontmatter?.keywords
+			if (!raw) return []
+			if (Array.isArray(raw)) return raw.map(String)
+			if (typeof raw === "string") return raw.split(",").map((s) => s.trim())
+			return []
+		})(),
+	)
 </script>
 
 <SEO
 	title={data.node.title}
 	description={data.node.description}
-	image={data.kind === "folder" ? data.node.image : (data.node as any).frontmatter?.image}
+	image={data.kind === "folder"
+		? data.node.image
+		: (data.node as any).frontmatter?.image}
 	type={data.kind === "folder" ? "website" : "article"}
 	lang={data.lang}
 	{keywords}
@@ -158,5 +163,11 @@
 		color: var(--muted);
 		font-size: 0.95rem;
 		margin-top: 0.15rem;
+	}
+
+	@media screen and (max-width: 768px) {
+		.article {
+			padding: 0 !important;
+		}
 	}
 </style>

@@ -354,7 +354,7 @@ html[data-theme="dark"] .excalidraw-dark {
 
 @media screen and (max-width: 768px) {
   .article {
-    padding: 0;
+    padding: 0 0.8rem;
     margin: 1rem auto 3rem;
   }
 }
