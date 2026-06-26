@@ -1,3 +1,8 @@
+---
+title: "Introduzione all'Intelligenza Artificiale"
+description: "Panoramica storica e concettuale dell'AI: definizioni, tipologie (Narrow AI vs AGI), tecniche principali (AI simbolica, machine learning, deep learning) e applicazioni in visione artificiale, NLP e robotica."
+type: lecture
+---
 ### **Definizione e Obiettivi dell'AI**
 
 L'intelligenza artificiale (AI) è il campo dell'informatica che si occupa di sviluppare sistemi in grado di imitare comportamenti umani intelligenti, come l'apprendimento, il ragionamento e l'interazione con l'ambiente. Gli obiettivi principali dell'AI includono:

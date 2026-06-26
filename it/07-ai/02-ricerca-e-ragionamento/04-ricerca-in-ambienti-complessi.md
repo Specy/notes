@@ -1,3 +1,8 @@
+---
+title: "Ricerca in Ambienti Complessi"
+description: "Ricerca in ambienti parzialmente osservabili e non deterministici tramite belief state, alberi AND-OR e piani condizionali; trattamento di problemi sensorless e con osservazioni parziali."
+type: lecture
+---
 Fino ad ora abbiamo lavorato nella soluzione di problemi in ambienti completamente "osservabili" e deterministici. Questo ci permette di pensare "mi trovo in stato $s_1$  se faccio azione $a$ arriverò in stato $s_2$". 
 
 Se ci troviamo invece in un ambiente "parzialmente osservabile", allora l'agente non sa con certezza in quale stato si trova

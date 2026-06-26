@@ -1,3 +1,8 @@
+---
+title: "Ricerca Locale e Algoritmi Evolutivi"
+description: "Algoritmi di ricerca locale (hill climbing, simulated annealing, local beam search) e algoritmi evolutivi per la massimizzazione di funzioni obiettivo in spazi grandi o continui senza memoria del percorso."
+type: lecture
+---
 Gli algoritmi di ricerca locale operano dallo stato iniziale, senza tenere traccia degli stati o percorsi che sono stati raggiunti. 
 
 Vuol dire che gli algoritmi di ricerca locale potrebbero non esplorare mai una porzione dello spazio che ha la soluzione, che li rende molto differenti dagli algoritmi precedentemente visti. Gli algoritmi che abbiamo visto sono chiamati "sistematici", cioè che è sempre possibile raggiungere un qualsiasi stato che è connesso tramite un percorso, allo stato iniziale.

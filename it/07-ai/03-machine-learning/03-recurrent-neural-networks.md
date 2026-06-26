@@ -1,3 +1,8 @@
+---
+title: "Recurrent Neural Networks (RNN)"
+description: "Modellazione di sequenze con le RNN: sequence modeling, NLP, architettura ricorrente con hidden state, training via BPTT, problemi di vanishing gradient e soluzione con le LSTM a porte di input/output/forget."
+type: lecture
+---
 
 # Sequence modeling
 

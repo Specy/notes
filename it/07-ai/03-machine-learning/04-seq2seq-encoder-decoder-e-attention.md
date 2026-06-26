@@ -1,3 +1,8 @@
+---
+title: "Seq2Seq, Encoder-Decoder e Attention"
+description: "Architettura sequence-to-sequence con encoder-decoder RNN per traduzione automatica e generazione; meccanismo di attention per superare il bottleneck informativo; architettura transformer con multi-head self-attention."
+type: lecture
+---
 # Seq2Seq
 
 Il Sequence to Sequence modeling è il task che mappa una sequenza in input, ad una sequenza in output, senza alcuna assunzione sulla lunghezza delle due sequenze. 

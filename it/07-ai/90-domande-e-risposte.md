@@ -1,3 +1,8 @@
+---
+title: "Domande e risposte per l'esame"
+description: "Raccolta di domande tipiche d'esame con relative risposte su agenti intelligenti, algoritmi di ricerca, CSP, giochi, logica proposizionale e primo ordine, machine learning e reti neurali."
+type: exam
+---
 ### Descrivere informalmente e brevemente il concetto di agente intelligente. (4-5 frasi)
 Un agente intelligente utilizza dei sensori (percept) e la conoscenza del mondo in cui si trova per raggiungere un "goal" prefissato tramite delle azioni che modificano il proprio stato nel mondo.
 ### Cosa s'intende per 'percept' e 'percept sequence'? (2-3 frasi)

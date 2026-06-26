@@ -1,3 +1,8 @@
+---
+title: "Reti Neurali Artificiali e Deep Learning"
+description: "Architettura e training delle reti neurali artificiali: percettrone, multilayer perceptron (MLP), funzioni di attivazione (ReLU, sigmoidea, softmax), loss function, gradient descent e back propagation."
+type: lecture
+---
 # Reti neurali
 
 Le reti neurali, o ANN (Artificial Neural Network) è un metodo di machine learning che si ispira alla struttura e funzionamento di reti neurali biologiche presenti nei cervelli degli animali. 
@@ -61,7 +66,7 @@ In entrambi i casi, il valore del percettrone si avvicina a quello desiderato $^
 Questo ciclo viene eseguito più volte, dove ogni iterazione è chiamata "epoch" (epoca). L'algoritmo terminerà se arriva ad un numero massimo di iterazioni, o quando l'errore è abbastanza piccolo.
 
 --- 
-Se abbiamo una funzione di attivazione lineare $g(\cdot)$, il percettrone corrisponde ad un modello lineare che separa linearmente i dati. Questo funziona bene se i dati sono linearamente separabili.
+Se abbiamo una funzione di attivazione lineare $g(\cdot)$, il percettrone corrisponde ad un modello lineare che separa linearmente i dati. Questo funziona bene se i dati sono linearmente separabili.
 
 ![[Pasted image 20241219222143.png]]
 

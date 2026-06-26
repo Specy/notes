@@ -1,3 +1,8 @@
+---
+title: "Algoritmi di Ricerca"
+description: "Formulazione formale dei problemi di ricerca e panoramica degli algoritmi uninformed (BFS, DFS, IDS, UCS) e informed (greedy best-first, A*) con analisi di completezza, ottimalità e complessità."
+type: lecture
+---
 # Plan ahead agent
 
 Un agente "goal-based" potrebbe richiedere una sequenza di azioni da eseguire prima di completare il goal. 

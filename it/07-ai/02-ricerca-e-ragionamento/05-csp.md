@@ -1,3 +1,8 @@
+---
+title: "Constraint Satisfaction Problems (CSP)"
+description: "Definizione formale dei CSP con variabili, domini e vincoli; algoritmi di risoluzione tramite backtracking search, propagazione dei vincoli (AC-3), coerenza locale e ricerca locale su assegnamenti completi."
+type: lecture
+---
 CSP (Constraint satisfaction problems) è un problema descritto da una serie di variabili, ed una serie di vincoli.
 Una soluzione per un CSP è un assegnamento i variabili che soddisfa tutti i vincoli.
 

@@ -1,3 +1,8 @@
+---
+title: "Rappresentazione della Conoscenza e Ragionamento"
+description: "Knowledge representation and reasoning (KRR): agenti basati sulla conoscenza, logica proposizionale, inferenza tramite model checking e resolution, clausole di Horn, e logica del primo ordine con predicati e quantificatori."
+type: lecture
+---
 La KRR (Knowledge representation and reasoning) è un sottocampo dell'AI dedicata a rappresentare informazioni sul mondo, che possono essere usati da sistemi AI per risolvere dei compiti.
 
 Agenti che possono effettuare KRR sono chiamati "knowledge-base agents", e se usano logica per compiere il KRR, sono chiamati "logical agents"
@@ -100,12 +105,12 @@ Semantica:
 
 ## Esempio KB in logica proposizionale:
 
-- Sintomo di “febbre alta” rappresentato dal simbolo proposizionale $T$.  
-- Sintomo di “tosse” rappresentato dal simbolo proposizionale $C$.  
-- Sintomo di “catarro colorato” rappresentato dal simbolo proposizionale $P$.  
-- “Infezione generica” rappresentata dal simbolo proposizionale $F$.  
-- “Infezione batterica” rappresentata dal simbolo proposizionale $B$.  
-- Trattamento di “somministrare antibiotico” rappresentato dal simbolo proposizionale $A$.
+- Sintomo di "febbre alta" rappresentato dal simbolo proposizionale $T$.  
+- Sintomo di "tosse" rappresentato dal simbolo proposizionale $C$.  
+- Sintomo di "catarro colorato" rappresentato dal simbolo proposizionale $P$.  
+- "Infezione generica" rappresentata dal simbolo proposizionale $F$.  
+- "Infezione batterica" rappresentata dal simbolo proposizionale $B$.  
+- Trattamento di "somministrare antibiotico" rappresentato dal simbolo proposizionale $A$.
 
 - $C \land T \Rightarrow F$ ("se tosse e febbre alta, allora infezione").  
 - $P \land F \Rightarrow B$ ("se catarro colorato e infezione, allora infezione batterica").  
