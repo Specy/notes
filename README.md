@@ -130,3 +130,12 @@ The vault opens directly in Obsidian. Recommended community plugins:
 
 Optional: periodically clear unused images from the per-course `attachments/`
 folders.
+
+## License
+
+Licensed under the **GNU Affero General Public License v3.0 or later** — see
+[LICENSE](LICENSE). You're free to use, study, modify and share it; but because
+AGPL §13 covers network use, anyone who runs a modified version as a service
+must make their modified source available to its users.
+
+© 2026 Specy
