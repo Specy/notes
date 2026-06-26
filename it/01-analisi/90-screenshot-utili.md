@@ -1,3 +1,8 @@
+---
+title: Screenshot Utili
+description: Raccolta di screenshot delle formule e definizioni principali del corso, organizzati per argomento (successioni, funzioni, derivate, integrali).
+type: resource
+---
 # Successioni
 
 ![[Pasted image 20250618114351.png]]
@@ -212,4 +217,3 @@
 ![[Pasted image 20250623113256.png]]
 ![[Pasted image 20250623115013.png]]
 ![[Pasted image 20250623121017.png]]
-

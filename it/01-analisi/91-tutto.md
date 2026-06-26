@@ -1,3 +1,8 @@
+---
+title: Tutto
+description: Riepilogo completo del corso di Analisi Matematica, con definizioni, teoremi ed esempi su serie, successioni, limiti, derivate, studio di funzione, integrali e funzioni a due variabili.
+type: summary
+---
 # Serie, Successioni e limiti
 
 ## Tipi di successioni
