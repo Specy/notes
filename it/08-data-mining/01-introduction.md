@@ -1,3 +1,9 @@
+---
+title: "Introduction to Data Mining"
+description: "Overview of data mining as a discipline: categories of problems (association, clustering, classification, outlier detection), data types, dependency-oriented data, big data fundamentals, and scalability challenges."
+type: lecture
+---
+
 # What is data mining
 Data mining is the study of:
 - Collecting

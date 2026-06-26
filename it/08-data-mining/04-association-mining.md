@@ -1,3 +1,9 @@
+---
+title: "Association Mining"
+description: "Covers frequent itemset mining and association rule generation, including support, confidence, and interest metrics, along with efficient algorithms: A-Priori, PCY, Multi-Stage, Multi-Hash, and SON for distributed datasets."
+type: lecture
+---
+
 Association mining is the problem of finding a mapping between many to many kinds of things
 
 # Frequent itemsets

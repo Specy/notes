@@ -1,3 +1,9 @@
+---
+title: "Data Preparation"
+description: "Covers the multistage data preparation pipeline: feature extraction, data type portability, cleaning (missing values, normalization), and data reduction techniques including sampling, feature selection, and dimensionality reduction."
+type: lecture
+---
+
 When collecting data we have issues where real datapoints are missing, inconsistent or erroneous. We need to process the data in a phase called **data preparation** which useful features need to be extracted from those different data sources
 
 It is formed by a multistage process:
