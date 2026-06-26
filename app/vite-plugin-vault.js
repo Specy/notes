@@ -80,10 +80,15 @@ export async function buildManifest(vaultDir, assetDestDir) {
   // Walk image/svg files and copy each with a hashed name.
   const assetPaths = await walkAssets(vaultDir);
   const assets = {};
+  const assetSources = {}; // basename -> absSrc for collision reporting
   for (const absSrc of assetPaths) {
     const basename = path.basename(absSrc);
+    if (assets[basename] !== undefined) {
+      console.warn(`[vault] asset basename collision: "${basename}" — "${absSrc}" overwrites "${assetSources[basename]}". Rename one to avoid broken image links.`);
+    }
     const publicUrl = await copyAsset(absSrc, assetDestDir);
     assets[basename] = publicUrl;
+    assetSources[basename] = absSrc;
   }
 
   return { files, assets };
@@ -104,7 +109,8 @@ export function vaultPlugin() {
     configureServer(server) {
       server.watcher.add(VAULT_DIR);
       const onChange = (f) => {
-        if (!f.startsWith(VAULT_DIR)) return;
+        const rel = path.relative(VAULT_DIR, path.resolve(f));
+        if (rel.startsWith('..') || path.isAbsolute(rel)) return;
         const mod = server.moduleGraph.getModuleById(RESOLVED);
         if (mod) server.moduleGraph.invalidateModule(mod);
         server.ws.send({ type: 'full-reload' });

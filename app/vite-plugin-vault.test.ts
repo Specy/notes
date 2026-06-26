@@ -34,4 +34,23 @@ describe('buildManifest', () => {
     const result = await buildManifest('/nonexistent/path/that/does/not/exist', assetsOut);
     expect(result).toEqual({ files: [], assets: {} });
   });
+
+  it('normalizes CRLF line endings in markdown content', async () => {
+    const crlfVault = path.join(path.dirname(vault), 'crlf-vault');
+    const crlfAssetsOut = path.join(path.dirname(vault), 'crlf-out');
+    await mkdir(crlfVault, { recursive: true });
+    await writeFile(
+      path.join(crlfVault, 'crlf.md'),
+      '---\r\ntitle: CRLF Test\r\n---\r\nline one\r\nline two\r\n',
+    );
+    try {
+      const { files } = await buildManifest(crlfVault, crlfAssetsOut);
+      const node = files.find((f) => f.relPath === 'crlf.md');
+      expect(node).toBeDefined();
+      expect(node!.content).not.toContain('\r');
+    } finally {
+      await rm(crlfVault, { recursive: true, force: true });
+      await rm(crlfAssetsOut, { recursive: true, force: true }).catch(() => {});
+    }
+  });
 });
