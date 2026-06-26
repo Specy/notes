@@ -142,7 +142,7 @@
 		display: block;
 		padding: 0.6rem 0.9rem;
 		border-radius: 0.5rem;
-		background: color-mix(in srgb, var(--secondary) 70%, transparent);
+		background: color-mix(in srgb, var(--secondary) 50%, transparent);
 		box-shadow: 0 1px 3px var(--shadow-color);
 		transition:
 			background 0.2s,

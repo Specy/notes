@@ -84,7 +84,7 @@
 		onclick={onSelect}
 	>
 		<span class="order" class:active={activePath === node.path}>
-			{node.order}
+			{String(node.order).padStart(2, '0')}
 		</span>
 		<span class="note-title">{node.title}</span>
 	</a>
