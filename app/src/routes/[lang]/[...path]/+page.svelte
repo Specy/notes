@@ -35,7 +35,12 @@
       <h2 class="section">{t(data.lang, 'course.lectures')}</h2>
       <ol class="list">
         {#each data.groups.lectures as n}
-          <li><a href={n.url}>{n.title}</a><span>{n.description}</span></li>
+          <li>
+            <a class="list-link" href={n.url}>
+              <span class="lt">{n.title}</span>
+              <span class="ld">{n.description}</span>
+            </a>
+          </li>
         {/each}
       </ol>
     {/if}
@@ -43,7 +48,12 @@
       <h2 class="section">{t(data.lang, 'course.resources')}</h2>
       <ul class="list">
         {#each data.groups.resources as n}
-          <li><a href={n.url}>{n.title}</a><span>{n.description}</span></li>
+          <li>
+            <a class="list-link" href={n.url}>
+              <span class="lt">{n.title}</span>
+              <span class="ld">{n.description}</span>
+            </a>
+          </li>
         {/each}
       </ul>
     {/if}
@@ -79,23 +89,28 @@
     gap: 0.5rem;
     list-style: none;
     padding: 0;
+    margin: 0;
   }
-  .list li {
+  /* The whole card is the link (not just the title). */
+  .list-link {
+    display: block;
     padding: 0.6rem 0.9rem;
     border-radius: 0.5rem;
     background: color-mix(in srgb, var(--secondary) 70%, transparent);
     box-shadow: 0 1px 3px var(--shadow-color);
     transition: background 0.2s, box-shadow 0.2s;
+    color: var(--background-text);
   }
-  .list li:hover {
+  .list-link:hover {
     background: color-mix(in srgb, var(--secondary) 95%, transparent);
     box-shadow: 0 6px 18px var(--shadow-color);
   }
-  .list a {
-    color: var(--background-text);
+  .lt {
+    display: block;
     font-weight: 600;
+    color: var(--background-text);
   }
-  .list span {
+  .ld {
     display: block;
     color: var(--muted);
     font-size: 0.95rem;

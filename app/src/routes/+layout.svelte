@@ -5,6 +5,7 @@
   import { hydrateTheme } from '$lib/theme.svelte';
   import Background from '$lib/components/Background.svelte';
   import Nav from '$lib/components/Nav.svelte';
+  import PageTransition from '$lib/components/PageTransition.svelte';
 
   let { children } = $props();
 
@@ -15,5 +16,7 @@
 
 <Background>
   <Nav />
-  {@render children?.()}
+  <PageTransition>
+    {@render children?.()}
+  </PageTransition>
 </Background>

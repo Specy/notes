@@ -97,7 +97,8 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
 .callout {
   border-left: 4px solid var(--accent);
   padding: 0.7rem 1rem;
-  border-radius: 0.7rem;
+  /* Left corners square so the accent left-border stays a clean vertical line. */
+  border-radius: 0 0.7rem 0.7rem 0;
   background: #52537a1a; /* same translucent surface as code blocks */
   margin: 1rem 0;
 }
@@ -266,15 +267,24 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   margin: 1.5rem 0;
   font-size: 1rem;
   background: #52537a1a;
+  border: 1px solid var(--accent2); /* outer border */
   border-radius: 0.5rem;
   overflow: hidden;
 }
 
+/* Inner grid lines: each cell draws its bottom + right border; the table's own
+   border covers the outer edges, so drop the last column/row inner edges. */
 .md th,
 .md td {
   padding: 0.5rem 0.8rem;
   text-align: left;
   border-bottom: 1px solid var(--accent2);
+  border-right: 1px solid var(--accent2);
+}
+
+.md th:last-child,
+.md td:last-child {
+  border-right: none;
 }
 
 .md tr:last-child td {
@@ -289,6 +299,9 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
 /* ─── Article layout + hero (matches specy.app BlogLayout) ───────────────── */
 .article {
   width: 100%;
+  /* font-size drives the `ch` unit below, so 1.2rem widens the column to match
+     the 1.2rem body text (the readable measure stays ~80 characters). */
+  font-size: 1.2rem;
   max-width: calc(80ch + 2rem);
   margin: 3rem auto 6rem;
   padding: 0 1rem;
