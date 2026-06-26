@@ -64,7 +64,7 @@
     align-items: flex-end;
     text-align: right;
     padding: 0.6rem 1.8rem 0.6rem 1.2rem;
-    background: linear-gradient(to right, var(--secondary) 60%, color-mix(in srgb, var(--accent) 20%, var(--secondary)));
+    background: linear-gradient(to right, color-mix(in srgb, var(--secondary) 50%, transparent) 60%, color-mix(in srgb, var(--accent) 20%, var(--secondary)));
     clip-path: polygon(
       0 0,
       calc(100% - 1rem) 0,

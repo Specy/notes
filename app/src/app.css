@@ -236,7 +236,7 @@ html[data-theme="dark"] .excalidraw-dark {
   width: 100%;
   max-width: 40rem;
   display: block;
-  margin: 0 auto;
+  margin: 0.2rem auto;
   border-radius: 0.5rem;
 }
 
