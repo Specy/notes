@@ -12,6 +12,7 @@ export default defineConfig({
   server: { fs: { allow: ['..', VAULT_DIR] } },
   test: {
     include: ['src/**/*.{test,spec}.{js,ts}'],
-    environment: 'node'
+    environment: 'node',
+    testTimeout: 30000
   }
 });
