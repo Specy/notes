@@ -4,9 +4,6 @@ description: "Il principio di azione e reazione e la legge di gravitazione unive
 type: lecture
 lezione: 4
 titolo: Terzo principio della dinamica e gravitazione universale
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - principio di azione e reazione
   - legge di gravitazione universale

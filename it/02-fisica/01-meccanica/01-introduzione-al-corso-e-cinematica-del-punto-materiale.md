@@ -4,9 +4,6 @@ description: "Cos'è la fisica, il modello del punto materiale, il sistema di ri
 type: lecture
 lezione: 1
 titolo: Introduzione al corso e cinematica del punto materiale
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - cos'è la fisica
   - punto materiale
@@ -16,11 +13,6 @@ argomenti:
 ---
 
 # Lezione 1: Introduzione e cinematica del punto materiale
-
-> [!info] Informazioni dal corso
-> **Docente:** Gabriele Curci, DSFC (Dipartimento di Scienze Fisiche e Chimiche)
-> **Ufficio:** piano terra, corridoio Fisica dell'Atmosfera, stanza **B.0.038**
-> **Libro di testo:** Mazzoldi, Nigro, Voci, *Elementi di Fisica: Meccanica e Termodinamica*
 
 > [!abstract] In questa lezione
 > - Cos'è la fisica e come è organizzata (principi, cinematica)

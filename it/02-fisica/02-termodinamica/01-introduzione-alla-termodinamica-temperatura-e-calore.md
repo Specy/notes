@@ -4,9 +4,6 @@ description: "Sistema termodinamico e variabili di stato, il principio zero e la
 type: lecture
 lezione: 15
 titolo: Introduzione alla termodinamica, temperatura e calore
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - sistema termodinamico
   - variabili di stato

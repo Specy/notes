@@ -4,9 +4,6 @@ description: "Il moto parabolico come composizione di un moto orizzontale unifor
 type: lecture
 lezione: 9
 titolo: Il moto parabolico
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - moto parabolico
   - composizione dei moti

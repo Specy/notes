@@ -4,9 +4,6 @@ description: "Il lavoro della forza peso e la sua indipendenza dal percorso, il 
 type: lecture
 lezione: 8
 titolo: Lavoro della forza peso, piano inclinato ed energia
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - lavoro della forza peso
   - indipendenza dal percorso

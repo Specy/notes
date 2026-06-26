@@ -4,9 +4,6 @@ description: "Il primo principio applicato alle quattro trasformazioni, l'adiaba
 type: lecture
 lezione: 19
 titolo: Trasformazioni termodinamiche, cicli e macchine termiche
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - trasformazione adiabatica
   - trasformazione isoterma

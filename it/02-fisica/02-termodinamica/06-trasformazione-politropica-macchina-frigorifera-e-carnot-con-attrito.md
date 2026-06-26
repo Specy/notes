@@ -4,9 +4,6 @@ description: "La trasformazione politropica che unifica le quattro trasformazion
 type: lecture
 lezione: 20
 titolo: Trasformazione politropica, macchina frigorifera e Carnot con attrito
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - trasformazione politropica
   - calore molare generico

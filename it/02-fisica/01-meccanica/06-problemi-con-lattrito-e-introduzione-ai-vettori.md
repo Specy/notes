@@ -4,9 +4,6 @@ description: "Problemi con l'attrito dinamico e introduzione ai vettori: modulo,
 type: lecture
 lezione: 6
 titolo: Problemi con l'attrito e introduzione ai vettori
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - attrito dinamico e coefficiente
   - corpo su parete verticale

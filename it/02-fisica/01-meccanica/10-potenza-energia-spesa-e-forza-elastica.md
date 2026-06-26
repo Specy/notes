@@ -4,9 +4,6 @@ description: "La potenza e la sua unità (il watt), problemi sull'energia spesa,
 type: lecture
 lezione: 10
 titolo: Potenza, energia spesa e forza elastica
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - potenza
   - watt e caloria

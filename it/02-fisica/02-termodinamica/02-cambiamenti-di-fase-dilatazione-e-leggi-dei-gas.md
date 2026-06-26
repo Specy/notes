@@ -4,9 +4,6 @@ description: "I cambiamenti di fase con il calore latente, i modi di scambio del
 type: lecture
 lezione: 16
 titolo: Cambiamenti di fase, dilatazione e leggi dei gas
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - cambiamenti di fase
   - calore latente
