@@ -1,3 +1,9 @@
+---
+title: "Introduzione ai Database e ai DBMS"
+description: "Architettura ANSI-SPARC a tre livelli, proprietà ACID delle transazioni, componenti di un DBMS e i relativi gestori (accessi, query, memoria, concorrenza, affidabilità)."
+type: lecture
+---
+
 # Architettura ANSI-SPARC
 La commissione SPARC dell'ANSI propose un modello il cui scopo era quello di garantire un isolamento tra dati e programmi che operano su di esso, è un architettura a 3 livelli rappresentati da:
 1) **Livello esterno**: La vista di un utente del database descrive ciò che è di interesse al singolo utente, esclude dati di cui non ha bisogno o di cui non ha accesso, possono esserci infinite viste 

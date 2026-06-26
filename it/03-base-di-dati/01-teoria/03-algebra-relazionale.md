@@ -1,3 +1,9 @@
+---
+title: "Algebra Relazionale"
+description: "Operatori dell'algebra relazionale (unione, intersezione, differenza, selezione, proiezione, join naturale, join esterno, theta join, equi join) con esempi e regole di equivalenza."
+type: lecture
+---
+
 L'algebra relazionale è un insieme di operatori su relazioni che producono altre relazioni, ed essi possono essere composti insieme.
 
 Gli operatori sono:
@@ -150,4 +156,3 @@ $$
 \huge{\sigma_{Capo='leoni'}(\pi_{Impiegato, \ Capo}(Afferenza \ JOIN \ Direzione))}
 $$
 Il lato positivo delle viste è che possono essere definite dall'utente del database, in modo da prendere i dati di cui ha bisogno in quel momento, e questa tecnica non influisce sull'efficienza delle query dato che verranno ottimizzate. 
-

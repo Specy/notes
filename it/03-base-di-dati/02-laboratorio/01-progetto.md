@@ -1,3 +1,9 @@
+---
+title: "Progetto Collectors"
+description: "Progetto di laboratorio: database per la gestione di collezioni di dischi con progettazione concettuale, logica e fisica in MySQL, incluse procedure, trigger, funzioni e interfaccia grafica SvelteKit."
+type: resource
+---
+
 # Traccia 
 
 Il database *Collectors* memorizza informazioni relative a collezioni di dischi (anche se lo stesso tipo di database potrebbe adattarsi quasi a qualunque tipo di collezione, useremo i dischi come caso di studio in modo da poter aggiungere più dettagli alla specifica).
@@ -566,7 +572,7 @@ END$
 
 #### Funzionalità 8
 
-> Ricerca di dischi in base a nomi di autori/compositori/interpreti e/o titoli. Si potrà decidere di includere nella ricerca le collezioni di un certo collezionista e/o quelle condivise con lo stesso collezionista e/o quelle pubbliche. _(Suggerimento: potete realizzare diverse query in base alle varie combinazioni di criteri di ricerca. Usate la UNION per unire i risultati delle ricerche effettuate sulle collezioni private, condivise e pubbliche)_
+> Ricerca di dischi in base a nomi di autori/compositori/interpreti e/o titoli. Si potrà decidere di includere nella ricerca le collezioni di un certo collezionista e/o quelle condivise con lo stesso collezionista e/o quelle pubbliche. _(Suggerimento: potete realizzare diverse query in base alle varie combinazioni di criteri di ricerca. Usate la UNION per unire i risultati delle ricerche effettuate sulle collezioni private, condivise e pubbliche)_
 
 ```sql
 CREATE PROCEDURE search_discs(
@@ -617,7 +623,7 @@ END$
 
 #### Funzionalità 9
 
-> Verifica della visibilità di una collezione da parte di un collezionista. _(Suggerimento: una collezione è visibile a un collezionista se è sua, condivisa con lui o pubblica)_
+> Verifica della visibilità di una collezione da parte di un collezionista. _(Suggerimento: una collezione è visibile a un collezionista se è sua, condivisa con lui o pubblica)_
 
 ```sql
 CREATE FUNCTION is_collection_visible_by_collector(

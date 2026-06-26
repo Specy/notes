@@ -1,3 +1,9 @@
+---
+title: "Tecnologie per Sistemi di Database"
+description: "Strutture di file (heap, ordinati, hash, indici B+ Tree, bitmap), gestione della memoria e dei buffer, ottimizzazione delle query, controllo della concorrenza (lock, 2PL, timestamp), gestione dell'affidabilità, log e ripristino."
+type: lecture
+---
+
 ![[Pasted image 20230709110711.png]]
 
 # Gestore di metodi di accesso e file
@@ -101,7 +107,7 @@ Un euristica fondamentale dell'ottimizzazione delle query è di *Push selections
 Per esempio partendo dalla query:
 
 ```sql
-SELECT * FROM DIPARTIMENTI D JOIN IMPIEGATI I ON D.Cod=I.Dip WHERE I.Cognome=‘Moscato’;
+SELECT * FROM DIPARTIMENTI D JOIN IMPIEGATI I ON D.Cod=I.Dip WHERE I.Cognome='Moscato';
 ```
 
 Abbiamo l'equivalente forma algebrica come:
@@ -394,5 +400,3 @@ Ci sono due tipologie di sincronizzazione tra master e slave:
 
 - **Sincrona**: Una modifica nel master modifica immediatamente anche tutti gli slave, facendo uso di opportuni protocolli tipo il 2PC.
 - **Asincrona**: Periodicamente vengono prelevate le modifiche effettuate al master e replicate negli slave
-
-

@@ -1,3 +1,9 @@
+---
+title: "Basi di Dati Direzionali e Data Warehouse"
+description: "Sistemi direzionali e operativi a confronto (OLTP vs OLAP), architettura del Data Warehouse con ETL, staging e data mart, analisi multidimensionale MOLAP/ROLAP, KDD e schemi a stella."
+type: lecture
+---
+
 ![[Pasted image 20230710123803.png]]
 
 - **Livello direzionale**: si occupa delle attività necessarie alla definizione di obiettivi da raggiungere e alle strategie da intraprendere per perseguirli 
