@@ -55,7 +55,6 @@
     border-radius: 50%;
     background: #52537a1a;
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--accent2);
     box-shadow: 0 4px 12px var(--shadow-color);
     display: flex;
