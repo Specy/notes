@@ -13,7 +13,7 @@ topics:
 
 # Lezione 12: Esercizi d'esame e corpi collegati
 
-📎 Lezione precedente: [[ripasso-generale-ed-energia-potenziale]]
+
 
 > [!abstract] In questa lezione
 > - **Proiettile e bersaglio mobile**: moto parabolico più moto uniforme
@@ -207,6 +207,3 @@ $$mg\,h_D = \frac{1}{2}m\,v_B^2 \;\Longrightarrow\; h_D = \frac{v_B^2}{2g} = \fr
 > 2. Nel sistema di corpi collegati, perché le tensioni "spariscono" quando si sommano le tre equazioni?
 > 3. Per la massa sulla molla, perché la velocità è massima all'equilibrio e non nel punto più basso?
 
----
-
-📎 Lezione precedente: [[ripasso-generale-ed-energia-potenziale]] · Prossima lezione: [[il-moto-armonico-semplice]]

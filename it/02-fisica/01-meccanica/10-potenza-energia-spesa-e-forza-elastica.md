@@ -14,7 +14,7 @@ topics:
 
 # Lezione 10: Potenza e forza elastica
 
-📎 Lezione precedente: [[il-moto-parabolico]]
+
 
 > [!abstract] In questa lezione
 > - La **potenza**: $P = \dfrac{dW}{dt} = \vec F\cdot\vec v$, con la sua unità (il watt)
@@ -194,6 +194,3 @@ $$x_{max} = \sqrt{\frac{m\,v_C^2}{k}} = \sqrt{\frac{1{,}3\cdot 4{,}3^2}{200}} = 
 > 2. Due molle hanno $k$ diverso. A parità di energia immagazzinata, quale si deforma di più?
 > 3. Nel problema della molla, se la velocità d'urto raddoppia, di quanto aumenta la compressione massima?
 
----
-
-📎 Lezione precedente: [[il-moto-parabolico]] · Prossima lezione: [[ripasso-generale-ed-energia-potenziale]]

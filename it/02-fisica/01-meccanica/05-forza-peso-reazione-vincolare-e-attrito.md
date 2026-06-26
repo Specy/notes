@@ -13,7 +13,7 @@ topics:
 
 # Lezione 5: Forza peso, reazione vincolare e attrito
 
-📎 Lezione precedente: [[terzo-principio-della-dinamica-e-gravitazione-universale]]
+
 
 > [!abstract] In questa lezione
 > - La **forza peso** $P = mg$ e l'unità di forza, il **newton**
@@ -263,6 +263,3 @@ Il grafico riassume tutto: finché si spinge poco, l'attrito statico cresce insi
 > 2. Spingi una cassa con forza crescente e a un certo punto parte di scatto, poi sembra più facile tenerla in moto. Quale proprietà dei coefficienti d'attrito spiega questo "scatto"?
 > 3. L'attrito massimo dipende da $N$, non dall'area di contatto. Una gomma larga e una stretta, a parità di peso, danno lo stesso attrito massimo: ti convince? Dove sta l'eventuale trucco nei pneumatici reali?
 
----
-
-📎 Lezione precedente: [[terzo-principio-della-dinamica-e-gravitazione-universale]] · Prossima lezione: [[problemi-con-lattrito-e-introduzione-ai-vettori]]

@@ -13,7 +13,7 @@ topics:
 
 # Lezione 7: Forze inclinate, lavoro ed energia cinetica
 
-📎 Lezione precedente: [[problemi-con-lattrito-e-introduzione-ai-vettori]]
+
 
 > [!abstract] In questa lezione
 > - Scomporre una **forza inclinata** e stabilire se un corpo si mette in moto
@@ -222,6 +222,3 @@ $$v_C = \sqrt{\frac{2\,W_{BC}}{m} + v_B^2} = \sqrt{\frac{2\cdot 166}{2{,}7} + 4{
 > 2. Un corpo si muove a velocità costante: quanto vale il lavoro totale delle forze su di esso? (Usa il teorema dell'energia cinetica.)
 > 3. Spingi una cassa per $10\ \text{m}$ e l'attrito compie $-50\ \text{J}$ di lavoro. Cosa è successo a quell'energia? (Anticipazione delle prossime lezioni.)
 
----
-
-📎 Lezione precedente: [[problemi-con-lattrito-e-introduzione-ai-vettori]] · Prossima lezione: [[lavoro-della-forza-peso-piano-inclinato-ed-energia]]

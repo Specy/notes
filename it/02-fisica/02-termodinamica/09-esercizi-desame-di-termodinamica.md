@@ -13,7 +13,7 @@ topics:
 
 # Lezione 23: Esercizi d'esame di termodinamica
 
-📎 Lezione precedente: [[teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]]
+
 
 > [!abstract] In questa lezione
 > Una raccolta di **esercizi d'esame** che mette insieme tutta la termodinamica:
@@ -147,6 +147,3 @@ A chiusura del corso, le relazioni fondamentali da tenere insieme:
 > 2. Come si riconosce, da un rendimento dato, se un gas è monoatomico o biatomico?
 > 3. Perché conviene sempre identificare il **tipo** di ogni trasformazione prima di iniziare i conti di un ciclo?
 
----
-
-📎 Lezione precedente: [[teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]] · 🎓 Fine del corso

@@ -16,7 +16,7 @@ topics:
 
 # Lezione 16: Cambiamenti di fase, dilatazione e leggi dei gas
 
-📎 Lezione precedente: [[introduzione-alla-termodinamica-temperatura-e-calore]]
+
 
 > [!abstract] In questa lezione
 > - I **cambiamenti di fase** avvengono a temperatura costante: il **calore latente** $Q = m\lambda$
@@ -204,6 +204,3 @@ $$P = P_0\,(1 + \beta\,T[°\text{C}]), \qquad \beta = \alpha = \frac{1}{273{,}15
 > 2. Perché il lavoro di un gas dipende dal percorso seguito nel piano $P$–$V$ e non solo dagli stati iniziale e finale?
 > 3. Perché le leggi dei gas si scrivono in modo più semplice usando i kelvin invece dei gradi celsius?
 
----
-
-📎 Lezione precedente: [[introduzione-alla-termodinamica-temperatura-e-calore]] · Prossima lezione: [[equazione-di-stato-dei-gas-perfetti-e-trasformazioni]]

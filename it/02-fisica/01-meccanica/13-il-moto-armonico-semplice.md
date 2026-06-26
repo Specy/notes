@@ -13,7 +13,7 @@ topics:
 
 # Lezione 13: Il moto armonico semplice
 
-📎 Lezione precedente: [[esercizi-desame-e-sistemi-di-corpi-collegati]]
+
 
 > [!abstract] In questa lezione
 > - L'**equazione del moto armonico**: $\ddot x + \omega^2 x = 0$, con $\omega^2 = k/m$
@@ -212,6 +212,3 @@ $$v_{max} = \omega X = \pi\cdot 0{,}15 \approx 0{,}47\ \frac{\text{m}}{\text{s}}
 > 2. In quali punti dell'oscillazione l'energia è tutta cinetica, e in quali tutta elastica?
 > 3. Se si raddoppia la massa attaccata alla stessa molla, come cambia il periodo?
 
----
-
-📎 Lezione precedente: [[esercizi-desame-e-sistemi-di-corpi-collegati]] · Prossima lezione: [[esonero-moto-circolare-e-pendolo-semplice]]

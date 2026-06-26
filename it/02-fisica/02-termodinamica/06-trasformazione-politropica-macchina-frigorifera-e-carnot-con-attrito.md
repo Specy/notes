@@ -14,7 +14,7 @@ topics:
 
 # Lezione 20: Politropiche, macchine frigorifere e attrito
 
-📎 Lezione precedente: [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]]
+
 
 > [!abstract] In questa lezione
 > - La **trasformazione politropica** $PV^k = \text{cost}$ che **unifica** le quattro trasformazioni
@@ -147,6 +147,3 @@ cioè circa il **66% del rendimento ideale** ($\eta_{reale} \approx 0{,}66\,\eta
 > 2. Perché il coefficiente di prestazione di un frigorifero può essere maggiore di 1, mentre il rendimento di un motore è sempre minore di 1?
 > 3. In che senso l'attrito "costa" rendimento in una macchina reale?
 
----
-
-📎 Lezione precedente: [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]] · Prossima lezione: [[cicli-termodinamici-e-il-secondo-principio]]

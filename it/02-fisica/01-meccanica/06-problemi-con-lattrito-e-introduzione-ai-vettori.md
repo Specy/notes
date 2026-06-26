@@ -13,7 +13,7 @@ topics:
 
 # Lezione 6: Problemi con l'attrito e introduzione ai vettori
 
-📎 Lezione precedente: [[forza-peso-reazione-vincolare-e-attrito]]
+
 
 > [!abstract] In questa lezione
 > - Ricavare il **coefficiente d'attrito dinamico** da una decelerazione (Problema 3.1)
@@ -249,6 +249,3 @@ Questo è il grande vantaggio delle componenti: un'operazione tra vettori si rid
 > 2. Se raddoppi $F$ rispetto al minimo, di quanto cambia l'attrito statico effettivamente esercitato? (Attenzione: l'attrito statico si adatta.)
 > 3. Due vettori hanno lo stesso modulo. In quale caso la loro somma ha modulo massimo? E quando è nulla?
 
----
-
-📎 Lezione precedente: [[forza-peso-reazione-vincolare-e-attrito]] · Prossima lezione: [[forze-inclinate-lavoro-ed-energia-cinetica]]

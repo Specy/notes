@@ -13,7 +13,7 @@ topics:
 
 # Lezione 4: Azione e reazione e gravitazione universale
 
-📎 Lezione precedente: [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]]
+
 
 > [!abstract] In questa lezione
 > - Il **terzo principio** della dinamica: azione e reazione
@@ -222,6 +222,3 @@ La gravità è una forza **estremamente debole**. La sentiamo solo perché la Te
 > 2. Dimostra in generale che l'accelerazione di gravità $g$ non dipende dalla massa del corpo che cade.
 > 3. La forza gravitazionale tra Terra e Luna è enorme, eppure la Luna non "cade" sulla Terra. Come si concilia con quanto visto? (Ci torneremo studiando il moto circolare.)
 
----
-
-📎 Lezione precedente: [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]] · Prossima lezione: [[forza-peso-reazione-vincolare-e-attrito]]

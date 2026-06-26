@@ -13,7 +13,7 @@ topics:
 
 # Lezione 8: Lavoro della forza peso e piano inclinato
 
-📎 Lezione precedente: [[forze-inclinate-lavoro-ed-energia-cinetica]]
+
 
 > [!abstract] In questa lezione
 > - Il **lavoro della forza peso**: $W_P = -mg\,\Delta z$, dipende solo dal dislivello
@@ -252,6 +252,3 @@ $$v_D = \sqrt{v_C^2 + 2g\,\overline{CC'}} = \sqrt{3 + 2\cdot 10\cdot 0{,}5} = \s
 > 2. Perché sul piano inclinato l'accelerazione non dipende dalla massa del corpo?
 > 3. Nel problema del § 6, se il tratto $BC$ fosse liscio, $v_C$ sarebbe maggiore o minore? E $v_D$?
 
----
-
-📎 Lezione precedente: [[forze-inclinate-lavoro-ed-energia-cinetica]] · Prossima lezione: [[il-moto-parabolico]]

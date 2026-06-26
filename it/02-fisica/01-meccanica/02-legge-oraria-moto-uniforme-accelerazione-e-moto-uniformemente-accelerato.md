@@ -13,7 +13,7 @@ topics:
 
 # Lezione 2: Legge oraria, moto uniforme e accelerazione
 
-📎 Lezione precedente: [[introduzione-al-corso-e-cinematica-del-punto-materiale]]
+
 
 > [!abstract] In questa lezione
 > - Ripasso di **velocità media e istantanea** e idea di **legge oraria**
@@ -280,6 +280,3 @@ $$\Delta t = \frac{\Delta x}{v_m} = \frac{10}{5} = 2\ \text{s}$$
 > 2. Perché la relazione $v_2^2 - v_1^2 = 2a\,\Delta x$ è comoda quando manca il tempo? In quali dati di un problema conviene cercarla?
 > 3. La formula $v_m = \frac{v_1+v_2}{2}$ vale solo se l'accelerazione è costante. Sapresti spiegare perché non vale in generale?
 
----
-
-📎 Lezione precedente: [[introduzione-al-corso-e-cinematica-del-punto-materiale]] · Prossima lezione: [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]]
