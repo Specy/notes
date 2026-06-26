@@ -11,6 +11,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeStringify from 'rehype-stringify';
 import remarkObsidianLinks from './remarkObsidianLinks.js';
+import remarkCallouts from './remarkCallouts.js';
 
 export type LinkResolver = {
   note(target: string): string;
@@ -24,6 +25,7 @@ export function createProcessor(resolve: LinkResolver) {
     .use(remarkGfm)
     .use(remarkMath)
     .use(remarkObsidianLinks, resolve)   // [[x]] / ![[x]] BEFORE remark-rehype
+    .use(remarkCallouts)                  // > [!type] BEFORE remark-rehype
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeKatex)
