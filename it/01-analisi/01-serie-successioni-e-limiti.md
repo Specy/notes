@@ -122,7 +122,7 @@ Notiamo che:
 
 Sia $a_k \ge 0$ definitivamente, se esiste:
 $$
-\huge{q :=\lim_{k \to \infty}{\sqrt[k]{a_k}}}
+\Large{q :=\lim_{k \to \infty}{\sqrt[k]{a_k}}}
 $$
 Allora la serie $\sum_{k=0}^\infty a_k$:
 
@@ -139,7 +139,7 @@ A questo punto ci basta mettere tutto sotto radice $n$-esima e semplificare le p
 
 Sia $a_k > 0$ definitivamente, se esiste:
 $$
-\huge{q :=\lim_{k \to \infty}{\frac{a_{k+1}}{a_k}}}
+\Large{q :=\lim_{k \to \infty}{\frac{a_{k+1}}{a_k}}}
 $$
 Allora la serie $\sum_{k=0}^\infty a_k$:
 - Converge se $q < 1$

@@ -111,7 +111,7 @@ $$
 # Mixed quantitative and categorical
 To generalize the approach to mixed quantitative and categorical, we add weights based of the numeric and categorical components. The problem is deciding *how* to assign the weights. Consider two records: $\overline{X} = (\overline{X_n}, \overline{X_c})$ and  $\overline{Y} = (\overline{Y_n}, \overline{Y_c})$ where $\overline{X}_n, \overline{Y}_n$  are the subsets of *numerical* attributes, and $\overline{X}_c, \overline{Y}_c$ the subsets of categorical attributes, then the similarity between $\overline{X}, \overline{Y}$ can be defined as:
 $$
-\huge Sum(\overline{X}, \overline{Y}) = \lambda \cdot NumSum(\overline{X}_n, \overline{Y}_n) + (1 - \lambda)\cdot CatSim(\overline{X}_c, \overline{Y}_c)
+\Large Sum(\overline{X}, \overline{Y}) = \lambda \cdot NumSum(\overline{X}_n, \overline{Y}_n) + (1 - \lambda)\cdot CatSim(\overline{X}_c, \overline{Y}_c)
 $$
 The parameter $\lambda$ regulates the importance of the categorical an numerical attributes, without any domain knowledge, we could assign the value of $\lambda$ to the number of numerical attributes in the data. The proximity of **Numerical** data is often computed using *distance* function rather than *similarity*. 
 In this case we can also convert the distance values to similarity values, for a distance value of $dist$, a common approach is to use a mapping that yields a similarity value of $Sym = \dfrac{1}{1 + dist}$, or viceversa $dist = 1 - Sym$

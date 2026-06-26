@@ -8,7 +8,7 @@ type: resource
 
 ## 🟢 Note
 
-- $\huge{a^b = \left( \frac{1}{a} \right)^{-b}}$ 
+- $\Large{a^b = \left( \frac{1}{a} \right)^{-b}}$ 
 
 ## 🟢 Limiti notevoli
 

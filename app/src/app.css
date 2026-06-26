@@ -180,7 +180,7 @@ html[data-theme="dark"] .excalidraw-dark {
 
 .md p:not(.mermaid *),
 .md li:not(.mermaid *) {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   letter-spacing: 0.01em;
   line-height: 1.5;
   margin: 1.3rem 0;
@@ -344,9 +344,9 @@ html[data-theme="dark"] .excalidraw-dark {
 /* ─── Article layout + hero (matches specy.app BlogLayout) ───────────────── */
 .article {
   width: 100%;
-  /* font-size drives the `ch` unit below, so 1.2rem widens the column to match
-     the 1.2rem body text (the readable measure stays ~80 characters). */
-  font-size: 1.2rem;
+  /* font-size drives the `ch` unit below, so 1.1rem widens the column to match
+     the 1.1rem body text (the readable measure stays ~80 characters). */
+  font-size: 1.1rem;
   max-width: calc(80ch + 2rem);
   margin: 3rem auto 6rem;
   padding: 0 1rem;
@@ -423,7 +423,7 @@ html[data-theme="dark"] .excalidraw-dark {
 
   .hero-meta,
   .hero-desc {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .md h1 {

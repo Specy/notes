@@ -57,7 +57,7 @@ $$
 Allora i vincoli del nostro dominio sono: $0 \lt x \lt 2$ e $x \ne 1$ 
 E quindi:
 $$
-\huge D = (0,1) \cup (1,2)
+\Large D = (0,1) \cup (1,2)
 $$
 
 ## 🟢 Punti critici
@@ -77,7 +77,7 @@ Data una funzione $f$:
 
 - Per vedere se una funzione è simmetrica rispetto l'asse Y (funzione pari), allora deve essere vero che:
 $$
-\huge{f(x) = f(-x)}
+\Large{f(x) = f(-x)}
 $$
 - Per vedere se una funzione è simmetrica rispetto l'origine (funzione dispari), allora deve essere vero che:
 $$
@@ -122,10 +122,10 @@ Graficamente vuol dire che la distanza tra il grafico di $f$ e la retta $y = m \
 Per poterlo svolgere eseguiamo i passaggi:
 
 1) Si verifica se esiste (ed è finito) il limite: 
-   $\huge{\lim_{x \to \pm \infty} \frac{f(x)}{x}=: m}$ 
+   $\Large{\lim_{x \to \pm \infty} \frac{f(x)}{x}=: m}$ 
    E verifichiamo che non sia uguale a 0. Questa sarà la **Pendenza** dell'asintoto
 2) Se esiste $m \ne 0$, allora si verifica se esiste il limite (ed è finito):
-   $\huge{\lim_{x \to \pm \infty} (f(x) - mx})=: q$
+   $\Large{\lim_{x \to \pm \infty} (f(x) - mx})=: q$
    Che sarà l'ordinata all'origine dell'asintoto
 
 Se entrambi esistono e sono finiti, allora $y = mx + q$ è un asintoto obliquo di $f$ per $x \to \pm \infty$ 

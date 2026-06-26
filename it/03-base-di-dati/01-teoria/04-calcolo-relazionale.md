@@ -19,7 +19,7 @@ Supervisione(Capo, <u>Impiegato</u>)
 # Calcolo relazionale su domini
 Le espressioni hanno la forma:
 $$
-\huge{\{A_{1}: x_{1},..., A_{k}: x_{k} \mid f \ \}}
+\Large{\{A_{1}: x_{1},..., A_{k}: x_{k} \mid f \ \}}
 $$
 dove
 - $f$ è una formula formata da connettivi booleani e quantificatori.
@@ -32,9 +32,9 @@ La funzione $f$ predicati del tipo $\forall, \exists, \neg, =,\gt, \lt, etc...$
 seleziona Matricola, Nome, Età  di impiegato con stipendio > 40
 $$
 \begin{aligned}
-\huge{\{Matricola: m, Nome: n, Età:e \mid } \\
-\huge{Impiegati(Matricola: m, Nome: n, Età:e, Stipendio:s)} \\
-\huge{\wedge s > 40} \ \}
+\Large{\{Matricola: m, Nome: n, Età:e \mid } \\
+\Large{Impiegati(Matricola: m, Nome: n, Età:e, Stipendio:s)} \\
+\Large{\wedge s > 40} \ \}
 \end{aligned}
 $$
 Nella funzione, il "$Impiegati(Matricola: m, Nome: n, Età:e, Stipendio:s)$" vuol dire che esiste un Impiegato con matricola, nome, età e stipendio.
@@ -76,7 +76,7 @@ Cioè seleziono tutti i supervisori, e ne tolgo tutti i supervisori che hanno im
 # Calcolo su ennuple con dichiarazioni di range
 Le espressioni hanno la forma 
 $$
-\huge{ \{ TargetList \mid RangeList \mid Formula\}}
+\Large{ \{ TargetList \mid RangeList \mid Formula\}}
 $$
 dove:
 - TargetList sono i valori da selezionare e sono rappresentati dal tipo $Y:x.Z$ o $x.Z$ o anche $x.*$ 
@@ -86,9 +86,9 @@ dove:
  [[#Esempio 2]] che seleziona le matricole dei capi degli impiegati che guadagnano più di 40, in algebra sarebbe:
  $$
 \begin{aligned}
-\huge{
+\Large{
 	 \{ s.Capo \mid i(Impiegati), s(Supervisione) \mid } \\
-\huge{
+\Large{
      i.Matricola = s.Impiegato \wedge i.Stipendio \gt 40 \}
 }
 \end{aligned}
