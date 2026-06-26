@@ -1,3 +1,8 @@
+---
+title: "LLM e Generative AI"
+description: "Language modeling e Large Language Models (LLM): architettura transformer, fine-tuning, in-context learning (zero/one/few-shot), RAG (retrieval-augmented generation) e panoramica sulla Generative AI per testo, immagini e video."
+type: lecture
+---
 In generale, il compito di NLP è quello di predirre quale sarà la prossima parola in una sequenza di testo. 
 In maniera più formale, dato un vocabolario di simboli $V$, il *language modeling* impara una distribuzione di probabilità $P\left(w_1, \ldots, w_m\right)=\prod_{i=1}^m P\left(w_i \mid w_1, \ldots, w_{i-1}\right)$ su tutte le sequenze di parole $V$, questa probabilità $P$ è chiamata *language model*
 

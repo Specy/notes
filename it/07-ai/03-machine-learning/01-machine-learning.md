@@ -1,3 +1,8 @@
+---
+title: "Machine Learning"
+description: "Fondamenti del machine learning: paradigmi supervised, unsupervised, semi-supervised e reinforcement learning; classificazione e regressione, bias-varianza, cross-validation, gradient descent e minibatch SGD."
+type: lecture
+---
 Il Machine learning è un sotto campo dell'AI che ha le caratteristiche di:
 - Imparare tramite esempi
 - Costruisce ipotesi sul mondo tramite gli esempi che gli sono stati forniti

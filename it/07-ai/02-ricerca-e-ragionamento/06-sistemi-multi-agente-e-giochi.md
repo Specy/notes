@@ -1,3 +1,8 @@
+---
+title: "Sistemi Multi-Agente e Giochi"
+description: "Ricerca in ambienti multi-agente competitivi e cooperativi; algoritmo minimax per giochi zero-sum a due giocatori, alpha-beta pruning per ridurre lo spazio di ricerca, e Monte Carlo Tree Search (MCTS)."
+type: lecture
+---
 
 Molti problemi nella realtà non sono modellati tramite un singolo agente, ma con più agenti che interagiscono insieme nello stesso ambiente.
 

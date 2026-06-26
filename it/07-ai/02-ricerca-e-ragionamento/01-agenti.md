@@ -1,6 +1,11 @@
+---
+title: "Agenti Intelligenti"
+description: "Definizione formale di agente intelligente, razionalità e framework PEAS; classificazione degli ambienti (osservabilità, determinismo, episodicità) e tipologie di agenti (riflessivi, basati su modello, orientati a obiettivi, basati sull'utilità, apprendenti)."
+type: lecture
+---
 # Introduzione agli Agenti Intelligenti
 
-Gli agenti intelligenti rappresentano una delle fondamenta principali dell’intelligenza artificiale moderna. Contrariamente ai sistemi tradizionali, che seguivano regole rigide e prestabilite, gli agenti intelligenti sono progettati per essere autonomi, flessibili e adattivi. Queste caratteristiche permettono loro di interagire con ambienti dinamici, altri agenti e, in alcuni casi, con esseri umani, per risolvere problemi complessi e raggiungere obiettivi specifici.
+Gli agenti intelligenti rappresentano una delle fondamenta principali dell'intelligenza artificiale moderna. Contrariamente ai sistemi tradizionali, che seguivano regole rigide e prestabilite, gli agenti intelligenti sono progettati per essere autonomi, flessibili e adattivi. Queste caratteristiche permettono loro di interagire con ambienti dinamici, altri agenti e, in alcuni casi, con esseri umani, per risolvere problemi complessi e raggiungere obiettivi specifici.
 
 ## Motivazione e Applicazioni
 
@@ -75,7 +80,7 @@ Un robot aspirapolvere razionale:
 
 ## Progettazione degli Agenti: PEAS
 
-La progettazione di un agente richiede l’analisi dei seguenti elementi:
+La progettazione di un agente richiede l'analisi dei seguenti elementi:
 - **Performance measure**: descrive ciò che l'agente deve massimizzare (es., tempo, sicurezza, efficienza).
 - **Environment**: definisce il contesto operativo.
 - **Actuators**: elenca le azioni che l'agente può compiere.
@@ -112,4 +117,4 @@ Gli agenti possono essere classificati in base alla complessità dei loro compor
 2. **Agenti basati su modello**: mantengono uno stato interno per comprendere il contesto. Es.: un'auto tiene traccia della posizione di altri veicoli.
 3. **Agenti orientati a obiettivi**: scelgono azioni che conducono al raggiungimento di uno scopo. Es.: un taxi che pianifica il percorso più breve verso una destinazione.
 4. **Agenti basati sull'utilità**: valutano le azioni in base a una funzione di utilità, massimizzando un criterio più sofisticato rispetto agli obiettivi.
-5. **Agenti apprendenti**: migliorano le loro prestazioni attraverso l’esperienza, adattandosi a cambiamenti nell’ambiente.
+5. **Agenti apprendenti**: migliorano le loro prestazioni attraverso l'esperienza, adattandosi a cambiamenti nell'ambiente.
