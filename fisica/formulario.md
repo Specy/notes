@@ -316,9 +316,8 @@ $$\gamma = \frac{C_P}{C_V} > 1$$
 | **Isoterma** | $T$ | $nRT\ln\frac{V_B}{V_A}$ | $= L$ | $0$ |
 | **Adiabatica** | $Q=0$ | $nC_V(T_A - T_B)$ | $0$ | $nC_V\Delta T$ |
 
-- **Adiabatica — leggi di Poisson** ($Q = 0$) — legano a coppie le variabili di stato lungo un'adiabatica (espandendo, il gas si raffredda):
-$$P\,V^{\gamma} = \text{cost} \qquad T\,V^{\gamma-1} = \text{cost} \qquad P^{1-\gamma}\,T^{\gamma} = \text{cost}$$
-  La prima lega $P$ e $V$, la seconda $T$ e $V$, la terza $P$ e $T$ (si ricavano l'una dall'altra con $PV = nRT$). Per applicarle tra due stati: $P_A V_A^{\gamma} = P_B V_B^{\gamma}$ e $T_A V_A^{\gamma-1} = T_B V_B^{\gamma-1}$.
+- **Adiabatica** ($Q = 0$) — leggi della trasformazione (espandendo, il gas si raffredda):
+$$T\,V^{\gamma-1} = \text{cost} \qquad P\,V^{\gamma} = \text{cost}$$
 - **Lavoro adiabatica** (forma alternativa):
 $$L_{AB} = \frac{P_A V_A - P_B V_B}{\gamma - 1}$$
 - **Isoterma** ($\Delta U = 0$, quindi $Q = L$):
@@ -373,16 +372,16 @@ $$\Delta S_{universo} = \frac{Q}{T_1} - \frac{Q}{T_2} > 0$$
 
 ## Mappa finale della termodinamica [[L23]]
 
-| Concetto           | Relazione chiave                                           |         |                                     |
-| ------------------ | ---------------------------------------------------------- | ------- | ----------------------------------- |
-| Equazione di stato | $PV = nRT$                                                 |         |                                     |
-| Primo principio    | $\Delta U = Q - L$, con $\Delta U = nC_V\Delta T$          |         |                                     |
-| Mayer / adiabatico | $C_P = C_V + R$, $\gamma = C_P/C_V$                        |         |                                     |
-| Lavoro del gas     | $L = \int P\,dV$ (area in $P$–$V$)                         |         |                                     |
-| Adiabatica         | $PV^\gamma = \text{cost}$                                  |         |                                     |
-| Rendimento         | $\eta = 1 - \frac{                                         | Q_{ced} | }{Q_{ass}} \le 1 - \frac{T_1}{T_2}$ |
-| Secondo principio  | $\Delta S_{universo} \ge 0$                                |         |                                     |
-| Entropia (gas)     | $\Delta S = nC_V\ln\frac{T_B}{T_A} + nR\ln\frac{V_B}{V_A}$ |         |                                     |
+| Concetto           | Relazione chiave                                                                                                 |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| Equazione di stato | $PV = nRT$                                                                                                       |
+| Primo principio    | $\Delta U = Q - L$, con $\Delta U = nC_V\Delta T$                                                                |
+| Mayer / adiabatico | $C_P = C_V + R$, $\gamma = C_P/C_V$                                                                              |
+| Lavoro del gas     | $L = \int P\,dV$ (area in $P$–$V$)                                                                               |
+| Adiabatica         | $PV^\gamma = \text{cost}$                                                                                        |
+| Rendimento         | $\eta = 1 - \frac{                                         \mid Q_{ced} \mid }{Q_{ass}} \le 1 - \frac{T_1}{T_2}$ |
+| Secondo principio  | $\Delta S_{universo} \ge 0$                                                                                      |
+| Entropia (gas)     | $\Delta S = nC_V\ln\frac{T_B}{T_A} + nR\ln\frac{V_B}{V_A}$                                                       |
 
 ---
 
