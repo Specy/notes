@@ -11,7 +11,7 @@ const config = {
       fallback: undefined, precompress: false, strict: true
     }),
     paths: { base: '' },
-    prerender: { entries: ['*'], handleHttpError: 'warn', handleMissingId: 'warn' }
+    prerender: { entries: ['*'], handleHttpError: 'warn', handleMissingId: 'warn', handleUnseenRoutes: 'ignore' }
   }
 };
 export default config;
