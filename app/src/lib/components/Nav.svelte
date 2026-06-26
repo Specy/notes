@@ -21,7 +21,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 1.5rem 5rem;
+  }
+
+  @media (max-width: 1200px) {
+    .nav {
+      padding: 1rem 1rem 1rem 4rem;
+    }
   }
 
   .nav-controls {

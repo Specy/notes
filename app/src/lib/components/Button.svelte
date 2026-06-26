@@ -28,7 +28,7 @@
     font-weight: 600;
     font-size: 1rem;
     line-height: 1.3;
-    transition: filter 0.2s, border-color 0.2s;
+    transition: filter 0.2s, border-color 0.2s, box-shadow 0.2s;
   }
   .btn.start { text-align: left; }
   .btn.end { text-align: right; }

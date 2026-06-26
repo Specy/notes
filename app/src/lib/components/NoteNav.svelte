@@ -11,8 +11,8 @@
 {#if prev || next}
   <nav aria-label="Note navigation" class="note-nav">
     {#if prev}
-      <Button href={prev.path} align="start">
-        <span class="dir">← {t(lang, 'note.prev')}</span>
+      <Button href={prev.path}>
+        <span class="dir">{t(lang, 'note.prev')}</span>
         <span class="title">{prev.title}</span>
       </Button>
     {:else}
@@ -20,7 +20,7 @@
     {/if}
     {#if next}
       <Button href={next.path} align="end">
-        <span class="dir">{t(lang, 'note.next')} →</span>
+        <span class="dir">{t(lang, 'note.next')}</span>
         <span class="title">{next.title}</span>
       </Button>
     {/if}
@@ -30,27 +30,56 @@
 <style>
   .note-nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 1rem;
+    padding: 1rem;
     margin-top: 3rem;
   }
-  /* Stack the direction label above the title inside each button. */
+
+  /* Shared button overrides */
   .note-nav :global(.btn) {
+    flex:1;
+    min-width: min(calc(100vw - 1rem), 20rem);
     flex-direction: column;
-    align-items: flex-start;
     gap: 0.15rem;
-    max-width: 48%;
   }
+
+  /* Prev arrow: left-pointing notch */
+  .note-nav :global(.btn.start) {
+    align-items: flex-start;
+    padding: 0.6rem 1.2rem 0.6rem 1.8rem;
+    background: linear-gradient(to left, var(--secondary) 60%, color-mix(in srgb, var(--accent) 20%, var(--secondary)));
+    clip-path: polygon(
+      1rem 0,
+      100% 0,
+      100% 100%,
+      1rem 100%,
+      0 50%
+    );
+  }
+
+  /* Next arrow: right-pointing tip */
   .note-nav :global(.btn.end) {
     align-items: flex-end;
     text-align: right;
+    padding: 0.6rem 1.8rem 0.6rem 1.2rem;
+    background: linear-gradient(to right, var(--secondary) 60%, color-mix(in srgb, var(--accent) 20%, var(--secondary)));
+    clip-path: polygon(
+      0 0,
+      calc(100% - 1rem) 0,
+      100% 50%,
+      calc(100% - 1rem) 100%,
+      0 100%
+    );
   }
+
   .dir {
-    font-size: 0.8rem;
-    color: var(--muted);
     font-weight: 500;
+    margin-bottom: 0.5rem;
   }
   .title {
-    color: var(--accent);
+    color: var(--muted);
+    font-size: 0.9rem;
   }
 </style>
