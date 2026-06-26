@@ -35,7 +35,7 @@ export function createProcessor(resolve: LinkResolver) {
     .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
     .use(rehypeMermaid)
     .use(rehypeShiki, {
-      themes: { light: 'github-light', dark: 'github-dark' },
+      themes: { light: 'one-light', dark: 'one-dark-pro' },
       fallbackLanguage: 'text',
       defaultColor: false
     })
