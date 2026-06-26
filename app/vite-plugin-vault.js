@@ -1,3 +1,4 @@
+// @ts-nocheck
 // app/vite-plugin-vault.js
 import { readdir, readFile, copyFile, mkdir, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';

@@ -1,11 +1,12 @@
 // app/src/lib/content/remarkCallouts.ts
 import { visit } from 'unist-util-visit';
+import type { Root, Blockquote, Paragraph } from 'mdast';
 const CALLOUT = /^\[!(\w+)\]([+-]?)\s*(.*)$/;
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
 export default function remarkCallouts() {
-  return (tree: import('@types/mdast').Root) => {
-    visit(tree, 'blockquote', (node: import('@types/mdast').Blockquote) => {
+  return (tree: Root) => {
+    visit(tree, 'blockquote', (node: Blockquote) => {
       const first = node.children[0];
       if (first?.type !== 'paragraph') return;
       const t = first.children[0];
@@ -22,7 +23,7 @@ export default function remarkCallouts() {
         type: 'paragraph',
         data: { hName: 'div', hProperties: { className: ['callout-title'] } },
         children: [{ type: 'text', value: title || cap(type) }]
-      } as import('@types/mdast').Paragraph);
+      } as Paragraph);
       (node as any).data = {
         hName: 'div',
         hProperties: {

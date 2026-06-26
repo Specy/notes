@@ -77,7 +77,7 @@ export function getNodeByPath(root: FolderNode, segments: string[]): ContentNode
   let cursor: ContentNode = root;
   for (const seg of segments) {
     if (cursor.kind !== 'folder') return null;
-    const next = cursor.children.find((c) => c.slug === seg);
+    const next: ContentNode | undefined = cursor.children.find((c) => c.slug === seg);
     if (!next) return null;
     cursor = next;
   }

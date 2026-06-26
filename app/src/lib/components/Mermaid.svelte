@@ -3,7 +3,8 @@
   import { browser } from '$app/environment';
   import mermaid from 'mermaid';
 
-  let { code, theme = 'default' }: { code: string; theme?: string } = $props();
+  import type { MermaidConfig } from 'mermaid';
+  let { code, theme = 'default' }: { code: string; theme?: MermaidConfig['theme'] } = $props();
 
   let svg = $state('');
   let error = $state<string | null>(null);
