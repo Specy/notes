@@ -1,4 +1,7 @@
 ---
+title: "Ripasso generale ed energia potenziale"
+description: "Ripasso di cinematica, dinamica ed energia e introduzione dell'energia potenziale per le forze conservative, gravitazionale ed elastica."
+type: lecture
 lezione: 11
 titolo: Ripasso generale ed energia potenziale
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -15,7 +18,7 @@ argomenti:
 
 # Lezione 11: Ripasso generale ed energia potenziale
 
-📎 Lezione precedente: [[L10]]
+📎 Lezione precedente: [[potenza-energia-spesa-e-forza-elastica]]
 
 > [!abstract] In questa lezione
 > - **Ripasso** organizzato di cinematica, dinamica ed energia in vista del 1° parziale
@@ -31,7 +34,7 @@ Le due definizioni di base e lo schema "integro per risalire":
 
 $$v = \frac{ds}{dt}, \qquad a = \frac{dv}{dt}$$
 
-Integrando $a$ si ricava $v$, integrando $v$ si ricava $s$. I due casi notevoli (dettagli in [[L02]] e [[L03]]):
+Integrando $a$ si ricava $v$, integrando $v$ si ricava $s$. I due casi notevoli (dettagli in [[legge-oraria-moto-uniforme-accelerazione-e-moto-uniformemente-accelerato]] e [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]]):
 
 | | Moto uniforme ($a = 0$) | Moto uniformemente accelerato ($a$ costante) |
 |---|---|---|
@@ -48,21 +51,21 @@ Riconosciamo qui il **teorema dell'energia cinetica**: la cinematica e l'energia
 
 ## 2. Ripasso: dinamica ed energia
 
-**I tre principi di Newton** (dettagli in [[L03]] e [[L04]]):
+**I tre principi di Newton** (dettagli in [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]] e [[terzo-principio-della-dinamica-e-gravitazione-universale]]):
 
 1. **Inerzia:** un corpo isolato mantiene la sua velocità.
 2. $F = ma \;\Rightarrow\; a = \dfrac{F}{m}$.
 3. **Azione e reazione:** $\vec F_{21} = -\vec F_{12}$.
 
-**Energia** (dettagli in [[L07]]):
+**Energia** (dettagli in [[forze-inclinate-lavoro-ed-energia-cinetica]]):
 
 $$dW = \vec F\cdot d\vec s = F\,ds\cos\theta, \qquad W = \int dW = \frac{1}{2}mv^2 - \frac{1}{2}mv_0^2 = \Delta K$$
 
-**Gravità** (dettagli in [[L04]] e [[L05]]):
+**Gravità** (dettagli in [[terzo-principio-della-dinamica-e-gravitazione-universale]] e [[forza-peso-reazione-vincolare-e-attrito]]):
 
 $$F = G\frac{Mm}{r^2}, \qquad g = G\frac{M}{r^2} \approx 9{,}8 \approx 10\ \frac{\text{m}}{\text{s}^2}, \qquad P = mg$$
 
-**Reazioni vincolari e attrito** (dettagli in [[L05]]): la normale $N$ è perpendicolare al vincolo; l'attrito è opposto al movimento,
+**Reazioni vincolari e attrito** (dettagli in [[forza-peso-reazione-vincolare-e-attrito]]): la normale $N$ è perpendicolare al vincolo; l'attrito è opposto al movimento,
 
 $$F_a = \mp\mu N, \qquad F_{as,max} = \mu_s N, \qquad F_{ad} = \mu_d N$$
 
@@ -74,7 +77,7 @@ Finora abbiamo calcolato il lavoro delle forze conservative (peso ed elastica) c
 
 ### 3.1 Forze conservative e $W = -\Delta U$
 
-Una forza è **conservativa** quando il suo lavoro dipende solo dai punti iniziale e finale, non dal percorso (come visto in [[L08]] per il peso). Per una forza conservativa si può definire una funzione $U$, l'**energia potenziale**, tale che il lavoro sia pari alla **diminuzione** di $U$:
+Una forza è **conservativa** quando il suo lavoro dipende solo dai punti iniziale e finale, non dal percorso (come visto in [[lavoro-della-forza-peso-piano-inclinato-ed-energia]] per il peso). Per una forza conservativa si può definire una funzione $U$, l'**energia potenziale**, tale che il lavoro sia pari alla **diminuzione** di $U$:
 
 $$\boxed{\;W = -\Delta U = U_{iniziale} - U_{finale}\;}$$
 
@@ -101,13 +104,13 @@ Il segno meno ha un significato fisico preciso: quando la forza compie lavoro **
 
 ### 3.2 I due casi concreti
 
-**Energia potenziale gravitazionale.** Il lavoro del peso è $W_P = mgh$ quando il corpo scende di un dislivello $h$ (vedi [[L08]]). Scrivendolo come $-\Delta U$ si ottiene:
+**Energia potenziale gravitazionale.** Il lavoro del peso è $W_P = mgh$ quando il corpo scende di un dislivello $h$ (vedi [[lavoro-della-forza-peso-piano-inclinato-ed-energia]]). Scrivendolo come $-\Delta U$ si ottiene:
 
 $$\boxed{\;U_{grav} = mgh\;}$$
 
 (con $h$ la quota rispetto a un livello di riferimento scelto). Più in alto è il corpo, più energia potenziale ha.
 
-**Energia potenziale elastica.** Il lavoro della forza elastica è $W = \tfrac{1}{2}kx_0^2 - \tfrac{1}{2}kx^2$ (vedi [[L10]]). Confrontando con $-\Delta U$:
+**Energia potenziale elastica.** Il lavoro della forza elastica è $W = \tfrac{1}{2}kx_0^2 - \tfrac{1}{2}kx^2$ (vedi [[potenza-energia-spesa-e-forza-elastica]]). Confrontando con $-\Delta U$:
 
 $$\boxed{\;U_{el} = \frac{1}{2}kx^2\;}$$
 
@@ -150,7 +153,7 @@ La forza $F$ è inclinata **verso il basso**, quindi la sua componente verticale
 $$N - P - F\sin\alpha = 0 \;\Longrightarrow\; N = mg + F\sin\alpha = 2\cdot 10 + 80\cdot 0{,}5 = 60\ \text{N}$$
 
 > [!note] Inclinata in giù: aumenta l'attrito
-> A differenza del caso di [[L07]] (forza inclinata verso l'alto, che alleggeriva il corpo), qui la spinta verso il basso **aumenta** $N$ e quindi anche l'attrito. Premere mentre si spinge è controproducente se si vuole far scivolare un corpo.
+> A differenza del caso di [[forze-inclinate-lavoro-ed-energia-cinetica]] (forza inclinata verso l'alto, che alleggeriva il corpo), qui la spinta verso il basso **aumenta** $N$ e quindi anche l'attrito. Premere mentre si spinge è controproducente se si vuole far scivolare un corpo.
 
 ### 4.2 (b) Accelerazione in AB
 
@@ -159,7 +162,7 @@ Equilibrio orizzontale, con l'attrito dinamico $F_a = \mu_d N$ opposto al moto:
 $$F\cos\alpha - F_a = ma \;\Longrightarrow\; a = \frac{F\cos\alpha - \mu_d N}{m} = \frac{80\cdot 0{,}866 - 0{,}6\cdot 60}{2} = \frac{69{,}3 - 36}{2} \approx 17\ \frac{\text{m}}{\text{s}^2}$$
 
 > [!note] I punti (c), (d), (e)
-> Il lavoro di $F$ in $AB$, la velocità in $B$ e la velocità in $C$ (dopo la discesa lungo il piano inclinato) si risolvono con il teorema dell'energia cinetica e il lavoro della forza peso, esattamente come nei problemi concatenati di [[L08]]. Vengono completati nella lezione successiva [[L12]].
+> Il lavoro di $F$ in $AB$, la velocità in $B$ e la velocità in $C$ (dopo la discesa lungo il piano inclinato) si risolvono con il teorema dell'energia cinetica e il lavoro della forza peso, esattamente come nei problemi concatenati di [[lavoro-della-forza-peso-piano-inclinato-ed-energia]]. Vengono completati nella lezione successiva [[esercizi-desame-e-sistemi-di-corpi-collegati]].
 
 ---
 
@@ -179,4 +182,4 @@ $$F\cos\alpha - F_a = ma \;\Longrightarrow\; a = \frac{F\cos\alpha - \mu_d N}{m}
 
 ---
 
-📎 Lezione precedente: [[L10]] · Prossima lezione: [[L12]]
+📎 Lezione precedente: [[potenza-energia-spesa-e-forza-elastica]] · Prossima lezione: [[esercizi-desame-e-sistemi-di-corpi-collegati]]

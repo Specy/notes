@@ -1,4 +1,7 @@
 ---
+title: "Cambiamenti di fase, dilatazione e leggi dei gas"
+description: "I cambiamenti di fase con il calore latente, i modi di scambio del calore, la dilatazione termica, l'esperimento di Joule e le leggi dei gas di Boyle e Gay-Lussac."
+type: lecture
 lezione: 16
 titolo: Cambiamenti di fase, dilatazione e leggi dei gas
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -17,7 +20,7 @@ argomenti:
 
 # Lezione 16: Cambiamenti di fase, dilatazione e leggi dei gas
 
-📎 Lezione precedente: [[L15]]
+📎 Lezione precedente: [[introduzione-alla-termodinamica-temperatura-e-calore]]
 
 > [!abstract] In questa lezione
 > - I **cambiamenti di fase** avvengono a temperatura costante: il **calore latente** $Q = m\lambda$
@@ -31,7 +34,7 @@ argomenti:
 
 ## 1. I cambiamenti di fase
 
-Quando si scalda un solido, all'inizio la temperatura sale secondo $dQ = m c_s\,dT$ (vedi [[L15]]). Ma al momento del **passaggio di stato** (fusione, ebollizione) accade qualcosa di diverso: la temperatura **rimane costante** mentre si continua a fornire calore. Le transizioni di fase sono **isoterme**.
+Quando si scalda un solido, all'inizio la temperatura sale secondo $dQ = m c_s\,dT$ (vedi [[introduzione-alla-termodinamica-temperatura-e-calore]]). Ma al momento del **passaggio di stato** (fusione, ebollizione) accade qualcosa di diverso: la temperatura **rimane costante** mentre si continua a fornire calore. Le transizioni di fase sono **isoterme**.
 
 Per esempio, scaldando del ghiaccio su una piastra a $T_A > 0\,°\text{C}$, prima la sua temperatura sale fino al punto di fusione $T_{fus} = 273{,}15\ \text{K} = 0\,°\text{C}$ (calore $Q = m c_s\,\Delta T$), poi resta a $0\,°\text{C}$ finché tutto il ghiaccio è diventato acqua.
 
@@ -106,7 +109,7 @@ Un mulinello immerso nell'acqua è messo in rotazione da pesi che cadono. L'ener
 
 $$W_{ad} = -\Delta U = -(U_{fin} - U_{in}) \propto \Delta T$$
 
-Questo stabilisce l'**equivalenza tra lavoro e calore**: sono due modi di trasferire la stessa cosa, l'**energia**. Il calore non è un fluido speciale, ma energia in transito (lo confermò la conversione $1\ \text{cal} = 4{,}184\ \text{J}$ vista in [[L10]]). È la base del primo principio della termodinamica.
+Questo stabilisce l'**equivalenza tra lavoro e calore**: sono due modi di trasferire la stessa cosa, l'**energia**. Il calore non è un fluido speciale, ma energia in transito (lo confermò la conversione $1\ \text{cal} = 4{,}184\ \text{J}$ vista in [[potenza-energia-spesa-e-forza-elastica]]). È la base del primo principio della termodinamica.
 
 ---
 
@@ -207,4 +210,4 @@ $$P = P_0\,(1 + \beta\,T[°\text{C}]), \qquad \beta = \alpha = \frac{1}{273{,}15
 
 ---
 
-📎 Lezione precedente: [[L15]] · Prossima lezione: [[L17]]
+📎 Lezione precedente: [[introduzione-alla-termodinamica-temperatura-e-calore]] · Prossima lezione: [[equazione-di-stato-dei-gas-perfetti-e-trasformazioni]]

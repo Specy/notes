@@ -1,4 +1,7 @@
 ---
+title: "Problemi con l'attrito e introduzione ai vettori"
+description: "Problemi con l'attrito dinamico e introduzione ai vettori: modulo, direzione e verso, coordinate cartesiane e polari e somma di vettori."
+type: lecture
 lezione: 6
 titolo: Problemi con l'attrito e introduzione ai vettori
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -14,7 +17,7 @@ argomenti:
 
 # Lezione 6: Problemi con l'attrito e introduzione ai vettori
 
-📎 Lezione precedente: [[L05]]
+📎 Lezione precedente: [[forza-peso-reazione-vincolare-e-attrito]]
 
 > [!abstract] In questa lezione
 > - Ricavare il **coefficiente d'attrito dinamico** da una decelerazione (Problema 3.1)
@@ -121,7 +124,7 @@ $$v_B = a\,t_B = -6{,}2\cdot 0{,}9 \approx -6\ \frac{\text{m}}{\text{s}}$$
 cioè circa $6\ \text{m/s}$ verso il basso.
 
 > [!tip] Scorciatoia senza il tempo
-> Si poteva arrivare direttamente a $v_B$ con la relazione senza tempo di [[L03]]: $v_B^2 = 2|a|\,\overline{AB} = 2\cdot 6{,}2\cdot 2{,}6 \approx 32 \Rightarrow v_B \approx 5{,}7\ \text{m/s}$. Stesso risultato, un passaggio in meno.
+> Si poteva arrivare direttamente a $v_B$ con la relazione senza tempo di [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]]: $v_B^2 = 2|a|\,\overline{AB} = 2\cdot 6{,}2\cdot 2{,}6 \approx 32 \Rightarrow v_B \approx 5{,}7\ \text{m/s}$. Stesso risultato, un passaggio in meno.
 
 ---
 
@@ -252,4 +255,4 @@ Questo è il grande vantaggio delle componenti: un'operazione tra vettori si rid
 
 ---
 
-📎 Lezione precedente: [[L05]] · Prossima lezione: [[L07]]
+📎 Lezione precedente: [[forza-peso-reazione-vincolare-e-attrito]] · Prossima lezione: [[forze-inclinate-lavoro-ed-energia-cinetica]]

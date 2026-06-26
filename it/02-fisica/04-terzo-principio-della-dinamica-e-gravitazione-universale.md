@@ -1,4 +1,7 @@
 ---
+title: "Terzo principio della dinamica e gravitazione universale"
+description: "Il principio di azione e reazione e la legge di gravitazione universale, da cui si ricava l'accelerazione di gravità terrestre g."
+type: lecture
 lezione: 4
 titolo: Terzo principio della dinamica e gravitazione universale
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -14,7 +17,7 @@ argomenti:
 
 # Lezione 4: Azione e reazione e gravitazione universale
 
-📎 Lezione precedente: [[L03]]
+📎 Lezione precedente: [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]]
 
 > [!abstract] In questa lezione
 > - Il **terzo principio** della dinamica: azione e reazione
@@ -94,7 +97,7 @@ $$G = 6{,}67 \times 10^{-11}\ \frac{\text{N}\cdot\text{m}^2}{\text{kg}^2}$$
   </g>
 </svg>
 
-La forza rispetta il terzo principio: $A$ attira $B$ e $B$ attira $A$ con forze uguali e opposte. È coerente con quanto detto in [[L03]]: la gravitazione agisce sulle **masse** ed è **solo attrattiva** (per questo a volte si scrive con un segno meno, $\vec F = -G\frac{m_A m_B}{r^2}\hat r$, a indicare che punta sempre verso l'altro corpo).
+La forza rispetta il terzo principio: $A$ attira $B$ e $B$ attira $A$ con forze uguali e opposte. È coerente con quanto detto in [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]]: la gravitazione agisce sulle **masse** ed è **solo attrattiva** (per questo a volte si scrive con un segno meno, $\vec F = -G\frac{m_A m_B}{r^2}\hat r$, a indicare che punta sempre verso l'altro corpo).
 
 > [!note] Perché proprio $1/r^2$? L'intuizione della sfera
 > Immaginiamo l'influenza gravitazionale di una massa che si propaga in tutte le direzioni, distribuendosi sulla superficie di una sfera centrata sulla massa stessa. La superficie di una sfera di raggio $r$ vale
@@ -188,7 +191,7 @@ un valore ridicolmente piccolo.
 
 ### 4.1 Velocità di avvicinamento (metodo senza il tempo)
 
-Per trovare la velocità raggiunta dopo essersi avvicinati, conviene il metodo già usato in [[L02]] e [[L03]]: poiché la forza (e quindi l'accelerazione) dipende dalla distanza $x$, non dal tempo, scriviamo $a = v\dfrac{dv}{dx}$ e integriamo. Con $a(x) = G\dfrac{m_B}{x^2}$:
+Per trovare la velocità raggiunta dopo essersi avvicinati, conviene il metodo già usato in [[legge-oraria-moto-uniforme-accelerazione-e-moto-uniformemente-accelerato]] e [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]]: poiché la forza (e quindi l'accelerazione) dipende dalla distanza $x$, non dal tempo, scriviamo $a = v\dfrac{dv}{dx}$ e integriamo. Con $a(x) = G\dfrac{m_B}{x^2}$:
 
 $$\int a(x)\,dx = \int v\,dv = \frac{1}{2}v(x)^2 - \frac{1}{2}\cdot 0^2$$
 
@@ -225,4 +228,4 @@ La gravità è una forza **estremamente debole**. La sentiamo solo perché la Te
 
 ---
 
-📎 Lezione precedente: [[L03]] · Prossima lezione: [[L05]]
+📎 Lezione precedente: [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]] · Prossima lezione: [[forza-peso-reazione-vincolare-e-attrito]]

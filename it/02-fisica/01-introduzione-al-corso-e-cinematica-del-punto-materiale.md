@@ -1,4 +1,7 @@
 ---
+title: "Introduzione al corso e cinematica del punto materiale"
+description: "Cos'è la fisica, il modello del punto materiale, il sistema di riferimento e il moto unidimensionale, con velocità media e istantanea."
+type: lecture
 lezione: 1
 titolo: Introduzione al corso e cinematica del punto materiale
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -292,4 +295,4 @@ Nell'esempio numerico del § 5.1 abbiamo calcolato delle velocità medie, un val
 
 ---
 
-➡️ Prossima lezione: [[L02]]
+➡️ Prossima lezione: [[legge-oraria-moto-uniforme-accelerazione-e-moto-uniformemente-accelerato]]

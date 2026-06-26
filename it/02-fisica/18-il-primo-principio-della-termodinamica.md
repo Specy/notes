@@ -1,4 +1,7 @@
 ---
+title: "Il primo principio della termodinamica"
+description: "Il primo principio ΔU = Q − L con l'energia interna, le convenzioni dei segni, l'espansione libera di Joule, i calori molari Cv e Cp e la relazione di Mayer."
+type: lecture
 lezione: 18
 titolo: Il primo principio della termodinamica
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -15,7 +18,7 @@ argomenti:
 
 # Lezione 18: Il primo principio della termodinamica
 
-📎 Lezione precedente: [[L17]]
+📎 Lezione precedente: [[equazione-di-stato-dei-gas-perfetti-e-trasformazioni]]
 
 > [!abstract] In questa lezione
 > - Il **primo principio**: $\Delta U = Q - L$, con l'**energia interna** $U$ variabile di stato
@@ -28,7 +31,7 @@ argomenti:
 
 ## 1. Il primo principio
 
-In [[L17]] abbiamo visto che, andando da uno stato $A$ a uno stato $B$ per percorsi diversi, sia il calore $Q$ sia il lavoro $L$ **cambiano** da percorso a percorso. Sperimentalmente, però, la loro **differenza** $Q - L$ è sempre la stessa, qualunque sia il cammino.
+In [[equazione-di-stato-dei-gas-perfetti-e-trasformazioni]] abbiamo visto che, andando da uno stato $A$ a uno stato $B$ per percorsi diversi, sia il calore $Q$ sia il lavoro $L$ **cambiano** da percorso a percorso. Sperimentalmente, però, la loro **differenza** $Q - L$ è sempre la stessa, qualunque sia il cammino.
 
 Questo significa che esiste una grandezza che dipende **solo dallo stato** del sistema (non dal percorso): l'**energia interna** $U$. La sua variazione è
 
@@ -195,4 +198,4 @@ Comprimere un gas isolato termicamente lo **scalda** (qui da 300 a 567 K): tutto
 
 ---
 
-📎 Lezione precedente: [[L17]] · Prossima lezione: [[L19]]
+📎 Lezione precedente: [[equazione-di-stato-dei-gas-perfetti-e-trasformazioni]] · Prossima lezione: [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]]

@@ -25,12 +25,17 @@ export async function renderNode(lang: string, path: string) {
 
   const breadcrumbs = breadcrumbsFor(c.root, node.path, lang, t(lang, 'nav.home'));
 
+  // The shared resolver returns lang-relative note paths (e.g. "fisica/a").
+  // Prepend the current /[lang]/ so wikilink hrefs are absolute and resolve
+  // correctly from any page depth (and stay within the active language).
+  const resolve = withLang(c.resolve, lang);
+
   if (node.kind === 'folder') {
-    const html = node.content ? await renderMarkdown(node.content, c.resolve) : '';
+    const html = node.content ? await renderMarkdown(node.content, resolve) : '';
     const g = groupChildren(node);
     return { kind: 'folder' as const, lang, node: stripBody(node), html, groups: prefixGroups(g, lang), breadcrumbs };
   }
-  const html = await renderMarkdown(node.content, c.resolve);
+  const html = await renderMarkdown(node.content, resolve);
   const stats = readingTime(toPlainText(node.content));
   const sib = siblings(c.root, node.path);
   return {
@@ -40,6 +45,22 @@ export async function renderNode(lang: string, path: string) {
     prev: sib.prev && { title: sib.prev.title, path: `/${lang}/${sib.prev.path}` },
     next: sib.next && { title: sib.next.title, path: `/${lang}/${sib.next.path}` },
     breadcrumbs
+  };
+}
+
+/**
+ * Wrap a lang-agnostic resolver so internal note links become absolute,
+ * language-scoped hrefs (/[lang]/...). Assets and links that are already
+ * absolute or pure anchors are passed through unchanged.
+ */
+export function withLang(resolve: Context['resolve'], lang: string): Context['resolve'] {
+  return {
+    asset: resolve.asset,
+    note(target: string) {
+      const href = resolve.note(target);
+      if (href.startsWith('/') || href.startsWith('#') || href.startsWith('http')) return href;
+      return `/${lang}/${href}`;
+    }
   };
 }
 

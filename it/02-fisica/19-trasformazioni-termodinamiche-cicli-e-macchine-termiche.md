@@ -1,4 +1,7 @@
 ---
+title: "Trasformazioni termodinamiche, cicli e macchine termiche"
+description: "Il primo principio applicato alle quattro trasformazioni, l'adiabatica e l'isoterma, le trasformazioni cicliche, le macchine termiche e frigorifere e il ciclo di Carnot."
+type: lecture
 lezione: 19
 titolo: Trasformazioni termodinamiche, cicli e macchine termiche
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -16,7 +19,7 @@ argomenti:
 
 # Lezione 19: Trasformazioni, cicli e macchine termiche
 
-📎 Lezione precedente: [[L18]]
+📎 Lezione precedente: [[il-primo-principio-della-termodinamica]]
 
 > [!abstract] In questa lezione
 > - Il primo principio applicato alle **quattro trasformazioni**: isocora, isobara, isoterma, adiabatica
@@ -29,7 +32,7 @@ argomenti:
 
 ## 1. L'indice adiabatico
 
-Dalla relazione di Mayer ([[L18]]) sappiamo $C_P = C_V + R$. Definiamo il rapporto tra i due calori molari, l'**indice adiabatico**:
+Dalla relazione di Mayer ([[il-primo-principio-della-termodinamica]]) sappiamo $C_P = C_V + R$. Definiamo il rapporto tra i due calori molari, l'**indice adiabatico**:
 
 $$\boxed{\;\gamma = \frac{C_P}{C_V}\;}$$
 
@@ -89,7 +92,7 @@ $$L_{AB} = nC_V(T_A - T_B) = \frac{P_A V_A - P_B V_B}{\gamma - 1}$$
 
 ## 3. La trasformazione isoterma
 
-In una trasformazione **isoterma** la temperatura è costante. Poiché per un gas perfetto $U = U(T)$ (vedi [[L18]]), si ha $\Delta U = 0$, quindi dal primo principio:
+In una trasformazione **isoterma** la temperatura è costante. Poiché per un gas perfetto $U = U(T)$ (vedi [[il-primo-principio-della-termodinamica]]), si ha $\Delta U = 0$, quindi dal primo principio:
 
 $$\Delta U = 0 \;\Longrightarrow\; Q = L$$
 
@@ -98,7 +101,7 @@ Tutto il calore assorbito diventa lavoro (in espansione), o tutto il lavoro fatt
 $$\boxed{\;Q = L_{AB} = nRT\ln\frac{V_B}{V_A}\;}$$
 
 > [!example] Espansione isoterma irreversibile (Esempio 12.4)
-> $n = 5\ \text{mol}$ a $T = 300\ \text{K}$, da $P_A = 2\times 10^6\ \text{Pa}$, si espande **contro la pressione atmosferica costante** $P_0 \approx 10^5\ \text{Pa}$ (trasformazione irreversibile). Qui il lavoro si calcola con la pressione esterna (vedi [[L17]]):
+> $n = 5\ \text{mol}$ a $T = 300\ \text{K}$, da $P_A = 2\times 10^6\ \text{Pa}$, si espande **contro la pressione atmosferica costante** $P_0 \approx 10^5\ \text{Pa}$ (trasformazione irreversibile). Qui il lavoro si calcola con la pressione esterna (vedi [[equazione-di-stato-dei-gas-perfetti-e-trasformazioni]]):
 > $$L = P_0(V_B - V_A) = P_0\left(\frac{nRT}{P_0} - \frac{nRT}{P_A}\right) = nRT\left(1 - \frac{P_0}{P_A}\right) \approx 1{,}2\times 10^4\ \text{J}$$
 > È **minore** del lavoro reversibile $nRT\ln(V_B/V_A)$: un'espansione irreversibile produce meno lavoro.
 
@@ -223,4 +226,4 @@ $$\eta = 1 + \frac{Q_{CD}}{Q_{AB}} = 1 + \frac{nRT_1\ln(V_D/V_C)}{nRT_2\ln(V_B/V
 
 ---
 
-📎 Lezione precedente: [[L18]]
+📎 Lezione precedente: [[il-primo-principio-della-termodinamica]]

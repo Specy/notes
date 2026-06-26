@@ -1,4 +1,7 @@
 ---
+title: "Forze inclinate, lavoro ed energia cinetica"
+description: "Scomposizione delle forze inclinate, definizione di lavoro tramite il prodotto scalare e il teorema dell'energia cinetica."
+type: lecture
 lezione: 7
 titolo: Forze inclinate, lavoro ed energia cinetica
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -14,7 +17,7 @@ argomenti:
 
 # Lezione 7: Forze inclinate, lavoro ed energia cinetica
 
-📎 Lezione precedente: [[L06]]
+📎 Lezione precedente: [[problemi-con-lattrito-e-introduzione-ai-vettori]]
 
 > [!abstract] In questa lezione
 > - Scomporre una **forza inclinata** e stabilire se un corpo si mette in moto
@@ -225,4 +228,4 @@ $$v_C = \sqrt{\frac{2\,W_{BC}}{m} + v_B^2} = \sqrt{\frac{2\cdot 166}{2{,}7} + 4{
 
 ---
 
-📎 Lezione precedente: [[L06]] · Prossima lezione: [[L08]]
+📎 Lezione precedente: [[problemi-con-lattrito-e-introduzione-ai-vettori]] · Prossima lezione: [[lavoro-della-forza-peso-piano-inclinato-ed-energia]]
