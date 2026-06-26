@@ -19,7 +19,25 @@ function indexByTitleAndSlug(root: FolderNode) {
   return { titleMap, slugMap };
 }
 
-export function makeResolver(root: FolderNode, assets: Record<string, string>): LinkResolver {
+/** Prefix used to encode dual-theme excalidraw asset sentinels. */
+export const EXCALIDRAW_SENTINEL_PREFIX = 'excalidraw:';
+
+/** Encode a dual-theme excalidraw asset as a sentinel string for the embed handler. */
+export function encodeExcalidrawSentinel(light: string | null, dark: string | null): string {
+  return EXCALIDRAW_SENTINEL_PREFIX + JSON.stringify({ light, dark });
+}
+
+/** Decode an excalidraw sentinel, or return null if the string is not a sentinel. */
+export function decodeExcalidrawSentinel(s: string): { light: string | null; dark: string | null } | null {
+  if (!s.startsWith(EXCALIDRAW_SENTINEL_PREFIX)) return null;
+  try {
+    return JSON.parse(s.slice(EXCALIDRAW_SENTINEL_PREFIX.length));
+  } catch {
+    return null;
+  }
+}
+
+export function makeResolver(root: FolderNode, assets: Record<string, unknown>): LinkResolver {
   const { titleMap, slugMap } = indexByTitleAndSlug(root);
   return {
     note(target: string) {
@@ -31,12 +49,27 @@ export function makeResolver(root: FolderNode, assets: Record<string, string>): 
     },
     asset(target: string) {
       const base = target.split('/').pop()!.trim();
-      return assets[base] ?? `#missing-${base}`;
+      const entry = assets[base];
+
+      // Excalidraw dual-theme asset: value is { light, dark }
+      if (base.toLowerCase().endsWith('.excalidraw')) {
+        if (entry && typeof entry === 'object' && entry !== null) {
+          const { light, dark } = entry as { light: string | null; dark: string | null };
+          return encodeExcalidrawSentinel(light, dark);
+        }
+        // Missing excalidraw: return a sentinel with no URLs so the embed
+        // handler can still render a placeholder rather than a broken image.
+        return encodeExcalidrawSentinel(null, null);
+      }
+
+      // Regular image/svg asset
+      if (typeof entry === 'string') return entry;
+      return `#missing-${base}`;
     }
   };
 }
 
-export function buildContext(files: RawFile[], assets: Record<string, string>): Context {
+export function buildContext(files: RawFile[], assets: Record<string, unknown>): Context {
   const root = buildTree(files);
   return { root, resolve: makeResolver(root, assets) };
 }

@@ -6,6 +6,12 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter'; // CJS -> default import
 
+/** Path to the excalidraw map produced by the prebuild step. */
+const EXCALIDRAW_MAP_PATH = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  'static/vault-assets/excalidraw-map.json'
+);
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const VAULT_DIR = path.resolve(__dirname, '..', 'it');
 const VID = 'virtual:vault';
@@ -89,6 +95,22 @@ export async function buildManifest(vaultDir, assetDestDir) {
     const publicUrl = await copyAsset(absSrc, assetDestDir);
     assets[basename] = publicUrl;
     assetSources[basename] = absSrc;
+  }
+
+  // Merge excalidraw map (produced by scripts/buildExcalidraw.mjs prebuild).
+  // Key format: "<basename>.excalidraw" → { light: "/vault-assets/…", dark: "/vault-assets/…" }
+  // We store these directly in assets so the embed handler can look them up.
+  if (existsSync(EXCALIDRAW_MAP_PATH)) {
+    try {
+      const excalidrawMap = JSON.parse(await readFile(EXCALIDRAW_MAP_PATH, 'utf-8'));
+      for (const [key, value] of Object.entries(excalidrawMap)) {
+        // key is like "Drawing 2024-11-11 09.12.21.excalidraw"
+        // Store as the bare key so resolve.asset(target) can look it up with the same key.
+        assets[key] = value; // value = { light, dark }
+      }
+    } catch (err) {
+      console.warn(`[vault] Could not read excalidraw map: ${err.message}`);
+    }
   }
 
   return { files, assets };
