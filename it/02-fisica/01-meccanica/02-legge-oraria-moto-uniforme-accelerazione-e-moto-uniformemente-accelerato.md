@@ -11,8 +11,6 @@ topics:
   - relazione velocità-spazio senza il tempo
 ---
 
-# Lezione 2: Legge oraria, moto uniforme e accelerazione
-
 
 
 > [!abstract] In questa lezione

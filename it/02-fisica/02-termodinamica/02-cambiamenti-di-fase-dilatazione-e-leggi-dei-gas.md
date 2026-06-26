@@ -14,8 +14,6 @@ topics:
   - leggi dei gas
 ---
 
-# Lezione 16: Cambiamenti di fase, dilatazione e leggi dei gas
-
 
 
 > [!abstract] In questa lezione

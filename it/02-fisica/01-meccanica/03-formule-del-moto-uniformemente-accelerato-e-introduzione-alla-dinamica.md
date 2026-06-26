@@ -12,8 +12,6 @@ topics:
   - quattro forze fondamentali
 ---
 
-# Lezione 3: Moto uniformemente accelerato e inizio della dinamica
-
 
 
 > [!abstract] In questa lezione

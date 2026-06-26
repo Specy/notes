@@ -11,8 +11,6 @@ topics:
   - energia nell'oscillazione
 ---
 
-# Lezione 13: Il moto armonico semplice
-
 
 
 > [!abstract] In questa lezione

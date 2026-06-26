@@ -11,8 +11,6 @@ topics:
   - velocità media e istantanea
 ---
 
-# Lezione 1: Introduzione e cinematica del punto materiale
-
 > [!abstract] In questa lezione
 > - Cos'è la fisica e come è organizzata (principi, cinematica)
 > - Il modello del **punto materiale**
@@ -284,6 +282,3 @@ Nell'esempio numerico del § 5.1 abbiamo calcolato delle velocità medie, un val
 > 2. Sul grafico $x(t)$, come si riconosce a colpo d'occhio l'istante in cui il punto è fermo?
 > 3. Prova a costruire due viaggi con la stessa velocità media ma andamenti diversi.
 
----
-
-➡️ Prossima lezione: [[legge-oraria-moto-uniforme-accelerazione-e-moto-uniformemente-accelerato]]

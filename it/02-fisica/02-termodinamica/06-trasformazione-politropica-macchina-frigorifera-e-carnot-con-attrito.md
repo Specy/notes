@@ -12,8 +12,6 @@ topics:
   - ciclo con attrito
 ---
 
-# Lezione 20: Politropiche, macchine frigorifere e attrito
-
 
 
 > [!abstract] In questa lezione

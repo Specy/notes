@@ -12,8 +12,6 @@ topics:
   - lavoro della forza elastica
 ---
 
-# Lezione 10: Potenza e forza elastica
-
 
 
 > [!abstract] In questa lezione

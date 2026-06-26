@@ -12,8 +12,6 @@ topics:
   - relazione di Mayer
 ---
 
-# Lezione 18: Il primo principio della termodinamica
-
 
 
 > [!abstract] In questa lezione

@@ -11,8 +11,6 @@ topics:
   - pendolo semplice
 ---
 
-# Lezione 14: Esonero, moto circolare e pendolo semplice
-
 
 
 > [!abstract] In questa lezione

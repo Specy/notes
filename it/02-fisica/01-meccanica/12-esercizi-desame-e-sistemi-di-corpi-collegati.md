@@ -11,8 +11,6 @@ topics:
   - carrucole e corpi collegati
 ---
 
-# Lezione 12: Esercizi d'esame e corpi collegati
-
 
 
 > [!abstract] In questa lezione
