@@ -1,3 +1,9 @@
+---
+title: Distribuzioni di probabilità notevoli discrete
+description: "Presentazione delle principali distribuzioni discrete: Bernoulli, Binomiale, Poisson (con derivazione dal limite della Binomiale), Uniforme, Ipergeometrica e Geometrica."
+type: lecture
+---
+
 # Distribuzioni tipiche
 
 Le **distribuzioni tipiche** sono distribuzioni di probabilità standard che ricorrono frequentemente in statistica e probabilità, ognuna con una notazione compatta.

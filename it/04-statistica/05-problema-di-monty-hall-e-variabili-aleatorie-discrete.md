@@ -1,3 +1,9 @@
+---
+title: "Esercizio: problema di Monty Hall e variabili aleatorie discrete"
+description: "Risoluzione formale del paradosso di Monty Hall tramite probabilità condizionata, introduzione alle variabili aleatorie discrete con distribuzione, valore atteso e proprietà."
+type: lecture
+---
+
 # Esercizio
 
 Il gioco di monty hall ci sono 3 scatole, $A, B, C$ e si svolge:

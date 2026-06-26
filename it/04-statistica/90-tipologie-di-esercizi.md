@@ -1,3 +1,9 @@
+---
+title: Tipologie di esercizi
+description: "Raccolta delle tipologie di esercizi del corso, suddivise per argomento (distribuzioni discrete e continue), con riferimenti agli esercizi svolti."
+type: resource
+---
+
 # Discreta
 
 

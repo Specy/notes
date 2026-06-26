@@ -1,3 +1,9 @@
+---
+title: Proprietà dei binomiali e probabilità condizionata
+description: "Proprietà di fattoriali e coefficienti binomiali, calcolo di probabilità in spazi equiprobabili, probabilità condizionata e formula di Bayes introdotta tramite esercizi."
+type: lecture
+---
+
 # Proprietà dei fattoriali e binomiali
 
 1) $n! = n(n - 1)!$ 

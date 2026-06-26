@@ -1,3 +1,9 @@
+---
+title: Proprietà del valore atteso e disuguaglianze probabilistiche
+description: "Proprietà di linearità del valore atteso, disuguaglianze di Markov, Chebyshev e limite di Chernoff con dimostrazioni e applicazioni alla stima empirica di media e varianza."
+type: lecture
+---
+
 # Proprietà valore atteso
 
 Se ho due variabili aleatorie $X$ e $Y$ che assumono valori $I_X$ e $I_Y$ rispettivamente, con distribuzione congiunta $p(x,y)$, allora:

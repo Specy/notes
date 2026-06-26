@@ -1,3 +1,9 @@
+---
+title: "Esercizio: distribuzione uniforme e distribuzioni Multinomiale, Min e Max"
+description: "Esercizio sulla distribuzione uniforme (ubriaco con le chiavi), distribuzione Multinomiale, calcolo di distribuzioni congiunte con covarianza, e distribuzioni di minimo e massimo di variabili geometriche."
+type: lecture
+---
+
 # Esercizio
 
 Un ubriaco ha $N$ chiavi, di cui una sola apre la porta di casa, ma lui non riesce a riconoscere quale sia, allora le prova tutte, una dopo l'altra, scartando quelle appena provate. 

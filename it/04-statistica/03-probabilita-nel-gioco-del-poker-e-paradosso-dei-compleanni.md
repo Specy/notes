@@ -1,3 +1,9 @@
+---
+title: "Esercizio: probabilità nel gioco del poker e paradosso dei compleanni"
+description: "Calcolo delle probabilità delle mani del poker a 5 carte tramite combinatoria, e analisi del paradosso dei compleanni con approssimazione di Stirling e probabilità condizionata."
+type: lecture
+---
+
 # Esercizio
 
 Calcoliamo la probabilità delle varie combinazioni nel gioco di poker a 5 carte. Il mazzo ha 52 carte, e l'estrazione di 5 carte senza rinserimento è equiprobabile, possiamo usare $P(A) = \frac{|A|}{|\Omega|}$ dove $|\Omega| = \binom{52}{5}$, e $|A|$ è il numero di combinazioni che soddisfano la condizione che stiamo cercando.

@@ -1,3 +1,9 @@
+---
+title: Introduzione alla probabilità e al calcolo combinatorio
+description: "Fondamenti della teoria della probabilità: spazi campionari, sigma-algebra, assiomi di Kolmogorov e principi del calcolo combinatorio (disposizioni, permutazioni, combinazioni)."
+type: lecture
+---
+
 La probabilità ci permette di studiare fenomeni aleatori, cioè fenomeni di cui non è possibile (o non conviene) usare una legge deterministica, o perchè non è nota, o perchè non sono noti i dati iniziali o perchè è troppo complesso.
 
 La legge di probabilità dipende dalle informazioni che abbiamo o nella nostra "ignoranza" sul sistema, cioè non conosciamo tutti gli eventi elementari.

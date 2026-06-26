@@ -1,3 +1,9 @@
+---
+title: Teorema di Bayes e indipendenza tra eventi
+description: "Teorema di Bayes con esempi applicativi (test medico, scelta di corsi), definizione di indipendenza tra eventi multipli e regola del prodotto delle probabilità."
+type: lecture
+---
+
 Ho 3 carte: 
 
 - b/b che ha entrambi i lati bianchi
