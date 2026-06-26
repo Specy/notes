@@ -36,7 +36,7 @@ Definito con il simbolo $r_{1}-r_{2}$ , include solo le tuple che appartengono a
 
 Definito come, $X_n$ nomi nuovi, $X_c$ nomi correnti
 
-$$\huge{\rho_{X_{n}\leftarrow X_c} (Operando)}$$
+$$\Large{\rho_{X_{n}\leftarrow X_c} (Operando)}$$
 
 è un operatore monadico (su un solo argomento) che modifica lo schema di una relazione, lasciando l'originale intatta
 
@@ -44,34 +44,34 @@ $$\huge{\rho_{X_{n}\leftarrow X_c} (Operando)}$$
 
 Paternità(Padre, Figlio)
 
-$\huge{\rho_{\ Genitore \leftarrow Padre}(Paternità)}$    
+$\Large{\rho_{\ Genitore \leftarrow Padre}(Paternità)}$    
 
 
 
 # Selezione
 è un operatore monadico che seleziona tutte le tuple che hanno valore **VERO** Nella condizione data, la condizione può usare i nomi dell'operando per poi usare gli operatori `<, >, =, !=, etc...` 
-$$\huge{\sigma_{Condizione}(Operando)}$$
+$$\Large{\sigma_{Condizione}(Operando)}$$
 Si possono usare anche operatori logici tipo: AND, OR, $\neg$   
 
 > Esempio:
 
 Impiegati(Matricola, Cognome, Filiale, Stipendio, LuogoNascita)
 
-$\huge{\sigma_{Stipendio \ > \ 50}(Impiegati)}$ 
-$\huge{\sigma_{Stipendio \ > \ 50 \ AND \ Filiale \ = \ 'Milano'}(Impiegati)}$ 
-$\huge{\sigma_{Filiale \ = \ LuogoNascita}(Impiegati)}$  
+$\Large{\sigma_{Stipendio \ > \ 50}(Impiegati)}$ 
+$\Large{\sigma_{Stipendio \ > \ 50 \ AND \ Filiale \ = \ 'Milano'}(Impiegati)}$ 
+$\Large{\sigma_{Filiale \ = \ LuogoNascita}(Impiegati)}$  
 
 
 # Proiezione
 è un operatore monadico che seleziona gli attributi definiti nell'operatore, 
 $$
-\huge{\pi_{ListaAttributi}(Operando)}
+\Large{\pi_{ListaAttributi}(Operando)}
 $$
 > Esempio:
 
 Impiegati(Matricola, Cognome, Filiale, Stipendio)
 
-$\huge{\pi_{Matricola, Cognome}(Impiegati)}$
+$\Large{\pi_{Matricola, Cognome}(Impiegati)}$
 
 ![[Pasted image 20230707160102.png]]
 La cardinalità di una proiezione è al più quella dell'operando, può diminuire dato che si escludono tuple diplicate
@@ -102,7 +102,7 @@ Esistono 3 tipologie di join esterno
 # THETA Join
 La theta join effettua un join naturale con condizione, è equivalente ad una selezione di una join naturale 
 $$
-\huge{R_{1} \ JOIN_{Condizione} \ R_{2} = \sigma_{Condizione}(R_{1} \ JOIN \ R_{2})}
+\Large{R_{1} \ JOIN_{Condizione} \ R_{2} = \sigma_{Condizione}(R_{1} \ JOIN \ R_{2})}
 $$
 
 # EQUI Join
@@ -114,7 +114,7 @@ Se l'operatore di condizione è sempre un = allora si tratta di una EQUI Join
 Due espressioni sono dette equivalenti se producono lo stesso risultato dato qualsiasi istanza di input. Usiamo l'equivalenza per ridurre la complessità delle query.
 Un equivalenza importante è: dati $R_1$ e $R_{2}$ con $A$, attributo di $R_2$, allora
 $$
-\huge{\sigma_{A = 10}(R_{1} \ JOIN \ R_{2}) = R_{1} \ JOIN \ \sigma_{A = 10}(R_{2})} 
+\Large{\sigma_{A = 10}(R_{1} \ JOIN \ R_{2}) = R_{1} \ JOIN \ \sigma_{A = 10}(R_{2})} 
 $$
 La seconda query è più efficiente dato che effettua una join già filtrata, mentre la prima esegue la join di tutte le combinazioni per poi filtrarlo
 
@@ -128,8 +128,8 @@ Persone(Nome, Cognome, Età), dove età può essere null
 
 $$
 \begin{split}
-\huge{\sigma_{eta > 30}(Persone) \cup \sigma_{eta \le 30}(Persone) \cup \sigma_{eta \ IS \ NULL}(Persone)} = \\
-	= \huge{\sigma_{eta > 30 \vee eta \le 30 \vee eta \ IS \ NULL}(Persone)}
+\Large{\sigma_{eta > 30}(Persone) \cup \sigma_{eta \le 30}(Persone) \cup \sigma_{eta \ IS \ NULL}(Persone)} = \\
+	= \Large{\sigma_{eta > 30 \vee eta \le 30 \vee eta \ IS \ NULL}(Persone)}
 \end{split}
 $$
 
@@ -144,15 +144,15 @@ Allo stesso modo le visite derivate hanno due tipologie
 - Relazioni virtuali (o viste): Le viste sono ricalcolate ogni volta, hanno il vantaggio di essere più flessibili.
 Esempio:
 $$
-\huge{Supervisione = \pi_{Impiegato, \ Capo}(Afferenza \ JOIN \ Direzione)}
+\Large{Supervisione = \pi_{Impiegato, \ Capo}(Afferenza \ JOIN \ Direzione)}
 $$
 Quando andiamo ad eseguire una Query su $Supervisione$ esso viene "Rimpiazzato" dalla sua definizione di vista. 
 Per esempio quando eseguiamo la query:
 $$
-\huge{\sigma_{Capo='leoni'}(Supervisione)}
+\Large{\sigma_{Capo='leoni'}(Supervisione)}
 $$
 Viene in realtà eseguita la query 
 $$
-\huge{\sigma_{Capo='leoni'}(\pi_{Impiegato, \ Capo}(Afferenza \ JOIN \ Direzione))}
+\Large{\sigma_{Capo='leoni'}(\pi_{Impiegato, \ Capo}(Afferenza \ JOIN \ Direzione))}
 $$
 Il lato positivo delle viste è che possono essere definite dall'utente del database, in modo da prendere i dati di cui ha bisogno in quel momento, e questa tecnica non influisce sull'efficienza delle query dato che verranno ottimizzate. 

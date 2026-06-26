@@ -44,7 +44,7 @@ f'(x) &=
 \lim_{h \to 0}{\dfrac{f(x + h) - f(x)}{h}} \\ &=
 \lim_{h \to 0}{\dfrac{(x + h)^2 - x^2}{h}} \\ &=
 \lim_{h \to 0}{\dfrac{\cancel{x^2} + 2xh + h^2 - \cancel{x^2}}{h}} \\ &=
-\lim_{h \to 0}{\dfrac{2x\cancel{h} + h^\cancel{2}}{\cancel{h}}} \\ &=
+\lim_{h \to 0}{\dfrac{2x\cancel{h} + h^{\cancel{2}}}{\cancel{h}}} \\ &=
 \lim_{h \to 0}{2x+ h} \\ &=
 2x
 \end{aligned}
@@ -295,7 +295,7 @@ $$
 
 Se
 $$
-\huge\lim_{x \to x_0}{\frac{f(x)}{g(x)} = 0}
+\Large\lim_{x \to x_0}{\frac{f(x)}{g(x)} = 0}
 $$
 Allora diciamo che $f$ è un $o$ piccolo di $g$ per $x$ che tende a $x_0$. 
 Allora scriviamo: $f(x) = o(g(x))$ per $x \to x_0$.
@@ -345,7 +345,7 @@ Se $x_0 = 0$ allora $T_n$ viene chiamato **Polinomio di Maclaurin**
 ## 🟢Formula di taylor
 Ora ci chiediamo, nella approssimazione del polinomio di taylor, quanto vale l'errore? Cioè:
 $$
-\huge{R_n(x) = f(x) - T_n(x) = \ ?}
+\Large{R_n(x) = f(x) - T_n(x) = \ ?}
 $$
 
 - Nel caso $n = 0$, con il teorema di lagrange sappiamo che esiste $c$ tra $x$ e $x_0$ tale che 

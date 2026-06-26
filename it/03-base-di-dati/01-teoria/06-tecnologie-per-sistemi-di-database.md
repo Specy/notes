@@ -112,16 +112,16 @@ SELECT * FROM DIPARTIMENTI D JOIN IMPIEGATI I ON D.Cod=I.Dip WHERE I.Cognome='Mo
 
 Abbiamo l'equivalente forma algebrica come:
 $$
-\huge{\sigma_{I.Cognome = 'Moscato'}(D \triangleright \triangleleft_{D.Cod = I.Dip} I)}
+\Large{\sigma_{I.Cognome = 'Moscato'}(D \triangleright \triangleleft_{D.Cod = I.Dip} I)}
 $$
 Tramite il **Pushing selection down** troviamo che se $A$ e $B$ due generiche relazioni e $\tilde{X}$ una condizione di selezione sugli attributi di $B$, abbiamo che:
 $$
-\huge{\sigma_{\tilde{\chi}}(A \triangleright \triangleleft_{\chi}B) = (A \triangleright \triangleleft_{\chi}\sigma_{\tilde{\chi}}(B))}
+\Large{\sigma_{\tilde{\chi}}(A \triangleright \triangleleft_{\chi}B) = (A \triangleright \triangleleft_{\chi}\sigma_{\tilde{\chi}}(B))}
 $$
 
 Perchè anticipa la selezione alla join, permettendo di ridurre il numero di tuple nell'operazione di join, quindi la query finale sarà del tipo:
 $$
-\huge{D\triangleright\triangleleft_{D.Cod = I.Dip} \ \sigma_{I.Cognome = 'Moscato'}(I)}
+\Large{D\triangleright\triangleleft_{D.Cod = I.Dip} \ \sigma_{I.Cognome = 'Moscato'}(I)}
 $$
 
 In oltre abbiamo ulteriori ottimizzazioni che possiamo effettuare:
@@ -296,8 +296,8 @@ per esempio: $U(T_{1},-, qtaP, 100, 90)$
 
 Il **Record di sistema** contiene:
 - **DUMP** (DP) contenente l'istante $t_s$ in cui è stato effettuato l'ultimo backup 
-- **CHECKPOINT** (CK) contiene l'insieme delle transazioni attive ($\huge{\tau}$) in un dato istante ($t_s$) 
-Possiamo semplificare schematizzando i record di sistema nella forma: $DP(t_s)$ e $CK(t_{s}, \huge{\tau})$ 
+- **CHECKPOINT** (CK) contiene l'insieme delle transazioni attive ($\Large{\tau}$) in un dato istante ($t_s$) 
+Possiamo semplificare schematizzando i record di sistema nella forma: $DP(t_s)$ e $CK(t_{s}, \Large{\tau})$ 
 
 Esempio di un log:
 

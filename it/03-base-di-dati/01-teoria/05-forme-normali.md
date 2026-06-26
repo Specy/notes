@@ -17,7 +17,7 @@ Lo si nota tramite la sintassi $Y \rightarrow Z$ che indica una dipendenza funzi
 Consideriamo una relazione $r \ su \ R(X)$ e due sottoinsiemi non vuoti $Y,Z \subseteq X$, esiste una Dipendenza Funzionale da Y a Z ($Y \rightarrow Z$) se per ogni coppia di tuple $t_{1}, t_2$ di r, che hanno gli stessi valori su Y, risulta che $t_{1}, t_{2}$ hanno gli stessi valori anche in Z, cioè che:
 
 $$
-\huge{\forall t_{1},t_{2} \in r : t_{1}[Y]=t_{2}[Y] \rightarrow t_{1}[Z] = t_{2}[Z]}
+\Large{\forall t_{1},t_{2} \in r : t_{1}[Y]=t_{2}[Y] \rightarrow t_{1}[Z] = t_{2}[Z]}
 $$
 Esempio:
 
@@ -66,7 +66,7 @@ Uno schema che non soddisfa la 2NF può essere normalizzato decomponendo le rela
 Si dice decomposizione senza perdita se uno schema $R(X)$ si decompone in $R_{1}(X_{1})$ e $R_{2}(X_{2})$ se per ogni istanza legale r di $R(X)$, il JOIN naturale delle proiezioni di r su $X_1$ e $X_2$ è uguale a r, cioè che:
 
 $$
-\huge{\pi_{x_{1}}(r) \triangleright \triangleleft \pi_{x_{2}(r)}= r}
+\Large{\pi_{x_{1}}(r) \triangleright \triangleleft \pi_{x_{2}(r)}= r}
 $$
 oppure che valga che $X_{1} \cap X_{2} \rightarrow X_1$, oppure,  $X_{1} \cap X_{2} \rightarrow X_2$, cioè che una decomposizione è garantita essere senza perdita se gli attributi comuni contengono una chiave per almeno una delle relazioni decomposte
 

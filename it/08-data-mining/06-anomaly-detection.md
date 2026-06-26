@@ -127,18 +127,18 @@ The k-th nearest neighbor distance of a point $p$, denoted as $k{\_}dist(p)$, is
 **Reachability Distance (reach_dist):**
 The *reachability distance* of two points $q$ and $p$, denoted as $reach{\_}dist_k(q,p)$ is defined as:
 $$
-\huge reach{\_}dist_k(q,p) = max\left\{ k{\_}dist(q),\, d(q,p)\right\}
+\Large reach{\_}dist_k(q,p) = max\left\{ k{\_}dist(q),\, d(q,p)\right\}
 $$
 
 **Local Reachability Density (lrd):**
 The *local reachability density* of a point $q$, denoted as $lrd(q)$, measures how closely packed the $MinPts$ neighbors $N_{MinPts}(q)$ are to the point $q$, it is defined as:
 $$
-\huge lrd(q) = \dfrac{MinPts}{\sum\limits_{p \in N_{MinPts}(q)}{reach\_dist_{MinPts}(q,p)}}
+\Large lrd(q) = \dfrac{MinPts}{\sum\limits_{p \in N_{MinPts}(q)}{reach\_dist_{MinPts}(q,p)}}
 $$
 **Local Outlier Factor (LOF):**
 The *local outlier factor* of a point $q$, also denoted as $LOF(q)$, is the comparison between the local reachability density of a point $q$ with the local reachability densities of it's neighbors, it is defined as: 
 $$
-\huge LOF(q) = \dfrac{1}{MinPts} \cdot \sum\limits_{p \in N_{MinPts}(q)}{\dfrac{lrd(p)}{lrd(q)}}
+\Large LOF(q) = \dfrac{1}{MinPts} \cdot \sum\limits_{p \in N_{MinPts}(q)}{\dfrac{lrd(p)}{lrd(q)}}
 $$
 - if $LOF(q)$ is significantly greater than 1: 
   $q$ can be considered an outlier, as it's local density is much smaller than it's neighbors, whereas

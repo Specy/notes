@@ -34,7 +34,7 @@ E si chiama *integrale di $f$* in $[a,b]$
 Se $f \in C[a,b]$, allora esiste un $c \in [a,b]$ tale che:
 
 $$
-\huge\int^b_a f(x) = f(c) \cdot (b-a)
+\Large\int^b_a f(x) = f(c) \cdot (b-a)
 $$
 ![[Pasted image 20250623095830.png]]
 
@@ -47,7 +47,7 @@ $$
 A questo punto risolviamo l'equazione:
 $$
 \begin{aligned}
-\huge\int^b_a f(x) &= f(c) \cdot (b-a) \\
+\Large\int^b_a f(x) &= f(c) \cdot (b-a) \\
 2 &= \frac{1}{c} \cdot (e^2 - 1) \\
 2 &= \frac{e^2 - 1}{c} \\
 c &= \frac{(e^2 - 1)}{2}
@@ -88,42 +88,42 @@ L'integrazione per parti è utile quando stiamo integrando un prodotto:
 Iniziamo dalla regola del prodotto
 
 $$
-\huge\frac{d}{dx} \left[ f(x)g(x) \right] = f'(x)g(x) + f(x)g'(x)
+\Large\frac{d}{dx} \left[ f(x)g(x) \right] = f'(x)g(x) + f(x)g'(x)
 $$
 
 Integriamo da entrambe le parti
 
 $$
-\huge f(x)g(x) = \int f'(x)g(x)\,dx + \int f(x)g'(x)\,dx
+\Large f(x)g(x) = \int f'(x)g(x)\,dx + \int f(x)g'(x)\,dx
 $$
 
 Spostiamo le parti, ottenendo la formula dell' **integrazione per parti**:
 
 $$
-\huge\int f(x)g'(x)\,dx = f(x)g(x) - \int f'(x)g(x)\,dx
+\Large\int f(x)g'(x)\,dx = f(x)g(x) - \int f'(x)g(x)\,dx
 $$
 Per esempio:
 
 $$
 \begin{aligned}
-\huge\int x^2 e^x
+\Large\int x^2 e^x
 \end{aligned}
 $$
 Applichiamo l'integrazione per parti
 $$
-\huge{x^2e^x - \int { 2x e^x}}
+\Large{x^2e^x - \int { 2x e^x}}
 $$
 Nell'integrale possiamo ancora applicare l'integrazione per parti
 $$
-\huge{x^2e^x - 2x e^x - \int 2e^x}
+\Large{x^2e^x - 2x e^x - \int 2e^x}
 $$
 A questo punto possiamo togliere la costante da dentro l'integrale
 $$
-\huge{x^2e^x - 2x e^x - 2\int e^x}
+\Large{x^2e^x - 2x e^x - 2\int e^x}
 $$
 E l'integrale di $e^x$ è semplicemente $e^x$, quindi:
 $$
-\huge{x^2e^x - 2x e^x - 2e^x}
+\Large{x^2e^x - 2x e^x - 2e^x}
 $$
 
 ##  🟢 Integrazione per u sostituzione (definita/indefinita)
@@ -132,7 +132,7 @@ Utile quando stiamo cercando di ricondurci ad una forma conosciuta che è facile
 
 ###  Indefinito 
 $$
-\huge\int \frac{sin (x)}{(cos(x))^2} dx
+\Large\int \frac{sin (x)}{(cos(x))^2} dx
 $$
 Possiamo sostituire $u = cos(x)$, e se applichiamo la derivata da entrambe le parti: 
 $$
@@ -164,7 +164,7 @@ $$
 ###  Definito 
 
 $$
-\huge\int_{\frac{\pi}{2}}^{\pi} -\cos^2(x)\sin(x)\, dx
+\Large\int_{\frac{\pi}{2}}^{\pi} -\cos^2(x)\sin(x)\, dx
 $$
 Allora:
 $$
@@ -181,15 +181,15 @@ $$
 
 Ottenendo:
 $$
-\huge\int u^2\, du
+\Large\int u^2\, du
 $$
 L'integrale originale ha limiti di integrazione da $\frac{\pi}{2}$ a $\pi$:
 $$
-\huge\int_{x=\frac{\pi}{2}}^{x=\pi}
+\Large\int_{x=\frac{\pi}{2}}^{x=\pi}
 $$
 Però ora il nostro integrale è verso $u$ non $x$, e dato che $u = cos(x)$, i nostri nuovi limiti di integrazione saranno:
 $$
-\huge\int_{u=cos(\frac{\pi}{2})}^{u=cos(\pi)} = \int_{0}^{-1}
+\Large\int_{u=cos(\frac{\pi}{2})}^{u=cos(\pi)} = \int_{0}^{-1}
 $$
 
 Allora riscriviamo l'integrale finale:
@@ -333,33 +333,33 @@ $$
 è utile quando dobbiamo integrare una funzione che cicla in un certo periodo, cioè che ritorna alla forma originale.
 
 $$
-\huge{\int e^x cos(x)}
+\Large{\int e^x cos(x)}
 $$
 Applichiamo l'integrazione per parti
 $$
-\huge\int e^x cos(x) = e^x cos(x) - \int{e^x \cdot (- sin(x))}
+\Large\int e^x cos(x) = e^x cos(x) - \int{e^x \cdot (- sin(x))}
 $$
 Semplifichiamo il -
 $$
-\huge\int e^x cos(x) = e^x cos(x) + \int{e^x sin(x)}
+\Large\int e^x cos(x) = e^x cos(x) + \int{e^x sin(x)}
 $$
 A questo punto riapplichiamo l'integrazioni per parti
 $$
-\huge\int e^x cos(x) = e^x cos(x) + e^x sin(x) - \int{e^x cos(x)}
+\Large\int e^x cos(x) = e^x cos(x) + e^x sin(x) - \int{e^x cos(x)}
 $$
 A questo punto potremmo continuare a fare integrazione per parti, ma come abbiamo appena visto, l'integrale cicla, quindi non riusciremo mai a finire il ciclo di integrazione. Ma possiamo spostare il secondo integrale a sinistra dell'equazione:
 $$
-\huge\int e^x cos(x) +  \int{e^x cos(x)} = e^x cos(x) + e^x sin(x)
+\Large\int e^x cos(x) +  \int{e^x cos(x)} = e^x cos(x) + e^x sin(x)
 $$
 Semplifichiamo unendo i due integrali, ottenendo $2\int{e^x cos(x)}$, per poi dividere tutto per 2:
 $$
-\huge\int e^x cos(x) = \frac{e^x cos(x) + e^x sin(x)}{2}
+\Large\int e^x cos(x) = \frac{e^x cos(x) + e^x sin(x)}{2}
 $$
 
 ## 🟢Identità trigonometriche
 
 $$
-\huge\int\frac{1}{\sqrt{3-2x^2}}dx
+\Large\int\frac{1}{\sqrt{3-2x^2}}dx
 $$
 Non è immediata la sostituzione, ma possiamo lavorare sul denominatore per cercare di semplificare l'espressione cosi che sia più facilmente trattabile.
 
@@ -367,7 +367,7 @@ Sappiamo che $sin^2\theta+cos^2\theta = 1$, e quindi che $cos^2\theta = 1 - \sin
 
 Proviamo a modificare l'integrale cosi da poter applicare qualcosa:
 $$
-\huge\int\frac{1}{\sqrt{3(1-\frac{2}{3}x^2)}}dx
+\Large\int\frac{1}{\sqrt{3(1-\frac{2}{3}x^2)}}dx
 $$
 Il che ha la stessa forma di $cos^2\theta = 1 - \sin^2\theta$ allora proviamo a sostituire $\frac{2}{3}x^2=sin^2\theta$ cosi che siano identiche:
 
@@ -388,16 +388,16 @@ dx = \frac{\sqrt3}{\sqrt2}cos\theta \ d\theta
 $$
 A questo punto possiamo rimpiazzare i termini nell'integrale originale 
 $$
-\huge\int\frac{dx}{\sqrt{3(1-\frac{2}{3}x^2)}} = 
-\huge\int\frac{\frac{\sqrt3}{\sqrt2}cos\theta \ d\theta}{\sqrt{3(1-sin^2\theta)}}
+\Large\int\frac{dx}{\sqrt{3(1-\frac{2}{3}x^2)}} = 
+\Large\int\frac{\frac{\sqrt3}{\sqrt2}cos\theta \ d\theta}{\sqrt{3(1-sin^2\theta)}}
 $$
 
 E abbiamo visto che $cos^2 = 1-sin^2\theta$, rimpiazziamolo:
 $$
 \begin{aligned}
-\huge\int\frac{\frac{\sqrt3}{\sqrt2}cos\theta \ d\theta}{\sqrt{3cos^2\theta}} &= 
-\huge\int\frac{\frac{\sqrt3}{\sqrt2}cos\theta \ d\theta}{\sqrt{3}\sqrt{cos^2\theta}} \\
-&= \huge\int\frac{\frac{\cancel{\sqrt3}}{\sqrt2}\cancel{cos\theta} \ d\theta}{\cancel{\sqrt{3}} \ \cancel{cos\theta}} \\
+\Large\int\frac{\frac{\sqrt3}{\sqrt2}cos\theta \ d\theta}{\sqrt{3cos^2\theta}} &= 
+\Large\int\frac{\frac{\sqrt3}{\sqrt2}cos\theta \ d\theta}{\sqrt{3}\sqrt{cos^2\theta}} \\
+&= \Large\int\frac{\frac{\cancel{\sqrt3}}{\sqrt2}\cancel{cos\theta} \ d\theta}{\cancel{\sqrt{3}} \ \cancel{cos\theta}} \\
 &= \int \frac{1}{\sqrt2 \ }d\theta \\
 &=  \frac{1}{\sqrt2} \int d\theta \\
 	&= \frac{1}{\sqrt2}\theta
@@ -406,11 +406,11 @@ $$
 Ma dobbiamo risolvere per $x$. Tornando alla sostituzione che abbiamo fatto prima:
 $x =\frac{\sqrt3}{\sqrt2}sin\theta$, possiamo ricavare che:
 $$
-\huge\theta = arcsin\left(\frac{\sqrt2}{\sqrt3}x\right)
+\Large\theta = arcsin\left(\frac{\sqrt2}{\sqrt3}x\right)
 $$ 
 Allora facciamo la sostituzione inversa:
 $$
-\huge\frac{1}{\sqrt2}\theta =\frac{1}{\sqrt2} arcsin\left(\frac{\sqrt2}{\sqrt3}x\right)
+\Large\frac{1}{\sqrt2}\theta =\frac{1}{\sqrt2} arcsin\left(\frac{\sqrt2}{\sqrt3}x\right)
 $$
 Che è la nostra soluzione finale.
 ![[Pasted image 20250616112118.png]]

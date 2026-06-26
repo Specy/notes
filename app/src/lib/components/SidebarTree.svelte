@@ -92,6 +92,7 @@
 
 <style>
 	.folder-item {
+		font-family: var(--heading-font);
 		display: flex;
 		background: color-mix(in srgb, var(--secondary) 60%, transparent);
 		border-radius: 0.4rem;
@@ -112,6 +113,7 @@
 
 
   .order {
+	font-family: Rubik;
     padding: 0.25ch 1ch;
     min-width: 4ch;
     background-color: var(--background);
