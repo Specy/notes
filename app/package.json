@@ -26,6 +26,7 @@
     "@shikijs/rehype": "^4.3.0",
     "katex": "^0.16.47",
     "mdast-util-to-string": "^4.0.0",
+    "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-katex": "^7.0.1",
     "rehype-raw": "^7.0.0",
