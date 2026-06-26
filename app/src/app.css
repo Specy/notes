@@ -95,12 +95,15 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
 
 /* ─── Callouts (from remarkCallouts) ─────────────────────────────────────── */
 .callout {
-  border-left: 4px solid var(--accent);
+  border-left: 0.3rem solid var(--accent);
   padding: 0.7rem 1rem;
-  /* Left corners square so the accent left-border stays a clean vertical line. */
-  border-radius: 0 0.7rem 0.7rem 0;
+  border-radius: 0.3rem 0.8rem 0.8rem 0.3rem;
   background: #52537a1a; /* same translucent surface as code blocks */
   margin: 1rem 0;
+}
+
+.callout > :last-child {
+  margin-bottom: 0 !important;
 }
 .callout-title {
   font-family: var(--heading-font), sans-serif;
@@ -232,9 +235,9 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
 
 .md blockquote {
   border-radius: 0.3rem 0.8rem 0.8rem 0.3rem;
-  padding: 0.5rem;
+  padding: 0.7rem 1rem;
   border-left: 0.3rem solid var(--accent);
-  background: color-mix(in srgb, var(--tertiary) 10%, transparent);
+  background: #52537a1a;
   margin: 1rem 0;
 }
 
