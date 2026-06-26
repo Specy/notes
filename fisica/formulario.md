@@ -372,16 +372,16 @@ $$\Delta S_{universo} = \frac{Q}{T_1} - \frac{Q}{T_2} > 0$$
 
 ## Mappa finale della termodinamica [[L23]]
 
-| Concetto | Relazione chiave |
-|---|---|
-| Equazione di stato | $PV = nRT$ |
-| Primo principio | $\Delta U = Q - L$, con $\Delta U = nC_V\Delta T$ |
-| Mayer / adiabatico | $C_P = C_V + R$, $\gamma = C_P/C_V$ |
-| Lavoro del gas | $L = \int P\,dV$ (area in $P$–$V$) |
-| Adiabatica | $PV^\gamma = \text{cost}$ |
-| Rendimento | $\eta = 1 - \frac{|Q_{ced}|}{Q_{ass}} \le 1 - \frac{T_1}{T_2}$ |
-| Secondo principio | $\Delta S_{universo} \ge 0$ |
-| Entropia (gas) | $\Delta S = nC_V\ln\frac{T_B}{T_A} + nR\ln\frac{V_B}{V_A}$ |
+| Concetto           | Relazione chiave                                           |         |                                     |
+| ------------------ | ---------------------------------------------------------- | ------- | ----------------------------------- |
+| Equazione di stato | $PV = nRT$                                                 |         |                                     |
+| Primo principio    | $\Delta U = Q - L$, con $\Delta U = nC_V\Delta T$          |         |                                     |
+| Mayer / adiabatico | $C_P = C_V + R$, $\gamma = C_P/C_V$                        |         |                                     |
+| Lavoro del gas     | $L = \int P\,dV$ (area in $P$–$V$)                         |         |                                     |
+| Adiabatica         | $PV^\gamma = \text{cost}$                                  |         |                                     |
+| Rendimento         | $\eta = 1 - \frac{                                         | Q_{ced} | }{Q_{ass}} \le 1 - \frac{T_1}{T_2}$ |
+| Secondo principio  | $\Delta S_{universo} \ge 0$                                |         |                                     |
+| Entropia (gas)     | $\Delta S = nC_V\ln\frac{T_B}{T_A} + nR\ln\frac{V_B}{V_A}$ |         |                                     |
 
 ---
 
