@@ -12,8 +12,6 @@ topics:
   - lavoro e percorso
 ---
 
-# Lezione 17: Equazione di stato dei gas perfetti
-
 
 
 > [!abstract] In questa lezione

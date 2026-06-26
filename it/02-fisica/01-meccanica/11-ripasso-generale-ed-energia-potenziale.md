@@ -12,8 +12,6 @@ topics:
   - problema d'esame
 ---
 
-# Lezione 11: Ripasso generale ed energia potenziale
-
 
 
 > [!abstract] In questa lezione

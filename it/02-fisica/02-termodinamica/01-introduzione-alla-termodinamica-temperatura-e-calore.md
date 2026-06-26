@@ -13,8 +13,6 @@ topics:
   - calorimetria
 ---
 
-# Lezione 15: Introduzione alla termodinamica, temperatura e calore
-
 
 
 > [!abstract] In questa lezione

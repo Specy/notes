@@ -12,8 +12,6 @@ topics:
   - enunciato di Clausius
 ---
 
-# Lezione 21: Cicli termodinamici e il secondo principio
-
 
 
 > [!abstract] In questa lezione

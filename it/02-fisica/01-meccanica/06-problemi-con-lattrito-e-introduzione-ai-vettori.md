@@ -11,8 +11,6 @@ topics:
   - somma di vettori
 ---
 
-# Lezione 6: Problemi con l'attrito e introduzione ai vettori
-
 
 
 > [!abstract] In questa lezione

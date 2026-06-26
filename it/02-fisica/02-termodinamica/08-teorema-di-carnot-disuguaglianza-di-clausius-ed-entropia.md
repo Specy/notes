@@ -12,8 +12,6 @@ topics:
   - entropia del gas perfetto
 ---
 
-# Lezione 22: Entropia e secondo principio
-
 
 
 > [!abstract] In questa lezione

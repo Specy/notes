@@ -11,8 +11,6 @@ topics:
   - debolezza della gravità tra corpi ordinari
 ---
 
-# Lezione 4: Azione e reazione e gravitazione universale
-
 
 
 > [!abstract] In questa lezione

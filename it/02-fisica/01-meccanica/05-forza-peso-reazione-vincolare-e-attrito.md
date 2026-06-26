@@ -11,8 +11,6 @@ topics:
   - attrito statico e dinamico
 ---
 
-# Lezione 5: Forza peso, reazione vincolare e attrito
-
 
 
 > [!abstract] In questa lezione

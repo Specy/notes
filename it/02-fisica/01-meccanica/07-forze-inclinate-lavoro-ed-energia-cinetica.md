@@ -11,8 +11,6 @@ topics:
   - teorema dell'energia cinetica
 ---
 
-# Lezione 7: Forze inclinate, lavoro ed energia cinetica
-
 
 
 > [!abstract] In questa lezione

@@ -11,8 +11,6 @@ topics:
   - velocità di impatto con cinematica ed energia
 ---
 
-# Lezione 9: Il moto parabolico
-
 
 
 > [!abstract] In questa lezione

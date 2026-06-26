@@ -13,8 +13,6 @@ topics:
   - ciclo di Carnot
 ---
 
-# Lezione 19: Trasformazioni, cicli e macchine termiche
-
 
 
 > [!abstract] In questa lezione

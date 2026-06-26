@@ -11,8 +11,6 @@ topics:
   - rendimento
 ---
 
-# Lezione 23: Esercizi d'esame di termodinamica
-
 
 
 > [!abstract] In questa lezione

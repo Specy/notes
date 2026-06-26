@@ -11,8 +11,6 @@ topics:
   - problemi con il teorema dell'energia cinetica
 ---
 
-# Lezione 8: Lavoro della forza peso e piano inclinato
-
 
 
 > [!abstract] In questa lezione
