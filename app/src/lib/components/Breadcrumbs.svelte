@@ -65,6 +65,7 @@
   .seg {
     position: relative;
     display: flex;
+    max-width: 9rem;
     align-items: center;
     /* middle segments: notch-left + point-right (interlocking arrows) */
     padding: 0.3rem 0.85rem 0.3rem 1.15rem;
@@ -85,6 +86,8 @@
   /* Last: notch-left, straight right (the pill rounds it). */
   .seg.last {
     padding-right: 1rem;
+    max-width: unset;
+    overflow: hidden;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0.7rem 50%);
   }
   /* A breadcrumb with no ancestors would be both first and last → plain pill. */

@@ -18,6 +18,7 @@ export function listAllRoutes() {
   );
 }
 
+
 export async function renderNode(lang: string, path: string) {
   const c = ctx();
   const node = path === '' ? c.root : getNodeByPath(c.root, path.split('/'));

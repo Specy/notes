@@ -15,7 +15,15 @@
 </nav>
 
 <style>
-  .toc { border-left: 2px solid var(--accent, #6366f1); padding: .5rem 1rem; margin: 1rem 0; font-size: .875rem; }
+  .toc { 
+    border-left: 0.2rem solid var(--accent); 
+    padding: .5rem 1rem;
+    margin: 1rem 0 3rem 0rem; 
+    font-size: .875rem; 
+    background: color-mix(in srgb, var(--background) 40%, transparent);
+    width: 100%;
+    border-radius: 0.2rem 0.8rem 0.8rem 0.2rem;
+  }
   .toc-title { font-weight: 600; margin: 0 0 .5rem; color: var(--background-text); }
   ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .25rem; }
   a { color: var(--hint); text-decoration: none; }

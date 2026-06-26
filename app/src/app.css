@@ -59,7 +59,8 @@ body {
    the CONTAINER look (translucent bg, padding, radius) matches specy.app's
    prism-one-dark.css so it reads the same on both themes.                     */
 .shiki {
-  background: #52537a1a !important; /* beats Shiki's inline bg; subtle on both themes */
+  background: #52537a1a !important;
+  /* beats Shiki's inline bg; subtle on both themes */
   padding: 0.8em 1em;
   margin: 1.3rem 0;
   border-radius: 0.5em;
@@ -69,14 +70,17 @@ body {
   line-height: 1.5;
   tab-size: 2;
 }
+
 .shiki,
 .shiki span {
   color: var(--shiki-light);
 }
+
 html[data-theme='dark'] .shiki,
 html[data-theme='dark'] .shiki span {
   color: var(--shiki-dark) !important;
 }
+
 html[data-theme='dark'] .shiki span {
   font-style: var(--shiki-dark-font-style);
   font-weight: var(--shiki-dark-font-weight);
@@ -88,40 +92,72 @@ html[data-theme='dark'] .shiki span {
 }
 
 /* ─── Excalidraw dual-theme embed ────────────────────────────────────────── */
-.excalidraw-dark { display: none; }
-html[data-theme="dark"] .excalidraw-light { display: none; }
-html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
-.excalidraw-img { max-width: 100%; }
+.excalidraw-dark {
+  display: none;
+}
+
+html[data-theme="dark"] .excalidraw-light {
+  display: none;
+}
+
+html[data-theme="dark"] .excalidraw-dark {
+  display: inline-block;
+}
+
+.excalidraw-img {
+  max-width: 100%;
+}
 
 /* ─── Callouts (from remarkCallouts) ─────────────────────────────────────── */
 .callout {
   border-left: 0.3rem solid var(--accent);
   padding: 0.7rem 1rem;
   border-radius: 0.3rem 0.8rem 0.8rem 0.3rem;
-  background: #52537a1a; /* same translucent surface as code blocks */
+  background: #52537a1a;
+  /* same translucent surface as code blocks */
   margin: 1rem 0;
 }
 
-.callout > :last-child {
+.callout> :last-child {
   margin-bottom: 0 !important;
 }
+
 .callout-title {
   font-family: var(--heading-font), sans-serif;
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 0.3rem;
 }
-.callout-info    { border-left-color: #4a9eff; }
-.callout-warning { border-left-color: var(--warn); }
-.callout-danger  { border-left-color: var(--warn); }
-.callout-tip     { border-left-color: var(--success); }
-.callout-note    { border-left-color: var(--hint); }
+
+.callout-info {
+  border-left-color: #4a9eff;
+}
+
+.callout-warning {
+  border-left-color: var(--warn);
+}
+
+.callout-danger {
+  border-left-color: var(--warn);
+}
+
+.callout-tip {
+  border-left-color: var(--success);
+}
+
+.callout-note {
+  border-left-color: var(--hint);
+}
 
 /* Foldable callout affordance */
-.callout[data-callout-fold] .callout-title { cursor: pointer; }
+.callout[data-callout-fold] .callout-title {
+  cursor: pointer;
+}
 
 /* Folded state — hide everything except the title */
-.callout.folded > :not(.callout-title) { display: none; }
+.callout.folded> :not(.callout-title) {
+  display: none;
+}
 
 /* ─── Article / markdown typography (.md) ────────────────────────────────── */
 /*
@@ -138,7 +174,7 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   width: 100%;
 }
 
-.md > :first-child {
+.md> :first-child {
   margin-top: 0;
 }
 
@@ -163,10 +199,10 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   letter-spacing: 0.02em;
 }
 
-.md h1 > a,
-.md h2 > a,
-.md h3 > a,
-.md h4 > a {
+.md h1>a,
+.md h2>a,
+.md h3>a,
+.md h4>a {
   letter-spacing: 0.02em;
   color: var(--background-text);
   font-family: var(--heading-font);
@@ -228,8 +264,8 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   color: var(--background-text);
 }
 
-.md ul > li,
-.md ol > li {
+.md ul>li,
+.md ol>li {
   margin: 0.5rem 0;
 }
 
@@ -250,14 +286,15 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
 }
 
 /* Inline code — accent colour wrapped in backticks (specy.app style). */
-.md :not(pre) > code {
+.md :not(pre)>code {
   font-family: var(--code-font), monospace;
   color: var(--accent);
   white-space: normal;
   font-size: 0.95em;
 }
-.md :not(pre) > code::before,
-.md :not(pre) > code::after {
+
+.md :not(pre)>code::before,
+.md :not(pre)>code::after {
   content: '`';
 }
 
@@ -266,13 +303,17 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
 .md table {
   border-collapse: separate;
   border-spacing: 0;
-  width: 100%;
   margin: 1.5rem 0;
   font-size: 1rem;
   background: #52537a1a;
-  border: 1px solid var(--accent2); /* outer border */
+  border: 1px solid var(--accent2);
+  /* outer border */
   border-radius: 0.5rem;
   overflow: hidden;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
 }
 
 /* Inner grid lines: each cell draws its bottom + right border; the table's own
@@ -310,11 +351,19 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   padding: 0 1rem;
 }
 
+@media screen and (max-width: 768px) {
+  .article {
+    padding: 0;
+    margin: 1rem auto 3rem;
+  }
+}
+
 /* Hero: big Rubik title, muted meta line, serif description — on the blobs. */
 .hero {
   padding: 1rem 1rem 0;
   margin-bottom: 1.5rem;
 }
+
 .main-header {
   font-family: var(--heading-font), sans-serif;
   font-size: 3.2rem;
@@ -323,12 +372,14 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   margin: 0;
   color: var(--background-text);
 }
+
 .hero-meta {
   font-family: var(--heading-font), sans-serif;
   font-size: 1.3rem;
   color: var(--muted);
   margin: 0.8rem 0 0;
 }
+
 .hero-desc {
   font-family: var(--paragraph-font), serif;
   font-size: 1.4rem;
@@ -368,13 +419,16 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   .main-header {
     font-size: 2.3rem;
   }
+
   .hero-meta,
   .hero-desc {
     font-size: 1.2rem;
   }
+
   .md h1 {
     font-size: 2rem;
   }
+
   .md p,
   .md li {
     font-size: 1.1rem;
