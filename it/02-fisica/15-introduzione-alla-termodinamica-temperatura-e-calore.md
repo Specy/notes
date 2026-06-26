@@ -1,4 +1,7 @@
 ---
+title: "Introduzione alla termodinamica, temperatura e calore"
+description: "Sistema termodinamico e variabili di stato, il principio zero e la temperatura, la pressione con la legge di Stevino e il calore con la calorimetria."
+type: lecture
 lezione: 15
 titolo: Introduzione alla termodinamica, temperatura e calore
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -16,7 +19,7 @@ argomenti:
 
 # Lezione 15: Introduzione alla termodinamica, temperatura e calore
 
-📎 Lezione precedente: [[L14]]
+📎 Lezione precedente: [[esonero-moto-circolare-e-pendolo-semplice]]
 
 > [!abstract] In questa lezione
 > - Perché serve la **termodinamica**: descrivere sistemi di tantissime particelle
@@ -256,4 +259,4 @@ Servono circa **721 pezzetti**: nonostante l'argento sia molto più caldo, il su
 
 ---
 
-📎 Lezione precedente: [[L14]] · Prossima lezione: [[L16]]
+📎 Lezione precedente: [[esonero-moto-circolare-e-pendolo-semplice]] · Prossima lezione: [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]

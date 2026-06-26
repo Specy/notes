@@ -1,4 +1,7 @@
 ---
+title: "Trasformazione politropica, macchina frigorifera e Carnot con attrito"
+description: "La trasformazione politropica che unifica le quattro trasformazioni, il rendimento di Carnot, la macchina frigorifera con il suo COP e un ciclo di Carnot reale con attrito."
+type: lecture
 lezione: 20
 titolo: Trasformazione politropica, macchina frigorifera e Carnot con attrito
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -15,7 +18,7 @@ argomenti:
 
 # Lezione 20: Politropiche, macchine frigorifere e attrito
 
-📎 Lezione precedente: [[L19]]
+📎 Lezione precedente: [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]]
 
 > [!abstract] In questa lezione
 > - La **trasformazione politropica** $PV^k = \text{cost}$ che **unifica** le quattro trasformazioni
@@ -52,7 +55,7 @@ $$\boxed{\;C_k = C_V + \frac{R}{1 - k}\;}$$
 
 ## 2. Ripasso: il rendimento di Carnot
 
-Per una macchina termica, il rendimento è (vedi [[L19]])
+Per una macchina termica, il rendimento è (vedi [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]])
 
 $$\eta = \frac{W}{Q_{ass}} = \frac{Q_{ass} + Q_{ced}}{Q_{ass}} = 1 - \frac{|Q_{ced}|}{Q_{ass}}$$
 
@@ -150,4 +153,4 @@ cioè circa il **66% del rendimento ideale** ($\eta_{reale} \approx 0{,}66\,\eta
 
 ---
 
-📎 Lezione precedente: [[L19]] · Prossima lezione: [[L21]]
+📎 Lezione precedente: [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]] · Prossima lezione: [[cicli-termodinamici-e-il-secondo-principio]]

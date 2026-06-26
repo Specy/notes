@@ -1,4 +1,7 @@
 ---
+title: "Il moto armonico semplice"
+description: "L'equazione del moto armonico semplice e la sua soluzione, con pulsazione, periodo, frequenza, condizioni iniziali ed energia dell'oscillazione."
+type: lecture
 lezione: 13
 titolo: Il moto armonico semplice
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -14,7 +17,7 @@ argomenti:
 
 # Lezione 13: Il moto armonico semplice
 
-📎 Lezione precedente: [[L12]]
+📎 Lezione precedente: [[esercizi-desame-e-sistemi-di-corpi-collegati]]
 
 > [!abstract] In questa lezione
 > - L'**equazione del moto armonico**: $\ddot x + \omega^2 x = 0$, con $\omega^2 = k/m$
@@ -27,7 +30,7 @@ argomenti:
 
 ## 1. L'equazione del moto armonico
 
-Consideriamo una massa $m$ attaccata a una molla orizzontale, libera di oscillare. Scegliamo l'origine $O$ nella **posizione di equilibrio** (molla a riposo): così la forza elastica è semplicemente $F = -kx$ (vedi [[L10]]).
+Consideriamo una massa $m$ attaccata a una molla orizzontale, libera di oscillare. Scegliamo l'origine $O$ nella **posizione di equilibrio** (molla a riposo): così la forza elastica è semplicemente $F = -kx$ (vedi [[potenza-energia-spesa-e-forza-elastica]]).
 
 <svg viewBox="0 0 340 90" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Massa su molla orizzontale, oscilla attorno alla posizione di equilibrio O">
   <line x1="20" y1="30" x2="20" y2="70" stroke="currentColor" stroke-width="2"/>
@@ -148,7 +151,7 @@ $$E_m = K + U_{el} = \frac{1}{2}k\,A^2\big[\underbrace{\sin^2(\omega t + \varphi
 $$\boxed{\;E_m = \frac{1}{2}k\,A^2 = \text{costante}\;}$$
 
 > [!note] Il travaso continuo tra cinetica ed elastica
-> Durante l'oscillazione $K$ e $U_{el}$ si scambiano continuamente energia, ma la loro somma resta costante (grazie all'identità $\sin^2 + \cos^2 = 1$). All'estremo l'energia è **tutta elastica** ($v = 0$); al passaggio per l'equilibrio è **tutta cinetica** ($x = 0$, velocità massima). È la conservazione dell'energia meccanica anticipata in [[L11]].
+> Durante l'oscillazione $K$ e $U_{el}$ si scambiano continuamente energia, ma la loro somma resta costante (grazie all'identità $\sin^2 + \cos^2 = 1$). All'estremo l'energia è **tutta elastica** ($v = 0$); al passaggio per l'equilibrio è **tutta cinetica** ($x = 0$, velocità massima). È la conservazione dell'energia meccanica anticipata in [[ripasso-generale-ed-energia-potenziale]].
 
 <svg viewBox="0 0 320 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Energia cinetica ed elastica oscillano, la loro somma resta costante">
   <line x1="30" y1="95" x2="300" y2="95" stroke="currentColor" stroke-width="1"/>
@@ -215,4 +218,4 @@ $$v_{max} = \omega X = \pi\cdot 0{,}15 \approx 0{,}47\ \frac{\text{m}}{\text{s}}
 
 ---
 
-📎 Lezione precedente: [[L12]] · Prossima lezione: [[L14]]
+📎 Lezione precedente: [[esercizi-desame-e-sistemi-di-corpi-collegati]] · Prossima lezione: [[esonero-moto-circolare-e-pendolo-semplice]]

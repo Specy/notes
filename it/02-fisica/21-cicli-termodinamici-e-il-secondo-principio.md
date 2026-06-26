@@ -1,4 +1,7 @@
 ---
+title: "Cicli termodinamici e il secondo principio"
+description: "Cicli termodinamici con il lavoro come area, un frigorifero che congela acqua e il secondo principio negli enunciati di Kelvin-Planck e Clausius."
+type: lecture
 lezione: 21
 titolo: Cicli termodinamici e il secondo principio
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -15,7 +18,7 @@ argomenti:
 
 # Lezione 21: Cicli termodinamici e il secondo principio
 
-📎 Lezione precedente: [[L20]]
+📎 Lezione precedente: [[trasformazione-politropica-macchina-frigorifera-e-carnot-con-attrito]]
 
 > [!abstract] In questa lezione
 > - Un ciclo **triangolare**: lavoro come area, rendimento
@@ -62,7 +65,7 @@ $$\eta = \frac{W}{Q_{ass}} = \frac{800}{5000} \approx 0{,}16$$
 
 > $n = 1\ \text{mol}$, $C_V = \tfrac{3}{2}R$, $\gamma = \tfrac{5}{3}$. Ciclo $A \to B \to C \to D \to A$: $A \to B$ **adiabatica**, $B \to C$ **isobara**, $C \to D$ **isoterma**, $D \to A$. Dati: $V_A = 2\times 10^{-2}$, $V_B = 10^{-2}$, $V_D = 0{,}6\times 10^{-2}\ \text{m}^3$, $T_A = 300\ \text{K}$, $T_C = 200\ \text{K}$.
 
-Si procede trasformazione per trasformazione, usando le formule riassunte in [[L19]].
+Si procede trasformazione per trasformazione, usando le formule riassunte in [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]].
 
 **$A \to B$ (adiabatica, $Q = 0$).** Da $TV^{\gamma-1} = \text{cost}$:
 
@@ -91,11 +94,11 @@ $$W_{DA} \approx 2{,}8\ \text{kJ} \qquad Q_{DA} = \Delta U_{DA} + W_{DA} \approx
 
 > Un frigorifero opera tra $T_1 = -4\,°\text{C}$ e $T_2 = 25\,°\text{C}$, con lavoro $W = -400\ \text{J}$ per ciclo. Quanti cicli servono per trasformare $m = 1\ \text{kg}$ di acqua da $20\,°\text{C}$ in ghiaccio a $-4\,°\text{C}$?
 
-**Calore estratto per ciclo.** Il coefficiente di prestazione di Carnot (vedi [[L20]]), con le temperature in kelvin:
+**Calore estratto per ciclo.** Il coefficiente di prestazione di Carnot (vedi [[trasformazione-politropica-macchina-frigorifera-e-carnot-con-attrito]]), con le temperature in kelvin:
 
 $$\xi = \frac{T_1}{T_2 - T_1} = \frac{269{,}15}{29} \approx 9{,}3 \;\Longrightarrow\; Q_{ass} = \xi\,|W| \approx 3{,}71\ \text{kJ per ciclo}$$
 
-**Calore totale da estrarre dall'acqua.** Il processo ha tre fasi (raffreddare, solidificare, raffreddare il ghiaccio), e usa il calore latente di [[L16]]:
+**Calore totale da estrarre dall'acqua.** Il processo ha tre fasi (raffreddare, solidificare, raffreddare il ghiaccio), e usa il calore latente di [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]:
 
 $$|Q_{acqua}| = \underbrace{m\,c_{acqua}(20 - 0)}_{\text{raffredda}} + \underbrace{m\,\lambda}_{\text{solidifica}} + \underbrace{m\,c_{ghiaccio}(0 - (-4))}_{\text{raffredda ghiaccio}}$$
 
@@ -178,4 +181,4 @@ I due enunciati sembrano diversi (uno parla di motori, l'altro di frigoriferi) m
 
 ---
 
-📎 Lezione precedente: [[L20]] · Prossima lezione: [[L22]]
+📎 Lezione precedente: [[trasformazione-politropica-macchina-frigorifera-e-carnot-con-attrito]] · Prossima lezione: [[teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]]

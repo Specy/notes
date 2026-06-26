@@ -1,4 +1,7 @@
 ---
+title: "Equazione di stato dei gas perfetti e trasformazioni"
+description: "La legge di Avogadro e la mole, l'equazione di stato dei gas perfetti PV = nRT, la costante di Boltzmann e le trasformazioni reversibili e irreversibili."
+type: lecture
 lezione: 17
 titolo: Equazione di stato dei gas perfetti e trasformazioni
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -15,7 +18,7 @@ argomenti:
 
 # Lezione 17: Equazione di stato dei gas perfetti
 
-📎 Lezione precedente: [[L16]]
+📎 Lezione precedente: [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]
 
 > [!abstract] In questa lezione
 > - La **legge di Avogadro** e il concetto di **mole**
@@ -28,7 +31,7 @@ argomenti:
 
 ## 1. La legge di Avogadro e la mole
 
-Alle leggi di Boyle e Gay-Lussac di [[L16]] si aggiunge la **legge di Avogadro**: a parità di pressione e temperatura, volumi uguali di gas diversi contengono lo stesso numero di molecole. In particolare, **una mole** di qualunque gas perfetto, alle condizioni standard ($P_0 = P_{atm}$, $T_0 = 273{,}15\ \text{K}$), occupa lo stesso **volume molare**:
+Alle leggi di Boyle e Gay-Lussac di [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]] si aggiunge la **legge di Avogadro**: a parità di pressione e temperatura, volumi uguali di gas diversi contengono lo stesso numero di molecole. In particolare, **una mole** di qualunque gas perfetto, alle condizioni standard ($P_0 = P_{atm}$, $T_0 = 273{,}15\ \text{K}$), occupa lo stesso **volume molare**:
 
 $$V_m = 0{,}02241\ \text{m}^3 = 22{,}41\ \text{litri (per 1 mole)}$$
 
@@ -145,7 +148,7 @@ Una **trasformazione termodinamica** porta il sistema da uno stato $A$ a uno sta
 
 ## 5. Il lavoro dipende dal percorso
 
-Per una trasformazione reversibile il lavoro è $L_{AB} = \displaystyle\int_A^B P(V)\,dV$, cioè l'area sotto la curva (vedi [[L16]]). Per una trasformazione **irreversibile** a pressione esterna costante (per esempio un'espansione contro l'atmosfera):
+Per una trasformazione reversibile il lavoro è $L_{AB} = \displaystyle\int_A^B P(V)\,dV$, cioè l'area sotto la curva (vedi [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]). Per una trasformazione **irreversibile** a pressione esterna costante (per esempio un'espansione contro l'atmosfera):
 
 $$L_{AB}^{irr} = P_{amb}\,(V_B - V_A)$$
 
@@ -197,4 +200,4 @@ Tre cammini, tre lavori diversi tra gli stessi stati. Il lavoro **non è una var
 
 ---
 
-📎 Lezione precedente: [[L16]] · Prossima lezione: [[L18]]
+📎 Lezione precedente: [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]] · Prossima lezione: [[il-primo-principio-della-termodinamica]]

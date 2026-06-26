@@ -1,4 +1,7 @@
 ---
+title: Formulario
+description: "Tutte le formule del corso di meccanica e termodinamica raccolte per argomento, ciascuna con una breve spiegazione."
+type: resource
 titolo: Formulario di Fisica — Meccanica e Termodinamica
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
 docente: Gabriele Curci
@@ -34,7 +37,7 @@ tipo: formulario
 
 # MECCANICA
 
-## Cinematica — definizioni di base [[L01]] [[L02]]
+## Cinematica — definizioni di base [[introduzione-al-corso-e-cinematica-del-punto-materiale]] [[legge-oraria-moto-uniforme-accelerazione-e-moto-uniformemente-accelerato]]
 
 - **Velocità media** — spostamento diviso tempo impiegato (pendenza della secante di $x(t)$):
 $$v_m = \frac{\Delta x}{\Delta t} = \frac{x_2 - x_1}{t_2 - t_1}$$
@@ -45,12 +48,12 @@ $$a_m = \frac{\Delta v}{\Delta t}$$
 - **Accelerazione istantanea** — derivata della velocità (derivata seconda della posizione):
 $$a = \frac{dv}{dt} = \frac{d^2x}{dt^2}$$
 
-## Moto uniforme ($v$ costante) [[L02]]
+## Moto uniforme ($v$ costante) [[legge-oraria-moto-uniforme-accelerazione-e-moto-uniformemente-accelerato]]
 
 - **Legge oraria** — la posizione cresce linearmente nel tempo:
 $$x(t) = x_0 + v\,t$$
 
-## Moto uniformemente accelerato ($a$ costante) [[L03]]
+## Moto uniformemente accelerato ($a$ costante) [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]]
 
 - **Velocità** — cresce linearmente nel tempo:
 $$v(t) = v_0 + a\,t$$
@@ -61,7 +64,7 @@ $$v^2 = v_0^2 + 2a\,\Delta x \qquad\Longleftrightarrow\qquad a = \frac{v_2^2 - v
 - **Velocità media nel MUA** — media aritmetica (vale solo se $a$ è costante):
 $$v_m = \frac{v_1 + v_2}{2}$$
 
-## Caduta libera [[L04]]
+## Caduta libera [[terzo-principio-della-dinamica-e-gravitazione-universale]]
 
 - **Tempo di caduta** da fermo, da altezza $d$:
 $$t_d = \sqrt{\frac{2d}{g}}$$
@@ -70,7 +73,7 @@ $$v = \sqrt{2gh}$$
 
 ---
 
-## Dinamica — i tre principi [[L03]] [[L04]]
+## Dinamica — i tre principi [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]] [[terzo-principio-della-dinamica-e-gravitazione-universale]]
 
 - **2° principio (Newton)** — la forza è causa, l'accelerazione effetto, la massa la costante:
 $$\vec F = m\,\vec a$$
@@ -78,7 +81,7 @@ $$\vec F = m\,\vec a$$
 $$\vec F_{BA} = -\vec F_{AB}$$
 - Più forze sul corpo: si sommano vettorialmente, $\sum_i \vec F_i = m\vec a$ (di solito scomposte asse per asse).
 
-## Gravitazione [[L04]] [[L05]]
+## Gravitazione [[terzo-principio-della-dinamica-e-gravitazione-universale]] [[forza-peso-reazione-vincolare-e-attrito]]
 
 - **Gravitazione universale** — attrazione tra due masse a distanza $r$:
 $$F = G\,\frac{m_A\,m_B}{r^2}$$
@@ -87,7 +90,7 @@ $$g = G\,\frac{M_{terra}}{r^2}$$
 - **Forza peso** — sempre verso il basso:
 $$P = m\,g$$
 
-## Reazione vincolare e attrito [[L05]] [[L06]]
+## Reazione vincolare e attrito [[forza-peso-reazione-vincolare-e-attrito]] [[problemi-con-lattrito-e-introduzione-ai-vettori]]
 
 - **Reazione normale** $N$ — perpendicolare al vincolo; su piano orizzontale fermo 
 $$N = mg$$
@@ -101,7 +104,7 @@ $$F_{ad} = \mu_d\,N$$
 
 ---
 
-## Vettori [[L06]]
+## Vettori [[problemi-con-lattrito-e-introduzione-ai-vettori]]
 
 - **Modulo** (da componenti cartesiane, teorema di Pitagora):
 $$A = \sqrt{A_x^2 + A_y^2}$$
@@ -114,7 +117,7 @@ $$\vec C = \vec A + \vec B \equiv (A_x + B_x,\; A_y + B_y)$$
 
 ---
 
-## Lavoro ed energia [[L07]] [[L08]] [[L10]] [[L11]]
+## Lavoro ed energia [[forze-inclinate-lavoro-ed-energia-cinetica]] [[lavoro-della-forza-peso-piano-inclinato-ed-energia]] [[potenza-energia-spesa-e-forza-elastica]] [[ripasso-generale-ed-energia-potenziale]]
 
 - **Lavoro di una forza** — prodotto scalare forza·spostamento ($\alpha$ = angolo tra loro):
 $$W = \vec F\cdot \vec s = F\,s\,\cos\alpha$$
@@ -130,7 +133,7 @@ $$P = \frac{dW}{dt} = \vec F\cdot \vec v$$
 - **Energia spesa** (problemi metabolici) — potenza per tempo, più il lavoro contro la gravità se si sale:
 $$W = P\,t \;(+\,mgh)$$
 
-## Forza elastica (molla) [[L10]]
+## Forza elastica (molla) [[potenza-energia-spesa-e-forza-elastica]]
 
 - **Legge di Hooke** — forza di richiamo proporzionale e opposta alla deformazione $x = l - l_0$:
 $$F_e = -k\,x$$
@@ -139,7 +142,7 @@ $$W_{AB} = \tfrac{1}{2}k\,x_A^2 - \tfrac{1}{2}k\,x_B^2$$
 - **Compressione/estensione massima** — uguagliando energia cinetica ed elastica ($\tfrac12 mv^2 = \tfrac12 kx^2$):
 $$x_{max} = \sqrt{\frac{m\,v^2}{k}}$$
 
-## Energia potenziale e conservazione [[L11]]
+## Energia potenziale e conservazione [[ripasso-generale-ed-energia-potenziale]]
 
 - **Lavoro forza conservativa** — pari alla diminuzione di energia potenziale:
 $$W = -\Delta U = U_{iniziale} - U_{finale}$$
@@ -152,7 +155,7 @@ $$K + U = \text{costante} \qquad (\Delta K = -\Delta U)$$
 
 ---
 
-## Piano inclinato [[L08]] [[L14]]
+## Piano inclinato [[lavoro-della-forza-peso-piano-inclinato-ed-energia]] [[esonero-moto-circolare-e-pendolo-semplice]]
 
 - **Reazione normale** (piano inclinato di angolo $\alpha$) — sostiene solo la componente perpendicolare:
 $$N = mg\cos\alpha$$
@@ -168,7 +171,7 @@ $$\mu_s \ge \tan\theta$$
 
 ---
 
-## Moto parabolico [[L09]]
+## Moto parabolico [[il-moto-parabolico]]
 
 Combinazione di **moto uniforme** lungo $x$ ($a_x = 0$) e **uniformemente accelerato** lungo $y$ ($a_y = -g$). I due moti sono indipendenti.
 
@@ -185,7 +188,7 @@ $$v = \sqrt{v_x^2 + v_y^2}$$
 
 ---
 
-## Moto armonico semplice [[L13]]
+## Moto armonico semplice [[il-moto-armonico-semplice]]
 
 - **Equazione del moto** — accelerazione proporzionale e opposta alla posizione, con $\omega^2 = k/m$:
 $$\ddot x + \omega^2 x = 0$$
@@ -204,7 +207,7 @@ $$v = \pm\,\omega\sqrt{A^2 - x^2}$$
 
 ---
 
-## Moto circolare e pendolo [[L14]]
+## Moto circolare e pendolo [[esonero-moto-circolare-e-pendolo-semplice]]
 
 - **Accelerazione nel moto circolare** — componente tangenziale (cambia il modulo di $v$) + centripeta (cambia la direzione):
 $$\vec a = \underbrace{\frac{d^2 s}{dt^2}}_{a_T}\,\hat u_T + \underbrace{\frac{v^2}{R}}_{a_c}\,\hat u_n$$
@@ -216,7 +219,7 @@ $$\omega = \sqrt{\frac{g}{L}} \qquad T = 2\pi\sqrt{\frac{L}{g}}$$
 
 ---
 
-## Sistemi di corpi collegati (funi e carrucole) [[L12]]
+## Sistemi di corpi collegati (funi e carrucole) [[esercizi-desame-e-sistemi-di-corpi-collegati]]
 
 - **Tensione** $T$ — uguale in ogni punto di una fune ideale; tutti i corpi collegati hanno la **stessa accelerazione** in modulo.
 - **Metodo:** si scrive $\vec F = m\vec a$ per **ogni corpo**, scegliendo come positivo il verso del moto, poi si mettono a sistema.
@@ -228,7 +231,7 @@ $$a = \frac{(M_C - M_A\sin\alpha)\,g}{M_A + M_B + M_C}$$
 
 # TERMODINAMICA
 
-## Temperatura, pressione, densità [[L15]]
+## Temperatura, pressione, densità [[introduzione-alla-termodinamica-temperatura-e-calore]]
 
 - **Densità** — massa per unità di volume:
 $$\rho = \frac{m}{V}$$
@@ -239,7 +242,7 @@ $$P = P_0 + \rho\,g\,h$$
 - **Scale di temperatura:**
 $$T[°\text{C}] = T[\text{K}] - 273{,}15 \qquad T[°\text{F}] = \tfrac{9}{5}\,T[°\text{C}] + 32$$
 
-## Calore e calorimetria [[L15]]
+## Calore e calorimetria [[introduzione-alla-termodinamica-temperatura-e-calore]]
 
 - **Calore per variazione di temperatura** — $c_s$ calore specifico, $C = m c_s$ capacità termica:
 $$Q = m\,c_s\,\Delta T = C\,\Delta T$$
@@ -248,7 +251,7 @@ $$T_e = \frac{m_A c_s^A\,T_C + m_B c_s^B\,T_F}{m_A c_s^A + m_B c_s^B}$$
 - **Bilancio calorimetrico** — calore ceduto dal caldo = calore assorbito dal freddo: $Q_{ced} = -Q_{ass}$.
 - Calori specifici utili: acqua $4186$, ghiaccio $2090\ \text{J/(kg·K)}$.
 
-## Cambiamenti di fase e dilatazione [[L16]]
+## Cambiamenti di fase e dilatazione [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]
 
 - **Calore latente** — calore per il passaggio di stato, a temperatura costante ($\lambda$ in J/kg, fusione/vaporizzazione):
 $$Q = m\,\lambda$$
@@ -262,7 +265,7 @@ $$V = V_0(1 + \alpha\,\Delta T)$$
 
 ---
 
-## Gas perfetti [[L17]]
+## Gas perfetti [[equazione-di-stato-dei-gas-perfetti-e-trasformazioni]]
 
 - **Numero di moli** — da massa totale e massa molare, o dal numero di molecole:
 $$n = \frac{M_{tot}}{M_{molare}} = \frac{N_{molecole}}{N_A}$$
@@ -275,7 +278,7 @@ $$L = \int_A^B P\,dV$$
 - **Lavoro irreversibile** (espansione contro pressione esterna costante):
 $$L^{irr} = P_{est}\,(V_B - V_A)$$
 
-### Leggi dei gas (casi particolari) [[L16]]
+### Leggi dei gas (casi particolari) [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]
 
 - **Boyle (isoterma, $T$ cost.)** — $P$ e $V$ inversamente proporzionali:
 $$P\,V = \text{cost} \qquad P_1 V_1 = P_2 V_2$$
@@ -284,7 +287,7 @@ $$P\,V = \text{cost} \qquad P_1 V_1 = P_2 V_2$$
 
 ---
 
-## Primo principio della termodinamica [[L18]]
+## Primo principio della termodinamica [[il-primo-principio-della-termodinamica]]
 
 - **Primo principio** — $U$ energia interna (variabile di stato); $Q > 0$ assorbito, $L > 0$ compiuto dal sistema:
 $$\Delta U = Q - L$$
@@ -304,7 +307,7 @@ $$\gamma = \frac{C_P}{C_V} > 1$$
 
 ---
 
-## Le trasformazioni termodinamiche [[L19]] [[L20]]
+## Le trasformazioni termodinamiche [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]] [[trasformazione-politropica-macchina-frigorifera-e-carnot-con-attrito]]
 
 > [!note] Regola d'oro
 > $\Delta U = nC_V\Delta T$ vale in **ogni** trasformazione. Il calore si calcola con $C_V$ solo a volume costante, con $C_P$ solo a pressione costante; negli altri casi $Q = \Delta U + L$.
@@ -328,7 +331,7 @@ $$P\,V^k = \text{cost} \qquad C_k = C_V + \frac{R}{1-k}$$
 
 ---
 
-## Cicli e macchine termiche [[L19]] [[L20]] [[L21]]
+## Cicli e macchine termiche [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]] [[trasformazione-politropica-macchina-frigorifera-e-carnot-con-attrito]] [[cicli-termodinamici-e-il-secondo-principio]]
 
 - **Ciclo** — $\Delta U = 0$, quindi il lavoro netto eguaglia il calore netto:
 $$\Delta U = 0 \;\Longrightarrow\; W = Q_{tot} = Q_{ass} + Q_{ced}$$
@@ -349,7 +352,7 @@ $$\eta_{reale} = \frac{W - W_{att}}{Q_{ass}}$$
 
 ---
 
-## Secondo principio ed entropia [[L21]] [[L22]]
+## Secondo principio ed entropia [[cicli-termodinamici-e-il-secondo-principio]] [[teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]]
 
 - **Enunciato di Kelvin-Planck** — non esiste una macchina termica monoterma (non si converte tutto il calore in lavoro).
 - **Enunciato di Clausius** — il calore non passa spontaneamente dal freddo al caldo senza spesa di lavoro.
@@ -370,7 +373,7 @@ $$\Delta S_{universo} = \frac{Q}{T_1} - \frac{Q}{T_2} > 0$$
 
 ---
 
-## Mappa finale della termodinamica [[L23]]
+## Mappa finale della termodinamica [[esercizi-desame-di-termodinamica]]
 
 | Concetto           | Relazione chiave                                                                                                 |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------- |
@@ -385,4 +388,4 @@ $$\Delta S_{universo} = \frac{Q}{T_1} - \frac{Q}{T_2} > 0$$
 
 ---
 
-🏠 Torna all'[[index|indice]]
+🏠 Torna all'[[fisica|indice]]

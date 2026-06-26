@@ -1,4 +1,7 @@
 ---
+title: "Potenza, energia spesa e forza elastica"
+description: "La potenza e la sua unità (il watt), problemi sull'energia spesa, la forza elastica con la legge di Hooke e il lavoro della molla."
+type: lecture
 lezione: 10
 titolo: Potenza, energia spesa e forza elastica
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -15,7 +18,7 @@ argomenti:
 
 # Lezione 10: Potenza e forza elastica
 
-📎 Lezione precedente: [[L09]]
+📎 Lezione precedente: [[il-moto-parabolico]]
 
 > [!abstract] In questa lezione
 > - La **potenza**: $P = \dfrac{dW}{dt} = \vec F\cdot\vec v$, con la sua unità (il watt)
@@ -153,7 +156,7 @@ $$\boxed{\;W_{AB} = \frac{1}{2}k\,x_A^2 - \frac{1}{2}k\,x_B^2\;}$$
 
 ## 5. Problema (3/11/2025): compressione massima di una molla
 
-> Riprendiamo il blocco del [[L08]] che arriva in fondo allo scivolo con $v_C = 4{,}3\ \text{m/s}$ ($m = 1{,}3\ \text{kg}$) e urta una molla di costante $k = 200\ \text{N/m}$. Qual è la compressione massima della molla?
+> Riprendiamo il blocco del [[lavoro-della-forza-peso-piano-inclinato-ed-energia]] che arriva in fondo allo scivolo con $v_C = 4{,}3\ \text{m/s}$ ($m = 1{,}3\ \text{kg}$) e urta una molla di costante $k = 200\ \text{N/m}$. Qual è la compressione massima della molla?
 
 <svg viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Blocco che urta e comprime una molla fino a fermarsi">
   <line x1="20" y1="80" x2="320" y2="80" stroke="currentColor" stroke-width="1.5"/>
@@ -197,4 +200,4 @@ $$x_{max} = \sqrt{\frac{m\,v_C^2}{k}} = \sqrt{\frac{1{,}3\cdot 4{,}3^2}{200}} = 
 
 ---
 
-📎 Lezione precedente: [[L09]] · Prossima lezione: [[L11]]
+📎 Lezione precedente: [[il-moto-parabolico]] · Prossima lezione: [[ripasso-generale-ed-energia-potenziale]]

@@ -1,4 +1,7 @@
 ---
+title: "Forza peso, reazione vincolare e attrito"
+description: "La forza peso e il newton, la reazione vincolare normale, il peso apparente in ascensore e le forze di attrito statico e dinamico."
+type: lecture
 lezione: 5
 titolo: Forza peso, reazione vincolare e attrito
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -14,7 +17,7 @@ argomenti:
 
 # Lezione 5: Forza peso, reazione vincolare e attrito
 
-📎 Lezione precedente: [[L04]]
+📎 Lezione precedente: [[terzo-principio-della-dinamica-e-gravitazione-universale]]
 
 > [!abstract] In questa lezione
 > - La **forza peso** $P = mg$ e l'unità di forza, il **newton**
@@ -26,7 +29,7 @@ argomenti:
 
 ## 1. La forza peso
 
-Come visto in [[L04]], tutti i corpi che si muovono vicino alla superficie terrestre si possono trattare come soggetti a una **accelerazione costante**, l'accelerazione di gravità:
+Come visto in [[terzo-principio-della-dinamica-e-gravitazione-universale]], tutti i corpi che si muovono vicino alla superficie terrestre si possono trattare come soggetti a una **accelerazione costante**, l'accelerazione di gravità:
 
 $$g = 9{,}81\ \frac{\text{m}}{\text{s}^2} \approx 10\ \frac{\text{m}}{\text{s}^2}$$
 
@@ -266,4 +269,4 @@ Il grafico riassume tutto: finché si spinge poco, l'attrito statico cresce insi
 
 ---
 
-📎 Lezione precedente: [[L04]] · Prossima lezione: [[L06]]
+📎 Lezione precedente: [[terzo-principio-della-dinamica-e-gravitazione-universale]] · Prossima lezione: [[problemi-con-lattrito-e-introduzione-ai-vettori]]

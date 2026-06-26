@@ -1,4 +1,7 @@
 ---
+title: "Legge oraria, moto uniforme, accelerazione e moto uniformemente accelerato"
+description: "Legge oraria del moto uniforme e di quello uniformemente accelerato, l'accelerazione come derivata della velocità e la relazione velocità-spazio senza il tempo."
+type: lecture
 lezione: 2
 titolo: Legge oraria, moto uniforme, accelerazione e moto uniformemente accelerato
 corso: "Elementi di Fisica: Meccanica e Termodinamica"
@@ -14,7 +17,7 @@ argomenti:
 
 # Lezione 2: Legge oraria, moto uniforme e accelerazione
 
-📎 Lezione precedente: [[L01]]
+📎 Lezione precedente: [[introduzione-al-corso-e-cinematica-del-punto-materiale]]
 
 > [!abstract] In questa lezione
 > - Ripasso di **velocità media e istantanea** e idea di **legge oraria**
@@ -283,4 +286,4 @@ $$\Delta t = \frac{\Delta x}{v_m} = \frac{10}{5} = 2\ \text{s}$$
 
 ---
 
-📎 Lezione precedente: [[L01]] · Prossima lezione: [[L03]]
+📎 Lezione precedente: [[introduzione-al-corso-e-cinematica-del-punto-materiale]] · Prossima lezione: [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]]
