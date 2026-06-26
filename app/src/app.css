@@ -1,5 +1,11 @@
 /* global */
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* UI links (nav, cards, breadcrumbs, lists) are not underlined; prose links
    inside rendered markdown (`.md a`, defined below) opt back in. */
 a {
@@ -20,12 +26,23 @@ a {
   --success: #356a59;
   --background-text: #d4d4d4;
   --shadow-color: rgba(0, 0, 0, 0.4);
+  --muted: #8a91a0;
+  /* Semi-transparent card behind article text so the blurred blobs don't
+     disturb readability (specy.app `.md-content` uses rgba(23,26,33,0.67)). */
+  --md-bg: rgba(23, 26, 33, 0.67);
 
   --paragraph-font: 'Noto Serif', serif;
   --paragraph-weight: 500;
   --heading-font: 'Rubik', sans-serif;
   --heading-weight: 800;
   --code-font: 'Fira Code', monospace;
+}
+
+/* Light-theme overrides for the non-JS-managed vars (the theme store only sets
+   the palette vars; these derive from the theme here). */
+html[data-theme='light'] {
+  --muted: #6c757d;
+  --md-bg: rgba(250, 250, 250, 0.72);
 }
 
 /* ─── Base body ──────────────────────────────────────────────────────────── */
@@ -37,16 +54,28 @@ body {
   padding: 0;
 }
 
-/* ─── Shiki dual-theme flip (defaultColor: false) ────────────────────────── */
+/* ─── Code blocks (Shiki, defaultColor: false) ───────────────────────────────
+   Token COLORS come from the Shiki theme vars (one-light / one-dark-pro);
+   the CONTAINER look (translucent bg, padding, radius) matches specy.app's
+   prism-one-dark.css so it reads the same on both themes.                     */
+.shiki {
+  background: #52537a1a !important; /* beats Shiki's inline bg; subtle on both themes */
+  padding: 0.8em 1em;
+  margin: 1.3rem 0;
+  border-radius: 0.5em;
+  overflow-x: auto;
+  font-family: var(--code-font), monospace;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  tab-size: 2;
+}
 .shiki,
 .shiki span {
   color: var(--shiki-light);
-  background: var(--shiki-light-bg);
 }
 html[data-theme='dark'] .shiki,
 html[data-theme='dark'] .shiki span {
   color: var(--shiki-dark) !important;
-  background: var(--shiki-dark-bg) !important;
 }
 html[data-theme='dark'] .shiki span {
   font-style: var(--shiki-dark-font-style);
@@ -98,13 +127,14 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
      #212431             → var(--secondary)
      #52537a1a           → color-mix(in srgb, var(--tertiary) 10%, transparent)
 */
+/* Plain block flow (NOT flex+gap) so element margins alone control spacing —
+   the previous flex `gap` stacked on top of margins and doubled the spacing. */
 .md {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
   width: 100%;
-  max-width: calc(80ch + 2rem);
-  margin: 0 auto;
+}
+
+.md > :first-child {
+  margin-top: 0;
 }
 
 .md p:not(.mermaid *),
@@ -205,24 +235,16 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   margin-bottom: 0;
 }
 
-/* Code blocks — inline code */
-.md code:not(.shiki *) {
-  font-family: var(--code-font);
-  background: var(--secondary);
-  border-radius: 0.25rem;
-  padding: 0.1em 0.4em;
-  font-size: 0.92em;
+/* Inline code — accent colour wrapped in backticks (specy.app style). */
+.md :not(pre) > code {
+  font-family: var(--code-font), monospace;
+  color: var(--accent);
+  white-space: normal;
+  font-size: 0.95em;
 }
-
-/* Code blocks — fenced (Shiki wraps in <pre class="shiki">) */
-.md pre.shiki {
-  font-family: var(--code-font);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  overflow-x: auto;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  margin: 1.5rem 0;
+.md :not(pre) > code::before,
+.md :not(pre) > code::after {
+  content: '`';
 }
 
 /* Tables */
@@ -245,11 +267,77 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   font-family: var(--heading-font);
 }
 
+/* ─── Article layout + hero (matches specy.app BlogLayout) ───────────────── */
+.article {
+  width: 100%;
+  max-width: calc(80ch + 2rem);
+  margin: 3rem auto 6rem;
+  padding: 0 1rem;
+}
+
+/* Hero: big Rubik title, muted meta line, serif description — on the blobs. */
+.hero {
+  padding: 1rem 1rem 0;
+  margin-bottom: 1.5rem;
+}
+.main-header {
+  font-family: var(--heading-font), sans-serif;
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--background-text);
+}
+.hero-meta {
+  font-size: 1.4rem;
+  color: var(--muted);
+  margin: 0.8rem 0 0;
+}
+.hero-desc {
+  font-family: var(--paragraph-font), serif;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: var(--background-text);
+  margin: 1rem 0 0;
+}
+
+/* Semi-transparent card with a soft glow so the blurred blobs behind the
+   article body don't disturb the text (specy.app `.md-content`). */
+.md-content {
+  background-color: var(--md-bg);
+  box-shadow: 0 0 3rem 3rem var(--md-bg);
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+}
+
+/* Section headings on folder (course) pages — match .md headings. */
+.article h2.section {
+  font-family: var(--heading-font), sans-serif;
+  font-weight: var(--heading-weight);
+  color: var(--background-text);
+  font-size: 1.8rem;
+  margin: 2.5rem 0 1rem;
+}
+
+@media (max-width: 700px) {
+  .md-content {
+    box-shadow: none;
+    background-color: color-mix(in srgb, var(--md-bg) 60%, transparent);
+    padding: 1rem;
+  }
+}
+
 @media (max-width: 600px) {
+  .main-header {
+    font-size: 2.3rem;
+  }
+  .hero-meta,
+  .hero-desc {
+    font-size: 1.2rem;
+  }
   .md h1 {
     font-size: 2rem;
   }
-
   .md p,
   .md li {
     font-size: 1.1rem;

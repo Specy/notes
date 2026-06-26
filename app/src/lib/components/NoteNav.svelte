@@ -1,5 +1,6 @@
 <script lang="ts">
   import { t } from '$lib/i18n';
+  import Button from './Button.svelte';
   let { prev, next, lang = 'it' }: {
     prev: { title: string; path: string } | null;
     next: { title: string; path: string } | null;
@@ -9,22 +10,47 @@
 
 {#if prev || next}
   <nav aria-label="Note navigation" class="note-nav">
-    <div class="prev">
-      {#if prev}
-        <a href={prev.path}>← {t(lang, 'note.prev')}: {prev.title}</a>
-      {/if}
-    </div>
-    <div class="next">
-      {#if next}
-        <a href={next.path}>{t(lang, 'note.next')}: {next.title} →</a>
-      {/if}
-    </div>
+    {#if prev}
+      <Button href={prev.path} align="start">
+        <span class="dir">← {t(lang, 'note.prev')}</span>
+        <span class="title">{prev.title}</span>
+      </Button>
+    {:else}
+      <span></span>
+    {/if}
+    {#if next}
+      <Button href={next.path} align="end">
+        <span class="dir">{t(lang, 'note.next')} →</span>
+        <span class="title">{next.title}</span>
+      </Button>
+    {/if}
   </nav>
 {/if}
 
 <style>
-  .note-nav { display: flex; justify-content: space-between; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border, #e5e7eb); font-size: .9rem; }
-  .next { text-align: right; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  .note-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  /* Stack the direction label above the title inside each button. */
+  .note-nav :global(.btn) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
+    max-width: 48%;
+  }
+  .note-nav :global(.btn.end) {
+    align-items: flex-end;
+    text-align: right;
+  }
+  .dir {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .title {
+    color: var(--accent);
+  }
 </style>

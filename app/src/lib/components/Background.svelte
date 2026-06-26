@@ -228,12 +228,16 @@
   .background-wrapper {
     position: relative;
     flex: 1;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
 
+  /* Absolute (not fixed) so the blobs span the FULL scrollable page height,
+     matching specy.app — scrolling reveals new background rather than a fixed
+     viewport-locked layer. */
   .background-layer {
-    position: fixed;
+    position: absolute;
     inset: 0;
     overflow: hidden;
     opacity: 0.5;

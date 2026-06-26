@@ -1,16 +1,27 @@
 <script lang="ts">
   import type { PageProps } from './$types';
   import CourseCard from '$lib/components/CourseCard.svelte';
+  import { t } from '$lib/i18n';
   let { data }: PageProps = $props();
 </script>
-<section class="hero"><h1>Appunti universitari</h1></section>
-<div class="grid">
-  {#each data.courses ?? [] as c}
-    <CourseCard title={c.title} description={c.description} image={c.image} url={c.url} />
-  {/each}
-</div>
+
+<section class="article">
+  <header class="hero">
+    <h1 class="main-header">Appunti universitari</h1>
+    <p class="hero-desc">{t(data.lang, 'home.subtitle')}</p>
+  </header>
+  <div class="grid">
+    {#each data.courses ?? [] as c}
+      <CourseCard title={c.title} description={c.description} image={c.image} url={c.url} />
+    {/each}
+  </div>
+</section>
+
 <style>
-  .hero { padding: 3rem 1rem 1rem; }
-  .grid { display: grid; gap: 1rem; padding: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); }
+  .grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    margin-top: 1rem;
+  }
 </style>
