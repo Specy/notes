@@ -93,4 +93,35 @@ export function siblings(root: FolderNode, notePath: string) {
   return { prev: i > 0 ? notes[i - 1] : null, next: i >= 0 && i < notes.length - 1 ? notes[i + 1] : null };
 }
 
+/**
+ * Build the ancestor breadcrumb trail for a given path.
+ * Returns one entry per ancestor folder (root → … → parent).
+ * The current node itself is NOT included — callers render it as aria-current.
+ *
+ * @param root  The shared tree root.
+ * @param path  The current node's path (e.g. "fisica/a" or "fisica").
+ * @param lang  The language prefix used to build hrefs.
+ */
+export function breadcrumbsFor(
+  root: FolderNode,
+  path: string,
+  lang: string
+): { title: string; url: string }[] {
+  if (!path) return [];                       // root itself → no ancestors
+  const segs = path.split('/');
+  const result: { title: string; url: string }[] = [];
+
+  // Walk every prefix except the full path (that is the current node)
+  for (let i = 0; i < segs.length - 1; i++) {
+    const prefixSegs = segs.slice(0, i + 1);
+    const node = getNodeByPath(root, prefixSegs);
+    const title = node ? node.title : prefixSegs[prefixSegs.length - 1];
+    result.push({ title, url: `/${lang}/${prefixSegs.join('/')}` });
+  }
+
+  // Prepend the root/home crumb
+  result.unshift({ title: root.title || lang, url: `/${lang}` });
+  return result;
+}
+
 export { getNodeByPath, listRoutes };

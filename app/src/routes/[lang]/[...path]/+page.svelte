@@ -9,7 +9,7 @@
   let { data }: PageProps = $props();
 </script>
 
-<Breadcrumbs lang={data.lang} path={data.node.path} title={data.node.title} />
+<Breadcrumbs breadcrumbs={data.breadcrumbs} current={data.node.title} />
 
 {#if data.kind === 'folder'}
   <article class="content">

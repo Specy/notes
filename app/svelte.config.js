@@ -11,7 +11,9 @@ const config = {
       fallback: undefined, precompress: false, strict: true
     }),
     paths: { base: '' },
-    prerender: { entries: ['*'], handleHttpError: 'warn', handleMissingId: 'warn', handleUnseenRoutes: 'ignore' }
+    // handleUnseenRoutes: 'warn' surfaces genuinely-unreachable routes in build logs
+    // without hard-failing. 'ignore' was used only during the content-empty interim.
+    prerender: { entries: ['*'], handleHttpError: 'warn', handleMissingId: 'warn', handleUnseenRoutes: 'warn' }
   }
 };
 export default config;

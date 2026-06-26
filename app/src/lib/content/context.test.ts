@@ -1,6 +1,6 @@
 // app/src/lib/content/context.test.ts
 import { describe, it, expect } from 'vitest';
-import { buildContext, extractToc, siblings } from './context';
+import { buildContext, extractToc, siblings, breadcrumbsFor } from './context';
 import type { RawFile } from './types';
 
 const files: RawFile[] = [
@@ -49,6 +49,25 @@ describe('context', () => {
     const { prev, next } = siblings(root, 'fisica/a');
     expect(prev).toBeNull();
     expect(next?.slug).toBe('b');
+  });
+  it('breadcrumbsFor: root node (empty path) returns empty array', () => {
+    const { root } = buildContext(files, {});
+    expect(breadcrumbsFor(root, '', 'it')).toEqual([]);
+  });
+  it('breadcrumbsFor: top-level folder returns home crumb only', () => {
+    const { root } = buildContext(files, {});
+    // "fisica" is a top-level folder; ancestors = [home]
+    expect(breadcrumbsFor(root, 'fisica', 'it')).toEqual([
+      { title: 'it', url: '/it' }
+    ]);
+  });
+  it('breadcrumbsFor: note inside folder returns home + folder crumbs', () => {
+    const { root } = buildContext(files, {});
+    const crumbs = breadcrumbsFor(root, 'fisica/a', 'it');
+    expect(crumbs).toEqual([
+      { title: 'it', url: '/it' },
+      { title: 'Fisica', url: '/it/fisica' }
+    ]);
   });
   it('siblings: middle note has both prev and next non-null', () => {
     const filesWithThree: RawFile[] = [

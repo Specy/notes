@@ -1,9 +1,9 @@
 <script lang="ts">
-  let { title, description, image, url }:
-    { title: string; description: string; image?: string; url: string } = $props();
+  let { title, description, image, imageAlt, url }:
+    { title: string; description: string; image?: string; imageAlt?: string; url: string } = $props();
 </script>
 <a class="card" href={url}>
-  {#if image}<img src={image} alt="" />{/if}
+  {#if image}<img src={image} alt={imageAlt ?? title} />{/if}
   <h2>{title}</h2>
   <p>{description}</p>
 </a>
