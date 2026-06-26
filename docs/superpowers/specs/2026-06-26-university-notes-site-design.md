@@ -115,6 +115,16 @@ note's own content during conversion.
   so they appear under Resources rather than as lectures.
 - **Links:** during conversion, all `[[wikilinks]]`, `[[target|alias]]`, and
   `![[embeds]]` are rewritten to the new filenames.
+- **Navigable vs asset folders:** a folder is a navigable course/module **only
+  if it contains an `index.md`**. Folders without one (`attachments/`, per-course
+  `Excalidraw/`) are treated as **asset stores** — ignored in the nav tree, but
+  their files remain referenceable as embeds/assets. This convention keeps image
+  and drawing folders out of the navigation without an explicit ignore list.
+- **Standalone `.excalidraw.md`** files are exported to SVG and referenceable as
+  embeds; they are not shown as nav entries on their own.
+- **Content root only:** scanning starts at the language content root (`it/`),
+  so vault-root cruft (`README.md`, `Idee.md`, `Untitled.*`, top-level
+  `Excalidraw/`) is naturally excluded.
 
 ### 3.4 Course inventory (current → converted)
 
