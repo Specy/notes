@@ -47,6 +47,12 @@ export function makeResolver(root: FolderNode, assets: Record<string, unknown>):
       const base = hit ? hit.path : key.replace(/\s+/g, '-');
       return anchor ? `${base}#${anchor.trim().toLowerCase().replace(/\s+/g, '-')}` : base;
     },
+    noteLabel(target: string) {
+      const [name] = target.split('#');
+      const key = name.trim().toLowerCase();
+      const hit = titleMap.get(key) ?? slugMap.get(key);
+      return hit ? hit.title : null;
+    },
     asset(target: string) {
       const base = target.split('/').pop()!.trim();
       const entry = assets[base];

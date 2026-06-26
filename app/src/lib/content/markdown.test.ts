@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import { renderMarkdown } from './markdown';
 
-const resolve = { note: (t: string) => `/${t}`, asset: (t: string) => `/vault-assets/${t}` };
+const resolve = { note: (t: string) => `/${t}`, asset: (t: string) => `/vault-assets/${t}`, noteLabel: (_t: string) => null };
 
 describe('renderMarkdown', () => {
   it('renders headings with slugs', async () => {

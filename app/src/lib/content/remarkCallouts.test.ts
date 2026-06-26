@@ -1,7 +1,7 @@
 // app/src/lib/content/remarkCallouts.test.ts
 import { describe, it, expect } from 'vitest';
 import { renderMarkdown } from './markdown';
-const resolve = { note: (t: string) => `/${t}`, asset: (t: string) => `/${t}` };
+const resolve = { note: (t: string) => `/${t}`, asset: (t: string) => `/${t}`, noteLabel: (_t: string) => null };
 
 describe('callouts', () => {
   it('converts > [!info] Title into a callout div with title', async () => {

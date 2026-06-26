@@ -58,11 +58,13 @@ export default function remarkObsidianLinks(resolve: LinkResolver) {
             });
           }
         } else {
+          const trimmedTarget = target.trim();
+          const label = alias ?? resolve.noteLabel?.(trimmedTarget) ?? trimmedTarget;
           out.push({
             type: 'link',
-            url: resolve.note(target.trim()),
+            url: resolve.note(trimmedTarget),
             title: null,
-            children: [{ type: 'text', value: (alias ?? target).trim() }]
+            children: [{ type: 'text', value: label.trim() }]
           });
         }
         last = m.index + full.length;

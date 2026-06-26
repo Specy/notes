@@ -30,7 +30,8 @@ describe('withLang', () => {
   it('does not double-prefix already-absolute or anchor-only hrefs', () => {
     const passthrough = {
       note: (t: string) => t, // returns whatever it is given
-      asset: (t: string) => t
+      asset: (t: string) => t,
+      noteLabel: (_t: string) => null
     };
     const scoped = withLang(passthrough, 'it');
     expect(scoped.note('/it/already/absolute')).toBe('/it/already/absolute');
