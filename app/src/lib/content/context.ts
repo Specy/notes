@@ -100,9 +100,11 @@ export function siblings(root: FolderNode, notePath: string) {
 
   const targetRoot = courseFolder || root;
 
-  const list: (FolderNode | NoteNode)[] = [];
+  const list: NoteNode[] = [];
   const walk = (node: FolderNode | NoteNode) => {
-    list.push(node);
+    if (node.kind === 'note') {
+      list.push(node);
+    }
     if (node.kind === 'folder') {
       for (const child of node.children) {
         walk(child);
