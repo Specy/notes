@@ -96,7 +96,7 @@
 		<NoteNav prev={data.prev} next={data.next} lang={data.lang} />
 	</article>
 {:else}
-	<article class="article">
+	<article class="article article-lecture">
 		<Breadcrumbs breadcrumbs={data.breadcrumbs} current={data.node.title} />
 		<header class="hero">
 			<h1 class="main-header">{data.node.title}</h1>
@@ -166,7 +166,7 @@
 	}
 
 	@media screen and (max-width: 768px) {
-		.article {
+		.article-lecture {
 			padding: 0 !important;
 		}
 	}
