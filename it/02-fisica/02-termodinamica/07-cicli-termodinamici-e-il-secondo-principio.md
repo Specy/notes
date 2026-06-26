@@ -3,8 +3,7 @@ title: "Cicli termodinamici e il secondo principio"
 description: "Cicli termodinamici con il lavoro come area, un frigorifero che congela acqua e il secondo principio negli enunciati di Kelvin-Planck e Clausius."
 type: lecture
 lezione: 21
-titolo: Cicli termodinamici e il secondo principio
-argomenti:
+topics:
   - ciclo termodinamico
   - lavoro come area
   - frigorifero e calore latente

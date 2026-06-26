@@ -3,8 +3,7 @@ title: "Equazione di stato dei gas perfetti e trasformazioni"
 description: "La legge di Avogadro e la mole, l'equazione di stato dei gas perfetti PV = nRT, la costante di Boltzmann e le trasformazioni reversibili e irreversibili."
 type: lecture
 lezione: 17
-titolo: Equazione di stato dei gas perfetti e trasformazioni
-argomenti:
+topics:
   - legge di Avogadro
   - mole e numero di Avogadro
   - equazione di stato dei gas perfetti

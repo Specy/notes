@@ -3,8 +3,7 @@ title: "Il primo principio della termodinamica"
 description: "Il primo principio ΔU = Q − L con l'energia interna, le convenzioni dei segni, l'espansione libera di Joule, i calori molari Cv e Cp e la relazione di Mayer."
 type: lecture
 lezione: 18
-titolo: Il primo principio della termodinamica
-argomenti:
+topics:
   - primo principio
   - energia interna
   - convenzioni dei segni
