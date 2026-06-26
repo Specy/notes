@@ -4,9 +4,6 @@ description: "Le leggi orarie del moto uniformemente accelerato applicate a prob
 type: lecture
 lezione: 3
 titolo: Formule del moto uniformemente accelerato e introduzione alla dinamica
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - moto uniformemente accelerato
   - leggi orarie per integrazione

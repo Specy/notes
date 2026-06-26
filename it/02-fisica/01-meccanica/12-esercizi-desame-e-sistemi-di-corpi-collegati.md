@@ -4,9 +4,6 @@ description: "Esercizi d'esame su moto parabolico, lavoro ed energia e massa su 
 type: lecture
 lezione: 12
 titolo: Esercizi d'esame e sistemi di corpi collegati
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - proiettile e bersaglio mobile
   - lavoro ed energia su un profilo

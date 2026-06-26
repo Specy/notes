@@ -4,9 +4,6 @@ description: "La forza peso e il newton, la reazione vincolare normale, il peso 
 type: lecture
 lezione: 5
 titolo: Forza peso, reazione vincolare e attrito
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - forza peso
   - newton come unità di forza

@@ -4,9 +4,6 @@ description: "Un problema d'esonero completo, il moto circolare con accelerazion
 type: lecture
 lezione: 14
 titolo: Esonero, moto circolare e pendolo semplice
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - problema d'esonero completo
   - condizione di equilibrio su piano inclinato

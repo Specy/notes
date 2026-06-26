@@ -4,9 +4,6 @@ description: "Cicli termodinamici con il lavoro come area, un frigorifero che co
 type: lecture
 lezione: 21
 titolo: Cicli termodinamici e il secondo principio
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - ciclo termodinamico
   - lavoro come area

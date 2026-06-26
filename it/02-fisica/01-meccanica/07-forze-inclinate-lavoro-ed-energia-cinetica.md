@@ -4,9 +4,6 @@ description: "Scomposizione delle forze inclinate, definizione di lavoro tramite
 type: lecture
 lezione: 7
 titolo: Forze inclinate, lavoro ed energia cinetica
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - scomposizione di forze inclinate
   - condizione di moto con attrito

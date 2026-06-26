@@ -4,9 +4,6 @@ description: "Il primo principio ΔU = Q − L con l'energia interna, le convenz
 type: lecture
 lezione: 18
 titolo: Il primo principio della termodinamica
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - primo principio
   - energia interna

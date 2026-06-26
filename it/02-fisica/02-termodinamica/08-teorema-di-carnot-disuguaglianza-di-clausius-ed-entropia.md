@@ -4,9 +4,6 @@ description: "Il teorema di Carnot, la disuguaglianza di Clausius, la definizion
 type: lecture
 lezione: 22
 titolo: Teorema di Carnot, disuguaglianza di Clausius ed entropia
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - teorema di Carnot
   - disuguaglianza di Clausius

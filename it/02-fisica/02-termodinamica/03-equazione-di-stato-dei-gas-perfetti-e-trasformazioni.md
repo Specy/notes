@@ -4,9 +4,6 @@ description: "La legge di Avogadro e la mole, l'equazione di stato dei gas perfe
 type: lecture
 lezione: 17
 titolo: Equazione di stato dei gas perfetti e trasformazioni
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - legge di Avogadro
   - mole e numero di Avogadro

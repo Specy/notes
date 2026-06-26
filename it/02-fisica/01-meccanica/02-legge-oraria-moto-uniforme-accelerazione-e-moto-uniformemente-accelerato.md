@@ -4,9 +4,6 @@ description: "Legge oraria del moto uniforme e di quello uniformemente accelerat
 type: lecture
 lezione: 2
 titolo: Legge oraria, moto uniforme, accelerazione e moto uniformemente accelerato
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - legge oraria
   - moto uniforme

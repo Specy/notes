@@ -4,9 +4,6 @@ description: "Una raccolta di esercizi d'esame su tutta la termodinamica: espans
 type: lecture
 lezione: 23
 titolo: Esercizi d'esame di termodinamica
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - entropia ed espansione libera
   - variazione di entropia

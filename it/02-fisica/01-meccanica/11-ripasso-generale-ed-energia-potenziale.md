@@ -4,9 +4,6 @@ description: "Ripasso di cinematica, dinamica ed energia e introduzione dell'ene
 type: lecture
 lezione: 11
 titolo: Ripasso generale ed energia potenziale
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - ripasso cinematica
   - ripasso dinamica

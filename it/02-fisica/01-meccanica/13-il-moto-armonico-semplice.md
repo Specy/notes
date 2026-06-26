@@ -4,9 +4,6 @@ description: "L'equazione del moto armonico semplice e la sua soluzione, con pul
 type: lecture
 lezione: 13
 titolo: Il moto armonico semplice
-corso: "Elementi di Fisica: Meccanica e Termodinamica"
-docente: Gabriele Curci
-libro: "Mazzoldi, Nigro, Voci, Elementi di Fisica: Meccanica e Termodinamica"
 argomenti:
   - moto armonico semplice
   - equazione del moto
