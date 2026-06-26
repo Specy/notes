@@ -1,5 +1,11 @@
 /* global */
 
+/* UI links (nav, cards, breadcrumbs, lists) are not underlined; prose links
+   inside rendered markdown (`.md a`, defined below) opt back in. */
+a {
+  text-decoration: none;
+}
+
 /* ─── Theme CSS variables (applied by theme store on <html>) ─────────────────
    Defaults match dark theme so SSR/prerender have sensible values.           */
 :root {
