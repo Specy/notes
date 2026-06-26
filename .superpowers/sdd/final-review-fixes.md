@@ -87,3 +87,71 @@ Test Files  12 passed (12)
   Wrote site to "build"
   ✔ done
 ```
+
+---
+
+## Fix 6 — favicon/lang-guard fix (stop bogus /favicon.png prerender tree)
+
+**Commit**: `98fbf44` — `fix(app): validate lang param + add favicon (stop bogus /favicon.png prerender tree)`
+**Date**: 2026-06-26
+
+**Root cause**: `static/favicon.png` did not exist. The prerender crawler followed `<link rel="icon" href="/favicon.png">` in `app.html`; the `[lang]` route greedily matched the segment `favicon.png` as a "language"; `renderNode('favicon.png', …)` returned the shared content tree anyway; the build produced a bogus `build/favicon.png/fisica/...` course tree (79 html files total instead of the expected ~53).
+
+**Fixes**:
+1. `app/src/routes/[lang]/+page.ts`: added `import { error } from '@sveltejs/kit'` and guard `if (!(params.lang in LANGUAGES)) error(404, 'Unknown language');` at the top of `load`.
+2. `app/src/routes/[lang]/[...path]/+page.server.ts`: added `import { LANGUAGES } from '$lib/languages'` and the same guard at the top of `load` (before the existing try/catch).
+3. `app/static/favicon.png`: generated a valid 32×32 RGB PNG (accent color `#a65ee0`, 99 bytes) using Node + zlib so the icon link resolves as a static asset rather than being routed.
+
+**Before/after HTML file counts**:
+- Before: 79 HTML files (`find build -name '*.html' | wc -l`)
+- After: 53 HTML files
+
+**Bogus tree check**:
+```
+find build -path '*favicon.png/*' -name '*.html'  → (empty — 0 results)
+```
+
+**fisica coverage preserved**:
+```
+find build -path '*it/fisica*' -name '*.html' | wc -l  → 25
+find build -path '*en/fisica*' -name '*.html' | wc -l  → 25
+```
+
+**favicon.png is a file**:
+```
+ls -la build/favicon.png  → -rw-r--r-- 99 bytes
+file build/favicon.png    → PNG image data, 32 x 32, 8-bit/color RGB, non-interlaced
+```
+
+**Verification**:
+```
+npm run check  → 746 FILES 0 ERRORS 0 WARNINGS
+npx vitest run → 12 passed (12), 48 passed (48)
+npm run build  → ✓ built in 26.24s, Wrote site to "build" ✔ done
+```
+
+---
+
+## Fix 7 — Homepage server-load fix (keep build-time pipeline out of the browser bundle)
+
+**Commit**: (see below) — `fix(app): make homepage load server-only (keep build-time pipeline out of the browser bundle)`
+**Date**: 2026-06-26
+
+**Root cause**: `app/src/routes/[lang]/+page.ts` was a UNIVERSAL load (`PageLoad`). Because universal loads are bundled for the browser, the imports of `reading-time`, `unified`, `@shikijs/rehype`, `rehype-katex`, etc. via `$lib/content` were included in the client bundle. During hydration/SPA navigation in `npm run dev`, `reading-time` threw `TypeError: util.inherits is not a function` (it relies on Node's `util`, unavailable in the browser). The production build masked this because a universal load runs server-side at prerender time.
+
+**Fix**:
+- Deleted `app/src/routes/[lang]/+page.ts` (universal load).
+- Created `app/src/routes/[lang]/+page.server.ts` (server-only load) with identical logic but using `PageServerLoad` and `EntryGenerator` from `./$types`. All imports, guards, and return shape are unchanged; `+page.svelte` is untouched.
+
+**Why this removes the problematic modules from the client bundle**: A `+page.server.ts` load is never shipped to the browser — SvelteKit only transmits its serialized return value over the wire. The `reading-time`/`unified`/`shiki` etc. imports therefore never reach the client bundle.
+
+**Other universal loads checked**: Searched all `+page.ts` and `+layout.ts` files under `app/src/routes/` for imports of `$lib/content`. Only the now-deleted `+page.ts` had such an import. The root `+layout.ts` only sets `prerender = true` — no content pipeline usage.
+
+**Verification**:
+```
+npm run check  → 746 FILES 0 ERRORS 0 WARNINGS
+npx vitest run → 12 passed (12), 48 passed (48)
+npm run build  → ✓ built in 28.60s, Wrote site to "build" ✔ done
+find build -name '*.html' | wc -l  → 53
+build/it/ and build/it/fisica/ present with content
+```
