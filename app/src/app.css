@@ -123,30 +123,90 @@ html[data-theme="dark"] .excalidraw-dark {
 }
 
 .callout-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--heading-font), sans-serif;
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 0.3rem;
 }
 
-.callout-info {
+.callout-icon {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* Callout theme border and title color coordination */
+.callout-info, .callout-todo {
   border-left-color: #4a9eff;
 }
-
-.callout-warning {
-  border-left-color: var(--warn);
+.callout-info .callout-title, .callout-todo .callout-title {
+  color: #4a9eff;
 }
 
-.callout-danger {
+.callout-warning, .callout-caution, .callout-attention {
   border-left-color: var(--warn);
 }
+.callout-warning .callout-title, .callout-caution .callout-title, .callout-attention .callout-title {
+  color: var(--warn);
+}
 
-.callout-tip {
+.callout-danger, .callout-error, .callout-failure, .callout-fail, .callout-missing {
+  border-left-color: var(--warn);
+}
+.callout-danger .callout-title, .callout-error .callout-title, .callout-failure .callout-title, .callout-fail .callout-title, .callout-missing .callout-title {
+  color: var(--warn);
+}
+
+.callout-tip, .callout-hint, .callout-success, .callout-check, .callout-done {
   border-left-color: var(--success);
 }
+.callout-tip .callout-title, .callout-hint .callout-title, .callout-success .callout-title, .callout-check .callout-title, .callout-done .callout-title {
+  color: var(--success);
+}
 
-.callout-note {
+.callout-note, .callout-src, .callout-quote, .callout-cite {
   border-left-color: var(--hint);
+}
+.callout-note .callout-title, .callout-src .callout-title, .callout-quote .callout-title, .callout-cite .callout-title {
+  color: var(--hint);
+}
+
+.callout-abstract, .callout-summary, .callout-tldr {
+  border-left-color: #00a896;
+}
+.callout-abstract .callout-title, .callout-summary .callout-title, .callout-tldr .callout-title {
+  color: #00a896;
+}
+
+.callout-question, .callout-help, .callout-faq {
+  border-left-color: #f39c12;
+}
+.callout-question .callout-title, .callout-help .callout-title, .callout-faq .callout-title {
+  color: #f39c12;
+}
+
+.callout-bug {
+  border-left-color: #d63031;
+}
+.callout-bug .callout-title {
+  color: #d63031;
+}
+
+.callout-example {
+  border-left-color: var(--accent);
+}
+.callout-example .callout-title {
+  color: var(--accent);
+}
+
+.callout-important {
+  border-left-color: var(--accent);
+}
+.callout-important .callout-title {
+  color: var(--accent);
 }
 
 /* Foldable callout affordance */
