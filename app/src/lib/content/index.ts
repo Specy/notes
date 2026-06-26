@@ -6,6 +6,7 @@ import { groupChildren } from './tree';
 import { renderMarkdown } from './markdown';
 import { toPlainText } from './plainText';
 import { LANGUAGES } from '$lib/languages';
+import { t } from '$lib/i18n';
 import type { Context } from './context';
 
 let _ctx: Context | null = null;
@@ -22,7 +23,7 @@ export async function renderNode(lang: string, path: string) {
   const node = path === '' ? c.root : getNodeByPath(c.root, path.split('/'));
   if (!node) throw new Error(`404 ${lang}/${path}`);
 
-  const breadcrumbs = breadcrumbsFor(c.root, node.path, lang);
+  const breadcrumbs = breadcrumbsFor(c.root, node.path, lang, t(lang, 'nav.home'));
 
   if (node.kind === 'folder') {
     const html = node.content ? await renderMarkdown(node.content, c.resolve) : '';
