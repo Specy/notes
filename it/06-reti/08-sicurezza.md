@@ -1,3 +1,9 @@
+---
+title: "Sicurezza nelle reti: crittografia, TLS e IPSec"
+description: "Crittografia simmetrica (DES, AES) e a chiave pubblica (RSA), autenticazione, firma digitale, TLS/SSL, VPN, IPSec, WEP/WPA3, sicurezza 4G e firewall/IDS."
+type: lecture
+---
+
 Nelle reti si considera la sicurezza come:
 
 - *riservatezza*: solo il mittente e destinatario devono capire il contenuto del messaggio.
@@ -385,10 +391,10 @@ Per esempio se un firewall bloca tutti i pacchetti su porta sorgente o destinazi
 
 | **Obiettivo**                                              | **Regola**                                                                                     |
 |------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| Nessun accesso Web verso l’esterno                        | Scarta tutti i pacchetti in uscita verso qualsiasi indirizzo IP, porta 80                      |
-| Nessuna connessione TCP in entrata, tranne verso il server Web dell’istituzione | Scarta tutti i pacchetti TCP SYN in entrata verso qualsiasi IP tranne 130.207.244.203, porta 80 |
+| Nessun accesso Web verso l'esterno                        | Scarta tutti i pacchetti in uscita verso qualsiasi indirizzo IP, porta 80                      |
+| Nessuna connessione TCP in entrata, tranne verso il server Web dell'istituzione | Scarta tutti i pacchetti TCP SYN in entrata verso qualsiasi IP tranne 130.207.244.203, porta 80 |
 | Impedisci ai Web-radios di consumare tutta la bandwidth disponibile | Scarta tutti i pacchetti UDP in entrata tranne DNS e router broadcast                          |
-| Impedisci che la tua rete sia usata per un attacco DoS     | Scarta tutti i pacchetti ICMP in uscita verso un indirizzo “broadcast” (es. 130.207.255.255)   |
+| Impedisci che la tua rete sia usata per un attacco DoS     | Scarta tutti i pacchetti ICMP in uscita verso un indirizzo "broadcast" (es. 130.207.255.255)   |
 | Impedisci che la tua rete risponda al traceroute           | Scarta tutti i pacchetti ICMP in uscita con TTL expired                                        |
 
 ## Access Control List (ACL)
@@ -422,5 +428,4 @@ Il filtraggio stateful di pacchetti tiene traccia di ogni connessione TCP, e det
 ## Intrusion Detection System (IDS)
 
 Opera solo sugli header TCP/IP, ed analizza se i pacchetti contengono pattern di attacco.
-
 

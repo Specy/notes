@@ -1,3 +1,9 @@
+---
+title: "Livello di link: Ethernet, MAC e LAN"
+description: "Data link layer, rilevazione degli errori (parità, CRC), protocolli MAC (ALOHA, CSMA/CD), indirizzi MAC, ARP, Ethernet, switch e VLAN."
+type: lecture
+---
+
 # Livello di link
 
 Il data link layer ha la responsonsabilità di trasferire i dati tra due nodi fisicamente adiacenti in una rete. 
@@ -203,11 +209,11 @@ Un frame VLAN aggiunge 4 byte all'header del frame, i primi 2 byte sono il `Tag 
 MPLS è una tecnica di inoltro di pacchetti che permette di instradare pacchetti in base ad una label invece che in base all'indirizzo IP.
 I router hanno una forwarding table che mappa le etichette all'interfaccia di uscita del router.
 
-- Imposizione dell’etichetta (Labeling): Quando un pacchetto entra nella rete MPLS, il primo router, chiamato Label Edge Router (LER), esamina l'indirizzo IP e assegna un'etichetta al pacchetto. Questa etichetta identifica il percorso specifico (path) che il pacchetto seguirà attraverso la rete.
+- Imposizione dell'etichetta (Labeling): Quando un pacchetto entra nella rete MPLS, il primo router, chiamato Label Edge Router (LER), esamina l'indirizzo IP e assegna un'etichetta al pacchetto. Questa etichetta identifica il percorso specifico (path) che il pacchetto seguirà attraverso la rete.
 
-- Forwarding: I router intermedi, detti Label Switch Routers (LSR), non devono analizzare l’indirizzo IP del pacchetto. Si limitano a leggere l’etichetta e a inoltrare il pacchetto lungo il percorso predefinito.
+- Forwarding: I router intermedi, detti Label Switch Routers (LSR), non devono analizzare l'indirizzo IP del pacchetto. Si limitano a leggere l'etichetta e a inoltrare il pacchetto lungo il percorso predefinito.
 
-- Rimozione dell’etichetta: Quando il pacchetto raggiunge il router di destinazione alla fine del percorso MPLS, l’etichetta viene rimossa, e il pacchetto viene inoltrato come un normale pacchetto IP alla sua destinazione finale.
+- Rimozione dell'etichetta: Quando il pacchetto raggiunge il router di destinazione alla fine del percorso MPLS, l'etichetta viene rimossa, e il pacchetto viene inoltrato come un normale pacchetto IP alla sua destinazione finale.
 
 ## Reti di datacenter
 
@@ -238,4 +244,3 @@ Mettiamo il caso che un utente voglia visitare un sito web, il cammino che la ri
 20. Il server web risponde con un HTTP reply contenente la pagina web richiesta.
 21. Il datagramma IP contenente la risposta HTTP arriva al client tramite il routing.
 22. fine
-

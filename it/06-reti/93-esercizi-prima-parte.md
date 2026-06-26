@@ -1,3 +1,9 @@
+---
+title: "Esercizi: indirizzamento IP e routing"
+description: "Esercizi d'esame sulla prima parte del corso: schemi di indirizzamento IP, tabelle di routing, Excalidraw e analisi di protocolli per livello OSI."
+type: exercise
+---
+
 # Esercizi esame
 
 ![[Pasted image 20241111091010.png]]

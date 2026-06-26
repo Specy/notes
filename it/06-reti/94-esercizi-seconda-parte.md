@@ -1,3 +1,9 @@
+---
+title: "Esercizi: crittografia e indirizzamento"
+description: "Esercizi d'esame sulla seconda parte del corso: crittografia PKI, calcolo di subnet mask, tabelle ARP e connettività tra host."
+type: exercise
+---
+
 ![[Pasted image 20250121123132.png]]
 
 La PKI utilizza due chiavi per ogni host, una pubblica accessibile a tutti, ed una privata, conosciuta solo dall'host. 

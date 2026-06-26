@@ -1,3 +1,9 @@
+---
+title: "Protocolli applicativi: HTTP, DNS e CDN"
+description: "Architettura client-server e P2P, socket, HTTP (cookies, cache, HTTP/2), DNS, SMTP, CDN e streaming video adattivo."
+type: lecture
+---
+
 ## Architettura client-server
 
  Due host, uno chiamato server e l'altro client. Il server è un host sempre attivo ad un indirizzo IP fisso, di solito datacenter etc. Un client comunica con il server, ma esso può avere un indirizzo IP dinamico, e può non essere sempre connesso alla rete. Due client non comunicano tra di loro, solo client to server.

@@ -1,3 +1,9 @@
+---
+title: "Algoritmi di routing: OSPF, BGP e SDN"
+description: "Algoritmi link-state (Dijkstra) e distance-vector (Bellman-Ford), Autonomous System, protocolli IGP/OSPF e BGP inter-AS, SDN con OpenFlow, ICMP."
+type: lecture
+---
+
 # Protocolli di routing
 
 Il compito dei protocolli di routing è di determinare il cammino migliore dall'host mittente al ricevente, passando per la rete dei router.

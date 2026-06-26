@@ -1,3 +1,9 @@
+---
+title: "Domande per l'esame orale"
+description: "Lista di domande tipiche dell'esame orale su TLS, IPSec, BGP, routing, wireless, mobilità 4G e firewall, con risposte sintetiche."
+type: exam
+---
+
 - come funziona il tls?
 - quali algoritmi vengono scelti nell'handshake di tls? (algoritmo di hash e di cifratura)
 - perchè si usa una chiave simmetrica anzichè quella pubblica nella comunicazione?
