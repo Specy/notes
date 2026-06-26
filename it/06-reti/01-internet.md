@@ -1,4 +1,10 @@
-## Cos’è Internet?
+---
+title: "Internet e architettura di rete"
+description: "Struttura di Internet, mezzi trasmissivi, routing con store-and-forward, modello ISO/OSI e tipologie di ritardo dei pacchetti."
+type: lecture
+---
+
+## Cos'è Internet?
 
 è una lista di *host* collegati tra loro, queste connessioni possono essere effettuate (in maniera fisica) grazie ad una rete di connessioni di rame/fibra ottica/satellitare o wireless. 
 I vari host riescono a comunicare tra di loro inviandosi pacchetti, che vengono instradati nella direzione giusta tramite router e switch.

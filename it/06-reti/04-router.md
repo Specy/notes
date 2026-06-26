@@ -1,3 +1,9 @@
+---
+title: "Router, indirizzamento IP e SDN"
+description: "Architettura dei router, forwarding e switching fabric, indirizzamento IP con CIDR, DHCP, NAT, IPv6, e introduzione al Software-Defined Networking con OpenFlow."
+type: lecture
+---
+
 ## Compito dei router
 
 I router hanno 2 compiti fondamentali:

@@ -1,3 +1,9 @@
+---
+title: "Livello di trasporto: UDP, RDT e TCP"
+description: "Multiplexing e demultiplexing, protocollo UDP, trasferimento dati affidabile (RDT), protocollo TCP con controllo di flusso, gestione connessione e controllo di congestione AIMD."
+type: lecture
+---
+
 ## Multiplexing e demultiplexing
 
 Il Multiplexing in invio aggiunge metadati i pacchetti inviati, mentre il demultiplexing in ricezione utilizza questi metadati per indirizzare il pacchetto al socket appropriato:
@@ -94,4 +100,4 @@ In alternativa alla crescita lineare, possiamo usare il metodo Cubic dove ogni v
 ### QUIC
 
 è un protocollo che usa UDP insieme al controllo degli errori a livello di applicazione per poter inviare pacchetti senza perdite. 
-Inoltre ha bisogno di soli 2 RTT per stabilire una connessione sicura, in confronto ai 4 RTT necessari per il TCP. 
+Inoltre ha bisogno di soli 2 RTT per stabilire una connessione sicura, in confronto ai 4 RTT necessari per il TCP.

@@ -1,3 +1,9 @@
+---
+title: "Reti wireless e mobilità: Wi-Fi, 4G e 5G"
+description: "Elementi delle reti wireless, CDMA, standard 802.11 (CSMA/CA, RTS-CTS), architettura LTE/4G-5G, handover tra base station e gestione della mobilità con routing diretto e indiretto."
+type: lecture
+---
+
 # Elementi di una rete wireless
 
 - **Host wireless**: dispositivo che può inviare e ricevere dati in una rete wireless

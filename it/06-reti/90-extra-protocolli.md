@@ -1,3 +1,9 @@
+---
+title: "Extra: tabella dei protocolli per livello OSI"
+description: "Tabella di riferimento dei principali protocolli di rete suddivisi per livello del modello OSI, dal livello fisico al livello applicazione."
+type: resource
+---
+
 Riassunto e lista di protocolli utili da sapere
 
 | Livello OSI                       | Protocollo     | Descrizione                                                                                           |
@@ -30,4 +36,3 @@ Riassunto e lista di protocolli utili da sapere
 |                                   |                |                                                                                                       |
 | **Livello 1** (Fisico)            | DSL, ADSL      | Digital Subscriber Line; protocolli per connessioni Internet ad alta velocità su linea telefonica.    |
 |                                   | ISDN           | Integrated Services Digital Network; vecchio standard per voce e dati su linea telefonica.            |
-

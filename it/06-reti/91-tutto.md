@@ -1,3 +1,9 @@
+---
+title: "Riepilogo completo del corso di reti"
+description: "Raccolta integrale di tutti gli argomenti del corso in un unico documento di ripasso: Internet, protocolli applicativi, TCP/UDP, router, routing, link layer, wireless e sicurezza."
+type: summary
+---
+
 ## Cos’è Internet?
 
 è una lista di *host* collegati tra loro, queste connessioni possono essere effettuate (in maniera fisica) grazie ad una rete di connessioni di rame/fibra ottica/satellitare o wireless. 
