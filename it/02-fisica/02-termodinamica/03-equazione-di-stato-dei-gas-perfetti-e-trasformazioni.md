@@ -14,7 +14,7 @@ topics:
 
 # Lezione 17: Equazione di stato dei gas perfetti
 
-📎 Lezione precedente: [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]
+
 
 > [!abstract] In questa lezione
 > - La **legge di Avogadro** e il concetto di **mole**
@@ -194,6 +194,3 @@ Tre cammini, tre lavori diversi tra gli stessi stati. Il lavoro **non è una var
 > 2. Cosa rappresenta fisicamente la quantità $k_B T$?
 > 3. Perché il lavoro di un gas non è una variabile di stato, mentre $P$, $V$, $T$ lo sono?
 
----
-
-📎 Lezione precedente: [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]] · Prossima lezione: [[il-primo-principio-della-termodinamica]]

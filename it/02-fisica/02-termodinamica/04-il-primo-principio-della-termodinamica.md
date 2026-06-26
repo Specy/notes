@@ -14,7 +14,7 @@ topics:
 
 # Lezione 18: Il primo principio della termodinamica
 
-📎 Lezione precedente: [[equazione-di-stato-dei-gas-perfetti-e-trasformazioni]]
+
 
 > [!abstract] In questa lezione
 > - Il **primo principio**: $\Delta U = Q - L$, con l'**energia interna** $U$ variabile di stato
@@ -192,6 +192,3 @@ Comprimere un gas isolato termicamente lo **scalda** (qui da 300 a 567 K): tutto
 > 2. Perché nell'espansione libera di Joule il lavoro è nullo anche se il gas si espande?
 > 3. Perché comprimere rapidamente (adiabaticamente) un gas lo scalda?
 
----
-
-📎 Lezione precedente: [[equazione-di-stato-dei-gas-perfetti-e-trasformazioni]] · Prossima lezione: [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]]

@@ -13,7 +13,7 @@ topics:
 
 # Lezione 9: Il moto parabolico
 
-📎 Lezione precedente: [[lavoro-della-forza-peso-piano-inclinato-ed-energia]]
+
 
 > [!abstract] In questa lezione
 > - Completiamo il problema del salto (velocità di impatto con l'energia)
@@ -167,6 +167,3 @@ Ritroviamo le stesse componenti della cinematica. È una conferma del fatto che 
 > 2. Se raddoppi la velocità orizzontale $v_{0x}$ di lancio (stessa altezza), come cambiano il tempo di volo e la gittata?
 > 3. Perché il modulo della velocità di impatto è lo stesso calcolato con l'energia e con la cinematica? Quale principio lo garantisce?
 
----
-
-📎 Lezione precedente: [[lavoro-della-forza-peso-piano-inclinato-ed-energia]]

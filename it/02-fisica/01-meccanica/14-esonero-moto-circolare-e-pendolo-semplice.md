@@ -13,7 +13,7 @@ topics:
 
 # Lezione 14: Esonero, moto circolare e pendolo semplice
 
-📎 Lezione precedente: [[il-moto-armonico-semplice]]
+
 
 > [!abstract] In questa lezione
 > - Un **problema d'esonero** completo: molla, forza frenante, collina e salita con attrito
@@ -184,6 +184,3 @@ e soluzione $\theta(t) = A\cos(\omega t + \varphi)$.
 > 2. Perché il periodo di un pendolo non dipende dalla massa appesa?
 > 3. Due pendoli hanno lunghezze nel rapporto $4:1$. Qual è il rapporto dei loro periodi?
 
----
-
-📎 Lezione precedente: [[il-moto-armonico-semplice]]

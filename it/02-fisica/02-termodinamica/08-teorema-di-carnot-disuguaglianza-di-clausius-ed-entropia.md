@@ -14,7 +14,7 @@ topics:
 
 # Lezione 22: Entropia e secondo principio
 
-📎 Lezione precedente: [[cicli-termodinamici-e-il-secondo-principio]]
+
 
 > [!abstract] In questa lezione
 > - Il **teorema di Carnot**: nessuna macchina supera il rendimento di Carnot
@@ -197,6 +197,3 @@ In un'espansione libera (vedi [[il-primo-principio-della-termodinamica]]) non c'
 > 2. Perché nel diagramma $T$–$S$ il ciclo di Carnot è un rettangolo, e perché questo rende immediato il suo rendimento?
 > 3. In un'espansione libera la temperatura non cambia: perché allora l'entropia aumenta?
 
----
-
-📎 Lezione precedente: [[cicli-termodinamici-e-il-secondo-principio]] · Prossima lezione: [[esercizi-desame-di-termodinamica]]

@@ -14,7 +14,7 @@ topics:
 
 # Lezione 3: Moto uniformemente accelerato e inizio della dinamica
 
-📎 Lezione precedente: [[legge-oraria-moto-uniforme-accelerazione-e-moto-uniformemente-accelerato]]
+
 
 > [!abstract] In questa lezione
 > - Le due **leggi orarie** del moto uniformemente accelerato, ricavate per integrazione: $v(t) = v_0 + at$ e $x(t) = x_0 + v_0 t + \tfrac{1}{2}at^2$
@@ -256,6 +256,3 @@ Tutte le interazioni che osserviamo in natura si riconducono a **quattro forze f
 > 2. Nel Problema 1.5, perché anche nel caso (c) l'accelerazione risulta negativa pur non dovendosi fermare?
 > 3. Il primo principio sembra un caso particolare del secondo. Sapresti spiegare in che senso lo è ponendo $F = 0$?
 
----
-
-📎 Lezione precedente: [[legge-oraria-moto-uniforme-accelerazione-e-moto-uniformemente-accelerato]] · Prossima lezione: [[terzo-principio-della-dinamica-e-gravitazione-universale]]

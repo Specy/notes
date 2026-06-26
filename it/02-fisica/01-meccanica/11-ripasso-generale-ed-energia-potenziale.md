@@ -14,7 +14,7 @@ topics:
 
 # Lezione 11: Ripasso generale ed energia potenziale
 
-📎 Lezione precedente: [[potenza-energia-spesa-e-forza-elastica]]
+
 
 > [!abstract] In questa lezione
 > - **Ripasso** organizzato di cinematica, dinamica ed energia in vista del 1° parziale
@@ -176,6 +176,3 @@ $$F\cos\alpha - F_a = ma \;\Longrightarrow\; a = \frac{F\cos\alpha - \mu_d N}{m}
 > 2. Scegliendo un livello di riferimento diverso per la quota, $U_{grav}$ cambia. Perché questo non altera la fisica del problema?
 > 3. In quali punti del moto di una molla l'energia è tutta cinetica, e in quali tutta potenziale?
 
----
-
-📎 Lezione precedente: [[potenza-energia-spesa-e-forza-elastica]] · Prossima lezione: [[esercizi-desame-e-sistemi-di-corpi-collegati]]

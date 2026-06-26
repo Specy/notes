@@ -15,7 +15,7 @@ topics:
 
 # Lezione 19: Trasformazioni, cicli e macchine termiche
 
-📎 Lezione precedente: [[il-primo-principio-della-termodinamica]]
+
 
 > [!abstract] In questa lezione
 > - Il primo principio applicato alle **quattro trasformazioni**: isocora, isobara, isoterma, adiabatica
@@ -220,6 +220,3 @@ $$\eta = 1 + \frac{Q_{CD}}{Q_{AB}} = 1 + \frac{nRT_1\ln(V_D/V_C)}{nRT_2\ln(V_B/V
 > 2. Perché in una trasformazione isoterma tutto il calore assorbito si trasforma in lavoro?
 > 3. Perché nessuna macchina termica può avere rendimento $\eta = 1$? Cosa lo impedisce?
 
----
-
-📎 Lezione precedente: [[il-primo-principio-della-termodinamica]]

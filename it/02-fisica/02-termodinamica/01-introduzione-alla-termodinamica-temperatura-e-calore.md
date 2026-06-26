@@ -15,7 +15,7 @@ topics:
 
 # Lezione 15: Introduzione alla termodinamica, temperatura e calore
 
-📎 Lezione precedente: [[esonero-moto-circolare-e-pendolo-semplice]]
+
 
 > [!abstract] In questa lezione
 > - Perché serve la **termodinamica**: descrivere sistemi di tantissime particelle
@@ -253,6 +253,3 @@ Servono circa **721 pezzetti**: nonostante l'argento sia molto più caldo, il su
 > 2. Due corpi della stessa massa ma di materiali diversi ricevono lo stesso calore: si scaldano uguale? Da cosa dipende?
 > 3. Nel problema dei pezzetti d'argento, perché ne servono così tanti pur essendo molto più caldi dell'acqua?
 
----
-
-📎 Lezione precedente: [[esonero-moto-circolare-e-pendolo-semplice]] · Prossima lezione: [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]

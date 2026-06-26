@@ -14,7 +14,7 @@ topics:
 
 # Lezione 21: Cicli termodinamici e il secondo principio
 
-📎 Lezione precedente: [[trasformazione-politropica-macchina-frigorifera-e-carnot-con-attrito]]
+
 
 > [!abstract] In questa lezione
 > - Un ciclo **triangolare**: lavoro come area, rendimento
@@ -175,6 +175,3 @@ I due enunciati sembrano diversi (uno parla di motori, l'altro di frigoriferi) m
 > 2. Nel problema del frigorifero, perché la fase di solidificazione domina il bilancio energetico?
 > 3. Perché un frigorifero non viola il secondo principio, pur spostando calore dal freddo al caldo?
 
----
-
-📎 Lezione precedente: [[trasformazione-politropica-macchina-frigorifera-e-carnot-con-attrito]] · Prossima lezione: [[teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]]
