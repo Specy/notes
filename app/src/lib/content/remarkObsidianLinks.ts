@@ -33,15 +33,14 @@ export default function remarkObsidianLinks(resolve: LinkResolver) {
           const excalidraw = decodeExcalidrawSentinel(assetUrl);
           if (excalidraw !== null) {
             if (excalidraw.light || excalidraw.dark) {
-              // Emit a <picture> with a dark-mode source and a light-mode fallback.
-              // The site uses both html[data-theme="dark"] and prefers-color-scheme,
-              // so we use the CSS media query which works for the static export.
-              const lightSrc = escAttr(excalidraw.light ?? excalidraw.dark ?? '');
-              const darkSrc = escAttr(excalidraw.dark ?? excalidraw.light ?? '');
-              const escapedAlt = escAttr(altText);
+              // Emit two <img> tags toggled by CSS via html[data-theme="dark"],
+              // matching the site's in-app theme toggle (same as Shiki/KaTeX).
+              const lightUrl = escAttr(excalidraw.light ?? excalidraw.dark ?? '');
+              const darkUrl = escAttr(excalidraw.dark ?? excalidraw.light ?? '');
+              const alt = escAttr(altText);
               out.push({
                 type: 'html',
-                value: `<picture class="excalidraw-embed"><source media="(prefers-color-scheme: dark)" srcset="${darkSrc}"><img src="${lightSrc}" alt="${escapedAlt}" class="excalidraw-img"></picture>`
+                value: `<span class="excalidraw-embed"><img src="${lightUrl}" alt="${alt}" class="excalidraw-img excalidraw-light"><img src="${darkUrl}" alt="${alt}" class="excalidraw-img excalidraw-dark"></span>`
               });
             } else {
               // Missing excalidraw — render a placeholder span
