@@ -22,4 +22,12 @@ describe('renderMarkdown', () => {
     const html = await renderMarkdown('| a | b |\n|---|---|\n| 1 | 2 |', resolve);
     expect(html).toContain('<table>');
   });
+  it('converts mermaid fenced block to .mermaid-src (not shiki-highlighted)', async () => {
+    const html = await renderMarkdown('```mermaid\ngraph TD;A-->B\n```', resolve);
+    // Must be wrapped in our stable selector, not a shiki block
+    expect(html).toContain('class="mermaid-src"');
+    expect(html).not.toContain('class="shiki');
+    // Raw source must be preserved inside
+    expect(html).toContain('graph TD;A-->B');
+  });
 });

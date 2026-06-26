@@ -12,6 +12,7 @@ import rehypeShiki from '@shikijs/rehype';
 import rehypeStringify from 'rehype-stringify';
 import remarkObsidianLinks from './remarkObsidianLinks.js';
 import remarkCallouts from './remarkCallouts.js';
+import rehypeMermaid from './rehypeMermaid.js';
 
 export type LinkResolver = {
   note(target: string): string;
@@ -31,6 +32,7 @@ export function createProcessor(resolve: LinkResolver) {
     .use(rehypeKatex)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, { behavior: 'wrap' })
+    .use(rehypeMermaid)
     .use(rehypeShiki, {
       themes: { light: 'github-light', dark: 'github-dark' },
       fallbackLanguage: 'text',
