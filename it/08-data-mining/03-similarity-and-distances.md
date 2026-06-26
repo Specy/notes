@@ -1,3 +1,9 @@
+---
+title: "Similarity and Distances"
+description: "Defines and compares distance and similarity functions for quantitative, categorical, text, binary, time-series, and graph data, including Lp-norms, the curse of dimensionality, cosine similarity, Jaccard coefficient, DTW, and graph kernels."
+type: lecture
+---
+
 Many data minding problems, such as *clustering, outlier detection* and *classification* require the computation of *similarity*
 **DEFINITION**
 Given two objects $O_1$ and $O_2$, we want to compute the similarity $Sim(O_1, O_2)$ or distance $Dist(O_1, O_2)$, between the two objects. 

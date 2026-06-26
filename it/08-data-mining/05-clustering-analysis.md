@@ -1,3 +1,9 @@
+---
+title: "Clustering Analysis"
+description: "Explores clustering types (partitional vs. hierarchical), cluster definitions (well-separated, center-based, density-based), and key algorithms including agglomerative hierarchical clustering, K-Means, and DBSCAN."
+type: lecture
+---
+
  The purpose of clustering analysis is to find groups of objects which are related to each other. The definition of a cluster can be ambiguous, as we need to define what we consider a cluster.
 
 # Types of clustering

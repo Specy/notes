@@ -1,3 +1,9 @@
+---
+title: "Anomaly Detection"
+description: "Covers detection of outliers in data: types of anomalies (point, contextual, collective), supervised/semi-supervised/unsupervised approaches, classification-based techniques, SVM, KNN, and the Local Outlier Factor (LOF) algorithm."
+type: lecture
+---
+
 Data is considered an anomaly if it does not conform to the expected behavior, they are also called outliers, exceptions, peculiarities etc...
 Examples of anomaly detection is credit card fraud, where a transaction looks unusual, or cyber intrusions where the network traffic is unusual
 
