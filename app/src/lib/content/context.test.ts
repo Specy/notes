@@ -69,6 +69,11 @@ describe('context', () => {
       { title: 'Fisica', url: '/it/fisica' }
     ]);
   });
+  it('breadcrumbsFor: homeTitle overrides the default lang fallback for the home crumb', () => {
+    const { root } = buildContext(files, {});
+    const crumbs = breadcrumbsFor(root, 'fisica', 'it', 'Home');
+    expect(crumbs).toEqual([{ title: 'Home', url: '/it' }]);
+  });
   it('siblings: middle note has both prev and next non-null', () => {
     const filesWithThree: RawFile[] = [
       { relPath: '01-fisica/index.md', frontmatter: { title: 'Fisica', description: 'd' }, content: 'o' },

@@ -98,14 +98,16 @@ export function siblings(root: FolderNode, notePath: string) {
  * Returns one entry per ancestor folder (root → … → parent).
  * The current node itself is NOT included — callers render it as aria-current.
  *
- * @param root  The shared tree root.
- * @param path  The current node's path (e.g. "fisica/a" or "fisica").
- * @param lang  The language prefix used to build hrefs.
+ * @param root       The shared tree root.
+ * @param path       The current node's path (e.g. "fisica/a" or "fisica").
+ * @param lang       The language prefix used to build hrefs.
+ * @param homeTitle  Optional label for the root/home crumb. Defaults to root.title or lang.
  */
 export function breadcrumbsFor(
   root: FolderNode,
   path: string,
-  lang: string
+  lang: string,
+  homeTitle?: string
 ): { title: string; url: string }[] {
   if (!path) return [];                       // root itself → no ancestors
   const segs = path.split('/');
@@ -120,7 +122,7 @@ export function breadcrumbsFor(
   }
 
   // Prepend the root/home crumb
-  result.unshift({ title: root.title || lang, url: `/${lang}` });
+  result.unshift({ title: homeTitle ?? (root.title || lang), url: `/${lang}` });
   return result;
 }
 
