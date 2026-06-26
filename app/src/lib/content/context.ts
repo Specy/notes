@@ -6,25 +6,27 @@ import type { LinkResolver } from './markdown';
 export interface Context { root: FolderNode; resolve: LinkResolver; }
 
 function indexByTitleAndSlug(root: FolderNode) {
-  const map = new Map<string, NoteNode | FolderNode>();
+  const titleMap = new Map<string, NoteNode | FolderNode>();
+  const slugMap = new Map<string, NoteNode | FolderNode>();
   const walk = (f: FolderNode) => {
     for (const c of f.children) {
-      map.set(c.title.toLowerCase(), c);
-      map.set(c.slug.toLowerCase(), c);
+      titleMap.set(c.title.toLowerCase(), c);
+      slugMap.set(c.slug.toLowerCase(), c);
       if (c.kind === 'folder') walk(c);
     }
   };
   walk(root);
-  return map;
+  return { titleMap, slugMap };
 }
 
 export function makeResolver(root: FolderNode, assets: Record<string, string>): LinkResolver {
-  const lookup = indexByTitleAndSlug(root);
+  const { titleMap, slugMap } = indexByTitleAndSlug(root);
   return {
     note(target: string) {
       const [name, anchor] = target.split('#');
-      const hit = lookup.get(name.trim().toLowerCase());
-      const base = hit ? hit.path : name.trim().toLowerCase().replace(/\s+/g, '-');
+      const key = name.trim().toLowerCase();
+      const hit = titleMap.get(key) ?? slugMap.get(key);
+      const base = hit ? hit.path : key.replace(/\s+/g, '-');
       return anchor ? `${base}#${anchor.trim().toLowerCase().replace(/\s+/g, '-')}` : base;
     },
     asset(target: string) {
