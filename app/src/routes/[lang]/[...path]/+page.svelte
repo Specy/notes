@@ -14,7 +14,7 @@
 		(() => {
 			if (data.kind !== "note") return [];
 			const node = data.node as any;
-			const raw = node.frontmatter?.argomenti || node.frontmatter?.tags || node.frontmatter?.keywords;
+			const raw = node.frontmatter?.topics || node.frontmatter?.tags || node.frontmatter?.keywords;
 			if (!raw) return [];
 			if (Array.isArray(raw)) return raw.map(String);
 			if (typeof raw === "string") return raw.split(",").map((s) => s.trim());

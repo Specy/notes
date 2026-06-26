@@ -3,8 +3,7 @@ title: "Lavoro della forza peso, piano inclinato ed energia"
 description: "Il lavoro della forza peso e la sua indipendenza dal percorso, il piano inclinato con a = g·sin α e il confronto fra metodo cinematico ed energetico."
 type: lecture
 lezione: 8
-titolo: Lavoro della forza peso, piano inclinato ed energia
-argomenti:
+topics:
   - lavoro della forza peso
   - indipendenza dal percorso
   - piano inclinato

@@ -3,8 +3,7 @@ title: "Trasformazioni termodinamiche, cicli e macchine termiche"
 description: "Il primo principio applicato alle quattro trasformazioni, l'adiabatica e l'isoterma, le trasformazioni cicliche, le macchine termiche e frigorifere e il ciclo di Carnot."
 type: lecture
 lezione: 19
-titolo: Trasformazioni termodinamiche, cicli e macchine termiche
-argomenti:
+topics:
   - trasformazione adiabatica
   - trasformazione isoterma
   - le quattro trasformazioni

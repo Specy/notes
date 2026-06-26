@@ -3,8 +3,7 @@ title: "Esercizi d'esame di termodinamica"
 description: "Una raccolta di esercizi d'esame su tutta la termodinamica: espansione libera ed entropia, trasformazioni lineari, cicli completi e calcolo del rendimento."
 type: lecture
 lezione: 23
-titolo: Esercizi d'esame di termodinamica
-argomenti:
+topics:
   - entropia ed espansione libera
   - variazione di entropia
   - cicli termodinamici

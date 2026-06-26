@@ -3,8 +3,7 @@ title: "Il moto parabolico"
 description: "Il moto parabolico come composizione di un moto orizzontale uniforme e di uno verticale accelerato, con equazione della traiettoria, gittata e velocità di impatto."
 type: lecture
 lezione: 9
-titolo: Il moto parabolico
-argomenti:
+topics:
   - moto parabolico
   - composizione dei moti
   - equazione della traiettoria

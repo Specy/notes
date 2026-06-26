@@ -3,8 +3,7 @@ title: "Forza peso, reazione vincolare e attrito"
 description: "La forza peso e il newton, la reazione vincolare normale, il peso apparente in ascensore e le forze di attrito statico e dinamico."
 type: lecture
 lezione: 5
-titolo: Forza peso, reazione vincolare e attrito
-argomenti:
+topics:
   - forza peso
   - newton come unità di forza
   - reazione vincolare normale

@@ -2,7 +2,6 @@
 title: Formulario
 description: "Tutte le formule del corso di meccanica e termodinamica raccolte per argomento, ciascuna con una breve spiegazione."
 type: resource
-titolo: Formulario di Fisica — Meccanica e Termodinamica
 
 tipo: formulario
 ---

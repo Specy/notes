@@ -3,8 +3,7 @@ title: "Teorema di Carnot, disuguaglianza di Clausius ed entropia"
 description: "Il teorema di Carnot, la disuguaglianza di Clausius, la definizione di entropia come funzione di stato, il diagramma T-S e il secondo principio in forma di entropia."
 type: lecture
 lezione: 22
-titolo: Teorema di Carnot, disuguaglianza di Clausius ed entropia
-argomenti:
+topics:
   - teorema di Carnot
   - disuguaglianza di Clausius
   - entropia
