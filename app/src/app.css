@@ -71,6 +71,12 @@ html[data-theme='dark'] .shiki span {
 .callout-tip     { border-left-color: var(--success); }
 .callout-note    { border-left-color: var(--hint); }
 
+/* Foldable callout affordance */
+.callout[data-callout-fold] .callout-title { cursor: pointer; }
+
+/* Folded state — hide everything except the title */
+.callout.folded > :not(.callout-title) { display: none; }
+
 /* ─── Article / markdown typography (.md) ────────────────────────────────── */
 /*
    Ported from specy.app's BlogLayout.svelte.
