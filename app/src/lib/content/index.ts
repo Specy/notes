@@ -35,7 +35,13 @@ export async function renderNode(lang: string, path: string) {
     const html = node.content ? await renderMarkdown(node.content, resolve) : '';
     const g = groupChildren(node);
     const folderNode = { ...stripBody(node), image: node.image ? resolve.asset(node.image) : undefined };
-    return { kind: 'folder' as const, lang, node: folderNode, html, groups: prefixGroups(g, lang, resolve), breadcrumbs };
+    const sib = siblings(c.root, node.path);
+    return {
+      kind: 'folder' as const, lang,
+      node: folderNode, html, groups: prefixGroups(g, lang, resolve), breadcrumbs,
+      prev: sib.prev && { title: sib.prev.title, path: `/${lang}/${sib.prev.path}` },
+      next: sib.next && { title: sib.next.title, path: `/${lang}/${sib.next.path}` }
+    };
   }
   const html = await renderMarkdown(node.content, resolve);
   const stats = readingTime(toPlainText(node.content));

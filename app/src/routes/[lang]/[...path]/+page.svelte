@@ -64,6 +64,8 @@
 				{/each}
 			</ul>
 		{/if}
+
+		<NoteNav prev={data.prev} next={data.next} lang={data.lang} />
 	</article>
 {:else}
 	<article class="article">

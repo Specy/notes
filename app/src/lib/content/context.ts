@@ -92,12 +92,34 @@ export function extractToc(html: string) {
 
 export function siblings(root: FolderNode, notePath: string) {
   const segs = notePath.split('/');
-  const parent = getNodeByPath(root, segs.slice(0, -1));
-  if (!parent || parent.kind !== 'folder') return { prev: null, next: null };
-  const notes = parent.children.filter((c): c is NoteNode => c.kind === 'note');
-  const i = notes.findIndex((n) => n.path === notePath);
-  return { prev: i > 0 ? notes[i - 1] : null, next: i >= 0 && i < notes.length - 1 ? notes[i + 1] : null };
+  if (segs.length === 0) return { prev: null, next: null };
+
+  const courseFolder = root.children.find(
+    (c): c is FolderNode => c.kind === 'folder' && c.slug === segs[0]
+  );
+
+  const targetRoot = courseFolder || root;
+
+  const list: (FolderNode | NoteNode)[] = [];
+  const walk = (node: FolderNode | NoteNode) => {
+    list.push(node);
+    if (node.kind === 'folder') {
+      for (const child of node.children) {
+        walk(child);
+      }
+    }
+  };
+  walk(targetRoot);
+
+  const i = list.findIndex((n) => n.path === notePath);
+  if (i === -1) return { prev: null, next: null };
+
+  return {
+    prev: i > 0 ? list[i - 1] : null,
+    next: i < list.length - 1 ? list[i + 1] : null
+  };
 }
+
 
 /**
  * Build the ancestor breadcrumb trail for a given path.

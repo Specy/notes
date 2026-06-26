@@ -24,14 +24,6 @@ realistico, e ne verrà tenuto conto durante la valutazione finale.
 
 # Laboratorio di Basi di Dati:  *Progetto Collectors*
 
-**Gruppo di lavoro**: 
-
-| Matricola | Nome  |  Cognome   | Contributo al progetto |
-|:---------:|:-----:|:----------:|:----------------------:|
-|  279061   | Enrico | Menichelli | Si                       |
-
-**Data di consegna del progetto**: 19/07/2023
-
 ---
 
 ## Analisi della traccia e dominio
