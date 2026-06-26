@@ -17,6 +17,6 @@
     "svelte-check": "^4",
     "typescript": "^5",
     "vite": "^8",
-    "vitest": "^2"
+    "vitest": "^3.2.6"
   }
 }
