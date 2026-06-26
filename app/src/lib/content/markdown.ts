@@ -42,6 +42,20 @@ export function createProcessor(resolve: LinkResolver) {
     .use(rehypeStringify, { allowDangerousHtml: true });
 }
 
+/**
+ * Obsidian renders a standalone single-line `$$ … $$` as DISPLAY math, but
+ * micromark-extension-math only treats the multi-line `$$\n…\n$$` form as a
+ * display block (single-line `$$…$$` becomes inline). Normalize lines that are
+ * solely a `$$ … $$` equation into the block form so they render centered,
+ * keeping the vault itself Obsidian-idiomatic.
+ */
+export function normalizeBlockMath(md: string): string {
+  return md.replace(
+    /^[ \t]*\$\$[ \t]*([^\n]+?)[ \t]*\$\$[ \t]*$/gm,
+    (_m, body) => `$$\n${body}\n$$`,
+  );
+}
+
 export async function renderMarkdown(md: string, resolve: LinkResolver): Promise<string> {
-  return String(await createProcessor(resolve).process(md));
+  return String(await createProcessor(resolve).process(normalizeBlockMath(md)));
 }

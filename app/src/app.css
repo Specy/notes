@@ -96,13 +96,14 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
 /* ─── Callouts (from remarkCallouts) ─────────────────────────────────────── */
 .callout {
   border-left: 4px solid var(--accent);
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  background: color-mix(in srgb, var(--accent2) 20%, transparent);
+  padding: 0.7rem 1rem;
+  border-radius: 0.7rem;
+  background: #52537a1a; /* same translucent surface as code blocks */
   margin: 1rem 0;
 }
 .callout-title {
-  font-weight: 600;
+  font-family: var(--heading-font), sans-serif;
+  font-weight: 700;
   color: var(--accent);
   margin-bottom: 0.3rem;
 }
@@ -175,7 +176,16 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
 }
 
 .md h2 {
+  margin-top: 1rem;
   font-size: 1.8rem;
+}
+
+/* Display (block) math centered horizontally. */
+.md .katex-display {
+  text-align: center;
+  margin: 1.2rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .md h3 {
@@ -247,24 +257,33 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   content: '`';
 }
 
-/* Tables */
+/* Tables — rounded corners + the same translucent surface as code blocks.
+   border-collapse: separate (+ overflow hidden) so the radius actually clips. */
 .md table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   width: 100%;
   margin: 1.5rem 0;
   font-size: 1rem;
+  background: #52537a1a;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
 
 .md th,
 .md td {
-  border: 1px solid var(--accent2);
   padding: 0.5rem 0.8rem;
   text-align: left;
+  border-bottom: 1px solid var(--accent2);
+}
+
+.md tr:last-child td {
+  border-bottom: none;
 }
 
 .md th {
   background: var(--secondary);
-  font-family: var(--heading-font);
+  font-family: var(--heading-font), sans-serif;
 }
 
 /* ─── Article layout + hero (matches specy.app BlogLayout) ───────────────── */
@@ -289,7 +308,8 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   color: var(--background-text);
 }
 .hero-meta {
-  font-size: 1.4rem;
+  font-family: var(--heading-font), sans-serif;
+  font-size: 1.3rem;
   color: var(--muted);
   margin: 0.8rem 0 0;
 }
@@ -299,6 +319,7 @@ html[data-theme="dark"] .excalidraw-dark { display: inline-block; }
   line-height: 1.5;
   color: var(--background-text);
   margin: 1rem 0 0;
+  padding: 1rem;
 }
 
 /* Semi-transparent card with a soft glow so the blurred blobs behind the
