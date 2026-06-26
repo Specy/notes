@@ -21,13 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.6rem 1.5rem;
-    background: color-mix(in srgb, var(--background) 80%, transparent);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid color-mix(in srgb, var(--accent2) 40%, transparent);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    padding: 1.5rem;
   }
 
   .nav-controls {
