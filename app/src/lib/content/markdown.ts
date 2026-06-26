@@ -10,6 +10,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
 import rehypeStringify from 'rehype-stringify';
+import remarkObsidianLinks from './remarkObsidianLinks.js';
 
 export type LinkResolver = {
   note(target: string): string;
@@ -18,11 +19,11 @@ export type LinkResolver = {
 
 export function createProcessor(resolve: LinkResolver) {
   // `resolve` = { note(target):string, asset(target):string } link resolvers
-  // NOTE: remarkObsidianLinks and remarkCallouts are added in Tasks 5 & 6.
   return unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkMath)
+    .use(remarkObsidianLinks, resolve)   // [[x]] / ![[x]] BEFORE remark-rehype
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeKatex)
