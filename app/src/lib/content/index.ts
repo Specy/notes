@@ -5,14 +5,16 @@ import { buildContext, getNodeByPath, listRoutes, extractToc, siblings } from '.
 import { groupChildren } from './tree';
 import { renderMarkdown } from './markdown';
 import { toPlainText } from './plainText';
+import { LANGUAGES } from '$lib/languages';
 import type { Context } from './context';
 
 let _ctx: Context | null = null;
 function ctx(): Context { return (_ctx ??= buildContext(files, assets)); }
 
 export function listAllRoutes() {
-  // language list lives in $lib/languages (Task 13); 'it' for now
-  return listRoutes(ctx().root).map((r) => ({ lang: 'it', path: r.path }));
+  return (Object.keys(LANGUAGES) as (keyof typeof LANGUAGES)[]).flatMap((lang) =>
+    listRoutes(ctx().root).map((r) => ({ lang, path: r.path }))
+  );
 }
 
 export async function renderNode(lang: string, path: string) {

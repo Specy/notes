@@ -2,13 +2,14 @@
   import { page } from '$app/state';
   import ThemeToggle from '$lib/components/ThemeToggle.svelte';
   import LanguageSwitcher from '$lib/components/LanguageSwitcher.svelte';
+  import { t } from '$lib/i18n';
 
   // Derive lang from the first path segment; fall back to 'it'
   const lang = $derived(page.url.pathname.split('/').filter(Boolean)[0] ?? 'it');
 </script>
 
 <header class="nav">
-  <a class="site-title" href="/{lang}">Notes</a>
+  <a class="site-title" href="/{lang}" aria-label={t(lang, 'nav.home')}>Notes</a>
   <div class="nav-controls">
     <LanguageSwitcher />
     <ThemeToggle />
