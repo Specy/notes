@@ -316,8 +316,9 @@ $$\gamma = \frac{C_P}{C_V} > 1$$
 | **Isoterma** | $T$ | $nRT\ln\frac{V_B}{V_A}$ | $= L$ | $0$ |
 | **Adiabatica** | $Q=0$ | $nC_V(T_A - T_B)$ | $0$ | $nC_V\Delta T$ |
 
-- **Adiabatica** ($Q = 0$) — leggi della trasformazione (espandendo, il gas si raffredda):
-$$T\,V^{\gamma-1} = \text{cost} \qquad P\,V^{\gamma} = \text{cost}$$
+- **Adiabatica — leggi di Poisson** ($Q = 0$) — legano a coppie le variabili di stato lungo un'adiabatica (espandendo, il gas si raffredda):
+$$P\,V^{\gamma} = \text{cost} \qquad T\,V^{\gamma-1} = \text{cost} \qquad P^{1-\gamma}\,T^{\gamma} = \text{cost}$$
+  La prima lega $P$ e $V$, la seconda $T$ e $V$, la terza $P$ e $T$ (si ricavano l'una dall'altra con $PV = nRT$). Per applicarle tra due stati: $P_A V_A^{\gamma} = P_B V_B^{\gamma}$ e $T_A V_A^{\gamma-1} = T_B V_B^{\gamma-1}$.
 - **Lavoro adiabatica** (forma alternativa):
 $$L_{AB} = \frac{P_A V_A - P_B V_B}{\gamma - 1}$$
 - **Isoterma** ($\Delta U = 0$, quindi $Q = L$):
