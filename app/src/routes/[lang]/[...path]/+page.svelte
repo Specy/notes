@@ -6,8 +6,31 @@
 	import Toc from "$lib/components/Toc.svelte"
 	import { t } from "$lib/i18n"
 	import RenderedMarkdown from "$lib/components/RenderedMarkdown.svelte"
+	import SEO from "$lib/components/SEO.svelte"
+
 	let { data }: PageProps = $props()
+
+	const keywords = $derived(
+		(() => {
+			if (data.kind !== "note") return [];
+			const node = data.node as any;
+			const raw = node.frontmatter?.argomenti || node.frontmatter?.tags || node.frontmatter?.keywords;
+			if (!raw) return [];
+			if (Array.isArray(raw)) return raw.map(String);
+			if (typeof raw === "string") return raw.split(",").map((s) => s.trim());
+			return [];
+		})()
+	);
 </script>
+
+<SEO
+	title={data.node.title}
+	description={data.node.description}
+	image={data.kind === "folder" ? data.node.image : (data.node as any).frontmatter?.image}
+	type={data.kind === "folder" ? "website" : "article"}
+	lang={data.lang}
+	{keywords}
+/>
 
 {#if data.kind === "folder"}
 	<article class="article">

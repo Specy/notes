@@ -46,9 +46,17 @@ export async function renderNode(lang: string, path: string) {
   const html = await renderMarkdown(node.content, resolve);
   const stats = readingTime(toPlainText(node.content));
   const sib = siblings(c.root, node.path);
+  const noteNode = {
+    ...node,
+    content: '',
+    frontmatter: {
+      ...node.frontmatter,
+      image: node.frontmatter.image ? resolve.asset(node.frontmatter.image) : undefined
+    }
+  };
   return {
     kind: 'note' as const, lang,
-    node: { ...node, content: '' },
+    node: noteNode,
     html, toc: extractToc(html), readingText: stats.text,
     prev: sib.prev && { title: sib.prev.title, path: `/${lang}/${sib.prev.path}` },
     next: sib.next && { title: sib.next.title, path: `/${lang}/${sib.next.path}` },

@@ -1,9 +1,12 @@
 <script lang="ts">
   import type { PageProps } from './$types';
   import CourseCard from '$lib/components/CourseCard.svelte';
+  import SEO from '$lib/components/SEO.svelte';
   import { t } from '$lib/i18n';
   let { data }: PageProps = $props();
 </script>
+
+<SEO lang={data.lang} />
 
 <section class="article">
   <header class="hero">

@@ -68,7 +68,7 @@
 						<span class="note-title">{lang === "it" ? "Indice" : "Index"}</span>
 					</a>
 				</li>
-				{#each node.children as child}
+				{#each node.kind === "folder" ? node.children : [] as child}
 					<li>
 						<SidebarTree node={child} {lang} {activePath} {onSelect} />
 					</li>
