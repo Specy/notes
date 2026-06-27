@@ -22,7 +22,7 @@ topics:
 
 ## 1. La forza peso
 
-Come visto in [[terzo-principio-della-dinamica-e-gravitazione-universale]], tutti i corpi che si muovono vicino alla superficie terrestre si possono trattare come soggetti a una **accelerazione costante**, l'accelerazione di gravità:
+Come visto in [[04-terzo-principio-della-dinamica-e-gravitazione-universale]], tutti i corpi che si muovono vicino alla superficie terrestre si possono trattare come soggetti a una **accelerazione costante**, l'accelerazione di gravità:
 
 $$g = 9{,}81\ \frac{\text{m}}{\text{s}^2} \approx 10\ \frac{\text{m}}{\text{s}^2}$$
 

@@ -117,7 +117,7 @@ $$v_B = a\,t_B = -6{,}2\cdot 0{,}9 \approx -6\ \frac{\text{m}}{\text{s}}$$
 cioè circa $6\ \text{m/s}$ verso il basso.
 
 > [!tip] Scorciatoia senza il tempo
-> Si poteva arrivare direttamente a $v_B$ con la relazione senza tempo di [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]]: $v_B^2 = 2|a|\,\overline{AB} = 2\cdot 6{,}2\cdot 2{,}6 \approx 32 \Rightarrow v_B \approx 5{,}7\ \text{m/s}$. Stesso risultato, un passaggio in meno.
+> Si poteva arrivare direttamente a $v_B$ con la relazione senza tempo di [[03-formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]]: $v_B^2 = 2|a|\,\overline{AB} = 2\cdot 6{,}2\cdot 2{,}6 \approx 32 \Rightarrow v_B \approx 5{,}7\ \text{m/s}$. Stesso risultato, un passaggio in meno.
 
 ---
 

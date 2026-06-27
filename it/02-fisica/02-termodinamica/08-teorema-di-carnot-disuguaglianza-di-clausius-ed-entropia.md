@@ -173,7 +173,7 @@ $$Q = \Delta U + L = 85 + 21 = 106\ \text{kJ}$$
 
 > Due gas in scomparti separati da una parete (rimovibile) di un recipiente fisso e isolato; rimossa la parete, i gas si espandono liberamente nell'intero volume.
 
-In un'espansione libera (vedi [[il-primo-principio-della-termodinamica]]) non c'è scambio di calore né lavoro, quindi $\Delta U = 0$ e la temperatura resta costante. Ma il volume a disposizione di ciascun gas **aumenta**, quindi dalla formula $\Delta S = nR\ln(V_B/V_A) > 0$: l'entropia **cresce**. È un processo **irreversibile** tipico: i gas non si "ri-separano" mai spontaneamente. Il risultato chiave è $dS > 0$.
+In un'espansione libera (vedi [[04-il-primo-principio-della-termodinamica]]) non c'è scambio di calore né lavoro, quindi $\Delta U = 0$ e la temperatura resta costante. Ma il volume a disposizione di ciascun gas **aumenta**, quindi dalla formula $\Delta S = nR\ln(V_B/V_A) > 0$: l'entropia **cresce**. È un processo **irreversibile** tipico: i gas non si "ri-separano" mai spontaneamente. Il risultato chiave è $dS > 0$.
 
 > [!note] L'irreversibilità a livello microscopico
 > L'espansione libera mostra il senso statistico dell'entropia: ci sono enormemente più modi di disporre le molecole sparse nell'intero volume che confinate in metà. Lo stato "sparso" è incomparabilmente più probabile, e il sistema vi evolve spontaneamente. L'entropia misura proprio questo numero di configurazioni microscopiche.

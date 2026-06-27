@@ -24,7 +24,7 @@ topics:
 
 > Da un punto $A$ a quota $h = 2\ \text{km}$ parte in orizzontale un proiettile con $v_p = 300\ \text{km/h}$. Sul terreno un bersaglio si muove con $v_m = 15\ \text{km/h}$. A quale distanza $d$ avviene l'impatto?
 
-Come in [[il-moto-parabolico]], i due moti del proiettile sono indipendenti:
+Come in [[09-il-moto-parabolico]], i due moti del proiettile sono indipendenti:
 
 $$\text{proiettile:}\quad x_P = v_p\,t, \quad y_P = h - \frac{1}{2}g\,t^2 \qquad\qquad \text{bersaglio:}\quad x_m = d \pm v_m\,t, \quad y_m = 0$$
 
@@ -61,7 +61,7 @@ $$W_{AB}^P = -mg\,h = -mg\,L\sin\theta = -0{,}8\cdot 10\cdot 5\cdot\sin 20° \ap
 
 $$W_{AB}^F + W_{AB}^P = \frac{1}{2}m\,v_B^2 \;\Longrightarrow\; v_B = \sqrt{\frac{2}{m}\left(W_{AB}^F + W_{AB}^P\right)} = \sqrt{\frac{2}{0{,}8}(19 - 13)} \approx 3{,}7\ \frac{\text{m}}{\text{s}}$$
 
-**Velocità in fondo all'altro versante.** Dalla cima (quota $h$) al suolo agisce solo il peso (conservazione dell'energia, come in [[lavoro-della-forza-peso-piano-inclinato-ed-energia]]):
+**Velocità in fondo all'altro versante.** Dalla cima (quota $h$) al suolo agisce solo il peso (conservazione dell'energia, come in [[08-lavoro-della-forza-peso-piano-inclinato-ed-energia]]):
 
 $$\frac{1}{2}m\,v_h^2 = \frac{1}{2}m\,v_B^2 + mgh \;\Longrightarrow\; v_h = \sqrt{v_B^2 + 2gh} \approx 6{,}9\ \frac{\text{m}}{\text{s}}$$
 
@@ -188,7 +188,7 @@ $$|F_1|\,\overline{AB} - |F_{ad}|\,\overline{AB} = \frac{1}{2}m\,v_B^2 \;\Longri
 
 $$mg\,h_D = \frac{1}{2}m\,v_B^2 \;\Longrightarrow\; h_D = \frac{v_B^2}{2g} = \frac{6{,}7^2}{20} \approx 2{,}3\ \text{m}$$
 
-**Accelerazione in $D$.** Sul piano inclinato vale $a = g\sin\theta$ (vedi [[lavoro-della-forza-peso-piano-inclinato-ed-energia]]), diretta verso il basso: arrivato in cima con velocità nulla, il corpo riparte indietro con questa accelerazione.
+**Accelerazione in $D$.** Sul piano inclinato vale $a = g\sin\theta$ (vedi [[08-lavoro-della-forza-peso-piano-inclinato-ed-energia]]), diretta verso il basso: arrivato in cima con velocità nulla, il corpo riparte indietro con questa accelerazione.
 
 ---
 

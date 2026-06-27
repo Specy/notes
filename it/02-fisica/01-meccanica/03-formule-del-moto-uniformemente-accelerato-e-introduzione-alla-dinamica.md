@@ -70,7 +70,7 @@ da cui la **legge oraria**:
 $$\boxed{\;x(t) = x_0 + v_0\,t + \frac{1}{2}a\,t^2\;}$$
 
 > [!note] Le tre formule da ricordare
-> Queste due leggi, insieme alla relazione senza tempo vista in [[legge-oraria-moto-uniforme-accelerazione-e-moto-uniformemente-accelerato]], sono il kit completo del moto uniformemente accelerato:
+> Queste due leggi, insieme alla relazione senza tempo vista in [[02-legge-oraria-moto-uniforme-accelerazione-e-moto-uniformemente-accelerato]], sono il kit completo del moto uniformemente accelerato:
 > $$v(t) = v_0 + at \qquad x(t) = x_0 + v_0 t + \tfrac{1}{2}at^2 \qquad v^2 = v_0^2 + 2a\,\Delta x$$
 > In un problema si scelgono in base ai dati: se manca il tempo si usa la terza, altrimenti le prime due.
 

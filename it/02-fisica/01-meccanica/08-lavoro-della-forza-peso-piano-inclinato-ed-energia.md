@@ -47,7 +47,7 @@ $$W_{AB} = \int_A^B dW = \int_A^B (-mg)\,dz = -mg\,(z_B - z_A)$$
 
 $$\boxed{\;W_P = -mg\,\Delta z\;}\qquad \Delta z = z_B - z_A$$
 
-Analizziamo il segno, coerente con quanto visto in [[forze-inclinate-lavoro-ed-energia-cinetica]]:
+Analizziamo il segno, coerente con quanto visto in [[07-forze-inclinate-lavoro-ed-energia-cinetica]]:
 
 | Moto | $\Delta z$ | Lavoro del peso |
 |---|:---:|---|
@@ -232,7 +232,7 @@ $$v_C = \sqrt{v_B^2 - 2\mu_d\,g\,\overline{BC}} = \sqrt{18 - 2\cdot 0{,}3\cdot 1
 $$v_D = \sqrt{v_C^2 + 2g\,\overline{CC'}} = \sqrt{3 + 2\cdot 10\cdot 0{,}5} = \sqrt{3 + 10} = \sqrt{13} \approx 3{,}6\ \frac{\text{m}}{\text{s}}$$
 
 > [!note] La potenza del concatenamento
-> La velocità di fine tratto diventa quella di inizio del tratto successivo. In ogni tratto basta capire **quali forze fanno lavoro** (il peso quando c'è dislivello, l'attrito quando c'è scorrimento) e applicare $W = \Delta K$. Per la velocità $v_D$ conta solo il modulo: l'energia non distingue la direzione, quindi non serve studiare la traiettoria del salto per trovare con che velocità il corpo arriva a terra. In [[il-moto-parabolico]] rifaremo questo salto come **moto parabolico**, ottenendo anche la direzione di $\vec v_D$ e la gittata.
+> La velocità di fine tratto diventa quella di inizio del tratto successivo. In ogni tratto basta capire **quali forze fanno lavoro** (il peso quando c'è dislivello, l'attrito quando c'è scorrimento) e applicare $W = \Delta K$. Per la velocità $v_D$ conta solo il modulo: l'energia non distingue la direzione, quindi non serve studiare la traiettoria del salto per trovare con che velocità il corpo arriva a terra. In [[09-il-moto-parabolico]] rifaremo questo salto come **moto parabolico**, ottenendo anche la direzione di $\vec v_D$ e la gittata.
 
 ---
 
