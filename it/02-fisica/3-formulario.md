@@ -91,12 +91,16 @@ $$P = m\,g$$
 
 - **Reazione normale** $N$ — perpendicolare al vincolo; su piano orizzontale fermo 
 $$N = mg$$
+- **Reazione normale con spinta inclinata** — una forza $F$ inclinata di $\alpha$ verso l'alto "scarica" il vincolo e riduce l'attrito disponibile:
+$$N = mg - F\sin\alpha$$
 - **Peso apparente in ascensore** — $a$ con segno (positiva verso l'alto):
 $$N = m(g + a)$$
 - **Attrito statico massimo** — soglia oltre cui il corpo parte (l'attrito statico si adatta fino a questo valore):
 $$F_{as,\,max} = \mu_s\,N$$
 - **Attrito dinamico** — costante mentre il corpo scivola, opposto al moto ($\mu_d < \mu_s$):
 $$F_{ad} = \mu_d\,N$$
+- **Condizione di messa in moto** — il corpo parte quando la componente motrice supera l'attrito statico massimo (con spinta orizzontale $F > \mu_s N$):
+$$F\cos\alpha > \mu_s\,N$$
 - I coefficienti $\mu_s, \mu_d$ sono adimensionali e dipendono dai materiali a contatto.
 
 ---
@@ -125,6 +129,8 @@ $$K = \tfrac{1}{2}m\,v^2$$
 $$W_{AB} = K_B - K_A = \tfrac{1}{2}m\,v_B^2 - \tfrac{1}{2}m\,v_A^2$$
 - **Lavoro della forza peso** — dipende solo dal dislivello $\Delta z = z_B - z_A$ (forza conservativa):
 $$W_P = -mg\,\Delta z$$
+- **Lavoro dell'attrito** — sempre negativo (forza frenante) e dipendente dal percorso (non conservativa); su un tratto di lunghezza $s$:
+$$W_{att} = -F_{ad}\,s = -\mu_d\,N\,s \qquad (\text{orizzontale: } -\mu_d\,mg\,d)$$
 - **Potenza** — lavoro nell'unità di tempo (prodotto scalare forza·velocità):
 $$P = \frac{dW}{dt} = \vec F\cdot \vec v$$
 - **Energia spesa** (problemi metabolici) — potenza per tempo, più il lavoro contro la gravità se si sale:
