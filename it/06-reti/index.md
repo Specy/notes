@@ -1,6 +1,10 @@
 ---
 title: "Reti di Calcolatori"
 description: "Appunti del corso di reti di calcolatori: architettura Internet, protocolli applicativi (HTTP, DNS, SMTP), TCP/UDP, routing (OSPF, BGP, SDN), link layer, reti wireless e sicurezza."
+authors:
+  - name: Specy
+    link: https://github.com/Specy
+    image: /images/logo.png
 ---
 
 # Reti di Calcolatori

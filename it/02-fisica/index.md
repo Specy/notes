@@ -1,6 +1,10 @@
 ---
 title: "Fisica: Meccanica e Termodinamica"
 description: "Appunti del corso di fisica del primo anno: cinematica, dinamica, lavoro ed energia, moti oscillatori e termodinamica, con un formulario completo."
+authors:
+  - name: Specy
+    link: https://github.com/Specy
+    image: /images/logo.png
 ---
 
 # Fisica: Meccanica e Termodinamica

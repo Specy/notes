@@ -1,6 +1,10 @@
 ---
 title: Analisi Matematica
 description: Appunti del corso di Analisi Matematica, con note su serie e successioni, limiti, derivate, studio di funzione, integrali e funzioni a due variabili.
+authors:
+  - name: Specy
+    link: https://github.com/Specy
+    image: /images/logo.png
 ---
 
 # Analisi Matematica
