@@ -88,6 +88,7 @@ Fields:
 | `order` | optional | Override the numeric-prefix ordering (a number). |
 | `published` | optional | Set `false` to hide a note or folder. Defaults to `true`. |
 | `image` | optional | Cover image basename (e.g. `cover.png`), shown on cards. |
+| `authors` | optional | One or more authors, shown as pills. See [Authors](#authors). |
 | `topics` / `tags` / `keywords` | optional | Extra keywords for search/SEO. |
 
 > ⚠️ **Quote any title/description containing a colon** (`:`) with double quotes —
@@ -102,6 +103,30 @@ On a course/module page the children are grouped into three sections, in order:
 - **Risorse** — notes with any other `type` (`resource`, `exercise`, `exam`, `summary`).
 
 Within each group, items are sorted by their numeric prefix (or `order`).
+
+### Authors
+
+`authors` is a list; each author has a **`name`** and optionally a **`link`**
+(opened on click) and an **`image`** (avatar).
+
+```yaml
+authors:
+  - name: Specy
+    link: https://github.com/Specy
+    image: /images/logo.png   # absolute path/URL, or a vault image basename
+  - name: Jane Doe            # name only is fine
+```
+
+The avatar `image` is either a **vault image basename** (resolved like any embed)
+or an **absolute path/URL** (e.g. `/images/logo.png`, the site logo). A bare
+string also works as shorthand for a name-only author (`authors: [Specy]`).
+
+Authors are shown as pills on course, module, and lecture pages, with a
+**fallback**: a page uses its own `authors`; if it has none it inherits the
+nearest ancestor's — **lecture → module → course** — and shows nothing if no
+ancestor declares any. So setting `authors` once on a course's `index.md`
+covers every lecture under it; override on a specific module or lecture to
+credit someone else.
 
 ## Writing content (Obsidian-flavoured Markdown)
 
