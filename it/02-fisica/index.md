@@ -1,9 +1,9 @@
 ---
-title: "Fisica: Meccanica e Termodinamica"
+title: "Fisica"
 description: "Appunti del corso di fisica del primo anno: cinematica, dinamica, lavoro ed energia, moti oscillatori e termodinamica, con un formulario completo."
 ---
 
-# Fisica: Meccanica e Termodinamica
+# Fisica
 
 Appunti del corso, organizzati in due moduli — **Meccanica** e **Termodinamica** — con una nota per ogni lezione. Ogni file integra i contenuti della lezione con le relative spiegazioni.
 
