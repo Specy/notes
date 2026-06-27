@@ -3,10 +3,6 @@
 The Obsidian vault behind **[learn.specy.app](https://learn.specy.app)**: my
 university computer-science notes (currently Italian, under `it/`).
 
-This repository is **content only**. The SvelteKit site that renders it lives at
-**[github.com/Specy/learn](https://github.com/Specy/learn)**, which includes this
-repo as a git submodule and reads the content at build time.
-
 ## Layout
 
 ```
