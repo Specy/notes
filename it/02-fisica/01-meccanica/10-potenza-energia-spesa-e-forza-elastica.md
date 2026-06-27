@@ -149,7 +149,7 @@ $$\boxed{\;W_{AB} = \frac{1}{2}k\,x_A^2 - \frac{1}{2}k\,x_B^2\;}$$
 
 ## 5. Problema (3/11/2025): compressione massima di una molla
 
-> Riprendiamo il blocco del [[lavoro-della-forza-peso-piano-inclinato-ed-energia]] che arriva in fondo allo scivolo con $v_C = 4{,}3\ \text{m/s}$ ($m = 1{,}3\ \text{kg}$) e urta una molla di costante $k = 200\ \text{N/m}$. Qual è la compressione massima della molla?
+> Riprendiamo il blocco del [[08-lavoro-della-forza-peso-piano-inclinato-ed-energia]] che arriva in fondo allo scivolo con $v_C = 4{,}3\ \text{m/s}$ ($m = 1{,}3\ \text{kg}$) e urta una molla di costante $k = 200\ \text{N/m}$. Qual è la compressione massima della molla?
 
 <svg viewBox="0 0 340 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Blocco che urta e comprime una molla fino a fermarsi">
   <line x1="20" y1="80" x2="320" y2="80" stroke="currentColor" stroke-width="1.5"/>

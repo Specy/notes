@@ -24,7 +24,7 @@ topics:
 
 ## 1. La legge di Avogadro e la mole
 
-Alle leggi di Boyle e Gay-Lussac di [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]] si aggiunge la **legge di Avogadro**: a parità di pressione e temperatura, volumi uguali di gas diversi contengono lo stesso numero di molecole. In particolare, **una mole** di qualunque gas perfetto, alle condizioni standard ($P_0 = P_{atm}$, $T_0 = 273{,}15\ \text{K}$), occupa lo stesso **volume molare**:
+Alle leggi di Boyle e Gay-Lussac di [[02-cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]] si aggiunge la **legge di Avogadro**: a parità di pressione e temperatura, volumi uguali di gas diversi contengono lo stesso numero di molecole. In particolare, **una mole** di qualunque gas perfetto, alle condizioni standard ($P_0 = P_{atm}$, $T_0 = 273{,}15\ \text{K}$), occupa lo stesso **volume molare**:
 
 $$V_m = 0{,}02241\ \text{m}^3 = 22{,}41\ \text{litri (per 1 mole)}$$
 
@@ -141,7 +141,7 @@ Una **trasformazione termodinamica** porta il sistema da uno stato $A$ a uno sta
 
 ## 5. Il lavoro dipende dal percorso
 
-Per una trasformazione reversibile il lavoro è $L_{AB} = \displaystyle\int_A^B P(V)\,dV$, cioè l'area sotto la curva (vedi [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]). Per una trasformazione **irreversibile** a pressione esterna costante (per esempio un'espansione contro l'atmosfera):
+Per una trasformazione reversibile il lavoro è $L_{AB} = \displaystyle\int_A^B P(V)\,dV$, cioè l'area sotto la curva (vedi [[02-cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]). Per una trasformazione **irreversibile** a pressione esterna costante (per esempio un'espansione contro l'atmosfera):
 
 $$L_{AB}^{irr} = P_{amb}\,(V_B - V_A)$$
 

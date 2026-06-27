@@ -58,7 +58,7 @@ $$-F\cos\alpha = m\,a_{AB} \;\Longrightarrow\; a_{AB} = -\frac{F\cos\alpha}{m} =
 
 $$v_B = \sqrt{v_A^2 - \frac{2F\cos\alpha\,\overline{AB}}{m}} = \sqrt{49 - 41{,}7} \approx 2{,}7\ \frac{\text{m}}{\text{s}}$$
 
-**(4) Velocità in C.** La collina è liscia: dalla quota $h_B$ a $C$ lavora solo il peso (vedi [[lavoro-della-forza-peso-piano-inclinato-ed-energia]]):
+**(4) Velocità in C.** La collina è liscia: dalla quota $h_B$ a $C$ lavora solo il peso (vedi [[08-lavoro-della-forza-peso-piano-inclinato-ed-energia]]):
 
 $$v_C = \sqrt{v_B^2 + 2g\,h_B} = \sqrt{7{,}3 + 2\cdot 10\cdot 0{,}75} \approx 4{,}7\ \frac{\text{m}}{\text{s}}$$
 
@@ -71,7 +71,7 @@ Raccogliendo $h_D$:
 $$g\,h_D\left(1 + \frac{\mu}{\tan\theta}\right) = \frac{1}{2}v_C^2 \;\Longrightarrow\; h_D = \frac{v_C^2}{2g\left(1 + \dfrac{\mu}{\tan\theta}\right)} = \frac{22{,}3}{20\,(1 + 1{,}29)} \approx 0{,}49\ \text{m}$$
 
 > [!note] Il filo conduttore di tutti questi problemi
-> Ogni tratto si affronta con un'unica domanda: **quali forze fanno lavoro?** La molla (energia elastica → cinetica), la forza frenante e l'attrito (lavoro negativo), il peso (solo se c'è dislivello). Poi si applica $W = \Delta K$ o la conservazione dell'energia. È lo stesso metodo concatenato di [[lavoro-della-forza-peso-piano-inclinato-ed-energia]] e [[esercizi-desame-e-sistemi-di-corpi-collegati]].
+> Ogni tratto si affronta con un'unica domanda: **quali forze fanno lavoro?** La molla (energia elastica → cinetica), la forza frenante e l'attrito (lavoro negativo), il peso (solo se c'è dislivello). Poi si applica $W = \Delta K$ o la conservazione dell'energia. È lo stesso metodo concatenato di [[08-lavoro-della-forza-peso-piano-inclinato-ed-energia]] e [[12-esercizi-desame-e-sistemi-di-corpi-collegati]].
 
 > [!tip] Quando un corpo resta fermo su un piano inclinato
 > Un corpo non scivola finché l'attrito statico massimo regge la componente del peso lungo il piano: $F_{as,max} \ge P_\parallel$, cioè $\mu_s\,mg\cos\theta \ge mg\sin\theta$. Semplificando:
@@ -110,7 +110,7 @@ $$\boxed{\;\vec a = \underbrace{\frac{d^2 s}{dt^2}}_{a_T}\,\hat u_T + \underbrac
 - **Accelerazione centripeta** $a_c = \dfrac{v^2}{R}$: diretta verso il **centro** della circonferenza ($\hat u_n$), fa variare la **direzione** della velocità.
 
 > [!note] Anche a velocità costante si accelera
-> Nel **moto circolare uniforme** il modulo della velocità è costante, quindi $a_T = 0$, ma resta l'accelerazione centripeta $v^2/R$: la direzione cambia di continuo. Curvare richiede sempre una forza diretta verso il centro (è ciò che premi quando un'auto curva). Questo spiega l'osservazione lasciata in sospeso in [[terzo-principio-della-dinamica-e-gravitazione-universale]]: la Luna "cade" verso la Terra proprio perché la gravità le fornisce l'accelerazione centripeta che la tiene in orbita.
+> Nel **moto circolare uniforme** il modulo della velocità è costante, quindi $a_T = 0$, ma resta l'accelerazione centripeta $v^2/R$: la direzione cambia di continuo. Curvare richiede sempre una forza diretta verso il centro (è ciò che premi quando un'auto curva). Questo spiega l'osservazione lasciata in sospeso in [[04-terzo-principio-della-dinamica-e-gravitazione-universale]]: la Luna "cade" verso la Terra proprio perché la gravità le fornisce l'accelerazione centripeta che la tiene in orbita.
 
 ---
 
@@ -158,7 +158,7 @@ L'equazione $\ddot\theta + \dfrac{g}{L}\sin\theta = 0$ non è armonica a causa d
 
 $$\boxed{\;\frac{d^2\theta}{dt^2} + \frac{g}{L}\,\theta = 0\;}$$
 
-Questa è esattamente l'equazione del moto armonico di [[il-moto-armonico-semplice]], con
+Questa è esattamente l'equazione del moto armonico di [[13-il-moto-armonico-semplice]], con
 
 $$\omega = \sqrt{\frac{g}{L}}, \qquad T = \frac{2\pi}{\omega} = 2\pi\sqrt{\frac{L}{g}}$$
 

@@ -27,7 +27,7 @@ topics:
 
 ## 1. I cambiamenti di fase
 
-Quando si scalda un solido, all'inizio la temperatura sale secondo $dQ = m c_s\,dT$ (vedi [[introduzione-alla-termodinamica-temperatura-e-calore]]). Ma al momento del **passaggio di stato** (fusione, ebollizione) accade qualcosa di diverso: la temperatura **rimane costante** mentre si continua a fornire calore. Le transizioni di fase sono **isoterme**.
+Quando si scalda un solido, all'inizio la temperatura sale secondo $dQ = m c_s\,dT$ (vedi [[01-introduzione-alla-termodinamica-temperatura-e-calore]]). Ma al momento del **passaggio di stato** (fusione, ebollizione) accade qualcosa di diverso: la temperatura **rimane costante** mentre si continua a fornire calore. Le transizioni di fase sono **isoterme**.
 
 Per esempio, scaldando del ghiaccio su una piastra a $T_A > 0\,°\text{C}$, prima la sua temperatura sale fino al punto di fusione $T_{fus} = 273{,}15\ \text{K} = 0\,°\text{C}$ (calore $Q = m c_s\,\Delta T$), poi resta a $0\,°\text{C}$ finché tutto il ghiaccio è diventato acqua.
 
@@ -102,7 +102,7 @@ Un mulinello immerso nell'acqua è messo in rotazione da pesi che cadono. L'ener
 
 $$W_{ad} = -\Delta U = -(U_{fin} - U_{in}) \propto \Delta T$$
 
-Questo stabilisce l'**equivalenza tra lavoro e calore**: sono due modi di trasferire la stessa cosa, l'**energia**. Il calore non è un fluido speciale, ma energia in transito (lo confermò la conversione $1\ \text{cal} = 4{,}184\ \text{J}$ vista in [[potenza-energia-spesa-e-forza-elastica]]). È la base del primo principio della termodinamica.
+Questo stabilisce l'**equivalenza tra lavoro e calore**: sono due modi di trasferire la stessa cosa, l'**energia**. Il calore non è un fluido speciale, ma energia in transito (lo confermò la conversione $1\ \text{cal} = 4{,}184\ \text{J}$ vista in [[10-potenza-energia-spesa-e-forza-elastica]]). È la base del primo principio della termodinamica.
 
 ---
 

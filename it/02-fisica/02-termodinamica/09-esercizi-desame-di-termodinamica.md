@@ -25,11 +25,11 @@ topics:
 
 > Due gas in scomparti $A$ ($n_A = 2\ \text{mol}$, $C_V^A = \tfrac{3}{2}R$) e $B$ ($n_B = 1\ \text{mol}$, $C_V^B = \tfrac{5}{2}R$) di un recipiente isolato; $T_0 = 290\ \text{K}$. Calcolare la variazione di entropia dell'universo dopo che il gas si espande liberamente.
 
-Nell'**espansione libera** (recipiente isolato, vedi [[il-primo-principio-della-termodinamica]]) non c'è scambio di calore con l'esterno, quindi $\Delta S_{ambiente} = 0$ e tutta la variazione è del sistema:
+Nell'**espansione libera** (recipiente isolato, vedi [[04-il-primo-principio-della-termodinamica]]) non c'è scambio di calore con l'esterno, quindi $\Delta S_{ambiente} = 0$ e tutta la variazione è del sistema:
 
 $$\Delta S_{universo} = \Delta S_{sistema}$$
 
-Poiché l'entropia è funzione di stato (vedi [[teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]]), la si calcola lungo un percorso reversibile tra gli stessi stati. Il volume a disposizione di ciascun gas aumenta, e applicando $\Delta S = nC_V\ln\frac{T_f}{T_0} + nR\ln\frac{V_f}{V_0}$ per i due gas si ottiene
+Poiché l'entropia è funzione di stato (vedi [[08-teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]]), la si calcola lungo un percorso reversibile tra gli stessi stati. Il volume a disposizione di ciascun gas aumenta, e applicando $\Delta S = nC_V\ln\frac{T_f}{T_0} + nR\ln\frac{V_f}{V_0}$ per i due gas si ottiene
 
 $$\Delta S_{universo} \approx 7{,}67\ \text{J/K} > 0$$
 
@@ -77,7 +77,7 @@ $$Q = \Delta U + L \approx 13{,}7\ \text{kJ}$$
 
 > $n = 1\ \text{mol}$ ($C_V = \tfrac{3}{2}R$, $\gamma = \tfrac{5}{3}$). Trasformazione **adiabatica** $A \to B$ con $T_B = 25\,°\text{C} = 298\ \text{K}$, $P_B = 10^5\ \text{Pa}$, $V_B = 0{,}02\ \text{m}^3$, $P_A = 8{,}5\times 10^5\ \text{Pa}$. Trovare $V_A$ e $T_A$.
 
-Sull'adiabatica vale $PV^\gamma = \text{cost}$ (vedi [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]]), da cui
+Sull'adiabatica vale $PV^\gamma = \text{cost}$ (vedi [[05-trasformazioni-termodinamiche-cicli-e-macchine-termiche]]), da cui
 
 $$V_A = V_B\left(\frac{P_B}{P_A}\right)^{1/\gamma} = 0{,}02\left(\frac{10^5}{8{,}5\times 10^5}\right)^{3/5} \approx 5{,}5\times 10^{-3}\ \text{m}^3$$
 
@@ -120,14 +120,14 @@ A chiusura del corso, le relazioni fondamentali da tenere insieme:
 
 | Concetto           | Relazione chiave                                                                                                    | Lezione          |     |     |
 | ------------------ | ------------------------------------------------------------------------------------------------------------------- | ---------------- | --- | --- |
-| Equazione di stato | $PV = nRT$                                                                                                          | [[equazione-di-stato-dei-gas-perfetti-e-trasformazioni]]          |     |     |
-| Primo principio    | $\Delta U = Q - L$, $\Delta U = nC_V\Delta T$                                                                       | [[il-primo-principio-della-termodinamica]]          |     |     |
-| Mayer              | $C_P = C_V + R$, $\gamma = C_P/C_V$                                                                                 | [[il-primo-principio-della-termodinamica]]          |     |     |
-| Lavoro             | $L = \int P\,dV$ (area in $P$–$V$)                                                                                  | [[cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]          |     |     |
-| Adiabatica         | $PV^\gamma = \text{cost}$                                                                                           | [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]]          |     |     |
-| Rendimento         | $\eta = 1 - \dfrac{                                          \mid Q_{ced} \mid }{Q_{ass}} \le 1 - \dfrac{T_1}{T_2}$ | [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]], [[teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]] |     |     |
-| Secondo principio  | $\Delta S_{universo} \ge 0$                                                                                         | [[teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]]          |     |     |
-| Entropia (gas)     | $\Delta S = nC_V\ln\dfrac{T_B}{T_A} + nR\ln\dfrac{V_B}{V_A}$                                                        | [[teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]]          |     |     |
+| Equazione di stato | $PV = nRT$                                                                                                          | [[03-equazione-di-stato-dei-gas-perfetti-e-trasformazioni]]          |     |     |
+| Primo principio    | $\Delta U = Q - L$, $\Delta U = nC_V\Delta T$                                                                       | [[04-il-primo-principio-della-termodinamica]]          |     |     |
+| Mayer              | $C_P = C_V + R$, $\gamma = C_P/C_V$                                                                                 | [[04-il-primo-principio-della-termodinamica]]          |     |     |
+| Lavoro             | $L = \int P\,dV$ (area in $P$–$V$)                                                                                  | [[02-cambiamenti-di-fase-dilatazione-e-leggi-dei-gas]]          |     |     |
+| Adiabatica         | $PV^\gamma = \text{cost}$                                                                                           | [[05-trasformazioni-termodinamiche-cicli-e-macchine-termiche]]          |     |     |
+| Rendimento         | $\eta = 1 - \dfrac{                                          \mid Q_{ced} \mid }{Q_{ass}} \le 1 - \dfrac{T_1}{T_2}$ | [[05-trasformazioni-termodinamiche-cicli-e-macchine-termiche]], [[08-teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]] |     |     |
+| Secondo principio  | $\Delta S_{universo} \ge 0$                                                                                         | [[08-teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]]          |     |     |
+| Entropia (gas)     | $\Delta S = nC_V\ln\dfrac{T_B}{T_A} + nR\ln\dfrac{V_B}{V_A}$                                                        | [[08-teorema-di-carnot-disuguaglianza-di-clausius-ed-entropia]]          |     |     |
 
 ---
 

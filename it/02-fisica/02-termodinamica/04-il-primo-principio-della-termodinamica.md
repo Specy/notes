@@ -24,7 +24,7 @@ topics:
 
 ## 1. Il primo principio
 
-In [[equazione-di-stato-dei-gas-perfetti-e-trasformazioni]] abbiamo visto che, andando da uno stato $A$ a uno stato $B$ per percorsi diversi, sia il calore $Q$ sia il lavoro $L$ **cambiano** da percorso a percorso. Sperimentalmente, però, la loro **differenza** $Q - L$ è sempre la stessa, qualunque sia il cammino.
+In [[03-equazione-di-stato-dei-gas-perfetti-e-trasformazioni]] abbiamo visto che, andando da uno stato $A$ a uno stato $B$ per percorsi diversi, sia il calore $Q$ sia il lavoro $L$ **cambiano** da percorso a percorso. Sperimentalmente, però, la loro **differenza** $Q - L$ è sempre la stessa, qualunque sia il cammino.
 
 Questo significa che esiste una grandezza che dipende **solo dallo stato** del sistema (non dal percorso): l'**energia interna** $U$. La sua variazione è
 

@@ -48,7 +48,7 @@ $$\boxed{\;C_k = C_V + \frac{R}{1 - k}\;}$$
 
 ## 2. Ripasso: il rendimento di Carnot
 
-Per una macchina termica, il rendimento è (vedi [[trasformazioni-termodinamiche-cicli-e-macchine-termiche]])
+Per una macchina termica, il rendimento è (vedi [[05-trasformazioni-termodinamiche-cicli-e-macchine-termiche]])
 
 $$\eta = \frac{W}{Q_{ass}} = \frac{Q_{ass} + Q_{ced}}{Q_{ass}} = 1 - \frac{|Q_{ced}|}{Q_{ass}}$$
 

@@ -23,7 +23,7 @@ topics:
 
 ## 1. Ripasso: velocità di impatto con l'energia
 
-Riprendiamo il problema del [[lavoro-della-forza-peso-piano-inclinato-ed-energia]] (15/7/2025). Il corpo ($m = 1{,}8\ \text{kg}$) arriva nel punto $C$ con velocità orizzontale $v_C = 1{,}7\ \text{m/s}$ e cade da un gradino di altezza $\overline{CC'} = 0{,}5\ \text{m}$, atterrando in $D$. Vogliamo $v_D$.
+Riprendiamo il problema del [[08-lavoro-della-forza-peso-piano-inclinato-ed-energia]] (15/7/2025). Il corpo ($m = 1{,}8\ \text{kg}$) arriva nel punto $C$ con velocità orizzontale $v_C = 1{,}7\ \text{m/s}$ e cade da un gradino di altezza $\overline{CC'} = 0{,}5\ \text{m}$, atterrando in $D$. Vogliamo $v_D$.
 
 Nella caduta solo il peso compie lavoro, con $dW = mg\,dz$. Dal teorema dell'energia cinetica sul tratto $CD$:
 
@@ -88,7 +88,7 @@ $$v_x(t) = v_{0x} \qquad v_y(t) = v_{0y} - g\,t$$
 **Posizione:**
 $$x(t) = x_0 + v_{0x}\,t \qquad y(t) = y_0 + v_{0y}\,t - \frac{1}{2}g\,t^2$$
 
-Lungo $x$ riconosciamo il moto uniforme, lungo $y$ il moto uniformemente accelerato di [[formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]].
+Lungo $x$ riconosciamo il moto uniforme, lungo $y$ il moto uniformemente accelerato di [[03-formule-del-moto-uniformemente-accelerato-e-introduzione-alla-dinamica]].
 
 ---
 
@@ -129,7 +129,7 @@ All'arrivo, le due componenti della velocità sono:
 $$v_x(t_v) = v_{0x} = 1{,}7\ \frac{\text{m}}{\text{s}}$$
 $$v_y(t_v) = v_{0y} - g\,t_v = 0 - 10\cdot 0{,}3 \approx -3\ \frac{\text{m}}{\text{s}}$$
 
-Il modulo della velocità di impatto è la composizione delle due (teorema di Pitagora, come per ogni vettore in [[problemi-con-lattrito-e-introduzione-ai-vettori]]):
+Il modulo della velocità di impatto è la composizione delle due (teorema di Pitagora, come per ogni vettore in [[06-problemi-con-lattrito-e-introduzione-ai-vettori]]):
 
 $$v_D = \sqrt{v_x(t_v)^2 + v_y(t_v)^2} = \sqrt{1{,}7^2 + 3^2} = \sqrt{2{,}89 + 9} \approx 3{,}6\ \frac{\text{m}}{\text{s}}$$
 
