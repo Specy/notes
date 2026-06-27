@@ -388,7 +388,3 @@ $$\Delta S_{universo} = \frac{Q}{T_1} - \frac{Q}{T_2} > 0$$
 | Rendimento         | $\eta = 1 - \frac{                                         \mid Q_{ced} \mid }{Q_{ass}} \le 1 - \frac{T_1}{T_2}$ |
 | Secondo principio  | $\Delta S_{universo} \ge 0$                                                                                      |
 | Entropia (gas)     | $\Delta S = nC_V\ln\frac{T_B}{T_A} + nR\ln\frac{V_B}{V_A}$                                                       |
-
----
-
-🏠 Torna all'[[fisica|indice]]
