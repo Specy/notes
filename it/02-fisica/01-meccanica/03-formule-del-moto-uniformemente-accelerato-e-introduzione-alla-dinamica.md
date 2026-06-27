@@ -2,7 +2,6 @@
 title: "Formule del moto uniformemente accelerato e introduzione alla dinamica"
 description: "Le leggi orarie del moto uniformemente accelerato applicate a problemi di frenata e semaforo, e l'inizio della dinamica con i principi di Newton e le quattro forze fondamentali."
 type: lecture
-lezione: 3
 topics:
   - moto uniformemente accelerato
   - leggi orarie per integrazione

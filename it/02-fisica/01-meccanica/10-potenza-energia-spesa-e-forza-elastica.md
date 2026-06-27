@@ -2,7 +2,6 @@
 title: "Potenza, energia spesa e forza elastica"
 description: "La potenza e la sua unità (il watt), problemi sull'energia spesa, la forza elastica con la legge di Hooke e il lavoro della molla."
 type: lecture
-lezione: 10
 topics:
   - potenza
   - watt e caloria

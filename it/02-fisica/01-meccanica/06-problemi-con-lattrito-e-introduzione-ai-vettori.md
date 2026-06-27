@@ -2,7 +2,6 @@
 title: "Problemi con l'attrito e introduzione ai vettori"
 description: "Problemi con l'attrito dinamico e introduzione ai vettori: modulo, direzione e verso, coordinate cartesiane e polari e somma di vettori."
 type: lecture
-lezione: 6
 topics:
   - attrito dinamico e coefficiente
   - corpo su parete verticale

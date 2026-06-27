@@ -2,7 +2,6 @@
 title: "Ripasso generale ed energia potenziale"
 description: "Ripasso di cinematica, dinamica ed energia e introduzione dell'energia potenziale per le forze conservative, gravitazionale ed elastica."
 type: lecture
-lezione: 11
 topics:
   - ripasso cinematica
   - ripasso dinamica

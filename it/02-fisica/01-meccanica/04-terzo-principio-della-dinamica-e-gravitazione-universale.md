@@ -2,7 +2,6 @@
 title: "Terzo principio della dinamica e gravitazione universale"
 description: "Il principio di azione e reazione e la legge di gravitazione universale, da cui si ricava l'accelerazione di gravità terrestre g."
 type: lecture
-lezione: 4
 topics:
   - principio di azione e reazione
   - legge di gravitazione universale

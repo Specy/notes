@@ -2,7 +2,6 @@
 title: "Introduzione al corso e cinematica del punto materiale"
 description: "Cos'è la fisica, il modello del punto materiale, il sistema di riferimento e il moto unidimensionale, con velocità media e istantanea."
 type: lecture
-lezione: 1
 topics:
   - cos'è la fisica
   - punto materiale

@@ -2,7 +2,6 @@
 title: "Legge oraria, moto uniforme, accelerazione e moto uniformemente accelerato"
 description: "Legge oraria del moto uniforme e di quello uniformemente accelerato, l'accelerazione come derivata della velocità e la relazione velocità-spazio senza il tempo."
 type: lecture
-lezione: 2
 topics:
   - legge oraria
   - moto uniforme

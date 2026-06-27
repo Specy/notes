@@ -2,7 +2,6 @@
 title: "Esercizi d'esame e sistemi di corpi collegati"
 description: "Esercizi d'esame su moto parabolico, lavoro ed energia e massa su molla, con la tensione delle funi e i sistemi di corpi collegati tramite carrucole."
 type: lecture
-lezione: 12
 topics:
   - proiettile e bersaglio mobile
   - lavoro ed energia su un profilo

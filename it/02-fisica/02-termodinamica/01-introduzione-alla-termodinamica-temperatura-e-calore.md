@@ -2,7 +2,6 @@
 title: "Introduzione alla termodinamica, temperatura e calore"
 description: "Sistema termodinamico e variabili di stato, il principio zero e la temperatura, la pressione con la legge di Stevino e il calore con la calorimetria."
 type: lecture
-lezione: 15
 topics:
   - sistema termodinamico
   - variabili di stato
