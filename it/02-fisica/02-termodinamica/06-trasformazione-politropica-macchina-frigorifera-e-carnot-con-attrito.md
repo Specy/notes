@@ -2,7 +2,6 @@
 title: "Trasformazione politropica, macchina frigorifera e Carnot con attrito"
 description: "La trasformazione politropica che unifica le quattro trasformazioni, il rendimento di Carnot, la macchina frigorifera con il suo COP e un ciclo di Carnot reale con attrito."
 type: lecture
-lezione: 20
 topics:
   - trasformazione politropica
   - calore molare generico

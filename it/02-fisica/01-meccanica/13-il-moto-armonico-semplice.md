@@ -2,7 +2,6 @@
 title: "Il moto armonico semplice"
 description: "L'equazione del moto armonico semplice e la sua soluzione, con pulsazione, periodo, frequenza, condizioni iniziali ed energia dell'oscillazione."
 type: lecture
-lezione: 13
 topics:
   - moto armonico semplice
   - equazione del moto

@@ -2,7 +2,6 @@
 title: "Forze inclinate, lavoro ed energia cinetica"
 description: "Scomposizione delle forze inclinate, definizione di lavoro tramite il prodotto scalare e il teorema dell'energia cinetica."
 type: lecture
-lezione: 7
 topics:
   - scomposizione di forze inclinate
   - condizione di moto con attrito

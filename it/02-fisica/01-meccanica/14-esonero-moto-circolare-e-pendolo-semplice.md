@@ -2,7 +2,6 @@
 title: "Esonero, moto circolare e pendolo semplice"
 description: "Un problema d'esonero completo, il moto circolare con accelerazione tangenziale e centripeta e il pendolo semplice con T = 2π√(L/g)."
 type: lecture
-lezione: 14
 topics:
   - problema d'esonero completo
   - condizione di equilibrio su piano inclinato
