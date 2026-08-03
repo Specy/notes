@@ -1,5 +1,6 @@
 ---
 title: "Basi di Dati"
+year: 2
 description: "Appunti del corso di basi di dati: fondamenti teorici del modello relazionale, algebra e calcolo relazionale, normalizzazione, tecnologie DBMS, e un progetto pratico di laboratorio con MySQL."
 authors:
   - name: Specy

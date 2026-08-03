@@ -1,5 +1,6 @@
 ---
 title: "Statistica e Probabilità"
+year: 2
 description: "Appunti del corso di statistica e probabilità: dalla teoria assiomatica di Kolmogorov alle distribuzioni notevoli discrete, con esercizi su combinatoria, variabili aleatorie e disuguaglianze probabilistiche."
 authors:
   - name: Specy
