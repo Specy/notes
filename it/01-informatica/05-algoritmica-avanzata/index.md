@@ -1,5 +1,6 @@
 ---
 title: "Algoritmica Avanzata"
+year: 2
 description: "Appunti del corso di algoritmica avanzata: tecniche di progettazione e analisi di algoritmi complessi, con focus su strutture dati avanzate, ottimizzazione e complessità computazionale."
 authors:
   - name: Specy

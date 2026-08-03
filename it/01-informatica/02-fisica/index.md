@@ -1,5 +1,6 @@
 ---
 title: "Fisica"
+year: 1
 description: "Appunti del corso di fisica del primo anno: cinematica, dinamica, lavoro ed energia, moti oscillatori e termodinamica, con un formulario completo."
 authors:
   - name: Specy

@@ -1,5 +1,6 @@
 ---
 title: "Data Mining"
+year: 3
 description: "Lecture notes covering the core techniques of data mining: data preparation and cleaning, similarity and distance functions, association rule mining, clustering algorithms, and anomaly detection methods."
 authors:
   - name: Specy

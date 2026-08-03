@@ -1,5 +1,6 @@
 ---
 title: "Intelligenza Artificiale"
+year: 3
 description: "Appunti del corso di intelligenza artificiale: agenti intelligenti, algoritmi di ricerca, CSP, logica e KRR nel modulo di ricerca e ragionamento; machine learning, reti neurali profonde, RNN, transformer e LLM nel modulo di machine learning e deep learning."
 authors:
   - name: Specy
