@@ -224,11 +224,13 @@ for a generic "f"), `area` (`from`/`to`, `base`, `signed: true` → green/red by
 sign), `riemann` (`from`/`to`, `n`, `mode`: left/right/mid/lower/upper), `line`
 (list of points, `arrow: true`), `vline`/`hline`, `point` (`open: true` for a
 hollow dot), `points` (a list of `[x, y]` — a scatter plot; `shape`: dot, x,
-plus, square, triangle, also on `point`; `size`), `guide` (`to: x` / `to: y` for just one of the two dotted lines),
+plus, square, triangle, also on `point`; `size`), `circle` (`[cx, cy]` with
+`r`, or `rx`/`ry` and `rotate` for an ellipse; `fill: true`), `guide` (`to: x` / `to: y` for just one of the two dotted lines),
 `text` (`at: [x, y]`), `brace`. Common options: `color`, `dash` (`true` /
 `dotted`), `width`, `label`, `anchor` — the side of the point the label sits
 on: `n` above, `s` below, `e` right, `w` left, `ne nw se sw`, `c` centred.
-Top level also takes `axes` (`false`, or `x` / `y` for one axis), `grid`,
+Top level also takes `aspect: equal` (same scale on both axes, so circles are
+round; sets the height), `axes` (`false`, or `x` / `y` for one axis), `grid`,
 `ticks`, `xticks`/`yticks` (a map position → label, or a plain list like
 `[-2, -1, 1, 2]`), `xlabel`/`ylabel`, `caption`, `alt`.
 Expressions support `+ - * / ^`, implicit multiplication (`2x`, `3(x+1)`),
