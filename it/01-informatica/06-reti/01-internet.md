@@ -52,59 +52,76 @@ In alternativa si può creare una connessione **diretta** fra due host, in manie
 
 ## FDM vs TDM
 
-**Esempio: 4 utenti** (blu, verde, arancione, viola)
-
-**FDM**
-
-```plot
-x: [-0.3, 6.6]
-y: [-0.2, 4.5]
-width: 460
-height: 200
-xlabel: tempo
-ylabel: frequenza
-items:
-  - { area: 4, base: 3, from: 0, to: 6, color: blue, opacity: 0.8 }
-  - { area: 3, base: 2, from: 0, to: 6, color: green, opacity: 0.8 }
-  - { area: 2, base: 1, from: 0, to: 6, color: orange, opacity: 0.8 }
-  - { area: 1, base: 0, from: 0, to: 6, color: purple, opacity: 0.8 }
-```
-
-**TDM**
-
-```plot
-x: [-0.3, 6.6]
-y: [-0.2, 4.5]
-width: 460
-height: 200
-xlabel: tempo
-ylabel: frequenza
-items:
-  - { area: 4, base: 0, from: 0.0, to: 0.25, color: blue, opacity: 0.8 }
-  - { area: 4, base: 0, from: 0.25, to: 0.5, color: green, opacity: 0.8 }
-  - { area: 4, base: 0, from: 0.5, to: 0.75, color: orange, opacity: 0.8 }
-  - { area: 4, base: 0, from: 0.75, to: 1.0, color: purple, opacity: 0.8 }
-  - { area: 4, base: 0, from: 1.0, to: 1.25, color: blue, opacity: 0.8 }
-  - { area: 4, base: 0, from: 1.25, to: 1.5, color: green, opacity: 0.8 }
-  - { area: 4, base: 0, from: 1.5, to: 1.75, color: orange, opacity: 0.8 }
-  - { area: 4, base: 0, from: 1.75, to: 2.0, color: purple, opacity: 0.8 }
-  - { area: 4, base: 0, from: 2.0, to: 2.25, color: blue, opacity: 0.8 }
-  - { area: 4, base: 0, from: 2.25, to: 2.5, color: green, opacity: 0.8 }
-  - { area: 4, base: 0, from: 2.5, to: 2.75, color: orange, opacity: 0.8 }
-  - { area: 4, base: 0, from: 2.75, to: 3.0, color: purple, opacity: 0.8 }
-  - { area: 4, base: 0, from: 3.0, to: 3.25, color: blue, opacity: 0.8 }
-  - { area: 4, base: 0, from: 3.25, to: 3.5, color: green, opacity: 0.8 }
-  - { area: 4, base: 0, from: 3.5, to: 3.75, color: orange, opacity: 0.8 }
-  - { area: 4, base: 0, from: 3.75, to: 4.0, color: purple, opacity: 0.8 }
-  - { area: 4, base: 0, from: 4.0, to: 4.25, color: blue, opacity: 0.8 }
-  - { area: 4, base: 0, from: 4.25, to: 4.5, color: green, opacity: 0.8 }
-  - { area: 4, base: 0, from: 4.5, to: 4.75, color: orange, opacity: 0.8 }
-  - { area: 4, base: 0, from: 4.75, to: 5.0, color: purple, opacity: 0.8 }
-  - { area: 4, base: 0, from: 5.0, to: 5.25, color: blue, opacity: 0.8 }
-  - { area: 4, base: 0, from: 5.25, to: 5.5, color: green, opacity: 0.8 }
-  - { area: 4, base: 0, from: 5.5, to: 5.75, color: orange, opacity: 0.8 }
-  - { area: 4, base: 0, from: 5.75, to: 6.0, color: purple, opacity: 0.8 }
-```
+<svg viewBox="0 0 640 378" width="100%" style="max-width:640px;display:block;margin:1.5rem auto" role="img" aria-label="FDM e TDM con 4 utenti: in FDM ogni utente ha una banda di frequenza per tutto il tempo, in TDM ogni utente usa tutta la banda a turno in slot di tempo">
+<defs><marker id="i20241101192113-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<!-- legenda -->
+<text x="380" y="32" fill="currentColor" font-size="17">Esempio:</text>
+<text x="380" y="64" fill="currentColor" font-size="17">4 utenti</text>
+<rect x="470" y="49" width="16" height="16" fill="var(--palette-blue)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<rect x="491" y="49" width="16" height="16" fill="var(--palette-green)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<rect x="512" y="49" width="16" height="16" fill="var(--palette-orange)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<rect x="533" y="49" width="16" height="16" fill="var(--palette-purple)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<!-- FDM: una banda di frequenza per utente -->
+<text x="20" y="58" fill="currentColor" font-size="17">FDM</text>
+<line x1="180" y1="172" x2="180" y2="76" stroke="currentColor" stroke-width="2" marker-end="url(#i20241101192113-arrow)"/>
+<line x1="180" y1="172" x2="540" y2="172" stroke="currentColor" stroke-width="2" marker-end="url(#i20241101192113-arrow)"/>
+<rect x="186" y="99" width="330" height="17" fill="var(--palette-blue)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="186" y1="107.5" x2="516" y2="107.5" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="186" y="116" width="330" height="17" fill="var(--palette-green)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="186" y1="124.5" x2="516" y2="124.5" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="186" y="133" width="330" height="17" fill="var(--palette-orange)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="186" y1="141.5" x2="516" y2="141.5" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="186" y="150" width="330" height="17" fill="var(--palette-purple)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="186" y1="158.5" x2="516" y2="158.5" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="170" y="140" fill="currentColor" font-size="16" text-anchor="end">frequenza</text>
+<text x="368" y="200" fill="currentColor" font-size="16" text-anchor="middle">tempo</text>
+<!-- TDM: tutta la banda a turno, uno slot di tempo per utente -->
+<text x="20" y="216" fill="currentColor" font-size="17">TDM</text>
+<line x1="180" y1="333" x2="180" y2="237" stroke="currentColor" stroke-width="2" marker-end="url(#i20241101192113-arrow)"/>
+<line x1="180" y1="333" x2="540" y2="333" stroke="currentColor" stroke-width="2" marker-end="url(#i20241101192113-arrow)"/>
+<rect x="186" y="260" width="16.5" height="67" fill="var(--palette-blue)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="194.2" y1="260" x2="194.2" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="202.5" y="260" width="16.5" height="67" fill="var(--palette-green)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="210.8" y1="260" x2="210.8" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="219" y="260" width="16.5" height="67" fill="var(--palette-orange)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="227.2" y1="260" x2="227.2" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="235.5" y="260" width="16.5" height="67" fill="var(--palette-purple)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="243.8" y1="260" x2="243.8" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="252" y="260" width="16.5" height="67" fill="var(--palette-blue)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="260.2" y1="260" x2="260.2" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="268.5" y="260" width="16.5" height="67" fill="var(--palette-green)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="276.8" y1="260" x2="276.8" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="285" y="260" width="16.5" height="67" fill="var(--palette-orange)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="293.2" y1="260" x2="293.2" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="301.5" y="260" width="16.5" height="67" fill="var(--palette-purple)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="309.8" y1="260" x2="309.8" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="318" y="260" width="16.5" height="67" fill="var(--palette-blue)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="326.2" y1="260" x2="326.2" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="334.5" y="260" width="16.5" height="67" fill="var(--palette-green)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="342.8" y1="260" x2="342.8" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="351" y="260" width="16.5" height="67" fill="var(--palette-orange)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="359.2" y1="260" x2="359.2" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="367.5" y="260" width="16.5" height="67" fill="var(--palette-purple)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="375.8" y1="260" x2="375.8" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="384" y="260" width="16.5" height="67" fill="var(--palette-blue)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="392.2" y1="260" x2="392.2" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="400.5" y="260" width="16.5" height="67" fill="var(--palette-green)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="408.8" y1="260" x2="408.8" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="417" y="260" width="16.5" height="67" fill="var(--palette-orange)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="425.2" y1="260" x2="425.2" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="433.5" y="260" width="16.5" height="67" fill="var(--palette-purple)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="441.8" y1="260" x2="441.8" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="450" y="260" width="16.5" height="67" fill="var(--palette-blue)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="458.2" y1="260" x2="458.2" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="466.5" y="260" width="16.5" height="67" fill="var(--palette-green)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="474.8" y1="260" x2="474.8" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="483" y="260" width="16.5" height="67" fill="var(--palette-orange)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="491.2" y1="260" x2="491.2" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<rect x="499.5" y="260" width="16.5" height="67" fill="var(--palette-purple)" fill-opacity="0.85" stroke="currentColor" stroke-width="1"/>
+<line x1="507.8" y1="260" x2="507.8" y2="327" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3"/>
+<text x="170" y="300" fill="currentColor" font-size="16" text-anchor="end">frequenza</text>
+<text x="368" y="362" fill="currentColor" font-size="16" text-anchor="middle">tempo</text>
+</svg>
 
 - **Frequency division multiplexing**: può essere usato solo in connessioni analogiche, permette di far comunicare più utenti, assegnando ad ogni host una frequenza specifica
 - **Time division multiplexing**: può essere usato sia in una connesione analogica che digitale, usa una singola frequenza ma trasmette i messaggi in piccoli segmenti, uno per utente.

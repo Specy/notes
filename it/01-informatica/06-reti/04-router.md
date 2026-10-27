@@ -91,23 +91,40 @@ Lo scopo dello scheduling è scegliere il successivo pacchetto da inviare, i cri
 
 ## Livello di rete
 
-```mermaid
-packet-beta
-0-3: "ver"
-4-7: "head. len"
-8-15: "type of service"
-16-31: "length"
-32-47: "16-bit identifier"
-48-50: "flgs"
-51-63: "fragment offset"
-64-71: "time to live"
-72-79: "upper layer"
-80-95: "header checksum"
-96-127: "32 bit indirizzo IP sorgente"
-128-159: "32 bit indirizzo IP destinazione"
-160-191: "campi opzionali"
-192-223: "dati (lunghezza variabile, tipicamente un segmento TCP o UDP)"
-```
+<svg viewBox="0 0 520 420" width="100%" style="max-width:520px;display:block;margin:1.5rem auto" role="img" aria-label="Formato del datagramma IPv4, largo 32 bit: ver, head. len, type of service, length; 16-bit identifier, flgs, fragment offset; time to live, upper layer, header checksum; indirizzi IP sorgente e destinazione a 32 bit; campi opzionali; dati">
+<defs><marker id="i20241103140238-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<line x1="218.4" y1="16" x2="60" y2="16" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241103140238-arrow)"/>
+<line x1="301.6" y1="16" x2="460" y2="16" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241103140238-arrow)"/>
+<text x="260" y="21.6" fill="currentColor" font-size="16" text-anchor="middle">32 bits</text>
+<rect x="60" y="32" width="50" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="85" y="59.2" fill="currentColor" font-size="15" text-anchor="middle">ver</text>
+<rect x="110" y="32" width="50" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="135" y="50.6" fill="currentColor" font-size="15" text-anchor="middle"><tspan x="135">head.</tspan><tspan x="135" dy="17.2">len</tspan></text>
+<rect x="160" y="32" width="100" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="210" y="50.6" fill="currentColor" font-size="15" text-anchor="middle"><tspan x="210">type of</tspan><tspan x="210" dy="17.2">service</tspan></text>
+<rect x="260" y="32" width="200" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="360" y="59.2" fill="currentColor" font-size="15" text-anchor="middle">length</text>
+<rect x="60" y="76" width="200" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="160" y="103.2" fill="currentColor" font-size="15" text-anchor="middle">16-bit identifier</text>
+<rect x="260" y="76" width="37.5" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="278.8" y="102.9" fill="currentColor" font-size="14" text-anchor="middle">flgs</text>
+<rect x="297.5" y="76" width="162.5" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="378.8" y="94.6" fill="currentColor" font-size="15" text-anchor="middle"><tspan x="378.8">fragment</tspan><tspan x="378.8" dy="17.2">offset</tspan></text>
+<rect x="60" y="120" width="100" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="110" y="138.6" fill="currentColor" font-size="15" text-anchor="middle"><tspan x="110">time to</tspan><tspan x="110" dy="17.2">live</tspan></text>
+<rect x="160" y="120" width="100" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="210" y="138.6" fill="currentColor" font-size="15" text-anchor="middle"><tspan x="210">upper</tspan><tspan x="210" dy="17.2">layer</tspan></text>
+<rect x="260" y="120" width="200" height="44" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="360" y="138.6" fill="currentColor" font-size="15" text-anchor="middle"><tspan x="360">header</tspan><tspan x="360" dy="17.2">checksum</tspan></text>
+<rect x="60" y="164" width="400" height="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="260" y="189.2" fill="currentColor" font-size="15" text-anchor="middle">32 bit indirizzo IP sorgente</text>
+<rect x="60" y="204" width="400" height="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="260" y="229.2" fill="currentColor" font-size="15" text-anchor="middle">32 bit indirizzo IP destinazione</text>
+<rect x="60" y="244" width="400" height="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="260" y="269.2" fill="currentColor" font-size="15" text-anchor="middle">campi opzionali</text>
+<rect x="60" y="284" width="400" height="124" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="260" y="325.4" fill="currentColor" font-size="15" text-anchor="middle"><tspan x="260">dati</tspan><tspan x="260" dy="17.2">(lunghezza variabile,</tspan><tspan x="260" dy="17.2">tipicamente un</tspan><tspan x="260" dy="17.2">segmento TCP o UDP)</tspan></text>
+</svg>
 
 - *ver*: numero di versione protocollo IP
 - *head. len*: lunghezza header (byte)
@@ -156,15 +173,39 @@ Avviene in 4 fasi:
 3. **Request**: l'host invia un messaggio di richiesta per un IP al server DHCP
 4. **Acknowledge**: il server DHCP invia un messaggio di conferma all'host
 
-```mermaid
-sequenceDiagram
-    participant S as server DHCP : 223.1.2.5
-    participant C as cliente in arrivo
-    C->>S: DHCP discover<br/>Broadcast: c'è un server DHCP ?
-    S->>C: offerta DHCP<br/>Broadcast: sono un server DHCP!<br/>Ecco un indirizzo IP che puoi usare
-    C->>S: richiesta DHCP<br/>Broadcast: OK. Prenderò quell'indirizzo IP!
-    S->>C: DHCP ACK<br/>Broadcast: OK.<br/>Quell'indirizzo IP è tuo!
-```
+<svg viewBox="0 0 480 444" width="100%" style="max-width:480px;display:block;margin:1.5rem auto" role="img" aria-label="Scambio DHCP tra il server DHCP 223.1.2.5 e un cliente in arrivo: DHCP discover, offerta DHCP, richiesta DHCP e DHCP ACK, tutti in broadcast">
+<defs><marker id="i20241103141707-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g transform="scale(0.85) translate(-140,0)">
+<!-- server DHCP e cliente -->
+<text x="146" y="22" fill="var(--palette-red)" font-size="18">server DHCP : 223.1.2.5</text>
+<g><rect x="167" y="35" width="26" height="46" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><line x1="172" y1="44" x2="188" y2="44" stroke="currentColor" stroke-width="1.5"/><line x1="172" y1="51" x2="188" y2="51" stroke="currentColor" stroke-width="1.5"/><line x1="172" y1="58" x2="188" y2="58" stroke="currentColor" stroke-width="1.5"/><circle cx="174" cy="74" r="2" fill="var(--palette-green)"/><circle cx="180" cy="74" r="2" fill="var(--palette-red)"/></g>
+<line x1="180" y1="90" x2="180" y2="495" stroke="var(--palette-muted)" stroke-width="1.2" marker-end="url(#i20241103141707-arrow)"/>
+<text x="645" y="22" fill="var(--palette-red)" font-size="20" text-anchor="middle"><tspan x="645">cliente in</tspan><tspan x="645" dy="22">arrivo</tspan></text>
+<g><rect x="635" y="58" width="40" height="28" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><path d="M650,86 L648,92 L662,92 L660,86" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="631" y="95" width="40" height="6" fill="none" stroke="currentColor" stroke-width="1.2"/></g>
+<line x1="632" y1="108" x2="632" y2="510" stroke="var(--palette-muted)" stroke-width="1.2" marker-end="url(#i20241103141707-arrow)"/>
+<!-- messaggi (le linee passano dietro ai riquadri) -->
+<line x1="625" y1="92" x2="605" y2="94.4" stroke="currentColor" stroke-width="1.5"/>
+<line x1="425.3" y1="116" x2="184" y2="145" stroke="currentColor" stroke-width="1.5" marker-end="url(#i20241103141707-arrow)"/>
+<rect x="347" y="38" width="258" height="78" fill="none" stroke="currentColor" stroke-width="1"/>
+<text x="355" y="30" fill="currentColor" font-size="15" font-weight="bold">DHCP discover</text>
+<text x="476" y="72" fill="var(--palette-red)" font-size="19" text-anchor="middle"><tspan x="476">Broadcast: c'è un server</tspan><tspan x="476" dy="23">DHCP ?</tspan></text>
+<line x1="184" y1="188" x2="350" y2="208.6" stroke="currentColor" stroke-width="1.5"/>
+<line x1="614" y1="241.3" x2="628" y2="243" stroke="currentColor" stroke-width="1.5" marker-end="url(#i20241103141707-arrow)"/>
+<rect x="350" y="156" width="264" height="94" fill="none" stroke="currentColor" stroke-width="1"/>
+<text x="358" y="148" fill="currentColor" font-size="15" font-weight="bold">offerta DHCP</text>
+<text x="482" y="186" fill="var(--palette-red)" font-size="19" text-anchor="middle"><tspan x="482">Broadcast: sono un server</tspan><tspan x="482" dy="23">DHCP! Ecco un indirizzo</tspan><tspan x="482" dy="23">IP che puoi usare</tspan></text>
+<line x1="628" y1="313" x2="482" y2="330.8" stroke="currentColor" stroke-width="1.5"/>
+<line x1="207" y1="364.2" x2="184" y2="367" stroke="currentColor" stroke-width="1.5" marker-end="url(#i20241103141707-arrow)"/>
+<rect x="207" y="276" width="275" height="96" fill="none" stroke="currentColor" stroke-width="1"/>
+<text x="215" y="268" fill="currentColor" font-size="15" font-weight="bold">richiesta DHCP</text>
+<text x="344.5" y="319" fill="var(--palette-red)" font-size="19" text-anchor="middle"><tspan x="344.5">Broadcast: OK.  Prenderò</tspan><tspan x="344.5" dy="23">quell'indirizzo IP!</tspan></text>
+<line x1="184" y1="416" x2="360" y2="437.4" stroke="currentColor" stroke-width="1.5"/>
+<line x1="600" y1="466.6" x2="628" y2="470" stroke="currentColor" stroke-width="1.5" marker-end="url(#i20241103141707-arrow)"/>
+<rect x="360" y="416" width="240" height="96" fill="none" stroke="currentColor" stroke-width="1"/>
+<text x="368" y="408" fill="currentColor" font-size="15" font-weight="bold">DHCP ACK</text>
+<text x="480" y="459" fill="var(--palette-red)" font-size="19" text-anchor="middle"><tspan x="480">Broadcast: OK.</tspan><tspan x="480" dy="23">Quell'indirizzo IP è tuo!</tspan></text>
+</g>
+</svg>
 
 Il DHCP può anche restituire informazioni aggiuntive come il gateway predefinito, il server DNS, la network mask, etc.
 
@@ -191,18 +232,30 @@ Il numero di porta ha un valore di 16 bit, quindi si possono avere fino a 65536 
 
 L'indirizzamento IPv4 ha problemi di esaurimento degli indirizzi IP, dato che usa solo 32 bit. L'IPv6 risolve questo problema usando 128 bit.
 
-```mermaid
-packet-beta
-0-3: "ver"
-4-7: "pri"
-8-31: "flow label"
-32-47: "payload len"
-48-55: "next hdr"
-56-63: "hop limit"
-64-191: "source address (128 bits)"
-192-319: "destination address (128 bits)"
-320-351: "data"
-```
+<svg viewBox="0 0 520 316" width="100%" style="max-width:520px;display:block;margin:1.5rem auto" role="img" aria-label="Formato del datagramma IPv6, largo 32 bit: ver, pri, flow label; payload len, next hdr, hop limit; source address e destination address a 128 bit; data">
+<defs><marker id="i20241103142742-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<rect x="60" y="8" width="56.2" height="32" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="88.1" y="29.2" fill="currentColor" font-size="15" text-anchor="middle">ver</text>
+<rect x="116.2" y="8" width="56.2" height="32" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="144.4" y="29.2" fill="currentColor" font-size="15" text-anchor="middle">pri</text>
+<rect x="172.5" y="8" width="287.5" height="32" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="316.2" y="29.2" fill="currentColor" font-size="15" text-anchor="middle">flow label</text>
+<rect x="60" y="40" width="192.5" height="32" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="156.2" y="61.2" fill="currentColor" font-size="15" text-anchor="middle">payload len</text>
+<rect x="252.5" y="40" width="95" height="32" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="300" y="61.2" fill="currentColor" font-size="15" text-anchor="middle">next hdr</text>
+<rect x="347.5" y="40" width="112.5" height="32" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="403.8" y="61.2" fill="currentColor" font-size="15" text-anchor="middle">hop limit</text>
+<rect x="60" y="72" width="400" height="58" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="260" y="97.6" fill="currentColor" font-size="15" text-anchor="middle"><tspan x="260">source address</tspan><tspan x="260" dy="17.2">(128 bits)</tspan></text>
+<rect x="60" y="130" width="400" height="62" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="260" y="157.6" fill="currentColor" font-size="15" text-anchor="middle"><tspan x="260">destination address</tspan><tspan x="260" dy="17.2">(128 bits)</tspan></text>
+<rect x="60" y="192" width="400" height="96" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="260" y="245.2" fill="currentColor" font-size="15" text-anchor="middle">data</text>
+<line x1="218.4" y1="306" x2="60" y2="306" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241103142742-arrow)"/>
+<line x1="301.6" y1="306" x2="460" y2="306" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241103142742-arrow)"/>
+<text x="260" y="311.6" fill="currentColor" font-size="16" text-anchor="middle">32 bits</text>
+</svg>
 
 Altri cambiamenti rispetto all'IPv4 sono:
 

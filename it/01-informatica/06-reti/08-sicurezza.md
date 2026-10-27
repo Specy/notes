@@ -13,19 +13,37 @@ Nelle reti si considera la sicurezza come:
 
 ## Membri di una potenziale comunicazione non sicura
 
-```mermaid
-flowchart LR
-  D1["dati"] --> S
-  subgraph Alice
-    S["mittente sicuro"]
-  end
-  subgraph Bob
-    R["ricevitore sicuro"]
-  end
-  S <--> C["canale<br/>dati, messaggi di controllo"] <--> R
-  R --> D2["dati"]
-  T["Trudy"] <--> C
-```
+<svg viewBox="0 0 660 275" width="100%" style="max-width:660px;display:block;margin:1.5rem auto" role="img" aria-label="Alice (mittente sicuro) e Bob (ricevitore sicuro) si scambiano dati e messaggi di controllo su un canale; Trudy può intercettare e modificare ciò che passa sul canale" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241118170900-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- Alice, Bob -->
+<text x="95" y="28" font-size="18" text-anchor="middle" fill="var(--palette-blue)">Alice</text>
+<text x="585" y="28" font-size="18" text-anchor="middle" fill="var(--palette-blue)">Bob</text>
+<!-- dati in/out -->
+<text x="40" y="136" font-size="18" text-anchor="middle">dati</text>
+<line x1="62" y1="130" x2="128" y2="130" stroke="currentColor" stroke-width="1.8" marker-end="url(#i20241118170900-a)"/>
+<line x1="540" y1="130" x2="600" y2="130" stroke="currentColor" stroke-width="1.8" marker-end="url(#i20241118170900-a)"/>
+<text x="606" y="136" font-size="18">dati</text>
+<!-- mittente / ricevitore -->
+<rect x="130" y="92" width="110" height="76" fill="var(--palette-green)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="185" y="124.5" font-size="17" text-anchor="middle">mittente</text>
+<text x="185" y="147.4" font-size="17" text-anchor="middle">sicuro</text>
+<rect x="430" y="92" width="110" height="76" fill="var(--palette-green)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="485" y="124.5" font-size="17" text-anchor="middle">ricevitore</text>
+<text x="485" y="147.4" font-size="17" text-anchor="middle">sicuro</text>
+<!-- canale -->
+<rect x="240" y="114" width="190" height="32" fill="var(--palette-red)" fill-opacity="0.45"/>
+<line x1="250" y1="130" x2="420" y2="130" stroke="currentColor" stroke-width="3.5" marker-start="url(#i20241118170900-a)" marker-end="url(#i20241118170900-a)"/>
+<!-- Trudy intercetta -->
+<path d="M285 130 C318 130 328 142 328 236" fill="none" stroke="currentColor" stroke-width="3.5" marker-start="url(#i20241118170900-a)" marker-end="url(#i20241118170900-a)"/>
+<path d="M385 130 C352 130 342 142 342 236" fill="none" stroke="currentColor" stroke-width="3.5" marker-start="url(#i20241118170900-a)" marker-end="url(#i20241118170900-a)"/>
+<text x="335" y="262" font-size="18" text-anchor="middle" fill="var(--palette-blue)">Trudy</text>
+<!-- etichette -->
+<text x="215" y="68" font-size="17" text-anchor="middle">canale</text>
+<line x1="235" y1="76" x2="262" y2="114" stroke="currentColor" stroke-width="1"/>
+<text x="330" y="50" font-size="16">dati, messaggi</text>
+<text x="330" y="72" font-size="16">di controllo</text>
+<line x1="355" y1="80" x2="378" y2="127" stroke="currentColor" stroke-width="1"/>
+</svg>
 
 Usiamo:
 - Alice e bob, come due utenti che comunicano fra di loro. Questi due utenti possono essere una qualsiasi entità che usa l'internet per comunicare, come client/server, dns, IOT, etc...
@@ -37,21 +55,42 @@ Usiamo:
 
 # Crittografia
 
-```mermaid
-flowchart LR
-  P1["testo in chiaro"] --> E
-  KA["K<sub>A</sub><br/>chiave di cifratura di Alice"] --> E
-  subgraph Alice
-    E["algoritmo di cifratura"]
-  end
-  subgraph Bob
-    Dc["algoritmo di decifratura"]
-  end
-  E --> C["testo cifrato"] --> Dc
-  KB["K<sub>B</sub><br/>chiave di decifratura di Bob"] --> Dc
-  Dc --> P2["testo in chiaro"]
-  T["Trudy"] <--> C
-```
+<svg viewBox="0 0 680 262" width="100%" style="max-width:680px;display:block;margin:1.5rem auto" role="img" aria-label="Alice cifra il testo in chiaro con la chiave K_A, il testo cifrato viaggia verso Bob che lo decifra con la chiave K_B; Trudy può intercettare il testo cifrato" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241118171728-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- chiavi -->
+<g transform="translate(170 20) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="205" y="72" font-size="24" text-anchor="middle" fill="var(--palette-red)">K<tspan dy="7.2" font-size="16.8">A</tspan></text>
+<text x="232" y="26" font-size="15">chiave di</text>
+<text x="232" y="46" font-size="15">cifratura di</text>
+<text x="232" y="66" font-size="15">Alice</text>
+<line x1="212" y1="80" x2="212" y2="103" stroke="currentColor" stroke-width="1.8" marker-end="url(#i20241118171728-a)"/>
+<g transform="translate(450 20) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="485" y="72" font-size="24" text-anchor="middle" fill="var(--palette-red)">K<tspan dy="7.2" font-size="16.8">B</tspan></text>
+<text x="512" y="26" font-size="15">chiave di</text>
+<text x="512" y="46" font-size="15">decifratura</text>
+<text x="512" y="66" font-size="15">di Bob</text>
+<line x1="492" y1="80" x2="492" y2="103" stroke="currentColor" stroke-width="1.8" marker-end="url(#i20241118171728-a)"/>
+<text x="90" y="80" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Alice</text>
+<text x="615" y="92" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Bob</text>
+<!-- algoritmi -->
+<rect x="150" y="105" width="125" height="70" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="212.5" y="134.8" font-size="16" text-anchor="middle">algoritmo di</text>
+<text x="212.5" y="156.4" font-size="16" text-anchor="middle">cifratura</text>
+<rect x="430" y="105" width="125" height="70" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="492.5" y="134.8" font-size="16" text-anchor="middle">algoritmo di</text>
+<text x="492.5" y="156.4" font-size="16" text-anchor="middle">decifratura</text>
+<!-- flusso -->
+<text x="85" y="132" font-size="16" text-anchor="middle" fill="var(--palette-red)">testo in chiaro</text>
+<line x1="40" y1="145" x2="148" y2="145" stroke="currentColor" stroke-width="2" marker-end="url(#i20241118171728-a)"/>
+<text x="352" y="132" font-size="16" text-anchor="middle" fill="var(--palette-red)">testo cifrato</text>
+<line x1="275" y1="145" x2="428" y2="145" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118171728-a)"/>
+<text x="615" y="132" font-size="16" text-anchor="middle" fill="var(--palette-red)">testo in chiaro</text>
+<line x1="555" y1="145" x2="620" y2="145" stroke="currentColor" stroke-width="2" marker-end="url(#i20241118171728-a)"/>
+<!-- Trudy -->
+<path d="M318 149 C343 149 345 160 345 228" fill="none" stroke="currentColor" stroke-width="1.2" marker-start="url(#i20241118171728-a)" marker-end="url(#i20241118171728-a)"/>
+<path d="M386 149 C361 149 359 160 359 228" fill="none" stroke="currentColor" stroke-width="1.2" marker-start="url(#i20241118171728-a)" marker-end="url(#i20241118171728-a)"/>
+<text x="352" y="252" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Trudy</text>
+</svg>
 
 - $m$ è il messaggio in chiaro
 - $K_A(M)$ è il messaggio cifrato con chiave $K_A$ 
@@ -61,20 +100,35 @@ Per poter violare questo schema di cifratura, Trudy dovrebbe provare tutte le po
 
 ## Crittografia a chiave simmetrica 
 
-```mermaid
-flowchart LR
-  P1["testo in chiaro, m"] --> E
-  KS1["K<sub>S</sub>"] --> E
-  subgraph Alice
-    E["algoritmo di cifratura"]
-  end
-  subgraph Bob
-    Dc["algoritmo di decifratura"]
-  end
-  E -->|"testo cifrato<br/>K<sub>S</sub>(m)"| Dc
-  KS2["K<sub>S</sub>"] --> Dc
-  Dc --> P2["testo in chiaro<br/>m = K<sub>S</sub>(K<sub>S</sub>(m))"]
-```
+<svg viewBox="0 0 660 180" width="100%" style="max-width:660px;display:block;margin:1.5rem auto" role="img" aria-label="Crittografia simmetrica: Alice cifra il testo in chiaro m con la chiave K_S ottenendo K_S(m); Bob lo decifra con la stessa chiave K_S ottenendo m = K_S(K_S(m))" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241118172017-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- chiavi simmetriche -->
+<text x="208" y="58" font-size="24" text-anchor="middle" fill="var(--palette-red)">K<tspan dy="7.2" font-size="16.8">S</tspan></text>
+<g transform="translate(230 30) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="212" y1="66" x2="212" y2="93" stroke="currentColor" stroke-width="1.8" marker-end="url(#i20241118172017-a)"/>
+<text x="458" y="58" font-size="24" text-anchor="middle" fill="var(--palette-red)">K<tspan dy="7.2" font-size="16.8">S</tspan></text>
+<g transform="translate(480 30) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="462" y1="66" x2="462" y2="93" stroke="currentColor" stroke-width="1.8" marker-end="url(#i20241118172017-a)"/>
+<text x="110" y="60" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Alice</text>
+<text x="610" y="72" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Bob</text>
+<!-- algoritmi -->
+<rect x="150" y="95" width="125" height="70" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="212.5" y="124.8" font-size="16" text-anchor="middle">algoritmo di</text>
+<text x="212.5" y="146.4" font-size="16" text-anchor="middle">cifratura</text>
+<rect x="400" y="95" width="125" height="70" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="462.5" y="124.8" font-size="16" text-anchor="middle">algoritmo di</text>
+<text x="462.5" y="146.4" font-size="16" text-anchor="middle">decifratura</text>
+<!-- flusso -->
+<text x="55" y="120" font-size="16" text-anchor="middle" fill="var(--palette-red)">testo in</text>
+<text x="55" y="152" font-size="16" text-anchor="middle" fill="var(--palette-red)">chiaro, m</text>
+<line x1="90" y1="130" x2="148" y2="130" stroke="currentColor" stroke-width="2" marker-end="url(#i20241118172017-a)"/>
+<text x="338" y="120" font-size="16" text-anchor="middle" fill="var(--palette-red)">testo cifrato</text>
+<line x1="275" y1="130" x2="398" y2="130" stroke="currentColor" stroke-width="2" marker-end="url(#i20241118172017-a)"/>
+<text x="338" y="162" font-size="16" text-anchor="middle" fill="var(--palette-red)">K<tspan dy="4.8" font-size="11.2">S</tspan><tspan dy="-4.8">(m)</tspan></text>
+<text x="590" y="120" font-size="16" text-anchor="middle" fill="var(--palette-red)">testo in chiaro</text>
+<line x1="525" y1="130" x2="590" y2="130" stroke="currentColor" stroke-width="2" marker-end="url(#i20241118172017-a)"/>
+<text x="590" y="162" font-size="16" text-anchor="middle" fill="var(--palette-red)">m = K<tspan dy="4.8" font-size="11.2">S</tspan><tspan dy="-4.8">(K</tspan><tspan dy="4.8" font-size="11.2">S</tspan><tspan dy="-4.8">(m))</tspan></text>
+</svg>
 
 è uno schema di cifratura molto semplice, sia Bob che Alice condividono la stessa chiave $K_S$.
 Questa chiave può essere utilizzata in vari modi in algoritmi di cifratura. 
@@ -97,20 +151,40 @@ Torniamo al problema di come condividere la chiave simmetrica in maniera sicura.
 - una chiave pubblica, che può essere condivisa con chiunque, ed è pubblicamente disponibile a tutti
 - una chiave privata, che è segreta e conosciuta solo all'utente
 
-```mermaid
-flowchart LR
-  P1["messaggio in chiaro, m"] --> E
-  KP["K<sub>B</sub><sup>+</sup><br/>chiave <i>pubblica</i> di Bob"] -.-> E
-  subgraph Alice
-    E["algoritmo di cifratura"]
-  end
-  subgraph Bob
-    Dc["algoritmo di decifratura"]
-  end
-  E -->|"testo cifrato<br/>K<sub>B</sub><sup>+</sup>(m)"| Dc
-  KV["K<sub>B</sub><sup>-</sup><br/>chiave <i>privata</i> di Bob"] -.-> Dc
-  Dc --> P2["messaggio in chiaro<br/>m = K<sub>B</sub><sup>-</sup>(K<sub>B</sub><sup>+</sup>(m))"]
-```
+<svg viewBox="0 0 700 296" width="100%" style="max-width:700px;display:block;margin:1.5rem auto" role="img" aria-label="Crittografia a chiave pubblica: Alice cifra il messaggio m con la chiave pubblica di Bob K_B+; Bob decifra con la propria chiave privata K_B−, ottenendo m = K_B−(K_B+(m))" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241118173155-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- chiavi di Bob -->
+<g transform="translate(512 34) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="555" y="40" font-size="22" text-anchor="middle" fill="var(--palette-red)">K<tspan dy="-9.2" font-size="15.4">+</tspan><tspan dx="-9.2" dy="15.8" font-size="15.4">B</tspan></text>
+<text x="590" y="30" font-size="15">chiave <tspan font-style="italic" text-decoration="underline" fill="var(--palette-red)">pubblica</tspan></text>
+<text x="590" y="50" font-size="15">di Bob</text>
+<path d="M505 34 H255 V198" fill="none" stroke="currentColor" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#i20241118173155-a)"/>
+<g transform="translate(512 98) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="555" y="104" font-size="22" text-anchor="middle" fill="var(--palette-red)">K<tspan dy="-9.2" font-size="15.4">−</tspan><tspan dx="-9.2" dy="15.8" font-size="15.4">B</tspan></text>
+<text x="590" y="94" font-size="15">chiave <tspan font-style="italic" text-decoration="underline" fill="var(--palette-red)">privata</tspan></text>
+<text x="590" y="114" font-size="15">di Bob</text>
+<path d="M505 98 H475 V198" fill="none" stroke="currentColor" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#i20241118173155-a)"/>
+<text x="215" y="185" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Alice</text>
+<text x="510" y="185" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Bob</text>
+<!-- algoritmi -->
+<rect x="170" y="200" width="125" height="66" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="232.5" y="227.8" font-size="16" text-anchor="middle">algoritmo di</text>
+<text x="232.5" y="249.4" font-size="16" text-anchor="middle">cifratura</text>
+<rect x="420" y="200" width="125" height="66" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="482.5" y="227.8" font-size="16" text-anchor="middle">algoritmo di</text>
+<text x="482.5" y="249.4" font-size="16" text-anchor="middle">decifratura</text>
+<!-- flusso -->
+<text x="75" y="226" font-size="16" text-anchor="middle" fill="var(--palette-red)">messaggio</text>
+<text x="75" y="252" font-size="16" text-anchor="middle" fill="var(--palette-red)">in chiaro, m</text>
+<line x1="125" y1="236" x2="168" y2="236" stroke="currentColor" stroke-width="2" marker-end="url(#i20241118173155-a)"/>
+<text x="357" y="226" font-size="16" text-anchor="middle" fill="var(--palette-red)">testo cifrato</text>
+<line x1="295" y1="236" x2="418" y2="236" stroke="currentColor" stroke-width="2" marker-end="url(#i20241118173155-a)"/>
+<text x="357" y="262" font-size="16" text-anchor="middle" fill="var(--palette-red)">K<tspan dy="-6.7" font-size="11.2">+</tspan><tspan dx="-6.7" dy="11.5" font-size="11.2">B</tspan><tspan dy="-4.8">(m)</tspan></text>
+<text x="552" y="226" font-size="16" fill="var(--palette-red)">messaggio</text>
+<line x1="545" y1="236" x2="610" y2="236" stroke="currentColor" stroke-width="2" marker-end="url(#i20241118173155-a)"/>
+<text x="552" y="256" font-size="16" fill="var(--palette-red)">in chiaro</text>
+<text x="552" y="284" font-size="16" fill="var(--palette-red)">m = K<tspan dy="-6.7" font-size="11.2">−</tspan><tspan dx="-6.7" dy="11.5" font-size="11.2">B</tspan><tspan dy="-4.8">(K</tspan><tspan dy="-6.7" font-size="11.2">+</tspan><tspan dx="-6.7" dy="11.5" font-size="11.2">B</tspan><tspan dy="-4.8">(m))</tspan></text>
+</svg>
 
 Abbiamo bisogno di $K_B^+$ e $K_B^-$ tale che $K_B^+(K_A^-(m)) = m$, e che non sia possibile che tramite la chiave pubblica $K_B^+$ si possa risalire alla chiave privata $K_B^-$
 
@@ -175,18 +249,30 @@ Vogliamo evitare l'attacco playback, allora il mittente invia un numero $R$ chia
 
 Come visto precedentemente, possiamo usare la tecnica di chiave pubblica-privata per scambiare la chiave segreta, e poi usare la chiave segreta per autenticare il mittente. Cioè che:
 
-```mermaid
-sequenceDiagram
-  participant Alice
-  participant Bob
-  Alice->>Bob: "Sono Alice"
-  Bob->>Alice: R
-  Alice->>Bob: K⁻ₐ(R)
-  Bob->>Alice: "mandami la tua chiave pubblica"
-  Alice->>Bob: K⁺ₐ
-```
-
-Bob calcola $K_A^+(K_A^-(R)) = R$ e sa che solo Alice può avere la chiave privata, che cifra $R$ in modo che $K_A^+(K_A^-(R)) = R$
+<svg viewBox="0 0 670 270" width="100%" style="max-width:670px;display:block;margin:1.5rem auto" role="img" aria-label="Autenticazione con nonce e chiave pubblica: Alice dice Sono Alice, Bob invia il nonce R, Alice risponde con K_A−(R), Bob chiede la chiave pubblica e Alice invia K_A+; Bob verifica che K_A+(K_A−(R)) = R" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241118180708-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<text x="55" y="108" font-size="18" text-anchor="middle" fill="var(--palette-blue)">Alice</text>
+<text x="440" y="80" font-size="18" fill="var(--palette-blue)">Bob</text>
+<!-- messaggi -->
+<line x1="85" y1="40" x2="430" y2="64" stroke="currentColor" stroke-width="3" marker-end="url(#i20241118180708-a)"/>
+<text x="235" y="34" font-size="18" text-anchor="middle">“Sono Alice”</text>
+<line x1="430" y1="82" x2="85" y2="106" stroke="currentColor" stroke-width="3" marker-end="url(#i20241118180708-a)"/>
+<text x="160" y="86" font-size="18" text-anchor="middle">R</text>
+<line x1="85" y1="126" x2="430" y2="152" stroke="currentColor" stroke-width="3" marker-end="url(#i20241118180708-a)"/>
+<text x="330" y="128" font-size="18" text-anchor="middle">K<tspan dy="-7.6" font-size="12.6">−</tspan><tspan dx="-7.6" dy="13" font-size="12.6">A</tspan><tspan dy="-5.4">(R)</tspan></text>
+<line x1="430" y1="170" x2="85" y2="194" stroke="currentColor" stroke-width="3" marker-end="url(#i20241118180708-a)"/>
+<text x="210" y="205" font-size="14" text-anchor="middle">“mandami la tua</text>
+<text x="210" y="223" font-size="14" text-anchor="middle">chiave pubblica”</text>
+<line x1="85" y1="232" x2="430" y2="258" stroke="currentColor" stroke-width="3" marker-end="url(#i20241118180708-a)"/>
+<text x="330" y="234" font-size="18" text-anchor="middle">K<tspan dy="-7.6" font-size="12.6">+</tspan><tspan dx="-7.6" dy="13" font-size="12.6">A</tspan></text>
+<!-- calcolo di Bob -->
+<text x="578" y="60" font-size="16" text-anchor="middle">Bob calcola</text>
+<text x="578" y="96" font-size="19" text-anchor="middle">K<tspan dy="-8" font-size="13.3">+</tspan><tspan dx="-8" dy="13.7" font-size="13.3">A</tspan><tspan dy="-5.7">(K</tspan><tspan dy="-8" font-size="13.3">−</tspan><tspan dx="-8" dy="13.7" font-size="13.3">A</tspan><tspan dy="-5.7">(R)) = R</tspan></text>
+<text x="578" y="134" font-size="16" text-anchor="middle">e sa che solo Alice può</text>
+<text x="578" y="158" font-size="16" text-anchor="middle">avere la chiave privata,</text>
+<text x="578" y="182" font-size="16" text-anchor="middle">che cifra R in modo che</text>
+<text x="578" y="226" font-size="19" text-anchor="middle">K<tspan dy="-8" font-size="13.3">+</tspan><tspan dx="-8" dy="13.7" font-size="13.3">A</tspan><tspan dy="-5.7">(K</tspan><tspan dy="-8" font-size="13.3">−</tspan><tspan dx="-8" dy="13.7" font-size="13.3">A</tspan><tspan dy="-5.7">(R)) = R</tspan></text>
+</svg>
 
 Questa tecnica è comunque vulnerabile ad un attacco **MITM** dove il malintenzionato si pone in mezzo alla comunicazione fra destinatario e mittente, intercettando e inoltrando i messaggi scamabiati con il destinatario. Questo attacco è difficile da rilevare, dato che per mittente e destinatario, la comunicazione sembra essere andata a buon fine.
 
@@ -207,40 +293,101 @@ La falla precedente dell'attacco MITM è dovuta al fatto che durante la comunica
 
 Per evitare questo, ci deve essere un ente fidato chiamato **Certification Authority (CA)**. Un utente $E$ di internet registra la propria chiave pubblica $K_B^+$ presso la CA, fornendo una prova di identità. A questo punto la CA crea un certificato contenente la garanzia che "$K_B^+$ appartiene a $E$". Il certificato è firmato dalla CA con la chiave privata della CA. Il mittente può verificare il certificato usando la chiave pubblica della CA, e quindi può essere sicuro che la chiave pubblica del destinatario è effettivamente quella del destinatario.
 
-```mermaid
-flowchart LR
-  KB["Bob's public key<br/>K<sub>B</sub><sup>+</sup>"] --> SIG["digital signature (encrypt)"]
-  KB -.-> CA["CA"]
-  ID["Bob's identifying information"] -.-> CA
-  KCA["CA private key<br/>K<sub>CA</sub><sup>-</sup>"] -.-> SIG
-  SIG --> CERT["certificate for Bob's public key, signed by CA<br/>(K<sub>B</sub><sup>+</sup>)"]
-```
+<svg viewBox="0 0 680 192" width="100%" style="max-width:680px;display:block;margin:1.5rem auto" role="img" aria-label="Certificazione: la CA riceve la chiave pubblica di Bob K_B+ e le informazioni che lo identificano, e firma digitalmente la chiave con la propria chiave privata K_CA−, producendo il certificato della chiave pubblica di Bob firmato dalla CA" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241118182843-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- chiave pubblica di Bob -->
+<text x="130" y="24" font-size="15" text-anchor="end">Bob’s</text>
+<text x="130" y="46" font-size="15" text-anchor="end">public</text>
+<text x="130" y="68" font-size="15" text-anchor="end">key</text>
+<g transform="translate(152 22) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="142" y="70" font-size="22" fill="var(--palette-red)">K<tspan dy="-9.2" font-size="15.4">+</tspan><tspan dx="-9.2" dy="15.8" font-size="15.4">B</tspan></text>
+<line x1="178" y1="22" x2="338" y2="22" stroke="currentColor" stroke-width="2" marker-end="url(#i20241118182843-a)"/>
+<line x1="185" y1="38" x2="250" y2="85" stroke="currentColor" stroke-width="2.5" stroke-dasharray="2 5" marker-end="url(#i20241118182843-a)"/>
+<!-- informazioni di Bob -->
+<text x="130" y="140" font-size="15" text-anchor="end">Bob’s</text>
+<text x="130" y="162" font-size="15" text-anchor="end">identifying</text>
+<text x="130" y="184" font-size="15" text-anchor="end">information</text>
+<line x1="150" y1="150" x2="248" y2="118" stroke="currentColor" stroke-width="2.5" stroke-dasharray="2 5" marker-end="url(#i20241118182843-a)"/>
+<!-- CA -->
+<g fill="var(--palette-muted)" fill-opacity="0.35" stroke="currentColor" stroke-width="1.2"><path d="M262 90 L302 68 L342 90 Z"/><rect x="262" y="90" width="80" height="4"/><rect x="272" y="94" width="6" height="30"/><rect x="286" y="94" width="6" height="30"/><rect x="300" y="94" width="6" height="30"/><rect x="314" y="94" width="6" height="30"/><rect x="328" y="94" width="6" height="30"/><rect x="258" y="124" width="88" height="6"/></g>
+<text x="302" y="154" font-size="15" text-anchor="middle">CA</text>
+<!-- firma digitale -->
+<rect x="340" y="2" width="125" height="82" fill="var(--palette-green)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="402.5" y="27" font-size="16" text-anchor="middle">digital</text>
+<text x="402.5" y="48.6" font-size="16" text-anchor="middle">signature</text>
+<text x="402.5" y="70.2" font-size="16" text-anchor="middle">(encrypt)</text>
+<text x="380" y="122" font-size="15" text-anchor="end">CA</text>
+<text x="380" y="144" font-size="15" text-anchor="end">private</text>
+<text x="380" y="166" font-size="15" text-anchor="end">key</text>
+<line x1="400" y1="124" x2="400" y2="88" stroke="currentColor" stroke-width="2.5" stroke-dasharray="2 5" marker-end="url(#i20241118182843-a)"/>
+<g transform="translate(420 114) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="388" y="168" font-size="22" fill="var(--palette-red)">K<tspan dy="-9.2" font-size="15.4">−</tspan><tspan dx="-9.2" dy="15.8" font-size="15.4">CA</tspan></text>
+<!-- certificato -->
+<line x1="465" y1="22" x2="560" y2="22" stroke="currentColor" stroke-width="2" marker-end="url(#i20241118182843-a)"/>
+<path d="M565 4 H625 L640 19 V100 H565 Z M625 4 V19 H640" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="588" y="46" font-size="20" fill="var(--palette-red)">K<tspan dy="-8.4" font-size="14">+</tspan><tspan dx="-8.4" dy="14.4" font-size="14">B</tspan></text>
+<g transform="translate(585 72) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="612" y="90" font-size="11">CA</text>
+<text x="670" y="132" font-size="16" text-anchor="end">certificate for</text>
+<text x="670" y="156" font-size="16" text-anchor="end">Bob’s public key,</text>
+<text x="670" y="180" font-size="16" text-anchor="end">signed by CA</text>
+</svg>
 
 A questo punto quando un utente vuole comunicare con un altro, può richiedere il certificato del destinatario alla CA, ed usarla per verificare la chiave pubblica del destinatario.
 
 ## Email sicure
 
-```mermaid
-flowchart LR
-  subgraph Alice
-    direction LR
-    m1["m"] --> E1["K<sub>S</sub>( · )"]
-    KS1["K<sub>S</sub>"] -.-> E1
-    KS2["K<sub>S</sub>"] --> E2["K<sub>B</sub><sup>+</sup>( · )"]
-    KBp["K<sub>B</sub><sup>+</sup>"] -.-> E2
-    E1 -->|"K<sub>S</sub>(m)"| PLUS(("+"))
-    E2 -->|"K<sub>B</sub><sup>+</sup>(K<sub>S</sub>)"| PLUS
-  end
-  PLUS --> NET(["Internet"]) --> MINUS(("-"))
-  subgraph Bob
-    direction LR
-    MINUS -->|"K<sub>S</sub>(m)"| D1["K<sub>S</sub>( · )"]
-    MINUS -->|"K<sub>B</sub><sup>+</sup>(K<sub>S</sub>)"| D2["K<sub>B</sub><sup>-</sup>( · )"]
-    KBm["K<sub>B</sub><sup>-</sup>"] -.-> D2
-    D2 -.->|"K<sub>S</sub>"| D1
-    D1 --> m2["m"]
-  end
-```
+<svg viewBox="0 0 700 285" width="100%" style="max-width:700px;display:block;margin:1.5rem auto" role="img" aria-label="Riservatezza della posta: Alice cifra m con la chiave di sessione K_S e cifra K_S con la chiave pubblica di Bob K_B+, poi invia entrambi su Internet; Bob ricava K_S con K_B− e poi decifra m" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241118183013-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- Alice: m cifrato con K_S -->
+<text x="55" y="80" font-size="18" text-anchor="end">m</text>
+<line x1="62" y1="75" x2="118" y2="75" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183013-a)"/>
+<rect x="120" y="56" width="75" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="157.5" y="80.2" font-size="15" text-anchor="middle">K<tspan dy="4.5" font-size="10.5">S</tspan><tspan dy="-4.5">( · )</tspan></text>
+<text x="150" y="18" font-size="15" text-anchor="middle">K<tspan dy="4.5" font-size="10.5">S</tspan></text>
+<g transform="translate(170 13) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="157" y1="24" x2="157" y2="54" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20241118183013-a)"/>
+<path d="M195 75 H245 V121" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183013-a)"/>
+<text x="202" y="66" font-size="15">K<tspan dy="4.5" font-size="10.5">S</tspan><tspan dy="-4.5">(m)</tspan></text>
+<!-- Alice: K_S cifrata con K_B+ -->
+<text x="80" y="201" font-size="17" text-anchor="end">K<tspan dy="5.1" font-size="11.9">S</tspan></text>
+<line x1="86" y1="195" x2="118" y2="195" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183013-a)"/>
+<rect x="120" y="176" width="75" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="157.5" y="200.2" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan><tspan dy="-4.5">( · )</tspan></text>
+<text x="150" y="272" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan></text>
+<g transform="translate(172 266) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="157" y1="257" x2="157" y2="216" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20241118183013-a)"/>
+<path d="M195 195 H245 V149" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183013-a)"/>
+<text x="200" y="230" font-size="15">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan><tspan dy="-4.5">(K</tspan><tspan dy="4.5" font-size="10.5">S</tspan><tspan dy="-4.5">)</tspan></text>
+<circle cx="245" cy="135" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="245" y="141" font-size="18" text-anchor="middle" font-weight="bold">+</text>
+<text x="40" y="140" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Alice</text>
+<!-- Internet -->
+<line x1="257" y1="135" x2="298" y2="135" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183013-a)"/>
+<path d="M312 160 C292 160 294 131 310 129 C304 110 336 104 348 114 C360 102 410 108 408 120 C428 118 428 156 410 160 Z" fill="var(--palette-teal)" fill-opacity="0.3" stroke="var(--palette-teal)" stroke-width="1.2"/>
+<text x="360" y="141" font-size="16" text-anchor="middle">Internet</text>
+<line x1="422" y1="135" x2="456" y2="135" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183013-a)"/>
+<circle cx="470" cy="135" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="470" y="141" font-size="18" text-anchor="middle" font-weight="bold">−</text>
+<!-- Bob: recupera K_S con K_B-, poi m -->
+<path d="M470 123 V75 H528" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183013-a)"/>
+<text x="478" y="66" font-size="15">K<tspan dy="4.5" font-size="10.5">S</tspan><tspan dy="-4.5">(m)</tspan></text>
+<rect x="530" y="56" width="75" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="567.5" y="80.2" font-size="15" text-anchor="middle">K<tspan dy="4.5" font-size="10.5">S</tspan><tspan dy="-4.5">( · )</tspan></text>
+<line x1="605" y1="75" x2="645" y2="75" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183013-a)"/>
+<text x="652" y="81" font-size="18">m</text>
+<path d="M470 147 V195 H528" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183013-a)"/>
+<text x="475" y="230" font-size="15">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan><tspan dy="-4.5">(K</tspan><tspan dy="4.5" font-size="10.5">S</tspan><tspan dy="-4.5">)</tspan></text>
+<rect x="530" y="176" width="75" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="567.5" y="200.2" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan><tspan dy="-4.5">( · )</tspan></text>
+<line x1="567" y1="174" x2="567" y2="96" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20241118183013-a)"/>
+<text x="574" y="142" font-size="15">K<tspan dy="4.5" font-size="10.5">S</tspan></text>
+<g transform="translate(600 136) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="560" y="272" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan></text>
+<g transform="translate(582 266) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="567" y1="257" x2="567" y2="216" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20241118183013-a)"/>
+<text x="665" y="140" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Bob</text>
+</svg>
 
 Il mittente:
 - Genera una chiave simmetrica $K_S$
@@ -250,45 +397,100 @@ Il mittente:
 - Il destinatario usa la propria chiave privata per decifrare $K_S$
 - Il destinatario usa $K_S$ per decifrare il messaggio
 
-```mermaid
-flowchart LR
-  subgraph Alice
-    direction LR
-    m1["m"] --> H1["H( · )"] --> S1["K<sub>A</sub><sup>-</sup>( · )"]
-    KAm["K<sub>A</sub><sup>-</sup>"] -.-> S1
-    S1 -->|"K<sub>A</sub><sup>-</sup>(H(m))"| PLUS(("+"))
-    m1 --> PLUS
-  end
-  PLUS --> NET(["Internet"]) --> MINUS(("-"))
-  subgraph Bob
-    direction LR
-    MINUS -->|"K<sub>A</sub><sup>-</sup>(H(m))"| V1["K<sub>A</sub><sup>+</sup>( · )"]
-    KAp["K<sub>A</sub><sup>+</sup>"] -.-> V1
-    MINUS -->|"m"| H2["H( · )"]
-    V1 -->|"H(m)"| CMP["confronto"]
-    H2 -->|"H(m)"| CMP
-  end
-```
+<svg viewBox="0 0 735 245" width="100%" style="max-width:735px;display:block;margin:1.5rem auto" role="img" aria-label="Firma digitale: Alice calcola H(m), lo cifra con la propria chiave privata K_A− e invia K_A−(H(m)) insieme a m; Bob decifra la firma con K_A+, calcola H(m) e confronta i due valori" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241118183214-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- Alice: firma dell'hash -->
+<text x="45" y="82" font-size="18" text-anchor="end">m</text>
+<line x1="50" y1="77" x2="68" y2="77" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183214-a)"/>
+<rect x="70" y="58" width="62" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="101" y="82.2" font-size="15" text-anchor="middle">H( · )</text>
+<line x1="132" y1="77" x2="140" y2="77" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183214-a)"/>
+<rect x="142" y="58" width="62" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="173" y="82.2" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan><tspan dy="-4.5">( · )</tspan></text>
+<text x="165" y="20" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan></text>
+<g transform="translate(186 14) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="173" y1="26" x2="173" y2="56" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20241118183214-a)"/>
+<path d="M204 77 H245 V121" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183214-a)"/>
+<text x="208" y="66" font-size="15">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan><tspan dy="-4.5">(H(m))</tspan></text>
+<text x="45" y="220" font-size="18" text-anchor="end">m</text>
+<path d="M52 214 H245 V149" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183214-a)"/>
+<circle cx="245" cy="135" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="245" y="141" font-size="18" text-anchor="middle" font-weight="bold">+</text>
+<text x="40" y="145" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Alice</text>
+<!-- Internet -->
+<line x1="257" y1="135" x2="298" y2="135" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183214-a)"/>
+<path d="M312 160 C292 160 294 131 310 129 C304 110 336 104 348 114 C360 102 410 108 408 120 C428 118 428 156 410 160 Z" fill="var(--palette-teal)" fill-opacity="0.3" stroke="var(--palette-teal)" stroke-width="1.2"/>
+<text x="360" y="141" font-size="16" text-anchor="middle">Internet</text>
+<line x1="422" y1="135" x2="456" y2="135" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183214-a)"/>
+<circle cx="470" cy="135" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="470" y="141" font-size="18" text-anchor="middle" font-weight="bold">−</text>
+<!-- Bob: verifica -->
+<path d="M470 123 V77 H528" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183214-a)"/>
+<text x="458" y="66" font-size="15">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan><tspan dy="-4.5">(H(m))</tspan></text>
+<rect x="530" y="58" width="66" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="563" y="82.2" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan><tspan dy="-4.5">( · )</tspan></text>
+<text x="555" y="20" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan></text>
+<g transform="translate(576 14) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="563" y1="26" x2="563" y2="56" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20241118183214-a)"/>
+<path d="M596 77 H640 V118" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183214-a)"/>
+<text x="648" y="72" font-size="15">H(m)</text>
+<path d="M470 147 V214 H528" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183214-a)"/>
+<text x="480" y="236" font-size="18">m</text>
+<rect x="530" y="195" width="66" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="563" y="219.2" font-size="15" text-anchor="middle">H( · )</text>
+<path d="M596 214 H640 V152" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183214-a)"/>
+<text x="648" y="230" font-size="15">H(m)</text>
+<text x="640" y="141" font-size="16" text-anchor="middle" fill="var(--palette-red)">confronto</text>
+<text x="700" y="141" font-size="17" fill="var(--palette-blue)">Bob</text>
+</svg>
 
 Possiamo aggiungere la firma digitale al messaggio. Il mittente può firmare il messaggio con la propria chiave privata, e il destinatario può verificare la firma con la chiave pubblica del mittente
 
-```mermaid
-flowchart LR
-  subgraph Alice
-    direction LR
-    m1["m"] --> H1["H( · )"] --> S1["K<sub>A</sub><sup>-</sup>( · )"]
-    KAm["K<sub>A</sub><sup>-</sup>"] -.-> S1
-    S1 -->|"K<sub>A</sub><sup>-</sup>(H(m))"| PLUS1(("+"))
-    m1 --> PLUS1
-    PLUS1 --> E1["K<sub>S</sub>( · )"]
-    KS1["K<sub>S</sub>"] -.-> E1
-    E1 --> PLUS2(("+"))
-    KS2["K<sub>S</sub>"] --> E2["K<sub>B</sub><sup>+</sup>( · )"]
-    KBp["K<sub>B</sub><sup>+</sup>"] -.-> E2
-    E2 -->|"K<sub>B</sub><sup>+</sup>(K<sub>S</sub>)"| PLUS2
-  end
-  PLUS2 --> NET(["Internet"])
-```
+<svg viewBox="0 0 630 345" width="100%" style="max-width:630px;display:block;margin:1.5rem auto" role="img" aria-label="Schema PGP lato Alice: m viene firmato calcolando H(m) e cifrandolo con K_A−; firma e m vengono uniti e cifrati con la chiave di sessione K_S; K_S viene cifrata con la chiave pubblica di Bob K_B+; i due risultati vengono uniti e inviati su Internet" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241118183239-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- firma: m -> H -> K_A- -->
+<text x="55" y="92" font-size="18" text-anchor="end">m</text>
+<line x1="60" y1="86" x2="78" y2="86" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183239-a)"/>
+<rect x="80" y="67" width="62" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="111" y="91.2" font-size="15" text-anchor="middle">H( · )</text>
+<line x1="142" y1="86" x2="150" y2="86" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183239-a)"/>
+<rect x="152" y="67" width="62" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="183" y="91.2" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan><tspan dy="-4.5">( · )</tspan></text>
+<text x="175" y="22" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan></text>
+<g transform="translate(196 16) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="183" y1="30" x2="183" y2="65" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20241118183239-a)"/>
+<path d="M214 86 H245 V136" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183239-a)"/>
+<text x="220" y="74" font-size="15">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan><tspan dy="-4.5">(H(m))</tspan></text>
+<text x="135" y="222" font-size="18" text-anchor="end">m</text>
+<path d="M142 216 H245 V164" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183239-a)"/>
+<circle cx="245" cy="150" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="245" y="156" font-size="18" text-anchor="middle" font-weight="bold">+</text>
+<text x="60" y="156" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Alice</text>
+<!-- cifratura con K_S -->
+<line x1="257" y1="150" x2="318" y2="150" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183239-a)"/>
+<rect x="320" y="131" width="66" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="353" y="155.2" font-size="15" text-anchor="middle">K<tspan dy="4.5" font-size="10.5">S</tspan><tspan dy="-4.5">( · )</tspan></text>
+<text x="345" y="92" font-size="15" text-anchor="middle">K<tspan dy="4.5" font-size="10.5">S</tspan></text>
+<g transform="translate(366 86) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="353" y1="98" x2="353" y2="129" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20241118183239-a)"/>
+<path d="M386 150 H440 V198" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183239-a)"/>
+<!-- K_S cifrata con K_B+ -->
+<text x="290" y="283" font-size="17" text-anchor="end">K<tspan dy="5.1" font-size="11.9">S</tspan></text>
+<line x1="295" y1="277" x2="318" y2="277" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183239-a)"/>
+<rect x="320" y="258" width="66" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="353" y="282.2" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan><tspan dy="-4.5">( · )</tspan></text>
+<text x="345" y="338" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan></text>
+<g transform="translate(367 332) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="353" y1="322" x2="353" y2="298" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20241118183239-a)"/>
+<path d="M386 277 H440 V226" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183239-a)"/>
+<text x="392" y="306" font-size="15">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan><tspan dy="-4.5">(K</tspan><tspan dy="4.5" font-size="10.5">S</tspan><tspan dy="-4.5">)</tspan></text>
+<circle cx="440" cy="212" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="440" y="218" font-size="18" text-anchor="middle" font-weight="bold">+</text>
+<!-- Internet -->
+<line x1="452" y1="212" x2="488" y2="212" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20241118183239-a)"/>
+<path d="M502 237 C482 237 484 208 500 206 C494 187 526 181 538 191 C550 179 600 185 598 197 C618 195 618 233 600 237 Z" fill="var(--palette-teal)" fill-opacity="0.3" stroke="var(--palette-teal)" stroke-width="1.2"/>
+<text x="550" y="218" font-size="16" text-anchor="middle">Internet</text>
+</svg>
 
 Il mittente può fornire riservatezza, autenticazione e integrità del messaggio. Allora usa tutte e 3 le chiavi, la privata, pubblica e simmetrica.
 
@@ -354,37 +556,90 @@ Gli step 5 e 6 servono per evitare che un MITM possa intercettare i messaggi di 
 
 Vengono usati due nonce casuali perchè un attaccante potrebbe intercettare il nonce del client e la sequenza di pacchetti handshake tra client e server, e in futuro riutilizzare il nonce e la sequenza di pacchetti per impersonare il client.
 
-```mermaid
-flowchart TD
-  D["data"] --> F1["data fragment | MAC"]
-  D --> F2["data fragment | MAC"]
-  F1 -->|"K<sub>x</sub>"| E1["record header | encrypted data and MAC"]
-  F2 -->|"K<sub>x</sub>"| E2["record header | encrypted data and MAC"]
-```
+<svg viewBox="0 0 600 284" width="100%" style="max-width:600px;display:block;margin:1.5rem auto" role="img" aria-label="Frammentazione SSL: i dati vengono divisi in frammenti; a ogni frammento si aggiunge il MAC, frammento e MAC vengono cifrati con la chiave K_x e preceduti da un record header" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241118190659-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- dati dell'applicazione -->
+<rect x="180" y="4" width="280" height="50" fill="var(--palette-orange)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="320" y="35" font-size="17" text-anchor="middle">data</text>
+<!-- frammentazione -->
+<line x1="180" y1="54" x2="90" y2="124" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="320" y1="54" x2="225" y2="124" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="320" y1="54" x2="375" y2="124" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="460" y1="54" x2="510" y2="124" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<!-- frammento + MAC, poi record cifrato (x=90) -->
+<rect x="90" y="124" width="135" height="52" fill="var(--palette-orange)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="157.5" y="144.8" font-size="16" text-anchor="middle">data</text>
+<text x="157.5" y="166.4" font-size="16" text-anchor="middle">fragment</text>
+<rect x="225" y="124" width="50" height="52" fill="var(--palette-purple)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="250" y="155.6" font-size="16" text-anchor="middle">MAC</text>
+<line x1="90" y1="176" x2="90" y2="226" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="275" y1="176" x2="275" y2="226" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="38" y="226" width="52" height="52" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="64" y="248.1" font-size="12" text-anchor="middle">record</text>
+<text x="64" y="264.3" font-size="12" text-anchor="middle">header</text>
+<rect x="90" y="226" width="185" height="52" fill="var(--palette-green)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="182.5" y="246.8" font-size="16" text-anchor="middle">encrypted</text>
+<text x="182.5" y="268.4" font-size="16" text-anchor="middle">data and MAC</text>
+<line x1="185" y1="184" x2="185" y2="218" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190659-a)"/>
+<text x="192" y="210" font-size="17">K<tspan dy="5.1" font-size="11.9">x</tspan></text>
+<!-- frammento + MAC, poi record cifrato (x=375) -->
+<rect x="375" y="124" width="135" height="52" fill="var(--palette-orange)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="442.5" y="144.8" font-size="16" text-anchor="middle">data</text>
+<text x="442.5" y="166.4" font-size="16" text-anchor="middle">fragment</text>
+<rect x="510" y="124" width="50" height="52" fill="var(--palette-purple)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="535" y="155.6" font-size="16" text-anchor="middle">MAC</text>
+<line x1="375" y1="176" x2="375" y2="226" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="560" y1="176" x2="560" y2="226" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="323" y="226" width="52" height="52" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="349" y="248.1" font-size="12" text-anchor="middle">record</text>
+<text x="349" y="264.3" font-size="12" text-anchor="middle">header</text>
+<rect x="375" y="226" width="185" height="52" fill="var(--palette-green)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="467.5" y="246.8" font-size="16" text-anchor="middle">encrypted</text>
+<text x="467.5" y="268.4" font-size="16" text-anchor="middle">data and MAC</text>
+<line x1="470" y1="184" x2="470" y2="218" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190659-a)"/>
+<text x="477" y="210" font-size="17">K<tspan dy="5.1" font-size="11.9">x</tspan></text>
+</svg>
 
 - **Record header**: contiene il tipo di messaggio, la versione del protocollo, la lunghezza del messaggio
 - **MAC**: $H(M_x, \text{dati}, \text{tipo}, \text{sequence number})$
 - **Fragment**: contiene i dati, che ha lunghezza di ~16KB
 
-```mermaid
-sequenceDiagram
-  participant Alice
-  participant Bob
-  Alice->>Bob: handshake: ClientHello
-  Bob->>Alice: handshake: ServerHello
-  Bob->>Alice: handshake: Certificate
-  Bob->>Alice: handshake: ServerHelloDone
-  Alice->>Bob: handshake: ClientKeyExchange
-  Alice->>Bob: ChangeCipherSpec
-  Alice->>Bob: handshake: Finished
-  Note over Alice,Bob: ogni cosa da adesso in poi è cifrata
-  Bob->>Alice: ChangeCipherSpec
-  Bob->>Alice: handshake: Finished
-  Alice->>Bob: application_data
-  Bob->>Alice: application_data
-  Alice->>Bob: Alert: warning, close_notify
-  Note over Alice: segue il TCP FIN
-```
+<svg viewBox="0 0 640 600" width="100%" style="max-width:640px;display:block;margin:1.5rem auto" role="img" aria-label="Handshake SSL tra Alice e Bob: ClientHello, ServerHello, Certificate, ServerHelloDone, ClientKeyExchange, ChangeCipherSpec e Finished in entrambe le direzioni; da ChangeCipherSpec in poi tutto è cifrato; poi application_data e Alert close_notify, seguito dal FIN TCP" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241118190933-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker><marker id="i20241118190933-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--palette-red)"/></marker></defs>
+<text x="225" y="225" font-size="18" text-anchor="end" fill="var(--palette-blue)">Alice</text>
+<text x="585" y="225" font-size="18" fill="var(--palette-blue)">Bob</text>
+<line x1="250" y1="28" x2="560" y2="50" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="32" font-size="15" text-anchor="middle" transform="rotate(4.1 405 32)">handshake: ClientHello</text>
+<line x1="560" y1="78" x2="250" y2="100" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="82" font-size="15" text-anchor="middle" transform="rotate(-4.1 405 82)">handshake: ServerHello</text>
+<line x1="560" y1="113" x2="250" y2="135" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="117" font-size="15" text-anchor="middle" transform="rotate(-4.1 405 117)">handshake: Certificate</text>
+<line x1="560" y1="148" x2="250" y2="170" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="152" font-size="15" text-anchor="middle" transform="rotate(-4.1 405 152)">handshake: ServerHelloDone</text>
+<line x1="250" y1="208" x2="560" y2="230" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="212" font-size="15" text-anchor="middle" transform="rotate(4.1 405 212)">handshake: ClientKeyExchange</text>
+<line x1="250" y1="238" x2="560" y2="260" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="242" font-size="15" text-anchor="middle" transform="rotate(4.1 405 242)">ChangeCipherSpec</text>
+<line x1="250" y1="283" x2="560" y2="305" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="287" font-size="15" text-anchor="middle" transform="rotate(4.1 405 287)">handshake: Finished</text>
+<line x1="560" y1="343" x2="250" y2="365" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="347" font-size="15" text-anchor="middle" transform="rotate(-4.1 405 347)">ChangeCipherSpec</text>
+<line x1="560" y1="383" x2="250" y2="405" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="387" font-size="15" text-anchor="middle" transform="rotate(-4.1 405 387)">handshake: Finished</text>
+<line x1="250" y1="443" x2="560" y2="465" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="447" font-size="15" text-anchor="middle" transform="rotate(4.1 405 447)">application_data</text>
+<line x1="560" y1="488" x2="250" y2="510" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="492" font-size="15" text-anchor="middle" transform="rotate(-4.1 405 492)">application_data</text>
+<line x1="250" y1="548" x2="560" y2="570" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20241118190933-a)"/>
+<text x="405" y="552" font-size="15" text-anchor="middle" transform="rotate(4.1 405 552)">Alert: warning, close_notify</text>
+<!-- nota: cifratura attiva dopo ChangeCipherSpec -->
+<text x="215" y="290" font-size="19" text-anchor="end" fill="var(--palette-red)"><tspan font-style="italic">ogni cosa</tspan></text>
+<text x="215" y="315" font-size="19" text-anchor="end" fill="var(--palette-red)"><tspan font-style="italic">da adesso in poi</tspan></text>
+<text x="215" y="340" font-size="19" text-anchor="end" fill="var(--palette-red)"><tspan font-style="italic">è cifrata</tspan></text>
+<line x1="222" y1="280" x2="292" y2="244" stroke="var(--palette-red)" stroke-width="1.5" marker-end="url(#i20241118190933-r)"/>
+<line x1="222" y1="332" x2="320" y2="362" stroke="var(--palette-red)" stroke-width="1.5" marker-end="url(#i20241118190933-r)"/>
+<text x="30" y="585" font-size="16" fill="var(--palette-red)">segue il TCP FIN</text>
+</svg>
 
 ## VPN (Virtual Private Network)
 
@@ -439,14 +694,54 @@ IPsec, R1 accede al SAD per determinare come trattare il datagramma.
 
 Quando i datagrammi IPsec arrivano a R2, R2 esamina l'SPI nei datagrammi e indicizza il SAD con l'SPI per determinare come trattare il datagramma.
 
-```mermaid
-block-beta
-  columns 14
-  space:2 AUT["autenticati"]:12
-  space:4 CIF["cifrati"]:9 space
-  N["new IP header"]:2 EH["ESP hdr"]:2 OH["original IP hdr"]:2 PL["Original IP datagram payload"]:4 TR["ESP trl"]:3 MAC["ESP MAC"]
-  space:2 SPI["SPI"] SEQ["Seq #"] space:6 PAD["padding"] PLN["pad length"] NH["next header"] space
-```
+<svg viewBox="0 0 560 192" width="100%" style="max-width:560px;display:block;margin:1.5rem auto" role="img" aria-label="Datagramma IPsec ESP in modalità tunnel: new IP header, ESP header (SPI, numero di sequenza), header IP originale, payload originale, ESP trailer (padding, pad length, next header) e ESP MAC; autenticati dall'ESP header al trailer, cifrati dall'header IP originale al trailer" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241121161149-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- campi autenticati / cifrati -->
+<line x1="236.4" y1="16" x2="110" y2="16" stroke="currentColor" stroke-width="1" marker-end="url(#i20241121161149-a)"/>
+<line x1="357.6" y1="16" x2="484" y2="16" stroke="currentColor" stroke-width="1" marker-end="url(#i20241121161149-a)"/>
+<text x="297" y="22" font-size="17" text-anchor="middle">autenticati</text>
+<line x1="283.8" y1="46" x2="168" y2="46" stroke="currentColor" stroke-width="1" marker-end="url(#i20241121161149-a)"/>
+<line x1="368.2" y1="46" x2="484" y2="46" stroke="currentColor" stroke-width="1" marker-end="url(#i20241121161149-a)"/>
+<text x="326" y="52" font-size="17" text-anchor="middle">cifrati</text>
+<!-- datagramma IPsec in modalità tunnel -->
+<rect x="18" y="70" width="92" height="42" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="64" y="86.5" font-size="14" text-anchor="middle">new IP</text>
+<text x="64" y="105.4" font-size="14" text-anchor="middle">header</text>
+<rect x="110" y="70" width="58" height="42" fill="var(--palette-purple)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="139" y="86.5" font-size="14" text-anchor="middle">ESP</text>
+<text x="139" y="105.4" font-size="14" text-anchor="middle">hdr</text>
+<rect x="168" y="70" width="78" height="42" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="207" y="86.5" font-size="14" text-anchor="middle">original</text>
+<text x="207" y="105.4" font-size="14" text-anchor="middle">IP hdr</text>
+<rect x="246" y="70" width="181" height="42" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="336.5" y="86.5" font-size="14" text-anchor="middle">Original IP</text>
+<text x="336.5" y="105.4" font-size="14" text-anchor="middle">datagram payload</text>
+<rect x="427" y="70" width="57" height="42" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="455.5" y="86.5" font-size="14" text-anchor="middle">ESP</text>
+<text x="455.5" y="105.4" font-size="14" text-anchor="middle">trl</text>
+<rect x="484" y="70" width="58" height="42" fill="var(--palette-orange)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="513" y="86.5" font-size="14" text-anchor="middle">ESP</text>
+<text x="513" y="105.4" font-size="14" text-anchor="middle">MAC</text>
+<!-- dettaglio header ESP -->
+<line x1="110" y1="112" x2="85" y2="142" stroke="currentColor" stroke-width="1"/>
+<line x1="168" y1="112" x2="198" y2="142" stroke="currentColor" stroke-width="1"/>
+<rect x="85" y="142" width="56" height="44" fill="var(--palette-purple)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="113" y="168.9" font-size="14" text-anchor="middle">SPI</text>
+<rect x="141" y="142" width="57" height="44" fill="var(--palette-purple)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="169.5" y="159.5" font-size="14" text-anchor="middle">Seq</text>
+<text x="169.5" y="178.4" font-size="14" text-anchor="middle">#</text>
+<!-- dettaglio trailer ESP -->
+<line x1="427" y1="112" x2="360" y2="142" stroke="currentColor" stroke-width="1"/>
+<line x1="484" y1="112" x2="545" y2="142" stroke="currentColor" stroke-width="1"/>
+<rect x="360" y="142" width="67" height="44" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="393.5" y="168.9" font-size="14" text-anchor="middle">padding</text>
+<rect x="427" y="142" width="56" height="44" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="455" y="159.5" font-size="14" text-anchor="middle">pad</text>
+<text x="455" y="178.4" font-size="14" text-anchor="middle">length</text>
+<rect x="483" y="142" width="62" height="44" fill="var(--palette-teal)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="514" y="159.5" font-size="14" text-anchor="middle">next</text>
+<text x="514" y="178.4" font-size="14" text-anchor="middle">header</text>
+</svg>
 
 ## IPSec: Security Policy Database (SPD)
 
@@ -520,17 +815,38 @@ La prossima volta che un IV viene riutilizzato, l'attaccante può decifrare il p
 7. Il server deriva la chiave di sessione simmetrica $K_{M - {AP}}$ e verifica il valore HMAC.
 8. A questo punto l'AS ha la stessa chiave di sessione simmetrica del dispositivo, e può iniziare a comunicare in maniera sicura.
 
-```mermaid
-sequenceDiagram
-  participant M as mobile
-  participant AS as AS Authentication Server
-  Note over M: Initial shared secret
-  Note over AS: Initial shared secret
-  AS->>M: (a) Nonce_AS
-  Note over M: deriva chiave di sessione K_M-AP<br/>usando la shared-secret,<br/>Nonce_AS, Nonce_M
-  M->>AS: (b) Nonce_M, HMAC(f(K_AS-M, Nonce_AS))
-  Note over AS: (c) deriva chiave di sessione K_M-AP<br/>usando la shared-secret,<br/>Nonce_AS, Nonce_M
-```
+<svg viewBox="0 0 720 182" width="100%" style="max-width:720px;display:block;margin:1.5rem auto" role="img" aria-label="Autenticazione tra mobile e Authentication Server con segreto condiviso iniziale: (a) l'AS invia Nonce_AS; il mobile deriva la chiave di sessione K_M-AP; (b) il mobile invia Nonce_M e HMAC(f(K_AS-M, Nonce_AS)); (c) l'AS deriva la stessa chiave di sessione" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241121165313-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--palette-blue)"/></marker></defs>
+<!-- mobile e Authentication Server -->
+<g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="176" y="6" width="38" height="25" rx="2"/><path d="M170 37 H220 L214 31 H176 Z"/></g>
+<text x="232" y="24" font-size="19" fill="var(--palette-red)">mobile</text>
+<g transform="translate(238 42) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="225" y="64" font-size="13">Initial shared secret</text>
+<g fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor" stroke-width="1.2"><rect x="418" y="2" width="24" height="48" rx="2"/><line x1="422" y1="10" x2="438" y2="10"/><line x1="422" y1="17" x2="438" y2="17"/><line x1="422" y1="24" x2="438" y2="24"/><line x1="422" y1="31" x2="438" y2="31"/></g>
+<text x="450" y="26" font-size="22" fill="var(--palette-red)">AS</text>
+<text x="482" y="26" font-size="17">Authentication Server</text>
+<g transform="translate(460 42) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="450" y="64" font-size="13">Initial shared secret</text>
+<!-- (a) nonce dell'AS -->
+<line x1="438" y1="104" x2="222" y2="104" stroke="var(--palette-blue)" stroke-width="4" marker-end="url(#i20241121165313-a)"/>
+<circle cx="318" cy="104" r="10" fill="var(--background, var(--background-primary, none))" stroke="var(--palette-blue)" stroke-width="2"/>
+<text x="318" y="109" font-size="14" text-anchor="middle">a</text>
+<text x="395" y="92" font-size="14" text-anchor="middle"><tspan font-style="italic">Nonce</tspan><tspan dy="4.2" font-size="9.8" font-style="italic">AS</tspan></text>
+<text x="212" y="102" font-size="14" text-anchor="end">deriva chiave di sessione K<tspan dy="4.2" font-size="9.8">M-AP</tspan></text>
+<text x="212" y="121" font-size="14" text-anchor="end">usando la shared-secret,</text>
+<text x="212" y="140" font-size="14" text-anchor="end"><tspan font-style="italic">Nonce</tspan><tspan dy="4.2" font-size="9.8" font-style="italic">AS</tspan><tspan dy="-4.2">, </tspan><tspan font-style="italic">Nonce</tspan><tspan dy="4.2" font-size="9.8" font-style="italic">M</tspan></text>
+<!-- (b) nonce del mobile e HMAC -->
+<line x1="222" y1="134" x2="432" y2="134" stroke="var(--palette-blue)" stroke-width="4" marker-end="url(#i20241121165313-a)"/>
+<circle cx="318" cy="134" r="10" fill="var(--background, var(--background-primary, none))" stroke="var(--palette-blue)" stroke-width="2"/>
+<text x="318" y="139" font-size="14" text-anchor="middle">b</text>
+<text x="318" y="166" font-size="14" text-anchor="middle"><tspan font-style="italic">Nonce</tspan><tspan dy="4.2" font-size="9.8" font-style="italic">M</tspan><tspan dy="-4.2">, HMAC(f(K</tspan><tspan dy="4.2" font-size="9.8">AS-M</tspan><tspan dy="-4.2">,</tspan><tspan font-style="italic">Nonce</tspan><tspan dy="4.2" font-size="9.8" font-style="italic">AS</tspan><tspan dy="-4.2">))</tspan></text>
+<!-- (c) l'AS deriva la stessa chiave -->
+<circle cx="460" cy="132" r="10" fill="var(--background, var(--background-primary, none))" stroke="var(--palette-blue)" stroke-width="2"/>
+<text x="460" y="137" font-size="14" text-anchor="middle">c</text>
+<text x="478" y="132" font-size="14">deriva chiave di sessione K<tspan dy="4.2" font-size="9.8">M-AP</tspan></text>
+<text x="478" y="151" font-size="14">usando la shared secret,</text>
+<text x="478" y="170" font-size="14"><tspan font-style="italic">Nonce</tspan><tspan dy="4.2" font-size="9.8" font-style="italic">AS</tspan><tspan dy="-4.2">, </tspan><tspan font-style="italic">Nonce</tspan><tspan dy="4.2" font-size="9.8" font-style="italic">M</tspan></text>
+</svg>
 
 ## Autenticazione e cifratura in 4G LTE
 
@@ -538,26 +854,69 @@ Il dispositivo mobile che vuole connettersi alla Base Station (BS) deve autentic
 
 La sim stessa contiene un identità globale, e le chiavi condivise.
 
-```mermaid
-sequenceDiagram
-  participant M as mobile
-  participant BS as Base station (BS)
-  participant MME as Mobility Management Entity (MME)<br/>Visited network
-  participant HSS as Home Subscriber Service (HSS)<br/>Home network
-  Note over M: K_BS-M, K_HSS-M
-  Note over HSS: K_HSS-M
-  M->>BS: attach
-  BS->>MME: attach
-  MME->>HSS: (a) AUTH_REQ (IMSI, VN info)
-  HSS->>MME: (b) AUTH_RESP (auth token, xres_HSS, keys)
-  MME->>BS: auth token
-  BS->>M: auth token
-  M->>BS: (c)
-  BS->>MME: res_M
-  MME->>BS: (d) OK, chiavi
-  BS->>M: OK
-  M<<->>BS: (e) key derivation
-```
+<svg viewBox="0 0 720 330" width="100%" style="max-width:720px;display:block;margin:1.5rem auto" role="img" aria-label="Autenticazione 4G/LTE: il mobile invia attach alla base station e all'MME della rete visitata; (a) l'MME invia AUTH_REQ con IMSI e informazioni sulla rete visitata all'HSS della rete di casa; (b) l'HSS risponde con AUTH_RESP (auth token, xres_HSS, chiavi); l'auth token arriva al mobile; (c) il mobile risponde con res_M; (d) l'MME confronta e invia OK e le chiavi; (e) derivazione delle chiavi tra mobile e base station" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20241121172722-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--palette-blue)"/></marker></defs>
+<!-- mobile -->
+<text x="8" y="50" font-size="18" fill="var(--palette-red)">mobile</text>
+<g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="66" y="20" width="26" height="46" rx="4"/><line x1="69" y1="26" x2="89" y2="26"/><line x1="69" y1="58" x2="89" y2="58"/></g>
+<path d="M100 36 H150 V26 L172 46 L150 66 V56 H100 Z" fill="var(--palette-blue)" fill-opacity="0.3"/>
+<g transform="translate(124 24) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="150" y="30" font-size="15">K<tspan dy="4.5" font-size="10.5">BS-M</tspan></text>
+<g transform="translate(124 84) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="150" y="90" font-size="15">K<tspan dy="4.5" font-size="10.5">HSS-M</tspan></text>
+<!-- base station -->
+<path d="M196 50 L227 0 L289 0 L320 50 L289 100 L227 100 Z" fill="var(--palette-teal)" fill-opacity="0.25" stroke="none"/>
+<g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M246 59 L258 14 L270 59 M250 44 H266 M254 29 H262"/><path d="M248 16 A12 12 0 0 1 268 16 M242 12 A20 20 0 0 1 274 12"/></g>
+<text x="258" y="112" font-size="14" text-anchor="middle">Base station (BS)</text>
+<!-- rete visitata: MME -->
+<path d="M340 100 C319 100 319 15 340 6 C382 -6 458 -2 500 4 C521 12 521 100 500 100 Z" fill="var(--palette-teal)" fill-opacity="0.25" stroke="none"/>
+<g fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor" stroke-width="1.2"><rect x="340" y="18" width="24" height="52" rx="2"/><line x1="344" y1="26" x2="360" y2="26"/><line x1="344" y1="33" x2="360" y2="33"/><line x1="344" y1="40" x2="360" y2="40"/><line x1="344" y1="47" x2="360" y2="47"/><line x1="344" y1="54" x2="360" y2="54"/></g>
+<text x="372" y="30" font-size="14">Mobility</text>
+<text x="372" y="47" font-size="14">Management</text>
+<text x="372" y="64" font-size="14">Entity (<tspan font-weight="bold">MME</tspan>)</text>
+<text x="420" y="106" font-size="14" text-anchor="middle">Visited network</text>
+<line x1="518" y1="50" x2="556" y2="50" stroke="currentColor" stroke-width="1"/>
+<!-- rete di casa: HSS -->
+<path d="M570 100 C549 100 549 19 570 10 C603 -2 667 2 700 8 C721 16 721 100 700 100 Z" fill="var(--palette-teal)" fill-opacity="0.25" stroke="none"/>
+<g fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor" stroke-width="1.2"><rect x="570" y="30" width="24" height="46" rx="2"/><line x1="574" y1="38" x2="590" y2="38"/><line x1="574" y1="45" x2="590" y2="45"/><line x1="574" y1="52" x2="590" y2="52"/><line x1="574" y1="59" x2="590" y2="59"/></g>
+<text x="604" y="18" font-size="14">Home Subscriber</text>
+<text x="604" y="35" font-size="14">Service (<tspan font-weight="bold">HSS</tspan>)</text>
+<g transform="translate(608 62) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<text x="634" y="68" font-size="15">K<tspan dy="4.5" font-size="10.5">HSS-M</tspan></text>
+<text x="640" y="104" font-size="14" text-anchor="middle">Home network</text>
+<!-- scambio di messaggi -->
+<line x1="75" y1="152" x2="235" y2="152" stroke="var(--palette-blue)" stroke-width="3.5" marker-end="url(#i20241121172722-a)"/>
+<text x="155" y="143" font-size="13" text-anchor="middle">attach</text>
+<line x1="250" y1="152" x2="385" y2="152" stroke="var(--palette-blue)" stroke-width="3.5" marker-end="url(#i20241121172722-a)"/>
+<text x="317.5" y="143" font-size="13" text-anchor="middle">attach</text>
+<line x1="402" y1="158" x2="640" y2="158" stroke="var(--palette-blue)" stroke-width="3.5" marker-end="url(#i20241121172722-a)"/>
+<text x="521" y="143" font-size="13" text-anchor="middle">AUTH_REQ (IMSI, VN info)</text>
+<circle cx="521" cy="158" r="10" fill="var(--background, var(--background-primary, none))" stroke="var(--palette-blue)" stroke-width="2"/>
+<text x="521" y="163" font-size="14" text-anchor="middle">a</text>
+<line x1="231" y1="192" x2="75" y2="192" stroke="var(--palette-blue)" stroke-width="3.5" marker-end="url(#i20241121172722-a)"/>
+<text x="155" y="183" font-size="13" text-anchor="middle">auth token</text>
+<line x1="381" y1="192" x2="250" y2="192" stroke="var(--palette-blue)" stroke-width="3.5" marker-end="url(#i20241121172722-a)"/>
+<text x="317.5" y="183" font-size="13" text-anchor="middle">auth token</text>
+<line x1="636" y1="186" x2="402" y2="186" stroke="var(--palette-blue)" stroke-width="3.5" marker-end="url(#i20241121172722-a)"/>
+<text x="521" y="212" font-size="13" text-anchor="middle">AUTH_RESP (auth token,xres<tspan dy="3.9" font-size="9.1">HSS</tspan><tspan dy="-3.9">,keys)</tspan></text>
+<circle cx="521" cy="186" r="10" fill="var(--background, var(--background-primary, none))" stroke="var(--palette-blue)" stroke-width="2"/>
+<text x="521" y="191" font-size="14" text-anchor="middle">b</text>
+<line x1="75" y1="225" x2="235" y2="225" stroke="var(--palette-blue)" stroke-width="3.5" marker-end="url(#i20241121172722-a)"/>
+<circle cx="155" cy="225" r="10" fill="var(--background, var(--background-primary, none))" stroke="var(--palette-blue)" stroke-width="2"/>
+<text x="155" y="230" font-size="14" text-anchor="middle">c</text>
+<line x1="250" y1="225" x2="385" y2="225" stroke="var(--palette-blue)" stroke-width="3.5" marker-end="url(#i20241121172722-a)"/>
+<text x="317.5" y="216" font-size="13" text-anchor="middle">res<tspan dy="3.9" font-size="9.1">M</tspan></text>
+<line x1="231" y1="274" x2="75" y2="274" stroke="var(--palette-blue)" stroke-width="3.5" marker-end="url(#i20241121172722-a)"/>
+<text x="110" y="265" font-size="13" text-anchor="middle">OK</text>
+<line x1="381" y1="268" x2="250" y2="268" stroke="var(--palette-blue)" stroke-width="3.5" marker-end="url(#i20241121172722-a)"/>
+<circle cx="317.5" cy="268" r="10" fill="var(--background, var(--background-primary, none))" stroke="var(--palette-blue)" stroke-width="2"/>
+<text x="317.5" y="273" font-size="14" text-anchor="middle">d</text>
+<text x="318" y="254" font-size="13" text-anchor="middle">OK, chiavi</text>
+<line x1="75" y1="316" x2="235" y2="316" stroke="var(--palette-blue)" stroke-width="3.5" marker-start="url(#i20241121172722-a)" marker-end="url(#i20241121172722-a)"/>
+<text x="155" y="301" font-size="13" text-anchor="middle">key derivation</text>
+<circle cx="155" cy="316" r="10" fill="var(--background, var(--background-primary, none))" stroke="var(--palette-blue)" stroke-width="2"/>
+<text x="155" y="321" font-size="14" text-anchor="middle">e</text>
+</svg>
 
 Il mobile e il BS usano la chiave di sessione derivata $K_{BS-M}$ per cifrare le comunicazioni sul link 4G
 

@@ -61,22 +61,49 @@ Il protocollo MAC802.11 usa CSMA/CA (Carrier Sense Multiple Access with Collisio
 
 Per evitare collisioni quando si vuole inviare grandi dati, un host può inviare un frame di richiesta RTS (Request To Send) all'AP tramite CSMA/CA, se l'AP risponde con un frame CTS (Clear To Send) allora l'host può trasmettere. Il CTS è rilevato da tutti i nodi vicini, che ritardano la trasmissione.
 
-```mermaid
-sequenceDiagram
-  participant A
-  participant AP
-  participant B
-  A->>AP: RTS(A)
-  B->>AP: RTS(B)
-  Note over AP: collisione in prenotazione
-  A->>AP: RTS(A)
-  AP->>A: CTS(A)
-  AP->>B: CTS(A)
-  Note over B: ritardo
-  A->>AP: DATA (A)
-  AP->>A: ACK(A)
-  AP->>B: ACK(A)
-```
+<svg viewBox="0 0 714 412" width="100%" style="max-width:714px;display:block;margin:1.5rem auto" role="img" aria-label="Prenotazione del canale con RTS e CTS: A e B inviano RTS all'AP e collidono; A ripete RTS(A), l'AP risponde con CTS(A) ad A e a B, A invia DATA (A) e l'AP risponde con ACK(A) ad A e a B; B attende per tutto il ritardo">
+<defs><marker id="i20241104172153-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<defs><linearGradient id="i20241104172153-fade-r"><stop offset="0" stop-color="var(--palette-green)" stop-opacity="0.85"/><stop offset="1" stop-color="var(--palette-green)" stop-opacity="0.05"/></linearGradient><linearGradient id="i20241104172153-fade-l"><stop offset="0" stop-color="var(--palette-green)" stop-opacity="0.05"/><stop offset="1" stop-color="var(--palette-green)" stop-opacity="0.85"/></linearGradient><linearGradient id="i20241104172153-data"><stop offset="0" stop-color="var(--palette-blue)" stop-opacity="0.95"/><stop offset="1" stop-color="var(--palette-blue)" stop-opacity="0.03"/></linearGradient></defs>
+<g transform="scale(0.82)">
+<!-- A, AP, B e asse dei tempi -->
+<g><rect x="150" y="20" width="40" height="28" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><path d="M165,48 L163,54 L177,54 L175,48" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="146" y="57" width="40" height="6" fill="none" stroke="currentColor" stroke-width="1.2"/></g>
+<text x="198" y="54" fill="currentColor" font-size="19">A</text>
+<g><rect x="420" y="40" width="44" height="14" rx="3" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><path d="M426,40 V22 M442,40 V20 M458,40 V22" stroke="currentColor" stroke-width="1.5"/></g>
+<text x="470" y="70" fill="currentColor" font-size="19">AP</text>
+<g><rect x="780" y="20" width="40" height="28" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><path d="M795,48 L793,54 L807,54 L805,48" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="776" y="57" width="40" height="6" fill="none" stroke="currentColor" stroke-width="1.2"/></g>
+<text x="770" y="54" fill="currentColor" font-size="19" text-anchor="end">B</text>
+<line x1="68" y1="78" x2="820" y2="78" stroke="currentColor" stroke-width="1.5"/>
+<line x1="72" y1="78" x2="72" y2="456" stroke="currentColor" stroke-width="1.5" marker-end="url(#i20241104172153-arrow)"/>
+<text x="12" y="452" fill="currentColor" font-size="17">tempo</text>
+<!-- RTS(A) e RTS(B) collidono all'AP -->
+<polygon points="170,100 540,133 540,156 170,124" fill="url(#i20241104172153-fade-r)"/>
+<polygon points="805,92 420,126 420,148 805,115" fill="url(#i20241104172153-fade-l)"/>
+<text x="280" y="122" fill="currentColor" font-size="18" text-anchor="middle" transform="rotate(5.1 280 122)">RTS(A)</text>
+<text x="762" y="108" fill="currentColor" font-size="18" text-anchor="middle" transform="rotate(-5.0 762 108)">RTS(B)</text>
+<polygon points="500,128 481,132 485,143 470,136 455,143 459,132 440,128 459,124 455,113 470,120 485,113 481,124" fill="var(--palette-orange)" stroke="currentColor" stroke-width="1"/>
+<text x="460" y="166" fill="currentColor" font-size="17">collisione in prenotazione</text>
+<!-- nuovo RTS(A) -->
+<polygon points="170,170 700,214 700,236 170,193" fill="url(#i20241104172153-fade-r)"/>
+<text x="280" y="191" fill="currentColor" font-size="18" text-anchor="middle" transform="rotate(4.7 280 191)">RTS(A)</text>
+<!-- CTS(A) dall'AP verso A e B -->
+<polygon fill-opacity="0.55" points="450,228 170,258 170,279 450,249" fill="var(--palette-purple)"/>
+<polygon fill-opacity="0.55" points="450,228 792,258 792,280 450,249" fill="var(--palette-purple)"/>
+<text x="286" y="263" fill="currentColor" font-size="18" text-anchor="middle" transform="rotate(-6.1 286 263)">CTS(A)</text>
+<text x="625" y="263" fill="currentColor" font-size="18" text-anchor="middle" transform="rotate(5.0 625 263)">CTS(A)</text>
+<!-- DATA (A) -->
+<polygon points="172,290 720,326 720,446 172,410" fill="url(#i20241104172153-data)"/>
+<text x="296" y="360" fill="currentColor" font-size="18" text-anchor="middle">DATA (A)</text>
+<!-- ACK(A) dall'AP verso A e B -->
+<polygon fill-opacity="0.55" points="450,446 170,471 170,492 450,467" fill="var(--palette-purple)"/>
+<polygon fill-opacity="0.55" points="450,446 792,471 792,493 450,467" fill="var(--palette-purple)"/>
+<text x="286" y="478" fill="currentColor" font-size="18" text-anchor="middle" transform="rotate(-5.1 286 478)">ACK(A)</text>
+<text x="625" y="478" fill="currentColor" font-size="18" text-anchor="middle" transform="rotate(4.2 625 478)">ACK(A)</text>
+<!-- ritardo per B -->
+<line x1="810" y1="362" x2="810" y2="262" stroke="currentColor" stroke-width="2" marker-end="url(#i20241104172153-arrow)"/>
+<line x1="810" y1="396" x2="810" y2="496" stroke="currentColor" stroke-width="2" marker-end="url(#i20241104172153-arrow)"/>
+<text x="810" y="385" fill="currentColor" font-size="18" text-anchor="middle">ritardo</text>
+</g>
+</svg>
 
 ## Indirizzamento Frame 802.11
 

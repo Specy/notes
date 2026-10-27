@@ -9,23 +9,51 @@ Spiegare gli aspetti essenziali della Public Key Infrastructure (PKI): chiavi pu
 Lo schema in basso riassume il meccanismo PGP per l'invio di mail sicure. Spiegare il significato dei vari blocchi, specificando quali di essi garantiscono l'autenticità, quali l'integrità e quali la riservatezza. Indicare la sequenza dei passi da compiere da parte del destinatario per risalire al messaggio originale e compiere le verifiche su autenticità e integrità.
 ($m$=messaggio; $H$=hash; $K_A^-$=chiave privata di Alice; $K_B^+$=chiave pubblica di Bob, $K_S$=chiave di sessione)
 
-```mermaid
-flowchart LR
-  subgraph Alice
-    direction LR
-    m1["m"] --> H1["H( · )"] --> S1["K<sub>A</sub><sup>-</sup>( · )"]
-    KAm["K<sub>A</sub><sup>-</sup>"] -.-> S1
-    S1 -->|"K<sub>A</sub><sup>-</sup>(H(m))"| PLUS1(("+"))
-    m1 --> PLUS1
-    PLUS1 --> E1["K<sub>S</sub>( · )"]
-    KS1["K<sub>S</sub>"] -.-> E1
-    E1 --> PLUS2(("+"))
-    KS2["K<sub>S</sub>"] --> E2["K<sub>B</sub><sup>+</sup>( · )"]
-    KBp["K<sub>B</sub><sup>+</sup>"] -.-> E2
-    E2 -->|"K<sub>B</sub><sup>+</sup>(K<sub>S</sub>)"| PLUS2
-  end
-  PLUS2 --> NET(["Internet"])
-```
+<svg viewBox="0 0 630 345" width="100%" style="max-width:630px;display:block;margin:1.5rem auto" role="img" aria-label="Schema PGP lato Alice: m viene firmato calcolando H(m) e cifrandolo con K_A−; firma e m vengono uniti e cifrati con la chiave di sessione K_S; K_S viene cifrata con la chiave pubblica di Bob K_B+; i due risultati vengono uniti e inviati su Internet" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20250121123132-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- firma: m -> H -> K_A- -->
+<text x="55" y="92" font-size="18" text-anchor="end">m</text>
+<line x1="60" y1="86" x2="78" y2="86" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20250121123132-a)"/>
+<rect x="80" y="67" width="62" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="111" y="91.2" font-size="15" text-anchor="middle">H( · )</text>
+<line x1="142" y1="86" x2="150" y2="86" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20250121123132-a)"/>
+<rect x="152" y="67" width="62" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="183" y="91.2" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan><tspan dy="-4.5">( · )</tspan></text>
+<text x="175" y="22" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan></text>
+<g transform="translate(196 16) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="183" y1="30" x2="183" y2="65" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20250121123132-a)"/>
+<path d="M214 86 H245 V136" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20250121123132-a)"/>
+<text x="220" y="74" font-size="15">K<tspan dy="-6.3" font-size="10.5">−</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">A</tspan><tspan dy="-4.5">(H(m))</tspan></text>
+<text x="135" y="222" font-size="18" text-anchor="end">m</text>
+<path d="M142 216 H245 V164" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20250121123132-a)"/>
+<circle cx="245" cy="150" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="245" y="156" font-size="18" text-anchor="middle" font-weight="bold">+</text>
+<text x="60" y="156" font-size="17" text-anchor="middle" fill="var(--palette-blue)">Alice</text>
+<!-- cifratura con K_S -->
+<line x1="257" y1="150" x2="318" y2="150" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20250121123132-a)"/>
+<rect x="320" y="131" width="66" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="353" y="155.2" font-size="15" text-anchor="middle">K<tspan dy="4.5" font-size="10.5">S</tspan><tspan dy="-4.5">( · )</tspan></text>
+<text x="345" y="92" font-size="15" text-anchor="middle">K<tspan dy="4.5" font-size="10.5">S</tspan></text>
+<g transform="translate(366 86) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="353" y1="98" x2="353" y2="129" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20250121123132-a)"/>
+<path d="M386 150 H440 V198" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20250121123132-a)"/>
+<!-- K_S cifrata con K_B+ -->
+<text x="290" y="283" font-size="17" text-anchor="end">K<tspan dy="5.1" font-size="11.9">S</tspan></text>
+<line x1="295" y1="277" x2="318" y2="277" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20250121123132-a)"/>
+<rect x="320" y="258" width="66" height="38" fill="none" stroke="currentColor" stroke-width="1.2"/>
+<text x="353" y="282.2" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan><tspan dy="-4.5">( · )</tspan></text>
+<text x="345" y="338" font-size="15" text-anchor="middle">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan></text>
+<g transform="translate(367 332) scale(1.0)" fill="none" stroke="var(--palette-orange)" stroke-width="2"><circle r="5"/><path d="M5 0h15M14 0v4M18 0v5"/></g>
+<line x1="353" y1="322" x2="353" y2="298" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#i20250121123132-a)"/>
+<path d="M386 277 H440 V226" fill="none" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20250121123132-a)"/>
+<text x="392" y="306" font-size="15">K<tspan dy="-6.3" font-size="10.5">+</tspan><tspan dx="-6.3" dy="10.8" font-size="10.5">B</tspan><tspan dy="-4.5">(K</tspan><tspan dy="4.5" font-size="10.5">S</tspan><tspan dy="-4.5">)</tspan></text>
+<circle cx="440" cy="212" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="440" y="218" font-size="18" text-anchor="middle" font-weight="bold">+</text>
+<!-- Internet -->
+<line x1="452" y1="212" x2="488" y2="212" stroke="currentColor" stroke-width="2.5" marker-end="url(#i20250121123132-a)"/>
+<path d="M502 237 C482 237 484 208 500 206 C494 187 526 181 538 191 C550 179 600 185 598 197 C618 195 618 233 600 237 Z" fill="var(--palette-teal)" fill-opacity="0.3" stroke="var(--palette-teal)" stroke-width="1.2"/>
+<text x="550" y="218" font-size="16" text-anchor="middle">Internet</text>
+</svg>
 
 Indicare le proprietà principali di una funzione di Hashing.
 
@@ -38,10 +66,20 @@ Quando bob riceve la mail, usa la propria chiave privata per decriptare la chiav
 
 ---
 
-```mermaid
-flowchart LR
-  A["A<br/>indirizzo IP: 192.150.181.198<br/>subnet mask: 255.255.255.248"] --- B["B<br/>indirizzo IP: 192.150.181.206<br/>subnet mask: 255.255.255.248"]
-```
+<svg viewBox="0 0 680 172" width="100%" style="max-width:680px;display:block;margin:1.5rem auto" role="img" aria-label="Host A (IP 192.150.181.198, subnet mask 255.255.255.248) collegato con un cavo all'host B (IP 192.150.181.206, subnet mask 255.255.255.248)" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<!-- host A e host B collegati da un cavo -->
+<g fill="var(--palette-muted)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.5"><rect x="50" y="10" width="80" height="62" rx="3"/><rect x="38" y="78" width="104" height="22" rx="2"/></g>
+<rect x="64" y="20" width="52" height="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="90" y="50" font-size="26" text-anchor="middle" font-weight="bold">A</text>
+<g fill="var(--palette-muted)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.5"><rect x="520" y="10" width="80" height="62" rx="3"/><rect x="508" y="78" width="104" height="22" rx="2"/></g>
+<rect x="534" y="20" width="52" height="40" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="560" y="50" font-size="26" text-anchor="middle" font-weight="bold">B</text>
+<line x1="130" y1="42" x2="520" y2="42" stroke="var(--palette-red)" stroke-width="3"/>
+<text x="20" y="135" font-size="17">indirizzo IP: 192.150.181.198</text>
+<text x="20" y="160" font-size="17">subnet mask: 255.255.255.248</text>
+<text x="420" y="125" font-size="17">indirizzo IP: 192.150.181.206</text>
+<text x="420" y="150" font-size="17">subnet mask: 255.255.255.248</text>
+</svg>
 
 Nello scenario in figura i due host, collegati da un cavo di rete, non hanno connettività.
 
@@ -182,19 +220,45 @@ Descrivere gli elementi essenziali della fase di handshake SSL.
 
 In figura è riportato lo schema di frammentazione del flusso dei dati nell'SSL.
 
-```mermaid
-block-beta
-  columns 7
-  space:2 D["data"]:3 space:2
-  space:7
-  space F1["data fragment"] M1["MAC"] space space F2["data fragment"] M2["MAC"]
-  space:7
-  H1["record header"] E1["encrypted data and MAC"]:2 space H2["record header"] E2["encrypted data and MAC"]:2
-  D --> F1
-  D --> F2
-  F1 --> E1
-  F2 --> E2
-```
+<svg viewBox="0 0 600 284" width="100%" style="max-width:600px;display:block;margin:1.5rem auto" role="img" aria-label="Frammentazione SSL: i dati vengono divisi in frammenti; a ogni frammento si aggiunge il MAC, frammento e MAC vengono cifrati e preceduti da un record header" fill="currentColor" font-family="Arial, Helvetica, sans-serif">
+<defs><marker id="i20250201163108-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- dati dell'applicazione -->
+<rect x="180" y="4" width="280" height="50" fill="var(--palette-orange)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="320" y="35" font-size="17" text-anchor="middle">data</text>
+<!-- frammentazione -->
+<line x1="180" y1="54" x2="90" y2="124" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="320" y1="54" x2="225" y2="124" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="320" y1="54" x2="375" y2="124" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="460" y1="54" x2="510" y2="124" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<!-- frammento + MAC, poi record cifrato (x=90) -->
+<rect x="90" y="124" width="135" height="52" fill="var(--palette-orange)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="157.5" y="144.8" font-size="16" text-anchor="middle">data</text>
+<text x="157.5" y="166.4" font-size="16" text-anchor="middle">fragment</text>
+<rect x="225" y="124" width="50" height="52" fill="var(--palette-purple)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="250" y="155.6" font-size="16" text-anchor="middle">MAC</text>
+<line x1="90" y1="176" x2="90" y2="226" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="275" y1="176" x2="275" y2="226" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="38" y="226" width="52" height="52" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="64" y="248.1" font-size="12" text-anchor="middle">record</text>
+<text x="64" y="264.3" font-size="12" text-anchor="middle">header</text>
+<rect x="90" y="226" width="185" height="52" fill="var(--palette-green)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="182.5" y="246.8" font-size="16" text-anchor="middle">encrypted</text>
+<text x="182.5" y="268.4" font-size="16" text-anchor="middle">data and MAC</text>
+<!-- frammento + MAC, poi record cifrato (x=375) -->
+<rect x="375" y="124" width="135" height="52" fill="var(--palette-orange)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="442.5" y="144.8" font-size="16" text-anchor="middle">data</text>
+<text x="442.5" y="166.4" font-size="16" text-anchor="middle">fragment</text>
+<rect x="510" y="124" width="50" height="52" fill="var(--palette-purple)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="535" y="155.6" font-size="16" text-anchor="middle">MAC</text>
+<line x1="375" y1="176" x2="375" y2="226" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="560" y1="176" x2="560" y2="226" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="323" y="226" width="52" height="52" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="349" y="248.1" font-size="12" text-anchor="middle">record</text>
+<text x="349" y="264.3" font-size="12" text-anchor="middle">header</text>
+<rect x="375" y="226" width="185" height="52" fill="var(--palette-green)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.2"/>
+<text x="467.5" y="246.8" font-size="16" text-anchor="middle">encrypted</text>
+<text x="467.5" y="268.4" font-size="16" text-anchor="middle">data and MAC</text>
+</svg>
 
 Spiegare nel dettaglio il significato dei blocchi visualizzati (cosa sono, come vengono creati, cosa è cifrato, con quali algoritmi, con quali chiavi, etc.). Spiegare inoltre la necessità della certificazione e il principio alla base della creazione di un certificato.
 

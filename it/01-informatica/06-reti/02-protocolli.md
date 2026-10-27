@@ -109,19 +109,76 @@ Usato per inviare mail. Un client da affidamento alla propria casella mail ad un
 
 Il protocollo usa TCP sulla porta 25, ed un trasferimento è formato da 3 parti, una parte di inizializzazione chiamato handshaking, il trasferimento dei dati, e la chiusura della connessione.
 
-```mermaid
-sequenceDiagram
-    participant UJ as user agent di Jane
-    participant MJ as mail server di Jane
-    participant MB as mail server di Bob
-    participant UB as user agent di Bob
-    Note over UJ: 1) Jane usa il suo user agent per<br/>comporre il messaggio da inviare "a"<br/>bob@someschool.edu
-    UJ->>MJ: 2) l'UA di Jane invia un messaggio al server di posta<br/>di Jane#59; il messaggio è posto nella coda di messaggi
-    Note over MJ: 3) il lato client di SMTP apre una connessione TCP<br/>con il server di posta di Bob
-    MJ->>MB: 4) il client SMTP invia il messaggio di Jane<br/>sulla connessione TCP
-    Note over MB: 5) il server di posta di Bob pone il messaggio<br/>nella casella di posta di Bob
-    MB->>UB: 6) Bob invoca il suo user agent<br/>per leggere il messaggio
-```
+1) Jane usa il suo user agent per comporre il messaggio da inviare "a" `bob@someschool.edu`
+2) l'UA di Jane invia un messaggio al server di posta di Jane; il messaggio è posto nella coda di messaggi
+3) il lato client di SMTP apre una connessione TCP con il server di posta di Bob
+4) il client SMTP invia il messaggio di Jane sulla connessione TCP
+5) il server di posta di Bob pone il messaggio nella casella di posta di Bob
+6) Bob invoca il suo user agent per leggere il messaggio
+
+<svg viewBox="0 0 720 205" width="100%" style="max-width:720px;display:block;margin:1.5rem auto" role="img" aria-label="Invio di un messaggio di posta: user agent di Jane, mail server di Jane con la coda dei messaggi, mail server di Bob con le caselle di posta, user agent di Bob; passi numerati da 1 a 6">
+<defs><marker id="i20241102125306-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<!-- Jane e il suo user agent -->
+<circle cx="28" cy="74" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<path d="M13,104 Q13,86 28,86 Q43,86 43,104" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="28" y="122" fill="currentColor" font-size="14" text-anchor="middle">Jane</text>
+<rect x="62" y="62" width="80" height="46" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="102" y="81" fill="currentColor" font-size="14" text-anchor="middle"><tspan x="102">user</tspan><tspan x="102" dy="16">agent</tspan></text>
+<circle cx="56" cy="50" r="10" fill="none" stroke="var(--palette-blue)" stroke-width="1.5"/>
+<text x="56" y="55" fill="currentColor" font-size="14" text-anchor="middle">1</text>
+<!-- mail server di Jane: coda (verde) e caselle (arancioni) -->
+<rect x="215" y="40" width="120" height="100" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="275" y="58" fill="currentColor" font-size="14" text-anchor="middle"><tspan x="275">mail</tspan><tspan x="275" dy="16">server</tspan></text>
+<rect x="249" y="88" width="76" height="15" fill="var(--palette-green)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<line x1="260" y1="91" x2="260" y2="100" stroke="currentColor" stroke-width="1"/>
+<line x1="271" y1="91" x2="271" y2="100" stroke="currentColor" stroke-width="1"/>
+<line x1="282" y1="91" x2="282" y2="100" stroke="currentColor" stroke-width="1"/>
+<line x1="293" y1="91" x2="293" y2="100" stroke="currentColor" stroke-width="1"/>
+<line x1="304" y1="91" x2="304" y2="100" stroke="currentColor" stroke-width="1"/>
+<line x1="315" y1="91" x2="315" y2="100" stroke="currentColor" stroke-width="1"/>
+<rect x="228" y="110" width="14" height="14" fill="var(--palette-orange)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<rect x="247.5" y="110" width="14" height="14" fill="var(--palette-orange)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<rect x="267" y="110" width="14" height="14" fill="var(--palette-orange)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<rect x="286.5" y="110" width="14" height="14" fill="var(--palette-orange)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<rect x="306" y="110" width="14" height="14" fill="var(--palette-orange)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<text x="275" y="160" fill="currentColor" font-size="14" text-anchor="middle">mail server di Jane</text>
+<circle cx="234" cy="95" r="10" fill="none" stroke="var(--palette-blue)" stroke-width="1.5"/>
+<text x="234" y="100" fill="currentColor" font-size="14" text-anchor="middle">3</text>
+<!-- mail server di Bob -->
+<rect x="420" y="55" width="120" height="100" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="480" y="73" fill="currentColor" font-size="14" text-anchor="middle"><tspan x="480">mail</tspan><tspan x="480" dy="16">server</tspan></text>
+<rect x="454" y="103" width="76" height="15" fill="var(--palette-green)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<line x1="465" y1="106" x2="465" y2="115" stroke="currentColor" stroke-width="1"/>
+<line x1="476" y1="106" x2="476" y2="115" stroke="currentColor" stroke-width="1"/>
+<line x1="487" y1="106" x2="487" y2="115" stroke="currentColor" stroke-width="1"/>
+<line x1="498" y1="106" x2="498" y2="115" stroke="currentColor" stroke-width="1"/>
+<line x1="509" y1="106" x2="509" y2="115" stroke="currentColor" stroke-width="1"/>
+<line x1="520" y1="106" x2="520" y2="115" stroke="currentColor" stroke-width="1"/>
+<rect x="433" y="125" width="14" height="14" fill="var(--palette-orange)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<rect x="452.5" y="125" width="14" height="14" fill="var(--palette-orange)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<rect x="472" y="125" width="14" height="14" fill="var(--palette-orange)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<rect x="491.5" y="125" width="14" height="14" fill="var(--palette-orange)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<rect x="511" y="125" width="14" height="14" fill="var(--palette-orange)" fill-opacity="0.8" stroke="currentColor" stroke-width="1"/>
+<text x="480" y="196" fill="currentColor" font-size="14" text-anchor="middle">mail server di Bob</text>
+<circle cx="480" cy="168" r="10" fill="none" stroke="var(--palette-blue)" stroke-width="1.5"/>
+<text x="480" y="173" fill="currentColor" font-size="14" text-anchor="middle">5</text>
+<!-- user agent di Bob e Bob -->
+<rect x="600" y="50" width="80" height="46" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="640" y="69" fill="currentColor" font-size="14" text-anchor="middle"><tspan x="640">user</tspan><tspan x="640" dy="16">agent</tspan></text>
+<circle cx="700" cy="62" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<path d="M685,92 Q685,74 700,74 Q715,74 715,92" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="700" y="110" fill="currentColor" font-size="14" text-anchor="middle">Bob</text>
+<!-- frecce 2, 4, 6 -->
+<line x1="142" y1="96" x2="213" y2="112" stroke="var(--palette-blue)" stroke-width="1.5" marker-end="url(#i20241102125306-arrow)"/>
+<circle cx="172" cy="88" r="10" fill="none" stroke="var(--palette-blue)" stroke-width="1.5"/>
+<text x="172" y="93" fill="currentColor" font-size="14" text-anchor="middle">2</text>
+<line x1="335" y1="112" x2="418" y2="122" stroke="var(--palette-blue)" stroke-width="1.5" marker-end="url(#i20241102125306-arrow)"/>
+<circle cx="375" cy="101" r="10" fill="none" stroke="var(--palette-blue)" stroke-width="1.5"/>
+<text x="375" y="106" fill="currentColor" font-size="14" text-anchor="middle">4</text>
+<line x1="540" y1="120" x2="598" y2="90" stroke="var(--palette-blue)" stroke-width="1.5" marker-end="url(#i20241102125306-arrow)"/>
+<circle cx="560" cy="88" r="10" fill="none" stroke="var(--palette-blue)" stroke-width="1.5"/>
+<text x="560" y="93" fill="currentColor" font-size="14" text-anchor="middle">6</text>
+</svg>
 
 ### POP, IMAP, HTTP
 
@@ -151,46 +208,87 @@ Esistono anche DNS locali che vengono usati per memorizzare i record DNS per un 
 - il server contattato risponde con il nome del server da contattare
 - “non conosco questo nome, ma chiedi a questo server”
 
-```mermaid
-sequenceDiagram
-    participant H as requesting host at<br/>engineering.nyu.edu
-    participant L as local DNS server<br/>dns.nyu.edu
-    participant R as root DNS server
-    participant T as TLD DNS server
-    participant A as authoritative DNS server<br/>dns.cs.umass.edu
-    H->>L: 1
-    L->>R: 2
-    R->>L: 3
-    L->>T: 4
-    T->>L: 5
-    L->>A: 6
-    A->>L: 7
-    L->>H: 8
-    Note right of A: gaia.cs.umass.edu
-```
+<svg viewBox="0 0 640 412" width="100%" style="max-width:640px;display:block;margin:1.5rem auto" role="img" aria-label="Query DNS iterativa: l'host richiedente chiede al DNS locale (1), che interroga a turno il root server (2, 3), il server TLD (4, 5) e il server autoritativo (6, 7), poi risponde all'host (8)">
+<defs><marker id="i20241102130437-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g transform="translate(40,0)">
+<!-- host e server -->
+<g><rect x="20" y="170" width="40" height="28" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><path d="M35,198 L33,204 L47,204 L45,198" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="207" width="40" height="6" fill="none" stroke="currentColor" stroke-width="1.2"/></g>
+<g><rect x="207" y="163" width="26" height="46" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><line x1="212" y1="172" x2="228" y2="172" stroke="currentColor" stroke-width="1.5"/><line x1="212" y1="179" x2="228" y2="179" stroke="currentColor" stroke-width="1.5"/><line x1="212" y1="186" x2="228" y2="186" stroke="currentColor" stroke-width="1.5"/><circle cx="214" cy="202" r="2" fill="var(--palette-green)"/><circle cx="220" cy="202" r="2" fill="var(--palette-red)"/></g>
+<g><rect x="317" y="43" width="26" height="46" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><line x1="322" y1="52" x2="338" y2="52" stroke="currentColor" stroke-width="1.5"/><line x1="322" y1="59" x2="338" y2="59" stroke="currentColor" stroke-width="1.5"/><line x1="322" y1="66" x2="338" y2="66" stroke="currentColor" stroke-width="1.5"/><circle cx="324" cy="82" r="2" fill="var(--palette-green)"/><circle cx="330" cy="82" r="2" fill="var(--palette-red)"/></g>
+<g><rect x="397" y="163" width="26" height="46" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><line x1="402" y1="172" x2="418" y2="172" stroke="currentColor" stroke-width="1.5"/><line x1="402" y1="179" x2="418" y2="179" stroke="currentColor" stroke-width="1.5"/><line x1="402" y1="186" x2="418" y2="186" stroke="currentColor" stroke-width="1.5"/><circle cx="404" cy="202" r="2" fill="var(--palette-green)"/><circle cx="410" cy="202" r="2" fill="var(--palette-red)"/></g>
+<g><rect x="397" y="297" width="26" height="46" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><line x1="402" y1="306" x2="418" y2="306" stroke="currentColor" stroke-width="1.5"/><line x1="402" y1="313" x2="418" y2="313" stroke="currentColor" stroke-width="1.5"/><line x1="402" y1="320" x2="418" y2="320" stroke="currentColor" stroke-width="1.5"/><circle cx="404" cy="336" r="2" fill="var(--palette-green)"/><circle cx="410" cy="336" r="2" fill="var(--palette-red)"/></g>
+<g><rect x="500" y="308" width="40" height="28" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><path d="M515,336 L513,342 L527,342 L525,336" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="496" y="345" width="40" height="6" fill="none" stroke="currentColor" stroke-width="1.2"/></g>
+<text x="40" y="250" fill="currentColor" font-size="15" text-anchor="middle">requesting host at</text>
+<text x="40" y="270" fill="var(--palette-blue)" font-size="15" text-anchor="middle" font-style="italic">engineering.nyu.edu</text>
+<text x="220" y="250" fill="currentColor" font-size="15" text-anchor="middle">local DNS server</text>
+<text x="220" y="270" fill="var(--palette-blue)" font-size="15" text-anchor="middle" font-style="italic">dns.nyu.edu</text>
+<text x="330" y="24" fill="currentColor" font-size="15" text-anchor="middle">root DNS server</text>
+<text x="410" y="146" fill="currentColor" font-size="15" text-anchor="middle">TLD DNS server</text>
+<text x="430" y="380" fill="currentColor" font-size="15" text-anchor="middle">authoritative DNS server</text>
+<text x="430" y="400" fill="currentColor" font-size="15" text-anchor="middle" font-weight="bold">dns.cs.umass.edu</text>
+<text x="520" y="290" fill="currentColor" font-size="15" text-anchor="middle" font-style="italic">gaia.cs.umass.edu</text>
+<!-- messaggi -->
+<line x1="80" y1="178" x2="198" y2="178" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130437-arrow)"/>
+<text x="139" y="168" fill="var(--palette-red)" font-size="16" text-anchor="middle">1</text>
+<line x1="198" y1="198" x2="80" y2="198" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130437-arrow)"/>
+<text x="139" y="220" fill="var(--palette-red)" font-size="16" text-anchor="middle">8</text>
+<line x1="226" y1="156" x2="310" y2="72" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130437-arrow)"/>
+<text x="255" y="106" fill="var(--palette-red)" font-size="16" text-anchor="middle">2</text>
+<line x1="318" y1="92" x2="236" y2="172" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130437-arrow)"/>
+<text x="293" y="133" fill="var(--palette-red)" font-size="16" text-anchor="middle">3</text>
+<line x1="240" y1="176" x2="388" y2="176" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130437-arrow)"/>
+<text x="314" y="166" fill="var(--palette-red)" font-size="16" text-anchor="middle">4</text>
+<line x1="388" y1="196" x2="240" y2="196" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130437-arrow)"/>
+<text x="314" y="218" fill="var(--palette-red)" font-size="16" text-anchor="middle">5</text>
+<line x1="258" y1="206" x2="392" y2="314" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130437-arrow)"/>
+<text x="338" y="248" fill="var(--palette-red)" font-size="16" text-anchor="middle">6</text>
+<line x1="384" y1="330" x2="250" y2="212" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130437-arrow)"/>
+<text x="304" y="294" fill="var(--palette-red)" font-size="16" text-anchor="middle">7</text>
+</g>
+</svg>
 
 **query ricorsiva:**
 
 - affida il compito di tradurre il nome al server DNS contattato
 - grosso carico per gli alti livelli della gerarchia?
 
-```mermaid
-sequenceDiagram
-    participant H as requesting host at<br/>engineering.nyu.edu
-    participant L as local DNS server<br/>dns.nyu.edu
-    participant R as root DNS server
-    participant T as TLD DNS server
-    participant A as authoritative DNS server<br/>dns.cs.umass.edu
-    H->>L: 1
-    L->>R: 2
-    R->>T: 3
-    T->>A: 4
-    A->>T: 5
-    T->>R: 6
-    R->>L: 7
-    L->>H: 8
-    Note right of A: gaia.cs.umass.edu
-```
+<svg viewBox="0 0 640 412" width="100%" style="max-width:640px;display:block;margin:1.5rem auto" role="img" aria-label="Query DNS ricorsiva: l'host chiede al DNS locale (1), che chiede al root server (2), che chiede al server TLD (3), che chiede al server autoritativo (4); le risposte tornano indietro (5, 6, 7, 8)">
+<defs><marker id="i20241102130504-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,1 L10,5 L0,9 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g transform="translate(40,0)">
+<g><rect x="20" y="170" width="40" height="28" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><path d="M35,198 L33,204 L47,204 L45,198" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="16" y="207" width="40" height="6" fill="none" stroke="currentColor" stroke-width="1.2"/></g>
+<g><rect x="207" y="163" width="26" height="46" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><line x1="212" y1="172" x2="228" y2="172" stroke="currentColor" stroke-width="1.5"/><line x1="212" y1="179" x2="228" y2="179" stroke="currentColor" stroke-width="1.5"/><line x1="212" y1="186" x2="228" y2="186" stroke="currentColor" stroke-width="1.5"/><circle cx="214" cy="202" r="2" fill="var(--palette-green)"/><circle cx="220" cy="202" r="2" fill="var(--palette-red)"/></g>
+<g><rect x="317" y="37" width="26" height="46" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><line x1="322" y1="46" x2="338" y2="46" stroke="currentColor" stroke-width="1.5"/><line x1="322" y1="53" x2="338" y2="53" stroke="currentColor" stroke-width="1.5"/><line x1="322" y1="60" x2="338" y2="60" stroke="currentColor" stroke-width="1.5"/><circle cx="324" cy="76" r="2" fill="var(--palette-green)"/><circle cx="330" cy="76" r="2" fill="var(--palette-red)"/></g>
+<g><rect x="387" y="167" width="26" height="46" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><line x1="392" y1="176" x2="408" y2="176" stroke="currentColor" stroke-width="1.5"/><line x1="392" y1="183" x2="408" y2="183" stroke="currentColor" stroke-width="1.5"/><line x1="392" y1="190" x2="408" y2="190" stroke="currentColor" stroke-width="1.5"/><circle cx="394" cy="206" r="2" fill="var(--palette-green)"/><circle cx="400" cy="206" r="2" fill="var(--palette-red)"/></g>
+<g><rect x="387" y="303" width="26" height="46" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><line x1="392" y1="312" x2="408" y2="312" stroke="currentColor" stroke-width="1.5"/><line x1="392" y1="319" x2="408" y2="319" stroke="currentColor" stroke-width="1.5"/><line x1="392" y1="326" x2="408" y2="326" stroke="currentColor" stroke-width="1.5"/><circle cx="394" cy="342" r="2" fill="var(--palette-green)"/><circle cx="400" cy="342" r="2" fill="var(--palette-red)"/></g>
+<g><rect x="500" y="314" width="40" height="28" rx="2" fill="currentColor" fill-opacity="0.15" stroke="currentColor" stroke-width="1.5"/><path d="M515,342 L513,348 L527,348 L525,342" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="496" y="351" width="40" height="6" fill="none" stroke="currentColor" stroke-width="1.2"/></g>
+<text x="40" y="250" fill="currentColor" font-size="15" text-anchor="middle">requesting host at</text>
+<text x="40" y="270" fill="var(--palette-blue)" font-size="15" text-anchor="middle" font-style="italic">engineering.nyu.edu</text>
+<text x="220" y="250" fill="currentColor" font-size="15" text-anchor="middle">local DNS server</text>
+<text x="220" y="270" fill="var(--palette-blue)" font-size="15" text-anchor="middle" font-style="italic">dns.nyu.edu</text>
+<text x="330" y="20" fill="currentColor" font-size="15" text-anchor="middle">root DNS server</text>
+<text x="424" y="182" fill="currentColor" font-size="15">TLD DNS server</text>
+<text x="420" y="384" fill="currentColor" font-size="15" text-anchor="middle">authoritative DNS server</text>
+<text x="420" y="404" fill="currentColor" font-size="15" text-anchor="middle" font-weight="bold">dns.cs.umass.edu</text>
+<text x="520" y="296" fill="currentColor" font-size="15" text-anchor="middle" font-style="italic">gaia.cs.umass.edu</text>
+<!-- messaggi -->
+<line x1="80" y1="178" x2="198" y2="178" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130504-arrow)"/>
+<text x="139" y="168" fill="var(--palette-red)" font-size="16" text-anchor="middle">1</text>
+<line x1="198" y1="198" x2="80" y2="198" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130504-arrow)"/>
+<text x="139" y="220" fill="var(--palette-red)" font-size="16" text-anchor="middle">8</text>
+<line x1="228" y1="154" x2="308" y2="70" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130504-arrow)"/>
+<text x="256" y="104" fill="var(--palette-red)" font-size="16" text-anchor="middle">2</text>
+<line x1="310" y1="84" x2="240" y2="160" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130504-arrow)"/>
+<text x="288" y="134" fill="var(--palette-red)" font-size="16" text-anchor="middle">7</text>
+<line x1="352" y1="62" x2="394" y2="158" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130504-arrow)"/>
+<text x="386" y="100" fill="var(--palette-red)" font-size="16" text-anchor="middle">3</text>
+<line x1="382" y1="160" x2="342" y2="82" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130504-arrow)"/>
+<text x="351" y="128" fill="var(--palette-red)" font-size="16" text-anchor="middle">6</text>
+<line x1="410" y1="222" x2="410" y2="296" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130504-arrow)"/>
+<text x="424" y="264" fill="var(--palette-red)" font-size="16" text-anchor="middle">4</text>
+<line x1="390" y1="296" x2="390" y2="222" stroke="var(--palette-red)" stroke-width="2" marker-end="url(#i20241102130504-arrow)"/>
+<text x="376" y="264" fill="var(--palette-red)" font-size="16" text-anchor="middle">5</text>
+</g>
+</svg>
 
 ## Record DNS
 
