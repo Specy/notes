@@ -15,13 +15,47 @@ Il "segnale" è rappresentato da un numero reale, e l'output di ogni neurone è 
 
 La "forza" della connessione del segnale è determinata dai "pesi", ed è la parte che viene aggiustata durante il processo di learning
 
-![[Pasted image 20241219213557.png]]
+```mermaid
+flowchart LR
+  x1["x₁ = 2"]
+  x2["x₂ = 2"]
+  x3["x₃ = 1"]
+  m1["* <br/> 2*2=4"]
+  m2["* <br/> 2*2*1=4"]
+  p3["+ <br/> 2*1+1*7=9"]
+  ln["ln <br/> ln(4)=1.386"]
+  ex["exp <br/> 54.6"]
+  sq["√ <br/> √9=3"]
+  out["* <br/> 1.386*54.6*3=227"]
+  x1 --> m1
+  x1 --> m2
+  x2 --> m1
+  x2 --> m2
+  x2 -- "w₂=1" --> p3
+  x3 --> m2
+  x3 -- "w₃=7" --> p3
+  m1 --> ln
+  m2 --> ex
+  p3 --> sq
+  ln --> out
+  ex --> out
+  sq --> out
+```
 
 # Percettrone
 
 Il percettrone utilizza vari "neuroni" collegati ad un neurone finale per calcolare il valore dell'output. è visto come un modello a "sigolo strato", dato che contiene solo uno strato di neuroni:
 
-![[Pasted image 20241219213844.png]]
+```mermaid
+flowchart LR
+  x1(("x₁")) -- "w₁" --> O(["OUTPUT NODE<br/>Σ ⎍"])
+  x2(("x₂")) -- "w₂" --> O
+  x3(("x₃")) -- "w₃" --> O
+  x4(("x₄")) -- "w₄" --> O
+  x5(("x₅")) -- "w₅" --> O
+  bias["+1<br/>BIAS"] -- "b" --> O
+  O --> y["y"]
+```
 
 Modelliamo un neurone in maniera semplice:
 
@@ -68,7 +102,36 @@ Questo ciclo viene eseguito più volte, dove ogni iterazione è chiamata "epoch"
 --- 
 Se abbiamo una funzione di attivazione lineare $g(\cdot)$, il percettrone corrisponde ad un modello lineare che separa linearmente i dati. Questo funziona bene se i dati sono linearmente separabili.
 
-![[Pasted image 20241219222143.png]]
+**Linearly separable data**
+
+```plot
+x: [0, 5.6]
+y: [0, 5]
+axes: false
+width: 400
+height: 300
+items:
+  - line: [[0.65, 0.28], [4.73, 4.55]]
+  - points: [[0.75, 1.15], [1.08, 1.20], [0.98, 1.57], [0.98, 2.13], [1.50, 2.26], [1.60, 1.80], [1.93, 2.45], [2.24, 2.53], [1.78, 2.95], [2.38, 2.95], [2.72, 2.99], [2.27, 3.52], [2.90, 3.38], [2.97, 3.92], [3.25, 4.16], [3.28, 3.82], [3.68, 3.97], [3.82, 4.35]]
+    shape: dot
+  - points: [[4.60, 3.77], [5.06, 3.97], [4.19, 3.28], [4.86, 2.99], [3.83, 2.95], [4.26, 2.70], [3.46, 2.68], [3.92, 2.33], [3.01, 2.38], [2.87, 1.83], [3.33, 1.87], [2.35, 1.57], [3.22, 1.42], [1.83, 1.09], [2.24, 0.91], [2.70, 1.06], [1.63, 0.48], [2.24, 0.42]]
+    shape: plus
+```
+
+**Not linearly separable data**
+
+```plot
+x: [0.3, 7.2]
+y: [0.8, 6.2]
+axes: false
+width: 400
+height: 300
+items:
+  - points: [[2.03, 6.00], [1.44, 5.76], [1.96, 5.50], [2.47, 5.48], [1.02, 5.08], [1.61, 5.06], [2.15, 4.99], [1.26, 4.70], [1.96, 4.43], [5.72, 3.11], [6.04, 2.73], [5.41, 2.40], [5.89, 2.13], [6.66, 2.12], [5.45, 1.81], [4.81, 1.67], [5.46, 1.42], [6.10, 1.38]]
+    shape: plus
+  - points: [[5.76, 5.99], [6.32, 5.88], [6.84, 5.39], [5.57, 5.29], [6.30, 5.21], [6.10, 4.91], [6.61, 4.79], [5.56, 4.68], [6.32, 4.41], [0.71, 2.37], [1.27, 2.48], [1.80, 2.48], [2.24, 2.20], [1.37, 2.03], [2.17, 1.84], [0.83, 1.76], [1.89, 1.66], [1.26, 1.43], [2.11, 1.27]]
+    shape: dot
+```
 
 Però, il percettrone, come anche altri modelli, possono usare funzioni di attivazioni non lineari.
 
@@ -81,7 +144,52 @@ A questo punto vediamo il percettrone in 3 strati principali
 - L'output layer è il neurone finale dove viene comunicato l'output
 - L'hidden layer sono tutti gli strati intermedi tra l'input e l'ouput layer
 
-![[Pasted image 20241220124314.png]]
+**Perceptron**
+
+```mermaid
+flowchart LR
+  x1(("x₁")) -- "w₁" --> O(["OUTPUT NODE<br/>Σ ⎍"])
+  x2(("x₂")) -- "w₂" --> O
+  x3(("x₃")) -- "w₃" --> O
+  x4(("x₄")) -- "w₄" --> O
+  x5(("x₅")) -- "w₅" --> O
+  bias["+1<br/>BIAS NEURON"] -- "b" --> O
+  O --> y["y"]
+```
+
+**Multilayer perceptron (MLP)**
+
+```mermaid
+flowchart LR
+  subgraph INL["INPUT LAYER"]
+    x1(("x₁"))
+    x2(("x₂"))
+    x3(("x₃"))
+    x4(("x₄"))
+    x5(("x₅"))
+  end
+  subgraph HID["HIDDEN LAYER"]
+    h1(("h₁"))
+    h2(("h₂"))
+    h3(("h₃"))
+  end
+  subgraph OUTL["OUTPUT LAYER"]
+    o(("o"))
+  end
+  b1["+1<br/>BIAS NEURON"]
+  b2["+1<br/>BIAS NEURON"]
+  x1 --> h1 & h2 & h3
+  x2 --> h1 & h2 & h3
+  x3 --> h1 & h2 & h3
+  x4 --> h1 & h2 & h3
+  x5 --> h1 & h2 & h3
+  b1 --> h1 & h2 & h3
+  h1 --> o
+  h2 --> o
+  h3 --> o
+  b2 --> o
+  o --> y["y"]
+```
 
 Questo percettrone è chiamato "multi level perceptron" o MLP.
 
@@ -98,7 +206,6 @@ $$
 ![[Pasted image 20241220125543.png]]
 
 La matematica di un perceptrone multistrato può essere espressa in una forma più compatta e forse più comprensibile adottando una notazione matriciale.
-
 
 Per semplificare la spiegazione di un layer con indice $p$, usiamo "$\text{in}$" per rappresentare l'input di questo strato (lo strato con indice $p - 1$), ed usiamo "$\text{out}$" per rappresentare l'output dello strato corrente (lo strato con indice $p$)
 
@@ -123,7 +230,18 @@ $$
 
 dove $g(\cdot)$ è applicata elemento per elemento a tutte le componenti del vettore $\mathbf{W}^\text{out} \mathbf{y}^\text{in}$.
 
-![[Pasted image 20241220131810.png]]
+```mermaid
+flowchart LR
+  X["INPUT<br/>x"] -- "×" --> W1[/"W<sup>(1)</sup>"\]
+  W1 --> L1["L<sub>1</sub><br/>η<sub>1</sub><sup>(1)</sup><br/>⋮<br/>η<sub>d₁</sub><sup>(1)</sup>"]
+  L1 --> Y1["y<sup>(1)</sup> = g(W<sup>(1)</sup>x)"]
+  Y1 -- "×" --> W2[/"W<sup>(2)</sup>"\]
+  W2 -- "…" --> Lk1["L<sub>k−1</sub><br/>η<sub>1</sub><sup>(k−1)</sup><br/>⋮<br/>η<sub>d<sub>k−1</sub></sub><sup>(k−1)</sup>"]
+  Lk1 --> Yk1["y<sup>(k−1)</sup> = g(W<sup>(k−1)</sup>y<sup>(k−2)</sup>)"]
+  Yk1 -- "×" --> Wk[/"W<sup>(k)</sup>"\]
+  Wk --> Lk["L<sub>k</sub><br/>η<sub>1</sub><sup>(k)</sup><br/>⋮<br/>η<sub>d<sub>k</sub></sub><sup>(k)</sup>"]
+  Lk --> OUT["OUTPUT"]
+```
 
 A questo punto denotiamo $f^{(p)}$ come la funzione $\mathbf{y}^{(p)} = g\left( \mathbf{W}^{(p)} \mathbf{y}^{(p-1)} \right)$ dello strato $L_p$ i un MLP a $k$ strati. 
 Abbiamo $x$ l'input dato all'MLP, allora la funzione finale che rappresenta l'intero MLP sarà del tipo:
@@ -157,7 +275,22 @@ Dato che è quasi lineare, conserva molte proprietà dei modelli lineari, ed è 
 $$
 r(x)=\max \{0, x\}= \begin{cases}0, & x<0 \\ x, & x \geq 0\end{cases}
 $$
-![[Pasted image 20241220135419.png]]
+
+```plot
+x: [-10.5, 10.5]
+y: [-0.5, 10.5]
+height: 260
+grid: true
+ticks: true
+xticks: [-10, -7.5, -5, -2.5, 0, 2.5, 5, 7.5, 10]
+yticks: [0, 2, 4, 6, 8, 10]
+caption: ReLU Activation Function
+items:
+  - fn: max(0, x)
+    color: blue
+  - text: $\max(0,x)$
+    at: [6.5, 1]
+```
 
 ## Funzione sigmoidea
 
@@ -166,19 +299,56 @@ $$
 $$
 sigm(x) = \frac{1}{1+e^{-x}}
 $$
-![[Pasted image 20241220135645.png]]
+
+```plot
+x: [-6, 6]
+y: [0, 1]
+height: 280
+grid: true
+xticks: [-6, -4, -2, 0, 2, 4, 6]
+yticks: [0, 0.5, 1]
+items:
+  - fn: 1/(1 + exp(-x))
+    color: blue
+```
 
 ## Funzione iperbolica
 
 è monotona crescente, ed ha limite -1 quando tende a $-\infty$ e ad 1 quando tende a $+\infty$ 
 
-![[Pasted image 20241220135736.png]]
+```plot
+x: [-2.8, 2.8]
+y: [-1.4, 1.4]
+height: 260
+grid: true
+xticks: [-2, -1, 1, 2]
+yticks: [-1, 1]
+xlabel: $x$
+ylabel: $\tanh(x)$
+items:
+  - fn: tanh(x)
+    color: red
+    width: 3
+```
 
 ## Arctan 
 
 è l'inverso della funzione tangente, è monotona crescente, ed ha limite $-\frac{\pi}{2}$ quando tende a $-\infty$ e ad $\frac{\pi}{2}$ quando tende a $+\infty$ 
 
-![[Pasted image 20241220135853.png]]
+```plot
+x: [-4.8, 4.8]
+y: [-2.1, 2.1]
+height: 260
+grid: true
+xticks: [-4, -3, -2, -1, 1, 2, 3, 4]
+yticks: { "pi/2": "$\\frac{\\pi}{2}$", "-pi/2": "$-\\frac{\\pi}{2}$" }
+xlabel: $x$
+ylabel: $\arctan(x)$
+items:
+  - fn: atan(x)
+    color: red
+    width: 3
+```
 
 ## Softmax
 
@@ -278,8 +448,16 @@ Calcolare l'errore complessivo del dataset ad ogni step del gradient descent pu�
 - Una volta aver processato tutti i minibatch, ci ritroviamo al punto in cui abbiamo analizzato tutti i dati nel nostro dataset, quindi consideriamo questo come una singola epoca di training
 - Ripetiamo questo proccesso (randomizzando $D$ ogni volta) per un certo numero di epoche.
 
-![[Pasted image 20241220151127.png]]
+**for** a fixed number of epochs **do**
+- shuffle training set $D$ and split it into minibatches
+- **for** every minibatch $M$ **do**
+  - compute $f_{\boldsymbol{W}}(\boldsymbol{x}_i)$ (output of the MLP given current weights $\boldsymbol{W}$) for every $(\boldsymbol{x}_i, \boldsymbol{y}_i) \in M$
+  - compute (approximate) loss $\hat{\mathcal{L}} = \frac{1}{\lvert M\rvert}\sum_{(\boldsymbol{x}_i,\boldsymbol{y}_i)\in M} \ell(f_{\boldsymbol{W}}(\boldsymbol{x}_i), \boldsymbol{y}_i)$
+  - compute gradient $\nabla_{\boldsymbol{W}}\hat{\mathcal{L}}$ of $\hat{\mathcal{L}}$
+  - take a step of gradient descent: update current weights $\boldsymbol{W}$ as $\boldsymbol{W} \leftarrow \boldsymbol{W} - \lambda\nabla_{\boldsymbol{W}}\hat{\mathcal{L}}$
+- **endfor**
 
+**endfor**
 
 # Loss functions
 
@@ -332,8 +510,37 @@ La parola "deep" ("profondo") indica che questi circuiti sono organizzati in **m
 
 Questi circuiti algebrici corrispondono a **reti neurali artificiali**. Di conseguenza, il deep learning utilizza reti neurali con **molti strati di neuroni artificiali connessi tra loro**.
 
-![[Pasted image 20241220163348.png]]
-![[Pasted image 20241220163411.png]]
+```mermaid
+block-beta
+  columns 1
+  block:AI
+    columns 1
+    a["ARTIFICIAL INTELLIGENCE<br/>Programs with the ability to learn and reason like humans"]
+    block:ML
+      columns 1
+      m["MACHINE LEARNING<br/>Algorithms with the ability to learn without being explicitly programmed"]
+      d["DEEP LEARNING<br/>Subset of machine learning in which artificial neural networks adapt and learn from vast amounts of data"]
+    end
+  end
+```
+
+```mermaid
+block-beta
+  columns 1
+  block:AI
+    columns 1
+    a["Artificial intelligence"]
+    block:ML
+      columns 3
+      m["Machine learning"]:3
+      s["Supervised learning"]
+      u["Unsupervised learning"]
+      r["Reinforcement learning"]
+      d["Deep learning"]:3
+    end
+  end
+```
+
 ## Teorema dell'approssimazione universale
 
 è un teorema molto importante sulla rappresentazione e potenza approssimativa delle reti neurali di funzioni arbitrarie.
