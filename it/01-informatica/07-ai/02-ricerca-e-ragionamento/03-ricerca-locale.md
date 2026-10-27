@@ -18,7 +18,41 @@ L'algoritmo di **hill climbing** tiene traccia dello stato corrente e ad ogni it
 - l'ideale finale sarebbe quello di trovare il massimo globale, ma tipicamente riesce a trovare solo un massimo locale
 - l'algoritmo termina quando raggiunge un "picco", dove nessuno stato vicino ha un valore maggiore della funzione obiettivo. Questo vuol dire che se una curva ha due picchi, il secondo più alto del primo, l'algoritmo si fermerà al primo picco.
 
-![[Pasted image 20241201145109.png]]
+```plot
+x: [0, 40]
+y: [-4, 27]
+width: 560
+height: 320
+xlabel: state space
+ylabel: objective function
+items:
+  - fn: f
+    through: [[1, 3.5], [4.5, 5.5], [6.8, 8.5], [8, 12.5], [10.2, 12.5], [12.3, 22.7], [14.5, 12.5], [16, 5], [20.3, 1.7], [24, 11.5], [27.2, 3.3], [29.2, 7.6], [31.5, 7.6], [35, 2.7], [37.5, 1.9]]
+    color: teal
+    width: 2
+  - text: global maximum
+    at: [21, 24.5]
+  - line: [[16.5, 24], [13.2, 22.8]]
+  - text: shoulder
+    at: [4.8, 17]
+  - line: [[7, 15.8], [8.3, 13.3]]
+  - text: local maximum
+    at: [34, 14]
+  - line: [[29.5, 13.2], [24.7, 11.8]]
+  - text: '"flat" local maximum'
+    at: [36.5, 11]
+  - line: [[33.5, 10.2], [31.5, 8.2]]
+  - line: [[21.7, -1.5], [21.7, 4.2]]
+    arrow: true
+  - line: [[21.9, 5.3], [22.5, 8.2]]
+    arrow: true
+  - point: [21.7, 4.7]
+    color: muted
+  - text: current
+    at: [21.7, -2.8]
+  - text: state
+    at: [21.7, -4.2]
+```
 
 Per aumentare la possibilità di trovare il massimo locale:
 
@@ -48,7 +82,17 @@ La probabilità di accettare un nuovo stato diminuisce esponenzialmente in base 
 
 La probabilità diminuisce anche quando il valore della temperatura diminuisce. Mosse che possono essere viste come "peggiori" sono favorite all'inizio quando il valore di temperatura $T$ è alto, e diminuisce man mano nelle iterazioni
 
-![[Pasted image 20241201162606.png]]
+```text
+function SIMULATED-ANNEALING(problem, schedule) returns a solution state
+  current ← problem.INITIAL
+  for t = 1 to ∞ do
+    T ← schedule(t)
+    if T = 0 then return current
+    next ← a randomly selected successor of current
+    ΔE ← VALUE(next) − VALUE(current)
+    if ΔE > 0 then current ← next
+    else current ← next only with probability e^(ΔE/T)
+```
 
 ## Local beam search
 
@@ -65,7 +109,41 @@ C'è una popolazione di individui (gli stati) dove i più forti (valore funzione
 
 Ogni individuo ha una "stringa" che rappresenta il proprio "dna" e durante il processo di ricombinazione°
 
-![[Pasted image 20241201163350.png]]
+```mermaid
+flowchart LR
+    A1["24748552<br>24 · 31%"]
+    A2["32752411<br>23 · 29%"]
+    A3["24415124<br>20 · 26%"]
+    A4["32543213<br>11 · 14%"]
+    B1["327|52411"]
+    B2["247|48552"]
+    B3["32752|411"]
+    B4["24415|124"]
+    C1["32748552"]
+    C2["24752411"]
+    C3["32752124"]
+    C4["24415411"]
+    D1["`32748**1**52`"]
+    D2["24752411"]
+    D3["`32**2**52124`"]
+    D4["`2441541**7**`"]
+    A2 --> B1
+    A1 --> B2
+    A2 --> B3
+    A3 --> B4
+    B1 --> C1
+    B1 --> C2
+    B2 --> C1
+    B2 --> C2
+    B3 --> C3
+    B3 --> C4
+    B4 --> C3
+    B4 --> C4
+    C1 --> D1
+    C2 --> D2
+    C3 --> D3
+    C4 --> D4
+```
 
 ## Ricerca locale in spazi continui
 
