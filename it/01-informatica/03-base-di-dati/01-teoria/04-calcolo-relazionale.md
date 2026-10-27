@@ -66,10 +66,29 @@ trova la matricola e nome dei capi i cui impiegati guadagnano tutti più di 40, 
    \end{aligned}
 $$
 
-
 Cioè seleziono tutti i supervisori, e ne tolgo tutti i supervisori che hanno impiegati con $stipendio \le 40$
 
-![[Pasted image 20230708132425.png]]
+$$
+\begin{aligned}
+&\{\text{Matricola}: c,\ \text{Nome}: n \mid \\
+&\text{Impiegati}(\text{Matricola}: c,\ \text{Nome}: n,\ \text{Età}: e,\ \text{Stipendio}: s) \wedge \\
+&\text{Supervisione}(\text{Capo}: c,\ \text{Impiegato}: m) \wedge \\
+&\neg\, \exists m'(\exists n'(\exists e'(\exists s'(\text{Impiegati}(\text{Matr}: m',\ \text{Nome}: n',\ \text{Età}: e',\ \text{Stip}: s') \wedge \\
+&\qquad \text{Supervisione}(\text{Capo}: c,\ \text{Impiegato}: m') \wedge s' \le 40)))) \}
+\end{aligned}
+$$
+
+De Morgan
+
+$$
+\begin{aligned}
+&\{\text{Matricola}: c,\ \text{Nome}: n \mid \\
+&\text{Impiegati}(\text{Matricola}: c,\ \text{Nome}: n,\ \text{Età}: e,\ \text{Stipendio}: s) \wedge \\
+&\text{Supervisione}(\text{Capo}: c,\ \text{Impiegato}: m) \wedge \\
+&\forall m'(\forall n'(\forall e'(\forall s'(\neg(\text{Impiegati}(\text{Matr}: m',\ \text{Nome}: n',\ \text{Età}: e',\ \text{Stip}: s') \wedge \\
+&\qquad \text{Supervisione}(\text{Capo}: c,\ \text{Impiegato}: m')) \vee s' > 40)))) \}
+\end{aligned}
+$$
 
 # Calcolo su ennuple con dichiarazioni di range
 Le espressioni hanno la forma 
