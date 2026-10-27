@@ -4,14 +4,26 @@ description: "Sistemi direzionali e operativi a confronto (OLTP vs OLAP), archit
 type: lecture
 ---
 
-![[Pasted image 20230710123803.png]]
+```mermaid
+flowchart TD
+    D["Livello direzionale"]
+    O["Livello operativo"]
+    D -->|"obiettivi, strategie"| O
+    O -->|risultati| D
+```
 
 - **Livello direzionale**: si occupa delle attività necessarie alla definizione di obiettivi da raggiungere e alle strategie da intraprendere per perseguirli 
 - **Livello operativo**: si occupa delle attività che l'azienda produce in maniera propria, fornendo al livello direzionale le informazioni sui risultati raggiunti
 
 # Tipi di sistemi direzionali
 
-![[Pasted image 20230710123833.png]]
+```mermaid
+block-beta
+  columns 5
+  space:2 a["Pianificazione strategica"] space:2
+  space b["Controllo direzionale"]:3 space
+  c["Controllo operativo"]:5
+```
 
 - **Pianificazione strategica**: determina gli obiettivi generali dell'azienda
 - **Controllo direzionale di gestione**: definisce traguardi economici, cioè risultati da conseguire a medio termine, e la loro verifica
@@ -25,7 +37,6 @@ Le informazioni direzionali hanno diverse dimensioni:
 - Dimensione **Processi**: analisi di indici di efficienza ed efficacia (es tempestività)
 - Dimensione **Responsabilità**: Ad ogni centro sono associati alcuni indici che forniscono rendiconti sulle prestazioni dei singolo dirigenti
 - Dimensione **Cliente**: analizza la redditività, volume di affari e bacino di utenza
-
 
 # Data warehouse (DWH)
 
@@ -66,7 +77,36 @@ I dati in un DWH possono solo essere caricati e letti, non modificati o eliminat
 | Grosso numero di utenti operativi                  | Basso numero di utenti manageriali          |
 
 # Architettura di un DWH
-![[Pasted image 20230710125349.png]]
+
+```mermaid
+flowchart LR
+    subgraph SRC["Data sources"]
+        direction TB
+        OS[("Operational systems")]
+        FF[("Flat files")]
+    end
+    ETL["ETL"]
+    ST[("staging<br/>Dati riconciliati")]
+    WH[("Warehousing Integration")]
+    subgraph DM["Data Marts"]
+        direction TB
+        M1[(" ")]
+        M2[(" ")]
+        M3[(" ")]
+    end
+    RP["reporting"]
+    AN["analysis"]
+    MI["mining"]
+    OS --> ETL
+    FF --> ETL
+    ETL --> ST --> WH
+    WH --> M1
+    WH --> M2
+    WH --> M3
+    M1 --> RP
+    M2 --> AN
+    M3 --> MI
+```
 
 ## Data sources
 
@@ -97,7 +137,6 @@ Memorizzano un insieme di dati nel DWH in forma molto aggregata, analizzano una 
 ## INFLOW
  
 Con il termine inflow si indicano i processi associati all'estrazione, filtraggio e caricamenti dei dati da sorgenti OLTP al DWH
-
 
 ## Upflow
 
@@ -164,13 +203,38 @@ un MOLAP offre operazioni di:
 
 ![[Pasted image 20230710132536.png]]
 **SLICE AND DICE** sulle vendite dei lettori dvd nei vari trimestri
-![[Pasted image 20230710132606.png]]
+
+| LETTORI DVD | 1 trim. 03 | 2 trim. 03 | 3 trim. 03 | 4 trim. 03 |
+|---|---|---|---|---|
+| Roma-1 | 38 | 91 | 66 | 198 |
+| Roma-2 | 155 | 219 | 248 | 265 |
+| Milano-1 | 121 | 273 | 266 | 326 |
+| Milano-2 | 222 | 122 | 155 | 200 |
+
 **ROLLUP** sulle città delle sedi per trovare i lettori dvd venduti in una sede
-![[Pasted image 20230710132630.png]]
+
+| LETTORI DVD | 1 trim. 03 | 2 trim. 03 | 3 trim. 03 | 4 trim. 03 |
+|---|---|---|---|---|
+| Roma | 193 | 310 | 314 | 463 |
+| Milano | 343 | 395 | 421 | 526 |
+
 **ROLLUP** vendite trimestrali sui prodotti
-![[Pasted image 20230710132821.png]]
+
+| VENDITE TRIM. | 1 trim. 03 | 2 trim. 03 | 3 trim. 03 | 4 trim. 03 |
+|---|---|---|---|---|
+| Lettori DVD | 536 | 705 | 735 | 989 |
+| Televisori | 567 | 716 | 606 | 717 |
+| Lettori CD | 187 | 155 | 186 | 226 |
+| Videoregistratori | 175 | 191 | 202 | 319 |
+
 **Drill down** per scoprire i mesi delle vendite mensili 
-![[Pasted image 20230710133011.png]]
+
+| VENDITE MENSILI | Gen 03 | Feb 03 | Mar 03 | Apr 03 | Mag 03 | Giu 03 | … |
+|---|---|---|---|---|---|---|---|
+| Lettori DVD | 165 | 178 | 193 | 205 | 244 | 256 | … |
+| Televisori | 154 | 201 | 212 | 245 | 255 | 216 | … |
+| Lettori CD | 54 | 88 | 45 | 24 | 65 | 66 | … |
+| Videoregistratori | 56 | 64 | 55 | 52 | 64 | 75 | … |
 
 ## Knowledge Discover in database
 
@@ -190,15 +254,115 @@ Durante il KDD si cerca di trovare pattern sconosciuti ma validi, cioè regole c
 
 Uno schema a stella è composto da una tabella principale chiamata di *Tabella fatti* che memorizza i fatti e misure, e da due o più tabelle autisiali chiamate *Tabelle dimensione* che rappresenta una dimensione interessante dove analizzare i dati.
 
-![[Pasted image 20230710133939.png]]
+```mermaid
+erDiagram
+    TEMPO ||--o{ VENDITE : ""
+    LUOGO ||--o{ VENDITE : ""
+    ARTICOLO ||--o{ VENDITE : ""
+    CLIENTE ||--o{ VENDITE : ""
+    TEMPO {
+        string CodiceTempo PK
+        string Giorno
+        string Mese
+        string Trimestre
+        string Anno
+    }
+    LUOGO {
+        string CodiceLuogo PK
+        string Negozio
+        string Indirizzo
+        string Città
+        string Provincia
+        string Regione
+    }
+    ARTICOLO {
+        string CodiceArticolo PK
+        string Descrizione
+        string Marca
+        string Categoria
+    }
+    CLIENTE {
+        string CodiceCliente PK
+        string Nome
+        string Cognome
+        string Sesso
+        string Età
+        string Professione
+    }
+    VENDITE {
+        string CodiceTempo FK
+        string CodiceLuogo FK
+        string CodiceArticolo FK
+        string CodiceCliente FK
+        string Quantità
+        string Incasso
+    }
+```
+
 Nella tabella fatti la chiave primaria è formata da formata dai riferimenti delle altre tabelle dimensione, i dati sono considerati in sola lettura e gli altri campi non chiavi sono misure. è in 3NF
 
 Nella tabella dimensioni la chiave primaria è semplice, gli altri campi memorizzano i livelli della dimensione ed è denormalizzata (pre joinata insieme), cioè contiene ridondanza, se è normalizzata allora si parla di schema a fiocco di neve, es:
 
-![[Pasted image 20230710134144.png]]
+```mermaid
+erDiagram
+    TEMPO ||--o{ VENDITE : ""
+    LUOGO ||--o{ VENDITE : ""
+    ARTICOLO ||--o{ VENDITE : ""
+    CLIENTE ||--o{ VENDITE : ""
+    MESE ||--o{ TEMPO : ""
+    CATEGORIA ||--o{ ARTICOLO : ""
+    REGIONE ||--o{ LUOGO : ""
+    TEMPO {
+        string CodiceTempo PK
+        string Giorno
+        string CodiceMese FK
+    }
+    MESE {
+        string CodiceMese PK
+        string Trimestre
+        string Anno
+    }
+    LUOGO {
+        string CodiceLuogo PK
+        string Negozio
+        string Indirizzo
+        string CodiceCittà
+        string Città
+        string CodiceRegione FK
+    }
+    REGIONE {
+        string CodiceRegione PK
+        string Regione
+    }
+    ARTICOLO {
+        string CodiceArticolo PK
+        string Descrizione
+        string Marca
+        string CodiceCategoria FK
+    }
+    CATEGORIA {
+        string CodiceCategoria PK
+        string Categoria
+    }
+    CLIENTE {
+        string CodiceCliente PK
+        string Nome
+        string Cognome
+        string Sesso
+        string Età
+        string Professione
+    }
+    VENDITE {
+        string CodiceTempo FK
+        string CodiceLuogo FK
+        string CodiceArticolo FK
+        string CodiceCliente FK
+        string Quantità
+        string Incasso
+    }
+```
 
 Un fatto è di solito additivo, cioè ha senso sommarlo rispetto alla combinazione di altre dimensioni da cui dipende, per esempio l'incasso è additivo perchè ha senso calcolare la somma degli incassi di un certo intervallo
-
 
 # Progettazione del DWH
 
