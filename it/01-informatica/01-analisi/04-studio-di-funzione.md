@@ -13,12 +13,9 @@ Una funzione $f: X \to Y$ si dice:
 - **Suriettiva**: se per ogni $y \in Y$ esiste almeno un $x \in X$ con $f(x) = y$.
 - **Biettiva**: se $f$ è iniettiva e suriettiva, cioè se per ogni $y \in Y$ esiste un unico $x \in X$ con $f(x) = y$.
 
-
-
 Sia $I \subseteq \mathbb R$ un intervallo, e sia $f \in C(I)$, allora anche $J := f(I) = \{f(x): x \in I\}$ è un intervallo, ed in oltre:
 - $f: I \to J$ è **invertibile** $\Leftrightarrow$  $f$ è strettamente crescente/decrescente 
 - se $f$ è **invertibile**, $f^{-1}: J \to I$ è continua
-
 
 - $f$ è **iniettiva** $\Leftrightarrow$ ogni retta orizzontale attraverso un punto $y \in Y$ interseca $C(f)$ al più una volta.
 
@@ -26,7 +23,115 @@ Sia $I \subseteq \mathbb R$ un intervallo, e sia $f \in C(I)$, allora anche $J :
 - $f$ è **biettiva** $\Leftrightarrow$ ogni retta orizzontale attraverso un punto $y \in Y$ interseca $C(f)$ un’unica volta.
   
  
-![[Pasted image 20250626150114.png]]
+
+```plot
+x: [-1.5, 2.3]
+y: [-0.85, 2.0]
+width: 260
+height: 270
+axes: true
+xlabel: $x$
+xticks: { -1: "$x_1$", 1: "$x_2$" }
+caption: "(a)"
+alt: Grafico di f_1(x), una parabola con vertice nell'origine; la retta orizzontale y>0 la interseca in due punti x_1 e x_2, la retta y<0 non la interseca
+items:
+  - fn: x^2
+    domain: [-1.35, 1.35]
+  - text: $f_1(x)$
+    at: [0.1, 1.75]
+    anchor: e
+  - line: [[-1.27, 1], [1.1, 1]]
+  - text: $y>0$
+    at: [1.2, 1]
+    anchor: e
+  - line: [[-1, 1], [-1, 0]]
+  - line: [[1, 1], [1, 0]]
+  - line: [[-1.22, -0.46], [1.4, -0.46]]
+  - text: $y<0$
+    at: [1.5, -0.46]
+    anchor: e
+```
+
+```plot
+x: [-1.5, 2.3]
+y: [-0.2, 2.0]
+width: 260
+height: 200
+axes: x
+xlabel: $x$
+xticks: { -1: "$x_1$", 1: "$x_2$" }
+caption: "(b)"
+alt: Grafico di f_2(x), una parabola con vertice nell'origine definita su tutto R ma con valori solo y>=0; la retta orizzontale y>0 la interseca in due punti x_1 e x_2
+items:
+  - fn: x^2
+    domain: [-1.35, 1.35]
+  - line: [[0, 0], [0, 1.95]]
+    arrow: true
+  - text: $f_2(x)$
+    at: [0.1, 1.75]
+    anchor: e
+  - line: [[-1.27, 1], [1.1, 1]]
+  - text: $y>0$
+    at: [1.2, 1]
+    anchor: e
+  - line: [[-1, 1], [-1, 0]]
+  - line: [[1, 1], [1, 0]]
+```
+
+```plot
+x: [-0.2, 2.3]
+y: [-0.85, 2.0]
+width: 260
+height: 270
+axes: true
+xlabel: $x$
+xticks: { 1: "$x_2$" }
+caption: "(c)"
+alt: Grafico di f_3(x), il ramo destro di una parabola con vertice nell'origine; la retta y>0 lo interseca in un solo punto x_2, la retta y<0 non lo interseca
+items:
+  - fn: x^2
+    domain: [0, 1.35]
+  - text: $f_3(x)$
+    at: [0.1, 1.75]
+    anchor: e
+  - line: [[-0.1, 1], [1.1, 1]]
+  - text: $y>0$
+    at: [1.2, 1]
+    anchor: e
+  - line: [[1, 1], [1, 0]]
+  - line: [[-0.1, -0.46], [1.4, -0.46]]
+  - text: $y<0$
+    at: [1.5, -0.46]
+    anchor: e
+```
+
+```plot
+x: [-0.2, 2.3]
+y: [-0.2, 2.0]
+width: 260
+height: 200
+axes: x
+xlabel: $x$
+xticks: { 1: "$x$" }
+caption: "(d)"
+alt: Grafico di f_4(x), il ramo destro di una parabola con vertice nell'origine; la retta y>0 lo interseca in un solo punto x
+items:
+  - fn: x^2
+    domain: [0, 1.35]
+  - line: [[0, 0], [0, 1.95]]
+    arrow: true
+  - text: $f_4(x)$
+    at: [0.1, 1.75]
+    anchor: e
+  - line: [[-0.1, 1], [1.1, 1]]
+  - text: $y>0$
+    at: [1.2, 1]
+    anchor: e
+  - line: [[1, 1], [1, 0]]
+```
+
+Funzione (a) non iniettiva, non suriettiva; (b) non iniettiva ma suriettiva; (c) iniettiva ma non suriettiva; (d) iniettiva e suriettiva cioè biettiva.
+
 ## 🟢 Trovare il dominio
 
 Data una funzione $f$, vogliamo studiarne il dominio. 
@@ -64,7 +169,54 @@ $$
 
 Vogliamo studiare una funzione per trovare i punti estremi, cioè punti in cui il valore della funzione è al minimo/massimo locale. Si può anche vedere come il punto in cui viene cambiata "direzione" della funzione (da crescente a decrescente, etc...)
 
-![[Pasted image 20250613165605.png]]
+```plot
+x: [-0.5, 2.5]
+y: [-10, 50]
+width: 330
+height: 330
+xticks: [1, 2]
+yticks: [10, 20, 30, 40]
+alt: Grafico di y = s(t), una parabola rivolta verso il basso che parte da s(0)=32, ha il vertice V in alto a circa t=0,75 e s=41 e scende fino a incrociare l'asse delle t poco oltre t=2.
+items:
+  - fn: s(t) = 32 + 24t - 16t^2
+    domain: [0, 2.5]
+    color: blue
+    width: 2.4
+  - point: [0.75, 41]
+    color: red
+    label: $V$
+    anchor: nw
+  - text: $y=s(t)$
+    at: [1.35, 43]
+    anchor: e
+```
+
+```plot
+x: [-1.63, 1.67]
+y: [-1.6, 1.65]
+width: 330
+height: 330
+alt: Grafico di y = g(x) con due massimi locali nei punti (a, g(a)) e (c, g(c)) e un minimo locale nel punto (b, g(b)) tra i due; g(c) è il massimo più alto.
+items:
+  - fn: g
+    through: [[-1.44, -1.6], [-0.82, 0.31], [-0.32, 0.15], [0.65, 1.07], [1.24, -1.6]]
+    color: blue
+    width: 2.4
+  - point: [-0.82, 0.31]
+    color: red
+    label: $(a,g(a))$
+    anchor: n
+  - point: [-0.32, 0.15]
+    color: red
+    label: $(b,g(b))$
+    anchor: s
+  - point: [0.65, 1.07]
+    color: red
+    label: $(c,g(c))$
+    anchor: ne
+  - text: $y=g(x)$
+    at: [-0.86, -1.05]
+```
 
 Per trovare i punti critici della funzione $f(x)$ ci basta: 
 - trovare i punti dove l'equazione della derivata prima $f'(x) = 0$ dove i punti x sono definiti su $f(x)$ 
@@ -92,7 +244,6 @@ Data una funzione $f$:
 
 - Per vedere l'intersezione con l'asse X, risolvere l'equazione $f(x) = 0$ 
 - Per vedere l'intersezione con l'asse Y, se $0 \in X$, calcolare $f(0)$ 
-
 
 ## 🟠 Segno della funzione
 
@@ -130,7 +281,32 @@ Per poterlo svolgere eseguiamo i passaggi:
 
 Se entrambi esistono e sono finiti, allora $y = mx + q$ è un asintoto obliquo di $f$ per $x \to \pm \infty$ 
 
-![[Screenshot_2025-07-01-19-14-16-27_40deb401b9ffe8e1df2f1cc5ba480b12.jpg]]
+```plot
+x: [-5.3, 5.3]
+y: [-35, 35]
+width: 640
+height: 420
+xticks: [-4, -2, 2, 4]
+yticks: [-30, -20, -10, 10, 20, 30]
+xlabel: $x$
+ylabel: $y$
+alt: Grafico di f(x) = (2x^2+3)/x, con i due rami nel primo e nel terzo quadrante separati dall'asse y, e della retta y = 2x, asintoto obliquo di f per x che tende a più e meno infinito.
+items:
+  - fn: f(x) = (2x^2 + 3)/x
+    domain: [-5.2, 5.2]
+    color: blue
+    width: 2.4
+    label: $f(x)=\dfrac{2x^2+3}{x}$
+    labelAt: -3.0
+    anchor: s
+  - fn: 2x
+    domain: [-5.2, 5.2]
+    color: red
+    width: 2.4
+    label: $y=2x$
+    labelAt: 3.6
+    anchor: s
+```
 
 ## 🟠 Punti angolosi 
 
@@ -157,7 +333,31 @@ Data una funzione $f$, calcoliamo la derivata prima $f'(x)$ e il corrispettivo d
 
 ## 🟠 Studio derivata seconda (concavità/convessità)
 
-![[Pasted image 20250626165353.png]]
+```plot
+x: [-0.2, 1.65]
+y: [-0.2, 1.4]
+width: 260
+height: 200
+alt: Funzione convessa, il cui grafico ha la forma di una U con un minimo
+items:
+  - fn: f
+    through: [[0.18, 0.92], [0.73, 0.38], [1.43, 1.10]]
+  - text: $f$ convessa
+    at: [0.68, 1.2]
+```
+
+```plot
+x: [-0.2, 1.65]
+y: [-0.2, 1.4]
+width: 260
+height: 200
+alt: Funzione concava, il cui grafico ha la forma di una U rovesciata con un massimo
+items:
+  - fn: f
+    through: [[0.2, 0.45], [0.73, 0.98], [1.38, 0.2]]
+  - text: $f$ concava
+    at: [0.73, 1.2]
+```
 
 Per capire la concavità del punto (cioè se il punto fa parte di un minimo o massimo locale) allora dobbiamo studiare la derivata seconda nel punto di flesso.
 - Se la derivata seconda è positiva, allora siamo in un minimo locale (concavità verso l'alto). 
@@ -222,7 +422,14 @@ Ora, i punti di flesso sono tutti quei punti dove $f''(x) = 0$ e c'è un cambio 
 
 Nel caso in cui $x = \frac{2}{3}$ vediamo il segno per $x > \frac{2}{3}$ e $x < \frac{2}{3}$ 
 
-![[Pasted image 20250614120427.png]]
+$$
+\begin{aligned}
+& x > \tfrac{2}{3} \;\Rightarrow\; f''(x) > 0 \\[0.6em]
+& f''(x) = \underbrace{12x}_{+}\,\underbrace{(3x-2)}_{+} \\[0.8em]
+& x < \tfrac{2}{3} \;\Rightarrow\; f''(x) < 0 \\[0.6em]
+& f''(x) = \underbrace{12x}_{+}\,\underbrace{(3x-2)}_{-}
+\end{aligned}
+$$
 
 Nel primo caso, per qualsiasi valore $x > \frac{2}{3}$, $f''(x)$ è positiva.
 Nel secondo caso, per qualsiasi valore $0 <x < \frac{2}{3}$, $f''(x)$ è negativa
@@ -231,7 +438,14 @@ Allora effettivamente questo punto è un punto di flesso
 
 Nel caso in cui $x = 0$ vediamo il segno per $x > 0$ e $x < 0$ 
 
-![[Pasted image 20250614120708.png]]
+$$
+\begin{aligned}
+& x > 0 \qquad f''(x) < 0 \\[0.6em]
+& f''(x) = \underbrace{12x}_{+}\,\underbrace{(3x-2)}_{-} \\[0.8em]
+& x < 0 \;\Rightarrow\; f''(x) > 0 \\[0.6em]
+& f''(x) = \underbrace{12x}_{-}\,\underbrace{(3x-2)}_{-}
+\end{aligned}
+$$
 
 Nel primo caso, per qualsiasi valore $\frac{2}{3} > x > 0$, $f''(x)$ è negativa.
 Nel secondo caso, per qualsiasi valore $x < 0$, $f''(x)$ è positiva. 
@@ -243,4 +457,34 @@ Per riassumere:
 
 A questo punto possiamo disegnare la funzione:
 
-![[Pasted image 20250614121458.png]]
+```plot
+x: [-0.7, 1.45]
+y: [-0.4, 4]
+width: 440
+height: 380
+xticks: { 0.667: "$\\frac{2}{3}$", 1: "$1$" }
+yticks: [1, 2]
+alt: Grafico di f(x) = 3x^4 - 4x^3 + 2. La funzione decresce, ha un flesso a tangente orizzontale nel punto (0,2), prosegue a decrescere con un flesso in x = 2/3 dove cambia concavità, raggiunge il minimo locale nel punto (1,1) e poi cresce.
+items:
+  - fn: f(x) = 3x^4 - 4x^3 + 2
+    domain: [-0.7, 1.45]
+    color: blue
+    width: 2.4
+  - line: [[-0.35, 2], [0.35, 2]]
+    dash: true
+  - guide: [2/3, f(2/3)]
+    to: x
+    dash: dotted
+  - point: [0, 2]
+    label: $(0,2)$
+    anchor: ne
+  - point: [2/3, f(2/3)]
+    label: $(\tfrac{2}{3}, f(\tfrac{2}{3}))$
+    anchor: ne
+  - point: [1, 1]
+    label: $(1,1)$
+    anchor: se
+  - text: $x=\tfrac{2}{3}$
+    at: [0.4, 3.3]
+```
+
