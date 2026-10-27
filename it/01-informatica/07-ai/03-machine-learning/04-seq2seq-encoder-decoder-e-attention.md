@@ -15,7 +15,30 @@ Ma viene usato anche in: trascrizione audio/video, peptide-binding protein predi
 - **Encoder** è una RNN che codifica la sequenza in input in un vettore numerico che rappresenta una versione compressa del dato in input. Il modello usato nell'encoder ha il compito di imparare come comprimere i dati in input in un "latent space", che è uno spazio con dimensionalità minore dell'input che raccoglie le feature "essenziali" dei dati in input. è importante specificare che il vettore in cui è stato convertita la sequenza in input è di dimensione *FISSA*, il che potrebbe creare problemi dato che è impossibile salvare tutte le informazioni necessarie in un dato che è potenzialmente di dimensione minore rispetto all'input.
 - **Decoder** è una RNN che decodifica il vettore codificato in una sequenza di output
 
-![[Pasted image 20241221101438.png]]
+```mermaid
+block-beta
+  columns 13
+  space:2 enc["Encoder"]:5 space:6
+  space:13
+  space:10 y1["y₁"] space y2["y₂"]
+  space:13
+  h0["h₁"] space R1["RNN"] space R2["RNN"] space R3["RNN"] space V["Encoder Vector"] space D1["RNN"] space D2["RNN"]
+  space:13
+  space:2 x1["x₁"] space x2["x₂"] space x3["x₃"] space:6
+  space:13
+  space:9 dec["Decoder"]:3 space
+  h0 --> R1
+  R1 -- "h₂" --> R2
+  R2 -- "h₃" --> R3
+  R3 --> V
+  V --> D1
+  D1 --> D2
+  D1 --> y1
+  D2 --> y2
+  x1 --> R1
+  x2 --> R2
+  x3 --> R3
+```
 
 Come si può notare, per poter creare un training set, è necessario fornire sia input che un output per ogni esempio del dataset. Nel vocabolario gestito dalle RNN viene aggiunto anche due token speciali, uno che rappresenta l'inizio e uno che rappresenta la fine della sequenza.
 
@@ -36,7 +59,32 @@ Una volta scelti questi k simboli, scartiamo tutti gli altri dall'albero e conti
 
 Nelle prossime iterazioni continuiamo a fare lo stesso su tutte le sottosequenze ancora "aperte". Una volta che tutte le sottosequenze raggiungono la fine (hanno generato il token di fine), abbiamo le nostre sequenze candidate. 
 
-![[Pasted image 20241221103612.png]]
+```mermaid
+flowchart LR
+  S["&lt;s&gt;"]
+  A["“a”<br/>-1.05"]
+  B["“b”<br/>-0.92"]
+  E0["&lt;/s&gt; ✗<br/>-1.39"]
+  AA["“a” ✗<br/>-2.95"]
+  AB["“b”<br/>-1.27"]
+  AE["&lt;/s&gt; ✗<br/>-4.05"]
+  BA["“a” ✗<br/>-1.84"]
+  BB["“b”<br/>-1.61"]
+  BE["&lt;/s&gt; ✗<br/>-3.22"]
+  ABE["&lt;/s&gt;<br/>-1.27"]
+  BBE["&lt;/s&gt;<br/>-1.61"]
+  S -- "-1.05" --> A
+  S -- "-0.92" --> B
+  S -- "-1.39" --> E0
+  A -- "-1.90" --> AA
+  A -- "-0.22" --> AB
+  A -- "-3.00" --> AE
+  B -- "-0.92" --> BA
+  B -- "-0.69" --> BB
+  B -- "-2.30" --> BE
+  AB -- "0" --> ABE
+  BB -- "0" --> BBE
+```
 
 ---
 Nei problemi di NMT (Neural Machine Translation), spesso si usa un architettura encoder-decoder. Negli ultimi anni si sta rimpiazzando l'uso di RNN al suo interno per l'architettura *Transformer*
@@ -47,7 +95,44 @@ Come detto in precedenza, l'encoder *comprime* e codifica la sequenza in input i
 
 Per mitigare ciò si è creato un una nuova tecnica chiamata *Attention*, dove ogni step del decoder può "guardare" direttamente le diverse parti della rappresentazione dell'input durante i vari stati della fase di encoding, assegnando pesi diversi ad ogni parte per modificarne l'influenza, permettendo l'uso di informazioni "meno compresse" durante la fase di decoding.
 
-![[Pasted image 20241221104954.png]]
+```mermaid
+block-beta
+  columns 21
+  encl["Encoder RNN"]:8 decl["Decoder RNN"]:13
+  space:21
+  A0["●"] space A1["●"] space A2["●"] space A3["●"] space:14
+  space:21
+  E0["●<br/>●<br/>●<br/>●"] space E1["●<br/>●<br/>●<br/>●"] space E2["●<br/>●<br/>●<br/>●"] space E3["●<br/>●<br/>●<br/>●"] space D0["●<br/>●<br/>●<br/>●"] space D1["●<br/>●<br/>●<br/>●"] space D2["●<br/>●<br/>●<br/>●"] space D3["●<br/>●<br/>●<br/>●"] space D4["●<br/>●<br/>●<br/>●"] space D5["●<br/>●<br/>●<br/>●"] space D6["●<br/>●<br/>●<br/>●"]
+  space:21
+  W0["il"] space W1["a"] space W2["m’"] space W3["entarté"] space W4["&lt;START&gt;"] space W5["he"] space W6["hit"] space W7["me"] space W8["with"] space W9["a"] space W10["pie"]
+  space:21
+  srcl["Source sentence (input)"]:7 space:14
+  W0 --> E0
+  W1 --> E1
+  W2 --> E2
+  W3 --> E3
+  W4 --> D0
+  W5 --> D1
+  W6 --> D2
+  W7 --> D3
+  W8 --> D4
+  W9 --> D5
+  W10 --> D6
+  E0 --> E1
+  E1 --> E2
+  E2 --> E3
+  E3 --> D0
+  D0 --> D1
+  D1 --> D2
+  D2 --> D3
+  D3 --> D4
+  D4 --> D5
+  D5 --> D6
+  D2 --> A0
+  D2 --> A1
+  D2 --> A2
+  D2 --> A3
+```
 
 Ogni passo del decoder effettua una combinazione convessa di tutti gli output degli encoder. 
 
@@ -58,7 +143,47 @@ Ogni passo del decoder effettua una combinazione convessa di tutti gli output de
 - **Pesi dell'attention**: $[\alpha_1, ...,\alpha_T ] = softmax(e_1, ..., e_T) \in \mathbb{R}^T$, cioè $\alpha_i=\exp \left(e_i\right) / \sum_{j=1}^N \exp \left(e_j\right) \in \mathbb{R}$  dove $e_i = a(s_{t-1}, h_i) \in \mathbb{R}$ è un numero reale che è il risulttato della combinazione di $s_{t-1}$ e $h_i$ che di solito è il prodotto scalare.
 Da notare che i pesi dell'attention sono imparati *indirettamente* come visto nel punto precedente, e quindi non vengono "allenati" ma imparati dinamicamente durante l'esecuzione.
 
-![[Pasted image 20241221111316.png]]
+```mermaid
+block-beta
+  columns 11
+  space:4 kl["Key Vectors"]:7
+  space:11
+  space:4 k1["kono"] space k2["eiga"] space k3["ga"] space k4["kirai"]
+  space:11
+  space:4 g1["⚙"] space g2["⚙"] space g3["⚙"] space g4["⚙"]
+  space:11
+  I["I"] space hate["hate"] space:8
+  ql["Query Vector"]:3 space:8
+  space:4 a1["a₁=2.1"] space a2["a₂=-0.1"] space a3["a₃=0.3"] space a4["a₄=-1.0"]
+  space:11
+  space:4 sm["softmax"]:7
+  space:11
+  space:4 r1["α₁=0.76"] space r2["α₂=0.08"] space r3["α₃=0.13"] space r4["α₄=0.03"]
+  k1 <--> k2
+  k2 <--> k3
+  k3 <--> k4
+  k1 --> g1
+  k2 --> g2
+  k3 --> g3
+  k4 --> g4
+  I --> hate
+  hate --> g1
+  hate --> g2
+  hate --> g3
+  hate --> g4
+  g1 --> a1
+  g2 --> a2
+  g3 --> a3
+  g4 --> a4
+  a1 --> sm
+  a2 --> sm
+  a3 --> sm
+  a4 --> sm
+  sm --> r1
+  sm --> r2
+  sm --> r3
+  sm --> r4
+```
 
 L'attention risolve il problema del bottleneck di informazioni, rendendo possibile al decoder di visualizzare direttamente l'input sorgente. 
 
@@ -68,7 +193,44 @@ Fornisce un modello di learning più simile a quello umano, dove per produrre la
 
 Tramite i pesi di attention si può capire più facilmente quali parti dell'input sono più importanti per produrre una parte specifica della sequenza in output.
 
-![[Pasted image 20241221111659.png]]
+In a **lookup table**, we have a table of **keys** that map to **values**. The **query** matches one of the keys, returning its value.
+
+```mermaid
+block-beta
+  columns 5
+  space kh["keys"] vh["values"] space:2
+  space ka["a"] va["v1"] space:2
+  space kb["b"] vb["v2"] space:2
+  space kc["c"] vc["v3"] space:2
+  q["query<br/>d"] kd["d"] vd["v4"] space out["output<br/>v4"]
+  space ke["e"] ve["v5"] space:2
+  q --> kd
+  vd --> out
+```
+
+In **attention**, the **query** matches all **keys** *softly*, to a weight between 0 and 1. The keys' **values** are multiplied by the weights and summed.
+
+```mermaid
+block-beta
+  columns 7
+  space:2 kh["keys"] vh["values"] space wl["Weighted Sum"] space
+  space:2 k1["k1"] v1["v1"] space:3
+  space:2 k2["k2"] v2["v2"] space:3
+  q["query<br/>q"] space k3["k3"] v3["v3"] space sum["Σ"] out["output"]
+  space:2 k4["k4"] v4["v4"] space:3
+  space:2 k5["k5"] v5["v5"] space:3
+  q --> k1
+  q --> k2
+  q --> k3
+  q --> k4
+  q --> k5
+  v1 --> sum
+  v2 --> sum
+  v3 --> sum
+  v4 --> sum
+  v5 --> sum
+  sum --> out
+```
 
 ---
 Si può anche usare il *Self attention* quando per processare uno step della sequenza si usano gli altri step precedentemente processati, questo permette di aggiungere il concetto di attention anche nella fase di decoding.
