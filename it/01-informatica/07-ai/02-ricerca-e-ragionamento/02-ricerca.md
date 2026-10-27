@@ -26,7 +26,34 @@ Un problema di ricerca può essere definito formalmente come:
 - Modello di transizione, una descrizione di cosa fa ogni azione, cioè il risultato dell'applicazione di un azione su un certo stato, e a quale stato ci porta
 - Funzione costo dell'azione, una funzione che ci dice il costo di applicare una azione da uno stato ad un altro stato
 
-![[Pasted image 20241130164728.png]]
+- *State space*:
+  - All the possible configurations of the puzzle in terms of the position of each tile.
+- *Initial state*:
+  - The state corresponding to the location of the tiles shown in the figure on the right.
+- *Goal state*:
+  - A state corresponding to the numbers in order.
+- *Actions*:
+  - While in the physical world it is a tile that slides, the simplest way of describing an action is to *think of the blank space moving Left, Right, Up, or Down*. If the blank is at an edge or corner then not all actions will be applicable.
+- *Transition model*:
+  - It maps the current state to state that results from moving the blank space according to the action at hand.
+- *Action cost function*:
+  - Each action cost 1 (the goal is to solve the puzzle with the lowest possible number of actions).
+
+**Start State**
+
+| | | |
+|---|---|---|
+| 7 | 2 | 4 |
+| 5 | | 6 |
+| 8 | 3 | 1 |
+
+**Goal State**
+
+| | | |
+|---|---|---|
+| | 1 | 2 |
+| 3 | 4 | 5 |
+| 6 | 7 | 8 |
 
 Una sequenza di azioni forma un percorso. Una soluzione è un percorso che porta dallo stato iniziale allo stato finale. 
 Si assume che i costi delle azioni siano positive e additive, cioè che il costo di un percorso è la somma dei costi di ogni azione al suo interno.
@@ -66,7 +93,22 @@ Crea e visita il grafo di stati tramite costruzione "on the fly" dell'albero di 
 Tiene in memoria tutti gli stati da visitare prossimamente (la frontiera) e sceglie uno di questi stati per poi espanderlo.
 La strategia è guidata dallo scopo da raggiungere
 
-![[Pasted image 20241130174502.png]]
+```text
+Algorithm GenericSearch(Initial state: s, Goal Condition: G)
+    FRONTIER = {s}; VISIT = { };
+    while FRONTIER is not empty do
+        Select node u from FRONTIER based on some strategy; //node to be expanded next
+        if u satisfies G return SUCCESS and the path from s to u; //exploiting pred()
+        Delete u from FRONTIER;
+        Add u to VISIT; //keep track of the visited nodes in order to avoid redundant exploration of states
+        for all nodes v reachable by performing an available action from u do
+            if v is not in VISIT or the cost of the path from s to v through u
+                is less than the cost of the previous path (if any) from s to v
+                add v to FRONTIER; //node expansion
+                pred(v) = u; //predecessor of v in the search; used to trace solution paths back
+        endfor
+    return FAILURE;
+```
 
 Gli algoritmi di ricerca variano in base alle strutture dati usate per la frontiera, la strategia che usano per scegliere il prossimo nodo da espandere e come calcolare il costo di un percorso.
 
@@ -179,8 +221,47 @@ Questo potrebbe diminuire significativamente il costo di ricerca. Se per esempio
 
 Questo algoritmo può essere implementato usando uno qualsiasi degli algoritmi precedentemente visti
 
-![[Pasted image 20241130184719.png]]
-![[Pasted image 20241130184734.png]]
+```mermaid
+flowchart LR
+    n1(["1 (Root node)"])
+    n2((2))
+    n3((3))
+    n4((4))
+    n5((5))
+    n6((6))
+    n8((8))
+    n9(["9 (Intersection node)"])
+    n10((10))
+    n11((11))
+    n12((12))
+    n13((13))
+    n14((14))
+    n15((15))
+    n16(["16 (Goal node)"])
+    n1 --- n4
+    n2 --- n4
+    n4 --- n8
+    n3 --- n6
+    n5 --- n6
+    n6 --- n8
+    n8 --- n9
+    n9 --- n10
+    n10 --- n11
+    n10 --- n12
+    n11 --- n13
+    n11 --- n14
+    n12 --- n15
+    n12 --- n16
+    n1 -.-> n8
+    n16 -.-> n9
+```
+
+| Criterion | Breadth-First | Uniform-Cost | Depth-First | Depth-Limited | Iterative Deepening | Bidirectional (if applicable) |
+|---|---|---|---|---|---|---|
+| Complete? | Yes$^1$ | Yes$^{1,2}$ | No | No | Yes$^1$ | Yes$^{1,4}$ |
+| Optimal cost? | Yes$^3$ | Yes | No | No | Yes$^3$ | Yes$^{3,4}$ |
+| Time | $O(b^d)$ | $O(b^{1+\lfloor C^*/\epsilon\rfloor})$ | $O(b^m)$ | $O(b^\ell)$ | $O(b^d)$ | $O(b^{d/2})$ |
+| Space | $O(b^d)$ | $O(b^{1+\lfloor C^*/\epsilon\rfloor})$ | $O(bm)$ | $O(b\ell)$ | $O(bd)$ | $O(b^{d/2})$ |
 
 # Informed search
 
@@ -200,7 +281,17 @@ Implementata semplicemente usando la best-first search tramite $-h(n)$ come valo
 # A*
 é un algoritmo best-first searhc che usa come funzione di valutazione $f(n) = g(n) + h(n)$ dove $g(n)$ è il costo del cammino dal nodo radice ad $n$, mentre $h(n)$ è la funzione euristica. 
 
-![[Pasted image 20241130190632.png]]
+Illustration of A* search for finding path from a start node to a goal node in a *robot motion planning* problem.
+
+The empty circles represent the nodes in the frontier that *have not been expanded yet*.
+
+The filled circles represent the *already expanded* nodes.
+
+*Color* on each closed node indicates the distance from the goal: *the greener, the closer*.
+
+One can *first see the A\* moving in a straight line* in the direction of the goal, *then when hitting the obstacle*, it *explores alternative routes*.
+
+![[Pasted image 20241130190632 figura.png]]
 
 A* è completo se lo spazio degli stati ha soluzione o è finito. Ha complessità simile al greedy best first search.
 
@@ -211,7 +302,15 @@ Se la funzione euristica è ammissibile, allora A* trova una soluzione ottima
 Una proprietà più forte è la "consistenza" della funzione euristica, cioè se: $h(n) \le c(n,a,n^\prime) \le h^*(n^\prime)$ dove $c(n,a,n^\prime)$ è il costo di fare un azione $a$ da nodo $n$ per arrivare a $n^\prime$. 
 Questa proprietà è simile alla disuguaglianza triangolare
 
-![[Pasted image 20241130191429.png]]
+```mermaid
+flowchart LR
+    n(("n"))
+    np(("n′"))
+    G(("Gₙ′"))
+    n -->|"c(n, a, n′)"| np
+    np -.->|"h(n′)"| G
+    n -.->|"h(n)"| G
+```
 
 Se un euristica è coerente, allora è anche ammissibile (l'oppost non è vero), quindi trova soluzione ottima. 
 
