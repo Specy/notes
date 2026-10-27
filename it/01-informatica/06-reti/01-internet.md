@@ -50,10 +50,61 @@ I router hanno due compiti fondamentali:
 
 In alternativa si può creare una connessione **diretta** fra due host, in maniera fisica, cosi che possano comunicare senza router nel mezzo. Questa tecnica veniva usata nelle reti telefoniche tradizionali.
 
-
 ## FDM vs TDM
 
-![[Pasted image 20241101192113.png]]
+**Esempio: 4 utenti** (blu, verde, arancione, viola)
+
+**FDM**
+
+```plot
+x: [-0.3, 6.6]
+y: [-0.2, 4.5]
+width: 460
+height: 200
+xlabel: tempo
+ylabel: frequenza
+items:
+  - { area: 4, base: 3, from: 0, to: 6, color: blue, opacity: 0.8 }
+  - { area: 3, base: 2, from: 0, to: 6, color: green, opacity: 0.8 }
+  - { area: 2, base: 1, from: 0, to: 6, color: orange, opacity: 0.8 }
+  - { area: 1, base: 0, from: 0, to: 6, color: purple, opacity: 0.8 }
+```
+
+**TDM**
+
+```plot
+x: [-0.3, 6.6]
+y: [-0.2, 4.5]
+width: 460
+height: 200
+xlabel: tempo
+ylabel: frequenza
+items:
+  - { area: 4, base: 0, from: 0.0, to: 0.25, color: blue, opacity: 0.8 }
+  - { area: 4, base: 0, from: 0.25, to: 0.5, color: green, opacity: 0.8 }
+  - { area: 4, base: 0, from: 0.5, to: 0.75, color: orange, opacity: 0.8 }
+  - { area: 4, base: 0, from: 0.75, to: 1.0, color: purple, opacity: 0.8 }
+  - { area: 4, base: 0, from: 1.0, to: 1.25, color: blue, opacity: 0.8 }
+  - { area: 4, base: 0, from: 1.25, to: 1.5, color: green, opacity: 0.8 }
+  - { area: 4, base: 0, from: 1.5, to: 1.75, color: orange, opacity: 0.8 }
+  - { area: 4, base: 0, from: 1.75, to: 2.0, color: purple, opacity: 0.8 }
+  - { area: 4, base: 0, from: 2.0, to: 2.25, color: blue, opacity: 0.8 }
+  - { area: 4, base: 0, from: 2.25, to: 2.5, color: green, opacity: 0.8 }
+  - { area: 4, base: 0, from: 2.5, to: 2.75, color: orange, opacity: 0.8 }
+  - { area: 4, base: 0, from: 2.75, to: 3.0, color: purple, opacity: 0.8 }
+  - { area: 4, base: 0, from: 3.0, to: 3.25, color: blue, opacity: 0.8 }
+  - { area: 4, base: 0, from: 3.25, to: 3.5, color: green, opacity: 0.8 }
+  - { area: 4, base: 0, from: 3.5, to: 3.75, color: orange, opacity: 0.8 }
+  - { area: 4, base: 0, from: 3.75, to: 4.0, color: purple, opacity: 0.8 }
+  - { area: 4, base: 0, from: 4.0, to: 4.25, color: blue, opacity: 0.8 }
+  - { area: 4, base: 0, from: 4.25, to: 4.5, color: green, opacity: 0.8 }
+  - { area: 4, base: 0, from: 4.5, to: 4.75, color: orange, opacity: 0.8 }
+  - { area: 4, base: 0, from: 4.75, to: 5.0, color: purple, opacity: 0.8 }
+  - { area: 4, base: 0, from: 5.0, to: 5.25, color: blue, opacity: 0.8 }
+  - { area: 4, base: 0, from: 5.25, to: 5.5, color: green, opacity: 0.8 }
+  - { area: 4, base: 0, from: 5.5, to: 5.75, color: orange, opacity: 0.8 }
+  - { area: 4, base: 0, from: 5.75, to: 6.0, color: purple, opacity: 0.8 }
+```
 
 - **Frequency division multiplexing**: può essere usato solo in connessioni analogiche, permette di far comunicare più utenti, assegnando ad ogni host una frequenza specifica
 - **Time division multiplexing**: può essere usato sia in una connesione analogica che digitale, usa una singola frequenza ma trasmette i messaggi in piccoli segmenti, uno per utente.
@@ -67,18 +118,20 @@ Naturalmente un collegamento diretto fra tutti gli ISP non è fattibile, per que
 
 Al centro troviamo un piccolo numero di grandi reti che sono collegati fra di loro (le grandi ISP, anche considerabili come un intera nazione), ai cui i più piccoli ISP si connettono per parlare con il resto dell'internet
 
-
 ## Ritardo dei pacchetti
 
 Un pacchetto può essere perso o ritardare, le cause di ciò sono:
 
-![[Pasted image 20241101193241.png]]
+![[Pasted image 20241101193241 figura.png]]
+
+$$
+\boxed{d_{\text{nodal}} = d_{\text{proc}} + d_{\text{queue}} + d_{\text{trans}} + d_{\text{prop}}}
+$$
 
 - $d_{proc}$ il tempo di elaborazione di un nodo, come per esempio controllare che il pacchetto sia valido, determinare il canale di uscita, etc
 - $d_{queue}$ il tempo di accodamento, in attesa che il pacchetto venga spedito dal router, dipende dal livello di congestione del router
 - $d_{trans}$ il ritardo di trasmissione, quanto tempo ci vuole per trasmettere il pacchetto di lunghezza $L$ su una bandwidth di capacità $R$
 - $d_{prop}$ il tempo di propagazione fisico, quindi quanto tempo ci mette il segnale a percorrere il tragitto che collega un nodo ad un altro
-
 
 Un pacchetto può essere perso all'interno dell'internet per colpa del riempimento dei buffer dei router, che se è ricevuto quando è pieno, non può essere salvato da alcuna parte, e quindi semplicemente scartato. Questo pacchetto può poi essere reinviato dall'host originale, o semplicemente ignorato.
 
