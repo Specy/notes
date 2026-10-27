@@ -60,11 +60,9 @@ $$
 trova la matricola e nome dei capi i cui impiegati guadagnano tutti più di 40, in algebra:
    $$
    \begin{aligned}
-   \large{\pi_{matricola, nome}( \\
-   Impiegati \ JOIN_{matricola = Capo}(\pi_{capo}(Supervisione) - } \\
-   \large{
-       \pi_{capo}(Supervisione \ JOIN_{impiegato = matricola}(\sigma_{stipendio \le 40}(Impiegati))))
-   }
+   \large{\pi_{matricola, nome}(} \\
+   \large{Impiegati \ JOIN_{matricola = Capo}(\pi_{capo}(Supervisione) - } \\
+   \large{\pi_{capo}(Supervisione \ JOIN_{impiegato = matricola}(\sigma_{stipendio \le 40}(Impiegati))))}
    \end{aligned}
 $$
 
