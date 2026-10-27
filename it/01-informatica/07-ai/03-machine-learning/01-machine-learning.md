@@ -25,7 +25,6 @@ Per far "imparare" $h$, si parte da un set di esempi $\{x_i\} \in X$ e (possibil
 
 Il processo di computazione, o learning di un modello di machine learning è detto anche "model training" oppure "model fitting". Mentre il processo di usare un modello per calcolare l'output di un input non ancora visto è detto "inferenza"
 
-
 # Classificazione & Regressione
 
 Sono i due diversi modi in cui un modello di machine learning può fornire il proprio risultato.
@@ -40,10 +39,29 @@ Quando l'output è un singolo valore, allora il task è considerato "single labe
 
 Quando l'output non è un singolo valore, allora il task è chiamato "multilabel" o "multioutput" o "multivariate". Per esempio "Multilabel classification" e "Multioutput regression"
 
-![[Pasted image 20241219143231.png]]
-![[Pasted image 20241219143240.png]]
-![[Pasted image 20241219143251.png]]
-![[Pasted image 20241219143310.png]]
+Detect whether an *email is spam or not*.
+
+- $x \in X$: (some numerical representation of) an email.
+- $Y = \{0, 1\}$: spam or not.
+- *Single-label, binary classification*.
+
+Predict tomorrow's *temperature*, based on the current weather conditions.
+
+- $x \in X$: (some numerical representation of) weather conditions.
+- $Y = \mathbb{R}$: a real number representing a temperature value.
+- *Single-label regression*.
+
+Recognize a face in an image.
+
+- $x \in X$: (some numerical representation of) an image.
+- $Y = \mathbb{R}^k$: a real $k$-dimensional vector representing a face in an image.
+- *Multioutput regression*.
+
+Establish the *sentiment* of a review.
+
+- $x \in X$: (some numerical representation of) a review.
+- $Y = \{-1, 0, +1\}$: an integer representing the sentiment of the review (i.e., -1: negative sentiment, 0: neutral sentiment, +1: positive sentiment).
+- *Single-label, multiclass classification*.
 
 # Tipi di learning
 
@@ -81,8 +99,88 @@ Un modello con varianza alta è detto **overfitting**, cioè che è troppo speci
 
 Un buon modello di machine learning deve bilanciare i due criteri di bias e varianza per migliorare il più possibile la qualtità del modello.
 
-![[Pasted image 20241219145532.png]]
-![[Pasted image 20241219145550.png]]
+```plot
+x: [0, 10.5]
+y: [0, 10]
+height: 300
+axes: true
+xlabel: Capacity
+xticks: { 5.3: "Optimal capacity" }
+items:
+  - fn: gen
+    through: [[0.25, 9.4], [1.5, 4.6], [3.2, 2.3], [5.3, 1.3], [7.3, 1.7], [10, 2.9]]
+    color: red
+    width: 3
+  - fn: bias
+    through: [[0.25, 8.8], [1.5, 4.4], [3.2, 1.5], [4.5, 0.7], [5.3, 0.3], [10, 0.1]]
+    color: blue
+    dash: true
+    width: 3
+  - fn: var
+    through: [[0.25, 0.1], [5.3, 0.7], [7.3, 1.1], [9.8, 2.3]]
+    color: green
+    dash: true
+    width: 3
+  - vline: 5.3
+    color: fg
+  - text: Underfitting zone
+    at: [2.6, 9]
+  - text: Overfitting zone
+    at: [7.8, 9]
+  - text: Bias
+    at: [1.2, 3]
+    color: blue
+  - text: Variance
+    at: [9.5, 1.5]
+    color: green
+  - text: Generalization error
+    at: [6.9, 2.9]
+    color: red
+```
+
+```plot
+x: [0, 10]
+y: [0, 10]
+height: 300
+axes: true
+xlabel: Capacity
+ylabel: Error
+xticks: { 0: "0", 2.4: "Optimal Capacity" }
+items:
+  - fn: gen
+    through: [[0.07, 10], [0.25, 2.6], [0.84, 1.5], [2.3, 1.1], [3.8, 1.3], [5.3, 1.85], [6.8, 2.4], [10, 4.3]]
+    color: green
+    width: 2
+    label: Generalization error
+    labelAt: 2.8
+    anchor: n
+  - fn: train
+    through: [[0.1, 3.5], [0.4, 1.7], [0.85, 1.0], [2.4, 0.5], [5.3, 0.2], [10, 0.1]]
+    color: blue
+    dash: true
+    width: 2
+    label: Training error
+    labelAt: 8.6
+    anchor: n
+  - vline: 2.4
+    color: red
+    dash: false
+  - text: Underfitting zone
+    at: [2.3, 8.5]
+    anchor: w
+  - text: Overfitting zone
+    at: [2.5, 8.5]
+    anchor: e
+  - line: [[6.6, 0.4], [6.6, 2.3]]
+    arrow: true
+    color: fg
+  - line: [[6.6, 2.3], [6.6, 0.4]]
+    arrow: true
+    color: fg
+  - text: Generalization gap
+    at: [6.9, 1.4]
+    anchor: e
+```
 
 ## Iperparametri, training set, validation set e test set
 
