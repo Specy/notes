@@ -91,7 +91,37 @@ Lo scopo dello scheduling è scegliere il successivo pacchetto da inviare, i cri
 
 ## Livello di rete
 
-![[Pasted image 20241103140238.png]]
+```mermaid
+packet-beta
+0-3: "ver"
+4-7: "head. len"
+8-15: "type of service"
+16-31: "length"
+32-47: "16-bit identifier"
+48-50: "flgs"
+51-63: "fragment offset"
+64-71: "time to live"
+72-79: "upper layer"
+80-95: "header checksum"
+96-127: "32 bit indirizzo IP sorgente"
+128-159: "32 bit indirizzo IP destinazione"
+160-191: "campi opzionali"
+192-223: "dati (lunghezza variabile, tipicamente un segmento TCP o UDP)"
+```
+
+- *ver*: numero di versione protocollo IP
+- *head. len*: lunghezza header (byte)
+- *type of service*: "tipo" di dati
+- *length*: lunghezza totale datagramma (byte)
+- *16-bit identifier*, *flgs*, *fragment offset*: per frammentazione/riassemblaggio
+- *time to live*: massimo numero di salti rimanenti (decrementato in ogni router)
+- *upper layer*: protocollo del livello superiore
+- *campi opzionali*: es. timestamp, registrazione dei percorsi, elenco dei router
+
+*overhead*
+- 20 byte per TCP
+- 20 byte per IP
+- = 40 byte + overhead del livello di applicazione
 
 I link in una rete hanno una unità massima di trasmissione (MTU), che è la dimensione massima di un pacchetto che può essere trasmesso su quel link. Se un pacchetto è più grande della MTU, viene frammentato in pacchetti più piccoli, per poi essere ricomposto alla destinazione utilizzando l'offset di frammentazione.
 
@@ -126,7 +156,15 @@ Avviene in 4 fasi:
 3. **Request**: l'host invia un messaggio di richiesta per un IP al server DHCP
 4. **Acknowledge**: il server DHCP invia un messaggio di conferma all'host
 
-![[Pasted image 20241103141707.png]]
+```mermaid
+sequenceDiagram
+    participant S as server DHCP : 223.1.2.5
+    participant C as cliente in arrivo
+    C->>S: DHCP discover<br/>Broadcast: c'è un server DHCP ?
+    S->>C: offerta DHCP<br/>Broadcast: sono un server DHCP!<br/>Ecco un indirizzo IP che puoi usare
+    C->>S: richiesta DHCP<br/>Broadcast: OK. Prenderò quell'indirizzo IP!
+    S->>C: DHCP ACK<br/>Broadcast: OK.<br/>Quell'indirizzo IP è tuo!
+```
 
 Il DHCP può anche restituire informazioni aggiuntive come il gateway predefinito, il server DNS, la network mask, etc.
 
@@ -153,7 +191,18 @@ Il numero di porta ha un valore di 16 bit, quindi si possono avere fino a 65536 
 
 L'indirizzamento IPv4 ha problemi di esaurimento degli indirizzi IP, dato che usa solo 32 bit. L'IPv6 risolve questo problema usando 128 bit.
 
-![[Pasted image 20241103142742.png]]
+```mermaid
+packet-beta
+0-3: "ver"
+4-7: "pri"
+8-31: "flow label"
+32-47: "payload len"
+48-55: "next hdr"
+56-63: "hop limit"
+64-191: "source address (128 bits)"
+192-319: "destination address (128 bits)"
+320-351: "data"
+```
 
 Altri cambiamenti rispetto all'IPv4 sono:
 
@@ -188,7 +237,61 @@ Definisce la struttura di una entry della flow table.
 - **Actions**: azioni da eseguire se il pacchetto corrisponde alla regola
 - **Counters**: contatori per monitorare il traffico
 
-![[Pasted image 20241103150942.png]]
+| Rule | Action | Stats |
+| ---- | ------ | ----- |
+| Switch Port<br>**Link layer**: VLAN ID, MAC src, MAC dst, Eth type<br>**Network layer**: IP Src, IP Dst, IP Prot<br>**Transport layer**: TCP sport, TCP dport | 1. Inoltra il pacchetto sulla/e porta/e<br>2. Incapsula e inoltra al controller<br>3. Drop del pacchetto<br>4. Invia ai processi di elaborazione<br>5. Modifica campi | Contatori di pacchetti e byte |
 
 Esempi:
-![[Pasted image 20241103150930.png]]
+
+**Forwarding basato sulla destinazione:**
+
+| Campo | Valore |
+| --- | --- |
+| Switch Port | \* |
+| MAC src | \* |
+| MAC dst | \* |
+| Eth type | \* |
+| VLAN ID | \* |
+| IP Src | \* |
+| IP Dst | 51.6.0.8 |
+| IP Prot | \* |
+| TCP sport | \* |
+| TCP dport | \* |
+| Action | port6 |
+
+*i datagrammi IP destinati all'indirizzo IP 51.6.0.8 devono essere inoltrati sulla porta di uscita 6 del router*
+
+**Firewall:**
+
+| Campo | Valore |
+| --- | --- |
+| Switch Port | \* |
+| MAC src | \* |
+| MAC dst | \* |
+| Eth type | \* |
+| VLAN ID | \* |
+| IP Src | \* |
+| IP Dst | \* |
+| IP Prot | \* |
+| TCP sport | \* |
+| TCP dport | 22 |
+| Forward | drop |
+
+*non inoltrare (block) tutti i datagrammi destinati alla porta TCP 22*
+
+| Campo | Valore |
+| --- | --- |
+| Switch Port | \* |
+| MAC src | \* |
+| MAC dst | \* |
+| Eth type | \* |
+| VLAN ID | \* |
+| IP Src | 128.119.1.1 |
+| IP Dst | \* |
+| IP Prot | \* |
+| TCP sport | \* |
+| TCP dport | \* |
+| Forward | drop |
+
+*non inoltrare (block) tutti i datagrammi inviati dall'host 128.119.1.1*
+
