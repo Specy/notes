@@ -224,7 +224,7 @@ for a generic "f"), `area` (`from`/`to`, `base`, `signed: true` → green/red by
 sign), `riemann` (`from`/`to`, `n`, `mode`: left/right/mid/lower/upper), `line`
 (list of points, `arrow: true`), `vline`/`hline`, `point` (`open: true` for a
 hollow dot), `points` (a list of `[x, y]` — a scatter plot; `shape`: dot, x,
-plus, square, triangle, also on `point`; `size`), `circle` (`[cx, cy]` with
+plus, square, triangle, diamond, star, also on `point`; `size`), `circle` (`[cx, cy]` with
 `r`, or `rx`/`ry` and `rotate` for an ellipse; `fill: true`), `guide` (`to: x` / `to: y` for just one of the two dotted lines),
 `text` (`at: [x, y]`), `brace`. Common options: `color`, `dash` (`true` /
 `dotted`), `width`, `label`, `anchor` — the side of the point the label sits
