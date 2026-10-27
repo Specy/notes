@@ -4,7 +4,20 @@ description: "Strutture di file (heap, ordinati, hash, indici B+ Tree, bitmap), 
 type: lecture
 ---
 
-![[Pasted image 20230709110711.png]]
+```mermaid
+flowchart TB
+    SQL["SQL"] --> DBMS
+    subgraph DBMS["DBMS"]
+      direction LR
+      C["Gestore della Concorrenza"] <--> stack
+      subgraph stack[" "]
+        direction TB
+        Q["Gestore delle Query"] --> M["Gestore di Metodi di Accesso e dei File"] --> B["Gestore del Buffer di Memoria"] --> D["Gestore Spazio su Disco"]
+      end
+      stack <--> A["Gestore dell'Affidabilità"]
+    end
+    DBMS <==> F[("File Dati, Log, Indici, Catalogo Relazionale")]
+```
 
 # Gestore di metodi di accesso e file
 
@@ -41,7 +54,26 @@ Un indice è una struttura dati che permette di organizzare i record al fine di 
 
 Possiamo memorizzare le informazioni in un file non ordinato, mentre le posizioni si possono memorizzare in un file ordinato con un capo ID.
 
-![[Pasted image 20230709112650.png]]
+| ID | Nome | Cognome | Stipendio |
+|---|---|---|---|
+| 003 | Antonio | De Aurelis | 5000 |
+| 001 | Marco | Marchi | 2000 |
+| 005 | Antonio | Di Padova | 3000 |
+| 004 | Francesco | Di Sales | 1000 |
+
+| ID | rid |
+|---|---|
+| 001 | 2 |
+| 003 | 1 |
+| 004 | 4 |
+| 005 | 3 |
+
+| rid | ID, Nome, Cognome, Stipendio |
+|---|---|
+| 1 | 003, Antonio, De Aurelis, 5000 |
+| 2 | 001, Marco, Marchi, 2000 |
+| 3 | 005, Antonio, Di Padova, 3000 |
+| 4 | 004, Francesco, Di Sales, 1000 |
 
 All'interno di un file indice vengono memorizzati i *Data entry*, una coppia <chiave, valore> dove la chiave viene usata per la ricerca, e il valore è l'ID della risorsa. In questo modo le risorse possono essere salvate in maniera indipendente dal file di indice.
 
@@ -50,7 +82,54 @@ All'interno di un file indice vengono memorizzati i *Data entry*, una coppia <ch
 Anzichè avere un singolo file contentente tutti gli indici, possiamo suddividere il file di indici in più file di indici.
 Usando una struttura ad albero possiamo rappresentare nelle foglie i record del database, e nei nodi interni gli indici di vario livello. 
 
-![[Pasted image 20230709113600.png]]
+```mermaid
+flowchart LR
+    subgraph L2["Indice di livello 2"]
+        direction TB
+        m2["mario *"]
+        v2["vincenzo *"]
+    end
+    subgraph L1a["Indice di livello 1"]
+        direction TB
+        g1["giovanni *"]
+        m1["mario *"]
+    end
+    subgraph L1b["Indice di livello 1"]
+        direction TB
+        s1["susanna *"]
+        v1["vincenzo *"]
+    end
+    subgraph P1["Pagina 1 (File di Dati)"]
+        direction TB
+        r1["record di carlo"]
+        r2["record di federica"]
+        r3["record di giovanni"]
+    end
+    subgraph P2["Pagina 2 (File di Dati)"]
+        direction TB
+        r4["record di ilaria"]
+        r5["record di laura"]
+        r6["record di mario"]
+    end
+    subgraph P3["Pagina 3 (File di Dati)"]
+        direction TB
+        r7["record di nino"]
+        r8["record di orazio"]
+        r9["record di susanna"]
+    end
+    subgraph P4["Pagina 4 (File di Dati)"]
+        direction TB
+        r10["record di tina"]
+        r11["record di umberto"]
+        r12["record di vincenzo"]
+    end
+    m2 --> L1a
+    v2 --> L1b
+    g1 --> P1
+    m1 --> P2
+    s1 --> P3
+    v1 --> P4
+```
 
 ## Indici B+ Tree
 
@@ -58,7 +137,22 @@ Possiamo implementare la struttura di indici multilivello usando i B+ Tree.
 è un implementazione più efficiente del B-Tree. Il B-Tree è strutturato con ogni nodo contenente una lista alternata di valore - chiave $\langle P_{1}, K_{1},..., K_{q}, P_{q} \rangle$ dove $K_{1} \lt ,..., \lt K_{q-1}$ e $P_{K_{i}}$ punta ai dati relativi alla chiave $K_i$. 
 Tutti i nodi foglia sono allo stesso livello 
 
-![[Pasted image 20230709114439.png]]
+```mermaid
+flowchart TD
+    R["p0 | k0 | p1 | k1 | p2"]
+    N1["p'0 | k'0 | p'1 | k'1 | p'2"]
+    N2["p#quot;0 | k#quot;0 | p#quot;1 | k#quot;1 | p#quot;2"]
+    N3["…"]
+    R -->|p0| N1
+    R -->|p1| N2
+    R -->|p2| N3
+    N1 -.->|k'0| A["REC(k'0)"]
+    N1 -.->|k'1| B["REC(k'1)"]
+    R -.->|k0| C["REC(k0)"]
+    R -.->|k1| D["REC(k1)"]
+    N2 -.->|k#quot;0| E["REC(k#quot;0)"]
+    N2 -.->|k#quot;1| F["REC(k#quot;1)"]
+```
 
 Con l'aggiunta di un elemento, l'albero è mantenuto bilanciato tenendo tutte le foglie allo stesso livello, quando un nodo diventa completo, esso si divide in due nodi, il nodo radice avrà solo il valore centrale del nodo, mentre i figli avranno la parte sinistra e destra rispettivamente. Quando uno di questi due nodi si riempie, il nodo viene diviso in due, e aggiunto al padre, posizionandolo correttamente in base alla chiave.
 Se il padre si riempie, anche esso è diviso e si propaga a tutto il resto dell ramo verso l'alto.
@@ -67,7 +161,24 @@ Dopo un eliminazione di un elemento, si controlla se il nodo è pieno per metà 
 
 L'albero *B+Tree* ha anche un puntatore tra i vari nodi foglia, e ogni nodo foglia memorizza gli indici dei dati. Essendo bilanciato, la ricerca di un indice è costante all'altezza dell'albero
 
-![[Pasted image 20230709115122.png]]
+```mermaid
+block-beta
+  columns 7
+  space:2 R["francesco"]:3 space:2
+  space:7
+  N1["benedetto"]:3 space N2["giovanni"]:3
+  space:7
+  L1["anacleto | aristide"] space L2["benedetto | ennio"] space L3["francesco | gino"] space L4["giovanni | pio"]
+  R --> N1
+  R --> N2
+  N1 --> L1
+  N1 --> L2
+  N2 --> L3
+  N2 --> L4
+  L1 --> L2
+  L2 --> L3
+  L3 --> L4
+```
 
 In oltre usando questa struttura è possibile implementre facilmente un range di ricerca.
 
@@ -75,7 +186,27 @@ In oltre usando questa struttura è possibile implementre facilmente un range di
 
 Gli *indici di bitmap* sono usati per immagazzinare quegli attributi che presentano un numero ridotto di valori possibili, avendo un vettore di bit dove un bit uguale a 1 rappresenta che quel specifico valore è presente nella tupla.
 
-![[Pasted image 20230709115423.png]]
+Tabella IMPIEGATI
+
+| ID | Nome | Cognome | Ruolo | Sesso |
+|---|---|---|---|---|
+| 1 | Carlo | Carli | manager | m |
+| 2 | Giancarlo | Sperlì | analista | m |
+| 3 | Lucio | Sansone | manager | m |
+| 4 | Flora | Amato | programmatore | f |
+| 5 | Antonio | Picariello | programmatore | m |
+| 6 | Vincenzo | Moscato | analista | m |
+
+Indice di Bitmap sull'attributo "Ruolo"
+
+| rid | manager | analista | programmatore |
+|---|---|---|---|
+| 001 | 1 | 0 | 0 |
+| 002 | 0 | 1 | 0 |
+| 003 | 1 | 0 | 0 |
+| 004 | 0 | 0 | 1 |
+| 005 | 0 | 0 | 1 |
+| 006 | 0 | 1 | 0 |
 
 Gli *Indici di JOIN* permette di precalcolare l'operazione di join, evitando di ricacolarla ogni volta che viene eseguita una query.
 
@@ -164,25 +295,73 @@ Tutti questi valori sono etichettate in maniera temporale in cui avvengono
 
 La perdita di aggiornamento *Lost update* avviene quando un operazione di aggiornamento di una transazione si sovrappone a un altra che sta aggiornando lo stesso oggetto, annullandone gli effetti 
 
-![[Pasted image 20230709130859.png]]
+| Time | $T_1$ | $T_2$ | $qtaP_x$ |
+|---|---|---|---|
+| $t_1$ | **bot** | | 100 |
+| $t_2$ | $read(qtaP_x, A)$ | **bot** | 100 |
+| $t_3$ | $A = A - 50$ | $read(qtaP_x, A)$ | 100 |
+| $t_4$ | $write(qtaP_x, A)$ | $A = A - 30$ | 50 |
+| $t_5$ | $write(qtaC_{xz_1}, 50)$ | $write(qtaP_x, A)$ | 70 |
+| $t_6$ | **commit** | $write(qtaC_{xz_2}, 30)$ | 70 |
+| $t_7$ | | **commit** | 70 |
 
 ## Lettura sporca
 
 La lettura sporca *Dirty read* si verifica quando una transazione legge un valore modificato da una transazione che poi verrà abortita 
 
-![[Pasted image 20230709131416.png]]
+| Time | $T_1$ | $T_2$ | $qtaP_x$ |
+|---|---|---|---|
+| $t_1$ | **bot** | | 100 |
+| $t_2$ | $read(qtaP_x, A)$ | | 100 |
+| $t_3$ | $A = A - 50$ | | 100 |
+| $t_4$ | $write(qtaP_x, A)$ | | 50 |
+| $t_5$ | $write(qtaC_{xz_1}, 50)$ | **bot** | 50 |
+| $t_6$ | ... | $read(qtaP_x, A)$ | 50 |
+| $t_7$ | ... | $A = A - 30$ | 50 |
+| $t_8$ | ... | $write(qtaP_x, A)$ | 20 |
+| $t_9$ | **rollback** | $write(qtaC_{xz_2}, 30)$ | 70 |
+| $t_{10}$ | | **commit** | 70 |
 
 ## Lettura inconsistente
 
 La lettura inconsistente *Inconsistent read* si verifica quando una transazione legge in due istanti diversi uno stesso oggetto, con valori differenti nelle due letture, anche se la transazione stessa non lo ha modificato, questo perchè è stato modificato da un altra transazione.
 
-![[Pasted image 20230709131606.png]]
+| Time | $T_1$ | $T_2$ | $qtaP_x$ |
+|---|---|---|---|
+| $t_1$ | **bot** | | 20 |
+| $t_2$ | $read(qtaP_x, A)$ | | 20 |
+| $t_3$ | ... | | 20 |
+| $t_5$ | ... | **bot** | 20 |
+| $t_6$ | ... | $read(qtaP_x, A)$ | 20 |
+| $t_7$ | ... | $A = A - 20$ | 20 |
+| $t_8$ | ... | $write(qtaP_x, A)$ | 0 |
+| $t_9$ | ... | $write(qtaC_{xz}, 30)$ | 0 |
+| $t_{10}$ | ... | **commit** | 0 |
+| $t_{11}$ | $read(qtaP_x, A)$ | | 0 |
+| $t_{12}$ | ... | | 0 |
+| $t_{13}$ | **commit** | | 0 |
 
 ## Aggiornamento fantasma
 
 Un aggiornamento fantasma *Ghost update* si verifica quando una o più operazioni di aggiornamento riguardano due o più oggetti del database il cui valore è correlato (esempio per vincoli di integrità), non vengono viste da altre transazioni sovrapposte temporalmente. Per loro questo aggiornamento è come se non fosse stato effettuato
 
-![[Pasted image 20230709132020.png]]
+| Time | $T_1$ | $T_2$ | $qtaP_{x_1}$ | $qtaP_{x_2}$ |
+|---|---|---|---|---|
+| $t_1$ | **bot** | | 100 | 100 |
+| $t_2$ | $read(qtaP_{x_1}, A)$ | | 100 | 100 |
+| $t_2$ | ... | **bot** | 100 | 100 |
+| $t_3$ | ... | $read(qtaP_{x_1}, A)$ | 100 | 100 |
+| $t_4$ | ... | $A = A - 30$ | 100 | 100 |
+| $t_5$ | ... | $write(qtaP_{x_1}, A)$ | 70 | 100 |
+| $t_6$ | ... | $write(qtaC_{x_1 z}, 30)$ | 70 | 100 |
+| $t_7$ | ... | $read(qtaP_{x_2}, B)$ | 70 | 100 |
+| $t_8$ | ... | $B = B - 30$ | 70 | 100 |
+| $t_9$ | ... | $write(qtaP_{x_2}, B)$ | 70 | 70 |
+| $t_{10}$ | ... | $write(qtaC_{x_2 z}, 30)$ | 70 | 70 |
+| $t_{11}$ | ... | **commit** | 70 | 70 |
+| $t_{12}$ | $read(qtaP_{x_2}, B)$ | | 70 | 70 |
+| $t_{13}$ | $qtaP_{x_1} \neq qtaP_{x_2}$ | | 70 | 70 |
+| $t_{14}$ | **commit** | | 70 | 70 |
 
 ## Controllo della concorrenza
 
@@ -343,8 +522,6 @@ In caso di warm restart si effettuano:
 2) Si continua da li fino alla fine aggiungendo in UNDO le transazioni che hanno fatto begin (nuove transazioni) e in REDO tutte le transazioni che hanno fatto commit, in caso rimuovendole dall'undo
 3) Si parte a ritroso disfacendo tutte le operazioni delle transazioni all'interno di UNDO, invertendone l'operazione
 4) Si parte dall'inizio rifacendo tutte le operazioni delle transazioni all'interno di REDO
-
-
 
 ## Ripresa a freddo
 
