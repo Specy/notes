@@ -28,8 +28,6 @@ $$
 (x_1,y_1) \cdot (x_2,y_2) = x_1x_2 + y_1y_2
 $$
 
-
-
 ## 🟠 Limiti di funzioni a due parametri
 
 Diremo che la successione di vettori $\{(x_n,y_n)_{n\in\mathbb N} \subset R^2\}$ converge al vettore $(x_0,y_0)$ se:
@@ -100,13 +98,45 @@ $$
 $$
 Che sono due avvicinamenti diversi all'origine, dove $y = x^2$ ha limite $\frac{1}{2}$, mentre $y = x$ ha limite 0. Allora il limite di $f(x,y)$ non esiste.
 
-
-
 ## 🟢 Coordinate polari
 
 Un punto $P$ nel piano può essere rappresentato sia in coordinate cartesiane $(x,y)$ che in coordinate polari $(\rho,\theta)$:
 
-![[Pasted image 20250627101957.png]]
+```plot
+x: [-1, 15]
+y: [-1.5, 7.2]
+height: 260
+alt: Un punto P nel piano con coordinate cartesiane (x, y) e coordinate polari (ρ, θ), dove ρ è la distanza dall'origine e θ l'angolo con l'asse x.
+items:
+  - guide: [8, 4.2]
+    color: red
+    dash: dotted
+  - line: [[0, 0], [8, 4.2]]
+    color: blue
+  - line: [[3.5, 0.0], [3.5, 0.056], [3.498, 0.113], [3.496, 0.169], [3.493, 0.225], [3.489, 0.282], [3.484, 0.338], [3.478, 0.394], [3.471, 0.45], [3.463, 0.506], [3.455, 0.562], [3.445, 0.617], [3.435, 0.673], [3.423, 0.728], [3.411, 0.783], [3.398, 0.838], [3.384, 0.892], [3.369, 0.947], [3.354, 1.001], [3.337, 1.055], [3.32, 1.109], [3.301, 1.162], [3.282, 1.215], [3.262, 1.268], [3.241, 1.32], [3.22, 1.372], [3.197, 1.424], [3.174, 1.475], [3.15, 1.526], [3.125, 1.577], [3.099, 1.627]]
+    color: blue
+    arrow: true
+  - point: [8, 4.2]
+  - text: $\rho$
+    at: [4.3, 2.9]
+    color: blue
+  - text: $\vartheta$
+    at: [2.2, 0.55]
+    color: blue
+  - text: $y$
+    at: [-0.6, 4.2]
+    color: red
+  - text: $x$
+    at: [8, -0.8]
+    color: red
+  - text: "$P = (\\textcolor{red}{x, y})$ in coordinate cartesiane"
+    at: [8.6, 4.2]
+    anchor: e
+  - text: "$= (\\textcolor{blue}{\\rho, \\vartheta})$ in coordinate polari"
+    at: [8.9, 3.2]
+    anchor: e
+```
+
 E possiamo passare da coordinate cartesiane a polari e viceversa tramite:
 $$
 \left \{
@@ -129,7 +159,10 @@ La relazione $tan \theta = \frac{y}{x}$ non può essere usata per calcolare $\th
 Il che vuol dire che passando da coordinate cartesiani a polari, il limite di due variabili si trasforma in un limite di una variabile. A questo punto diciamo:
 
 Se esiste $l \in \mathbb R$ e una funzione $g(\rho)$ **INDIPENDENTE DA $\theta$** (sennò il limite non esiste), tale che:
-![[Pasted image 20250627102913.png]]
+
+$$
+\lvert f(\overbrace{\rho \cos(\vartheta)}^{=x}, \overbrace{\rho \sin(\vartheta)}^{=y}) - l \rvert \le g(\rho)
+$$
 
 Con $g(\rho) \to 0$ per $\rho \to 0^+$, allora il limite:
 $$
@@ -142,13 +175,53 @@ $$
 $$
 Analogamente al limite precedente, $\lim_{x \to 0} f(x, mx) = 0$, passiamo alle coordinate polari:
 
-![[Pasted image 20250627103403.png]]
+$$
+f(x,y) = f(\rho\cos(\vartheta), \rho\sin(\vartheta)) = \frac{2\rho^2\cos^2(\vartheta) \cdot \rho\sin(\vartheta)}{\rho^2} = 2\rho\cos^2(\vartheta)\sin(\vartheta).
+$$
+
+Visto che $\lvert\sin(\vartheta)\rvert, \lvert\cos(\vartheta)\rvert \le 1$, segue
+
+$$
+\begin{aligned}
+\lvert f(\rho\cos(\vartheta), \rho\sin(\vartheta)) - l \rvert &= \lvert 2\rho\cos^2(\vartheta)\sin(\vartheta) - 0 \rvert = 2\rho \cdot \lvert\cos^2(\vartheta)\sin(\vartheta)\rvert \\
+&\le 2\rho =: g(\rho) \to 0 \qquad \text{per } \rho \to 0^+.
+\end{aligned}
+$$
 
 E quindi segue che il limite è 0
 
 Facciamo un altro esempio:
 
-![[Pasted image 20250627103506.png]]
+**Esempio.** Studiare la convergenza di
+
+$$
+\lim_{(x,y)\to(0,0)} \frac{\sin(x^2y) + x^2 + y^2}{x^2 + y^2} =: l.
+$$
+
+È facile verificare che $\displaystyle\lim_{x\to 0} f(x, mx) = 1$ per ogni $m \in \mathbb{R}$, quindi se il limite $l$ esiste deve essere $l = 1$.
+
+Si ha $f(\rho\cos(\vartheta), \rho\sin(\vartheta)) = \frac{\sin(\rho^3\cos^2(\vartheta)\sin(\vartheta)) + \rho^2}{\rho^2}$ e quindi
+
+$$
+\lvert f(\rho\cos(\vartheta), \rho\sin(\vartheta)) - l \rvert = \left\lvert \frac{\sin(\rho^3\cos^2(\vartheta)\sin(\vartheta))}{\rho^2} \right\rvert
+$$
+
+Se procediamo utilizzando come prima la relazione $\lvert\sin(t)\rvert \le 1$ per $t \in \mathbb{R}$, si ottiene
+
+$$
+\lvert f(\rho\cos(\vartheta), \rho\sin(\vartheta)) - l \rvert = \left\lvert \frac{\overbrace{\sin(\rho^3\cos^2(\vartheta)\sin(\vartheta))}^{\le 1}}{\rho^2} \right\rvert \le \frac{1}{\rho^2} =: g(\rho) \not\to 0 \qquad \text{per } \rho \to 0^+.
+$$
+
+Quindi non possiamo concludere l'esistenza del limite. Tuttavia possiamo ricordare che $\lvert\sin(t)\rvert \le \lvert t \rvert$ per $t \in \mathbb{R}$, quindi per $t = \rho^3\cos(\vartheta)\sin(\vartheta)$,
+
+$$
+\begin{aligned}
+\lvert f(\rho\cos(\vartheta), \rho\sin(\vartheta)) - l \rvert &\le \frac{\lvert\rho^3\cos^2(\vartheta)\sin(\vartheta)\rvert}{\rho^2} \le \frac{\rho^3 \cdot \overbrace{\lvert\cos^2(\vartheta)\sin(\vartheta)\rvert}^{\le 1}}{\rho^2} \\
+&\le \rho =: g(\rho) \to 0 \qquad \text{per } \rho \to 0^+
+\end{aligned}
+$$
+
+che dimostra che $\displaystyle\lim_{(x,y)\to(0,0)} \frac{\sin(x^2y) + x^2 + y^2}{x^2 + y^2} = 1$.
 
 ## 🟢 Calcolo del limite di una funzione a due parametri
 
@@ -251,7 +324,38 @@ Allora $f$ non è derivabile parzialmente (in questo caso perchè almeno una del
 
 ## 🟠 Controllo sulla differenziabilità
 
-![[Pasted image 20250627120040.png]]
+**Definizione 8.3.** Sia $f : X \subset \mathbb{R}^2 \to \mathbb{R}$ e $(x_0, y_0) \in X$. Se esiste un vettore $A = (a, b) \in \mathbb{R}^2$ tale che
+
+$$
+\begin{aligned}
+f(x,y) &= f(x_0,y_0) + A \cdot (x - x_0, y - y_0) + o\big(\lVert(x - x_0, y - y_0)\rVert\big) \\
+&= f(x_0,y_0) + a \cdot (x - x_0) + b \cdot (y - y_0) + o\Big(\sqrt{(x - x_0)^2 + (y - y_0)^2}\Big) \\
+&\qquad\qquad\qquad\qquad \text{per } (x,y) \to (x_0,y_0)
+\end{aligned}
+$$
+
+allora $f$ si dice *differenziabile* in $(x_0, y_0)$ (il simbolo "$\cdot$" denota in questo caso il prodotto scalare tra vettori in $\mathbb{R}^2$).
+
+**Proposizione 8.4.** Sia $f : X \subseteq \mathbb{R}^2 \to \mathbb{R}$ differenziabile nel punto $(x_0, y_0) \in X$. Allora
+
+- $f$ è continua in $(x_0, y_0)$;
+- $f$ è derivabile in $(x_0, y_0)$ e $A = Df(x_0,y_0) = (f_x(x_0,y_0), f_y(x_0,y_0))$. Quindi risulta
+
+$$
+\begin{aligned}
+f(x,y) &= f(x_0,y_0) + Df(x_0,y_0) \cdot (x - x_0, y - y_0) + o\big(\lVert(x - x_0, y - y_0)\rVert\big) \\
+&= f(x_0,y_0) + f_x(x_0,y_0) \cdot (x - x_0) + f_y(x_0,y_0) \cdot (y - y_0) \\
+&\quad + o\Big(\sqrt{(x - x_0)^2 + (y - y_0)^2}\Big) \qquad \text{per } (x,y) \to (x_0,y_0)
+\end{aligned}
+$$
+
+**Osservazioni.**
+
+- Ricordando la definizione di $o(\cdot)$ la condizione definendo la differenziabilità in $(x_0, y_0)$ si può riscrivere come
+
+$$
+\boxed{\lim_{(x,y)\to(x_0,y_0)} \frac{f(x,y) - \big(f(x_0,y_0) + f_x(x_0,y_0) \cdot (x - x_0) + f_y(x_0,y_0) \cdot (y - y_0)\big)}{\sqrt{(x - x_0)^2 + (y - y_0)^2}} = 0}
+$$
 
 Alternativamente, se $f: X \subset \mathbb R^2$ è derivabile con continuità (cioè le derivate $f_x$ e $f_y$ di $f$ esistono e sono continue), allora $f$ è differenziabie 
 
@@ -262,7 +366,14 @@ Esempio: $f(x,y) := sin(x^2 \cdot e^y)$, calcoliamo le derivate parziali:
 
 Sono entrambe continue, allora $f(x,y)$ è differenziabile 
 
-![[Pasted image 20250627120507.png]]
+$$
+\begin{array}{ccccc}
+\boxed{f \in \mathrm{C}^1} & \begin{matrix}\Rightarrow \\ \not\Leftarrow\end{matrix} & \boxed{f \text{ differenziabile}} & \begin{matrix}\Rightarrow \\ \not\Leftarrow\end{matrix} & \boxed{f \text{ derivabile (parzialmente)}} \\[1em]
+ & & \Downarrow\,\not\Uparrow & \begin{matrix}\bcancel{\nearrow} \\ \bcancel{\swarrow}\end{matrix} & \\[1em]
+ & & \boxed{f \text{ continua}} & &
+\end{array}
+$$
+
 ## 🟢 Equazione del piano tangente
 
 Prendendo il termine lineare nella definizione di differenziabilità ci dà l'equazione del piano tangente $p$ nel punto $(x_0, y_0)$: 
@@ -341,7 +452,9 @@ allora si dice che $f$ è **derivabile verso la direzione** $v$ in $P$, con **de
 
 Usando le coordinate polari, tutti i versori $v \in \mathbb R^2$ si possono rappresentare come $v = (\cos(\theta), \sin(\theta))$ per qualche $\theta \in [0, 2\pi)$.
 
-![[Pasted image 20250627133409.png]]
+La derivata direzionale in $(x_0, y_0)$ rispetto $v \in \mathbb{R}^2$ corrisponde a fare la derivata ordinaria (cioè rispetto a una variabile) della funzione $F(t) = f(x_0 + tv_0, y_0 + tv_1)$, $t \in \mathbb{R}$, che è la restrizione di $f$ alla retta $v_0 \cdot (y - y_0) = v_1(x - x_0)$. Quindi essa fornisce informazioni sulla crescenza/decrescenza di $f$ lungo tale retta nell'intorno del punto $(x_0, y_0)$, cioè nella direzione di $v$ partendo da $(x_0, y_0)$.
+
+![[Pasted image 20250627133409 figura.png]]
 
 Per calcolare la derivata direzionale $D_vf(x_0, y_0)$ per $v = (v_0, v_1)$ usiamo:
 $$
@@ -418,4 +531,58 @@ Il gradiente può essere scritto come $Df(x, y)$, e:
 - La sua norma è il tasso di crescita della funzione in quella direzione. 
 - Negando il gradiente, otteniamo la direzione di massima decrescita della funzione.
 
-![[Pasted image 20250627135939.png]]
+- Consideriamo ora la curva di livello $c := f(x_0, y_0)$ di $f$ passando per il punto $(x_0, y_0)$, cioè
+
+$$
+\Gamma_c = \big\{(x,y) \in X : f(x,y) = f(x_0,y_0)\big\}.
+$$
+
+Supponiamo che in $(x_0, y_0)$ esiste il versore tangente $\tau$ a $\Gamma_c$.
+
+```plot
+x: [-0.2, 3.2]
+y: [-0.2, 1.6]
+height: 230
+axes: false
+let: { a: 1.15 }
+caption: Versore tangente $\tau$.
+alt: Una curva di livello Γ_c con il punto (x_0, y_0) e il versore tangente τ in quel punto, disegnato in blu.
+items:
+  - fn: g
+    through: [[0, 0], [1.75, 1.17], [2.85, 0.8]]
+  - fn: t(x) = g(a) + g'(a)(x - a)
+    domain: [0.35, 1.15]
+    color: blue
+    dash: dotted
+  - line: [[1.15, 1.07], [2.0, 1.35]]
+    color: blue
+    arrow: true
+  - point: [a, g(a)]
+  - text: $\tau$
+    at: [2.05, 1.4]
+    color: blue
+    anchor: e
+  - text: $(x_0, y_0)$
+    at: [1.35, 0.9]
+  - text: $\Gamma_c$
+    at: [2.85, 0.5]
+```
+
+Poiché $f$ è costante su $\Gamma_c$ e, partendo in $(x_0, y_0)$, muoversi lungo la direzione $\tau$ corrisponde, almeno in termini infinitesimali, a muovendosi lungo la curva $\Gamma_c$, si ha euristicamente
+
+$$
+\frac{\partial f}{\partial \tau}(x_0, y_0) = 0.
+$$
+
+Quindi dal Teorema del Gradiente segue
+
+$$
+\frac{\partial f}{\partial \tau}(x_0, y_0) = \tau \cdot Df(x_0, y_0) = 0.
+$$
+
+Ricordando che il prodotto scalare tra due vettori è nullo se e solo se i due vettori sono perpendicolari, concludiamo che il gradiente
+
+$$
+\boxed{\textcolor{blue}{\textit{Df}(x_0,y_0)\ \text{\textit{è ortogonale alla curva di livello di}}\ f\ \text{\textit{passante per}}\ (x_0,y_0)}}
+$$
+
