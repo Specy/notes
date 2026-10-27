@@ -4,7 +4,30 @@ description: "Esercizi d'esame sulla seconda parte del corso: crittografia PKI, 
 type: exercise
 ---
 
-![[Pasted image 20250121123132.png]]
+Spiegare gli aspetti essenziali della Public Key Infrastructure (PKI): chiavi pubbliche e private, proprietà aritmetiche, certificazione, …
+
+Lo schema in basso riassume il meccanismo PGP per l'invio di mail sicure. Spiegare il significato dei vari blocchi, specificando quali di essi garantiscono l'autenticità, quali l'integrità e quali la riservatezza. Indicare la sequenza dei passi da compiere da parte del destinatario per risalire al messaggio originale e compiere le verifiche su autenticità e integrità.
+($m$=messaggio; $H$=hash; $K_A^-$=chiave privata di Alice; $K_B^+$=chiave pubblica di Bob, $K_S$=chiave di sessione)
+
+```mermaid
+flowchart LR
+  subgraph Alice
+    direction LR
+    m1["m"] --> H1["H( · )"] --> S1["K<sub>A</sub><sup>-</sup>( · )"]
+    KAm["K<sub>A</sub><sup>-</sup>"] -.-> S1
+    S1 -->|"K<sub>A</sub><sup>-</sup>(H(m))"| PLUS1(("+"))
+    m1 --> PLUS1
+    PLUS1 --> E1["K<sub>S</sub>( · )"]
+    KS1["K<sub>S</sub>"] -.-> E1
+    E1 --> PLUS2(("+"))
+    KS2["K<sub>S</sub>"] --> E2["K<sub>B</sub><sup>+</sup>( · )"]
+    KBp["K<sub>B</sub><sup>+</sup>"] -.-> E2
+    E2 -->|"K<sub>B</sub><sup>+</sup>(K<sub>S</sub>)"| PLUS2
+  end
+  PLUS2 --> NET(["Internet"])
+```
+
+Indicare le proprietà principali di una funzione di Hashing.
 
 La PKI utilizza due chiavi per ogni host, una pubblica accessibile a tutti, ed una privata, conosciuta solo dall'host. 
 Per inviare un messaggio da A a B, A utilizzerà una funzione criptografica utilizzando la chiave pubblica di B per cifrare il messaggio, per poi inviarlo a B. B per decifrare il messaggio utilizzerà la funzione criptografica utilizzando la propria chiave privata per ottenere il messaggio originale.
@@ -15,7 +38,17 @@ Quando bob riceve la mail, usa la propria chiave privata per decriptare la chiav
 
 ---
 
-![[Pasted image 20250121122103.png]]
+```mermaid
+flowchart LR
+  A["A<br/>indirizzo IP: 192.150.181.198<br/>subnet mask: 255.255.255.248"] --- B["B<br/>indirizzo IP: 192.150.181.206<br/>subnet mask: 255.255.255.248"]
+```
+
+Nello scenario in figura i due host, collegati da un cavo di rete, non hanno connettività.
+
+1. Spiegare perché.
+2. Dare un possibile valore all'IP di B affinché si abbia connettività tra i due host (motivare la risposta).
+3. Lasciando invariati gli IP, modificare la subnet mask dei due host del minor numero di bit possibile affinché si abbia connettività (motivare la risposta).
+
 Espandiamo i due indirizzi ip:
 
 192.150.181.11000110
@@ -32,16 +65,42 @@ Con subnet mask:
 3. Ci basta spostare di 1 bit a sinistra la maschera, quindi diventa 255.255.255.11110000, in questo modo i due indirizzi sono nella stessa rete (1100).
 
 ---
-![[Pasted image 20250121124108.png]]
-![[Pasted image 20250121124136.png]]
 
+I 12 host da A a N in figura (di cui sono riportati indirizzo IP e solo 2 byte del MAC address) sono connessi agli switch le cui porte da 1 a 3 (e G1 per lo switch1) sono taggate VLAN 1 e quelle da 4 a 6 (e G2 per lo switch1) VLAN 2. Alla VLAN 1 è assegnato l'indirizzo di rete 192.168.1.0/24 (con gateway 192.168.1.1 configurato per i suoi host), e alla VLAN 2 è assegnato l'indirizzo di rete 192.168.2.0/24 (con gateway 192.168.2.1 configurato per i suoi host).
+
+![[Pasted image 20250121124108 figura.png]]
+
+In un determinato momento
+
+- l'host B ha appreso l'associazione IP-MAC 192.168.1.7-4B:23 di H e dell'interfaccia 192.168.1.1-11:11 del router;
+- l'host H ha appreso l'associazione IP-MAC 192.168.1.4-BB:22 di B;
+- gli altri host non conoscono nessuna associazione IP-MAC;
+- gli switch hanno le tabelle di switching vuote;
+- il router conosce tutte le associazioni IP-MAC dei 12 host.
+
+B effettua in sequenza i seguenti test di connettività, attendendo e ottenendo per ognuno risposta dal destinatario prima di passare al successivo
+
+1. ping 192.168.1.3
+2. ping 192.168.1.7
+3. ping 192.168.2.8
+
+Indicare per ogni test:
+
+- il tipo di contenuto dei frame, sia di richiesta che di risposta, generati dagli host e eventualmente dal router, e il relativo indirizzo MAC di destinazione e quello IP se significativo
+- le operazioni svolte dagli switch (es. scarto, modifica, inoltro e su quali interfacce) alla ricezione dei frame e il relativo aggiornamento delle tabelle di switching (in particolare delle porte 24) tramite self-learning
+
+Se B tentasse, senza possibilità di successo, i test
+
+4. ping 192.168.2.20
+5. ping 192.168.3.20
+
+come sarebbe formato il primo frame inviato da B nei due tentativi (se ne invia)?
 
 | ARP TABLE Di B | IP  | MAC   |
 | -------------- | --- | ----- |
 | Router         | 1.1 | 11:11 |
 | H              | 1.7 | 4B:23 |
 | A              | 1.3 | AA:11 |
-
 
 | ARP TABLE Di H | IP  | MAC   |
 | -------------- | --- | ----- |
@@ -112,13 +171,33 @@ Ora B farà questi ping:
 - Lo switch 1 riceve il pacchetto, aggiunge 11:11 su interfaccia G1, e invia il pacchetto a interfaccia 2
 - B riceve il pacchetto, fine ping
 
-
 B vedrebbe che l'ip destinazione non fa parte della propria rete, allora invierebbe un ICMP con ip sorgente 1.4 e mac BB:22, ip destinazione 2.20 (e 3.20) e mac 11:11.
 
 nel caso di 3.20, il router non conosce quella rete, allora ignora il pacchetto
 nel caso 2.20, il router non conosce il MAC di 2.20, allora fa una ARP request a cui nessuno risponderà
 
-![[Pasted image 20250201163108.png]]
+**3. Crittografia (5 punti)**
+
+Descrivere gli elementi essenziali della fase di handshake SSL.
+
+In figura è riportato lo schema di frammentazione del flusso dei dati nell'SSL.
+
+```mermaid
+block-beta
+  columns 7
+  space:2 D["data"]:3 space:2
+  space:7
+  space F1["data fragment"] M1["MAC"] space space F2["data fragment"] M2["MAC"]
+  space:7
+  H1["record header"] E1["encrypted data and MAC"]:2 space H2["record header"] E2["encrypted data and MAC"]:2
+  D --> F1
+  D --> F2
+  F1 --> E1
+  F2 --> E2
+```
+
+Spiegare nel dettaglio il significato dei blocchi visualizzati (cosa sono, come vengono creati, cosa è cifrato, con quali algoritmi, con quali chiavi, etc.). Spiegare inoltre la necessità della certificazione e il principio alla base della creazione di un certificato.
+
 1)
 Nella fase iniziale dell'handshake SSL si condividono due messaggi di hello, il client hello, dove il client invia al server una lista di algoritmi crittografici che supporta, insieme ad un nonce. 
 
@@ -133,7 +212,11 @@ Il record header contiene delle informazioni sul frammento, come la versione del
 
 La certificazione serve a dimostrare che il server a cui si sta parlando è effettivamente chi ci aspettiamo. Il certificato è criptato tramite una CA, e il client può verificarlo tramite la chiave pubblica della CA. Una volta verificato, utilizzerà la chiave pubblica dell'host del certificato per criptare i dati da inviare.
 
-![[Pasted image 20250201190633.png]]
+**1. ARP (4 punti).**
+
+![[Pasted image 20250201190633 figura.png]]
+
+Nello scenario in figura Robert e Mary stanno comunicando senza interruzioni. Da quale entry sono popolate le ARP table di Robert, Mary, Router1 e Router2?
 
 Sono in due reti diverse, allora vuol dire che Robert e Mary stanno comunicando sapendo solo dell'esistenza del router, i due router conoscono gli indirizzi dei dispositivi che sono connessi alla propria rete, inclusi i router. 
 
@@ -154,6 +237,4 @@ Sono in due reti diverse, allora vuol dire che Robert e Mary stanno comunicando 
 | -------------------- | ---------- | ------ |
 |                      | 10.1.1.254 | *:0124 |
 |                      | 10.1.2.2   | *:2222 |
-
-
 
