@@ -221,40 +221,52 @@ Questo potrebbe diminuire significativamente il costo di ricerca. Se per esempio
 
 Questo algoritmo può essere implementato usando uno qualsiasi degli algoritmi precedentemente visti
 
-```mermaid
-flowchart LR
-    n1(["1 (Root node)"])
-    n2((2))
-    n3((3))
-    n4((4))
-    n5((5))
-    n6((6))
-    n8((8))
-    n9(["9 (Intersection node)"])
-    n10((10))
-    n11((11))
-    n12((12))
-    n13((13))
-    n14((14))
-    n15((15))
-    n16(["16 (Goal node)"])
-    n1 --- n4
-    n2 --- n4
-    n4 --- n8
-    n3 --- n6
-    n5 --- n6
-    n6 --- n8
-    n8 --- n9
-    n9 --- n10
-    n10 --- n11
-    n10 --- n12
-    n11 --- n13
-    n11 --- n14
-    n12 --- n15
-    n12 --- n16
-    n1 -.-> n8
-    n16 -.-> n9
-```
+<svg viewBox="0 0 510 365" width="100%" style="max-width:510px;display:block;margin:1.5rem auto" role="img" aria-label="Ricerca bidirezionale: albero dal nodo radice 1 e dal nodo obiettivo 16 che si incontrano nel nodo di intersezione 9">
+<defs><marker id="i20241130184719-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g stroke="currentColor" stroke-width="1.5">
+<line x1="74.7" y1="66.5" x2="114.3" y2="89.5"/>
+<line x1="74.7" y1="129.5" x2="114.3" y2="106.5"/>
+<line x1="138.2" y1="112.3" x2="177.8" y2="173.7"/>
+<line x1="72.8" y1="251.9" x2="109.2" y2="278.1"/>
+<line x1="68" y1="317.1" x2="108" y2="295.9"/>
+<line x1="132.2" y1="273.7" x2="177.8" y2="202.3"/>
+<line x1="204" y1="188" x2="242" y2="188"/>
+<line x1="276" y1="188" x2="315" y2="188"/>
+<line x1="340.8" y1="173.4" x2="376.2" y2="114.6"/>
+<line x1="340.2" y1="202.9" x2="376.8" y2="270.1"/>
+<line x1="399.7" y1="91.4" x2="442.3" y2="66.6"/>
+<line x1="400.3" y1="107.4" x2="441.7" y2="127.6"/>
+<line x1="398.6" y1="274.8" x2="431.4" y2="250.2"/>
+<line x1="399.5" y1="293.9" x2="430.5" y2="313.1"/>
+</g>
+<!-- separatore e frecce delle due ricerche -->
+<g fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 4">
+<path d="M259,125 V169 M259,207 V262"/>
+<path d="M75,43 C150,30 190,80 192,140" marker-end="url(#i20241130184719-arrow)"/>
+<path d="M427,327 C340,345 300,300 297,212" marker-end="url(#i20241130184719-arrow)"/>
+</g>
+<g font-size="15" font-weight="bold" text-anchor="middle" fill="currentColor">
+<circle cx="60" cy="58" r="17" fill="var(--palette-orange)" fill-opacity="0.3" stroke="var(--palette-orange)" stroke-width="1.5"/><text x="60" y="63">1</text>
+<circle cx="129" cy="98" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="129" y="103">4</text>
+<circle cx="60" cy="138" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="60" y="143">2</text>
+<circle cx="187" cy="188" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="187" y="193">8</text>
+<circle cx="259" cy="188" r="17" fill="var(--palette-orange)" fill-opacity="0.3" stroke="var(--palette-orange)" stroke-width="1.5"/><text x="259" y="193">9</text>
+<circle cx="332" cy="188" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="332" y="193">10</text>
+<circle cx="385" cy="100" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="385" y="105">11</text>
+<circle cx="457" cy="58" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="457" y="63">13</text>
+<circle cx="457" cy="135" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="457" y="140">14</text>
+<circle cx="385" cy="285" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="385" y="290">12</text>
+<circle cx="445" cy="240" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="445" y="245">15</text>
+<circle cx="445" cy="322" r="17" fill="var(--palette-orange)" fill-opacity="0.3" stroke="var(--palette-orange)" stroke-width="1.5"/><text x="445" y="327">16</text>
+<circle cx="59" cy="242" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="59" y="247">3</text>
+<circle cx="123" cy="288" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="123" y="293">6</text>
+<circle cx="53" cy="325" r="17" fill="var(--palette-blue)" fill-opacity="0.3" stroke="var(--palette-blue)" stroke-width="1.5"/><text x="53" y="330">5</text>
+</g>
+<g font-size="14" font-weight="bold" text-anchor="middle" fill="currentColor">
+<text x="60" y="20">Root node</text>
+<text x="259" y="288">Intersection</text><text x="259" y="306">Node</text>
+<text x="445" y="357">Goal node</text>
+</g></svg>
 
 | Criterion | Breadth-First | Uniform-Cost | Depth-First | Depth-Limited | Iterative Deepening | Bidirectional (if applicable) |
 |---|---|---|---|---|---|---|
@@ -302,15 +314,25 @@ Se la funzione euristica è ammissibile, allora A* trova una soluzione ottima
 Una proprietà più forte è la "consistenza" della funzione euristica, cioè se: $h(n) \le c(n,a,n^\prime) \le h^*(n^\prime)$ dove $c(n,a,n^\prime)$ è il costo di fare un azione $a$ da nodo $n$ per arrivare a $n^\prime$. 
 Questa proprietà è simile alla disuguaglianza triangolare
 
-```mermaid
-flowchart LR
-    n(("n"))
-    np(("n′"))
-    G(("Gₙ′"))
-    n -->|"c(n, a, n′)"| np
-    np -.->|"h(n′)"| G
-    n -.->|"h(n)"| G
-```
+<svg viewBox="0 0 450 230" width="100%" style="max-width:450px;display:block;margin:1.5rem auto" role="img" aria-label="Disuguaglianza triangolare: costo c(n, a, n′) da n a n′, stime h(n′) e h(n) verso l'obiettivo Gₙ′">
+<defs><marker id="i20241130191429-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g fill="none" stroke="currentColor" stroke-width="2">
+<path d="M100,151 C125,115 150,95 188,80" marker-end="url(#i20241130191429-arrow)"/>
+<g stroke-dasharray="7 5"><line x1="251.9" y1="94.4" x2="325.8" y2="155.7" marker-end="url(#i20241130191429-arrow)"/><line x1="115" y1="180" x2="317" y2="180" marker-end="url(#i20241130191429-arrow)"/></g>
+</g>
+<g fill="var(--palette-teal)" fill-opacity="0.3" stroke="currentColor" stroke-width="1.5">
+<circle cx="80" cy="180" r="35"/>
+<circle cx="225" cy="72" r="35"/>
+<circle cx="355" cy="180" r="35"/>
+</g>
+<g font-size="18" font-style="italic" text-anchor="middle" fill="currentColor">
+<text x="80" y="186">n</text><text x="225" y="78">n′</text><text x="355" y="186">Gₙ′</text>
+</g>
+<g font-size="16" font-style="italic" fill="currentColor">
+<text x="128" y="105" text-anchor="end">c(n, a, n′)</text>
+<text x="300" y="105">h(n′)</text>
+<text x="218" y="210" text-anchor="middle">h(n)</text>
+</g></svg>
 
 Se un euristica è coerente, allora è anche ammissibile (l'oppost non è vero), quindi trova soluzione ottima. 
 

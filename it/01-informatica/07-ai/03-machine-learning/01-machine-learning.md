@@ -100,85 +100,96 @@ Un modello con varianza alta è detto **overfitting**, cioè che è troppo speci
 Un buon modello di machine learning deve bilanciare i due criteri di bias e varianza per migliorare il più possibile la qualtità del modello.
 
 ```plot
-x: [0, 10.5]
+x: [0, 10.6]
 y: [0, 10]
-height: 300
-axes: true
+width: 600
+height: 280
 xlabel: Capacity
-xticks: { 5.3: "Optimal capacity" }
+xticks: { 5.27: "Optimal capacity" }
 items:
-  - fn: gen
-    through: [[0.25, 9.4], [1.5, 4.6], [3.2, 2.3], [5.3, 1.3], [7.3, 1.7], [10, 2.9]]
-    color: red
-    width: 3
   - fn: bias
-    through: [[0.25, 8.8], [1.5, 4.4], [3.2, 1.5], [4.5, 0.7], [5.3, 0.3], [10, 0.1]]
+    through: [[0.2, 8.5], [0.5, 7.3], [1, 4.7], [1.5, 3.3], [2.33, 2], [3.17, 1.27], [4.17, 0.65], [5.33, 0.29], [7.33, 0.15], [9.83, 0.07]]
     color: blue
     dash: true
     width: 3
   - fn: var
-    through: [[0.25, 0.1], [5.3, 0.7], [7.3, 1.1], [9.8, 2.3]]
+    through: [[0.2, 0.11], [1.5, 0.22], [3.17, 0.44], [5.17, 0.73], [6.83, 1.16], [8.17, 1.64], [9.67, 2.25]]
     color: green
     dash: true
     width: 3
-  - vline: 5.3
+  - fn: gen
+    through: [[0.25, 8.9], [0.83, 6.5], [1.5, 4.7], [2.33, 3.1], [3.17, 2], [4.17, 1.38], [5.17, 1.24], [6.5, 1.53], [8.17, 2], [9.97, 2.7]]
+    color: red
+    width: 3.5
+  - vline: 5.27
     color: fg
   - text: Underfitting zone
-    at: [2.6, 9]
+    at: [3.4, 7.5]
   - text: Overfitting zone
-    at: [7.8, 9]
+    at: [7, 7.5]
   - text: Bias
-    at: [1.2, 3]
+    at: [1.3, 2.9]
     color: blue
-  - text: Variance
-    at: [9.5, 1.5]
-    color: green
-  - text: Generalization error
-    at: [6.9, 2.9]
+  - text: Generalization
+    at: [6.7, 3.3]
     color: red
+  - text: error
+    at: [6.7, 2.45]
+    color: red
+  - text: Variance
+    at: [10.1, 1.6]
+    color: green
 ```
 
 ```plot
 x: [0, 10]
 y: [0, 10]
-height: 300
-axes: true
+width: 650
+height: 260
 xlabel: Capacity
 ylabel: Error
-xticks: { 0: "0", 2.4: "Optimal Capacity" }
+xticks: { 0: "0", 2.41: "Optimal Capacity" }
 items:
   - fn: gen
-    through: [[0.07, 10], [0.25, 2.6], [0.84, 1.5], [2.3, 1.1], [3.8, 1.3], [5.3, 1.85], [6.8, 2.4], [10, 4.3]]
+    through: [[0.025, 9.8], [0.06, 6.2], [0.12, 3.4], [0.27, 2.08], [0.57, 1.5], [1.18, 1.25], [2.41, 1.13], [3.9, 1.28], [5.4, 1.58], [6.9, 2.26], [8.42, 3.2], [10, 4.26]]
     color: green
     width: 2
-    label: Generalization error
-    labelAt: 2.8
-    anchor: n
   - fn: train
-    through: [[0.1, 3.5], [0.4, 1.7], [0.85, 1.0], [2.4, 0.5], [5.3, 0.2], [10, 0.1]]
+    through: [[0.025, 3.6], [0.12, 2.08], [0.27, 1.43], [0.57, 0.94], [1.18, 0.68], [2.41, 0.38], [3.9, 0.19], [6.9, 0.08], [10, 0.04]]
     color: blue
     dash: true
     width: 2
-    label: Training error
-    labelAt: 8.6
-    anchor: n
-  - vline: 2.4
+  - vline: 2.41
     color: red
     dash: false
+    width: 2
   - text: Underfitting zone
-    at: [2.3, 8.5]
+    at: [2.33, 8.4]
     anchor: w
   - text: Overfitting zone
-    at: [2.5, 8.5]
+    at: [2.5, 8.4]
     anchor: e
-  - line: [[6.6, 0.4], [6.6, 2.3]]
+  - line: [[6.98, 1.3], [6.98, 2.05]]
     arrow: true
-    color: fg
-  - line: [[6.6, 2.3], [6.6, 0.4]]
+  - line: [[6.98, 1.3], [6.98, 0.32]]
     arrow: true
-    color: fg
   - text: Generalization gap
-    at: [6.9, 1.4]
+    at: [7.2, 1.45]
+    anchor: e
+  # legenda
+  - line: [[5.5, 9.75], [9.92, 9.75], [9.92, 7.05], [5.5, 7.05], [5.5, 9.75]]
+  - line: [[5.7, 8.95], [6.4, 8.95]]
+    color: blue
+    dash: true
+    width: 2
+  - text: Training error
+    at: [6.65, 8.95]
+    anchor: e
+  - line: [[5.7, 7.8], [6.4, 7.8]]
+    color: green
+    width: 2
+  - text: Generalization error
+    at: [6.65, 7.8]
     anchor: e
 ```
 

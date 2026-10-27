@@ -84,40 +84,78 @@ def min-value(state):
     return v
 ```
 
-```mermaid
-flowchart TD
-    R(("7<br>MAX"))
-    A["7<br>MIN"]
-    B["2<br>MIN"]
-    C["6<br>MIN"]
-    L9(("9<br>LEAF"))
-    M(("7<br>MAX"))
-    L7["7<br>LEAF"]
-    N["0<br>MIN"]
-    L1(("1<br>LEAF"))
-    L9b(("9<br>LEAF"))
-    L0(("0<br>LEAF"))
-    L5(("5<br>LEAF"))
-    L2(("2<br>LEAF"))
-    L8(("8<br>LEAF"))
-    L6(("6<br>LEAF"))
-    L8b(("8<br>LEAF"))
-    R --- A
-    R --- B
-    R --- C
-    A --- L9
-    A --- M
-    M --- L7
-    M --- N
-    N --- L1
-    N --- L9b
-    N --- L0
-    B --- L5
-    B --- L2
-    B --- L8
-    C --- L6
-    C --- L8b
-```
+<svg viewBox="0 0 600 490" width="100%" style="max-width:600px;display:block;margin:1.5rem auto" role="img" aria-label="Albero minimax: radice MAX con valore 7, nodi MIN con valori 7, 2 e 6; il sottoalbero di sinistra contiene un nodo MAX 7 e un nodo MIN 0">
+<g stroke="currentColor" stroke-width="1.2">
+<line x1="287" y1="51" x2="74" y2="142"/>
+<line x1="287" y1="51" x2="289" y2="142"/>
+<line x1="287" y1="51" x2="494" y2="142"/>
+<line x1="74" y1="178" x2="32" y2="239"/>
+<line x1="74" y1="178" x2="108" y2="239"/>
+<line x1="108" y1="275" x2="74" y2="327"/>
+<line x1="108" y1="275" x2="147" y2="327"/>
+<line x1="147" y1="363" x2="98" y2="421"/>
+<line x1="147" y1="363" x2="150" y2="421"/>
+<line x1="147" y1="363" x2="204" y2="421"/>
+<line x1="289" y1="178" x2="231" y2="239"/>
+<line x1="289" y1="178" x2="289" y2="239"/>
+<line x1="289" y1="178" x2="347" y2="239"/>
+<line x1="494" y1="178" x2="464" y2="239"/>
+<line x1="494" y1="178" x2="534" y2="239"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.4">
+<circle cx="287" cy="33" r="18"/>
+<rect x="56" y="142" width="36" height="36"/>
+<rect x="271" y="142" width="36" height="36"/>
+<rect x="476" y="142" width="36" height="36"/>
+<circle cx="32" cy="257" r="18"/>
+<circle cx="108" cy="257" r="18"/>
+<circle cx="231" cy="257" r="18"/>
+<circle cx="289" cy="257" r="18"/>
+<circle cx="347" cy="257" r="18"/>
+<circle cx="464" cy="257" r="18"/>
+<circle cx="534" cy="257" r="18"/>
+<rect x="56" y="327" width="36" height="36"/>
+<rect x="129" y="327" width="36" height="36"/>
+<circle cx="98" cy="439" r="18"/>
+<circle cx="150" cy="439" r="18"/>
+<circle cx="204" cy="439" r="18"/>
+</g>
+<g font-size="16" text-anchor="middle" fill="currentColor">
+<text x="287" y="39" font-weight="bold" font-size="18">7</text>
+<text x="74" y="166" font-weight="bold" font-size="18">7</text>
+<text x="289" y="166" font-weight="bold" font-size="18">2</text>
+<text x="494" y="166" font-weight="bold" font-size="18">6</text>
+<text x="32" y="263">9</text>
+<text x="108" y="263" font-weight="bold" font-size="18">7</text>
+<text x="231" y="263">5</text>
+<text x="289" y="263">2</text>
+<text x="347" y="263">8</text>
+<text x="464" y="263">6</text>
+<text x="534" y="263">8</text>
+<text x="74" y="351">7</text>
+<text x="147" y="351" font-weight="bold" font-size="18">0</text>
+<text x="98" y="445">1</text>
+<text x="150" y="445">9</text>
+<text x="204" y="445">0</text>
+</g>
+<g font-size="13" font-weight="bold" fill="currentColor">
+<text x="313" y="38">MAX</text>
+<text x="100" y="165">MIN</text>
+<text x="315" y="165">MIN</text>
+<text x="520" y="165">MIN</text>
+<text x="32" y="293" text-anchor="middle">LEAF</text>
+<text x="134" y="262">MAX</text>
+<text x="231" y="293" text-anchor="middle">LEAF</text>
+<text x="289" y="293" text-anchor="middle">LEAF</text>
+<text x="347" y="293" text-anchor="middle">LEAF</text>
+<text x="464" y="293" text-anchor="middle">LEAF</text>
+<text x="534" y="293" text-anchor="middle">LEAF</text>
+<text x="74" y="381" text-anchor="middle">LEAF</text>
+<text x="173" y="350">MIN</text>
+<text x="98" y="475" text-anchor="middle">LEAF</text>
+<text x="150" y="475" text-anchor="middle">LEAF</text>
+<text x="204" y="475" text-anchor="middle">LEAF</text>
+</g></svg>
 
 Questo algoritmo può essere implementato ricorsivamente, visitando fino alle foglie per poi risalire quando la ricorsione viene srotolata.
 Complessivamente, l'algoritmo minmax effettua una ricerca completa DFS dell'albero del gioco 
@@ -134,18 +172,32 @@ Il numero di stati in un gioco è esponenziale in base alla profondità dell'alb
 
 Nessun algoritmo è capace di eliminare completamente l'esponente, ma è possibile ridurre l'esponente a metà, facendo la scelta corretta minmax senza esaminare tutti gli stati, tagliando grandi parti dell'albero di ricerca che non contribuiscono al risultato.
 
-```mermaid
-flowchart TD
-    P1["▲ Player"]
-    M["▼ Opponent<br>m"]
-    P2["▲ Player"]
-    M2["▼ Opponent<br>m′"]
-    N["▼ Opponent<br>n"]
-    P1 --- M
-    P1 -.- P2
-    P2 --- M2
-    P2 --- N
-```
+<svg viewBox="0 0 430 440" width="100%" style="max-width:430px;display:block;margin:1.5rem auto" role="img" aria-label="Albero di gioco: se il giocatore ha una mossa migliore m più in alto nell'albero, il nodo n non verrà mai raggiunto">
+<g stroke="currentColor" stroke-width="1.2" fill="none">
+<line x1="408" y1="10" x2="354" y2="82"/>
+<line x1="342" y1="120" x2="219" y2="167"/>
+<line x1="374" y1="120" x2="392" y2="126"/>
+<line x1="203" y1="202" x2="133" y2="260"/>
+<line x1="203" y1="202" x2="198" y2="260"/>
+<line x1="203" y1="202" x2="259" y2="260"/>
+<line x1="292" y1="354" x2="220" y2="388"/>
+<line x1="292" y1="354" x2="356" y2="388"/>
+<path d="M348,122 Q331,131 342,146 Q352,162 335,170 Q318,179 328,195 Q339,210 322,219 Q305,228 316,243 Q326,259 309,268 Q292,276 302,292 Q313,307 296,316" stroke-width="2.2" stroke-dasharray="6 4"/>
+</g>
+<g stroke="currentColor" stroke-width="1" fill="var(--palette-purple)" fill-opacity="0.35"><path d="M354,82 L376,120 L332,120 z"/><path d="M292,316 L314,354 L270,354 z"/></g>
+<g stroke="currentColor" stroke-width="1" fill="var(--palette-orange)" fill-opacity="0.35"><path d="M183,167 L223,167 L203,202 z"/><path d="M200,388 L240,388 L220,423 z"/><path d="M336,388 L376,388 L356,423 z"/></g>
+<g font-size="16" fill="currentColor">
+<text x="25" y="99">Player</text>
+<text x="25" y="190">Opponent</text>
+<text x="25" y="337">Player</text>
+<text x="25" y="405">Opponent</text>
+<circle cx="55" cy="228" r="2.5"/><circle cx="55" cy="256" r="2.5"/><circle cx="55" cy="283" r="2.5"/>
+</g>
+<g font-size="16" font-style="italic" text-anchor="middle" fill="currentColor">
+<text x="203" y="180">m</text>
+<text x="220" y="401">m′</text>
+<text x="356" y="401">n</text>
+</g></svg>
 
 Considera un nodo $n$ nel grafo dove il giocatore ha la scelta di fare una mossa per arrivare a $n$. 
 Se il giocatore può fare una scelta migliore di $n$, o tra il livello corrente (quello dove si trova $n$, per esempio $m'$) oppure in qualsiasi altro punto nei livelli superiori dove ha il proprio turno (per esempio $m$), allora il giocatore non si muoverà mai su $n$, dato che le altre mosse sono migliori. 
@@ -155,135 +207,79 @@ Esempio:
 
 **(a)**
 
-```mermaid
-flowchart TD
-    A["▲ A<br>[−∞, +∞]"]
-    B["▼ B<br>[−∞, 3]"]
-    C["▼ C"]
-    D["▼ D"]
-    L3["▲ 3"]
-    A --- B
-    A -.- C
-    A -.- D
-    B --- L3
-```
+<svg viewBox="0 0 440 210" width="100%" style="max-width:440px;display:block;margin:1.5rem auto" role="img" aria-label="Potatura alfa-beta, passo (a): radice MAX A [−∞, +∞]; nodo MIN B [−∞, 3] con foglie 3">
+<!-- archi e nodi non ancora esplorati (tratteggiati) -->
+<g stroke="var(--palette-muted)" stroke-dasharray="4 3"><line x1="140" y1="112" x2="140" y2="163"/><line x1="140" y1="112" x2="180" y2="163"/><line x1="260" y1="42" x2="260" y2="88"/><line x1="260" y1="112" x2="220" y2="163"/><line x1="260" y1="112" x2="260" y2="163"/><line x1="260" y1="112" x2="300" y2="163"/><line x1="260" y1="42" x2="380" y2="88"/><line x1="380" y1="112" x2="340" y2="163"/><line x1="380" y1="112" x2="380" y2="163"/><line x1="380" y1="112" x2="420" y2="163"/></g>
+<g stroke="currentColor" stroke-width="1.5"><line x1="260" y1="42" x2="140" y2="88"/><line x1="140" y1="112" x2="100" y2="163"/></g>
+<g stroke-width="1.2"><path d="M128,88 L152,88 L140,112 z" fill="var(--palette-orange)" fill-opacity="0.35" stroke="currentColor"/><path d="M100,163 L112,187 L88,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M140,163 L152,187 L128,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M180,163 L192,187 L168,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M248,88 L272,88 L260,112 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M220,163 L232,187 L208,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M260,163 L272,187 L248,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M300,163 L312,187 L288,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M368,88 L392,88 L380,112 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M340,163 L352,187 L328,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M380,163 L392,187 L368,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M420,163 L432,187 L408,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M260,18 L272,42 L248,42 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/></g>
+<g font-size="11" text-anchor="middle" fill="currentColor"><text x="260" y="39">A</text><text x="140" y="101">B</text></g>
+<g font-size="16" fill="currentColor"><text x="122" y="98" text-anchor="end">[−∞, 3]</text><text x="100" y="209" text-anchor="middle">3</text><text x="242" y="32" text-anchor="end">[−∞, +∞]</text></g>
+</svg>
 
 The first leaf below *B* has the value 3. Hence, *B*, which is a MIN node, has a value of at most 3.
 
 **(b)**
 
-```mermaid
-flowchart TD
-    A["▲ A<br>[−∞, +∞]"]
-    B["▼ B<br>[−∞, 3]"]
-    C["▼ C"]
-    D["▼ D"]
-    L3["▲ 3"]
-    L12["▲ 12"]
-    A --- B
-    A -.- C
-    A -.- D
-    B --- L3
-    B --- L12
-```
+<svg viewBox="0 0 440 210" width="100%" style="max-width:440px;display:block;margin:1.5rem auto" role="img" aria-label="Potatura alfa-beta, passo (b): radice MAX A [−∞, +∞]; nodo MIN B [−∞, 3] con foglie 3, 12">
+<!-- archi e nodi non ancora esplorati (tratteggiati) -->
+<g stroke="var(--palette-muted)" stroke-dasharray="4 3"><line x1="140" y1="112" x2="180" y2="163"/><line x1="260" y1="42" x2="260" y2="88"/><line x1="260" y1="112" x2="220" y2="163"/><line x1="260" y1="112" x2="260" y2="163"/><line x1="260" y1="112" x2="300" y2="163"/><line x1="260" y1="42" x2="380" y2="88"/><line x1="380" y1="112" x2="340" y2="163"/><line x1="380" y1="112" x2="380" y2="163"/><line x1="380" y1="112" x2="420" y2="163"/></g>
+<g stroke="currentColor" stroke-width="1.5"><line x1="260" y1="42" x2="140" y2="88"/><line x1="140" y1="112" x2="100" y2="163"/><line x1="140" y1="112" x2="140" y2="163"/></g>
+<g stroke-width="1.2"><path d="M128,88 L152,88 L140,112 z" fill="var(--palette-orange)" fill-opacity="0.35" stroke="currentColor"/><path d="M100,163 L112,187 L88,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M140,163 L152,187 L128,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M180,163 L192,187 L168,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M248,88 L272,88 L260,112 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M220,163 L232,187 L208,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M260,163 L272,187 L248,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M300,163 L312,187 L288,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M368,88 L392,88 L380,112 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M340,163 L352,187 L328,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M380,163 L392,187 L368,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M420,163 L432,187 L408,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M260,18 L272,42 L248,42 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/></g>
+<g font-size="11" text-anchor="middle" fill="currentColor"><text x="260" y="39">A</text><text x="140" y="101">B</text></g>
+<g font-size="16" fill="currentColor"><text x="122" y="98" text-anchor="end">[−∞, 3]</text><text x="100" y="209" text-anchor="middle">3</text><text x="140" y="209" text-anchor="middle">12</text><text x="242" y="32" text-anchor="end">[−∞, +∞]</text></g>
+</svg>
 
 The second leaf below *B* has a value of 12; MIN would avoid this move, so the value of *B* is still at most 3.
 
 **(c)**
 
-```mermaid
-flowchart TD
-    A["▲ A<br>[3, +∞]"]
-    B["▼ B<br>[3, 3]"]
-    C["▼ C"]
-    D["▼ D"]
-    L3["▲ 3"]
-    L12["▲ 12"]
-    L8["▲ 8"]
-    A --- B
-    A -.- C
-    A -.- D
-    B --- L3
-    B --- L12
-    B --- L8
-```
+<svg viewBox="0 0 440 210" width="100%" style="max-width:440px;display:block;margin:1.5rem auto" role="img" aria-label="Potatura alfa-beta, passo (c): radice MAX A [3, +∞]; nodo MIN B [3, 3] con foglie 3, 12, 8">
+<!-- archi e nodi non ancora esplorati (tratteggiati) -->
+<g stroke="var(--palette-muted)" stroke-dasharray="4 3"><line x1="260" y1="42" x2="260" y2="88"/><line x1="260" y1="112" x2="220" y2="163"/><line x1="260" y1="112" x2="260" y2="163"/><line x1="260" y1="112" x2="300" y2="163"/><line x1="260" y1="42" x2="380" y2="88"/><line x1="380" y1="112" x2="340" y2="163"/><line x1="380" y1="112" x2="380" y2="163"/><line x1="380" y1="112" x2="420" y2="163"/></g>
+<g stroke="currentColor" stroke-width="1.5"><line x1="260" y1="42" x2="140" y2="88"/><line x1="140" y1="112" x2="100" y2="163"/><line x1="140" y1="112" x2="140" y2="163"/><line x1="140" y1="112" x2="180" y2="163"/></g>
+<g stroke-width="1.2"><path d="M128,88 L152,88 L140,112 z" fill="var(--palette-orange)" fill-opacity="0.35" stroke="currentColor"/><path d="M100,163 L112,187 L88,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M140,163 L152,187 L128,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M180,163 L192,187 L168,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M248,88 L272,88 L260,112 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M220,163 L232,187 L208,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M260,163 L272,187 L248,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M300,163 L312,187 L288,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M368,88 L392,88 L380,112 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M340,163 L352,187 L328,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M380,163 L392,187 L368,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M420,163 L432,187 L408,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M260,18 L272,42 L248,42 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/></g>
+<g font-size="11" text-anchor="middle" fill="currentColor"><text x="260" y="39">A</text><text x="140" y="101">B</text></g>
+<g font-size="16" fill="currentColor"><text x="122" y="98" text-anchor="end">[3, 3]</text><text x="100" y="209" text-anchor="middle">3</text><text x="140" y="209" text-anchor="middle">12</text><text x="180" y="209" text-anchor="middle">8</text><text x="242" y="32" text-anchor="end">[3, +∞]</text></g>
+</svg>
 
 The third leaf below *B* has a value of 8; we have seen all *B*'s successor states, so the value of *B* is exactly 3. Now we can infer that the value of the root is at least 3, because MAX has a choice worth 3 at the root.
 
 **(d)**
 
-```mermaid
-flowchart TD
-    A["▲ A<br>[3, +∞]"]
-    B["▼ B<br>[3, 3]"]
-    C["▼ C<br>[−∞, 2]"]
-    D["▼ D"]
-    L3["▲ 3"]
-    L12["▲ 12"]
-    L8["▲ 8"]
-    L2["▲ 2"]
-    A --- B
-    A --- C
-    A -.- D
-    B --- L3
-    B --- L12
-    B --- L8
-    C --- L2
-```
+<svg viewBox="0 0 440 210" width="100%" style="max-width:440px;display:block;margin:1.5rem auto" role="img" aria-label="Potatura alfa-beta, passo (d): radice MAX A [3, +∞]; nodo MIN B [3, 3] con foglie 3, 12, 8; nodo MIN C [−∞, 2] con foglie 2">
+<!-- archi e nodi non ancora esplorati (tratteggiati) -->
+<g stroke="var(--palette-muted)" stroke-dasharray="4 3"><line x1="260" y1="112" x2="260" y2="163"/><line x1="260" y1="112" x2="300" y2="163"/><line x1="260" y1="42" x2="380" y2="88"/><line x1="380" y1="112" x2="340" y2="163"/><line x1="380" y1="112" x2="380" y2="163"/><line x1="380" y1="112" x2="420" y2="163"/></g>
+<g stroke="currentColor" stroke-width="1.5"><line x1="260" y1="42" x2="140" y2="88"/><line x1="140" y1="112" x2="100" y2="163"/><line x1="140" y1="112" x2="140" y2="163"/><line x1="140" y1="112" x2="180" y2="163"/><line x1="260" y1="42" x2="260" y2="88"/><line x1="260" y1="112" x2="220" y2="163"/></g>
+<g stroke-width="1.2"><path d="M128,88 L152,88 L140,112 z" fill="var(--palette-orange)" fill-opacity="0.35" stroke="currentColor"/><path d="M100,163 L112,187 L88,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M140,163 L152,187 L128,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M180,163 L192,187 L168,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M248,88 L272,88 L260,112 z" fill="var(--palette-orange)" fill-opacity="0.35" stroke="currentColor"/><path d="M220,163 L232,187 L208,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M260,163 L272,187 L248,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M300,163 L312,187 L288,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M368,88 L392,88 L380,112 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M340,163 L352,187 L328,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M380,163 L392,187 L368,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M420,163 L432,187 L408,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M260,18 L272,42 L248,42 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/></g>
+<g font-size="11" text-anchor="middle" fill="currentColor"><text x="260" y="39">A</text><text x="140" y="101">B</text><text x="260" y="101">C</text></g>
+<g font-size="16" fill="currentColor"><text x="122" y="98" text-anchor="end">[3, 3]</text><text x="100" y="209" text-anchor="middle">3</text><text x="140" y="209" text-anchor="middle">12</text><text x="180" y="209" text-anchor="middle">8</text><text x="242" y="98" text-anchor="end">[−∞, 2]</text><text x="220" y="209" text-anchor="middle">2</text><text x="242" y="32" text-anchor="end">[3, +∞]</text></g>
+</svg>
 
 The first leaf below *C* has the value 2. Hence, *C*, which is a MIN node, has a value of at most 2. But we know that *B* is worth 3, so MAX would never choose *C*. Therefore, there is no point in looking at the other successor states of *C*. *This is an example of alpha–beta pruning.*
 
 **(e)**
 
-```mermaid
-flowchart TD
-    A["▲ A<br>[3, 14]"]
-    B["▼ B<br>[3, 3]"]
-    C["▼ C<br>[−∞, 2]"]
-    D["▼ D<br>[−∞, 14]"]
-    L3["▲ 3"]
-    L12["▲ 12"]
-    L8["▲ 8"]
-    L2["▲ 2"]
-    L14["▲ 14"]
-    A --- B
-    A --- C
-    A --- D
-    B --- L3
-    B --- L12
-    B --- L8
-    C --- L2
-    D --- L14
-```
+<svg viewBox="0 0 440 210" width="100%" style="max-width:440px;display:block;margin:1.5rem auto" role="img" aria-label="Potatura alfa-beta, passo (e): radice MAX A [3, 14]; nodo MIN B [3, 3] con foglie 3, 12, 8; nodo MIN C [−∞, 2] con foglie 2; nodo MIN D [−∞, 14] con foglie 14">
+<!-- archi e nodi non ancora esplorati (tratteggiati) -->
+<g stroke="var(--palette-muted)" stroke-dasharray="4 3"><line x1="260" y1="112" x2="260" y2="163"/><line x1="260" y1="112" x2="300" y2="163"/><line x1="380" y1="112" x2="380" y2="163"/><line x1="380" y1="112" x2="420" y2="163"/></g>
+<g stroke="currentColor" stroke-width="1.5"><line x1="260" y1="42" x2="140" y2="88"/><line x1="140" y1="112" x2="100" y2="163"/><line x1="140" y1="112" x2="140" y2="163"/><line x1="140" y1="112" x2="180" y2="163"/><line x1="260" y1="42" x2="260" y2="88"/><line x1="260" y1="112" x2="220" y2="163"/><line x1="260" y1="42" x2="380" y2="88"/><line x1="380" y1="112" x2="340" y2="163"/></g>
+<g stroke-width="1.2"><path d="M128,88 L152,88 L140,112 z" fill="var(--palette-orange)" fill-opacity="0.35" stroke="currentColor"/><path d="M100,163 L112,187 L88,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M140,163 L152,187 L128,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M180,163 L192,187 L168,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M248,88 L272,88 L260,112 z" fill="var(--palette-orange)" fill-opacity="0.35" stroke="currentColor"/><path d="M220,163 L232,187 L208,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M260,163 L272,187 L248,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M300,163 L312,187 L288,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M368,88 L392,88 L380,112 z" fill="var(--palette-orange)" fill-opacity="0.35" stroke="currentColor"/><path d="M340,163 L352,187 L328,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M380,163 L392,187 L368,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M420,163 L432,187 L408,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M260,18 L272,42 L248,42 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/></g>
+<g font-size="11" text-anchor="middle" fill="currentColor"><text x="260" y="39">A</text><text x="140" y="101">B</text><text x="260" y="101">C</text><text x="380" y="101">D</text></g>
+<g font-size="16" fill="currentColor"><text x="122" y="98" text-anchor="end">[3, 3]</text><text x="100" y="209" text-anchor="middle">3</text><text x="140" y="209" text-anchor="middle">12</text><text x="180" y="209" text-anchor="middle">8</text><text x="242" y="98" text-anchor="end">[−∞, 2]</text><text x="220" y="209" text-anchor="middle">2</text><text x="362" y="98" text-anchor="end">[−∞, 14]</text><text x="340" y="209" text-anchor="middle">14</text><text x="242" y="32" text-anchor="end">[3, 14]</text></g>
+</svg>
 
 The first leaf below *D* has the value 14, so *D* is worth at most 14. This is still higher than MAX's best alternative (i.e., 3), so we need to keep exploring *D*'s successor states. Notice also that we now have bounds on all of the successors of the root, so the root's value is also at most 14.
 
 **(f)**
 
-```mermaid
-flowchart TD
-    A["▲ A<br>[3, 3]"]
-    B["▼ B<br>[3, 3]"]
-    C["▼ C<br>[−∞, 2]"]
-    D["▼ D<br>[2, 2]"]
-    L3["▲ 3"]
-    L12["▲ 12"]
-    L8["▲ 8"]
-    L2["▲ 2"]
-    L14["▲ 14"]
-    L5["▲ 5"]
-    L2b["▲ 2"]
-    A --- B
-    A --- C
-    A --- D
-    B --- L3
-    B --- L12
-    B --- L8
-    C --- L2
-    D --- L14
-    D --- L5
-    D --- L2b
-```
+<svg viewBox="0 0 440 210" width="100%" style="max-width:440px;display:block;margin:1.5rem auto" role="img" aria-label="Potatura alfa-beta, passo (f): radice MAX A [3, 3]; nodo MIN B [3, 3] con foglie 3, 12, 8; nodo MIN C [−∞, 2] con foglie 2; nodo MIN D [2, 2] con foglie 14, 5, 2">
+<!-- archi e nodi non ancora esplorati (tratteggiati) -->
+<g stroke="var(--palette-muted)" stroke-dasharray="4 3"><line x1="260" y1="112" x2="260" y2="163"/><line x1="260" y1="112" x2="300" y2="163"/></g>
+<g stroke="currentColor" stroke-width="1.5"><line x1="260" y1="42" x2="140" y2="88"/><line x1="140" y1="112" x2="100" y2="163"/><line x1="140" y1="112" x2="140" y2="163"/><line x1="140" y1="112" x2="180" y2="163"/><line x1="260" y1="42" x2="260" y2="88"/><line x1="260" y1="112" x2="220" y2="163"/><line x1="260" y1="42" x2="380" y2="88"/><line x1="380" y1="112" x2="340" y2="163"/><line x1="380" y1="112" x2="380" y2="163"/><line x1="380" y1="112" x2="420" y2="163"/></g>
+<g stroke-width="1.2"><path d="M128,88 L152,88 L140,112 z" fill="var(--palette-orange)" fill-opacity="0.35" stroke="currentColor"/><path d="M100,163 L112,187 L88,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M140,163 L152,187 L128,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M180,163 L192,187 L168,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M248,88 L272,88 L260,112 z" fill="var(--palette-orange)" fill-opacity="0.35" stroke="currentColor"/><path d="M220,163 L232,187 L208,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M260,163 L272,187 L248,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M300,163 L312,187 L288,187 z" fill="none" stroke="var(--palette-muted)" stroke-dasharray="4 3"/><path d="M368,88 L392,88 L380,112 z" fill="var(--palette-orange)" fill-opacity="0.35" stroke="currentColor"/><path d="M340,163 L352,187 L328,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M380,163 L392,187 L368,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M420,163 L432,187 L408,187 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/><path d="M260,18 L272,42 L248,42 z" fill="var(--palette-purple)" fill-opacity="0.35" stroke="currentColor"/></g>
+<g font-size="11" text-anchor="middle" fill="currentColor"><text x="260" y="39">A</text><text x="140" y="101">B</text><text x="260" y="101">C</text><text x="380" y="101">D</text></g>
+<g font-size="16" fill="currentColor"><text x="122" y="98" text-anchor="end">[3, 3]</text><text x="100" y="209" text-anchor="middle">3</text><text x="140" y="209" text-anchor="middle">12</text><text x="180" y="209" text-anchor="middle">8</text><text x="242" y="98" text-anchor="end">[−∞, 2]</text><text x="220" y="209" text-anchor="middle">2</text><text x="362" y="98" text-anchor="end">[2, 2]</text><text x="340" y="209" text-anchor="middle">14</text><text x="380" y="209" text-anchor="middle">5</text><text x="420" y="209" text-anchor="middle">2</text><text x="242" y="32" text-anchor="end">[3, 3]</text></g>
+</svg>
 
 The second successor of *D* is worth 5, so again we need to keep exploring. The third successor is worth 2, so now *D* is worth exactly 2. MAX's decision at the root is to move to *B*, giving a value of 3.
 

@@ -34,113 +34,167 @@ L'idea dietro il RNN è di tenere uno stato interno chiamato "hidden representat
 
 Si può simulare una RNN tramite l'unrolling, cioè applicare esattamente quello che farebbe una RNN, ma usando tante MLP, il cui output viene usato come input nella prossima fase
 
-```mermaid
-flowchart BT
-  x["x̄ₜ<br/>ENCODED WORD"] -- "W<sub>xh</sub>" --> h["h̄ₜ<br/>HIDDEN REPRESENTATION"]
-  h -- "W<sub>hy</sub>" --> y["ȳₜ<br/>PREDICTED WORD LIKELIHOODS"]
-  h -- "W<sub>hh</sub>" --> h
-```
+<svg viewBox="0 0 720 256" width="100%" style="max-width:720px;display:block;margin:1.5rem auto" role="img" aria-label="RNN con il ciclo ricorrente W_hh e la stessa rete srotolata nel tempo sulle parole the, cat, chased, the">
+<defs><marker id="i20241220170323-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<g stroke="currentColor" stroke-width="1.5" fill="none">
+<rect x="145" y="24" width="30" height="44"/>
+<rect x="137" y="103" width="46" height="30"/>
+<rect x="145" y="170" width="30" height="44"/>
+<line x1="160" y1="103" x2="160" y2="69" marker-end="url(#i20241220170323-arrow)"/>
+<line x1="160" y1="170" x2="160" y2="134" marker-end="url(#i20241220170323-arrow)"/>
+<path d="M183 110 C208 96 208 140 183 126" fill="none" marker-end="url(#i20241220170323-arrow)"/>
+<rect x="397" y="24" width="30" height="44"/>
+<rect x="390" y="103" width="44" height="30"/>
+<rect x="397" y="170" width="30" height="44"/>
+<line x1="412" y1="103" x2="412" y2="69" marker-end="url(#i20241220170323-arrow)"/>
+<line x1="412" y1="170" x2="412" y2="134" marker-end="url(#i20241220170323-arrow)"/>
+<line x1="434" y1="118" x2="477" y2="118" marker-end="url(#i20241220170323-arrow)"/>
+<rect x="485" y="24" width="30" height="44"/>
+<rect x="478" y="103" width="44" height="30"/>
+<rect x="485" y="170" width="30" height="44"/>
+<line x1="500" y1="103" x2="500" y2="69" marker-end="url(#i20241220170323-arrow)"/>
+<line x1="500" y1="170" x2="500" y2="134" marker-end="url(#i20241220170323-arrow)"/>
+<line x1="522" y1="118" x2="565" y2="118" marker-end="url(#i20241220170323-arrow)"/>
+<rect x="573" y="24" width="30" height="44"/>
+<rect x="566" y="103" width="44" height="30"/>
+<rect x="573" y="170" width="30" height="44"/>
+<line x1="588" y1="103" x2="588" y2="69" marker-end="url(#i20241220170323-arrow)"/>
+<line x1="588" y1="170" x2="588" y2="134" marker-end="url(#i20241220170323-arrow)"/>
+<line x1="610" y1="118" x2="653" y2="118" marker-end="url(#i20241220170323-arrow)"/>
+<rect x="661" y="24" width="30" height="44"/>
+<rect x="654" y="103" width="44" height="30"/>
+<rect x="661" y="170" width="30" height="44"/>
+<line x1="676" y1="103" x2="676" y2="69" marker-end="url(#i20241220170323-arrow)"/>
+<line x1="676" y1="170" x2="676" y2="134" marker-end="url(#i20241220170323-arrow)"/>
+</g>
+<g fill="currentColor" font-size="13">
+<text x="160" y="51" text-anchor="middle" font-size="15">ȳₜ</text>
+<text x="160" y="123" text-anchor="middle" font-size="15">h̄ₜ</text>
+<text x="160" y="197" text-anchor="middle" font-size="15">x̄ₜ</text>
+<text x="165" y="92" text-anchor="start">W<tspan font-size="10" dy="4">hy</tspan></text>
+<text x="165" y="160" text-anchor="start">W<tspan font-size="10" dy="4">xh</tspan></text>
+<text x="204" y="124" text-anchor="start">W<tspan font-size="10" dy="4">hh</tspan></text>
+<text x="132" y="30" text-anchor="end" font-size="12" font-weight="bold">PREDICTED</text>
+<text x="132" y="45" text-anchor="end" font-size="12" font-weight="bold">WORD</text>
+<text x="132" y="60" text-anchor="end" font-size="12" font-weight="bold">LIKELIHOODS</text>
+<text x="132" y="112" text-anchor="end" font-size="12" font-weight="bold">HIDDEN</text>
+<text x="132" y="127" text-anchor="end" font-size="12" font-weight="bold">REPRESENTATION</text>
+<text x="132" y="186" text-anchor="end" font-size="12" font-weight="bold">ENCODED</text>
+<text x="132" y="201" text-anchor="end" font-size="12" font-weight="bold">WORD</text>
+<text x="286" y="112" text-anchor="middle" font-size="15">unrolling</text>
+<text x="286" y="146" text-anchor="middle" font-size="34">⟹</text>
+<text x="366" y="14" font-size="12" font-weight="bold">OUTPUT</text>
+<text x="338" y="234" font-size="12" font-weight="bold">INPUT</text>
+<text x="338" y="249" font-size="12" font-weight="bold">WORDS</text>
+<text x="412" y="51" text-anchor="middle" font-size="15">ȳ₁</text>
+<text x="412" y="123" text-anchor="middle" font-size="15">h̄₁</text>
+<text x="412" y="197" text-anchor="middle" font-size="15">x̄₁</text>
+<text x="417" y="92" text-anchor="start">W<tspan font-size="10" dy="4">hy</tspan></text>
+<text x="417" y="160" text-anchor="start">W<tspan font-size="10" dy="4">xh</tspan></text>
+<text x="412" y="234" text-anchor="middle" font-size="13" font-weight="bold">the</text>
+<text x="438" y="112" text-anchor="start">W<tspan font-size="10" dy="4">hh</tspan></text>
+<text x="500" y="51" text-anchor="middle" font-size="15">ȳ₂</text>
+<text x="500" y="123" text-anchor="middle" font-size="15">h̄₂</text>
+<text x="500" y="197" text-anchor="middle" font-size="15">x̄₂</text>
+<text x="505" y="92" text-anchor="start">W<tspan font-size="10" dy="4">hy</tspan></text>
+<text x="505" y="160" text-anchor="start">W<tspan font-size="10" dy="4">xh</tspan></text>
+<text x="500" y="234" text-anchor="middle" font-size="13" font-weight="bold">cat</text>
+<text x="526" y="112" text-anchor="start">W<tspan font-size="10" dy="4">hh</tspan></text>
+<text x="588" y="51" text-anchor="middle" font-size="15">ȳ₃</text>
+<text x="588" y="123" text-anchor="middle" font-size="15">h̄₃</text>
+<text x="588" y="197" text-anchor="middle" font-size="15">x̄₃</text>
+<text x="593" y="92" text-anchor="start">W<tspan font-size="10" dy="4">hy</tspan></text>
+<text x="593" y="160" text-anchor="start">W<tspan font-size="10" dy="4">xh</tspan></text>
+<text x="588" y="234" text-anchor="middle" font-size="13" font-weight="bold">chased</text>
+<text x="614" y="112" text-anchor="start">W<tspan font-size="10" dy="4">hh</tspan></text>
+<text x="676" y="51" text-anchor="middle" font-size="15">ȳ₄</text>
+<text x="676" y="123" text-anchor="middle" font-size="15">h̄₄</text>
+<text x="676" y="197" text-anchor="middle" font-size="15">x̄₄</text>
+<text x="681" y="92" text-anchor="start">W<tspan font-size="10" dy="4">hy</tspan></text>
+<text x="681" y="160" text-anchor="start">W<tspan font-size="10" dy="4">xh</tspan></text>
+<text x="676" y="234" text-anchor="middle" font-size="13" font-weight="bold">the</text>
+</g>
+</svg>
 
-unrolling ⇒
-
-```mermaid
-block-beta
-  columns 7
-  y1["ȳ₁"] space y2["ȳ₂"] space y3["ȳ₃"] space y4["ȳ₄"]
-  space:7
-  h1["h̄₁"] space h2["h̄₂"] space h3["h̄₃"] space h4["h̄₄"]
-  space:7
-  x1["x̄₁<br/>the"] space x2["x̄₂<br/>cat"] space x3["x̄₃<br/>chased"] space x4["x̄₄<br/>the"]
-  h1 -- "W<sub>hy</sub>" --> y1
-  h2 -- "W<sub>hy</sub>" --> y2
-  h3 -- "W<sub>hy</sub>" --> y3
-  h4 -- "W<sub>hy</sub>" --> y4
-  h1 -- "W<sub>hh</sub>" --> h2
-  h2 -- "W<sub>hh</sub>" --> h3
-  h3 -- "W<sub>hh</sub>" --> h4
-  x1 -- "W<sub>xh</sub>" --> h1
-  x2 -- "W<sub>xh</sub>" --> h2
-  x3 -- "W<sub>xh</sub>" --> h3
-  x4 -- "W<sub>xh</sub>" --> h4
-```
-
-**many-to-one**
-
-```mermaid
-block-beta
-  columns 5
-  space:4 o3["&nbsp;&nbsp;&nbsp;&nbsp;"]
-  space:5
-  h1(["&nbsp;&nbsp;&nbsp;&nbsp;"]) space h2(["&nbsp;&nbsp;&nbsp;&nbsp;"]) space h3(["&nbsp;&nbsp;&nbsp;&nbsp;"])
-  space:5
-  i1["&nbsp;&nbsp;&nbsp;&nbsp;"] space i2["&nbsp;&nbsp;&nbsp;&nbsp;"] space i3["&nbsp;&nbsp;&nbsp;&nbsp;"]
-  i1 --> h1
-  i2 --> h2
-  i3 --> h3
-  h1 --> h2
-  h2 --> h3
-  h3 --> o3
-```
-
-**one-to-many**
-
-```mermaid
-block-beta
-  columns 5
-  o1["&nbsp;&nbsp;&nbsp;&nbsp;"] space o2["&nbsp;&nbsp;&nbsp;&nbsp;"] space o3["&nbsp;&nbsp;&nbsp;&nbsp;"]
-  space:5
-  h1(["&nbsp;&nbsp;&nbsp;&nbsp;"]) space h2(["&nbsp;&nbsp;&nbsp;&nbsp;"]) space h3(["&nbsp;&nbsp;&nbsp;&nbsp;"])
-  space:5
-  i1["&nbsp;&nbsp;&nbsp;&nbsp;"] space:4
-  i1 --> h1
-  h1 --> h2
-  h2 --> h3
-  h1 --> o1
-  h2 --> o2
-  h3 --> o3
-```
-
-**many-to-many**
-
-```mermaid
-block-beta
-  columns 5
-  o1["&nbsp;&nbsp;&nbsp;&nbsp;"] space o2["&nbsp;&nbsp;&nbsp;&nbsp;"] space o3["&nbsp;&nbsp;&nbsp;&nbsp;"]
-  space:5
-  h1(["&nbsp;&nbsp;&nbsp;&nbsp;"]) space h2(["&nbsp;&nbsp;&nbsp;&nbsp;"]) space h3(["&nbsp;&nbsp;&nbsp;&nbsp;"])
-  space:5
-  i1["&nbsp;&nbsp;&nbsp;&nbsp;"] space i2["&nbsp;&nbsp;&nbsp;&nbsp;"] space i3["&nbsp;&nbsp;&nbsp;&nbsp;"]
-  i1 --> h1
-  i2 --> h2
-  i3 --> h3
-  h1 --> h2
-  h2 --> h3
-  h1 --> o1
-  h2 --> o2
-  h3 --> o3
-```
-
-**many-to-many**
-
-```mermaid
-block-beta
-  columns 9
-  space:4 o3["&nbsp;&nbsp;&nbsp;&nbsp;"] space o4["&nbsp;&nbsp;&nbsp;&nbsp;"] space o5["&nbsp;&nbsp;&nbsp;&nbsp;"]
-  space:9
-  h1(["&nbsp;&nbsp;&nbsp;&nbsp;"]) space h2(["&nbsp;&nbsp;&nbsp;&nbsp;"]) space h3(["&nbsp;&nbsp;&nbsp;&nbsp;"]) space h4(["&nbsp;&nbsp;&nbsp;&nbsp;"]) space h5(["&nbsp;&nbsp;&nbsp;&nbsp;"])
-  space:9
-  i1["&nbsp;&nbsp;&nbsp;&nbsp;"] space i2["&nbsp;&nbsp;&nbsp;&nbsp;"] space i3["&nbsp;&nbsp;&nbsp;&nbsp;"] space:3
-  i1 --> h1
-  i2 --> h2
-  i3 --> h3
-  h1 --> h2
-  h2 --> h3
-  h3 --> h4
-  h4 --> h5
-  h3 --> o3
-  h4 --> o4
-  h5 --> o5
-```
+<svg viewBox="0 0 530 270" width="100%" style="max-width:530px;display:block;margin:1.5rem auto" role="img" aria-label="Quattro architetture RNN: many-to-one, one-to-many e due varianti di many-to-many; input in blu, stati nascosti in arancione, output in verde">
+<defs><marker id="i20241220170453-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g stroke="var(--palette-muted)" stroke-width="1.3" marker-end="url(#i20241220170453-arrow)">
+<line x1="56" y1="52" x2="69" y2="52"/>
+<line x1="102" y1="52" x2="115" y2="52"/>
+<line x1="40" y1="83" x2="40" y2="63"/>
+<line x1="86" y1="83" x2="86" y2="63"/>
+<line x1="132" y1="83" x2="132" y2="63"/>
+<line x1="132" y1="42" x2="132" y2="22"/>
+<line x1="362" y1="52" x2="375" y2="52"/>
+<line x1="408" y1="52" x2="421" y2="52"/>
+<line x1="346" y1="83" x2="346" y2="63"/>
+<line x1="346" y1="42" x2="346" y2="22"/>
+<line x1="392" y1="42" x2="392" y2="22"/>
+<line x1="438" y1="42" x2="438" y2="22"/>
+<line x1="56" y1="192" x2="69" y2="192"/>
+<line x1="102" y1="192" x2="115" y2="192"/>
+<line x1="40" y1="223" x2="40" y2="203"/>
+<line x1="86" y1="223" x2="86" y2="203"/>
+<line x1="132" y1="223" x2="132" y2="203"/>
+<line x1="40" y1="182" x2="40" y2="162"/>
+<line x1="86" y1="182" x2="86" y2="162"/>
+<line x1="132" y1="182" x2="132" y2="162"/>
+<line x1="316" y1="192" x2="329" y2="192"/>
+<line x1="362" y1="192" x2="375" y2="192"/>
+<line x1="408" y1="192" x2="421" y2="192"/>
+<line x1="454" y1="192" x2="467" y2="192"/>
+<line x1="300" y1="223" x2="300" y2="203"/>
+<line x1="346" y1="223" x2="346" y2="203"/>
+<line x1="392" y1="223" x2="392" y2="203"/>
+<line x1="392" y1="182" x2="392" y2="162"/>
+<line x1="438" y1="182" x2="438" y2="162"/>
+<line x1="484" y1="182" x2="484" y2="162"/>
+</g>
+<g stroke="currentColor" stroke-width="1.2" fill-opacity="0.35">
+<rect x="21" y="83" width="38" height="18" rx="4" fill="var(--palette-blue)"/>
+<rect x="67" y="83" width="38" height="18" rx="4" fill="var(--palette-blue)"/>
+<rect x="113" y="83" width="38" height="18" rx="4" fill="var(--palette-blue)"/>
+<rect x="113" y="3" width="38" height="18" rx="4" fill="var(--palette-green)"/>
+<rect x="327" y="83" width="38" height="18" rx="4" fill="var(--palette-blue)"/>
+<rect x="327" y="3" width="38" height="18" rx="4" fill="var(--palette-green)"/>
+<rect x="373" y="3" width="38" height="18" rx="4" fill="var(--palette-green)"/>
+<rect x="419" y="3" width="38" height="18" rx="4" fill="var(--palette-green)"/>
+<rect x="21" y="223" width="38" height="18" rx="4" fill="var(--palette-blue)"/>
+<rect x="67" y="223" width="38" height="18" rx="4" fill="var(--palette-blue)"/>
+<rect x="113" y="223" width="38" height="18" rx="4" fill="var(--palette-blue)"/>
+<rect x="21" y="143" width="38" height="18" rx="4" fill="var(--palette-green)"/>
+<rect x="67" y="143" width="38" height="18" rx="4" fill="var(--palette-green)"/>
+<rect x="113" y="143" width="38" height="18" rx="4" fill="var(--palette-green)"/>
+<rect x="281" y="223" width="38" height="18" rx="4" fill="var(--palette-blue)"/>
+<rect x="327" y="223" width="38" height="18" rx="4" fill="var(--palette-blue)"/>
+<rect x="373" y="223" width="38" height="18" rx="4" fill="var(--palette-blue)"/>
+<rect x="373" y="143" width="38" height="18" rx="4" fill="var(--palette-green)"/>
+<rect x="419" y="143" width="38" height="18" rx="4" fill="var(--palette-green)"/>
+<rect x="465" y="143" width="38" height="18" rx="4" fill="var(--palette-green)"/>
+<g fill="var(--palette-orange)">
+<ellipse cx="40" cy="52" rx="16" ry="10"/>
+<ellipse cx="86" cy="52" rx="16" ry="10"/>
+<ellipse cx="132" cy="52" rx="16" ry="10"/>
+<ellipse cx="346" cy="52" rx="16" ry="10"/>
+<ellipse cx="392" cy="52" rx="16" ry="10"/>
+<ellipse cx="438" cy="52" rx="16" ry="10"/>
+<ellipse cx="40" cy="192" rx="16" ry="10"/>
+<ellipse cx="86" cy="192" rx="16" ry="10"/>
+<ellipse cx="132" cy="192" rx="16" ry="10"/>
+<ellipse cx="300" cy="192" rx="16" ry="10"/>
+<ellipse cx="346" cy="192" rx="16" ry="10"/>
+<ellipse cx="392" cy="192" rx="16" ry="10"/>
+<ellipse cx="438" cy="192" rx="16" ry="10"/>
+<ellipse cx="484" cy="192" rx="16" ry="10"/>
+</g>
+</g>
+<g fill="currentColor" font-size="14" font-weight="bold" text-anchor="middle">
+<text x="86" y="122">many-to-one</text>
+<text x="392" y="122">one-to-many</text>
+<text x="86" y="262">many-to-many</text>
+<text x="392" y="262">many-to-many</text>
+</g>
+</svg>
 
 **many-to-one**, e.g., *text classification, sentiment classification*
 
@@ -152,53 +206,118 @@ Il training di un RNN unrolled è simile a quello di una normale rete neurale.
 - la funzione loss è applicata all'ultima rete
 - si usa una variante di gradient descent che usa BPTT (backpropagation through time) che tiene conto che l'input è una sequenza e che i parametri sono condivisi fra i vari strati dell'RNN unrolled
 
-```mermaid
-block-beta
-  columns 9
-  y1["ȳ<sub>1</sub>"] space y2["ȳ<sub>2</sub>"] space y3["ȳ<sub>3</sub>"] space space space yT["ȳ<sub>T</sub>"]
-  space:9
-  K1["h̄<sub>1</sub><sup>(K)</sup>"] space K2["h̄<sub>2</sub><sup>(K)</sup>"] space K3["h̄<sub>3</sub><sup>(K)</sup>"] space Kd["⋯"] space KT["h̄<sub>T</sub><sup>(K)</sup>"]
-  space:9
-  v1["⋮"] space v2["⋮"] space v3["⋮"] space space space vT["⋮"]
-  space:9
-  m1["h̄<sub>1</sub><sup>(2)</sup>"] space m2["h̄<sub>2</sub><sup>(2)</sup>"] space m3["h̄<sub>3</sub><sup>(2)</sup>"] space md["⋯"] space mT["h̄<sub>T</sub><sup>(2)</sup>"]
-  space:9
-  a1["h̄<sub>1</sub><sup>(1)</sup>"] space a2["h̄<sub>2</sub><sup>(1)</sup>"] space a3["h̄<sub>3</sub><sup>(1)</sup>"] space ad["⋯"] space aT["h̄<sub>T</sub><sup>(1)</sup>"]
-  space:9
-  x1["x̄<sub>1</sub>"] space x2["x̄<sub>2</sub>"] space x3["x̄<sub>3</sub>"] space space space xT["x̄<sub>T</sub>"]
-  K1 --> y1
-  v1 --> K1
-  m1 --> v1
-  a1 --> m1
-  x1 --> a1
-  K2 --> y2
-  v2 --> K2
-  m2 --> v2
-  a2 --> m2
-  x2 --> a2
-  K3 --> y3
-  v3 --> K3
-  m3 --> v3
-  a3 --> m3
-  x3 --> a3
-  KT --> yT
-  vT --> KT
-  mT --> vT
-  aT --> mT
-  xT --> aT
-  K1 --> K2
-  K2 --> K3
-  K3 --> Kd
-  Kd --> KT
-  m1 --> m2
-  m2 --> m3
-  m3 --> md
-  md --> mT
-  a1 --> a2
-  a2 --> a3
-  a3 --> ad
-  ad --> aT
-```
+<svg viewBox="0 0 330 302" width="100%" style="max-width:330px;display:block;margin:1.5rem auto" role="img" aria-label="RNN profonda srotolata: K strati di stati nascosti impilati, ciascuno collegato allo stato successivo nel tempo e allo strato superiore">
+<defs><marker id="i20241220171054-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g stroke="currentColor" stroke-width="1.5" fill="none">
+<rect x="20" y="7" width="28" height="34"/>
+<rect x="20" y="265" width="28" height="34"/>
+<rect x="10" y="78" width="48" height="28"/>
+<rect x="10" y="146" width="48" height="28"/>
+<rect x="10" y="206" width="48" height="28"/>
+<rect x="96" y="7" width="28" height="34"/>
+<rect x="96" y="265" width="28" height="34"/>
+<rect x="86" y="78" width="48" height="28"/>
+<rect x="86" y="146" width="48" height="28"/>
+<rect x="86" y="206" width="48" height="28"/>
+<rect x="172" y="7" width="28" height="34"/>
+<rect x="172" y="265" width="28" height="34"/>
+<rect x="162" y="78" width="48" height="28"/>
+<rect x="162" y="146" width="48" height="28"/>
+<rect x="162" y="206" width="48" height="28"/>
+<rect x="282" y="7" width="28" height="34"/>
+<rect x="282" y="265" width="28" height="34"/>
+<rect x="272" y="78" width="48" height="28"/>
+<rect x="272" y="146" width="48" height="28"/>
+<rect x="272" y="206" width="48" height="28"/>
+</g>
+<g stroke="currentColor" stroke-width="1.4" marker-end="url(#i20241220171054-arrow)">
+<line x1="34" y1="265" x2="34" y2="235"/>
+<line x1="34" y1="206" x2="34" y2="175"/>
+<line x1="34" y1="146" x2="34" y2="138"/>
+<line x1="34" y1="114" x2="34" y2="107"/>
+<line x1="34" y1="78" x2="34" y2="42"/>
+<line x1="110" y1="265" x2="110" y2="235"/>
+<line x1="110" y1="206" x2="110" y2="175"/>
+<line x1="110" y1="146" x2="110" y2="138"/>
+<line x1="110" y1="114" x2="110" y2="107"/>
+<line x1="110" y1="78" x2="110" y2="42"/>
+<line x1="186" y1="265" x2="186" y2="235"/>
+<line x1="186" y1="206" x2="186" y2="175"/>
+<line x1="186" y1="146" x2="186" y2="138"/>
+<line x1="186" y1="114" x2="186" y2="107"/>
+<line x1="186" y1="78" x2="186" y2="42"/>
+<line x1="296" y1="265" x2="296" y2="235"/>
+<line x1="296" y1="206" x2="296" y2="175"/>
+<line x1="296" y1="146" x2="296" y2="138"/>
+<line x1="296" y1="114" x2="296" y2="107"/>
+<line x1="296" y1="78" x2="296" y2="42"/>
+<line x1="58" y1="92" x2="85" y2="92"/>
+<line x1="134" y1="92" x2="161" y2="92"/>
+<line x1="210" y1="92" x2="230" y2="92"/>
+<line x1="252" y1="92" x2="271" y2="92"/>
+<line x1="58" y1="160" x2="85" y2="160"/>
+<line x1="134" y1="160" x2="161" y2="160"/>
+<line x1="210" y1="160" x2="230" y2="160"/>
+<line x1="252" y1="160" x2="271" y2="160"/>
+<line x1="58" y1="220" x2="85" y2="220"/>
+<line x1="134" y1="220" x2="161" y2="220"/>
+<line x1="210" y1="220" x2="230" y2="220"/>
+<line x1="252" y1="220" x2="271" y2="220"/>
+</g>
+<g fill="currentColor" font-size="15">
+<text x="31" y="29" text-anchor="middle">ȳ<tspan font-size="10" dy="4">1</tspan></text>
+<text x="31" y="287" text-anchor="middle">x̄<tspan font-size="10" dy="4">1</tspan></text>
+<text x="24" y="97" text-anchor="middle">h̄</text>
+<text x="30" y="91" font-size="10">(K)</text>
+<text x="30" y="102" font-size="10">1</text>
+<text x="24" y="165" text-anchor="middle">h̄</text>
+<text x="30" y="159" font-size="10">(2)</text>
+<text x="30" y="170" font-size="10">1</text>
+<text x="24" y="225" text-anchor="middle">h̄</text>
+<text x="30" y="219" font-size="10">(1)</text>
+<text x="30" y="230" font-size="10">1</text>
+<text x="34" y="130" text-anchor="middle" font-size="16">⋮</text>
+<text x="107" y="29" text-anchor="middle">ȳ<tspan font-size="10" dy="4">2</tspan></text>
+<text x="107" y="287" text-anchor="middle">x̄<tspan font-size="10" dy="4">2</tspan></text>
+<text x="100" y="97" text-anchor="middle">h̄</text>
+<text x="106" y="91" font-size="10">(K)</text>
+<text x="106" y="102" font-size="10">2</text>
+<text x="100" y="165" text-anchor="middle">h̄</text>
+<text x="106" y="159" font-size="10">(2)</text>
+<text x="106" y="170" font-size="10">2</text>
+<text x="100" y="225" text-anchor="middle">h̄</text>
+<text x="106" y="219" font-size="10">(1)</text>
+<text x="106" y="230" font-size="10">2</text>
+<text x="110" y="130" text-anchor="middle" font-size="16">⋮</text>
+<text x="183" y="29" text-anchor="middle">ȳ<tspan font-size="10" dy="4">3</tspan></text>
+<text x="183" y="287" text-anchor="middle">x̄<tspan font-size="10" dy="4">3</tspan></text>
+<text x="176" y="97" text-anchor="middle">h̄</text>
+<text x="182" y="91" font-size="10">(K)</text>
+<text x="182" y="102" font-size="10">3</text>
+<text x="176" y="165" text-anchor="middle">h̄</text>
+<text x="182" y="159" font-size="10">(2)</text>
+<text x="182" y="170" font-size="10">3</text>
+<text x="176" y="225" text-anchor="middle">h̄</text>
+<text x="182" y="219" font-size="10">(1)</text>
+<text x="182" y="230" font-size="10">3</text>
+<text x="186" y="130" text-anchor="middle" font-size="16">⋮</text>
+<text x="293" y="29" text-anchor="middle">ȳ<tspan font-size="10" dy="4">T</tspan></text>
+<text x="293" y="287" text-anchor="middle">x̄<tspan font-size="10" dy="4">T</tspan></text>
+<text x="286" y="97" text-anchor="middle">h̄</text>
+<text x="292" y="91" font-size="10">(K)</text>
+<text x="292" y="102" font-size="10">T</text>
+<text x="286" y="165" text-anchor="middle">h̄</text>
+<text x="292" y="159" font-size="10">(2)</text>
+<text x="292" y="170" font-size="10">T</text>
+<text x="286" y="225" text-anchor="middle">h̄</text>
+<text x="292" y="219" font-size="10">(1)</text>
+<text x="292" y="230" font-size="10">T</text>
+<text x="296" y="130" text-anchor="middle" font-size="16">⋮</text>
+<text x="241" y="96" text-anchor="middle" font-size="16">⋯</text>
+<text x="241" y="164" text-anchor="middle" font-size="16">⋯</text>
+<text x="241" y="224" text-anchor="middle" font-size="16">⋯</text>
+</g>
+</svg>
 
 RNN layers can be *stacked*, so as to make the RNN *deeper*.
 
@@ -237,43 +356,73 @@ Oppure potrebbe essere utile "andare in avanti" nella sequenza per capire meglio
 
 é formata da due RNN indipendenti, una processa l'input normalmente, mentre l'altra processa l'input in ordine inverso. Il risultato finale è la concatenazione dei due 
 
-```mermaid
-block-beta
-  columns 6
-  y1["y⁽ᵗ⁻¹⁾"]:2 y2["y⁽ᵗ⁾"]:2 y3["y⁽ᵗ⁺¹⁾"]:2
-  space:6
-  L1["L⁽ᵗ⁻¹⁾"]:2 L2["L⁽ᵗ⁾"]:2 L3["L⁽ᵗ⁺¹⁾"]:2
-  space:6
-  o1["o⁽ᵗ⁻¹⁾"]:2 o2["o⁽ᵗ⁾"]:2 o3["o⁽ᵗ⁺¹⁾"]:2
-  space:6
-  g1["g⁽ᵗ⁻¹⁾"] space g2["g⁽ᵗ⁾"] space g3["g⁽ᵗ⁺¹⁾"] space
-  space:6
-  space h1["h⁽ᵗ⁻¹⁾"] space h2["h⁽ᵗ⁾"] space h3["h⁽ᵗ⁺¹⁾"]
-  space:6
-  x1["x⁽ᵗ⁻¹⁾"]:2 x2["x⁽ᵗ⁾"]:2 x3["x⁽ᵗ⁺¹⁾"]:2
-  y1 --> L1
-  y2 --> L2
-  y3 --> L3
-  o1 --> L1
-  o2 --> L2
-  o3 --> L3
-  g1 --> o1
-  g2 --> o2
-  g3 --> o3
-  h1 --> o1
-  h2 --> o2
-  h3 --> o3
-  h1 --> h2
-  h2 --> h3
-  g3 --> g2
-  g2 --> g1
-  x1 --> h1
-  x2 --> h2
-  x3 --> h3
-  x1 --> g1
-  x2 --> g2
-  x3 --> g3
-```
+<svg viewBox="0 0 290 368" width="100%" style="max-width:290px;display:block;margin:1.5rem auto" role="img" aria-label="RNN bidirezionale srotolata su tre passi: lo stato h procede in avanti nel tempo, lo stato g all'indietro, ed entrambi alimentano l'output o e la loss L">
+<defs><marker id="i20241220171541-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g stroke="currentColor" stroke-width="1.4" fill="none">
+<circle cx="50" cy="24" r="20"/>
+<circle cx="50" cy="88" r="20"/>
+<circle cx="50" cy="152" r="20"/>
+<circle cx="50" cy="216" r="20"/>
+<circle cx="50" cy="280" r="20"/>
+<circle cx="50" cy="344" r="20"/>
+<circle cx="150" cy="24" r="20"/>
+<circle cx="150" cy="88" r="20"/>
+<circle cx="150" cy="152" r="20"/>
+<circle cx="150" cy="216" r="20"/>
+<circle cx="150" cy="280" r="20"/>
+<circle cx="150" cy="344" r="20"/>
+<circle cx="250" cy="24" r="20"/>
+<circle cx="250" cy="88" r="20"/>
+<circle cx="250" cy="152" r="20"/>
+<circle cx="250" cy="216" r="20"/>
+<circle cx="250" cy="280" r="20"/>
+<circle cx="250" cy="344" r="20"/>
+</g>
+<g stroke="currentColor" stroke-width="1.4" fill="none" marker-end="url(#i20241220171541-arrow)">
+<line x1="50" y1="44" x2="50" y2="67"/>
+<line x1="50" y1="132" x2="50" y2="109"/>
+<line x1="50" y1="196" x2="50" y2="173"/>
+<line x1="50" y1="324" x2="50" y2="301"/>
+<path d="M38 264 C14 230 12 192 35 166"/>
+<path d="M38 328 C14 294 12 256 35 230"/>
+<line x1="70" y1="280" x2="129" y2="280"/>
+<line x1="130" y1="216" x2="71" y2="216"/>
+<line x1="150" y1="44" x2="150" y2="67"/>
+<line x1="150" y1="132" x2="150" y2="109"/>
+<line x1="150" y1="196" x2="150" y2="173"/>
+<line x1="150" y1="324" x2="150" y2="301"/>
+<path d="M138 264 C114 230 112 192 135 166"/>
+<path d="M138 328 C114 294 112 256 135 230"/>
+<line x1="170" y1="280" x2="229" y2="280"/>
+<line x1="230" y1="216" x2="171" y2="216"/>
+<line x1="250" y1="44" x2="250" y2="67"/>
+<line x1="250" y1="132" x2="250" y2="109"/>
+<line x1="250" y1="196" x2="250" y2="173"/>
+<line x1="250" y1="324" x2="250" y2="301"/>
+<path d="M238 264 C214 230 212 192 235 166"/>
+<path d="M238 328 C214 294 212 256 235 230"/>
+</g>
+<g fill="currentColor" font-size="14">
+<text x="50" y="29" text-anchor="middle"><tspan font-style="italic" font-weight="bold">y</tspan><tspan font-size="9" dy="-6">(t−1)</tspan></text>
+<text x="50" y="93" text-anchor="middle"><tspan font-style="italic" font-weight="bold">L</tspan><tspan font-size="9" dy="-6">(t−1)</tspan></text>
+<text x="50" y="157" text-anchor="middle"><tspan font-style="italic" font-weight="bold">o</tspan><tspan font-size="9" dy="-6">(t−1)</tspan></text>
+<text x="50" y="221" text-anchor="middle"><tspan font-style="italic" font-weight="bold">g</tspan><tspan font-size="9" dy="-6">(t−1)</tspan></text>
+<text x="50" y="285" text-anchor="middle"><tspan font-style="italic" font-weight="bold">h</tspan><tspan font-size="9" dy="-6">(t−1)</tspan></text>
+<text x="50" y="349" text-anchor="middle"><tspan font-style="italic" font-weight="bold">x</tspan><tspan font-size="9" dy="-6">(t−1)</tspan></text>
+<text x="150" y="29" text-anchor="middle"><tspan font-style="italic" font-weight="bold">y</tspan><tspan font-size="9" dy="-6">(t)</tspan></text>
+<text x="150" y="93" text-anchor="middle"><tspan font-style="italic" font-weight="bold">L</tspan><tspan font-size="9" dy="-6">(t)</tspan></text>
+<text x="150" y="157" text-anchor="middle"><tspan font-style="italic" font-weight="bold">o</tspan><tspan font-size="9" dy="-6">(t)</tspan></text>
+<text x="150" y="221" text-anchor="middle"><tspan font-style="italic" font-weight="bold">g</tspan><tspan font-size="9" dy="-6">(t)</tspan></text>
+<text x="150" y="285" text-anchor="middle"><tspan font-style="italic" font-weight="bold">h</tspan><tspan font-size="9" dy="-6">(t)</tspan></text>
+<text x="150" y="349" text-anchor="middle"><tspan font-style="italic" font-weight="bold">x</tspan><tspan font-size="9" dy="-6">(t)</tspan></text>
+<text x="250" y="29" text-anchor="middle"><tspan font-style="italic" font-weight="bold">y</tspan><tspan font-size="9" dy="-6">(t+1)</tspan></text>
+<text x="250" y="93" text-anchor="middle"><tspan font-style="italic" font-weight="bold">L</tspan><tspan font-size="9" dy="-6">(t+1)</tspan></text>
+<text x="250" y="157" text-anchor="middle"><tspan font-style="italic" font-weight="bold">o</tspan><tspan font-size="9" dy="-6">(t+1)</tspan></text>
+<text x="250" y="221" text-anchor="middle"><tspan font-style="italic" font-weight="bold">g</tspan><tspan font-size="9" dy="-6">(t+1)</tspan></text>
+<text x="250" y="285" text-anchor="middle"><tspan font-style="italic" font-weight="bold">h</tspan><tspan font-size="9" dy="-6">(t+1)</tspan></text>
+<text x="250" y="349" text-anchor="middle"><tspan font-style="italic" font-weight="bold">x</tspan><tspan font-size="9" dy="-6">(t+1)</tspan></text>
+</g>
+</svg>
 
 ---
 Il problema di questo approccio di RNN è che funziona solo per sequenze corte, principalmente per colpa di:

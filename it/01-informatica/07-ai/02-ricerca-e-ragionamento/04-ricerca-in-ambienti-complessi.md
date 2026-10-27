@@ -38,49 +38,90 @@ Nell'esempio precedente, in un nodo "OR", l'agente sceglierebbe se andare a dest
 
 La soluzione ad un problema AND-OR è un sottoalbero dell'albero di ricerca dove i goal sono in ogni nodo foglia, ed ogni azione specifica un azione per ogni nodo OR, e il risultato di OGNI branch per i nodi AND 
 
-```mermaid
-flowchart TD
-    s1["1"]
-    a1(("●"))
-    a2(("●"))
-    s7["7<br>GOAL"]
-    s5["5"]
-    s2["2"]
-    a3(("●"))
-    a4(("●"))
-    a7(("●"))
-    a8(("●"))
-    s5l["5<br>LOOP"]
-    s1l["1<br>LOOP"]
-    s6["6"]
-    s1l2["1<br>LOOP"]
-    s8g["8<br>GOAL"]
-    s4["4<br>⋮"]
-    a5(("●"))
-    a6(("●"))
-    s8["8<br>GOAL"]
-    s5l2["5<br>LOOP"]
-    s1 -->|Suck| a1
-    s1 -->|Right| a2
-    a1 --> s7
-    a1 --> s5
-    a2 --> s2
-    s5 -->|Suck| a3
-    s5 -->|Right| a4
-    a3 --> s5l
-    a3 --> s1l
-    a4 --> s6
-    s2 -->|Left| a7
-    s2 -->|Suck| a8
-    a7 --> s1l2
-    a8 --> s8g
-    a8 --> s4
-    s6 -->|Suck| a5
-    s6 -->|Left| a6
-    a5 --> s8
-    a6 --> s5l2
-    linkStyle 0,2,3,6,8,15,17 stroke-width:4px
-```
+<svg viewBox="0 0 680 575" width="100%" style="max-width:680px;display:block;margin:1.5rem auto" role="img" aria-label="Albero AND-OR per il mondo dell'aspirapolvere non deterministico: stati numerati, nodi AND come cerchi, piano soluzione in grassetto">
+<defs><marker id="i20241201170854-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker><marker id="i20241201170854-bold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="3" markerHeight="3" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<!-- archi stato → nodo AND (azioni) -->
+<g stroke="currentColor" fill="none">
+<line x1="310" y1="43" x2="144.8" y2="116.3" stroke-width="3.5"/>
+<line x1="310" y1="43" x2="468.3" y2="116.1" stroke-width="1.3"/>
+<line x1="217" y1="221" x2="142.8" y2="282.1" stroke-width="1.3"/>
+<line x1="217" y1="221" x2="284.6" y2="281.6" stroke-width="3.5"/>
+<line x1="481" y1="221" x2="413.4" y2="281.6" stroke-width="1.3"/>
+<line x1="481" y1="221" x2="555.2" y2="282.1" stroke-width="1.3"/>
+<line x1="295" y1="389" x2="221" y2="447.3" stroke-width="3.5"/>
+<line x1="295" y1="389" x2="361.4" y2="446.8" stroke-width="1.3"/>
+</g>
+<g stroke="currentColor" fill="none">
+<line x1="121.5" y1="131.3" x2="54" y2="191" stroke-width="3.5" marker-end="url(#i20241201170854-bold)"/>
+<line x1="142.9" y1="130.8" x2="217" y2="191" stroke-width="3.5" marker-end="url(#i20241201170854-bold)"/>
+<line x1="481" y1="136" x2="481" y2="191" stroke-width="1.3" marker-end="url(#i20241201170854-arrow)"/>
+<line x1="124.2" y1="302.6" x2="86" y2="359" stroke-width="1.3" marker-end="url(#i20241201170854-arrow)"/>
+<line x1="139.8" y1="302.6" x2="178" y2="359" stroke-width="1.3" marker-end="url(#i20241201170854-arrow)"/>
+<line x1="295" y1="305" x2="295" y2="359" stroke-width="3.5" marker-end="url(#i20241201170854-bold)"/>
+<line x1="403" y1="305" x2="403" y2="359" stroke-width="1.3" marker-end="url(#i20241201170854-arrow)"/>
+<line x1="557.3" y1="302" x2="512" y2="359" stroke-width="1.3" marker-end="url(#i20241201170854-arrow)"/>
+<line x1="574.7" y1="302" x2="620" y2="359" stroke-width="1.3" marker-end="url(#i20241201170854-arrow)"/>
+<line x1="210" y1="470" x2="210" y2="523" stroke-width="3.5" marker-end="url(#i20241201170854-bold)"/>
+<line x1="372" y1="470" x2="372" y2="523" stroke-width="1.3" marker-end="url(#i20241201170854-arrow)"/>
+<path d="M109.5,141.9 A30,30 0 0,0 155.3,140.9" stroke-width="3.5"/>
+<path d="M115.2,315.8 A30,30 0 0,0 148.8,315.8" stroke-width="1.3"/>
+<path d="M547.3,314.5 A30,30 0 0,0 584.7,314.5" stroke-width="1.3"/>
+<path d="M620,389 l-20,32" stroke-width="1.3" marker-end="url(#i20241201170854-arrow)"/>
+<path d="M620,389 l20,32" stroke-width="1.3" marker-end="url(#i20241201170854-arrow)"/>
+</g>
+<!-- nodi AND -->
+<g fill="var(--palette-teal)" fill-opacity="0.45" stroke="currentColor" stroke-width="1.3">
+<circle cx="132" cy="122" r="14"/>
+<circle cx="481" cy="122" r="14"/>
+<circle cx="132" cy="291" r="14"/>
+<circle cx="295" cy="291" r="14"/>
+<circle cx="403" cy="291" r="14"/>
+<circle cx="566" cy="291" r="14"/>
+<circle cx="210" cy="456" r="14"/>
+<circle cx="372" cy="456" r="14"/>
+</g>
+<!-- stati: cella sinistra A, cella destra B; triangolo = aspirapolvere, puntini = sporco -->
+<g transform="translate(278,13)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M8,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/><circle cx="10" cy="23" r="1.4" fill="currentColor"/><circle cx="16" cy="21" r="1.4" fill="currentColor"/><circle cx="22" cy="24" r="1.4" fill="currentColor"/><circle cx="13" cy="27" r="1.4" fill="currentColor"/><circle cx="19" cy="27" r="1.4" fill="currentColor"/><circle cx="42" cy="23" r="1.4" fill="currentColor"/><circle cx="48" cy="21" r="1.4" fill="currentColor"/><circle cx="54" cy="24" r="1.4" fill="currentColor"/><circle cx="45" cy="27" r="1.4" fill="currentColor"/><circle cx="51" cy="27" r="1.4" fill="currentColor"/></g>
+<g transform="translate(22,191)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M8,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/></g>
+<g transform="translate(185,191)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M8,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/><circle cx="42" cy="23" r="1.4" fill="currentColor"/><circle cx="48" cy="21" r="1.4" fill="currentColor"/><circle cx="54" cy="24" r="1.4" fill="currentColor"/><circle cx="45" cy="27" r="1.4" fill="currentColor"/><circle cx="51" cy="27" r="1.4" fill="currentColor"/></g>
+<g transform="translate(449,191)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M40,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/><circle cx="10" cy="23" r="1.4" fill="currentColor"/><circle cx="16" cy="21" r="1.4" fill="currentColor"/><circle cx="22" cy="24" r="1.4" fill="currentColor"/><circle cx="13" cy="27" r="1.4" fill="currentColor"/><circle cx="19" cy="27" r="1.4" fill="currentColor"/><circle cx="42" cy="23" r="1.4" fill="currentColor"/><circle cx="48" cy="21" r="1.4" fill="currentColor"/><circle cx="54" cy="24" r="1.4" fill="currentColor"/><circle cx="45" cy="27" r="1.4" fill="currentColor"/><circle cx="51" cy="27" r="1.4" fill="currentColor"/></g>
+<g transform="translate(54,359)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M8,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/><circle cx="42" cy="23" r="1.4" fill="currentColor"/><circle cx="48" cy="21" r="1.4" fill="currentColor"/><circle cx="54" cy="24" r="1.4" fill="currentColor"/><circle cx="45" cy="27" r="1.4" fill="currentColor"/><circle cx="51" cy="27" r="1.4" fill="currentColor"/></g>
+<g transform="translate(146,359)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M8,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/><circle cx="10" cy="23" r="1.4" fill="currentColor"/><circle cx="16" cy="21" r="1.4" fill="currentColor"/><circle cx="22" cy="24" r="1.4" fill="currentColor"/><circle cx="13" cy="27" r="1.4" fill="currentColor"/><circle cx="19" cy="27" r="1.4" fill="currentColor"/><circle cx="42" cy="23" r="1.4" fill="currentColor"/><circle cx="48" cy="21" r="1.4" fill="currentColor"/><circle cx="54" cy="24" r="1.4" fill="currentColor"/><circle cx="45" cy="27" r="1.4" fill="currentColor"/><circle cx="51" cy="27" r="1.4" fill="currentColor"/></g>
+<g transform="translate(263,359)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M40,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/><circle cx="42" cy="23" r="1.4" fill="currentColor"/><circle cx="48" cy="21" r="1.4" fill="currentColor"/><circle cx="54" cy="24" r="1.4" fill="currentColor"/><circle cx="45" cy="27" r="1.4" fill="currentColor"/><circle cx="51" cy="27" r="1.4" fill="currentColor"/></g>
+<g transform="translate(371,359)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M8,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/><circle cx="10" cy="23" r="1.4" fill="currentColor"/><circle cx="16" cy="21" r="1.4" fill="currentColor"/><circle cx="22" cy="24" r="1.4" fill="currentColor"/><circle cx="13" cy="27" r="1.4" fill="currentColor"/><circle cx="19" cy="27" r="1.4" fill="currentColor"/><circle cx="42" cy="23" r="1.4" fill="currentColor"/><circle cx="48" cy="21" r="1.4" fill="currentColor"/><circle cx="54" cy="24" r="1.4" fill="currentColor"/><circle cx="45" cy="27" r="1.4" fill="currentColor"/><circle cx="51" cy="27" r="1.4" fill="currentColor"/></g>
+<g transform="translate(480,359)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M40,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/></g>
+<g transform="translate(588,359)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M40,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/><circle cx="10" cy="23" r="1.4" fill="currentColor"/><circle cx="16" cy="21" r="1.4" fill="currentColor"/><circle cx="22" cy="24" r="1.4" fill="currentColor"/><circle cx="13" cy="27" r="1.4" fill="currentColor"/><circle cx="19" cy="27" r="1.4" fill="currentColor"/></g>
+<g transform="translate(178,523)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M40,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/></g>
+<g transform="translate(340,523)"><rect width="64" height="30" fill="var(--palette-blue)" fill-opacity="0.25" stroke="currentColor" stroke-width="1.8"/><line x1="32" y1="0" x2="32" y2="30" stroke="currentColor"/><path d="M8,16 l16,0 l-3,-12 z" fill="var(--palette-purple)"/><circle cx="42" cy="23" r="1.4" fill="currentColor"/><circle cx="48" cy="21" r="1.4" fill="currentColor"/><circle cx="54" cy="24" r="1.4" fill="currentColor"/><circle cx="45" cy="27" r="1.4" fill="currentColor"/><circle cx="51" cy="27" r="1.4" fill="currentColor"/></g>
+<g font-size="14" fill="currentColor">
+<text x="274" y="33" text-anchor="end" font-weight="bold">1</text>
+<text x="18" y="211" text-anchor="end" font-weight="bold">7</text>
+<text x="54" y="239.0" text-anchor="middle" font-style="italic">GOAL</text>
+<text x="181" y="211" text-anchor="end" font-weight="bold">5</text>
+<text x="445" y="211" text-anchor="end" font-weight="bold">2</text>
+<text x="50" y="379" text-anchor="end" font-weight="bold">5</text>
+<text x="86" y="407.0" text-anchor="middle" font-style="italic">LOOP</text>
+<text x="142" y="379" text-anchor="end" font-weight="bold">1</text>
+<text x="178" y="407.0" text-anchor="middle" font-style="italic">LOOP</text>
+<text x="259" y="379" text-anchor="end" font-weight="bold">6</text>
+<text x="367" y="379" text-anchor="end" font-weight="bold">1</text>
+<text x="403" y="407.0" text-anchor="middle" font-style="italic">LOOP</text>
+<text x="476" y="379" text-anchor="end" font-weight="bold">8</text>
+<text x="512" y="407.0" text-anchor="middle" font-style="italic">GOAL</text>
+<text x="584" y="379" text-anchor="end" font-weight="bold">4</text>
+<text x="174" y="543" text-anchor="end" font-weight="bold">8</text>
+<text x="210" y="571.0" text-anchor="middle" font-style="italic">GOAL</text>
+<text x="336" y="543" text-anchor="end" font-weight="bold">5</text>
+<text x="372" y="571.0" text-anchor="middle" font-style="italic">LOOP</text>
+<text x="213" y="80.5" text-anchor="end" font-style="italic">Suck</text>
+<text x="403.5" y="80.5" font-style="italic">Right</text>
+<text x="166.5" y="254" text-anchor="end" font-style="italic">Suck</text>
+<text x="264" y="254" font-style="italic">Right</text>
+<text x="434" y="254" text-anchor="end" font-style="italic">Left</text>
+<text x="531.5" y="254" font-style="italic">Suck</text>
+<text x="244.5" y="420.5" text-anchor="end" font-style="italic">Suck</text>
+<text x="341.5" y="420.5" font-style="italic">Left</text>
+</g></svg>
 
 Questi alberi possono essere generati modificando gli algoritmi precedentemente visti, permettendo all'algoritmo di ritornare un albero come soluzione, anzichè un singolo percorso
 

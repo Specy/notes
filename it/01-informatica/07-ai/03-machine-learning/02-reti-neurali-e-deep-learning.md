@@ -15,47 +15,101 @@ Il "segnale" è rappresentato da un numero reale, e l'output di ogni neurone è 
 
 La "forza" della connessione del segnale è determinata dai "pesi", ed è la parte che viene aggiustata durante il processo di learning
 
-```mermaid
-flowchart LR
-  x1["x₁ = 2"]
-  x2["x₂ = 2"]
-  x3["x₃ = 1"]
-  m1["* <br/> 2*2=4"]
-  m2["* <br/> 2*2*1=4"]
-  p3["+ <br/> 2*1+1*7=9"]
-  ln["ln <br/> ln(4)=1.386"]
-  ex["exp <br/> 54.6"]
-  sq["√ <br/> √9=3"]
-  out["* <br/> 1.386*54.6*3=227"]
-  x1 --> m1
-  x1 --> m2
-  x2 --> m1
-  x2 --> m2
-  x2 -- "w₂=1" --> p3
-  x3 --> m2
-  x3 -- "w₃=7" --> p3
-  m1 --> ln
-  m2 --> ex
-  p3 --> sq
-  ln --> out
-  ex --> out
-  sq --> out
-```
+<svg viewBox="0 0 610 412" width="100%" style="max-width:610px;display:block;margin:1.5rem auto" role="img" aria-label="Grafo computazionale: ingressi x₁ = 2, x₂ = 2, x₃ = 1; nodi nascosti 2*2=4, 2*2*1=4, 2*1+1*7=9, ln(4)=1.386, exp = 54.6, √9=3; nodo di uscita 1.386*54.6*3=227">
+<defs><marker id="i20241219213557-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g stroke="currentColor" stroke-width="1.4" marker-end="url(#i20241219213557-arrow)">
+<line x1="118" y1="126" x2="170" y2="126"/>
+<line x1="109.9" y1="145.7" x2="178.4" y2="213.6"/>
+<line x1="109.9" y1="214.3" x2="178.4" y2="146.4"/>
+<line x1="118" y1="234" x2="170" y2="234"/>
+<line x1="109.4" y1="254.2" x2="178.9" y2="326.1"/>
+<line x1="109.8" y1="323.2" x2="178.5" y2="254.5"/>
+<line x1="118" y1="344" x2="170" y2="345.9"/>
+<line x1="227" y1="126" x2="282" y2="126"/>
+<line x1="227" y1="234" x2="282" y2="234"/>
+<line x1="227" y1="347" x2="282" y2="347"/>
+<line x1="330.9" y1="145.7" x2="399.4" y2="213.6"/>
+<line x1="339" y1="234" x2="391" y2="234"/>
+<line x1="330.4" y1="326.8" x2="399.9" y2="254.9"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="90" cy="126" r="28"/><circle cx="90" cy="234" r="28"/><circle cx="90" cy="343" r="28"/><circle cx="199" cy="126" r="28"/><circle cx="199" cy="234" r="28"/><circle cx="199" cy="347" r="28"/><circle cx="311" cy="126" r="28"/><circle cx="311" cy="234" r="28"/><circle cx="311" cy="347" r="28"/><circle cx="420" cy="234" r="28"/></g>
+<g font-size="17" font-weight="bold" text-anchor="middle" fill="currentColor">
+<text x="90" y="132">x₁</text>
+<text x="90" y="240">x₂</text>
+<text x="90" y="349">x₃</text>
+<text x="199" y="132">*</text>
+<text x="199" y="240">*</text>
+<text x="199" y="353">+</text>
+<text x="311" y="132">ln</text>
+<text x="311" y="240">exp</text>
+<text x="311" y="353">√</text>
+<text x="420" y="240">*</text>
+</g>
+<!-- valori calcolati -->
+<g font-size="16" font-weight="bold" text-anchor="middle" fill="currentColor">
+<text x="90" y="88">2</text>
+<text x="90" y="196">2</text>
+<text x="90" y="305">1</text>
+<text x="199" y="88">2*2=4</text>
+<text x="199" y="196">2*2*1=4</text>
+<text x="311" y="88">ln(4)=1.386</text>
+<text x="311" y="196">54.6</text>
+<text x="199" y="397">2*1+1*7=9</text>
+<text x="311" y="397">√9=3</text>
+<text x="388" y="190" text-anchor="start">1.386*54.6*3=227</text>
+<text x="160" y="303" text-anchor="start">w₂=1</text>
+<text x="112" y="372" text-anchor="start">w₃=7</text>
+</g>
+<g font-size="15" font-weight="bold" font-family="sans-serif" text-anchor="middle" fill="currentColor">
+<text x="232" y="26">HIDDEN NODES</text>
+<text x="420" y="291">OUTPUT</text><text x="420" y="309">NODE</text>
+<text transform="translate(35,234) rotate(-90)">INPUT NODES</text>
+</g></svg>
 
 # Percettrone
 
 Il percettrone utilizza vari "neuroni" collegati ad un neurone finale per calcolare il valore dell'output. è visto come un modello a "sigolo strato", dato che contiene solo uno strato di neuroni:
 
-```mermaid
-flowchart LR
-  x1(("x₁")) -- "w₁" --> O(["OUTPUT NODE<br/>Σ ⎍"])
-  x2(("x₂")) -- "w₂" --> O
-  x3(("x₃")) -- "w₃" --> O
-  x4(("x₄")) -- "w₄" --> O
-  x5(("x₅")) -- "w₅" --> O
-  bias["+1<br/>BIAS"] -- "b" --> O
-  O --> y["y"]
-```
+<svg viewBox="0 0 540 362" width="100%" style="max-width:540px;display:block;margin:1.5rem auto" role="img" aria-label="Percettrone: cinque ingressi x₁…x₅ con pesi w₁…w₅ e un bias +1 con peso b entrano nel nodo di uscita, che somma (Σ) e applica una funzione a gradino, producendo y">
+<defs><marker id="i20241219213844-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g stroke="currentColor" stroke-width="1.3" marker-end="url(#i20241219213844-arrow)">
+<line x1="189" y1="69.2" x2="308.4" y2="178.9"/>
+<line x1="191.6" y1="132.4" x2="308.2" y2="187.2"/>
+<line x1="193" y1="189.7" x2="308.1" y2="195.1"/>
+<line x1="191.8" y1="253.2" x2="308.2" y2="203.9"/>
+<line x1="189" y1="322.8" x2="308.4" y2="213.1"/>
+<line x1="234" y1="322" x2="334" y2="232"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.5">
+<polygon points="48,56.5 152,56.5 152,53 161,59 152,65 152,61.5 48,61.5"/><circle cx="178" cy="59" r="15"/>
+<polygon points="48,123.5 152,123.5 152,120 161,126 152,132 152,128.5 48,128.5"/><circle cx="178" cy="126" r="15"/>
+<polygon points="48,186.5 152,186.5 152,183 161,189 152,195 152,191.5 48,191.5"/><circle cx="178" cy="189" r="15"/>
+<polygon points="48,256.5 152,256.5 152,253 161,259 152,265 152,261.5 48,261.5"/><circle cx="178" cy="259" r="15"/>
+<polygon points="48,330.5 152,330.5 152,327 161,333 152,339 152,335.5 48,335.5"/><circle cx="178" cy="333" r="15"/>
+<ellipse cx="377" cy="196" rx="70" ry="45" stroke-width="2.5"/><line x1="377" y1="151" x2="377" y2="241"/>
+<path d="M389,212 h12 v-32 h14" stroke-width="5"/>
+<polygon points="447,193.5 488,193.5 488,190 497,196 488,202 488,198.5 447,198.5"/>
+<rect x="216" y="322" width="28" height="28" stroke-width="2"/>
+</g>
+<g font-size="18" font-weight="bold" font-family="sans-serif" fill="currentColor">
+<text x="14" y="65">x<tspan font-size="12" dy="5">1</tspan></text>
+<text x="14" y="132">x<tspan font-size="12" dy="5">2</tspan></text>
+<text x="14" y="195">x<tspan font-size="12" dy="5">3</tspan></text>
+<text x="14" y="265">x<tspan font-size="12" dy="5">4</tspan></text>
+<text x="14" y="339">x<tspan font-size="12" dy="5">5</tspan></text>
+<text x="341" y="209" font-size="38" text-anchor="middle">Σ</text>
+<text x="503" y="202">y</text>
+<text x="237" y="95" font-size="15">w<tspan font-size="11" dy="4">1</tspan></text>
+<text x="236" y="137" font-size="15">w<tspan font-size="11" dy="4">2</tspan></text>
+<text x="219" y="182" font-size="15">w<tspan font-size="11" dy="4">3</tspan></text>
+<text x="219" y="227" font-size="15">w<tspan font-size="11" dy="4">4</tspan></text>
+<text x="223" y="273" font-size="15">w<tspan font-size="11" dy="4">5</tspan></text>
+<text x="262" y="301" font-size="16">b</text>
+<text x="230" y="342" font-size="15" text-anchor="middle">+1</text>
+<text x="250" y="342" font-size="15">BIAS</text>
+<text x="153" y="21" font-size="15" text-anchor="middle">INPUT NODES</text>
+<text x="377" y="139" font-size="15" text-anchor="middle">OUTPUT NODE</text>
+</g></svg>
 
 Modelliamo un neurone in maniera semplice:
 
@@ -102,35 +156,32 @@ Questo ciclo viene eseguito più volte, dove ogni iterazione è chiamata "epoch"
 --- 
 Se abbiamo una funzione di attivazione lineare $g(\cdot)$, il percettrone corrisponde ad un modello lineare che separa linearmente i dati. Questo funziona bene se i dati sono linearmente separabili.
 
-**Linearly separable data**
-
 ```plot
-x: [0, 5.6]
-y: [0, 5]
+x: [11, 52]
+y: [0, 19.5]
+width: 600
+aspect: equal
 axes: false
-width: 400
-height: 300
 items:
-  - line: [[0.65, 0.28], [4.73, 4.55]]
-  - points: [[0.75, 1.15], [1.08, 1.20], [0.98, 1.57], [0.98, 2.13], [1.50, 2.26], [1.60, 1.80], [1.93, 2.45], [2.24, 2.53], [1.78, 2.95], [2.38, 2.95], [2.72, 2.99], [2.27, 3.52], [2.90, 3.38], [2.97, 3.92], [3.25, 4.16], [3.28, 3.82], [3.68, 3.97], [3.82, 4.35]]
-    shape: dot
-  - points: [[4.60, 3.77], [5.06, 3.97], [4.19, 3.28], [4.86, 2.99], [3.83, 2.95], [4.26, 2.70], [3.46, 2.68], [3.92, 2.33], [3.01, 2.38], [2.87, 1.83], [3.33, 1.87], [2.35, 1.57], [3.22, 1.42], [1.83, 1.09], [2.24, 0.91], [2.70, 1.06], [1.63, 0.48], [2.24, 0.42]]
+  - line: [[13.2, 4.3], [26.79, 18.5]]
+  - points: [[13.53, 7.19], [14.63, 7.36], [14.3, 8.59], [14.3, 10.45], [16.03, 10.88], [16.36, 9.35], [17.46, 11.52], [18.49, 11.78], [16.96, 13.18], [18.96, 13.18], [20.09, 13.31], [18.59, 15.07], [20.69, 14.61], [20.93, 16.4], [21.86, 17.2], [21.96, 16.07], [23.29, 16.57], [23.76, 17.83]]
+    shape: star
+    size: 2.2
+  - points: [[26.35, 15.9], [27.89, 16.57], [24.99, 14.28], [27.22, 13.31], [23.79, 13.18], [25.22, 12.35], [22.56, 12.28], [24.09, 11.12], [21.06, 11.28], [20.59, 9.45], [22.12, 9.59], [18.86, 8.59], [21.76, 8.09], [17.13, 6.99], [18.49, 6.39], [20.03, 6.89], [16.46, 4.97], [18.49, 4.77]]
     shape: plus
-```
-
-**Not linearly separable data**
-
-```plot
-x: [0.3, 7.2]
-y: [0.8, 6.2]
-axes: false
-width: 400
-height: 300
-items:
-  - points: [[2.03, 6.00], [1.44, 5.76], [1.96, 5.50], [2.47, 5.48], [1.02, 5.08], [1.61, 5.06], [2.15, 4.99], [1.26, 4.70], [1.96, 4.43], [5.72, 3.11], [6.04, 2.73], [5.41, 2.40], [5.89, 2.13], [6.66, 2.12], [5.45, 1.81], [4.81, 1.67], [5.46, 1.42], [6.10, 1.38]]
+  - points: [[47.28, 16.49], [48.69, 16.21], [50.01, 14.96], [46.8, 14.71], [48.64, 14.51], [48.14, 13.75], [49.43, 13.44], [46.77, 13.16], [48.69, 12.48], [34.5, 7.29], [35.92, 7.57], [37.26, 7.57], [38.37, 6.86], [36.17, 6.43], [38.19, 5.95], [34.8, 5.74], [37.49, 5.49], [35.89, 4.91], [38.04, 4.5]]
+    shape: star
+    size: 2.2
+  - points: [[37.84, 16.51], [36.35, 15.9], [37.66, 15.24], [38.95, 15.19], [35.28, 14.18], [36.78, 14.13], [38.14, 13.95], [35.89, 13.21], [37.66, 12.53], [47.18, 9.17], [47.98, 8.21], [46.39, 7.37], [47.61, 6.68], [49.55, 6.66], [46.49, 5.87], [44.87, 5.52], [46.52, 4.88], [48.14, 4.78]]
     shape: plus
-  - points: [[5.76, 5.99], [6.32, 5.88], [6.84, 5.39], [5.57, 5.29], [6.30, 5.21], [6.10, 4.91], [6.61, 4.79], [5.56, 4.68], [6.32, 4.41], [0.71, 2.37], [1.27, 2.48], [1.80, 2.48], [2.24, 2.20], [1.37, 2.03], [2.17, 1.84], [0.83, 1.76], [1.89, 1.66], [1.26, 1.43], [2.11, 1.27]]
-    shape: dot
+  - text: $\textit{Linearly}$
+    at: [19, 2.6]
+  - text: $\textit{separable data}$
+    at: [19, 1]
+  - text: $\textit{Not linearly}$
+    at: [42, 2.6]
+  - text: $\textit{separable data}$
+    at: [42, 1]
 ```
 
 Però, il percettrone, come anche altri modelli, possono usare funzioni di attivazioni non lineari.
@@ -146,50 +197,129 @@ A questo punto vediamo il percettrone in 3 strati principali
 
 **Perceptron**
 
-```mermaid
-flowchart LR
-  x1(("x₁")) -- "w₁" --> O(["OUTPUT NODE<br/>Σ ⎍"])
-  x2(("x₂")) -- "w₂" --> O
-  x3(("x₃")) -- "w₃" --> O
-  x4(("x₄")) -- "w₄" --> O
-  x5(("x₅")) -- "w₅" --> O
-  bias["+1<br/>BIAS NEURON"] -- "b" --> O
-  O --> y["y"]
-```
+<svg viewBox="0 0 540 362" width="100%" style="max-width:540px;display:block;margin:1.5rem auto" role="img" aria-label="Percettrone: cinque ingressi x₁…x₅ con pesi w₁…w₅ e un neurone di bias +1 con peso b entrano nel nodo di uscita, che somma (Σ) e applica una funzione a gradino, producendo y">
+<defs><marker id="i20241220124314-p-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g stroke="currentColor" stroke-width="1.3" marker-end="url(#i20241220124314-p-arrow)">
+<line x1="189" y1="69.2" x2="308.4" y2="178.9"/>
+<line x1="191.6" y1="132.4" x2="308.2" y2="187.2"/>
+<line x1="193" y1="189.7" x2="308.1" y2="195.1"/>
+<line x1="191.8" y1="253.2" x2="308.2" y2="203.9"/>
+<line x1="189" y1="322.8" x2="308.4" y2="213.1"/>
+<line x1="234" y1="322" x2="334" y2="232"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.5">
+<polygon points="48,56.5 152,56.5 152,53 161,59 152,65 152,61.5 48,61.5"/><circle cx="178" cy="59" r="15"/>
+<polygon points="48,123.5 152,123.5 152,120 161,126 152,132 152,128.5 48,128.5"/><circle cx="178" cy="126" r="15"/>
+<polygon points="48,186.5 152,186.5 152,183 161,189 152,195 152,191.5 48,191.5"/><circle cx="178" cy="189" r="15"/>
+<polygon points="48,256.5 152,256.5 152,253 161,259 152,265 152,261.5 48,261.5"/><circle cx="178" cy="259" r="15"/>
+<polygon points="48,330.5 152,330.5 152,327 161,333 152,339 152,335.5 48,335.5"/><circle cx="178" cy="333" r="15"/>
+<ellipse cx="377" cy="196" rx="70" ry="45" stroke-width="2.5"/><line x1="377" y1="151" x2="377" y2="241"/>
+<path d="M389,212 h12 v-32 h14" stroke-width="5"/>
+<polygon points="447,193.5 488,193.5 488,190 497,196 488,202 488,198.5 447,198.5"/>
+<rect x="216" y="322" width="28" height="28" stroke-width="2"/>
+</g>
+<g font-size="18" font-weight="bold" font-family="sans-serif" fill="currentColor">
+<text x="14" y="65">x<tspan font-size="12" dy="5">1</tspan></text>
+<text x="14" y="132">x<tspan font-size="12" dy="5">2</tspan></text>
+<text x="14" y="195">x<tspan font-size="12" dy="5">3</tspan></text>
+<text x="14" y="265">x<tspan font-size="12" dy="5">4</tspan></text>
+<text x="14" y="339">x<tspan font-size="12" dy="5">5</tspan></text>
+<text x="341" y="209" font-size="38" text-anchor="middle">Σ</text>
+<text x="503" y="202">y</text>
+<text x="237" y="95" font-size="15">w<tspan font-size="11" dy="4">1</tspan></text>
+<text x="236" y="137" font-size="15">w<tspan font-size="11" dy="4">2</tspan></text>
+<text x="219" y="182" font-size="15">w<tspan font-size="11" dy="4">3</tspan></text>
+<text x="219" y="227" font-size="15">w<tspan font-size="11" dy="4">4</tspan></text>
+<text x="223" y="273" font-size="15">w<tspan font-size="11" dy="4">5</tspan></text>
+<text x="262" y="301" font-size="16">b</text>
+<text x="230" y="342" font-size="15" text-anchor="middle">+1</text>
+<text x="250" y="342" font-size="15">BIAS NEURON</text>
+<text x="153" y="21" font-size="15" text-anchor="middle">INPUT NODES</text>
+<text x="377" y="139" font-size="15" text-anchor="middle">OUTPUT NODE</text>
+</g></svg>
 
 **Multilayer perceptron (MLP)**
 
-```mermaid
-flowchart LR
-  subgraph INL["INPUT LAYER"]
-    x1(("x₁"))
-    x2(("x₂"))
-    x3(("x₃"))
-    x4(("x₄"))
-    x5(("x₅"))
-  end
-  subgraph HID["HIDDEN LAYER"]
-    h1(("h₁"))
-    h2(("h₂"))
-    h3(("h₃"))
-  end
-  subgraph OUTL["OUTPUT LAYER"]
-    o(("o"))
-  end
-  b1["+1<br/>BIAS NEURON"]
-  b2["+1<br/>BIAS NEURON"]
-  x1 --> h1 & h2 & h3
-  x2 --> h1 & h2 & h3
-  x3 --> h1 & h2 & h3
-  x4 --> h1 & h2 & h3
-  x5 --> h1 & h2 & h3
-  b1 --> h1 & h2 & h3
-  h1 --> o
-  h2 --> o
-  h3 --> o
-  b2 --> o
-  o --> y["y"]
-```
+<svg viewBox="0 0 580 330" width="100%" style="max-width:580px;display:block;margin:1.5rem auto" role="img" aria-label="Percettrone multistrato: cinque ingressi, uno strato nascosto con due colonne di tre neuroni, un neurone di uscita che produce y; un neurone di bias +1 per ogni livello dopo l'ingresso">
+<defs><marker id="i20241220124314-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g stroke="currentColor" stroke-width="0.9" marker-end="url(#i20241220124314-arrow)">
+<line x1="109.2" y1="51.8" x2="213.9" y2="109.7"/>
+<line x1="106.9" y1="54.9" x2="216.4" y2="165.4"/>
+<line x1="105" y1="56.5" x2="218.5" y2="220.7"/>
+<line x1="111" y1="110.8" x2="212" y2="116.2"/>
+<line x1="109.5" y1="116.3" x2="213.6" y2="169.2"/>
+<line x1="107.2" y1="119.6" x2="216.1" y2="222.7"/>
+<line x1="109.8" y1="168.4" x2="213.3" y2="123"/>
+<line x1="111" y1="174.2" x2="212" y2="175.8"/>
+<line x1="109.7" y1="179.8" x2="213.3" y2="226.8"/>
+<line x1="107.2" y1="228.5" x2="216" y2="127.2"/>
+<line x1="109.6" y1="232" x2="213.5" y2="182.5"/>
+<line x1="111" y1="237.5" x2="212" y2="233.6"/>
+<line x1="105.3" y1="283.7" x2="218.2" y2="129.1"/>
+<line x1="107.3" y1="285.5" x2="215.9" y2="186.1"/>
+<line x1="109.6" y1="289" x2="213.5" y2="239.5"/>
+<line x1="241" y1="117" x2="316" y2="117"/>
+<line x1="239.2" y1="123.9" x2="318" y2="168.6"/>
+<line x1="236.3" y1="127.4" x2="321" y2="221.8"/>
+<line x1="239.2" y1="169.1" x2="318" y2="124.4"/>
+<line x1="241" y1="176" x2="316" y2="176"/>
+<line x1="239.3" y1="182.7" x2="317.8" y2="225.8"/>
+<line x1="236.3" y1="222.6" x2="321" y2="128.2"/>
+<line x1="239.3" y1="226.3" x2="317.8" y2="183.2"/>
+<line x1="241" y1="233" x2="316" y2="233"/>
+<line x1="343.7" y1="122.9" x2="445.4" y2="170.6"/>
+<line x1="345" y1="176.1" x2="444" y2="176.9"/>
+<line x1="343.8" y1="227.4" x2="445.3" y2="183"/>
+<line x1="147" y1="285" x2="220.6" y2="130.5"/>
+<line x1="147" y1="285" x2="218.1" y2="188.1"/>
+<line x1="147" y1="285" x2="214.4" y2="241.2"/>
+<line x1="273" y1="286" x2="326.1" y2="131.2"/>
+<line x1="273" y1="286" x2="324" y2="189.3"/>
+<line x1="273" y1="286" x2="319.9" y2="243.1"/>
+<line x1="398" y1="257" x2="449.9" y2="188.9"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.5">
+<polygon points="26,42.5 72,42.5 72,39 81,45 72,51 72,47.5 26,47.5"/>
+<polygon points="26,107.5 72,107.5 72,104 81,110 72,116 72,112.5 26,112.5"/>
+<polygon points="26,171.5 72,171.5 72,168 81,174 72,180 72,176.5 26,176.5"/>
+<polygon points="26,235.5 72,235.5 72,232 81,238 72,244 72,240.5 26,240.5"/>
+<polygon points="26,292.5 72,292.5 72,289 81,295 72,301 72,297.5 26,297.5"/>
+<circle cx="97" cy="45" r="14"/>
+<circle cx="97" cy="110" r="14"/>
+<circle cx="97" cy="174" r="14"/>
+<circle cx="97" cy="238" r="14"/>
+<circle cx="97" cy="295" r="14"/>
+<circle cx="227" cy="117" r="14"/>
+<circle cx="227" cy="176" r="14"/>
+<circle cx="227" cy="233" r="14"/>
+<circle cx="331" cy="117" r="14"/>
+<circle cx="331" cy="176" r="14"/>
+<circle cx="331" cy="233" r="14"/>
+<circle cx="459" cy="177" r="14"/>
+<polygon points="473,174.5 508,174.5 508,171 517,177 508,183 508,179.5 473,179.5"/>
+<rect x="134" y="285" width="26" height="26" stroke-width="2"/>
+<rect x="260" y="286" width="26" height="26" stroke-width="2"/>
+<rect x="381" y="257" width="26" height="26" stroke-width="2"/>
+<rect x="198" y="95" width="160" height="166" stroke-width="2" stroke-dasharray="7 4"/>
+</g>
+<g stroke="currentColor" stroke-width="1" marker-end="url(#i20241220124314-arrow)"><line x1="191" y1="286" x2="162" y2="298"/><line x1="233" y1="291" x2="258" y2="299"/></g>
+<g font-size="15" font-weight="bold" font-family="sans-serif" fill="currentColor">
+<text x="2" y="50" font-size="16">x<tspan font-size="11" dy="4">1</tspan></text>
+<text x="2" y="115" font-size="16">x<tspan font-size="11" dy="4">2</tspan></text>
+<text x="2" y="179" font-size="16">x<tspan font-size="11" dy="4">3</tspan></text>
+<text x="2" y="243" font-size="16">x<tspan font-size="11" dy="4">4</tspan></text>
+<text x="2" y="300" font-size="16">x<tspan font-size="11" dy="4">5</tspan></text>
+<text x="523" y="183" font-size="17">y</text>
+<text x="147" y="303" text-anchor="middle" font-size="13">+1</text>
+<text x="273" y="304" text-anchor="middle" font-size="13">+1</text>
+<text x="394" y="275" text-anchor="middle" font-size="13">+1</text>
+<g text-anchor="middle" font-size="13">
+<text x="90" y="18">INPUT LAYER</text>
+<text x="275" y="74">HIDDEN LAYER</text>
+<text x="487" y="152">OUTPUT LAYER</text>
+<text x="212" y="288" font-size="12">BIAS</text><text x="212" y="303" font-size="12">NEURONS</text>
+<text x="443" y="260" font-size="12">BIAS</text><text x="443" y="275" font-size="12">NEURON</text>
+</g></g></svg>
 
 Questo percettrone è chiamato "multi level perceptron" o MLP.
 
@@ -230,18 +360,55 @@ $$
 
 dove $g(\cdot)$ è applicata elemento per elemento a tutte le componenti del vettore $\mathbf{W}^\text{out} \mathbf{y}^\text{in}$.
 
-```mermaid
-flowchart LR
-  X["INPUT<br/>x"] -- "×" --> W1[/"W<sup>(1)</sup>"\]
-  W1 --> L1["L<sub>1</sub><br/>η<sub>1</sub><sup>(1)</sup><br/>⋮<br/>η<sub>d₁</sub><sup>(1)</sup>"]
-  L1 --> Y1["y<sup>(1)</sup> = g(W<sup>(1)</sup>x)"]
-  Y1 -- "×" --> W2[/"W<sup>(2)</sup>"\]
-  W2 -- "…" --> Lk1["L<sub>k−1</sub><br/>η<sub>1</sub><sup>(k−1)</sup><br/>⋮<br/>η<sub>d<sub>k−1</sub></sub><sup>(k−1)</sup>"]
-  Lk1 --> Yk1["y<sup>(k−1)</sup> = g(W<sup>(k−1)</sup>y<sup>(k−2)</sup>)"]
-  Yk1 -- "×" --> Wk[/"W<sup>(k)</sup>"\]
-  Wk --> Lk["L<sub>k</sub><br/>η<sub>1</sub><sup>(k)</sup><br/>⋮<br/>η<sub>d<sub>k</sub></sub><sup>(k)</sup>"]
-  Lk --> OUT["OUTPUT"]
-```
+<svg viewBox="0 0 700 258" width="100%" style="max-width:700px;display:block;margin:1.5rem auto" role="img" aria-label="Rete feed-forward: l'ingresso x viene moltiplicato per W⁽¹⁾, passa nel livello L₁ (neuroni η₁ … η_d₁), si ottiene y⁽¹⁾ = g(W⁽¹⁾x), e così via fino a W⁽ᵏ⁾ e al livello di uscita Lₖ">
+<defs><marker id="i20241220131810-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g fill="none" stroke="currentColor" stroke-width="2">
+<rect x="2" y="16" width="28" height="235"/>
+<path d="M52,16 L120,34 L120,232 L52,251 z"/>
+<rect x="142" y="34" width="42" height="202"/><rect x="205" y="34" width="57" height="202"/>
+<path d="M281,34 L341,49 L341,218 L281,232 z"/>
+<rect x="369" y="60" width="41" height="146"/><rect x="430" y="60" width="80" height="146"/>
+<path d="M531,60 L589,75 L589,191 L531,206 z"/>
+<rect x="608" y="75" width="41" height="119"/>
+<g stroke-width="1.5">
+<circle cx="163" cy="58" r="18"/>
+<circle cx="163" cy="214" r="18"/>
+<circle cx="388" cy="86" r="18"/>
+<circle cx="388" cy="182" r="18"/>
+<circle cx="628" cy="101" r="18"/>
+<circle cx="628" cy="169" r="18"/>
+</g>
+<g stroke-width="1.5" marker-end="url(#i20241220131810-arrow)">
+<line x1="120" y1="135" x2="140" y2="135"/>
+<line x1="184" y1="135" x2="203" y2="135"/>
+<line x1="410" y1="135" x2="428" y2="135"/>
+<line x1="589" y1="135" x2="605" y2="135"/>
+<line x1="649" y1="135" x2="694" y2="135"/>
+</g></g>
+<g fill="currentColor">
+<!-- moltiplicazioni e puntini -->
+<g font-size="22" text-anchor="middle"><text x="41" y="142">×</text><text x="272" y="142">×</text><text x="352" y="142">⋯</text><text x="520" y="142">×</text></g>
+<g font-size="18" font-weight="bold" text-anchor="middle"><text x="163" y="141">⋮</text><text x="388" y="141">⋮</text><text x="628" y="141">⋮</text></g>
+<g font-family="serif" font-weight="bold" font-style="italic" font-size="20" text-anchor="middle">
+<text x="16" y="142">x</text>
+<text x="84" y="142">W<tspan font-size="11" dx="2" dy="-7">(1)</tspan></text>
+<text x="309" y="142">W<tspan font-size="11" dx="2" dy="-7">(2)</tspan></text>
+<text x="559" y="142">W<tspan font-size="11" dx="2" dy="-7">(k)</tspan></text>
+<text x="164" y="24">L<tspan font-size="13" dy="4">1</tspan></text>
+<text x="392" y="46">L<tspan font-size="13" dy="4">k−1</tspan></text>
+<text x="628" y="54">L<tspan font-size="13" dy="4">k</tspan></text>
+<text font-size="17" transform="translate(238,135) rotate(-90)">y<tspan font-size="11" dx="2" dy="-7">(1)</tspan><tspan dy="7"> = g(W</tspan><tspan font-size="11" dx="2" dy="-7">(1)</tspan><tspan dy="7">x)</tspan></text>
+<text font-size="16" transform="translate(459,134) rotate(-90)">y<tspan font-size="11" dx="2" dy="-7">(k−1)</tspan><tspan dy="7"> =</tspan></text>
+<text font-size="16" transform="translate(486,134) rotate(-90)">g(W<tspan font-size="11" dx="2" dy="-7">(k−1)</tspan><tspan dy="7">y</tspan><tspan font-size="11" dx="2" dy="-7">(k−2)</tspan><tspan dy="7">)</tspan></text>
+</g>
+<g font-family="serif" font-style="italic">
+<text x="152" y="62" font-size="13">η</text><text x="160" y="56" font-size="7.5">(1)</text><text x="160" y="67" font-size="8">1</text><text x="152" y="218" font-size="13">η</text><text x="160" y="212" font-size="7.5">(1)</text><text x="160" y="223" font-size="8">d<tspan font-size="6" dy="2">1</tspan></text>
+<text x="377" y="90" font-size="13">η</text><text x="385" y="84" font-size="7.5">(k−1)</text><text x="385" y="95" font-size="8">1</text><text x="377" y="186" font-size="13">η</text><text x="385" y="180" font-size="7.5">(k−1)</text><text x="385" y="191" font-size="8">d<tspan font-size="6" dy="2">k−1</tspan></text>
+<text x="617" y="105" font-size="13">η</text><text x="625" y="99" font-size="7.5">(k)</text><text x="625" y="110" font-size="8">1</text><text x="617" y="173" font-size="13">η</text><text x="625" y="167" font-size="7.5">(k)</text><text x="625" y="178" font-size="8">d<tspan font-size="6" dy="2">k</tspan></text>
+</g>
+<g font-family="serif" font-weight="bold" font-size="9" text-anchor="middle">
+<text x="16" y="9">INPUT</text><text x="673" y="150">OUTPUT</text>
+</g></g></svg>
 
 A questo punto denotiamo $f^{(p)}$ come la funzione $\mathbf{y}^{(p)} = g\left( \mathbf{W}^{(p)} \mathbf{y}^{(p-1)} \right)$ dello strato $L_p$ i un MLP a $k$ strati. 
 Abbiamo $x$ l'input dato all'MLP, allora la funzione finale che rappresenta l'intero MLP sarà del tipo:
@@ -277,19 +444,48 @@ r(x)=\max \{0, x\}= \begin{cases}0, & x<0 \\ x, & x \geq 0\end{cases}
 $$
 
 ```plot
-x: [-10.5, 10.5]
-y: [-0.5, 10.5]
-height: 260
-grid: true
-ticks: true
-xticks: [-10, -7.5, -5, -2.5, 0, 2.5, 5, 7.5, 10]
-yticks: [0, 2, 4, 6, 8, 10]
-caption: ReLU Activation Function
+# matplotlib-style frame: no axes, grid and ticks drawn by hand
+x: [-13.4, 11.6]
+y: [-1.9, 11.9]
+width: 520
+height: 290
+axes: false
+alt: ReLU Activation Function
 items:
+  - text: ReLU Activation Function
+    at: [0, 10.8]
+    anchor: n
+  # grid
+  - line: [[-10, -0.5], [-10, 10.5], [-7.5, 10.5], [-7.5, -0.5], [-5, -0.5], [-5, 10.5], [-2.5, 10.5], [-2.5, -0.5], [0, -0.5], [0, 10.5], [2.5, 10.5], [2.5, -0.5], [5, -0.5], [5, 10.5], [7.5, 10.5], [7.5, -0.5], [10, -0.5], [10, 10.5]]
+    color: muted
+    width: 0.4
+  - line: [[-11, 0], [11, 0], [11, 2], [-11, 2], [-11, 4], [11, 4], [11, 6], [-11, 6], [-11, 8], [11, 8], [11, 10], [-11, 10]]
+    color: muted
+    width: 0.4
+  # frame
+  - line: [[-11, -0.5], [11, -0.5], [11, 10.5], [-11, 10.5], [-11, -0.5]]
+    width: 1
   - fn: max(0, x)
+    domain: [-10, 10]
     color: blue
   - text: $\max(0,x)$
-    at: [6.5, 1]
+    at: [5.6, 1]
+  # tick labels
+  - { text: "$-10.0$", at: [-10, -0.5], anchor: s }
+  - { text: "$-7.5$", at: [-7.5, -0.5], anchor: s }
+  - { text: "$-5.0$", at: [-5, -0.5], anchor: s }
+  - { text: "$-2.5$", at: [-2.5, -0.5], anchor: s }
+  - { text: "$0.0$", at: [0, -0.5], anchor: s }
+  - { text: "$2.5$", at: [2.5, -0.5], anchor: s }
+  - { text: "$5.0$", at: [5, -0.5], anchor: s }
+  - { text: "$7.5$", at: [7.5, -0.5], anchor: s }
+  - { text: "$10.0$", at: [10, -0.5], anchor: s }
+  - { text: "$0$", at: [-11, 0], anchor: w }
+  - { text: "$2$", at: [-11, 2], anchor: w }
+  - { text: "$4$", at: [-11, 4], anchor: w }
+  - { text: "$6$", at: [-11, 6], anchor: w }
+  - { text: "$8$", at: [-11, 8], anchor: w }
+  - { text: "$10$", at: [-11, 10], anchor: w }
 ```
 
 ## Funzione sigmoidea
@@ -303,11 +499,20 @@ $$
 ```plot
 x: [-6, 6]
 y: [0, 1]
-height: 280
-grid: true
+width: 480
+height: 270
 xticks: [-6, -4, -2, 0, 2, 4, 6]
 yticks: [0, 0.5, 1]
 items:
+  # grid: every 2 on x, every 0.5 on y
+  - { vline: -6, color: muted, dash: false, width: 0.4 }
+  - { vline: -4, color: muted, dash: false, width: 0.4 }
+  - { vline: -2, color: muted, dash: false, width: 0.4 }
+  - { vline: 2, color: muted, dash: false, width: 0.4 }
+  - { vline: 4, color: muted, dash: false, width: 0.4 }
+  - { vline: 6, color: muted, dash: false, width: 0.4 }
+  - { hline: 0.5, color: muted, dash: false, width: 0.4 }
+  - { hline: 1, color: muted, dash: false, width: 0.4 }
   - fn: 1/(1 + exp(-x))
     color: blue
 ```
@@ -317,16 +522,17 @@ items:
 è monotona crescente, ed ha limite -1 quando tende a $-\infty$ e ad 1 quando tende a $+\infty$ 
 
 ```plot
-x: [-2.8, 2.8]
-y: [-1.4, 1.4]
-height: 260
-grid: true
+x: [-2.9, 2.9]
+y: [-1.4, 1.55]
+aspect: equal
+grid: 0.5
 xticks: [-2, -1, 1, 2]
 yticks: [-1, 1]
 xlabel: $x$
 ylabel: $\tanh(x)$
 items:
   - fn: tanh(x)
+    domain: [-2.75, 2.75]
     color: red
     width: 3
 ```
@@ -336,16 +542,22 @@ items:
 è l'inverso della funzione tangente, è monotona crescente, ed ha limite $-\frac{\pi}{2}$ quando tende a $-\infty$ e ad $\frac{\pi}{2}$ quando tende a $+\infty$ 
 
 ```plot
-x: [-4.8, 4.8]
-y: [-2.1, 2.1]
-height: 260
-grid: true
+x: [-4.8, 4.95]
+y: [-2.15, 2.35]
+aspect: equal
 xticks: [-4, -3, -2, -1, 1, 2, 3, 4]
 yticks: { "pi/2": "$\\frac{\\pi}{2}$", "-pi/2": "$-\\frac{\\pi}{2}$" }
 xlabel: $x$
 ylabel: $\arctan(x)$
 items:
+  # grid: integers on x, ±π/2 on y
+  - line: [[-4, -5], [-4, 5], [-3, 5], [-3, -5], [-2, -5], [-2, 5], [-1, 5], [-1, -5], [0, -5], [0, 5], [1, 5], [1, -5], [2, -5], [2, 5], [3, 5], [3, -5], [4, -5], [4, 5]]
+    color: muted
+    width: 0.4
+  - { hline: pi/2, color: muted, dash: false, width: 0.4 }
+  - { hline: -pi/2, color: muted, dash: false, width: 0.4 }
   - fn: atan(x)
+    domain: [-4.5, 4.5]
     color: red
     width: 3
 ```
@@ -510,36 +722,51 @@ La parola "deep" ("profondo") indica che questi circuiti sono organizzati in **m
 
 Questi circuiti algebrici corrispondono a **reti neurali artificiali**. Di conseguenza, il deep learning utilizza reti neurali con **molti strati di neuroni artificiali connessi tra loro**.
 
-```mermaid
-block-beta
-  columns 1
-  block:AI
-    columns 1
-    a["ARTIFICIAL INTELLIGENCE<br/>Programs with the ability to learn and reason like humans"]
-    block:ML
-      columns 1
-      m["MACHINE LEARNING<br/>Algorithms with the ability to learn without being explicitly programmed"]
-      d["DEEP LEARNING<br/>Subset of machine learning in which artificial neural networks adapt and learn from vast amounts of data"]
-    end
-  end
-```
+<svg viewBox="0 0 600 400" width="100%" style="max-width:600px;display:block;margin:1.5rem auto" role="img" aria-label="Tre ellissi annidate: l'intelligenza artificiale contiene il machine learning, che contiene il deep learning">
+<!-- three nested ellipses touching at the bottom -->
+<ellipse cx="300" cy="200" rx="235" ry="190" fill="var(--palette-blue)" fill-opacity="0.15" stroke="var(--palette-blue)" stroke-width="2"/>
+<ellipse cx="300" cy="262" rx="168" ry="128" fill="var(--palette-teal)" fill-opacity="0.2" stroke="var(--palette-teal)" stroke-width="2"/>
+<ellipse cx="300" cy="322" rx="108" ry="68" fill="var(--palette-orange)" fill-opacity="0.25" stroke="var(--palette-orange)" stroke-width="2"/>
+<g fill="currentColor" text-anchor="middle" font-size="14">
+<text x="300" y="74" font-size="19" font-weight="bold">ARTIFICIAL INTELLIGENCE</text>
+<text x="300" y="97">Programs with the ability to</text>
+<text x="300" y="116">learn and reason like humans</text>
+<text x="300" y="170" font-size="17" font-weight="bold">MACHINE LEARNING</text>
+<text x="300" y="192">Algorithms with the ability to learn</text>
+<text x="300" y="211">without being explicitly programmed</text>
+<text x="300" y="284" font-size="15" font-weight="bold">DEEP LEARNING</text>
+<text x="300" y="303" font-size="13">Subset of machine learning</text>
+<text x="300" y="320" font-size="13">in which artificial neural</text>
+<text x="300" y="337" font-size="13">networks adapt and learn</text>
+<text x="300" y="354" font-size="13">from vast amounts of data</text>
+</g>
+</svg>
 
-```mermaid
-block-beta
-  columns 1
-  block:AI
-    columns 1
-    a["Artificial intelligence"]
-    block:ML
-      columns 3
-      m["Machine learning"]:3
-      s["Supervised learning"]
-      u["Unsupervised learning"]
-      r["Reinforcement learning"]
-      d["Deep learning"]:3
-    end
-  end
-```
+<svg viewBox="0 0 720 370" width="100%" style="max-width:720px;display:block;margin:1.5rem auto" role="img" aria-label="Riquadri annidati: l'intelligenza artificiale contiene il machine learning, diviso in supervised, unsupervised e reinforcement learning; il deep learning attraversa tutti e tre">
+<g stroke="currentColor" stroke-width="1.2">
+<rect x="6" y="4" width="708" height="362" rx="24" fill="var(--palette-muted)" fill-opacity="0.15"/>
+<rect x="18" y="132" width="684" height="226" rx="16" fill="var(--palette-orange)" fill-opacity="0.3"/>
+<!-- the three learning paradigms -->
+<rect x="30" y="158" width="212" height="192" rx="28" fill="var(--palette-teal)" fill-opacity="0.25"/>
+<rect x="254" y="158" width="212" height="192" rx="28" fill="var(--palette-teal)" fill-opacity="0.25"/>
+<rect x="478" y="158" width="212" height="192" rx="28" fill="var(--palette-teal)" fill-opacity="0.25"/>
+<!-- deep learning spans all three -->
+<rect x="40" y="246" width="640" height="96" rx="20" fill="var(--palette-muted)" fill-opacity="0.2"/>
+</g>
+<g fill="currentColor" font-size="15">
+<text x="26" y="26">Artificial intelligence</text>
+<text x="48" y="151">Machine learning</text>
+<g text-anchor="middle">
+<text x="136" y="180">Supervised</text>
+<text x="136" y="198">learning</text>
+<text x="360" y="180">Unsupervised</text>
+<text x="360" y="198">learning</text>
+<text x="584" y="180">Reinforcement</text>
+<text x="584" y="198">learning</text>
+<text x="360" y="266">Deep learning</text>
+</g>
+</g>
+</svg>
 
 ## Teorema dell'approssimazione universale
 

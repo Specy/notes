@@ -298,20 +298,44 @@ $$
 > This could be a reasoning module of a (simple) self-driving car agent, which needs to determine, e.g., whether the road surface is slippery, in order to make proper decisions about how to drive.
 > Real-world self-driving car agents have indeed, among others, logic-based reasoning modules like this (though more sophisticated).
 
-```mermaid
-flowchart TD
-    S0(["α₁, α₂, α₃, α₄"])
-    S1(["α₁, α₂, α₃, α₄, α₅, α₆"])
-    S2(["α₁, α₂, α₃, α₄, α₅, α₆, α₇"])
-    S3(["α₁, α₂, α₃, α₄, α₅, α₆, α₈<br/>⋮"])
-    S4(["α₁, α₂, α₃, α₄, α₅, α₆, α₇, α₈<br/>⋮"])
-    S5(["α₁, α₂, α₃, α₄, α₅, α₆, α₇, β<br/>GOAL"])
-    S0 -- "And-Elimination on α₄ = R ∧ SU<br/>Result: α₅ = R, α₆ = SU" --- S1
-    S1 -- "Modus Ponens on α₁ = R ⇒ WE, α₅<br/>Result: α₇ = WE" --- S2
-    S1 -- "Modus Ponens on α₃ = SU ⇒ WA, α₆<br/>Result: α₈ = WA" --- S3
-    S2 -- "Modus Ponens on α₃ = SU ⇒ WA, α₆<br/>Result: α₈ = WA" --- S4
-    S2 -- "Modus Ponens on α₂ = WE ⇒ SL, α₇<br/>Result: β = SL" --- S5
-```
+<svg viewBox="0 0 720 300" width="100%" style="max-width:720px;display:block;margin:1.5rem auto" role="img" aria-label="Albero di dimostrazione: da α₁…α₄ con And-Elimination e Modus Ponens si deriva β = SL (GOAL)">
+<g stroke="currentColor" stroke-width="1.5">
+<line x1="478" y1="49" x2="476" y2="101"/>
+<line x1="476" y1="139" x2="336" y2="151"/>
+<line x1="481" y1="139" x2="638" y2="205"/>
+<line x1="261" y1="185" x2="157" y2="231"/>
+<line x1="326" y1="185" x2="442" y2="239"/>
+</g>
+<g stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 3">
+<line x1="638" y1="248" x2="638" y2="273"/>
+<line x1="102" y1="272" x2="102" y2="297"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.5">
+<ellipse cx="478" cy="30" rx="56" ry="19"/>
+<ellipse cx="476" cy="120" rx="74" ry="19"/>
+<ellipse cx="296" cy="168" rx="86" ry="19"/>
+<ellipse cx="638" cy="224" rx="80" ry="19"/>
+<ellipse cx="102" cy="248" rx="92" ry="19"/>
+<ellipse cx="432" cy="258" rx="90" ry="19"/>
+</g>
+<g font-size="13" font-style="italic" text-anchor="middle" fill="currentColor">
+<text x="478" y="35">α₁, α₂, α₃, α₄</text>
+<text x="476" y="125">α₁, α₂, α₃, α₄, α₅, α₆</text>
+<text x="296" y="173">α₁, α₂, α₃, α₄, α₅, α₆, α₇</text>
+<text x="638" y="229">α₁, α₂, α₃, α₄, α₅, α₆, α₈</text>
+<text x="102" y="253">α₁, α₂, α₃, α₄, α₅, α₆, α₇, α₈</text>
+<text x="432" y="263">α₁, α₂, α₃, α₄, α₅, α₆, α₇, β</text>
+</g>
+<!-- regole applicate -->
+<g font-size="13" fill="currentColor">
+<text x="492" y="66" text-anchor="start"><tspan x="492" dy="0"><tspan fill="var(--palette-red)">And-Elimination</tspan> on α₄ = R ∧ SU</tspan><tspan x="492" dy="16">Result: α₅ = R, α₆ = SU</tspan></text>
+<text x="394" y="116" text-anchor="end"><tspan x="394" dy="0"><tspan fill="var(--palette-red)">Modus Ponens</tspan> on α₁ = R ⇒ WE, α₅</tspan><tspan x="394" dy="16">Result: α₇ = WE</tspan></text>
+<text x="572" y="138" text-anchor="start"><tspan x="572" dy="0"><tspan fill="var(--palette-red)">Modus Ponens</tspan> on</tspan><tspan x="572" dy="16">α₃ = SU ⇒ WA, α₆</tspan><tspan x="572" dy="16">Result: α₈ = WA</tspan></text>
+<text x="232" y="194" text-anchor="end"><tspan fill="var(--palette-red)">Modus Ponens</tspan> on α₃ = SU ⇒ WA, α₆</text>
+<text x="172" y="211" text-anchor="end">Result: α₈ = WA</text>
+<text x="396" y="178" text-anchor="start"><tspan x="396" dy="0"><tspan fill="var(--palette-red)">Modus Ponens</tspan> on</tspan><tspan x="396" dy="16">α₂ = WE ⇒ SL, α₇</tspan><tspan x="396" dy="16">Result: β = SL</tspan></text>
+<text x="508" y="290" font-weight="bold" fill="var(--palette-red)">GOAL</text>
+</g></svg>
 
 # Theorem proving by resolution
 
