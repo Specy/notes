@@ -21,7 +21,21 @@ $$
 $$
 Esempio:
 
-![[Pasted image 20230708175705.png]]
+**PROGETTAZIONI**
+
+| Impiegato | Stipendio | Progetto | Bilancio | Funzione |
+|---|--:|---|--:|---|
+| Rossi | 20 | Marte | 2 | tecnico |
+| Verdi | 35 | Giove | 15 | progettista |
+| Verdi | 35 | Venere | 15 | progettista |
+| Neri | 55 | Venere | 15 | direttore |
+| Neri | 55 | Giove | 15 | consulente |
+| Neri | 55 | Marte | 2 | consulente |
+| Mori | 48 | Marte | 2 | direttore |
+| Mori | 48 | Venere | 15 | progettista |
+| Bianchi | 48 | Venere | 15 | progettista |
+| Bianchi | 48 | Giove | 15 | direttore |
+
  - Lo stipendio dipende dall'impiegato 
  - Il bilancio dipende dal progetto 
 
@@ -40,17 +54,29 @@ Uno Schema di relazione $R(X)$ è detto essere in prima forma normale se ogni at
 
 Un esempio di relazione non in 1NF è quando contiene un attributo multivalore, come una lista, per esempio, *Corsi* e *Indirizzo* sono dati multivalore e strutturati, quindi non in 1NF
 
-![[Pasted image 20230708182258.png]]
+| Studente | Corsi | Fascia | Indirizzo |
+|---|---|---|---|
+| Moscato | Basi di Dati, Informatica | I | Via: Roma; Num: 30<br>CAP: 80125; Città: Napoli |
+| Penta | Basi di Dati, Sistemi Informativi | IV | Via: Duomo, Num: 29<br>CAP: 80100; Città: Napoli |
 
 E può essere trasformato in 1NF normalizzando la colonna _Corsi_ e _Indirizzo_ 
 
-![[Pasted image 20230708182406.png]]
+| Studente | Corsi | Fascia | Via | Num | CAP | Città |
+|---|---|---|---|--:|--:|---|
+| Moscato | Basi di Dati | I | Roma | 30 | 80125 | Napoli |
+| Moscato | Informatica | I | Roma | 30 | 80125 | Napoli |
+| Penta | Basi di Dati | IV | Duomo | 29 | 80100 | Napoli |
+| Penta | Sistemi Informativi | IV | Duomo | 29 | 80100 | Napoli |
 
 # Seconda forma normale (2NF)
 
 Uno schema di relazione $R(X)$ è detto in 2NF, se è in 1NF e ogni attributo non primo dipende completamente da ogni chiave di $R(X)$, cioè ogni dipendenza funzionale dipende solo da un attributo primo, ed in generale, se ogni chiave di $R(X)$ ha un solo attributo, allora $R(X)$ è in 2NF
 
-![[Pasted image 20230708182815.png]]
+| <u>Articolo</u> | <u>Magazzino</u> | Quantità | Città |
+|---|---|--:|---|
+| scarpe | NA1 | 2500 | Napoli |
+| scarpe | RM1 | 4500 | Roma |
+| pantaloni | NA1 | 3000 | Napoli |
 
 DF1: $\{Articolo, Magazzino\} \rightarrow Città$ 
 DF2: $Magazzino \rightarrow Città$ 
@@ -59,7 +85,20 @@ In DF1, città dipende funzionalmente da Articolo e Magazzino
 
 Uno schema che non soddisfa la 2NF può essere normalizzato decomponendo le relazioni che non soddisfano la 2NF, cioè viene decomposta in base agli attributi non comuni in modo tale che le relazioni ottenute soddisfino la 2NF e che il contenuto informativo del database sia uguale.
 
-![[Pasted image 20230708183110.png]]
+**Articoli_Magazzini**
+
+| <u>Articolo</u> | <u>Magazzino</u> | Quantità |
+|---|---|--:|
+| scarpe | NA1 | 2500 |
+| scarpe | RM1 | 4500 |
+| pantaloni | NA1 | 3000 |
+
+**Città_Magazzini**
+
+| <u>Magazzino</u> | Città |
+|---|---|
+| NA1 | Napoli |
+| RM1 | Roma |
 
 # Decomposizione senza perdita
 
@@ -70,7 +109,29 @@ $$
 $$
 oppure che valga che $X_{1} \cap X_{2} \rightarrow X_1$, oppure,  $X_{1} \cap X_{2} \rightarrow X_2$, cioè che una decomposizione è garantita essere senza perdita se gli attributi comuni contengono una chiave per almeno una delle relazioni decomposte
 
-![[Pasted image 20230708190739.png]]
+| <u>Impiegato</u> | <u>Progetto</u> | Sede |
+|---|---|---|
+| Rossi | Marte | Roma |
+| Verdi | Giove | Milano |
+| Verdi | Venere | Milano |
+| Neri | Saturno | Milano |
+| Neri | Venere | Milano |
+
+Decomposizione su attributo comune **Impiegato**
+
+| <u>Impiegato</u> | Sede |
+|---|---|
+| Rossi | Roma |
+| Verdi | Milano |
+| Neri | Milano |
+
+| <u>Impiegato</u> | <u>Progetto</u> |
+|---|---|
+| Rossi | Marte |
+| Verdi | Giove |
+| Verdi | Venere |
+| Neri | Saturno |
+| Neri | Venere |
 
 # Terza forma normale (3NF)
 
@@ -84,7 +145,6 @@ Uno schema di relazione $R(X)$ è in 3NF se è in 2NF e ogni attributo non primo
 Un altro modo per definirlo è che $R(X)$ è in 3NF se per ogni DF $Y \to Z$  definita su $R(X)$ 
 - Y è una superchiave di $R(X)$. Ogni dipendenza funzionale è completa
 - Z è un attributo primo. Se $Y$ è un attributo non primo, Z deve essere un attributo primo
-
 
 ## Riassumendo
 
