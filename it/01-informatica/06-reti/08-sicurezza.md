@@ -13,7 +13,19 @@ Nelle reti si considera la sicurezza come:
 
 ## Membri di una potenziale comunicazione non sicura
 
-![[Pasted image 20241118170900.png]]
+```mermaid
+flowchart LR
+  D1["dati"] --> S
+  subgraph Alice
+    S["mittente sicuro"]
+  end
+  subgraph Bob
+    R["ricevitore sicuro"]
+  end
+  S <--> C["canale<br/>dati, messaggi di controllo"] <--> R
+  R --> D2["dati"]
+  T["Trudy"] <--> C
+```
 
 Usiamo:
 - Alice e bob, come due utenti che comunicano fra di loro. Questi due utenti possono essere una qualsiasi entità che usa l'internet per comunicare, come client/server, dns, IOT, etc...
@@ -25,7 +37,22 @@ Usiamo:
 
 # Crittografia
 
-![[Pasted image 20241118171728.png]]
+```mermaid
+flowchart LR
+  P1["testo in chiaro"] --> E
+  KA["K<sub>A</sub><br/>chiave di cifratura di Alice"] --> E
+  subgraph Alice
+    E["algoritmo di cifratura"]
+  end
+  subgraph Bob
+    Dc["algoritmo di decifratura"]
+  end
+  E --> C["testo cifrato"] --> Dc
+  KB["K<sub>B</sub><br/>chiave di decifratura di Bob"] --> Dc
+  Dc --> P2["testo in chiaro"]
+  T["Trudy"] <--> C
+```
+
 - $m$ è il messaggio in chiaro
 - $K_A(M)$ è il messaggio cifrato con chiave $K_A$ 
 - $m = K_B(K_A(m))$ 
@@ -34,7 +61,20 @@ Per poter violare questo schema di cifratura, Trudy dovrebbe provare tutte le po
 
 ## Crittografia a chiave simmetrica 
 
-![[Pasted image 20241118172017.png]]
+```mermaid
+flowchart LR
+  P1["testo in chiaro, m"] --> E
+  KS1["K<sub>S</sub>"] --> E
+  subgraph Alice
+    E["algoritmo di cifratura"]
+  end
+  subgraph Bob
+    Dc["algoritmo di decifratura"]
+  end
+  E -->|"testo cifrato<br/>K<sub>S</sub>(m)"| Dc
+  KS2["K<sub>S</sub>"] --> Dc
+  Dc --> P2["testo in chiaro<br/>m = K<sub>S</sub>(K<sub>S</sub>(m))"]
+```
 
 è uno schema di cifratura molto semplice, sia Bob che Alice condividono la stessa chiave $K_S$.
 Questa chiave può essere utilizzata in vari modi in algoritmi di cifratura. 
@@ -57,7 +97,20 @@ Torniamo al problema di come condividere la chiave simmetrica in maniera sicura.
 - una chiave pubblica, che può essere condivisa con chiunque, ed è pubblicamente disponibile a tutti
 - una chiave privata, che è segreta e conosciuta solo all'utente
 
-![[Pasted image 20241118173155.png]]
+```mermaid
+flowchart LR
+  P1["messaggio in chiaro, m"] --> E
+  KP["K<sub>B</sub><sup>+</sup><br/>chiave <i>pubblica</i> di Bob"] -.-> E
+  subgraph Alice
+    E["algoritmo di cifratura"]
+  end
+  subgraph Bob
+    Dc["algoritmo di decifratura"]
+  end
+  E -->|"testo cifrato<br/>K<sub>B</sub><sup>+</sup>(m)"| Dc
+  KV["K<sub>B</sub><sup>-</sup><br/>chiave <i>privata</i> di Bob"] -.-> Dc
+  Dc --> P2["messaggio in chiaro<br/>m = K<sub>B</sub><sup>-</sup>(K<sub>B</sub><sup>+</sup>(m))"]
+```
 
 Abbiamo bisogno di $K_B^+$ e $K_B^-$ tale che $K_B^+(K_A^-(m)) = m$, e che non sia possibile che tramite la chiave pubblica $K_B^+$ si possa risalire alla chiave privata $K_B^-$
 
@@ -93,7 +146,13 @@ L'algoritmo è sicuro perchè per poterlo sconfiggere, dovremmo trovare i due fa
 
 Bob sceglie $p = 5$ e $q = 7$, allora $n = 35$ e $z = 24$. Sceglie $e = 5$ e $d = 29$.
 
-![[Pasted image 20241118174926.png]]
+| | bit pattern | $m$ | $m^e$ | $c = m^e \bmod n$ |
+|---|---|---|---|---|
+| *cifratura:* | 00001100 | 12 | 248832 | 17 |
+
+| | $c$ | $c^d$ | $m = c^d \bmod n$ |
+|---|---|---|---|
+| *decifratura:* | 17 | 481968572106750915091411825223071697 | 12 |
 
 ## Limitazioni di RSA
 
@@ -116,7 +175,18 @@ Vogliamo evitare l'attacco playback, allora il mittente invia un numero $R$ chia
 
 Come visto precedentemente, possiamo usare la tecnica di chiave pubblica-privata per scambiare la chiave segreta, e poi usare la chiave segreta per autenticare il mittente. Cioè che:
 
-![[Pasted image 20241118180708.png]]
+```mermaid
+sequenceDiagram
+  participant Alice
+  participant Bob
+  Alice->>Bob: "Sono Alice"
+  Bob->>Alice: R
+  Alice->>Bob: K⁻ₐ(R)
+  Bob->>Alice: "mandami la tua chiave pubblica"
+  Alice->>Bob: K⁺ₐ
+```
+
+Bob calcola $K_A^+(K_A^-(R)) = R$ e sa che solo Alice può avere la chiave privata, che cifra $R$ in modo che $K_A^+(K_A^-(R)) = R$
 
 Questa tecnica è comunque vulnerabile ad un attacco **MITM** dove il malintenzionato si pone in mezzo alla comunicazione fra destinatario e mittente, intercettando e inoltrando i messaggi scamabiati con il destinatario. Questo attacco è difficile da rilevare, dato che per mittente e destinatario, la comunicazione sembra essere andata a buon fine.
 
@@ -136,13 +206,41 @@ Anzichè firmare l'intero messaggio, si può firmare un digest del messaggio, ci
 La falla precedente dell'attacco MITM è dovuta al fatto che durante la comunicazione di $R$ e lo scambio della chiave pubblica, il malintenzionato può intercettare $R$ e criptarlo con la propria chiave pubblica, per poi rinviarlo al mittente, ponendosi come il destinatario. Stessa cosa farà con la chiave pubblica del destinatario, inviando la propria chiave pubblica al mittente. A questo punto il malintenzionato può intercettare i messaggi scambiati fra mittente e destinatario, e inoltrarli al destinatario e mittente rispettivamente, facendo credere a entrambi che la comunicazione sia andata a buon fine.
 
 Per evitare questo, ci deve essere un ente fidato chiamato **Certification Authority (CA)**. Un utente $E$ di internet registra la propria chiave pubblica $K_B^+$ presso la CA, fornendo una prova di identità. A questo punto la CA crea un certificato contenente la garanzia che "$K_B^+$ appartiene a $E$". Il certificato è firmato dalla CA con la chiave privata della CA. Il mittente può verificare il certificato usando la chiave pubblica della CA, e quindi può essere sicuro che la chiave pubblica del destinatario è effettivamente quella del destinatario.
-![[Pasted image 20241118182843.png]]
+
+```mermaid
+flowchart LR
+  KB["Bob's public key<br/>K<sub>B</sub><sup>+</sup>"] --> SIG["digital signature (encrypt)"]
+  KB -.-> CA["CA"]
+  ID["Bob's identifying information"] -.-> CA
+  KCA["CA private key<br/>K<sub>CA</sub><sup>-</sup>"] -.-> SIG
+  SIG --> CERT["certificate for Bob's public key, signed by CA<br/>(K<sub>B</sub><sup>+</sup>)"]
+```
 
 A questo punto quando un utente vuole comunicare con un altro, può richiedere il certificato del destinatario alla CA, ed usarla per verificare la chiave pubblica del destinatario.
 
 ## Email sicure
 
-![[Pasted image 20241118183013.png]]
+```mermaid
+flowchart LR
+  subgraph Alice
+    direction LR
+    m1["m"] --> E1["K<sub>S</sub>( · )"]
+    KS1["K<sub>S</sub>"] -.-> E1
+    KS2["K<sub>S</sub>"] --> E2["K<sub>B</sub><sup>+</sup>( · )"]
+    KBp["K<sub>B</sub><sup>+</sup>"] -.-> E2
+    E1 -->|"K<sub>S</sub>(m)"| PLUS(("+"))
+    E2 -->|"K<sub>B</sub><sup>+</sup>(K<sub>S</sub>)"| PLUS
+  end
+  PLUS --> NET(["Internet"]) --> MINUS(("-"))
+  subgraph Bob
+    direction LR
+    MINUS -->|"K<sub>S</sub>(m)"| D1["K<sub>S</sub>( · )"]
+    MINUS -->|"K<sub>B</sub><sup>+</sup>(K<sub>S</sub>)"| D2["K<sub>B</sub><sup>-</sup>( · )"]
+    KBm["K<sub>B</sub><sup>-</sup>"] -.-> D2
+    D2 -.->|"K<sub>S</sub>"| D1
+    D1 --> m2["m"]
+  end
+```
 
 Il mittente:
 - Genera una chiave simmetrica $K_S$
@@ -152,11 +250,45 @@ Il mittente:
 - Il destinatario usa la propria chiave privata per decifrare $K_S$
 - Il destinatario usa $K_S$ per decifrare il messaggio
 
-![[Pasted image 20241118183214.png]]
+```mermaid
+flowchart LR
+  subgraph Alice
+    direction LR
+    m1["m"] --> H1["H( · )"] --> S1["K<sub>A</sub><sup>-</sup>( · )"]
+    KAm["K<sub>A</sub><sup>-</sup>"] -.-> S1
+    S1 -->|"K<sub>A</sub><sup>-</sup>(H(m))"| PLUS(("+"))
+    m1 --> PLUS
+  end
+  PLUS --> NET(["Internet"]) --> MINUS(("-"))
+  subgraph Bob
+    direction LR
+    MINUS -->|"K<sub>A</sub><sup>-</sup>(H(m))"| V1["K<sub>A</sub><sup>+</sup>( · )"]
+    KAp["K<sub>A</sub><sup>+</sup>"] -.-> V1
+    MINUS -->|"m"| H2["H( · )"]
+    V1 -->|"H(m)"| CMP["confronto"]
+    H2 -->|"H(m)"| CMP
+  end
+```
 
 Possiamo aggiungere la firma digitale al messaggio. Il mittente può firmare il messaggio con la propria chiave privata, e il destinatario può verificare la firma con la chiave pubblica del mittente
 
-![[Pasted image 20241118183239.png]]
+```mermaid
+flowchart LR
+  subgraph Alice
+    direction LR
+    m1["m"] --> H1["H( · )"] --> S1["K<sub>A</sub><sup>-</sup>( · )"]
+    KAm["K<sub>A</sub><sup>-</sup>"] -.-> S1
+    S1 -->|"K<sub>A</sub><sup>-</sup>(H(m))"| PLUS1(("+"))
+    m1 --> PLUS1
+    PLUS1 --> E1["K<sub>S</sub>( · )"]
+    KS1["K<sub>S</sub>"] -.-> E1
+    E1 --> PLUS2(("+"))
+    KS2["K<sub>S</sub>"] --> E2["K<sub>B</sub><sup>+</sup>( · )"]
+    KBp["K<sub>B</sub><sup>+</sup>"] -.-> E2
+    E2 -->|"K<sub>B</sub><sup>+</sup>(K<sub>S</sub>)"| PLUS2
+  end
+  PLUS2 --> NET(["Internet"])
+```
 
 Il mittente può fornire riservatezza, autenticazione e integrità del messaggio. Allora usa tutte e 3 le chiavi, la privata, pubblica e simmetrica.
 
@@ -222,12 +354,37 @@ Gli step 5 e 6 servono per evitare che un MITM possa intercettare i messaggi di 
 
 Vengono usati due nonce casuali perchè un attaccante potrebbe intercettare il nonce del client e la sequenza di pacchetti handshake tra client e server, e in futuro riutilizzare il nonce e la sequenza di pacchetti per impersonare il client.
 
-![[Pasted image 20241118190659.png]]
+```mermaid
+flowchart TD
+  D["data"] --> F1["data fragment | MAC"]
+  D --> F2["data fragment | MAC"]
+  F1 -->|"K<sub>x</sub>"| E1["record header | encrypted data and MAC"]
+  F2 -->|"K<sub>x</sub>"| E2["record header | encrypted data and MAC"]
+```
+
 - **Record header**: contiene il tipo di messaggio, la versione del protocollo, la lunghezza del messaggio
 - **MAC**: $H(M_x, \text{dati}, \text{tipo}, \text{sequence number})$
 - **Fragment**: contiene i dati, che ha lunghezza di ~16KB
 
-![[Pasted image 20241118190933.png]]
+```mermaid
+sequenceDiagram
+  participant Alice
+  participant Bob
+  Alice->>Bob: handshake: ClientHello
+  Bob->>Alice: handshake: ServerHello
+  Bob->>Alice: handshake: Certificate
+  Bob->>Alice: handshake: ServerHelloDone
+  Alice->>Bob: handshake: ClientKeyExchange
+  Alice->>Bob: ChangeCipherSpec
+  Alice->>Bob: handshake: Finished
+  Note over Alice,Bob: ogni cosa da adesso in poi è cifrata
+  Bob->>Alice: ChangeCipherSpec
+  Bob->>Alice: handshake: Finished
+  Alice->>Bob: application_data
+  Bob->>Alice: application_data
+  Alice->>Bob: Alert: warning, close_notify
+  Note over Alice: segue il TCP FIN
+```
 
 ## VPN (Virtual Private Network)
 
@@ -282,7 +439,14 @@ IPsec, R1 accede al SAD per determinare come trattare il datagramma.
 
 Quando i datagrammi IPsec arrivano a R2, R2 esamina l'SPI nei datagrammi e indicizza il SAD con l'SPI per determinare come trattare il datagramma.
 
-![[Pasted image 20241121161149.png]]
+```mermaid
+block-beta
+  columns 14
+  space:2 AUT["autenticati"]:12
+  space:4 CIF["cifrati"]:9 space
+  N["new IP header"]:2 EH["ESP hdr"]:2 OH["original IP hdr"]:2 PL["Original IP datagram payload"]:4 TR["ESP trl"]:3 MAC["ESP MAC"]
+  space:2 SPI["SPI"] SEQ["Seq #"] space:6 PAD["padding"] PLN["pad length"] NH["next header"] space
+```
 
 ## IPSec: Security Policy Database (SPD)
 
@@ -356,7 +520,17 @@ La prossima volta che un IV viene riutilizzato, l'attaccante può decifrare il p
 7. Il server deriva la chiave di sessione simmetrica $K_{M - {AP}}$ e verifica il valore HMAC.
 8. A questo punto l'AS ha la stessa chiave di sessione simmetrica del dispositivo, e può iniziare a comunicare in maniera sicura.
 
-![[Pasted image 20241121165313.png]]
+```mermaid
+sequenceDiagram
+  participant M as mobile
+  participant AS as AS Authentication Server
+  Note over M: Initial shared secret
+  Note over AS: Initial shared secret
+  AS->>M: (a) Nonce_AS
+  Note over M: deriva chiave di sessione K_M-AP<br/>usando la shared-secret,<br/>Nonce_AS, Nonce_M
+  M->>AS: (b) Nonce_M, HMAC(f(K_AS-M, Nonce_AS))
+  Note over AS: (c) deriva chiave di sessione K_M-AP<br/>usando la shared-secret,<br/>Nonce_AS, Nonce_M
+```
 
 ## Autenticazione e cifratura in 4G LTE
 
@@ -364,7 +538,27 @@ Il dispositivo mobile che vuole connettersi alla Base Station (BS) deve autentic
 
 La sim stessa contiene un identità globale, e le chiavi condivise.
 
-![[Pasted image 20241121172722.png]]
+```mermaid
+sequenceDiagram
+  participant M as mobile
+  participant BS as Base station (BS)
+  participant MME as Mobility Management Entity (MME)<br/>Visited network
+  participant HSS as Home Subscriber Service (HSS)<br/>Home network
+  Note over M: K_BS-M, K_HSS-M
+  Note over HSS: K_HSS-M
+  M->>BS: attach
+  BS->>MME: attach
+  MME->>HSS: (a) AUTH_REQ (IMSI, VN info)
+  HSS->>MME: (b) AUTH_RESP (auth token, xres_HSS, keys)
+  MME->>BS: auth token
+  BS->>M: auth token
+  M->>BS: (c)
+  BS->>MME: res_M
+  MME->>BS: (d) OK, chiavi
+  BS->>M: OK
+  M<<->>BS: (e) key derivation
+```
+
 Il mobile e il BS usano la chiave di sessione derivata $K_{BS-M}$ per cifrare le comunicazioni sul link 4G
 
 L'MME della visited network e il HHS della home network prendono insieme lo stesso ruolo che ha AS nel WiFi. 
@@ -387,7 +581,6 @@ I firewall evitato attacchi DoS di SYN flooding, non permettendo l'istaurazione 
 La rete interna è connessa all'internet tramite un router firewall che filtra pacchetto per pacchetto in base all'IP sorgente e destinazione, numeri di porta TCP e UDP sorgnte o destinazione, i tipi di messaggi ICMP e i bit TCP SYN e attack
 
 Per esempio se un firewall bloca tutti i pacchetti su porta sorgente o destinazione 23, che usano protocollo IP 17 (UDP), allora blocca tutte le connessioni telnet e UDP.
-
 
 | **Obiettivo**                                              | **Regola**                                                                                     |
 |------------------------------------------------------------|------------------------------------------------------------------------------------------------|
