@@ -119,64 +119,77 @@ One such algorithm is the (K nearest neighbors) **KNN** algorithm:
 
 ```plot
 x: [-0.3, 3.7]
-y: [-0.2, 3.2]
+y: [-0.2, 3.1]
 width: 480
 aspect: equal
+grid: 0.2
 xticks: [0, 1, 2, 3]
 yticks: [1, 2, 3]
 items:
+  - vline: 1
+    dash: false
+    width: 0.4
+  - vline: 2
+    dash: false
+    width: 0.4
+  - vline: 3
+    dash: false
+    width: 0.4
+  - hline: 1
+    dash: false
+    width: 0.4
+  - hline: 2
+    dash: false
+    width: 0.4
+  - hline: 3
+    dash: false
+    width: 0.4
   - circle: [1.7, 1.9]
-    r: 1.56
+    r: 1.55
     color: red
     dash: dotted
-    width: 2.2
+    width: 2.8
   - circle: [0.24, 0.26]
-    r: 0.18
+    r: 0.17
     color: purple
     dash: dotted
-    width: 2.2
+    width: 2.8
   - point: [1.7, 1.9]
     shape: x
     color: red
   - text: G
-    at: [1.78, 1.9]
+    at: [1.8, 1.9]
     anchor: e
   - point: [0.58, 0.99]
     open: true
     color: green
   - text: F
-    at: [0.62, 1.05]
-    anchor: ne
+    at: [0.7, 1.17]
     color: green
   - point: [0.5, 0.9]
     open: true
     color: blue
   - text: B
-    at: [0.44, 0.88]
-    anchor: w
+    at: [0.31, 0.89]
     color: blue
-  - point: [0.34, 0.4]
+  - point: [0.36, 0.41]
     open: true
     color: green
   - text: A
-    at: [0.4, 0.38]
-    anchor: e
+    at: [0.55, 0.41]
     color: green
-  - point: [0.85, 0.39]
+  - point: [0.86, 0.39]
     open: true
   - text: C
-    at: [0.85, 0.3]
-    anchor: s
-  - point: [0.25, 0.28]
+    at: [0.86, 0.2]
+  - point: [0.26, 0.29]
     open: true
     color: red
   - text: E
-    at: [0.3, 0.16]
-    anchor: e
+    at: [0.39, 0.12]
     color: red
   - text: D
-    at: [0.17, 0.4]
-    anchor: nw
+    at: [0.09, 0.46]
     color: purple
 ```
 
@@ -275,47 +288,69 @@ items:
 
 ```plot
 x: [-2, 6.5]
-y: [-3.2, 3.2]
+y: [-3.1, 3.1]
 width: 480
 aspect: equal
-grid: 1
+grid: 0.5
 xticks: [0, 2, 4, 6]
 yticks: [-2, 2]
 items:
-  - circle: [0, 0]
+  - vline: -2
+    dash: false
+    width: 0.4
+  - vline: 2
+    dash: false
+    width: 0.4
+  - vline: 4
+    dash: false
+    width: 0.4
+  - vline: 6
+    dash: false
+    width: 0.4
+  - hline: -2
+    dash: false
+    width: 0.4
+  - hline: 2
+    dash: false
+    width: 0.4
+  - circle: [0, 0]   # A
     r: 1.414
     color: red
-    width: 2.4
-  - circle: [0, 1]
+    width: 3
+  - circle: [0, 1]   # B
     r: 1
     color: blue
-    width: 2.4
-  - circle: [1, 1]
+    width: 3
+  - circle: [1, 1]   # C
     r: 1.414
     color: green
-    width: 2.4
-  - circle: [3, 0]
+    width: 3
+  - circle: [3, 0]   # D
     r: 3
     color: purple
-    width: 2.4
+    width: 3
   - point: [0, 0]
+    size: 4
     color: red
   - point: [0, 1]
+    size: 4
     color: blue
   - point: [1, 1]
+    size: 4
     color: green
   - point: [3, 0]
+    size: 4
     color: purple
-  - text: A
-    at: [0.35, -0.5]
+  - text: '$\Large\mathsf{A}$'
+    at: [0.38, -0.48]
     color: red
-  - text: B
-    at: [0.35, 0.5]
+  - text: '$\Large\mathsf{B}$'
+    at: [0.38, 0.48]
     color: blue
-  - text: C
-    at: [1.5, 1.05]
+  - text: '$\Large\mathsf{C}$'
+    at: [1.55, 1.05]
     color: green
-  - text: D
+  - text: '$\Large\mathsf{D}$'
     at: [3, 0.62]
     color: purple
 ```

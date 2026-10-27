@@ -11,23 +11,74 @@ There are two kinds of clustering:
 1) **Partitional clustering**, it's the division of data into non overlapping clusters, so that a single data object is only in one subset
 2) **Hierarchical clustering**, the set of nested clusters which are organized in a hierarchical tree
 
-```mermaid
-flowchart TD
-  CP["Clustering Procedures"] --> H["Hierarchical"]
-  CP --> N["Nonhierarchical"]
-  H --> A["Agglomerative"]
-  H --> D["Divisive"]
-  A --> LM["Linkage Methods"]
-  A --> VM["Variance Methods"]
-  A --> CM["Centroid Methods"]
-  VM --> W["Ward's Method"]
-  LM --> SL["Single Linkage"]
-  LM --> CL["Complete Linkage"]
-  LM --> AL["Average Linkage"]
-  N --> ST["Sequential Threshold"]
-  N --> PT["Parallel Threshold"]
-  N --> OP["Optimizing Partitioning"]
-```
+<svg viewBox="0 0 693 423" width="100%" style="max-width:693px;display:block;margin:1.5rem auto" role="img" aria-label="Clustering procedures: hierarchical (agglomerative — linkage methods: single, complete, average linkage; variance methods: Ward’s method; centroid methods — and divisive) and nonhierarchical (sequential threshold, parallel threshold, optimizing partitioning)" font-family="sans-serif">
+<defs><marker id="i20231213153119-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<g fill="none" stroke="currentColor" stroke-width="1.2">
+<rect x="307.8" y="2.7" width="191.7" height="30.6"/>
+<rect x="189" y="99" width="100.8" height="40.5"/>
+<rect x="414.9" y="99" width="132.3" height="40.5"/>
+<rect x="55.8" y="166.5" width="146.7" height="25.2"/>
+<rect x="289.8" y="166.5" width="103.5" height="25.2"/>
+<rect x="33.3" y="248.4" width="81" height="44.1"/>
+<rect x="121.5" y="248.4" width="78.3" height="44.1"/>
+<rect x="217.8" y="248.4" width="81" height="44.1"/>
+<rect x="133.2" y="308.7" width="78.3" height="42.3"/>
+<rect x="7.2" y="372.6" width="78.3" height="44.1"/>
+<rect x="119.7" y="372.6" width="81" height="44.1"/>
+<rect x="216" y="372.6" width="92.7" height="44.1"/>
+<rect x="318.6" y="246.6" width="102.6" height="45.9"/>
+<rect x="439.2" y="246.6" width="105.3" height="45.9"/>
+<rect x="565.2" y="246.6" width="112.5" height="45.9"/>
+<!-- connectors -->
+<path d="M408.6 33.3V63M236.7 63H477"/>
+<path d="M236.7 139.5V151.2M139.5 151.2H335.7"/>
+<path d="M127.8 191.7V232.2M60.3 232.2H266.4"/>
+<path d="M85.5 292.5V358.2M42.3 358.2H266.4"/>
+<path d="M504 139.5V232.2M387 232.2H620.1"/>
+</g>
+<g stroke="currentColor" stroke-width="1.6" marker-end="url(#i20231213153119-arrow)">
+<line x1="236.7" y1="63" x2="236.7" y2="97.2"/>
+<line x1="477" y1="63" x2="477" y2="97.2"/>
+<line x1="139.5" y1="151.2" x2="139.5" y2="164.7"/>
+<line x1="335.7" y1="151.2" x2="335.7" y2="164.7"/>
+<line x1="60.3" y1="232.2" x2="60.3" y2="246.6"/>
+<line x1="163.8" y1="232.2" x2="163.8" y2="246.6"/>
+<line x1="266.4" y1="232.2" x2="266.4" y2="246.6"/>
+<line x1="163.8" y1="292.5" x2="163.8" y2="306.9"/>
+<line x1="42.3" y1="358.2" x2="42.3" y2="370.8"/>
+<line x1="163.8" y1="358.2" x2="163.8" y2="370.8"/>
+<line x1="266.4" y1="358.2" x2="266.4" y2="370.8"/>
+<line x1="387" y1="232.2" x2="387" y2="244.8"/>
+<line x1="481.5" y1="232.2" x2="481.5" y2="244.8"/>
+<line x1="620.1" y1="232.2" x2="620.1" y2="244.8"/>
+</g>
+<g fill="var(--palette-red)" font-size="17" text-anchor="middle">
+<text x="403.7" y="24.5">Clustering Procedures</text>
+<text x="239.4" y="125.8">Hierarchical</text>
+<text x="481.1" y="125.8">Nonhierarchical</text>
+<text x="129.2" y="185.6" font-weight="bold">Agglomerative</text>
+<text x="341.6" y="185.6">Divisive</text>
+<text x="73.8" y="267.5">Linkage</text>
+<text x="73.8" y="286.4">Methods</text>
+<text x="160.7" y="267.5">Variance</text>
+<text x="160.7" y="286.4">Methods</text>
+<text x="258.3" y="267.5">Centroid</text>
+<text x="258.3" y="286.4">Methods</text>
+<text x="172.3" y="326.9">Ward’s</text>
+<text x="172.3" y="345.9">Method</text>
+<text x="46.4" y="391.7">Single</text>
+<text x="46.4" y="410.6">Linkage</text>
+<text x="160.2" y="391.7">Complete</text>
+<text x="160.2" y="410.6">Linkage</text>
+<text x="262.4" y="391.7">Average</text>
+<text x="262.4" y="410.6">Linkage</text>
+<text x="369.9" y="266.6">Sequential</text>
+<text x="369.9" y="285.6">Threshold</text>
+<text x="491.9" y="266.6">Parallel</text>
+<text x="491.9" y="285.6">Threshold</text>
+<text x="621.5" y="266.6" font-weight="bold">Optimizing</text>
+<text x="621.5" y="285.6" font-weight="bold">Partitioning</text>
+</g></svg>
 
 we can then also specialize the clusters into:
 - Well-centered clusters
@@ -41,45 +92,61 @@ we can then also specialize the clusters into:
 In the Well-separated cluster, a cluster is a set of points such that any point in cluster is closer (or more similar) to every other point in the cluster, than to any other point not in the cluster
 
 ```plot
-x: [0, 8]
-y: [0, 3.3]
+x: [100, 700]
+y: [0, 310]
 width: 480
-height: 200
+aspect: equal
 axes: false
 items:
-  - point: [3.8, 2.3]
-    size: 36
+  - circle: [378, 223]
+    r: 75
     color: red
-  - point: [2, 0.8]
-    size: 36
-    color: blue
-  - point: [6, 0.8]
-    size: 36
+    fill: true
+    opacity: 1
+  - circle: [198, 83]
+    r: 75
+    color: teal
+    fill: true
+    opacity: 1
+  - circle: [597, 83]
+    r: 75
     color: green
+    fill: true
+    opacity: 1
 ```
 
 ## Center-based cluster
 In the center-based cluster, a cluster is a set of objects such that an object in a cluster is closer (or more similar) to the "center" of it's cluster, than it is to the center of any other cluster. The center of the cluster is called **centroid** and it is the average of all points in the cluster, or alternatively, we use the *medoid* which is the point that is most "representative" of the cluster
 
 ```plot
-x: [0, 8]
-y: [0, 2.4]
-width: 480
-height: 150
+x: [70, 710]
+y: [28, 188]
+width: 520
+aspect: equal
 axes: false
 items:
-  - point: [1.6, 1.2]
-    size: 30
+  - circle: [158, 108]
+    r: 60
     color: red
-  - point: [2.8, 1.2]
-    size: 30
+    fill: true
+    opacity: 1
+  - circle: [278, 108]
+    r: 60
     color: blue
-  - point: [5.15, 1.2]
-    size: 26
+    fill: true
+    opacity: 1
+  - circle: [514, 107]
+    rx: 51
+    ry: 48
     color: green
-  - point: [6.35, 1.2]
-    size: 26
+    fill: true
+    opacity: 1
+  - circle: [634, 107]
+    rx: 51
+    ry: 48
     color: orange
+    fill: true
+    opacity: 1
 ```
 
 ## Contiguity-based cluster
@@ -109,18 +176,22 @@ items:
     r: 44
     color: blue
     fill: true
+    opacity: 1
   - circle: [386, 79]
     r: 44
     color: blue
     fill: true
+    opacity: 1
   - circle: [543, 70]
     r: 36
     color: green
     fill: true
+    opacity: 1
   - circle: [630, 70]
     r: 37
     color: orange
     fill: true
+    opacity: 1
 ```
 
 ## Conceptual clusters
@@ -137,12 +208,12 @@ items:
     rx: 86
     ry: 76
     color: red
-    width: 14
+    width: 17
   - circle: [403, 113]
     rx: 86
     ry: 76
     color: red
-    width: 14
+    width: 17
 ```
 
 # Hierarchical clustering
@@ -152,25 +223,62 @@ There are two approaches when building hierarchical clusters:
 - **Agglomerative**, a bottom up strategy where initially, each data object is it's own atomic cluster, then we merge those clusters into larger and larger clusters
 - **Divisive**, is a top down strategy where initially, all objects are in a single cluster, and we try to subdivide them into smaller and smaller clusters
 
-```mermaid
-block-beta
-  columns 6
-  h0["Step 0"] h1["Step 1"] h2["Step 2"] h3["Step 3"] h4["Step 4"] ag["Agglomerative"]
-  a(["a"]) ab(["a b"]) space space space space
-  b(["b"]) space space space abcde(["a b c d e"]) space
-  c(["c"]) space space cde(["c d e"]) space space
-  d(["d"]) space de(["d e"]) space space space
-  e(["e"]) space space space space space
-  g0["Step 4"] g1["Step 3"] g2["Step 2"] g3["Step 1"] g4["Step 0"] dv["Divisive"]
-  a --- ab
-  b --- ab
-  ab --- abcde
-  c --- cde
-  d --- de
-  e --- de
-  de --- cde
-  cde --- abcde
-```
+<svg viewBox="0 0 653 322" width="100%" style="max-width:653px;display:block;margin:1.5rem auto" role="img" aria-label="Hierarchical clustering of a, b, c, d, e: agglomerative from step 0 to step 4 (a b, d e, c d e, a b c d e), divisive in the opposite direction from step 0 to step 4" font-family="serif">
+<defs><marker id="i20231213155121-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- step axes -->
+<g stroke="currentColor" stroke-width="1.3">
+<line x1="13.8" y1="50.6" x2="496.8" y2="50.6" marker-end="url(#i20231213155121-arrow)"/>
+<line x1="496.8" y1="288" x2="13.8" y2="288" marker-end="url(#i20231213155121-arrow)"/>
+<path d="M64.4 36.8V50.6M64.4 288V300.8M144.4 36.8V50.6M144.4 288V300.8M223.6 36.8V50.6M223.6 288V300.8M296.2 36.8V50.6M296.2 288V300.8M368 36.8V50.6M368 288V300.8"/>
+</g>
+<g fill="currentColor" font-size="14" text-anchor="middle">
+<text x="64.4" y="23.9">Step 0</text>
+<text x="144.4" y="23.9">Step 1</text>
+<text x="223.6" y="23.9">Step 2</text>
+<text x="296.2" y="23.9">Step 3</text>
+<text x="368" y="23.9">Step 4</text>
+<text x="64.4" y="315.6">Step 4</text>
+<text x="144.4" y="315.6">Step 3</text>
+<text x="223.6" y="315.6">Step 2</text>
+<text x="296.2" y="315.6">Step 1</text>
+<text x="368" y="315.6">Step 0</text>
+</g>
+<g fill="currentColor" font-size="18" font-weight="bold">
+<text x="517" y="34">Agglomerative</text><text x="529" y="280.6">Divisive</text>
+</g>
+<!-- merges -->
+<g stroke="currentColor" stroke-width="1">
+<line x1="82.8" y1="88.3" x2="115" y2="97.5"/>
+<line x1="81" y1="119.6" x2="117.8" y2="105.8"/>
+<line x1="193.2" y1="107.6" x2="303.6" y2="140.8"/>
+<line x1="82.8" y1="174.8" x2="253.9" y2="186.8"/>
+<line x1="82.8" y1="209.8" x2="194.1" y2="230"/>
+<line x1="82.8" y1="249.3" x2="194.1" y2="230"/>
+<line x1="239.2" y1="213.4" x2="254.8" y2="194.1"/>
+<line x1="294.4" y1="170.2" x2="308.2" y2="152.7"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1">
+<ellipse cx="62.6" cy="85.6" rx="20.2" ry="15.6"/>
+<ellipse cx="62.6" cy="127" rx="20.2" ry="15.6"/>
+<ellipse cx="62.6" cy="170.2" rx="20.2" ry="15.6"/>
+<ellipse cx="62.6" cy="213.4" rx="20.2" ry="15.6"/>
+<ellipse cx="62.6" cy="255.8" rx="20.2" ry="15.6"/>
+<ellipse cx="153.6" cy="101.2" rx="39.6" ry="16.6"/>
+<ellipse cx="379" cy="139.8" rx="75.4" ry="18.4"/>
+<ellipse cx="296.2" cy="187.7" rx="43.2" ry="18.4"/>
+<ellipse cx="230" cy="230" rx="36.8" ry="16.6"/>
+</g>
+<g fill="currentColor" font-size="16" text-anchor="middle">
+<text x="62.6" y="90.2">a</text>
+<text x="62.6" y="131.6">b</text>
+<text x="62.6" y="174.8">c</text>
+<text x="62.6" y="218">d</text>
+<text x="62.6" y="260.4">e</text>
+<text x="153.6" y="105.8">a b</text>
+<text x="379" y="144.4">a b c d e</text>
+<text x="296.2" y="192.3">c d e</text>
+<text x="230" y="234.6">d e</text>
+</g></svg>
 
 There are also different methods to compare the distance between clusters:
 - **Single link**: the smallest distance between an element in one cluster and an element in another cluster. $d(C_i, C_j) = min\{d(x_{ip}, x_{jp})\}$ 
@@ -230,17 +338,41 @@ $$
     - Merge two closest clusters
     - Update "distance matrix"
 
-```mermaid
-flowchart TD
-  S(["Start"]) --> I[/"Objects and their measured features"/]
-  I --> D["Compute Distance matrix"]
-  D --> O["Set Object as Cluster"]
-  O --> Q{"Number of cluster = 1"}
-  Q -- Yes --> E(["End"])
-  Q -- No --> M["Merge 2 closest clusters"]
-  M --> U["Update Distance matrix"]
-  U --> Q
-```
+<svg viewBox="0 0 445 569" width="100%" style="max-width:445px;display:block;margin:1.5rem auto" role="img" aria-label="Flowchart: start, objects and their measured features, compute distance matrix, set object as cluster, then while the number of clusters is not 1 merge the 2 closest clusters and update the distance matrix; when it is 1, end" font-family="sans-serif">
+<defs><marker id="i20231213161019-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<g fill="none" stroke="currentColor" stroke-width="1.2">
+<rect x="119.6" y="6.5" width="101.4" height="41.6" rx="20.8"/>
+<polygon points="49.4,87.1 300.3,87.1 275.6,139.1 24.7,139.1"/>
+<rect x="41.6" y="175.5" width="257.4" height="42.9"/>
+<rect x="41.6" y="253.5" width="257.4" height="45.5"/>
+<rect x="41.6" y="432.9" width="257.4" height="48.1"/>
+<rect x="41.6" y="516.1" width="257.4" height="45.5"/>
+<polygon points="39,366.6 170.3,340.6 301.6,366.6 170.3,392.6"/>
+<rect x="335.4" y="345.8" width="104" height="41.6" rx="20.8"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#i20231213161019-arrow)">
+<line x1="170.3" y1="48.1" x2="170.3" y2="85.8"/>
+<line x1="170.3" y1="139.1" x2="170.3" y2="174.2"/>
+<line x1="170.3" y1="218.4" x2="170.3" y2="252.2"/>
+<line x1="170.3" y1="299" x2="170.3" y2="339.3"/>
+<line x1="170.3" y1="392.6" x2="170.3" y2="431.6"/>
+<line x1="170.3" y1="481" x2="170.3" y2="514.8"/>
+<line x1="301.6" y1="366.6" x2="334.1" y2="366.6"/>
+<path d="M41.6 538.2H10.4V366.6H37.7"/>
+</g>
+<g fill="currentColor" font-size="14" text-anchor="middle">
+<text x="170.3" y="33.8">Start</text>
+<text x="170.3" y="105.3">Objects and their</text>
+<text x="170.3" y="128.7">measured features</text>
+<text x="170.3" y="202.8">Compute Distance matrix</text>
+<text x="170.3" y="282.1">Set Object as Cluster</text>
+<text x="170.3" y="371.8">Number of cluster = 1</text>
+<text x="170.3" y="462.8">Merge 2 closest clusters</text>
+<text x="170.3" y="544.7">Update Distance matrix</text>
+<text x="387.4" y="371.8">End</text>
+<text x="315.9" y="348.4">Yes</text>
+<text x="179.4" y="419.9" text-anchor="start">No</text>
+</g></svg>
 
 ## Agglomerative algorithm example:
 
@@ -256,23 +388,26 @@ yticks: [0, 1, 2, 3, 4, 5, 6]
 xlabel: $X1$
 ylabel: $X2$
 items:
-  - point: [1, 1]
-    label: A
+  - points: [[1, 1], [1.5, 1.5], [5, 5], [3, 4], [4, 4], [3, 3.5]]
+    shape: diamond
+    size: 4.5
+  - text: A
+    at: [1.12, 1]
     anchor: e
-  - point: [1.5, 1.5]
-    label: B
+  - text: B
+    at: [1.62, 1.5]
     anchor: e
-  - point: [5, 5]
-    label: C
+  - text: C
+    at: [5.12, 5]
     anchor: e
-  - point: [3, 4]
-    label: D
+  - text: D
+    at: [3.12, 4]
     anchor: e
-  - point: [4, 4]
-    label: E
+  - text: E
+    at: [4.12, 4]
     anchor: e
-  - point: [3, 3.5]
-    label: F
+  - text: F
+    at: [3.12, 3.5]
     anchor: e
 ```
 
@@ -316,28 +451,46 @@ yticks: [0, 1, 2, 3, 4, 5, 6]
 xlabel: $X1$
 ylabel: $X2$
 items:
+  - circle: [3.24, 3.74]   # DF
+    rx: 0.41
+    ry: 0.98
+    color: red
   - point: [1, 1]
-    label: A
+    shape: diamond
+    size: 4
+  - text: A
+    at: [1.12, 1]
     anchor: e
   - point: [1.5, 1.5]
-    label: B
+    shape: diamond
+    size: 4
+  - text: B
+    at: [1.62, 1.5]
     anchor: e
   - point: [5, 5]
-    label: C
+    shape: diamond
+    size: 4
+  - text: C
+    at: [5.12, 5]
     anchor: e
   - point: [3, 4]
-    label: D
+    shape: diamond
+    size: 4
+  - text: D
+    at: [3.12, 4]
     anchor: e
   - point: [4, 4]
-    label: E
+    shape: diamond
+    size: 4
+  - text: E
+    at: [4.12, 4]
     anchor: e
   - point: [3, 3.5]
-    label: F
+    shape: diamond
+    size: 4
+  - text: F
+    at: [3.12, 3.5]
     anchor: e
-  - circle: [3, 3.75]
-    rx: 0.3
-    ry: 0.75
-    color: red
 ```
 
 | Dist | A | B | C | D | E | F |
@@ -406,32 +559,50 @@ yticks: [0, 1, 2, 3, 4, 5, 6]
 xlabel: $X1$
 ylabel: $X2$
 items:
+  - circle: [3.24, 3.74]   # DF
+    rx: 0.41
+    ry: 0.98
+    color: red
+  - circle: [1.48, 1.14]   # AB
+    rx: 0.84
+    ry: 0.98
+    color: red
   - point: [1, 1]
-    label: A
+    shape: diamond
+    size: 4
+  - text: A
+    at: [1.12, 1]
     anchor: e
   - point: [1.5, 1.5]
-    label: B
+    shape: diamond
+    size: 4
+  - text: B
+    at: [1.62, 1.5]
     anchor: e
   - point: [5, 5]
-    label: C
+    shape: diamond
+    size: 4
+  - text: C
+    at: [5.12, 5]
     anchor: e
   - point: [3, 4]
-    label: D
+    shape: diamond
+    size: 4
+  - text: D
+    at: [3.12, 4]
     anchor: e
   - point: [4, 4]
-    label: E
+    shape: diamond
+    size: 4
+  - text: E
+    at: [4.12, 4]
     anchor: e
   - point: [3, 3.5]
-    label: F
+    shape: diamond
+    size: 4
+  - text: F
+    at: [3.12, 3.5]
     anchor: e
-  - circle: [3, 3.75]
-    rx: 0.3
-    ry: 0.75
-    color: red
-  - circle: [1.25, 1.25]
-    rx: 0.75
-    ry: 0.7
-    color: red
 ```
 
 **Min Distance (Single Linkage)**
@@ -502,36 +673,54 @@ yticks: [0, 1, 2, 3, 4, 5, 6]
 xlabel: $X1$
 ylabel: $X2$
 items:
+  - circle: [3.24, 3.74]   # DF
+    rx: 0.41
+    ry: 0.98
+    color: red
+  - circle: [1.48, 1.14]   # AB
+    rx: 0.84
+    ry: 0.98
+    color: red
+  - circle: [3.4, 3.74]   # DFE
+    rx: 1.25
+    ry: 0.99
+    color: red
   - point: [1, 1]
-    label: A
+    shape: diamond
+    size: 4
+  - text: A
+    at: [1.12, 1]
     anchor: e
   - point: [1.5, 1.5]
-    label: B
+    shape: diamond
+    size: 4
+  - text: B
+    at: [1.62, 1.5]
     anchor: e
   - point: [5, 5]
-    label: C
+    shape: diamond
+    size: 4
+  - text: C
+    at: [5.12, 5]
     anchor: e
   - point: [3, 4]
-    label: D
+    shape: diamond
+    size: 4
+  - text: D
+    at: [3.12, 4]
     anchor: e
   - point: [4, 4]
-    label: E
+    shape: diamond
+    size: 4
+  - text: E
+    at: [4.12, 4]
     anchor: e
   - point: [3, 3.5]
-    label: F
+    shape: diamond
+    size: 4
+  - text: F
+    at: [3.12, 3.5]
     anchor: e
-  - circle: [3, 3.75]
-    rx: 0.3
-    ry: 0.75
-    color: red
-  - circle: [1.25, 1.25]
-    rx: 0.75
-    ry: 0.7
-    color: red
-  - circle: [3.5, 3.9]
-    rx: 1
-    ry: 0.7
-    color: red
 ```
 
 **Min Distance (Single Linkage)**
@@ -563,40 +752,58 @@ yticks: [0, 1, 2, 3, 4, 5, 6]
 xlabel: $X1$
 ylabel: $X2$
 items:
+  - circle: [3.24, 3.74]   # DF
+    rx: 0.41
+    ry: 0.98
+    color: red
+  - circle: [1.48, 1.14]   # AB
+    rx: 0.84
+    ry: 0.98
+    color: red
+  - circle: [3.4, 3.74]   # DFE
+    rx: 1.25
+    ry: 0.99
+    color: red
+  - circle: [3.82, 4.29]   # all
+    rx: 2.34
+    ry: 1.53
+    color: red
   - point: [1, 1]
-    label: A
+    shape: diamond
+    size: 4
+  - text: A
+    at: [1.12, 1]
     anchor: e
   - point: [1.5, 1.5]
-    label: B
+    shape: diamond
+    size: 4
+  - text: B
+    at: [1.62, 1.5]
     anchor: e
   - point: [5, 5]
-    label: C
+    shape: diamond
+    size: 4
+  - text: C
+    at: [5.12, 5]
     anchor: e
   - point: [3, 4]
-    label: D
+    shape: diamond
+    size: 4
+  - text: D
+    at: [3.12, 4]
     anchor: e
   - point: [4, 4]
-    label: E
+    shape: diamond
+    size: 4
+  - text: E
+    at: [4.12, 4]
     anchor: e
   - point: [3, 3.5]
-    label: F
+    shape: diamond
+    size: 4
+  - text: F
+    at: [3.12, 3.5]
     anchor: e
-  - circle: [3, 3.75]
-    rx: 0.3
-    ry: 0.75
-    color: red
-  - circle: [1.25, 1.25]
-    rx: 0.75
-    ry: 0.7
-    color: red
-  - circle: [3.5, 3.9]
-    rx: 1
-    ry: 0.7
-    color: red
-  - circle: [3.9, 4.3]
-    rx: 1.95
-    ry: 1.2
-    color: red
 ```
 
 **Min Distance (Single Linkage)**
@@ -618,34 +825,44 @@ items:
 We construct the **Dendrogram tree** of the cluster
 
 ```plot
-x: [0.2, 6.8]
-y: [0, 2.8]
-width: 460
-height: 300
+x: [0.6, 6.8]
+y: [0, 2.9]
+width: 340
+height: 360
 ylabel: lifetime
-yticks: [0.5, 1.0, 1.5, 2.0, 2.5]
+yticks: { 0.5: "0.5", 1: "1.0", 1.5: "1.5", 2: "2.0", 2.5: "2.5" }
 xticks: { 1: "D", 2: "F", 3: "E", 4: "C", 5: "A", 6: "B" }
 items:
   - line: [[1, 0], [1, 0.5], [2, 0.5], [2, 0]]
     color: green
+    width: 2
   - line: [[1.5, 0.5], [1.5, 1.0], [3, 1.0], [3, 0]]
     color: green
+    width: 2
   - line: [[2.25, 1.0], [2.25, 1.41], [4, 1.41], [4, 0]]
     color: green
+    width: 2
   - line: [[5, 0], [5, 0.71], [6, 0.71], [6, 0]]
     color: green
+    width: 2
   - line: [[3.125, 1.41], [3.125, 2.5], [5.5, 2.5], [5.5, 0.71]]
     color: green
-  - text: "2"
-    at: [1.5, 0.4]
-  - text: "4"
-    at: [2.25, 0.9]
-  - text: "5"
-    at: [3.125, 1.31]
-  - text: "3"
-    at: [5.5, 0.61]
-  - text: "6"
-    at: [4.3, 2.4]
+    width: 2
+  - text: '$\mathbf{2}$'
+    at: [1.5, 0.5]
+    anchor: s
+  - text: '$\mathbf{4}$'
+    at: [2.25, 1.0]
+    anchor: se
+  - text: '$\mathbf{5}$'
+    at: [3.125, 1.41]
+    anchor: se
+  - text: '$\mathbf{3}$'
+    at: [5.5, 0.71]
+    anchor: s
+  - text: '$\mathbf{6}$'
+    at: [4.31, 2.5]
+    anchor: s
 ```
 
 1. In the beginning we have 6 clusters: A, B, C, D, E and F
@@ -718,30 +935,67 @@ Suppose we have 4 kinds of medicines, each has two attributes (PH and weight ind
 ```plot
 x: [0, 6]
 y: [0, 4.5]
-width: 420
-height: 300
-grid: true
-xticks: [1, 2, 3, 4, 5, 6]
-yticks: [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
+width: 380
+height: 320
+xticks: [0, 1, 2, 3, 4, 5, 6]
+yticks: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
 xlabel: "attribute 1 (X): weight index"
 ylabel: "attribute 2 (Y): pH"
 items:
-  - point: [1, 1]
-    shape: square
-    label: A
-    anchor: n
-  - point: [2, 1]
-    shape: square
-    label: B
-    anchor: n
-  - point: [4, 3]
-    shape: square
-    label: C
-    anchor: n
-  - point: [5, 4]
-    shape: square
-    label: D
-    anchor: n
+  - vline: 1
+    width: 0.8
+  - vline: 2
+    width: 0.8
+  - vline: 3
+    width: 0.8
+  - vline: 4
+    width: 0.8
+  - vline: 5
+    width: 0.8
+  - vline: 6
+    width: 0.8
+  - hline: 0.5
+    width: 0.8
+  - hline: 1
+    width: 0.8
+  - hline: 1.5
+    width: 0.8
+  - hline: 2
+    width: 0.8
+  - hline: 2.5
+    width: 0.8
+  - hline: 3
+    width: 0.8
+  - hline: 3.5
+    width: 0.8
+  - hline: 4
+    width: 0.8
+  - hline: 4.5
+    width: 0.8
+  - point: [1, 1]   # A
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [2, 1]   # B
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [4, 3]   # C
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [5, 4]   # D
+    shape: diamond
+    size: 5.5
+    color: blue
+  - text: "A"
+    at: [1, 1.3]
+  - text: "B"
+    at: [2, 1.3]
+  - text: "C"
+    at: [3.75, 3.25]
+  - text: "D"
+    at: [4.75, 4.25]
 ```
 
 1) Use initial seed points for partitioning 
@@ -752,37 +1006,74 @@ items:
 x: [0, 6]
 y: [0, 4.5]
 width: 420
-height: 300
-grid: true
-xticks: [1, 2, 3, 4, 5, 6]
-yticks: [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
+height: 310
+xticks: [0, 1, 2, 3, 4, 5, 6]
+yticks: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
 xlabel: "attribute 1 (X): weight index"
 ylabel: "attribute 2 (Y): pH"
 items:
+  - vline: 1
+    width: 0.8
+  - vline: 2
+    width: 0.8
+  - vline: 3
+    width: 0.8
+  - vline: 4
+    width: 0.8
+  - vline: 5
+    width: 0.8
+  - vline: 6
+    width: 0.8
+  - hline: 0.5
+    width: 0.8
+  - hline: 1
+    width: 0.8
+  - hline: 1.5
+    width: 0.8
+  - hline: 2
+    width: 0.8
+  - hline: 2.5
+    width: 0.8
+  - hline: 3
+    width: 0.8
+  - hline: 3.5
+    width: 0.8
+  - hline: 4
+    width: 0.8
+  - hline: 4.5
+    width: 0.8
+  - point: [1, 1]   # A
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [2, 1]   # B
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [4, 3]   # C
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [5, 4]   # D
+    shape: diamond
+    size: 5.5
+    color: blue
   - point: [1, 1]
-    shape: square
-    label: A
-    anchor: n
-  - point: [2, 1]
-    shape: square
-    label: B
-    anchor: n
-  - point: [4, 3]
-    shape: square
-    label: C
-    anchor: n
-  - point: [5, 4]
-    shape: square
-    label: D
-    anchor: n
-  - point: [1, 1]
-    shape: plus
+    shape: star
+    size: 5
     color: red
-    size: 8
   - point: [2, 1]
-    shape: plus
+    shape: star
+    size: 5
     color: red
-    size: 8
+  - text: "A"
+    at: [1, 1.3]
+  - text: "B"
+    at: [2, 1.3]
+  - text: "C"
+    at: [3.75, 3.25]
+  - text: "D"
+    at: [4.75, 4.25]
 ```
 
 $c_1 = A, c_2 = B$
@@ -824,32 +1115,70 @@ Assign each object to the cluster with the nearest seed point
 x: [0, 6]
 y: [0, 4.5]
 width: 420
-height: 300
-grid: true
-xticks: [1, 2, 3, 4, 5, 6]
-yticks: [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
+height: 310
+xticks: [0, 1, 2, 3, 4, 5, 6]
+yticks: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
 xlabel: "attribute 1 (X): weight index"
 ylabel: "attribute 2 (Y): pH"
 items:
+  - vline: 1
+    width: 0.8
+  - vline: 2
+    width: 0.8
+  - vline: 3
+    width: 0.8
+  - vline: 4
+    width: 0.8
+  - vline: 5
+    width: 0.8
+  - vline: 6
+    width: 0.8
+  - hline: 0.5
+    width: 0.8
+  - hline: 1
+    width: 0.8
+  - hline: 1.5
+    width: 0.8
+  - hline: 2
+    width: 0.8
+  - hline: 2.5
+    width: 0.8
+  - hline: 3
+    width: 0.8
+  - hline: 3.5
+    width: 0.8
+  - hline: 4
+    width: 0.8
+  - hline: 4.5
+    width: 0.8
   - vline: 1.5
     color: purple
-    width: 3
+    width: 5
+    dash: false
+  - point: [1, 1]   # A
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [2, 1]   # B
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [4, 3]   # C
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [5, 4]   # D
+    shape: diamond
+    size: 5.5
+    color: blue
   - point: [1, 1]
-    shape: square
-  - point: [2, 1]
-    shape: square
-  - point: [4, 3]
-    shape: square
-  - point: [5, 4]
-    shape: square
-  - point: [1, 1]
-    shape: plus
+    shape: star
+    size: 5
     color: red
-    size: 8
   - point: [3.67, 2.67]
-    shape: plus
+    shape: star
+    size: 5
     color: red
-    size: 8
 ```
 
 Knowing the members of each cluster, now we compute the new centroid of each group based on these new memberships.
@@ -870,44 +1199,84 @@ Now modify the new membership of items based off the new centroids
 x: [0, 6]
 y: [0, 4.5]
 width: 420
-height: 300
-grid: true
-xticks: [1, 2, 3, 4, 5, 6]
-yticks: [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
+height: 310
+xticks: [0, 1, 2, 3, 4, 5, 6]
+yticks: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
 xlabel: "attribute 1 (X): weight index"
 ylabel: "attribute 2 (Y): pH"
 items:
+  - vline: 1
+    width: 0.8
+  - vline: 2
+    width: 0.8
+  - vline: 3
+    width: 0.8
+  - vline: 4
+    width: 0.8
+  - vline: 5
+    width: 0.8
+  - vline: 6
+    width: 0.8
+  - hline: 0.5
+    width: 0.8
+  - hline: 1
+    width: 0.8
+  - hline: 1.5
+    width: 0.8
+  - hline: 2
+    width: 0.8
+  - hline: 2.5
+    width: 0.8
+  - hline: 3
+    width: 0.8
+  - hline: 3.5
+    width: 0.8
+  - hline: 4
+    width: 0.8
+  - hline: 4.5
+    width: 0.8
   - vline: 1.5
     color: purple
-    width: 3
+    width: 5
+    dash: false
+  - point: [1, 1]   # A
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [2, 1]   # B
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [4, 3]   # C
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [5, 4]   # D
+    shape: diamond
+    size: 5.5
+    color: blue
   - point: [1, 1]
-    shape: square
-    label: A
-    anchor: nw
-  - point: [2, 1]
-    shape: square
-    label: B
-    anchor: ne
-  - point: [4, 3]
-    shape: square
-    label: C
-    anchor: ne
-  - point: [5, 4]
-    shape: square
-    label: D
-    anchor: s
-  - point: [1, 1]
-    shape: plus
+    shape: star
+    size: 5
     color: red
-    size: 8
-    label: "1"
-    anchor: se
   - point: [3.67, 2.67]
-    shape: plus
+    shape: star
+    size: 5
     color: red
-    size: 8
-    label: "2"
-    anchor: sw
+  - text: "A"
+    at: [0.78, 1.18]
+  - text: "B"
+    at: [2.25, 1.12]
+  - text: "C"
+    at: [4.28, 2.82]
+  - text: "D"
+    at: [5, 3.7]
+  - text: "1"
+    at: [1, 0.68]
+    color: red
+  - text: "2"
+    at: [3.45, 2.38]
+    color: red
 ```
 
 Compute the distance of all objects to the new centroids
@@ -942,36 +1311,75 @@ $C_1 = ?$ $\qquad$ $C_2 = ?$
 x: [0, 6]
 y: [0, 4.5]
 width: 420
-height: 300
-grid: true
-xticks: [1, 2, 3, 4, 5, 6]
-yticks: [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
+height: 310
+xticks: [0, 1, 2, 3, 4, 5, 6]
+yticks: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
 xlabel: "attribute 1 (X): weight index"
 ylabel: "attribute 2 (Y): pH"
 items:
-  - line: [[1.0, 4.2], [3.8, 0.4]]
+  - vline: 1
+    width: 0.8
+  - vline: 2
+    width: 0.8
+  - vline: 3
+    width: 0.8
+  - vline: 4
+    width: 0.8
+  - vline: 5
+    width: 0.8
+  - vline: 6
+    width: 0.8
+  - hline: 0.5
+    width: 0.8
+  - hline: 1
+    width: 0.8
+  - hline: 1.5
+    width: 0.8
+  - hline: 2
+    width: 0.8
+  - hline: 2.5
+    width: 0.8
+  - hline: 3
+    width: 0.8
+  - hline: 3.5
+    width: 0.8
+  - hline: 4
+    width: 0.8
+  - hline: 4.5
+    width: 0.8
+  - line: [[0.9, 4.15], [3.85, 0.4]]
     color: purple
-    width: 3
-  - point: [1, 1]
-    shape: square
-  - point: [2, 1]
-    shape: square
-  - point: [4, 3]
-    shape: square
-  - point: [5, 4]
-    shape: square
+    width: 5
+  - point: [1, 1]   # A
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [2, 1]   # B
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [4, 3]   # C
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [5, 4]   # D
+    shape: diamond
+    size: 5.5
+    color: blue
   - point: [1.5, 1]
-    shape: plus
+    shape: star
+    size: 5
     color: red
-    size: 8
-    label: "1"
-    anchor: se
   - point: [4.5, 3.5]
-    shape: plus
+    shape: star
+    size: 5
     color: red
-    size: 8
-    label: "2"
-    anchor: se
+  - text: "1"
+    at: [1.6, 0.68]
+    color: red
+  - text: "2"
+    at: [4.65, 3.2]
+    color: red
 ```
 
 Knowing the members of each cluster, now we compute the new centroid of each group based on these new memberships.
@@ -990,32 +1398,69 @@ $$
 x: [0, 6]
 y: [0, 4.5]
 width: 420
-height: 300
-grid: true
-xticks: [1, 2, 3, 4, 5, 6]
-yticks: [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
+height: 310
+xticks: [0, 1, 2, 3, 4, 5, 6]
+yticks: [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]
 xlabel: "attribute 1 (X): weight index"
 ylabel: "attribute 2 (Y): pH"
 items:
-  - line: [[1.0, 4.2], [3.8, 0.4]]
+  - vline: 1
+    width: 0.8
+  - vline: 2
+    width: 0.8
+  - vline: 3
+    width: 0.8
+  - vline: 4
+    width: 0.8
+  - vline: 5
+    width: 0.8
+  - vline: 6
+    width: 0.8
+  - hline: 0.5
+    width: 0.8
+  - hline: 1
+    width: 0.8
+  - hline: 1.5
+    width: 0.8
+  - hline: 2
+    width: 0.8
+  - hline: 2.5
+    width: 0.8
+  - hline: 3
+    width: 0.8
+  - hline: 3.5
+    width: 0.8
+  - hline: 4
+    width: 0.8
+  - hline: 4.5
+    width: 0.8
+  - line: [[0.9, 4.15], [3.85, 0.4]]
     color: purple
-    width: 3
-  - point: [1, 1]
-    shape: square
-  - point: [2, 1]
-    shape: square
-  - point: [4, 3]
-    shape: square
-  - point: [5, 4]
-    shape: square
+    width: 5
+  - point: [1, 1]   # A
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [2, 1]   # B
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [4, 3]   # C
+    shape: diamond
+    size: 5.5
+    color: blue
+  - point: [5, 4]   # D
+    shape: diamond
+    size: 5.5
+    color: blue
   - point: [1.5, 1]
-    shape: plus
+    shape: star
+    size: 5
     color: red
-    size: 8
   - point: [4.5, 3.5]
-    shape: plus
+    shape: star
+    size: 5
     color: red
-    size: 8
 ```
 
 Compute the distance of all objects to the new centroids

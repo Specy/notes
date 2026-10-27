@@ -23,26 +23,51 @@ Data mining is a broad term that collects different kinds of data manipulation a
 These are the building blocks over which applications are built upon. It is also used as an abstraction to help us conceptualize and structure data
 # Data mining process
 
-```mermaid
-flowchart LR
-  DC["DATA COLLECTION"]
-  subgraph PRE["DATA PREPROCESSING"]
-    FE["FEATURE EXTRACTION"]
-    CI["CLEANING AND INTEGRATION"]
-  end
-  subgraph AP["ANALYTICAL PROCESSING"]
-    B1["BUILDING BLOCK 1"]
-    B2["BUILDING BLOCK 2"]
-  end
-  OUT["OUTPUT FOR ANALYST"]
-  DC --> FE
-  CI --> B1
-  B2 --> OUT
-  DC ~~~ B2
-  PRE ~~~ AP
-  B1 -. "FEEDBACK (OPTIONAL)" .-> CI
-  B2 -. "FEEDBACK (OPTIONAL)" .-> DC
-```
+<svg viewBox="0 0 720 206" width="100%" style="max-width:720px;display:block;margin:1.5rem auto" role="img" aria-label="Data mining process: data collection, data preprocessing (feature extraction, cleaning and integration), analytical processing (building block 1, building block 2), output for analyst, with optional feedback loops" font-family="sans-serif">
+<defs><marker id="i20231127130643-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<g fill="none" stroke="currentColor" stroke-width="2">
+<!-- boxes -->
+<rect x="2" y="2" width="114" height="128"/>
+<rect x="146" y="2" width="250" height="118"/>
+<rect x="153" y="49" width="117" height="64"/>
+<rect x="277" y="49" width="112" height="64"/>
+<rect x="427" y="2" width="200" height="120"/>
+<rect x="434" y="49" width="90" height="66"/>
+<rect x="533" y="49" width="87" height="66"/>
+</g>
+<g stroke="currentColor" stroke-width="1.4" marker-end="url(#i20231127130643-arrow)">
+<!-- forward arrows -->
+<line x1="116" y1="64" x2="144" y2="64"/>
+<line x1="396" y1="64" x2="425" y2="64"/>
+<line x1="627" y1="64" x2="654" y2="64"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#i20231127130643-arrow)">
+<!-- feedback loops -->
+<path d="M502 115V156H333V115"/>
+<path d="M539 122V196H58V132"/>
+</g>
+<g fill="currentColor" font-size="13" font-weight="bold" text-anchor="middle">
+<text x="59" y="61">DATA</text>
+<text x="59" y="79">COLLECTION</text>
+<text x="271" y="20">DATA</text>
+<text x="271" y="38">PREPROCESSING</text>
+<text x="211.5" y="77">FEATURE</text>
+<text x="211.5" y="95">EXTRACTION</text>
+<text x="333" y="68">CLEANING</text>
+<text x="333" y="86">AND</text>
+<text x="333" y="104">INTEGRATION</text>
+<text x="527" y="32">ANALYTICAL PROCESSING</text>
+<text x="479" y="78">BUILDING</text>
+<text x="479" y="96">BLOCK 1</text>
+<text x="576.5" y="78">BUILDING</text>
+<text x="576.5" y="96">BLOCK 2</text>
+<text x="688" y="52">OUTPUT</text>
+<text x="688" y="70">FOR</text>
+<text x="688" y="88">ANALYST</text>
+<text x="418" y="150">FEEDBACK (OPTIONAL)</text>
+<text x="284" y="190">FEEDBACK (OPTIONAL)</text>
+</g>
+</svg>
 
 ## Data collection
 it may require the use of hardware such as sensors, manual labor through user surveys, software tools to scrape data, etc...

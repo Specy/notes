@@ -116,46 +116,92 @@ As mentioned the algorithm works in two passes
 2) Read the baskets again and count in main memory only the pairs where both elements are considered *frequent* from pass 1
 This approach uses as much memory as the square of frequent items plus a list of the frequent items
 
-```mermaid
-flowchart LR
-  subgraph MM["Main memory"]
-    direction LR
-    subgraph P1["Pass 1"]
-      IC["Item counts"]
-    end
-    subgraph P2["Pass 2"]
-      FI["Frequent items"]
-      CP["Counts of pairs of frequent items (candidate pairs)"]
-    end
-  end
-  P1 --- P2
-  FI ~~~ CP
-```
+<svg viewBox="0 0 540 370" width="100%" style="max-width:540px;display:block;margin:1.5rem auto" role="img" aria-label="Main memory in the two passes of A-Priori: pass 1 holds the item counts; pass 2 holds the frequent items and the counts of pairs of frequent items (candidate pairs)" font-family="sans-serif">
+<!-- memory columns -->
+<rect x="40" y="10" width="200" height="312" fill="var(--palette-green)" fill-opacity="0.12" stroke="currentColor" stroke-width="1"/>
+<rect x="336" y="10" width="192" height="312" fill="var(--palette-green)" fill-opacity="0.12" stroke="currentColor" stroke-width="1"/>
+<!-- blocks -->
+<rect x="48" y="18" width="184" height="67" fill="var(--palette-teal)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="140" y="57.5" text-anchor="middle" font-size="17" fill="currentColor">Item counts</text>
+<rect x="344" y="18" width="176" height="44" fill="var(--palette-teal)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="432" y="46" text-anchor="middle" font-size="17" fill="currentColor">Frequent items</text>
+<rect x="344" y="72" width="176" height="222" fill="var(--palette-blue)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="432" y="139.6" text-anchor="middle" font-size="17" fill="currentColor">Counts of</text>
+<text x="432" y="164.3" text-anchor="middle" font-size="17" fill="currentColor">pairs of</text>
+<text x="432" y="188.9" text-anchor="middle" font-size="17" fill="currentColor">frequent items</text>
+<text x="432" y="213.6" text-anchor="middle" font-size="17" fill="currentColor">(candidate</text>
+<text x="432" y="238.2" text-anchor="middle" font-size="17" fill="currentColor">pairs)</text>
+<g stroke="var(--palette-green)" stroke-width="1.6">
+<line x1="232" y1="18" x2="344" y2="18"/>
+<line x1="232" y1="85" x2="344" y2="62"/>
+</g>
+<text transform="translate(26 166) rotate(-90)" text-anchor="middle" font-size="17" fill="var(--palette-green)">Main memory</text>
+<g fill="currentColor" font-size="24" font-weight="bold" text-anchor="middle">
+<text x="140" y="358">Pass 1</text>
+<text x="432" y="358">Pass 2</text>
+</g>
+</svg>
 
 When dealing with frequent triples or higher, let's say $k-tuples$ (a set of size $k$), we then define:
 - $C_k$ as the candidate $k-tuples$ whose support might be $\geq s$ based off the $k-1$ pass.
 - $L_k$ as the set of truly frequent $k-tuples$
 
-```mermaid
-flowchart LR
-  A1["All items"] --> C1
-  subgraph PASS1["Pass-1"]
-    C1["C₁"] --> F1[/"Filter"\]
-    F1 --> L1["L₁"]
-  end
-  A2["Count the items"] --> F1
-  L1 --> K1["Construct"]
-  A3["All pairs of items from L₁"] --> K1
-  K1 --> C2
-  subgraph PASS2["Pass-2"]
-    C2["C₂"] --> F2[/"Filter"\]
-    F2 --> L2["L₂"]
-  end
-  A4["Count the pairs"] --> F2
-  L2 --> K2["Construct"]
-  A5["To be explained"] --> K2
-  K2 --> C3["C₃"]
-```
+<svg viewBox="0 0 720 236" width="100%" style="max-width:720px;display:block;margin:1.5rem auto" role="img" aria-label="A-Priori pipeline: C1 (all items) goes through a filter (count the items) giving L1; construct (all pairs of items from L1) gives C2; filter (count the pairs) gives L2; construct (to be explained) gives C3. The first part is pass 1, the second part pass 2" font-family="sans-serif">
+<defs><marker id="i20231211153925-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<!-- filters and construct blocks -->
+<polygon points="105.8,105.8 170.9,125.8 170.9,166.6 105.8,186.5" fill="var(--palette-orange)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<polygon points="400.8,105.8 465.8,125.8 465.8,166.6 400.8,186.5" fill="var(--palette-orange)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<rect x="234.2" y="121.4" width="95.4" height="47.7" fill="var(--palette-blue)" fill-opacity="0.2" stroke="currentColor" stroke-width="1"/>
+<rect x="533.5" y="121.4" width="95.4" height="47.7" fill="var(--palette-blue)" fill-opacity="0.2" stroke="currentColor" stroke-width="1"/>
+<g stroke="currentColor" stroke-width="1.2" marker-end="url(#i20231211153925-arrow)">
+<!-- data flow -->
+<line x1="79.8" y1="145.7" x2="104.1" y2="145.7"/>
+<line x1="171.8" y1="145.7" x2="192.6" y2="145.7"/>
+<line x1="216.9" y1="145.7" x2="232.5" y2="145.7"/>
+<line x1="329.6" y1="145.7" x2="351.3" y2="145.7"/>
+<line x1="381.7" y1="145.7" x2="399" y2="145.7"/>
+<line x1="466.7" y1="145.7" x2="487.5" y2="145.7"/>
+<line x1="513.5" y1="145.7" x2="531.8" y2="145.7"/>
+<line x1="628.9" y1="145.7" x2="652.3" y2="145.7"/>
+<line x1="682.7" y1="145.7" x2="707" y2="145.7"/>
+<line x1="67.7" y1="79.8" x2="60.7" y2="127.5"/>
+<line x1="154.4" y1="53.8" x2="138.8" y2="114.5"/>
+<line x1="281.9" y1="71.1" x2="277.6" y2="118"/>
+<line x1="427.7" y1="53.8" x2="416.4" y2="114.5"/>
+<line x1="582.9" y1="67.7" x2="579.5" y2="118"/>
+</g>
+<g fill="currentColor" font-size="17" text-anchor="middle">
+<text x="137.9" y="151.8">Filter</text>
+<text x="281.9" y="151.8">Construct</text>
+<text x="432.9" y="151.8">Filter</text>
+<text x="581.2" y="151.8">Construct</text>
+<text x="63.3" y="152.7">C₁</text>
+<text x="206.5" y="152.7">L₁</text>
+<text x="366.1" y="152.7">C₂</text>
+<text x="500.5" y="152.7">L₂</text>
+<text x="668" y="152.7">C₃</text>
+</g>
+<g fill="var(--palette-green)" font-size="17" text-anchor="middle">
+<text x="69.4" y="41.6">All</text>
+<text x="69.4" y="65.1">items</text>
+<text x="166.6" y="24.3">Count</text>
+<text x="166.6" y="46.8">the items</text>
+<text x="281.9" y="17.3">All pairs</text>
+<text x="281.9" y="39.9">of items</text>
+<text x="281.9" y="62.5">from L₁</text>
+<text x="431.1" y="24.3">Count</text>
+<text x="431.1" y="46.8">the pairs</text>
+<text x="597.7" y="32.1">To be</text>
+<text x="597.7" y="54.7">explained</text>
+</g>
+<!-- pass braces -->
+<g fill="none" stroke="var(--palette-orange)" stroke-width="2.5">
+<path d="M45.1 183.9Q45.1 195.2 55.5 195.2H130.1Q140.5 195.2 140.5 204.7Q140.5 195.2 150.9 195.2H225.5Q236 195.2 236 183.9"/>
+<path d="M334 183.9Q334 195.2 344.4 195.2H418.1Q428.5 195.2 428.5 204.7Q428.5 195.2 438.9 195.2H512.7Q523.1 195.2 523.1 183.9"/>
+</g>
+<g fill="currentColor" font-size="15" text-anchor="middle">
+<text x="140.5" y="227.3">Pass-1</text><text x="428.5" y="227.3">Pass-2</text>
+</g></svg>
 
 # PCY (Park-Chen-Yu) Algorithm
 We observe that in the first pass of the $A-Priori$ algorithm, most memory is idle.
@@ -180,17 +226,36 @@ this means that we can eliminate all candidates of items that hash to buckets wh
 
 In the second pass of the algorithm, we count only pairs that hash to frequent buckets. We could simplify this hashmap by changing it from storing buckets of integers, to storing a bucket of bits, with value 1 if the bucket is frequent, and value 0 if the bucket is not frequent
 
-```mermaid
-block-beta
-  columns 3
-  MM["Main memory"]:3
-  IC["Item counts"] space FI["Frequent items"]
-  HT["Hash table for pairs"] space BM["Bitmap"]
-  space space CC["Counts of candidate pairs"]
-  P1["Pass 1"] space P2["Pass 2"]
-  IC --- FI
-  HT --- BM
-```
+<svg viewBox="0 0 540 350" width="100%" style="max-width:540px;display:block;margin:1.5rem auto" role="img" aria-label="Main memory in the two passes of PCY: pass 1 holds the item counts and the hash table for pairs; pass 2 holds the frequent items, the bitmap and the counts of candidate pairs" font-family="sans-serif">
+<!-- memory columns -->
+<rect x="47" y="8" width="200" height="300" fill="var(--palette-green)" fill-opacity="0.12" stroke="currentColor" stroke-width="1"/>
+<rect x="342" y="8" width="193" height="300" fill="var(--palette-green)" fill-opacity="0.12" stroke="currentColor" stroke-width="1"/>
+<!-- blocks -->
+<rect x="55" y="14" width="184" height="66" fill="var(--palette-teal)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="147" y="53" text-anchor="middle" font-size="17" fill="currentColor">Item counts</text>
+<rect x="55" y="88" width="184" height="212" fill="var(--palette-orange)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="147" y="187.6" text-anchor="middle" font-size="17" fill="currentColor">Hash table</text>
+<text x="147" y="212.3" text-anchor="middle" font-size="17" fill="currentColor">for pairs</text>
+<rect x="349" y="14" width="179" height="51" fill="var(--palette-teal)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="438.5" y="45.5" text-anchor="middle" font-size="17" fill="currentColor">Frequent items</text>
+<rect x="349" y="74" width="179" height="35" fill="var(--palette-orange)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="438.5" y="97.5" text-anchor="middle" font-size="17" fill="currentColor">Bitmap</text>
+<rect x="349" y="117" width="179" height="176" fill="var(--palette-blue)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="438.5" y="186.3" text-anchor="middle" font-size="17" fill="currentColor">Counts of</text>
+<text x="438.5" y="210.9" text-anchor="middle" font-size="17" fill="currentColor">candidate</text>
+<text x="438.5" y="235.6" text-anchor="middle" font-size="17" fill="currentColor">pairs</text>
+<g stroke="var(--palette-green)" stroke-width="1.6">
+<line x1="239" y1="14" x2="349" y2="14"/>
+<line x1="239" y1="80" x2="349" y2="65"/>
+<line x1="239" y1="88" x2="349" y2="74"/>
+<line x1="239" y1="300" x2="349" y2="109"/>
+</g>
+<text transform="translate(24 158) rotate(-90)" text-anchor="middle" font-size="17" fill="var(--palette-green)">Main memory</text>
+<g fill="currentColor" font-size="24" font-weight="bold" text-anchor="middle">
+<text x="147" y="342">Pass 1</text>
+<text x="438" y="342">Pass 2</text>
+</g>
+</svg>
 
 In general the condition for an element to be considered frequent, is that in a pair: 
 1) both ${i, j}$ are frequent
@@ -199,20 +264,64 @@ In general the condition for an element to be considered frequent, is that in a 
 # Multi stage algorithm 
 This is a refinement of the PCY algorithm, in cases where memory is still a bottleneck, we can do 3 passes over the data. the first step is the same as the PCY algorithm, the second step, we rehash only the values that qualify for pass 2 of PCY (so that $i, j$ are frequent and the bucket $\{i,j\}$ is frequent)
 
-```mermaid
-block-beta
-  columns 5
-  MM["Main memory"]:5
-  IC["Item counts"] space F2["Freq. items"] space F3["Freq. items"]
-  H1["First hash table"] space B21["Bitmap 1"] space B31["Bitmap 1"]
-  space space H2["Second hash table"] space B32["Bitmap 2"]
-  space space space space CC["Counts of candidate pairs"]
-  P1["Pass 1"] space P2["Pass 2"] space P3["Pass 3"]
-  N1["Count items<br/>Hash pairs {i,j}"] space N2["Hash pairs {i,j} into Hash2 iff:<br/>i,j are frequent,<br/>{i,j} hashes to freq. bucket in B1"] space N3["Count pairs {i,j} iff:<br/>i,j are frequent,<br/>{i,j} hashes to freq. bucket in B1<br/>{i,j} hashes to freq. bucket in B2"]
-  IC --- F2
-  H1 --- B21
-  H2 --- B32
-```
+<svg viewBox="0 0 660 500" width="100%" style="max-width:660px;display:block;margin:1.5rem auto" role="img" aria-label="Main memory in the three passes of Multistage: pass 1 holds item counts and the first hash table; pass 2 frequent items, bitmap 1 and the second hash table; pass 3 frequent items, bitmap 1, bitmap 2 and the counts of candidate pairs" font-family="sans-serif">
+<!-- memory columns -->
+<rect x="44" y="6" width="150" height="280" fill="var(--palette-green)" fill-opacity="0.12" stroke="currentColor" stroke-width="1"/>
+<rect x="273" y="6" width="149" height="280" fill="var(--palette-green)" fill-opacity="0.12" stroke="currentColor" stroke-width="1"/>
+<rect x="502" y="6" width="149" height="280" fill="var(--palette-green)" fill-opacity="0.12" stroke="currentColor" stroke-width="1"/>
+<!-- blocks -->
+<rect x="51" y="13" width="135" height="59" fill="var(--palette-teal)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="118.5" y="48.5" text-anchor="middle" font-size="17" fill="currentColor">Item counts</text>
+<rect x="51" y="76" width="135" height="206" fill="var(--palette-orange)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="118.5" y="172.6" text-anchor="middle" font-size="17" fill="currentColor">First</text>
+<text x="118.5" y="197.3" text-anchor="middle" font-size="17" fill="currentColor">hash table</text>
+<rect x="280" y="13" width="134" height="45" fill="var(--palette-teal)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="347" y="41.5" text-anchor="middle" font-size="17" fill="currentColor">Freq. items</text>
+<rect x="280" y="72" width="134" height="29" fill="var(--palette-orange)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="347" y="92.5" text-anchor="middle" font-size="17" fill="currentColor">Bitmap 1</text>
+<rect x="280" y="109" width="134" height="170" fill="var(--palette-orange)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="347" y="187.6" text-anchor="middle" font-size="17" fill="currentColor">Second</text>
+<text x="347" y="212.3" text-anchor="middle" font-size="17" fill="currentColor">hash table</text>
+<rect x="509" y="13" width="134" height="45" fill="var(--palette-teal)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="576" y="41.5" text-anchor="middle" font-size="17" fill="currentColor">Freq. items</text>
+<rect x="509" y="72" width="134" height="29" fill="var(--palette-orange)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="576" y="92.5" text-anchor="middle" font-size="17" fill="currentColor">Bitmap 1</text>
+<rect x="509" y="124" width="134" height="29" fill="var(--palette-orange)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="576" y="144.4" text-anchor="middle" font-size="17" fill="currentColor">Bitmap 2</text>
+<rect x="509" y="159" width="134" height="120" fill="var(--palette-blue)" fill-opacity="0.3" stroke="currentColor" stroke-width="1"/>
+<text x="576" y="200.3" text-anchor="middle" font-size="17" fill="currentColor">Counts of</text>
+<text x="576" y="224.9" text-anchor="middle" font-size="17" fill="currentColor">candidate</text>
+<text x="576" y="249.6" text-anchor="middle" font-size="17" fill="currentColor">pairs</text>
+<g stroke="var(--palette-green)" stroke-width="1.6">
+<line x1="186" y1="13" x2="280" y2="13"/>
+<line x1="186" y1="72" x2="280" y2="58"/>
+<line x1="186" y1="76" x2="280" y2="72"/>
+<line x1="186" y1="282" x2="280" y2="101"/>
+<line x1="414" y1="109" x2="509" y2="124"/>
+<line x1="414" y1="279" x2="509" y2="153"/>
+</g>
+<text transform="translate(21 142) rotate(-90)" text-anchor="middle" font-size="17" fill="var(--palette-green)">Main memory</text>
+<g fill="currentColor" font-size="24" font-weight="bold" text-anchor="middle">
+<text x="119" y="322">Pass 1</text>
+<text x="348" y="327">Pass 2</text>
+<text x="576" y="327">Pass 3</text>
+</g>
+<g fill="var(--palette-green)" font-size="17" text-anchor="middle">
+<text x="119" y="393">Count items</text>
+<text x="119" y="418">Hash pairs {i,j}</text>
+<text x="348" y="360">Hash pairs {i,j}</text>
+<text x="348" y="385">into Hash2 iff:</text>
+<text x="348" y="410">i,j are frequent,</text>
+<text x="348" y="435">{i,j} hashes to</text>
+<text x="348" y="460">freq. bucket in B1</text>
+<text x="576" y="360">Count pairs {i,j} iff:</text>
+<text x="576" y="385">i,j are frequent,</text>
+<text x="576" y="410">{i,j} hashes to</text>
+<text x="576" y="435">freq. bucket in B1</text>
+<text x="576" y="460">{i,j} hashes to</text>
+<text x="576" y="485">freq. bucket in B2</text>
+</g>
+</svg>
 
 And in this case, a pair is considered frequent if:
 1) both $i, j$ are frequent items

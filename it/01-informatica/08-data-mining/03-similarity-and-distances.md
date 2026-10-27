@@ -29,7 +29,7 @@ Special cases of the $L_p$-norm are the:
 
 ![[Pasted image 20231208164840 figura.png]]
 
-Euclidean ($p = 2$) is a special cases of the $L_p$-norm
+Euclidean ($p = 2$) is a special case of the $L_p$-norm
 
 $$
 \begin{aligned}
@@ -43,6 +43,7 @@ x: [-0.6, 4.2]
 y: [-0.6, 2.8]
 height: 220
 axes: false
+grid: 0.25
 items:
   - line: [[0, 0], [3, 2]]
     color: blue
@@ -274,15 +275,59 @@ let $G = (V, E)$ be an undirected network with nodes set $V$ and edge set $E$, w
 let $SP(s, j)$ the shortest path between node $s$ to any node $j$, the value of $SP(s,j)$ is initialize to 0 for $j=s$ and $\infty$ otherwise. then we use the Dijkstra algorithm to find the shortest path  
 ## Random walk-based similarity
 
-```mermaid
-flowchart LR
-  C((C)) --- c1(( )) --- c2(( )) --- A((A))
-  A --- a1(( )) --- a2(( )) --- a3(( )) --- B((B))
-  A --- b1(( )) --- b2(( )) --- b3(( )) --- B
-  A --- d1(( )) --- d2(( )) --- d3(( )) --- B
-  A --- e1(( )) --- e2(( )) --- e3(( )) --- B
-  A --- f1(( )) --- f2(( )) --- f3(( )) --- B
-```
+<svg viewBox="0 0 590 331" width="100%" style="max-width:590px;display:block;margin:1.5rem auto" role="img" aria-label="Graph: node C linked by a path of two nodes to A; A and B joined by five parallel paths of three intermediate nodes each" font-family="sans-serif">
+<g stroke="currentColor" stroke-width="2">
+<line x1="54" y1="170" x2="99" y2="170"/>
+<line x1="135" y1="170" x2="178" y2="170"/>
+<line x1="214" y1="170" x2="256" y2="170"/>
+<line x1="282" y1="153.9" x2="336" y2="46.1"/>
+<line x1="362" y1="30" x2="404" y2="30"/>
+<line x1="440" y1="30" x2="482" y2="30"/>
+<line x1="507.9" y1="46.2" x2="560.1" y2="153.8"/>
+<line x1="286.9" y1="157.5" x2="331.1" y2="114.5"/>
+<line x1="362" y1="102" x2="404" y2="102"/>
+<line x1="440" y1="102" x2="482" y2="102"/>
+<line x1="512.7" y1="114.7" x2="555.3" y2="157.3"/>
+<line x1="292" y1="170" x2="326" y2="170"/>
+<line x1="362" y1="170" x2="404" y2="170"/>
+<line x1="440" y1="170" x2="482" y2="170"/>
+<line x1="518" y1="170" x2="550" y2="170"/>
+<line x1="287" y1="182.4" x2="331" y2="224.6"/>
+<line x1="362" y1="237" x2="404" y2="237"/>
+<line x1="440" y1="237" x2="482" y2="237"/>
+<line x1="512.8" y1="224.4" x2="555.2" y2="182.6"/>
+<line x1="282.1" y1="186.1" x2="335.9" y2="292.9"/>
+<line x1="362" y1="309" x2="404" y2="309"/>
+<line x1="440" y1="309" x2="482" y2="309"/>
+<line x1="507.9" y1="292.8" x2="560.1" y2="186.2"/>
+</g>
+<g fill="none" stroke="currentColor" stroke-width="2.5">
+<circle cx="36" cy="170" r="18"/>
+<circle cx="274" cy="170" r="18"/>
+<circle cx="568" cy="170" r="18"/>
+<circle cx="117" cy="170" r="18"/>
+<circle cx="196" cy="170" r="18"/>
+<circle cx="344" cy="30" r="18"/>
+<circle cx="422" cy="30" r="18"/>
+<circle cx="500" cy="30" r="18"/>
+<circle cx="344" cy="102" r="18"/>
+<circle cx="422" cy="102" r="18"/>
+<circle cx="500" cy="102" r="18"/>
+<circle cx="344" cy="170" r="18"/>
+<circle cx="422" cy="170" r="18"/>
+<circle cx="500" cy="170" r="18"/>
+<circle cx="344" cy="237" r="18"/>
+<circle cx="422" cy="237" r="18"/>
+<circle cx="500" cy="237" r="18"/>
+<circle cx="344" cy="309" r="18"/>
+<circle cx="422" cy="309" r="18"/>
+<circle cx="500" cy="309" r="18"/>
+</g>
+<g fill="currentColor" font-size="16" font-weight="bold" text-anchor="middle">
+<text x="36" y="176">C</text>
+<text x="274" y="176">A</text>
+<text x="568" y="176">B</text>
+</g></svg>
 
 in this graph, the shortest path between $c$ and $a$ is 3, and the distance between $b$ and $a$ is 4, yet, we should consider the node $b$ as being more similar, because for the $homophily$, node $a$ and $b$ share more paths 
 the intuition is: *if you were lost in a road network and drove randomly, taking turns (joints) randomly, which location are you more likely to reach?*
