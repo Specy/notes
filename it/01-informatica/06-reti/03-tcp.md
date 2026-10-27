@@ -24,18 +24,71 @@ Il calcolo del checksum viene effettuato tramite somma a complemento a 1 dei con
 
 ## Trasferimento dati affidabile:
 
-![[Pasted image 20241102221718.png]]
+```mermaid
+flowchart TB
+    subgraph invio["lato invio"]
+        S["protocollo di trasf. dati affidabile<br/>(lato invio)"]
+    end
+    subgraph ricezione["lato ricezione"]
+        R["protocollo di trasf. dati affidabile<br/>(lato ricezione)"]
+    end
+    SU["livello superiore"] -- "rdt_send()<br/>dati" --> S
+    S -- "udt_send()<br/>pacchetto" --> C(["canale inaffidabile"])
+    C -- "rdt_rcv()<br/>pacchetto" --> R
+    R -- "deliver_data()<br/>dati" --> RU["livello superiore"]
+```
+
+- `rdt_send()`: chiamata dall'alto, (ad es. dall'applicazione). Trasferisce i dati da consegnare al livello superiore del ricevente
+- `deliver_data()`: chiamata da **rdt** per consegnare i dati al livello superiore
+- `udt_send()`: chiamata da rdt per trasferire il pacchetto al ricevente tramite il canale inaffidabile
+- `rdt_rcv()`: chiamata quando il pacchetto arriva nel lato ricezione del canale
 
 In un ipotesi di implementazione del nostro algoritmo RDT (reliable data transfer) che ha un canale di comunicazione affidabile, il mittente invia i dati al canale di comunicazione e il ricevente legge i messaggi dal canale.
 
 Se il canale sottostante può confondere dei bit (e quindi avere errori), abbiamo bisogno del checksum per sapere se il valore è corretto o meno. 
 Utilizziamo gli ACK per confermare che un pacchetto è stato ricevuto senza errori, mentre un NAK per dire che abbiamo ricevuto un pacchetto con errori, permettendo al mittente di rinviare i pacchetti con errori.
 
-![[Pasted image 20241102222115.png]]
+**mittente**
+
+```mermaid
+stateDiagram-v2
+    state "Attesa di chiamata dall'alto" as A
+    state "Attesa di ACK o NAK" as B
+    [*] --> A
+    A --> B: rdt_send(data) /<br/>sndpkt = make_pkt(data, checksum)<br/>udt_send(sndpkt)
+    B --> B: rdt_rcv(rcvpkt) &&<br/>isNAK(rcvpkt) /<br/>udt_send(sndpkt)
+    B --> A: rdt_rcv(rcvpkt) && isACK(rcvpkt) / Λ
+```
+
+**ricevente**
+
+```mermaid
+stateDiagram-v2
+    direction LR
+    state "Attesa di chiamata dal basso" as W
+    state chk <<choice>>
+    [*] --> W
+    W --> chk: rdt_rcv(rcvpkt)
+    chk --> W: corrupt(rcvpkt) /<br/>udt_send(NAK)
+    chk --> W: notcorrupt(rcvpkt) /<br/>extract(rcvpkt,data)<br/>deliver_data(data)<br/>udt_send(ACK)
+```
 
 Ma gli ACK e NAK sono essi stessi pacchetti, cosa fare se essi sono danneggiati? Può ritrasmettere un pacchetto inviato aggiungendo un numero di sequenza, cosi da poter scartare eventuali pacchetti duplicati. 
 
-![[Pasted image 20241102222329.png]]
+```mermaid
+stateDiagram-v2
+    state "Attesa di chiamata 0 dall'alto" as S0
+    state "Attesa di ACK o NAK 0" as A0
+    state "Attesa di chiamata 1 dall'alto" as S1
+    state "Attesa di ACK o NAK 1" as A1
+    [*] --> S0
+    S0 --> A0: rdt_send(data) /<br/>sndpkt = make_pkt(0, data, checksum)<br/>udt_send(sndpkt)
+    A0 --> A0: rdt_rcv(rcvpkt) &&<br/>(corrupt(rcvpkt) ||<br/>isNAK(rcvpkt)) /<br/>udt_send(sndpkt)
+    A0 --> S1: rdt_rcv(rcvpkt)<br/>&& notcorrupt(rcvpkt)<br/>&& isACK(rcvpkt) / Λ
+    S1 --> A1: rdt_send(data) /<br/>sndpkt = make_pkt(1, data, checksum)<br/>udt_send(sndpkt)
+    A1 --> A1: rdt_rcv(rcvpkt) &&<br/>(corrupt(rcvpkt) ||<br/>isNAK(rcvpkt)) /<br/>udt_send(sndpkt)
+    A1 --> S0: rdt_rcv(rcvpkt)<br/>&& notcorrupt(rcvpkt)<br/>&& isACK(rcvpkt) / Λ
+```
 
 - **Il mittente** aggiunge un numero di sequenza al pacchetto, valore di 0 e 1 bastano dato che i pacchetti sono inviati con metodo di stop and wait, quindi semplicemente pacchetti con la stessa sequenza rispetto l'ultimo pacchetto sono scartati. 
 - **Il ricevente**: controlla se il pacchetto ricevuto è duplicato tramite il numero di sequenza, ed in caso lo scarta. 
@@ -44,28 +97,188 @@ Un protocollo non ha bisogno dei NAK, si possono usare semplicemente gli ACK per
 
 Il canale può perdere il pacchetto di ACK dato che viene accordato che gli ACK devono essere ricevuti entro un tempo "ragionevole", il cui se superato può indicare il mancato ricevimento di un ACK, e quindi pensando al pacchetto come perso, verrà inviato un altra volta duplicato.
 
-![[Pasted image 20241102222916.png]]
-![[Pasted image 20241102222953.png]]
+**(a) nessuna perdita**
+
+```mermaid
+sequenceDiagram
+    participant M as mittente
+    participant R as ricevente
+    Note over M: send pkt0
+    M->>R: pkt0
+    Note over R: rcv pkt0<br/>send ack0
+    R->>M: ack0
+    Note over M: rcv ack0<br/>send pkt1
+    M->>R: pkt1
+    Note over R: rcv pkt1<br/>send ack1
+    R->>M: ack1
+    Note over M: rcv ack1<br/>send pkt0
+    M->>R: pkt0
+    Note over R: rcv pkt0<br/>send ack0
+    R->>M: ack0
+```
+
+**(b) perdita di pacchetto**
+
+```mermaid
+sequenceDiagram
+    participant M as mittente
+    participant R as ricevente
+    Note over M: send pkt0
+    M->>R: pkt0
+    Note over R: rcv pkt0<br/>send ack0
+    R->>M: ack0
+    Note over M: rcv ack0<br/>send pkt1
+    M-xR: pkt1 (loss)
+    Note over M: timeout
+    Note over M: resend pkt1
+    M->>R: pkt1
+    Note over R: rcv pkt1<br/>send ack1
+    R->>M: ack1
+    Note over M: rcv ack1<br/>send pkt0
+    M->>R: pkt0
+    Note over R: rcv pkt0<br/>send ack0
+    R->>M: ack0
+```
+
+**(c) perdita di ACK**
+
+```mermaid
+sequenceDiagram
+    participant M as mittente
+    participant R as ricevente
+    Note over M: send pkt0
+    M->>R: pkt0
+    Note over R: rcv pkt0<br/>send ack0
+    R->>M: ack0
+    Note over M: rcv ack0<br/>send pkt1
+    M->>R: pkt1
+    Note over R: rcv pkt1<br/>send ack1
+    R-xM: ack1 (loss)
+    Note over M: timeout
+    Note over M: resend pkt1
+    M->>R: pkt1
+    Note over R: rcv pkt1<br/>(detect duplicate)<br/>send ack1
+    R->>M: ack1
+    Note over M: rcv ack1<br/>send pkt0
+    M->>R: pkt0
+    Note over R: rcv pkt0<br/>send ack0
+    R->>M: ack0
+```
+
+**(d) timeout prematuro per ACK in ritardo**
+
+```mermaid
+sequenceDiagram
+    participant M as mittente
+    participant R as ricevente
+    Note over M: send pkt0
+    M->>R: pkt0
+    Note over R: rcv pkt0<br/>send ack0
+    R->>M: ack0
+    Note over M: rcv ack0<br/>send pkt1
+    M->>R: pkt1
+    Note over R: rcv pkt1<br/>send ack1
+    Note over M: timeout
+    Note over M: resend pkt1
+    M->>R: pkt1
+    Note over R: rcv pkt1<br/>(detect duplicate)<br/>send ack1
+    R->>M: ack1
+    Note over M: rcv ack1<br/>send pkt0
+    M->>R: pkt0
+    Note over R: rcv pkt0<br/>send ack0
+    R->>M: ack1
+    Note over M: rcv ack1<br/>send pkt0
+    R->>M: ack0
+    M->>R: pkt0
+    Note over R: rcv pkt0<br/>(detect duplicate)<br/>send ack0
+    R->>M: ack0
+```
 
 La tecnica stop and wait ha una latenza molto alta dato che si deve aspettare 2 RTT per ogni pacchetto inviato. Per questo si usano protocolli con pipeline, dove il mittente ammette che ci siano più di un pacchetto in transito. Si usano due forme di protocolli con pipeline, **go Back N** e **ripetizione selettiva**
 
 - Go back N: il mittente può avere fino a N pacchetti consecutivi non riscontrati nella pipeline, il ricevente invia solo ACK cumulativi, e quindi non riscontra un pacchetto se c'è un buco (esempio se 5 6 8 sono arrivati, il pacchetto 8 non è riscontrato finchè 7 non arriva). Il mittente fa partire un timer, e se entro quel tempo non sono stati riscontrati tutti i pacchetti, essi vengono rinviati 
 - **Ripetizione selettiva**: Il mittente può avere fino ad N pacchetti consecutivi non riscontrati in pipeline ed il ricevente invia un ACK per ogni pacchetto. Il mittente ha un timer per ogni pacchetto non riscontrato, se esso scade, il pacchetto viene rinviato 
 
-
 # TCP
 
 è un protocollo di comunicazione con garanzia dei dati. 
 Ha controllo di congestione e flusso, i dati possono essere inviati sia dal ricevente che dal mittente in maniera full duplex, è orientato alla connessione (tramite handshaking), e il mittente non sovraccarica il destinatario.
 
-![[Pasted image 20241102223857.png]]
+```mermaid
+packet-beta
+    title 32 bit
+    0-15: "Nº porta sorgente"
+    16-31: "Nº porta destinazione"
+    32-63: "sequence number"
+    64-95: "acknowledgement number"
+    96-99: "head len"
+    100-103: "not used"
+    104: "C"
+    105: "E"
+    106: "U"
+    107: "A"
+    108: "P"
+    109: "R"
+    110: "S"
+    111: "F"
+    112-127: "finestra di ricezione"
+    128-143: " "
+    144-159: "puntatore dati urgenti"
+    160-191: "opzioni (lunghezza variabile)"
+    192-223: "dati applicazione (lunghezza variabile)"
+```
+
+- **numero di riscontro**: numero di sequenza del prossimo byte atteso; A bit: numero di riscontro valido
+- **numero di sequenza**: conteggio dei byte nel flusso di dati (non dei segmenti!)
+- **lunghezza** (dell'header TCP)
+- **C, E**: notifica di congestione
+- **opzioni TCP**
+- **RST, SYN, FIN**: gestione della connessione
+- **controllo di flusso**: numero di byte che il destinatario vuole accettare
+- **dati** inviati dall'applicazione nella socket TCP
 
 Il valore del timeout per i pacchetti deve essere di sicuro più alto del RTT, che viene stimato tramite il tempo speso in media dai pacchetti per essere inviati e ricevere ACK. Con un valore troppo piccolo di timeout si andrebbe a ritrasmettere pacchetti inutilmente, mentre un valore troppo alto rallenterebbe la velocità di trasmissione
 
 Il numero di sequenza è il numero del primo byte del segmento del flusso di byte, una volta che un ACK è ricevuto.
 
-![[Pasted image 20241102224937.png]]
-![[Pasted image 20241102225005.png]]
+**scenario con ACK perso**
+
+```mermaid
+sequenceDiagram
+    participant A as Host A
+    participant B as Host B
+    A->>B: Seq=92, 8 byte di dati
+    B-xA: ACK=100
+    Note over A: timeout
+    A->>B: Seq=92, 8 byte di dati
+    B->>A: ACK=100
+```
+
+**timeout prematuro**
+
+```mermaid
+sequenceDiagram
+    participant A as Host A
+    participant B as Host B
+    Note over A: SendBase=92
+    A->>B: Seq=92, 8 byte di dati
+    A->>B: Seq=100, 20 byte di dati
+    Note over A: timeout
+    A->>B: Seq=92, 8 byte di dati
+    B->>A: ACK=100
+    Note over A: SendBase=100
+    B->>A: ACK=120
+    Note over A: SendBase=120
+    B->>A: ACK=120
+    Note over A: SendBase=120
+```
+
+| evento nel destinatario | azione del ricevente TCP |
+|---|---|
+| arrivo ordinato di un segmento con numero di sequenza atteso. Tutti i dati fino al numero di sequenza atteso sono già stati riscontrati | ACK ritardato. Attende fino a 500 ms l'arrivo del prossimo segmento. Se il segmento non arriva, invia un ACK |
+| arrivo ordinato di un segmento con numero di sequenza atteso. Per un altro segmento è stato inviato l'ACK ma non ancora riscontrato | invia immediatamente un singolo ACK cumulativo, riscontrando entrambi i segmenti ordinati |
+| arrivo non ordinato di un segmento con numero di sequenza superiore a quello atteso. Viene rilevato un buco | invia immediatamente un *ACK duplicato*, indicando il numero di sequenza del prossimo byte atteso |
+| arrivo di un segmento che colma parzialmente o completamente il buco | invia immediatamente un ACK, ammesso che il segmento cominci all'estremità inferiore del buco |
 
 ### Controllo di flusso in TCP
 
@@ -77,11 +290,49 @@ Il destinatario invia al mittente quanto spazio libero del buffer ha, cosi che i
 Prima di scambiarsi dati, il sender e il receiver effettuano un handshake per accordarsi che entrambi vogliano stabilire la connessione, e condividono vari parametri della connessione, come per esempio la grandezza del buffer del destinatario, etc...
 L'handshake è effettuato in 3 roundtrips:
 
-![[Pasted image 20241102225449.png]]
+```mermaid
+sequenceDiagram
+    participant C as client
+    participant S as server
+    Note over C: stato client: LISTEN
+    Note over S: stato server: LISTEN
+    Note over C: sceglie seq num iniz, x<br/>invia messaggio TCP SYN
+    C->>S: SYNbit=1, Seq=x
+    Note over C: SYNSENT
+    Note over S: sceglie seq num iniz, y<br/>invia messaggio TCP<br/>SYNACK, ack-ando SYN
+    Note over S: SYN RCVD
+    S->>C: SYNbit=1, Seq=y<br/>ACKbit=1#59; ACKnum=x+1
+    Note over C: riceve SYNACK(x)<br/>che indica che il server è vivo#59;<br/>invia l'ACK per SYNACK#59;<br/>questo segmento può già<br/>contenere dati client-to-server
+    Note over C: ESTAB
+    C->>S: ACKbit=1, ACKnum=y+1
+    Note over S: riceve ACK(y) che<br/>indica che il client è vivo
+    Note over S: ESTAB
+```
 
 Mentre per terminare una connessione, inviano un pacchetto TCP con flag FIN ad 1, ed una volta ricevuto un ACK, la connessione può essere considerata terminata
 
-![[Pasted image 20241102225634.png]]
+```mermaid
+sequenceDiagram
+    participant C as client
+    participant S as server
+    Note over C: stato client: ESTAB
+    Note over S: stato server: ESTAB
+    Note over C: clientSocket.close()
+    Note over C: FIN_WAIT_1<br/>non può più inviare<br/>ma può ricevere dati
+    C->>S: FINbit=1, seq=x
+    Note over S: CLOSE_WAIT
+    S->>C: ACKbit=1#59; ACKnum=x+1
+    Note over C: FIN_WAIT_2<br/>attende la chiusura del server
+    Note over S: può ancora inviare dati
+    S->>C: FINbit=1, seq=y
+    Note over S: non può più inviare dati
+    Note over S: LAST_ACK
+    Note over C: TIME_WAIT
+    C->>S: ACKbit=1#59; ACKnum=y+1
+    Note over S: CLOSED
+    Note over C: tempo pari a 2*max tempo<br/>di vita di un segmento
+    Note over C: CLOSED
+```
 
 ### Controllo di congestione in TCP
 
@@ -91,7 +342,54 @@ Questo ha il lato negativo di avere una partenza di connessione lenta, dato che 
 
 In alternativa alla crescita lineare, possiamo usare il metodo Cubic dove ogni volta che si dimezza, si incrementa esponenzialmente all'inizio, per poi crescere più lentamente man mano che ci si avvicina al precedente valore massimo
 
-![[Pasted image 20241102230504.png]]
+```plot
+x: [-0.7, 4.9]
+y: [0, 1.35]
+width: 520
+height: 280
+xlabel: time
+ylabel: TCP sending rate
+xticks: { 0: "$t_0$", 1: "$t_1$", 2: "$t_2$", 3: "$t_3$", 4: "$t_4$" }
+yticks: { 1: "$W_{max}$" }
+items:
+  - line: [[-0.05, 1], [4.9, 1]]
+    dash: true
+    color: muted
+  - fn: g(x) = exp(8x)
+    domain: [-0.6, 0]
+    color: muted
+    width: 3
+  - line: [[0, 0.5], [1, 1]]
+    color: red
+  - line: [[1, 0.5], [2, 1]]
+    color: red
+  - line: [[2, 0.5], [3, 1]]
+    color: red
+  - line: [[3, 0.5], [4.9, 1.45]]
+    color: red
+  - fn: c0(x) = 1 + 0.5 (x - 1)^3
+    domain: [0, 1]
+    color: blue
+    dash: true
+  - fn: c1(x) = 1 + 0.5 (x - 2)^3
+    domain: [1, 2]
+    color: blue
+    dash: true
+  - fn: c2(x) = 1 + 0.5 (x - 3)^3
+    domain: [2, 3]
+    color: blue
+    dash: true
+  - fn: c3(x) = 1 + 0.5 (x - 4)^3
+    domain: [3, 4.9]
+    color: blue
+    dash: true
+  - text: TCP Reno
+    at: [3.9, 0.35]
+    color: red
+  - text: TCP CUBIC
+    at: [3.9, 0.22]
+    color: blue
+```
 
  ### Explicit Congestion Notification (ECN)
  TCP spesso implementano un controllo di congestione assistito alla rete, dove 2 bit dell'header IP sono marcati dal router per indicare il livello di congestione. La destinazione, se congestionata, setta i bit ECE nel segmento ACK per notificare della congestione.
