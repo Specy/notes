@@ -61,8 +61,63 @@ La strategia ottimale per MAX può essere trovata scoprendo il valore minmax di 
 
 Una volta aver calcolato questo valore per ogni stato, la strategia è quella di trovare, ad ogni passaggio, la mossa che ci porta allo stato con il massimo valore minmax
 
-![[Pasted image 20241203181401.png]]
-![[Pasted image 20241203181504.png]]
+```python
+def value(state):
+    if the state is terminal: return the state's utility
+    if the next agent is MAX: return max-value(state)
+    if the next agent is MIN: return min-value(state)
+```
+
+```python
+def max-value(state):
+    initialize v = -∞
+    for each successor of state:
+        v = max(v, value(successor))
+    return v
+```
+
+```python
+def min-value(state):
+    initialize v = +∞
+    for each successor of state:
+        v = min(v, value(successor))
+    return v
+```
+
+```mermaid
+flowchart TD
+    R(("7<br>MAX"))
+    A["7<br>MIN"]
+    B["2<br>MIN"]
+    C["6<br>MIN"]
+    L9(("9<br>LEAF"))
+    M(("7<br>MAX"))
+    L7["7<br>LEAF"]
+    N["0<br>MIN"]
+    L1(("1<br>LEAF"))
+    L9b(("9<br>LEAF"))
+    L0(("0<br>LEAF"))
+    L5(("5<br>LEAF"))
+    L2(("2<br>LEAF"))
+    L8(("8<br>LEAF"))
+    L6(("6<br>LEAF"))
+    L8b(("8<br>LEAF"))
+    R --- A
+    R --- B
+    R --- C
+    A --- L9
+    A --- M
+    M --- L7
+    M --- N
+    N --- L1
+    N --- L9b
+    N --- L0
+    B --- L5
+    B --- L2
+    B --- L8
+    C --- L6
+    C --- L8b
+```
 
 Questo algoritmo può essere implementato ricorsivamente, visitando fino alle foglie per poi risalire quando la ricorsione viene srotolata.
 Complessivamente, l'algoritmo minmax effettua una ricerca completa DFS dell'albero del gioco 
@@ -79,16 +134,162 @@ Il numero di stati in un gioco è esponenziale in base alla profondità dell'alb
 
 Nessun algoritmo è capace di eliminare completamente l'esponente, ma è possibile ridurre l'esponente a metà, facendo la scelta corretta minmax senza esaminare tutti gli stati, tagliando grandi parti dell'albero di ricerca che non contribuiscono al risultato.
 
-![[Pasted image 20241203183417.png]]
+```mermaid
+flowchart TD
+    P1["▲ Player"]
+    M["▼ Opponent<br>m"]
+    P2["▲ Player"]
+    M2["▼ Opponent<br>m′"]
+    N["▼ Opponent<br>n"]
+    P1 --- M
+    P1 -.- P2
+    P2 --- M2
+    P2 --- N
+```
 
 Considera un nodo $n$ nel grafo dove il giocatore ha la scelta di fare una mossa per arrivare a $n$. 
 Se il giocatore può fare una scelta migliore di $n$, o tra il livello corrente (quello dove si trova $n$, per esempio $m'$) oppure in qualsiasi altro punto nei livelli superiori dove ha il proprio turno (per esempio $m$), allora il giocatore non si muoverà mai su $n$, dato che le altre mosse sono migliori. 
 Una volta che abbiamo raccolto abbastanza informazioni su $n$ per arrivare a questa conclusione, possiamo tagliare il sottoalbero di $n$.
 
 Esempio:
-![[Pasted image 20241203183838.png]]
-![[Pasted image 20241203183850.png]]
-![[Pasted image 20241203183904.png]]
+
+**(a)**
+
+```mermaid
+flowchart TD
+    A["▲ A<br>[−∞, +∞]"]
+    B["▼ B<br>[−∞, 3]"]
+    C["▼ C"]
+    D["▼ D"]
+    L3["▲ 3"]
+    A --- B
+    A -.- C
+    A -.- D
+    B --- L3
+```
+
+The first leaf below *B* has the value 3. Hence, *B*, which is a MIN node, has a value of at most 3.
+
+**(b)**
+
+```mermaid
+flowchart TD
+    A["▲ A<br>[−∞, +∞]"]
+    B["▼ B<br>[−∞, 3]"]
+    C["▼ C"]
+    D["▼ D"]
+    L3["▲ 3"]
+    L12["▲ 12"]
+    A --- B
+    A -.- C
+    A -.- D
+    B --- L3
+    B --- L12
+```
+
+The second leaf below *B* has a value of 12; MIN would avoid this move, so the value of *B* is still at most 3.
+
+**(c)**
+
+```mermaid
+flowchart TD
+    A["▲ A<br>[3, +∞]"]
+    B["▼ B<br>[3, 3]"]
+    C["▼ C"]
+    D["▼ D"]
+    L3["▲ 3"]
+    L12["▲ 12"]
+    L8["▲ 8"]
+    A --- B
+    A -.- C
+    A -.- D
+    B --- L3
+    B --- L12
+    B --- L8
+```
+
+The third leaf below *B* has a value of 8; we have seen all *B*'s successor states, so the value of *B* is exactly 3. Now we can infer that the value of the root is at least 3, because MAX has a choice worth 3 at the root.
+
+**(d)**
+
+```mermaid
+flowchart TD
+    A["▲ A<br>[3, +∞]"]
+    B["▼ B<br>[3, 3]"]
+    C["▼ C<br>[−∞, 2]"]
+    D["▼ D"]
+    L3["▲ 3"]
+    L12["▲ 12"]
+    L8["▲ 8"]
+    L2["▲ 2"]
+    A --- B
+    A --- C
+    A -.- D
+    B --- L3
+    B --- L12
+    B --- L8
+    C --- L2
+```
+
+The first leaf below *C* has the value 2. Hence, *C*, which is a MIN node, has a value of at most 2. But we know that *B* is worth 3, so MAX would never choose *C*. Therefore, there is no point in looking at the other successor states of *C*. *This is an example of alpha–beta pruning.*
+
+**(e)**
+
+```mermaid
+flowchart TD
+    A["▲ A<br>[3, 14]"]
+    B["▼ B<br>[3, 3]"]
+    C["▼ C<br>[−∞, 2]"]
+    D["▼ D<br>[−∞, 14]"]
+    L3["▲ 3"]
+    L12["▲ 12"]
+    L8["▲ 8"]
+    L2["▲ 2"]
+    L14["▲ 14"]
+    A --- B
+    A --- C
+    A --- D
+    B --- L3
+    B --- L12
+    B --- L8
+    C --- L2
+    D --- L14
+```
+
+The first leaf below *D* has the value 14, so *D* is worth at most 14. This is still higher than MAX's best alternative (i.e., 3), so we need to keep exploring *D*'s successor states. Notice also that we now have bounds on all of the successors of the root, so the root's value is also at most 14.
+
+**(f)**
+
+```mermaid
+flowchart TD
+    A["▲ A<br>[3, 3]"]
+    B["▼ B<br>[3, 3]"]
+    C["▼ C<br>[−∞, 2]"]
+    D["▼ D<br>[2, 2]"]
+    L3["▲ 3"]
+    L12["▲ 12"]
+    L8["▲ 8"]
+    L2["▲ 2"]
+    L14["▲ 14"]
+    L5["▲ 5"]
+    L2b["▲ 2"]
+    A --- B
+    A --- C
+    A --- D
+    B --- L3
+    B --- L12
+    B --- L8
+    C --- L2
+    D --- L14
+    D --- L5
+    D --- L2b
+```
+
+The second successor of *D* is worth 5, so again we need to keep exploring. The third successor is worth 2, so now *D* is worth exactly 2. MAX's decision at the root is to move to *B*, giving a value of 3.
+
+- Here we can observe that *the effectiveness of alpha-beta pruning is (highly) dependent on the order* in which the states are examined: we could not prune any successors of *D* at all because the worst successors (from the point of view of MIN) were generated first.
+- If the third successor of *D* had been generated first, with value 2, we would have been able to prune the other two successors.
+- This suggests that it might be worthwhile to try to first examine the successors that are likely to be best.
 
 Il nome alpha-beta viene dal fatto che per ogni nodo dobbiamo tenere traccia di due valori, appunto alpha e beta, che ci dicono 
 - $\alpha$ il valore della miglior mossa che abbiamo trovato fino ad ora nel cammino di MAX
