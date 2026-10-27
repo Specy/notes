@@ -175,11 +175,12 @@ $$
 ## Esempio
 
 ```plot
-x: [-0.3, 5]
-y: [-0.5, 7.2]
+x: [-0.4, 5.2]
+y: [-0.8, 7]
+width: 600
 height: 300
 xticks: [1, 2, 3, 4]
-yticks: { 6: "$P_X(1)$", 2: "$P_X(2)$", 1: "$P_X(3)$", 4: "$P_X(4)$" }
+yticks: { 6: "$P_X(1)$", 2: "$\\textcolor{orange}{P_X(2)}$", 1: "$\\textcolor{teal}{P_X(3)}$", 4: "$\\textcolor{purple}{P_X(4)}$" }
 xlabel: $X \in \mathbb{R}$
 ylabel: $\alpha P_X$
 items:
@@ -188,12 +189,16 @@ items:
   - guide: [3, 1]
   - guide: [4, 4]
   - point: [1, 6]
+    size: 4.5
   - point: [2, 2]
     color: orange
+    size: 4.5
   - point: [3, 1]
     color: teal
+    size: 4.5
   - point: [4, 4]
     color: purple
+    size: 4.5
 ```
 
 *Normalizzazione*
@@ -201,7 +206,7 @@ items:
 $$
 \begin{aligned}
 \sum_{i=1}^{4} P_X(i) &= 1 \qquad (\alpha P_X) \\
-(6+2+1+4)\,\alpha &= 1 \\
+(6+\textcolor{orange}{2}+\textcolor{teal}{1}+\textcolor{purple}{4})\,\alpha &= 1 \\
 \alpha &= \frac{1}{13}
 \end{aligned}
 $$
