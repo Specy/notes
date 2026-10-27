@@ -19,8 +19,53 @@ $\overline{X} = (x_1,...,x_d)$ and  $\overline{Y} = (y_1,...,y_d)$ is defined as
 $$
 Dist(\overline{X}, \overline{Y}) = (\sum_{i = 1}^d |x_i - y_i |^p)^{1/p}
 $$
-![[Pasted image 20231208164840.png]]
-![[Pasted image 20231208164918.png]]
+
+Special cases of the $L_p$-norm are the:
+*Euclidean* ($p = 2$) (blue in Fig.) and the *Manhattan* ($p = 1$) metrics (red in Fig.)
+
+*Infinity* where $p = \infty$: $\max_{i=1}^{d} \lvert x_i - y_i \rvert$
+
+*Zero* where $p = 0$: $\sum_{i=1}^{d} \{\lvert x_i - y_i \rvert > 0\}$
+
+![[Pasted image 20231208164840 figura.png]]
+
+Euclidean ($p = 2$) is a special cases of the $L_p$-norm
+
+$$
+\begin{aligned}
+Dist(\bar{X}, \bar{Y}) &= \left(\sum_{i=1}^{d} \lvert x_i - y_i \rvert^2\right)^{1/2} = \sqrt[2]{\sum_{i=1}^{d} \lvert x_i - y_i \rvert^2} = \\
+&= \sqrt[2]{\lvert x_1 - y_1 \rvert^2 + \lvert x_2 - y_2 \rvert^2 + \cdots + \lvert x_d - y_d \rvert^2}
+\end{aligned}
+$$
+
+```plot
+x: [-0.6, 4.2]
+y: [-0.6, 2.8]
+height: 220
+axes: false
+items:
+  - line: [[0, 0], [3, 2]]
+    color: blue
+  - line: [[0, 0], [3, 0]]
+  - line: [[3, 0], [3, 2]]
+  - text: d
+    at: [1.5, 1]
+    anchor: nw
+  - text: $y_2 - y_1$
+    at: [3, 1]
+    anchor: e
+  - text: $x_2 - x_1$
+    at: [1.5, 0]
+    anchor: s
+  - point: [0, 0]
+    label: $(x_1, y_1)$
+    anchor: s
+  - point: [3, 2]
+    label: $(x_2, y_2)$
+    anchor: n
+  - point: [3, 0]
+```
+
 The euclidian distance is the "straight line" between two data points, it has a nice propriety of being rotation invariant, because the distance does not change if we rotate the axis system. This also means that the techniques like PCA, SVD and wavelet transformation for time series can be used without affecting the distance. In high dimensionality data, this function might not work very well because of the varying impact of the data sparsity, distribution, noise and feature relevance
 
 # Minkowski Distance
@@ -106,7 +151,43 @@ S_i(x_i, y_i) =
 0 & otherwise
 \end{cases}
 $$
-![[Pasted image 20231210171858.png]]
+
+| | i=1 | i=2 | i=3 | i=4 | |
+|---|---|---|---|---|---|
+| | **Color** | **Brand** | **Type** | **Season** | |
+| **Customer 1** | **Black** | **Michelein** | **ZL-345** | **Summer** | |
+| Customer 2 | Black | Michelein | XK-900 | Winter | |
+| **Customer 3** | **White** | **Michelein** | **ZL-345** | **Summer** | |
+| Customer 4 | Black | Michelein | husjk | Winter | |
+| **Customer 5** | **Black** | **Michelein** | **ùiern** | **Summer** | |
+| **Customer 6** | **White** | **Michelein** | **edke** | **Winter** | |
+| Sim(X,Y) | 1 | 1 | 0 | 0 | 0,5 |
+
+| | Summer | Winter |
+|---|---|---|
+| | 3/6 | 3/6 |
+| **Fraction** | 0,50 | 0,50 |
+| **Power Of the fraction** | 0,25 | 0,25 |
+| 1/power of the fraction | 4 | 4 |
+
+| | White | Black |
+|---|---|---|
+| | 2/6 | 4/6 |
+| **Fraction** | 0,33333333 | 0,66666667 |
+| **Power Of the fraction** | 0,11111111 | 0,44444444 |
+| 1/power of the fraction | 9 | 2,25 |
+
+| | | | i=1 | i=2 | i=3 | i=4 | |
+|---|---|---|---|---|---|---|---|
+| | | | **Color** | **Brand** | **Type** | **Season** | **Sym** |
+| Similarity | **Customer 1** | **Customer 5** | 2,25 | 1 | 0 | 4 | 7,25 |
+| Similarity | **Customer 3** | **Customer 6** | 9 | 1 | 0 | 0 | 10 |
+
+| | | | i=1 | i=2 | i=3 | i=4 | |
+|---|---|---|---|---|---|---|---|
+| | | | **Color** | **Brand** | **Type** | **Season** | **Sym** |
+| Similarity | **Customer 1** | **Customer 5** | 1 | 1 | 0 | 1 | 3/4 |
+| Similarity | **Customer 3** | **Customer 6** | 1 | 1 | 0 | 0 | 2/4 |
 
 # Mixed quantitative and categorical
 To generalize the approach to mixed quantitative and categorical, we add weights based of the numeric and categorical components. The problem is deciding *how* to assign the weights. Consider two records: $\overline{X} = (\overline{X_n}, \overline{X_c})$ and  $\overline{Y} = (\overline{Y_n}, \overline{Y_c})$ where $\overline{X}_n, \overline{Y}_n$  are the subsets of *numerical* attributes, and $\overline{X}_c, \overline{Y}_c$ the subsets of categorical attributes, then the similarity between $\overline{X}, \overline{Y}$ can be defined as:
@@ -192,7 +273,17 @@ let $G = (V, E)$ be an undirected network with nodes set $V$ and edge set $E$, w
 ## Structural Distance-Based Measure
 let $SP(s, j)$ the shortest path between node $s$ to any node $j$, the value of $SP(s,j)$ is initialize to 0 for $j=s$ and $\infty$ otherwise. then we use the Dijkstra algorithm to find the shortest path  
 ## Random walk-based similarity
-![[Pasted image 20231210184111.png]]
+
+```mermaid
+flowchart LR
+  C((C)) --- c1(( )) --- c2(( )) --- A((A))
+  A --- a1(( )) --- a2(( )) --- a3(( )) --- B((B))
+  A --- b1(( )) --- b2(( )) --- b3(( )) --- B
+  A --- d1(( )) --- d2(( )) --- d3(( )) --- B
+  A --- e1(( )) --- e2(( )) --- e3(( )) --- B
+  A --- f1(( )) --- f2(( )) --- f3(( )) --- B
+```
+
 in this graph, the shortest path between $c$ and $a$ is 3, and the distance between $b$ and $a$ is 4, yet, we should consider the node $b$ as being more similar, because for the $homophily$, node $a$ and $b$ share more paths 
 the intuition is: *if you were lost in a road network and drove randomly, taking turns (joints) randomly, which location are you more likely to reach?*
 starting from node *a* we are more likely to end up in $b$ rather than $c$
