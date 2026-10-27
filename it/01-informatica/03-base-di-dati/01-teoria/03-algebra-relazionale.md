@@ -46,8 +46,6 @@ Paternità(Padre, Figlio)
 
 $\Large{\rho_{\ Genitore \leftarrow Padre}(Paternità)}$    
 
-
-
 # Selezione
 è un operatore monadico che seleziona tutte le tuple che hanno valore **VERO** Nella condizione data, la condizione può usare i nomi dell'operando per poi usare gli operatori `<, >, =, !=, etc...` 
 $$\Large{\sigma_{Condizione}(Operando)}$$
@@ -61,7 +59,6 @@ $\Large{\sigma_{Stipendio \ > \ 50}(Impiegati)}$
 $\Large{\sigma_{Stipendio \ > \ 50 \ AND \ Filiale \ = \ 'Milano'}(Impiegati)}$ 
 $\Large{\sigma_{Filiale \ = \ LuogoNascita}(Impiegati)}$  
 
-
 # Proiezione
 è un operatore monadico che seleziona gli attributi definiti nell'operatore, 
 $$
@@ -73,16 +70,47 @@ Impiegati(Matricola, Cognome, Filiale, Stipendio)
 
 $\Large{\pi_{Matricola, Cognome}(Impiegati)}$
 
-![[Pasted image 20230707160102.png]]
-La cardinalità di una proiezione è al più quella dell'operando, può diminuire dato che si escludono tuple diplicate
+| Matricola | Cognome | Filiale | Stipendio |
+|---|---|---|---|
+| 7309 | Neri | Napoli | 55 |
+| 5998 | Neri | Milano | 64 |
+| 9553 | Rossi | Roma | 44 |
+| 5698 | Rossi | Roma | 64 |
 
+| Matricola | Cognome |
+|---|---|
+| 7309 | Neri |
+| 5998 | Neri |
+| 9553 | Rossi |
+| 5698 | Rossi |
+
+La cardinalità di una proiezione è al più quella dell'operando, può diminuire dato che si escludono tuple diplicate
 
 # Join naturale
 Dati $R_{1}(X_{1}) \ , \ R_{2}(X_{2})$ , il join naturale $R_{1} \ JOIN \ R_{2}$  è una relazione su $X_{1} \times X_{2}$ dove:
 $R_{1} \ JOIN \ R_{2} = \{ t \in X_{1} \times X_{2} \mid \exists t_{1}\in R_{1}, \ t_{2}\in R_{2} \ t[X_{1}] = t_{1} \ and \ t[X_{2}] = t_2\}$    
 
 Cioè prende tutte quelle tuple parte del prodotto cartesiano tra $X_{1}$ e $X_{2}$ tale che gli attributi comuni tra i due sono uguali. In pratica è il prodotto cartesiano dei due insiemi 
-![[Pasted image 20230707165930.png]]
+
+| Impiegato | Reparto |
+|---|---|
+| Rossi | **vendite** |
+| Neri | **produzione** |
+| Bianchi | **produzione** |
+
+| Reparto | Capo |
+|---|---|
+| **produzione** | Mori |
+| **vendite** | Bruni |
+
+$\textcolor{red}{JOIN}$
+
+| Impiegato | Reparto | Capo |
+|---|---|---|
+| Rossi | vendite | Bruni |
+| Neri | produzione | Mori |
+| Bianchi | produzione | Mori |
+
 Se ci sono tuple senza valori in comune, esse non faranno parte dell'insieme finale della join. 
 In generale, dato una generica join di $R_{1}(A,B), R_{2}(B,C)$ la cardinalità delle join è: 
  - In generale: $0 \le \lvert R_{1} \ JOIN \ R_{2} \rvert \le \lvert R_{1} \rvert \times \lvert R_{2}\rvert$  
@@ -97,7 +125,45 @@ Esistono 3 tipologie di join esterno
 - $JOIN_{right}$: mantiene tutte le tuple del secondo operando, aggiungendo valori NULL se necessario
 - $JOIN_{FULL}$: sia LEFT e RIGHT join insieme
 
-![[Pasted image 20230707173030.png]]![[Pasted image 20230707173047.png]]![[Pasted image 20230707173058.png]]![[Pasted image 20230707173108.png]]
+**Impiegati**
+
+| Impiegato | Reparto |
+|---|---|
+| **Rossi** | **vendite** |
+| Neri | produzione |
+| Bianchi | produzione |
+
+**Reparti**
+
+| Reparto | Capo |
+|---|---|
+| produzione | Mori |
+| **acquisti** | **Bruni** |
+
+**Impiegati $JOIN_{LEFT}$ Reparti**
+
+| Impiegato | Reparto | Capo |
+|---|---|---|
+| Neri | produzione | Mori |
+| Bianchi | produzione | Mori |
+| **Rossi** | **vendite** | **NULL** |
+
+**Impiegati $JOIN_{RIGHT}$ Reparti**
+
+| Impiegato | Reparto | Capo |
+|---|---|---|
+| Neri | produzione | Mori |
+| Bianchi | produzione | Mori |
+| **NULL** | **acquisti** | **Bruni** |
+
+**Impiegati $JOIN_{FULL}$ Reparti**
+
+| Impiegato | Reparto | Capo |
+|---|---|---|
+| Neri | produzione | Mori |
+| Bianchi | produzione | Mori |
+| **Rossi** | **vendite** | **NULL** |
+| **NULL** | **acquisti** | **Bruni** |
 
 # THETA Join
 La theta join effettua un join naturale con condizione, è equivalente ad una selezione di una join naturale 
@@ -107,7 +173,29 @@ $$
 
 # EQUI Join
 Se l'operatore di condizione è sempre un = allora si tratta di una EQUI Join 
-![[Pasted image 20230707173911.png]]
+
+**Impiegati**
+
+| Impiegato | Reparto |
+|---|---|
+| Rossi | A |
+| Neri | B |
+| Bianchi | B |
+
+**Reparti**
+
+| Codice | Capo |
+|---|---|
+| A | Mori |
+| B | Bruni |
+
+**Impiegati $JOIN_{Reparto=Codice}$ Reparti**
+
+| Impiegato | Reparto | Codice | Capo |
+|---|---|---|---|
+| Rossi | A | A | Mori |
+| Neri | B | B | Bruni |
+| Bianchi | B | B | Bruni |
 
 # Equivalenza di espressioni
 
