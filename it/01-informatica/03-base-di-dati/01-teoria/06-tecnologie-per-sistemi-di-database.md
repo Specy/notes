@@ -4,20 +4,45 @@ description: "Strutture di file (heap, ordinati, hash, indici B+ Tree, bitmap), 
 type: lecture
 ---
 
-```mermaid
-flowchart TB
-    SQL["SQL"] --> DBMS
-    subgraph DBMS["DBMS"]
-      direction LR
-      C["Gestore della Concorrenza"] <--> stack
-      subgraph stack[" "]
-        direction TB
-        Q["Gestore delle Query"] --> M["Gestore di Metodi di Accesso e dei File"] --> B["Gestore del Buffer di Memoria"] --> D["Gestore Spazio su Disco"]
-      end
-      stack <--> A["Gestore dell'Affidabilità"]
-    end
-    DBMS <==> F[("File Dati, Log, Indici, Catalogo Relazionale")]
-```
+<svg viewBox="0 0 660 570" width="100%" style="max-width:660px;display:block;margin:1.5rem auto" role="img" aria-label="Architettura di un DBMS: il gestore delle query, dei metodi di accesso, del buffer e dello spazio su disco impilati, affiancati dal gestore della concorrenza e da quello dell'affidabilità, sopra i file dati, log, indici e catalogo">
+<defs><marker id="i20230709110711-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" style="stroke:currentColor;stroke:context-stroke" stroke-width="1.5"/></marker></defs>
+<text x="330" y="24" text-anchor="middle" fill="currentColor" font-size="18" font-weight="bold">SQL</text>
+<polygon points="324,32 336,32 336,52 342,52 330,62 318,52 324,52" fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor"/>
+<!-- DBMS -->
+<rect x="15" y="66" width="630" height="320" fill="none" stroke="currentColor"/>
+<text x="32" y="92" fill="currentColor" font-size="14" font-weight="bold">DBMS</text>
+<g>
+<rect x="190" y="95" width="290" height="45" fill="none" stroke="currentColor"/>
+<text x="335" y="123" text-anchor="middle" fill="currentColor" font-size="14">Gestore delle Query</text>
+<rect x="190" y="172" width="290" height="45" fill="none" stroke="currentColor"/>
+<text x="335" y="191" text-anchor="middle" fill="currentColor" font-size="14">Gestore di Metodi di Accesso</text>
+<text x="335" y="209" text-anchor="middle" fill="currentColor" font-size="14">e dei File</text>
+<rect x="190" y="247" width="290" height="45" fill="none" stroke="currentColor"/>
+<text x="335" y="275" text-anchor="middle" fill="currentColor" font-size="14">Gestore del Buffer di Memoria</text>
+<rect x="190" y="322" width="290" height="45" fill="none" stroke="currentColor"/>
+<text x="335" y="350" text-anchor="middle" fill="currentColor" font-size="14">Gestore Spazio su Disco</text>
+<polygon points="329,140 341,140 341,162 347,162 335,172 323,162 329,162" fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor"/>
+<polygon points="329,217 341,217 341,237 347,237 335,247 323,237 329,237" fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor"/>
+<polygon points="329,292 341,292 341,312 347,312 335,322 323,312 329,312" fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor"/>
+</g>
+<rect x="45" y="172" width="122" height="195" fill="none" stroke="currentColor"/>
+<text x="106" y="264" text-anchor="middle" fill="currentColor" font-size="14">Gestore della</text>
+<text x="106" y="283" text-anchor="middle" fill="currentColor" font-size="14">Concorrenza</text>
+<rect x="513" y="172" width="122" height="195" fill="none" stroke="currentColor"/>
+<text x="574" y="264" text-anchor="middle" fill="currentColor" font-size="14">Gestore</text>
+<text x="574" y="283" text-anchor="middle" fill="currentColor" font-size="14">dell’Affidabilità</text>
+<line x1="169" y1="194" x2="188" y2="194" stroke="currentColor" marker-start="url(#i20230709110711-arrow)" marker-end="url(#i20230709110711-arrow)"/>
+<line x1="482" y1="194" x2="511" y2="194" stroke="currentColor" marker-start="url(#i20230709110711-arrow)" marker-end="url(#i20230709110711-arrow)"/>
+<line x1="169" y1="269" x2="188" y2="269" stroke="currentColor" marker-start="url(#i20230709110711-arrow)" marker-end="url(#i20230709110711-arrow)"/>
+<line x1="482" y1="269" x2="511" y2="269" stroke="currentColor" marker-start="url(#i20230709110711-arrow)" marker-end="url(#i20230709110711-arrow)"/>
+<line x1="169" y1="344" x2="188" y2="344" stroke="currentColor" marker-start="url(#i20230709110711-arrow)" marker-end="url(#i20230709110711-arrow)"/>
+<line x1="482" y1="344" x2="511" y2="344" stroke="currentColor" marker-start="url(#i20230709110711-arrow)" marker-end="url(#i20230709110711-arrow)"/>
+<!-- DBMS <-> file -->
+<polygon points="330,392 358,418 343,418 343,462 358,462 330,488 302,462 317,462 317,418 302,418" fill="var(--palette-purple)" fill-opacity="0.45" stroke="var(--palette-purple)"/>
+<path d="M135,500 V555 A195,12 0 0 0 525,555 V500" fill="none" stroke="currentColor"/>
+<ellipse cx="330" cy="500" rx="195" ry="12" fill="none" stroke="currentColor"/>
+<text x="330" y="538" text-anchor="middle" fill="currentColor" font-size="13">File Dati, Log, Indici, Catalogo Relazionale</text>
+</svg>
 
 # Gestore di metodi di accesso e file
 
@@ -82,54 +107,74 @@ All'interno di un file indice vengono memorizzati i *Data entry*, una coppia <ch
 Anzichè avere un singolo file contentente tutti gli indici, possiamo suddividere il file di indici in più file di indici.
 Usando una struttura ad albero possiamo rappresentare nelle foglie i record del database, e nei nodi interni gli indici di vario livello. 
 
-```mermaid
-flowchart LR
-    subgraph L2["Indice di livello 2"]
-        direction TB
-        m2["mario *"]
-        v2["vincenzo *"]
-    end
-    subgraph L1a["Indice di livello 1"]
-        direction TB
-        g1["giovanni *"]
-        m1["mario *"]
-    end
-    subgraph L1b["Indice di livello 1"]
-        direction TB
-        s1["susanna *"]
-        v1["vincenzo *"]
-    end
-    subgraph P1["Pagina 1 (File di Dati)"]
-        direction TB
-        r1["record di carlo"]
-        r2["record di federica"]
-        r3["record di giovanni"]
-    end
-    subgraph P2["Pagina 2 (File di Dati)"]
-        direction TB
-        r4["record di ilaria"]
-        r5["record di laura"]
-        r6["record di mario"]
-    end
-    subgraph P3["Pagina 3 (File di Dati)"]
-        direction TB
-        r7["record di nino"]
-        r8["record di orazio"]
-        r9["record di susanna"]
-    end
-    subgraph P4["Pagina 4 (File di Dati)"]
-        direction TB
-        r10["record di tina"]
-        r11["record di umberto"]
-        r12["record di vincenzo"]
-    end
-    m2 --> L1a
-    v2 --> L1b
-    g1 --> P1
-    m1 --> P2
-    s1 --> P3
-    v1 --> P4
-```
+<svg viewBox="0 0 705 420" width="100%" style="max-width:705px;display:block;margin:1.5rem auto" role="img" aria-label="Indice multilivello: un indice di livello 2 (mario, vincenzo) punta a due nodi dell'indice di livello 1 (giovanni, mario; susanna, vincenzo), che puntano alle quattro pagine del file di dati">
+<defs><marker id="i20230709113600-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g transform="translate(-45,-25)">
+<!-- livello 2 -->
+<text x="136" y="192" text-anchor="middle" fill="currentColor" font-size="14">Indice di</text>
+<text x="136" y="211" text-anchor="middle" fill="currentColor" font-size="14">livello 2</text>
+<rect x="60" y="233" width="152" height="86" fill="none" stroke="currentColor"/>
+<line x1="60" y1="276" x2="212" y2="276" stroke="currentColor"/>
+<text x="122" y="260" text-anchor="middle" fill="currentColor" font-size="14">mario</text>
+<text x="176" y="260" text-anchor="middle" fill="currentColor" font-size="14">*</text>
+<text x="122" y="303" text-anchor="middle" fill="currentColor" font-size="14">vincenzo</text>
+<text x="176" y="303" text-anchor="middle" fill="currentColor" font-size="14">*</text>
+<!-- livello 1 -->
+<text x="348" y="105" text-anchor="middle" fill="currentColor" font-size="14">Indice di</text>
+<text x="348" y="124" text-anchor="middle" fill="currentColor" font-size="14">livello 1</text>
+<rect x="272" y="147" width="152" height="86" fill="none" stroke="currentColor"/>
+<line x1="272" y1="190" x2="424" y2="190" stroke="currentColor"/>
+<text x="334" y="174" text-anchor="middle" fill="currentColor" font-size="14">giovanni</text>
+<text x="388" y="174" text-anchor="middle" fill="currentColor" font-size="14">*</text>
+<text x="334" y="217" text-anchor="middle" fill="currentColor" font-size="14">mario</text>
+<text x="388" y="217" text-anchor="middle" fill="currentColor" font-size="14">*</text>
+<rect x="272" y="258" width="152" height="86" fill="none" stroke="currentColor"/>
+<line x1="272" y1="301" x2="424" y2="301" stroke="currentColor"/>
+<text x="334" y="285" text-anchor="middle" fill="currentColor" font-size="14">susanna</text>
+<text x="388" y="285" text-anchor="middle" fill="currentColor" font-size="14">*</text>
+<text x="334" y="328" text-anchor="middle" fill="currentColor" font-size="14">vincenzo</text>
+<text x="388" y="328" text-anchor="middle" fill="currentColor" font-size="14">*</text>
+<!-- file di dati -->
+<text x="563" y="45" text-anchor="middle" fill="currentColor" font-size="14">File di</text>
+<text x="563" y="64" text-anchor="middle" fill="currentColor" font-size="14">Dati</text>
+<text x="697" y="54" text-anchor="middle" fill="currentColor" font-size="14">Pagina</text>
+<rect x="487" y="70" width="152" height="78" fill="none" stroke="currentColor"/>
+<text x="563" y="88" text-anchor="middle" fill="currentColor" font-size="13">record di carlo</text>
+<line x1="487" y1="96" x2="639" y2="96" stroke="currentColor"/>
+<text x="563" y="114" text-anchor="middle" fill="currentColor" font-size="13">record di federica</text>
+<line x1="487" y1="122" x2="639" y2="122" stroke="currentColor"/>
+<text x="563" y="140" text-anchor="middle" fill="currentColor" font-size="13">record di giovanni</text>
+<text x="697" y="114" text-anchor="middle" fill="currentColor" font-size="14">1</text>
+<rect x="487" y="166" width="152" height="78" fill="none" stroke="currentColor"/>
+<text x="563" y="184" text-anchor="middle" fill="currentColor" font-size="13">record di ilaria</text>
+<line x1="487" y1="192" x2="639" y2="192" stroke="currentColor"/>
+<text x="563" y="210" text-anchor="middle" fill="currentColor" font-size="13">record di laura</text>
+<line x1="487" y1="218" x2="639" y2="218" stroke="currentColor"/>
+<text x="563" y="236" text-anchor="middle" fill="currentColor" font-size="13">record di mario</text>
+<text x="697" y="210" text-anchor="middle" fill="currentColor" font-size="14">2</text>
+<rect x="487" y="262" width="152" height="78" fill="none" stroke="currentColor"/>
+<text x="563" y="280" text-anchor="middle" fill="currentColor" font-size="13">record di nino</text>
+<line x1="487" y1="288" x2="639" y2="288" stroke="currentColor"/>
+<text x="563" y="306" text-anchor="middle" fill="currentColor" font-size="13">record di orazio</text>
+<line x1="487" y1="314" x2="639" y2="314" stroke="currentColor"/>
+<text x="563" y="332" text-anchor="middle" fill="currentColor" font-size="13">record di susanna</text>
+<text x="697" y="306" text-anchor="middle" fill="currentColor" font-size="14">3</text>
+<rect x="487" y="352" width="152" height="78" fill="none" stroke="currentColor"/>
+<text x="563" y="370" text-anchor="middle" fill="currentColor" font-size="13">record di tina</text>
+<line x1="487" y1="378" x2="639" y2="378" stroke="currentColor"/>
+<text x="563" y="396" text-anchor="middle" fill="currentColor" font-size="13">record di umberto</text>
+<line x1="487" y1="404" x2="639" y2="404" stroke="currentColor"/>
+<text x="563" y="422" text-anchor="middle" fill="currentColor" font-size="13">record di vincenzo</text>
+<text x="697" y="396" text-anchor="middle" fill="currentColor" font-size="14">4</text>
+<!-- puntatori -->
+<line x1="214" y1="240" x2="270" y2="228" stroke="currentColor" marker-end="url(#i20230709113600-arrow)"/>
+<line x1="214" y1="308" x2="270" y2="314" stroke="currentColor" marker-end="url(#i20230709113600-arrow)"/>
+<line x1="426" y1="166" x2="485" y2="110" stroke="currentColor" marker-end="url(#i20230709113600-arrow)"/>
+<line x1="426" y1="212" x2="485" y2="210" stroke="currentColor" marker-end="url(#i20230709113600-arrow)"/>
+<line x1="426" y1="285" x2="485" y2="300" stroke="currentColor" marker-end="url(#i20230709113600-arrow)"/>
+<line x1="426" y1="330" x2="485" y2="400" stroke="currentColor" marker-end="url(#i20230709113600-arrow)"/>
+</g>
+</svg>
 
 ## Indici B+ Tree
 
@@ -137,22 +182,66 @@ Possiamo implementare la struttura di indici multilivello usando i B+ Tree.
 è un implementazione più efficiente del B-Tree. Il B-Tree è strutturato con ogni nodo contenente una lista alternata di valore - chiave $\langle P_{1}, K_{1},..., K_{q}, P_{q} \rangle$ dove $K_{1} \lt ,..., \lt K_{q-1}$ e $P_{K_{i}}$ punta ai dati relativi alla chiave $K_i$. 
 Tutti i nodi foglia sono allo stesso livello 
 
-```mermaid
-flowchart TD
-    R["p0 | k0 | p1 | k1 | p2"]
-    N1["p'0 | k'0 | p'1 | k'1 | p'2"]
-    N2["p#quot;0 | k#quot;0 | p#quot;1 | k#quot;1 | p#quot;2"]
-    N3["…"]
-    R -->|p0| N1
-    R -->|p1| N2
-    R -->|p2| N3
-    N1 -.->|k'0| A["REC(k'0)"]
-    N1 -.->|k'1| B["REC(k'1)"]
-    R -.->|k0| C["REC(k0)"]
-    R -.->|k1| D["REC(k1)"]
-    N2 -.->|k#quot;0| E["REC(k#quot;0)"]
-    N2 -.->|k#quot;1| F["REC(k#quot;1)"]
-```
+<svg viewBox="0 0 610 480" width="100%" style="max-width:610px;display:block;margin:1.5rem auto" role="img" aria-label="B-tree: ogni nodo alterna puntatori ai figli p, chiavi k e puntatori ai record; le linee tratteggiate portano dai nodi ai record REC(k) nel file di dati">
+<defs><marker id="i20230709114439-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g transform="translate(-150,0)">
+<!-- nodi -->
+<rect x="318" y="8" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="338" y="28" text-anchor="middle" fill="currentColor" font-size="13">p0</text>
+<rect x="358" y="8" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="378" y="28" text-anchor="middle" fill="currentColor" font-size="13">k0</text>
+<rect x="398" y="8" width="8" height="30" fill="none" stroke="currentColor"/>
+<rect x="406" y="8" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="426" y="28" text-anchor="middle" fill="currentColor" font-size="13">p1</text>
+<rect x="446" y="8" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="466" y="28" text-anchor="middle" fill="currentColor" font-size="13">k1</text>
+<rect x="486" y="8" width="8" height="30" fill="none" stroke="currentColor"/>
+<rect x="494" y="8" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="514" y="28" text-anchor="middle" fill="currentColor" font-size="13">p2</text>
+<rect x="168" y="96" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="188" y="116" text-anchor="middle" fill="currentColor" font-size="13">p’0</text>
+<rect x="208" y="96" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="228" y="116" text-anchor="middle" fill="currentColor" font-size="13">k’0</text>
+<rect x="248" y="96" width="8" height="30" fill="none" stroke="currentColor"/>
+<rect x="256" y="96" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="276" y="116" text-anchor="middle" fill="currentColor" font-size="13">p’1</text>
+<rect x="296" y="96" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="316" y="116" text-anchor="middle" fill="currentColor" font-size="13">k’1</text>
+<rect x="336" y="96" width="8" height="30" fill="none" stroke="currentColor"/>
+<rect x="344" y="96" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="364" y="116" text-anchor="middle" fill="currentColor" font-size="13">p’2</text>
+<rect x="488" y="96" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="508" y="116" text-anchor="middle" fill="currentColor" font-size="13">p”0</text>
+<rect x="528" y="96" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="548" y="116" text-anchor="middle" fill="currentColor" font-size="13">k”0</text>
+<rect x="568" y="96" width="8" height="30" fill="none" stroke="currentColor"/>
+<rect x="576" y="96" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="596" y="116" text-anchor="middle" fill="currentColor" font-size="13">p”1</text>
+<rect x="616" y="96" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="636" y="116" text-anchor="middle" fill="currentColor" font-size="13">k”1</text>
+<rect x="656" y="96" width="8" height="30" fill="none" stroke="currentColor"/>
+<rect x="664" y="96" width="40" height="30" fill="none" stroke="currentColor"/>
+<text x="684" y="116" text-anchor="middle" fill="currentColor" font-size="13">p”2</text>
+<!-- puntatori ai figli -->
+<line x1="338" y1="38" x2="292" y2="95" stroke="currentColor" marker-end="url(#i20230709114439-arrow)"/>
+<line x1="426" y1="38" x2="540" y2="95" stroke="currentColor" marker-end="url(#i20230709114439-arrow)"/>
+<line x1="538" y1="26" x2="742" y2="80" stroke="currentColor" marker-end="url(#i20230709114439-arrow)"/>
+<!-- puntatori ai record -->
+<line x1="180" y1="414" x2="728" y2="414" stroke="currentColor"/>
+<line x1="252" y1="126" x2="252" y2="446" stroke="currentColor" stroke-dasharray="5 4" marker-end="url(#i20230709114439-arrow)"/>
+<text x="252" y="468" text-anchor="middle" fill="currentColor" font-size="12">REC(k’0)</text>
+<line x1="340" y1="126" x2="340" y2="446" stroke="currentColor" stroke-dasharray="5 4" marker-end="url(#i20230709114439-arrow)"/>
+<text x="340" y="468" text-anchor="middle" fill="currentColor" font-size="12">REC(k’1)</text>
+<line x1="402" y1="38" x2="402" y2="446" stroke="currentColor" stroke-dasharray="5 4" marker-end="url(#i20230709114439-arrow)"/>
+<text x="402" y="468" text-anchor="middle" fill="currentColor" font-size="12">REC(k0)</text>
+<line x1="490" y1="38" x2="490" y2="446" stroke="currentColor" stroke-dasharray="5 4" marker-end="url(#i20230709114439-arrow)"/>
+<text x="490" y="468" text-anchor="middle" fill="currentColor" font-size="12">REC(k1)</text>
+<line x1="572" y1="126" x2="572" y2="446" stroke="currentColor" stroke-dasharray="5 4" marker-end="url(#i20230709114439-arrow)"/>
+<text x="572" y="468" text-anchor="middle" fill="currentColor" font-size="12">REC(k”0)</text>
+<line x1="660" y1="126" x2="660" y2="446" stroke="currentColor" stroke-dasharray="5 4" marker-end="url(#i20230709114439-arrow)"/>
+<text x="660" y="468" text-anchor="middle" fill="currentColor" font-size="12">REC(k”1)</text>
+</g>
+</svg>
 
 Con l'aggiunta di un elemento, l'albero è mantenuto bilanciato tenendo tutte le foglie allo stesso livello, quando un nodo diventa completo, esso si divide in due nodi, il nodo radice avrà solo il valore centrale del nodo, mentre i figli avranno la parte sinistra e destra rispettivamente. Quando uno di questi due nodi si riempie, il nodo viene diviso in due, e aggiunto al padre, posizionandolo correttamente in base alla chiave.
 Se il padre si riempie, anche esso è diviso e si propaga a tutto il resto dell ramo verso l'alto.
@@ -161,24 +250,87 @@ Dopo un eliminazione di un elemento, si controlla se il nodo è pieno per metà 
 
 L'albero *B+Tree* ha anche un puntatore tra i vari nodi foglia, e ogni nodo foglia memorizza gli indici dei dati. Essendo bilanciato, la ricerca di un indice è costante all'altezza dell'albero
 
-```mermaid
-block-beta
-  columns 7
-  space:2 R["francesco"]:3 space:2
-  space:7
-  N1["benedetto"]:3 space N2["giovanni"]:3
-  space:7
-  L1["anacleto | aristide"] space L2["benedetto | ennio"] space L3["francesco | gino"] space L4["giovanni | pio"]
-  R --> N1
-  R --> N2
-  N1 --> L1
-  N1 --> L2
-  N2 --> L3
-  N2 --> L4
-  L1 --> L2
-  L2 --> L3
-  L3 --> L4
-```
+<svg viewBox="0 0 700 335" width="100%" style="max-width:700px;display:block;margin:1.5rem auto" role="img" aria-label="B+ tree: radice francesco, nodi interni benedetto e giovanni, foglie collegate in lista (anacleto aristide, benedetto ennio, francesco gino, giovanni pio) con i puntatori ai record del file di dati">
+<defs><marker id="i20230709115122-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<g transform="translate(-30,0) scale(0.84)">
+<!-- nodi -->
+<rect x="333" y="12" width="195" height="38" fill="none" stroke="currentColor"/>
+<line x1="344" y1="12" x2="344" y2="50" stroke="currentColor"/>
+<text x="384.5" y="36" text-anchor="middle" fill="currentColor" font-size="15">francesco</text>
+<line x1="425" y1="12" x2="425" y2="50" stroke="currentColor"/>
+<line x1="436" y1="12" x2="436" y2="50" stroke="currentColor"/>
+<line x1="517" y1="12" x2="517" y2="50" stroke="currentColor"/>
+<line x1="528" y1="12" x2="528" y2="50" stroke="currentColor"/>
+<rect x="133" y="115" width="195" height="38" fill="none" stroke="currentColor"/>
+<line x1="144" y1="115" x2="144" y2="153" stroke="currentColor"/>
+<text x="184.5" y="139" text-anchor="middle" fill="currentColor" font-size="15">benedetto</text>
+<line x1="225" y1="115" x2="225" y2="153" stroke="currentColor"/>
+<line x1="236" y1="115" x2="236" y2="153" stroke="currentColor"/>
+<line x1="317" y1="115" x2="317" y2="153" stroke="currentColor"/>
+<line x1="328" y1="115" x2="328" y2="153" stroke="currentColor"/>
+<rect x="537" y="115" width="195" height="38" fill="none" stroke="currentColor"/>
+<line x1="548" y1="115" x2="548" y2="153" stroke="currentColor"/>
+<text x="588.5" y="139" text-anchor="middle" fill="currentColor" font-size="15">giovanni</text>
+<line x1="629" y1="115" x2="629" y2="153" stroke="currentColor"/>
+<line x1="640" y1="115" x2="640" y2="153" stroke="currentColor"/>
+<line x1="721" y1="115" x2="721" y2="153" stroke="currentColor"/>
+<line x1="732" y1="115" x2="732" y2="153" stroke="currentColor"/>
+<rect x="53" y="245" width="195" height="38" fill="none" stroke="currentColor"/>
+<line x1="64" y1="245" x2="64" y2="283" stroke="currentColor"/>
+<text x="104.5" y="269" text-anchor="middle" fill="currentColor" font-size="15">anacleto</text>
+<line x1="145" y1="245" x2="145" y2="283" stroke="currentColor"/>
+<line x1="156" y1="245" x2="156" y2="283" stroke="currentColor"/>
+<text x="196.5" y="269" text-anchor="middle" fill="currentColor" font-size="15">aristide</text>
+<line x1="237" y1="245" x2="237" y2="283" stroke="currentColor"/>
+<line x1="248" y1="245" x2="248" y2="283" stroke="currentColor"/>
+<rect x="258" y="245" width="195" height="38" fill="none" stroke="currentColor"/>
+<line x1="269" y1="245" x2="269" y2="283" stroke="currentColor"/>
+<text x="309.5" y="269" text-anchor="middle" fill="currentColor" font-size="15">benedetto</text>
+<line x1="350" y1="245" x2="350" y2="283" stroke="currentColor"/>
+<line x1="361" y1="245" x2="361" y2="283" stroke="currentColor"/>
+<text x="401.5" y="269" text-anchor="middle" fill="currentColor" font-size="15">ennio</text>
+<line x1="442" y1="245" x2="442" y2="283" stroke="currentColor"/>
+<line x1="453" y1="245" x2="453" y2="283" stroke="currentColor"/>
+<rect x="463" y="245" width="195" height="38" fill="none" stroke="currentColor"/>
+<line x1="474" y1="245" x2="474" y2="283" stroke="currentColor"/>
+<text x="514.5" y="269" text-anchor="middle" fill="currentColor" font-size="15">francesco</text>
+<line x1="555" y1="245" x2="555" y2="283" stroke="currentColor"/>
+<line x1="566" y1="245" x2="566" y2="283" stroke="currentColor"/>
+<text x="606.5" y="269" text-anchor="middle" fill="currentColor" font-size="15">gino</text>
+<line x1="647" y1="245" x2="647" y2="283" stroke="currentColor"/>
+<line x1="658" y1="245" x2="658" y2="283" stroke="currentColor"/>
+<rect x="668" y="245" width="195" height="38" fill="none" stroke="currentColor"/>
+<line x1="679" y1="245" x2="679" y2="283" stroke="currentColor"/>
+<text x="719.5" y="269" text-anchor="middle" fill="currentColor" font-size="15">giovanni</text>
+<line x1="760" y1="245" x2="760" y2="283" stroke="currentColor"/>
+<line x1="771" y1="245" x2="771" y2="283" stroke="currentColor"/>
+<text x="811.5" y="269" text-anchor="middle" fill="currentColor" font-size="15">pio</text>
+<line x1="852" y1="245" x2="852" y2="283" stroke="currentColor"/>
+<line x1="863" y1="245" x2="863" y2="283" stroke="currentColor"/>
+<!-- puntatori -->
+<line x1="338.5" y1="37" x2="183" y2="112" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="430.5" y1="50" x2="548" y2="112" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="138.5" y1="153" x2="112" y2="242" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="230.5" y1="153" x2="293" y2="242" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="542.5" y1="153" x2="520" y2="242" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="634.5" y1="153" x2="703" y2="242" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="242.5" y1="264" x2="257" y2="264" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="447.5" y1="264" x2="462" y2="264" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="652.5" y1="264" x2="667" y2="264" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<!-- puntatori ai record -->
+<line x1="40" y1="342" x2="863" y2="340" stroke="currentColor"/>
+<circle cx="40" cy="342" r="4" fill="currentColor"/>
+<circle cx="863" cy="340" r="4" fill="currentColor"/>
+<line x1="58.5" y1="283" x2="58.5" y2="386" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="150.5" y1="283" x2="150.5" y2="386" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="263.5" y1="283" x2="263.5" y2="386" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="355.5" y1="283" x2="355.5" y2="386" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="468.5" y1="283" x2="468.5" y2="386" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="560.5" y1="283" x2="560.5" y2="386" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="673.5" y1="283" x2="673.5" y2="386" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+<line x1="765.5" y1="283" x2="765.5" y2="386" stroke="currentColor" marker-end="url(#i20230709115122-arrow)"/>
+</g>
+</svg>
 
 In oltre usando questa struttura è possibile implementre facilmente un range di ricerca.
 

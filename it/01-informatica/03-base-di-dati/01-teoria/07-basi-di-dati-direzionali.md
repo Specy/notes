@@ -4,26 +4,37 @@ description: "Sistemi direzionali e operativi a confronto (OLTP vs OLAP), archit
 type: lecture
 ---
 
-```mermaid
-flowchart TD
-    D["Livello direzionale"]
-    O["Livello operativo"]
-    D -->|"obiettivi, strategie"| O
-    O -->|risultati| D
-```
+<svg viewBox="0 0 440 330" width="100%" style="max-width:440px;display:block;margin:1.5rem auto" role="img" aria-label="Il livello direzionale (triangolo) passa obiettivi e strategie al livello operativo (rettangolo), che restituisce i risultati">
+<defs><marker id="i20230710123803-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<polygon points="250,15 395,140 105,140" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="250" y="92" text-anchor="middle" fill="currentColor" font-size="16" font-weight="bold">Livello</text>
+<text x="250" y="114" text-anchor="middle" fill="currentColor" font-size="16" font-weight="bold">direzionale</text>
+<rect x="105" y="210" width="290" height="108" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<text x="250" y="258" text-anchor="middle" fill="currentColor" font-size="16" font-weight="bold">Livello</text>
+<text x="250" y="280" text-anchor="middle" fill="currentColor" font-size="16" font-weight="bold">operativo</text>
+<line x1="185" y1="140" x2="185" y2="208" stroke="currentColor" stroke-width="1.5" marker-end="url(#i20230710123803-arrow)"/>
+<line x1="315" y1="210" x2="315" y2="142" stroke="currentColor" stroke-width="1.5" marker-end="url(#i20230710123803-arrow)"/>
+<text x="90" y="170" text-anchor="end" fill="currentColor" font-size="15" font-weight="bold">obiettivi</text>
+<text x="90" y="190" text-anchor="end" fill="currentColor" font-size="15" font-weight="bold">strategie</text>
+<text x="330" y="182" fill="currentColor" font-size="15" font-weight="bold">risultati</text>
+</svg>
 
 - **Livello direzionale**: si occupa delle attività necessarie alla definizione di obiettivi da raggiungere e alle strategie da intraprendere per perseguirli 
 - **Livello operativo**: si occupa delle attività che l'azienda produce in maniera propria, fornendo al livello direzionale le informazioni sui risultati raggiunti
 
 # Tipi di sistemi direzionali
 
-```mermaid
-block-beta
-  columns 5
-  space:2 a["Pianificazione strategica"] space:2
-  space b["Controllo direzionale"]:3 space
-  c["Controllo operativo"]:5
-```
+<svg viewBox="0 0 440 248" width="100%" style="max-width:440px;display:block;margin:1.5rem auto" role="img" aria-label="Piramide delle attività: pianificazione strategica in cima, controllo direzionale al centro, controllo operativo alla base">
+<polygon points="220,8 425,240 15,240" fill="none" stroke="currentColor" stroke-width="1.5"/>
+<line x1="122.8" y1="118" x2="317.2" y2="118" stroke="currentColor" stroke-width="1.5"/>
+<line x1="66.2" y1="182" x2="373.8" y2="182" stroke="currentColor" stroke-width="1.5"/>
+<text x="220" y="90" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">Pianificazione</text>
+<text x="220" y="108" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">strategica</text>
+<text x="220" y="146" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">Controllo</text>
+<text x="220" y="164" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">direzionale</text>
+<text x="220" y="208" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">Controllo</text>
+<text x="220" y="226" text-anchor="middle" fill="currentColor" font-size="14" font-weight="bold">operativo</text>
+</svg>
 
 - **Pianificazione strategica**: determina gli obiettivi generali dell'azienda
 - **Controllo direzionale di gestione**: definisce traguardi economici, cioè risultati da conseguire a medio termine, e la loro verifica
@@ -78,35 +89,70 @@ I dati in un DWH possono solo essere caricati e letti, non modificati o eliminat
 
 # Architettura di un DWH
 
-```mermaid
-flowchart LR
-    subgraph SRC["Data sources"]
-        direction TB
-        OS[("Operational systems")]
-        FF[("Flat files")]
-    end
-    ETL["ETL"]
-    ST[("staging<br/>Dati riconciliati")]
-    WH[("Warehousing Integration")]
-    subgraph DM["Data Marts"]
-        direction TB
-        M1[(" ")]
-        M2[(" ")]
-        M3[(" ")]
-    end
-    RP["reporting"]
-    AN["analysis"]
-    MI["mining"]
-    OS --> ETL
-    FF --> ETL
-    ETL --> ST --> WH
-    WH --> M1
-    WH --> M2
-    WH --> M3
-    M1 --> RP
-    M2 --> AN
-    M3 --> MI
-```
+<svg viewBox="0 0 708 312" width="100%" style="max-width:708px;display:block;margin:1.5rem auto" role="img" aria-label="Architettura di un data warehouse: sorgenti dati (sistemi operazionali, flat file), ETL, staging con i dati riconciliati, warehousing integration, data mart, e infine reporting, analysis e mining">
+<g transform="scale(0.88)" font-size="15">
+<!-- data sources -->
+<path d="M21,32 V82 A32,10 0 0 0 85,82 V32" fill="none" stroke="currentColor"/>
+<ellipse cx="53" cy="32" rx="32" ry="10" fill="none" stroke="currentColor"/>
+<path d="M21,120 V175 A32,10 0 0 0 85,175 V120" fill="none" stroke="currentColor"/>
+<ellipse cx="53" cy="120" rx="32" ry="10" fill="none" stroke="currentColor"/>
+<path d="M21,270 V285 A32,6 0 0 0 85,285 V270" fill="none" stroke="currentColor"/>
+<ellipse cx="53" cy="270" rx="32" ry="6" fill="none" stroke="currentColor"/>
+<text x="8" y="207" fill="currentColor" font-size="15" font-weight="bold">Operational</text>
+<text x="8" y="226" fill="currentColor" font-size="15" font-weight="bold">systems</text>
+<text x="53" y="318" text-anchor="middle" fill="currentColor" font-size="15" font-weight="bold">Flat files</text>
+<path d="M95,45 Q113,45 113,65 V172 Q113,190 130,190 Q113,190 113,208 V320 Q113,340 95,340" fill="none" stroke="currentColor"/>
+<text x="122" y="292" fill="currentColor" font-size="15" font-weight="bold">Data</text>
+<text x="122" y="311" fill="currentColor" font-size="15" font-weight="bold">sources</text>
+<polygon points="133,182 149,182 149,176 160,190 149,204 149,198 133,198" fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor"/>
+<!-- ETL, staging -->
+<rect x="160" y="157" width="88" height="68" fill="none" stroke="currentColor"/>
+<text x="204" y="196" text-anchor="middle" fill="currentColor" font-size="15" font-weight="bold">ETL</text>
+<polygon points="250,182 263,182 263,176 274,190 263,204 263,198 250,198" fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor"/>
+<path d="M274,166 V222 A32,9 0 0 0 338,222 V166" fill="none" stroke="currentColor"/>
+<ellipse cx="306" cy="166" rx="32" ry="9" fill="none" stroke="currentColor"/>
+<text x="306" y="202" text-anchor="middle" fill="currentColor" font-size="15" font-weight="bold">staging</text>
+<text x="270" y="258" fill="currentColor" font-size="15" font-weight="bold">Dati</text>
+<text x="270" y="277" fill="currentColor" font-size="15" font-weight="bold">riconciliati</text>
+<polygon points="339,182 351,182 351,176 362,190 351,204 351,198 339,198" fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor"/>
+<!-- warehouse -->
+<path d="M362,100 V270 A85,16 0 0 0 532,270 V100" fill="none" stroke="currentColor"/>
+<ellipse cx="447" cy="100" rx="85" ry="16" fill="none" stroke="currentColor"/>
+<text x="447" y="140" text-anchor="middle" fill="currentColor" font-size="15" font-weight="bold">Warehousing</text>
+<text x="447" y="159" text-anchor="middle" fill="currentColor" font-size="15" font-weight="bold">Integration</text>
+<g>
+<rect x="400" y="178" width="26" height="26" fill="none" stroke="currentColor"/>
+<rect x="464" y="178" width="26" height="26" fill="none" stroke="currentColor"/>
+<rect x="400" y="228" width="26" height="26" fill="none" stroke="currentColor"/>
+<rect x="464" y="228" width="26" height="26" fill="none" stroke="currentColor"/>
+<line x1="426" y1="191" x2="464" y2="191" stroke="currentColor"/>
+<line x1="426" y1="241" x2="464" y2="241" stroke="currentColor"/>
+<line x1="413" y1="204" x2="413" y2="228" stroke="currentColor"/>
+<line x1="477" y1="204" x2="477" y2="228" stroke="currentColor"/>
+</g>
+<!-- data marts -->
+<polygon points="534,104 552,104 552,98 563,112 552,126 552,120 534,120" fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor"/>
+<path d="M570,82 V140 A33,9 0 0 0 636,140 V82" fill="none" stroke="currentColor"/>
+<ellipse cx="603" cy="82" rx="33" ry="9" fill="none" stroke="currentColor"/>
+<polygon points="534,184 552,184 552,178 563,192 552,206 552,200 534,200" fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor"/>
+<path d="M570,162 V220 A33,9 0 0 0 636,220 V162" fill="none" stroke="currentColor"/>
+<ellipse cx="603" cy="162" rx="33" ry="9" fill="none" stroke="currentColor"/>
+<polygon points="534,260 552,260 552,254 563,268 552,282 552,276 534,276" fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor"/>
+<path d="M570,238 V296 A33,9 0 0 0 636,296 V238" fill="none" stroke="currentColor"/>
+<ellipse cx="603" cy="238" rx="33" ry="9" fill="none" stroke="currentColor"/>
+<text x="580" y="330" fill="currentColor" font-size="15" font-weight="bold">Data</text>
+<text x="580" y="349" fill="currentColor" font-size="15" font-weight="bold">Marts</text>
+<!-- strumenti -->
+<polygon points="656,167 677,167 677,161 688,175 677,189 677,183 656,183" fill="var(--palette-muted)" fill-opacity="0.3" stroke="currentColor"/>
+<path d="M705,2 Q690,10 690,32 V318 Q690,340 705,348" fill="none" stroke="currentColor"/>
+<rect x="705" y="30" width="92" height="57" fill="none" stroke="currentColor"/>
+<text x="751" y="63" text-anchor="middle" fill="currentColor" font-size="15" font-weight="bold">reporting</text>
+<rect x="705" y="147" width="92" height="57" fill="none" stroke="currentColor"/>
+<text x="751" y="180" text-anchor="middle" fill="currentColor" font-size="15" font-weight="bold">analysis</text>
+<rect x="705" y="275" width="92" height="57" fill="none" stroke="currentColor"/>
+<text x="751" y="308" text-anchor="middle" fill="currentColor" font-size="15" font-weight="bold">mining</text>
+</g>
+</svg>
 
 ## Data sources
 
@@ -254,113 +300,129 @@ Durante il KDD si cerca di trovare pattern sconosciuti ma validi, cioè regole c
 
 Uno schema a stella è composto da una tabella principale chiamata di *Tabella fatti* che memorizza i fatti e misure, e da due o più tabelle autisiali chiamate *Tabelle dimensione* che rappresenta una dimensione interessante dove analizzare i dati.
 
-```mermaid
-erDiagram
-    TEMPO ||--o{ VENDITE : ""
-    LUOGO ||--o{ VENDITE : ""
-    ARTICOLO ||--o{ VENDITE : ""
-    CLIENTE ||--o{ VENDITE : ""
-    TEMPO {
-        string CodiceTempo PK
-        string Giorno
-        string Mese
-        string Trimestre
-        string Anno
-    }
-    LUOGO {
-        string CodiceLuogo PK
-        string Negozio
-        string Indirizzo
-        string Città
-        string Provincia
-        string Regione
-    }
-    ARTICOLO {
-        string CodiceArticolo PK
-        string Descrizione
-        string Marca
-        string Categoria
-    }
-    CLIENTE {
-        string CodiceCliente PK
-        string Nome
-        string Cognome
-        string Sesso
-        string Età
-        string Professione
-    }
-    VENDITE {
-        string CodiceTempo FK
-        string CodiceLuogo FK
-        string CodiceArticolo FK
-        string CodiceCliente FK
-        string Quantità
-        string Incasso
-    }
-```
+<svg viewBox="0 0 700 500" width="100%" style="max-width:700px;display:block;margin:1.5rem auto" role="img" aria-label="Schema a stella: la tabella dei fatti VENDITE al centro, con le chiavi verso le dimensioni TEMPO, LUOGO, ARTICOLO e CLIENTE e le misure Quantità e Incasso">
+<defs><marker id="i20230710133939-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<!-- dimensioni -->
+<text x="18" y="30" fill="currentColor" font-size="18" font-weight="bold">TEMPO</text>
+<rect x="10" y="44" width="222" height="157" fill="none" stroke="currentColor"/>
+<text x="18" y="66" fill="currentColor" font-size="17" font-weight="bold">CodiceTempo</text>
+<text x="18" y="96" fill="currentColor" font-size="17">Giorno</text>
+<text x="18" y="126" fill="currentColor" font-size="17">Mese</text>
+<text x="18" y="156" fill="currentColor" font-size="17">Trimestre</text>
+<text x="18" y="186" fill="currentColor" font-size="17">Anno</text>
+<text x="10" y="266" fill="currentColor" font-size="18" font-weight="bold">LUOGO</text>
+<rect x="3" y="280" width="193" height="202" fill="none" stroke="currentColor"/>
+<text x="11" y="303" fill="currentColor" font-size="17" font-weight="bold">CodiceLuogo</text>
+<text x="11" y="335" fill="currentColor" font-size="17">Negozio</text>
+<text x="11" y="366" fill="currentColor" font-size="17">Indirizzo</text>
+<text x="11" y="398" fill="currentColor" font-size="17" font-weight="bold">Città</text>
+<text x="11" y="430" fill="currentColor" font-size="17">Provincia</text>
+<text x="11" y="462" fill="currentColor" font-size="17">Regione</text>
+<text x="515" y="64" fill="currentColor" font-size="18" font-weight="bold">ARTICOLO</text>
+<rect x="507" y="70" width="186" height="124" fill="none" stroke="currentColor"/>
+<text x="515" y="92" fill="currentColor" font-size="17" font-weight="bold">CodiceArticolo</text>
+<text x="515" y="116" fill="currentColor" font-size="17">Descrizione</text>
+<text x="515" y="140" fill="currentColor" font-size="17">Marca</text>
+<text x="515" y="164" fill="currentColor" font-size="17">Categoria</text>
+<text x="494" y="302" fill="currentColor" font-size="18" font-weight="bold">CLIENTE</text>
+<rect x="485" y="315" width="195" height="180" fill="none" stroke="currentColor"/>
+<text x="494" y="338" fill="currentColor" font-size="17" font-weight="bold">CodiceCliente</text>
+<text x="494" y="367" fill="currentColor" font-size="17">Nome</text>
+<text x="494" y="396" fill="currentColor" font-size="17">Cognome</text>
+<text x="494" y="425" fill="currentColor" font-size="17">Sesso</text>
+<text x="494" y="454" fill="currentColor" font-size="17">Età</text>
+<text x="494" y="483" fill="currentColor" font-size="17">Professione</text>
+<!-- fatti -->
+<text x="252" y="124" fill="var(--palette-orange)" font-size="18" font-weight="bold">VENDITE</text>
+<rect x="243" y="136" width="195" height="216" fill="var(--palette-orange)" fill-opacity="0.18" stroke="var(--palette-red)" stroke-width="1.5"/>
+<text x="258" y="176" fill="currentColor" font-size="17" font-weight="bold">CodiceTempo</text>
+<text x="258" y="208" fill="currentColor" font-size="17" font-weight="bold">CodiceLuogo</text>
+<text x="258" y="240" fill="currentColor" font-size="17" font-weight="bold">CodiceArticolo</text>
+<text x="258" y="272" fill="currentColor" font-size="17" font-weight="bold">CodiceCliente</text>
+<text x="258" y="304" fill="var(--palette-red)" font-size="17" font-weight="bold">Quantità</text>
+<text x="258" y="336" fill="var(--palette-red)" font-size="17" font-weight="bold">Incasso</text>
+<!-- chiavi esterne -->
+<path d="M243,171 H222 V60 H202" fill="none" stroke="var(--palette-orange)" stroke-width="1.5" marker-end="url(#i20230710133939-arrow)"/>
+<path d="M243,203 H228 V297 H198" fill="none" stroke="var(--palette-orange)" stroke-width="1.5" marker-end="url(#i20230710133939-arrow)"/>
+<path d="M412,235 H465 V82 H505" fill="none" stroke="var(--palette-orange)" stroke-width="1.5" marker-end="url(#i20230710133939-arrow)"/>
+<path d="M404,267 H445 V330 H483" fill="none" stroke="var(--palette-orange)" stroke-width="1.5" marker-end="url(#i20230710133939-arrow)"/>
+</svg>
 
 Nella tabella fatti la chiave primaria è formata da formata dai riferimenti delle altre tabelle dimensione, i dati sono considerati in sola lettura e gli altri campi non chiavi sono misure. è in 3NF
 
 Nella tabella dimensioni la chiave primaria è semplice, gli altri campi memorizzano i livelli della dimensione ed è denormalizzata (pre joinata insieme), cioè contiene ridondanza, se è normalizzata allora si parla di schema a fiocco di neve, es:
 
-```mermaid
-erDiagram
-    TEMPO ||--o{ VENDITE : ""
-    LUOGO ||--o{ VENDITE : ""
-    ARTICOLO ||--o{ VENDITE : ""
-    CLIENTE ||--o{ VENDITE : ""
-    MESE ||--o{ TEMPO : ""
-    CATEGORIA ||--o{ ARTICOLO : ""
-    REGIONE ||--o{ LUOGO : ""
-    TEMPO {
-        string CodiceTempo PK
-        string Giorno
-        string CodiceMese FK
-    }
-    MESE {
-        string CodiceMese PK
-        string Trimestre
-        string Anno
-    }
-    LUOGO {
-        string CodiceLuogo PK
-        string Negozio
-        string Indirizzo
-        string CodiceCittà
-        string Città
-        string CodiceRegione FK
-    }
-    REGIONE {
-        string CodiceRegione PK
-        string Regione
-    }
-    ARTICOLO {
-        string CodiceArticolo PK
-        string Descrizione
-        string Marca
-        string CodiceCategoria FK
-    }
-    CATEGORIA {
-        string CodiceCategoria PK
-        string Categoria
-    }
-    CLIENTE {
-        string CodiceCliente PK
-        string Nome
-        string Cognome
-        string Sesso
-        string Età
-        string Professione
-    }
-    VENDITE {
-        string CodiceTempo FK
-        string CodiceLuogo FK
-        string CodiceArticolo FK
-        string CodiceCliente FK
-        string Quantità
-        string Incasso
-    }
-```
+<svg viewBox="0 0 714 372" width="100%" style="max-width:714px;display:block;margin:1.5rem auto" role="img" aria-label="Schema a fiocco di neve: la tabella dei fatti VENDITE collegata a TEMPO, LUOGO, ARTICOLO e CLIENTE; TEMPO, LUOGO e ARTICOLO sono normalizzate nelle tabelle MESE, REGIONE e CATEGORIA">
+<g transform="scale(0.82)">
+<!-- dimensioni -->
+<rect x="160" y="48" width="127" height="170" fill="none" stroke="currentColor"/>
+<line x1="160" y1="88" x2="287" y2="88" stroke="currentColor"/>
+<text x="223.5" y="79" text-anchor="middle" fill="currentColor" font-size="16" font-weight="bold">TEMPO</text>
+<text x="168" y="106" fill="currentColor" font-size="15" font-weight="bold">CodiceTempo</text>
+<text x="168" y="140" fill="currentColor" font-size="15">Giorno</text>
+<text x="168" y="176" fill="currentColor" font-size="15">CodiceMese</text>
+<rect x="540" y="38" width="145" height="140" fill="none" stroke="currentColor"/>
+<line x1="540" y1="74" x2="685" y2="74" stroke="currentColor"/>
+<text x="612.5" y="65" text-anchor="middle" fill="currentColor" font-size="16" font-weight="bold">ARTICOLO</text>
+<text x="548" y="95" fill="currentColor" font-size="15" font-weight="bold">CodiceArticolo</text>
+<text x="548" y="113" fill="currentColor" font-size="15">Descrizione</text>
+<text x="548" y="131" fill="currentColor" font-size="15">Marca</text>
+<text x="548" y="167" fill="currentColor" font-size="15">CodiceCategoria</text>
+<rect x="175" y="266" width="133" height="174" fill="none" stroke="currentColor"/>
+<line x1="175" y1="300" x2="308" y2="300" stroke="currentColor"/>
+<text x="241.5" y="291" text-anchor="middle" fill="currentColor" font-size="16" font-weight="bold">LUOGO</text>
+<text x="183" y="326" fill="currentColor" font-size="15" font-weight="bold">CodiceLuogo</text>
+<text x="183" y="344" fill="currentColor" font-size="15">Negozio</text>
+<text x="183" y="362" fill="currentColor" font-size="15">Indirizzo</text>
+<text x="183" y="380" fill="currentColor" font-size="15">Codice Città</text>
+<text x="183" y="398" fill="currentColor" font-size="15">Città</text>
+<text x="183" y="416" fill="currentColor" font-size="15">CodiceRegione</text>
+<rect x="535" y="282" width="168" height="168" fill="none" stroke="currentColor"/>
+<line x1="535" y1="322" x2="703" y2="322" stroke="currentColor"/>
+<text x="619" y="313" text-anchor="middle" fill="currentColor" font-size="16" font-weight="bold">CLIENTE</text>
+<text x="543" y="342" fill="currentColor" font-size="15" font-weight="bold">CodiceCliente</text>
+<text x="543" y="360" fill="currentColor" font-size="15">Nome</text>
+<text x="543" y="378" fill="currentColor" font-size="15">Cognome</text>
+<text x="543" y="396" fill="currentColor" font-size="15">Sesso</text>
+<text x="543" y="414" fill="currentColor" font-size="15">Età</text>
+<text x="543" y="446" fill="currentColor" font-size="15">Professione</text>
+<!-- dimensioni normalizzate -->
+<rect x="3" y="118" width="140" height="100" fill="var(--palette-purple)" fill-opacity="0.18" stroke="var(--palette-purple)" stroke-width="1.5"/>
+<line x1="3" y1="143" x2="143" y2="143" stroke="var(--palette-purple)"/>
+<text x="73" y="134" text-anchor="middle" fill="var(--palette-purple)" font-size="16" font-weight="bold">MESE</text>
+<text x="11" y="160" fill="currentColor" font-size="15" font-weight="bold">CodiceMese</text>
+<text x="11" y="186" fill="currentColor" font-size="15">Trimestre</text>
+<text x="11" y="210" fill="currentColor" font-size="15">Anno</text>
+<rect x="708" y="75" width="160" height="76" fill="var(--palette-purple)" fill-opacity="0.18" stroke="var(--palette-purple)" stroke-width="1.5"/>
+<line x1="708" y1="105" x2="868" y2="105" stroke="var(--palette-purple)"/>
+<text x="788" y="96" text-anchor="middle" fill="var(--palette-purple)" font-size="16" font-weight="bold">CATEGORIA</text>
+<text x="716" y="124" fill="currentColor" font-size="15" font-weight="bold">CodiceCategoria</text>
+<text x="716" y="145" fill="currentColor" font-size="15">Categoria</text>
+<rect x="5" y="302" width="163" height="88" fill="var(--palette-purple)" fill-opacity="0.18" stroke="var(--palette-purple)" stroke-width="1.5"/>
+<line x1="5" y1="332" x2="168" y2="332" stroke="var(--palette-purple)"/>
+<text x="86.5" y="323" text-anchor="middle" fill="var(--palette-purple)" font-size="16" font-weight="bold">REGIONE</text>
+<text x="13" y="354" fill="currentColor" font-size="15" font-weight="bold">CodiceRegione</text>
+<text x="13" y="380" fill="currentColor" font-size="15">Regione</text>
+<!-- fatti -->
+<rect x="348" y="163" width="146" height="160" fill="var(--palette-orange)" fill-opacity="0.18" stroke="var(--palette-red)" stroke-width="1.5"/>
+<line x1="348" y1="201" x2="494" y2="201" stroke="var(--palette-red)"/>
+<text x="357" y="192" fill="currentColor" font-size="16" font-weight="bold">VENDITE</text>
+<text x="356" y="222" fill="currentColor" font-size="15" font-weight="bold">CodiceTempo</text>
+<text x="356" y="240" fill="currentColor" font-size="15" font-weight="bold">CodiceLuogo</text>
+<text x="356" y="258" fill="currentColor" font-size="15" font-weight="bold">CodiceArticolo</text>
+<text x="356" y="276" fill="currentColor" font-size="15" font-weight="bold">CodiceCliente</text>
+<text x="356" y="294" fill="var(--palette-red)" font-size="15" font-weight="bold">Quantità</text>
+<text x="356" y="312" fill="var(--palette-red)" font-size="15" font-weight="bold">Incasso</text>
+<!-- collegamenti -->
+<line x1="287" y1="63" x2="356" y2="208" stroke="var(--palette-orange)" stroke-width="4"/>
+<line x1="541" y1="58" x2="486" y2="248" stroke="var(--palette-orange)" stroke-width="4"/>
+<line x1="308" y1="282" x2="352" y2="236" stroke="var(--palette-orange)" stroke-width="4"/>
+<line x1="478" y1="272" x2="536" y2="298" stroke="var(--palette-orange)" stroke-width="4"/>
+<line x1="104" y1="156" x2="163" y2="171" stroke="var(--palette-red)" stroke-width="1.5"/>
+<line x1="674" y1="166" x2="708" y2="135" stroke="var(--palette-red)" stroke-width="1.5"/>
+<line x1="150" y1="348" x2="178" y2="410" stroke="var(--palette-red)" stroke-width="1.5"/>
+</g>
+</svg>
 
 Un fatto è di solito additivo, cioè ha senso sommarlo rispetto alla combinazione di altre dimensioni da cui dipende, per esempio l'incasso è additivo perchè ha senso calcolare la somma degli incassi di un certo intervallo
 
