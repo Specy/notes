@@ -236,6 +236,22 @@ round; sets the height), `axes` (`false`, or `x` / `y` for one axis), `grid`,
 Expressions support `+ - * / ^`, implicit multiplication (`2x`, `3(x+1)`),
 `sin cos tan exp ln log sqrt abs …` (`log` is the natural log), `pi`, `e`.
 
+## Figures as inline SVG
+
+When neither a ```plot nor ```mermaid can draw a figure the way the original
+looks (timing diagrams with slanted messages, index/tree structures with
+pointer slots, neural-network drawings), write it as an inline `<svg>`:
+
+- One `<svg viewBox="0 0 W H" width="100%" style="max-width:Wpx;display:block;margin:1.5rem auto" role="img" aria-label="…">`
+  with a blank line before and after and **no blank line inside** (a blank
+  line ends the HTML block and breaks the figure).
+- Colours follow the theme: `currentColor` for ink, `var(--palette-blue)` etc.
+  for colour (soft fills with `fill-opacity`); no hex colours, no background.
+- Text with `<text fill="currentColor">` and Unicode for math (x₀, α, ≤).
+- Prefix every `id` with something unique to the figure (markers in `<defs>`
+  are page-wide), e.g. `id="i20241102222916-arrow"`.
+- No `<script>`, `<foreignObject>`, `<image>` or external URLs.
+
 ## Checking content
 
 From the app repo run `npm run check:content`: it renders every note and
