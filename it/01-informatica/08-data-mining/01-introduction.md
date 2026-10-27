@@ -23,7 +23,26 @@ Data mining is a broad term that collects different kinds of data manipulation a
 These are the building blocks over which applications are built upon. It is also used as an abstraction to help us conceptualize and structure data
 # Data mining process
 
-![[Pasted image 20231127130643.png]]
+```mermaid
+flowchart LR
+  DC["DATA COLLECTION"]
+  subgraph PRE["DATA PREPROCESSING"]
+    FE["FEATURE EXTRACTION"]
+    CI["CLEANING AND INTEGRATION"]
+  end
+  subgraph AP["ANALYTICAL PROCESSING"]
+    B1["BUILDING BLOCK 1"]
+    B2["BUILDING BLOCK 2"]
+  end
+  OUT["OUTPUT FOR ANALYST"]
+  DC --> FE
+  CI --> B1
+  B2 --> OUT
+  DC ~~~ B2
+  PRE ~~~ AP
+  B1 -. "FEEDBACK (OPTIONAL)" .-> CI
+  B2 -. "FEEDBACK (OPTIONAL)" .-> DC
+```
 
 ## Data collection
 it may require the use of hardware such as sensors, manual labor through user surveys, software tools to scrape data, etc...
@@ -49,7 +68,15 @@ Data can also fall under different domains, we classify them under:
 The most common data type is multidimentional, joining different data types
 ### Multi dimensional data
 A multidimensional dataset D is a set of $n$ records $X_1,...,X_n$ such that each record $X_i$ contains a set of features denoted as $x_i^1,...x_i^d$ 
-![[Pasted image 20231127141042.png]]
+
+| Name | Age | Gender | Race | ZIP code |
+|---|---|---|---|---|
+| John S. | 45 | M | African American | 05139 |
+| Manyona L. | 31 | F | Native American | 10598 |
+| Sayani A. | 11 | F | East Indian | 10547 |
+| Jack M. | 56 | M | Caucasian | 10562 |
+| Wei L. | 63 | M | Asian | 90210 |
+
 - An attribute is called **quantitative** if it has a natural ordering, also called continuous, numeric or quantitative. This is the most common subtype of data and is easy to work with in a statistical perspective, (e.g. age)
 - An attribute is called **categorical** or **Mixed attribute** if it's part of a discrete set without a natural ordering among them, (e.g. gender, race, zip code)
 - An attribute is called **binary** if it has only two possible values, it could be considered either a categorical or quantitative data type. It is also used as a `set element indicator` to represent setwise data, to specify if an element should be included in the set or not ![[Pasted image 20231127141955.png]]
@@ -100,7 +127,73 @@ Given a binary $n \times d$ data matrix $D$, determine all subsets of columns su
 
 For example, if 3 columns are often all present in many records, it means that those items are probably bought together. 
 
-![[Pasted image 20231127165626.png]]
+**M**
+
+| | g1 | g2 | g3 | g4 | g5 |
+|---|---|---|---|---|---|
+| **c1** | 1 | 0 | 1 | 1 | 0 |
+| **c2** | 0 | 1 | 1 | 0 | 1 |
+| **c3** | 1 | 1 | 1 | 0 | 1 |
+| **c4** | 0 | 1 | 0 | 0 | 1 |
+
+**T**
+
+| Tid | Items |
+|---|---|
+| c1 | g1,g3,g4 |
+| c2 | g2,g3,g5 |
+| c3 | g1,g2,g3,g5 |
+| c4 | g2,g5 |
+
+**Iteration 1**
+
+| Itemset | Sup. |
+|---|---|
+| {g1} | 0.5 |
+| {g2} | 0.75 |
+| {g3} | 0.75 |
+| **{g4}** | **0.25** |
+| {g5} | 0.75 |
+
+| Itemset |
+|---|
+| {g1} |
+| {g2} |
+| {g3} |
+| {g5} |
+
+| Itemset | Sup. |
+|---|---|
+| **{g1,g2}** | **0.25** |
+| {g1,g3} | 0.5 |
+| **{g1,g5}** | **0.25** |
+| {g2,g3} | 0.5 |
+| {g2,g5} | 0.75 |
+| {g3,g5} | 0.5 |
+
+**Iteration 2**
+
+| Itemset |
+|---|
+| {g1,g3} |
+| {g2,g3} |
+| {g2,g5} |
+| {g3,g5} |
+
+**Iteration 3**
+
+| Itemset | Sup. |
+|---|---|
+| {g1,g2,g3} | 0.25 |
+| {g1,g2,g3,g5} | 0.25 |
+| {g1,g3,g5} | 0.25 |
+| {g2,g3,g5} | 0.5 |
+
+**Final frequent itemsets**
+
+| Itemset |
+|---|
+| {g2,g3,g5} |
 
 ## Data clustering
 **DEFINITION**
@@ -129,7 +222,17 @@ Given an $n \times d$ training data matrix $D$ and a class label value in ${1,..
 - In the clustering problem, the data are partitioned in *k* groups on the basis of similarity, we could view this as the "unsupervised" version of **classification**
 - In the classification problem, a record is categorized into one of the *k* groups, but this is achieved by learning a model from a training database, we could view this as the "supervised" version of **clustering**
 
-![[Pasted image 20231204113212.png]]
+| Problem | Time series | Spatial | Sequence | Networks |
+|---|---|---|---|---|
+| Patterns | Motif-mining; Periodic pattern | Colocation patterns | Sequential patterns; Periodic Sequence | Structural patterns |
+| | Trajectory patterns | Trajectory patterns | | |
+| Clustering | Shape clusters | Spatial clusters | Sequence clusters | Community detection |
+| | Trajectory clusters | Trajectory clusters | | |
+| Outliers | Position outlier; Shape outlier | Position outlier; Shape outlier | Position outlier; Combination outlier | Node outlier; Linkage outlier; Community outliers |
+| | Trajectory outliers | Trajectory outliers | | |
+| Classification | Position classification; Shape classification | Position classification; Shape classification | Position classification; Sequence classification | Collective classification; Graph classification |
+| | Trajectory classification | Trajectory classification | | |
+
 ## Scalability
 When designing an algorithm or application, the scale in which we operate must be taken into account. Two main issues arise:
 - **Data limitations**: The data is stored in one or more machines, but it is too large to be maintained in the main memory. When data is stored on the disk, we need to reduce random accesses to the disk as it would slow down the processing significantly. The *divide et impera* approach should be used when applicable. 
