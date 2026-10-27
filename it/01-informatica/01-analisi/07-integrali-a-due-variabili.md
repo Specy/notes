@@ -22,8 +22,52 @@ $$
 cioè estendiamo f, ponendo 0 per i punti fuori da $X$. I volumi delle due funzioni saranno uguali.
 A questo punto partizioniamo il rettangolo $R$ nei suoi due assi $x$ e $y$:
 
-![[Pasted image 20250628131002.png]]
-![[Pasted image 20250628131036.png]]
+Date due partizioni
+
+$$
+\begin{aligned}
+P_x &= \{a = x_0 < x_1 < x_2 < \ldots < x_n = b\} \quad \text{di } [a,b] \text{ e} \\
+P_y &= \{c = y_0 < y_1 < y_2 < \ldots < y_m = d\} \quad \text{di } [c,d],
+\end{aligned}
+$$
+
+definiamo la partizione
+
+$$
+\begin{aligned}
+P_{xy} &:= P_x \times P_y \quad \text{di } R = [a,b] \times [c,d] \text{ nei rettangoli} \\
+R_{ij} &:= [x_{i-1}, x_i] \times [y_{j-1}, y_j] \quad \text{per } i = 1, \ldots, n,\ j = 1, \ldots, m.
+\end{aligned}
+$$
+
+![[Pasted image 20250628131002 figura.png]]
+
+Partizione del rettangolo $R$ contenente $X$ ($n = 5$, $m = 4$).
+
+- Per $P_{xy}$ poniamo per $i = 1, \ldots, n$, $j = 1, \ldots, m$
+
+$$
+\begin{aligned}
+m_{ij} &:= \inf\{\bar{f}(x,y) : (x,y) \in R_{ij}\}, \\
+M_{ij} &:= \sup\{\bar{f}(x,y) : (x,y) \in R_{ij}\}, \\
+\lvert R_{ij} \rvert &:= (x_i - x_{i-1}) \cdot (y_j - y_{j-1}) = \text{ area del rettangolo } R_{ij},
+\end{aligned}
+$$
+
+e definiamo
+
+$$
+\begin{aligned}
+s(\bar{f}, P_{xy}) &:= \sum_{i=1}^{n} \sum_{j=1}^{m} m_{ij} \cdot \lvert R_{ij} \rvert =: \ \textit{somma inferiore}, \\
+S(\bar{f}, P_{xy}) &:= \sum_{i=1}^{n} \sum_{j=1}^{m} M_{ij} \cdot \lvert R_{ij} \rvert =: \ \textit{somma superiore}.
+\end{aligned}
+$$
+
+Quindi per ogni partizione $P_{xy}$ di $R$ vale
+
+$$
+s(\bar{f}, P_{xy}) \le V \le S(\bar{f}, P_{xy}),
+$$
 
 Cioè le somme inferiori sono sempre approssimazioni in difetto di V, mentre le somme superiori sono approssimazioni in eccesso di V. 
 
@@ -45,10 +89,11 @@ $$
 
 della funzione integranda $f$ nel dominio dell’integrazione $X$.
 
-
 ## 🟢 Disegnare un insieme
 
-![[Pasted image 20250703143853.png]]
+$$
+X := \left\{(x,y) \in \mathbb{R}^2 : x \in [-1,3],\ x - 1 \le y \le \sqrt{x+1}\right\}
+$$
 
 Troviamo tutti i vincoli:
 - $x \in [-1, 3]$ ci dice che i valori sull'asse X sono compresi fra $-1$ e $3$, allora dovremmo contare solo i valori in questo intervallo
@@ -59,7 +104,38 @@ Troviamo tutti i vincoli:
 
 L'insieme X sarà tutti i valori dentro questi vincoli:
 
-![[Pasted image 20250703144237.png]]
+```plot
+x: [-2, 4.6]
+y: [-2.6, 3.2]
+height: 300
+axes: true
+xticks: { -1: "$-1$", 1: "$1$", 3: "$3$" }
+alt: L'insieme X compreso tra la curva y = radice di x+1 (sopra) e la retta y = x-1 (sotto), per x tra -1 e 3.
+items:
+  - area: sqrt(x + 1)
+    base: x - 1
+    from: -1
+    to: 3
+    color: muted
+  - fn: s(x) = sqrt(x + 1)
+    domain: [-1, 4.4]
+    color: blue
+  - fn: x - 1
+    domain: [-2, 3.8]
+    color: green
+    label: $y = x - 1$
+    labelAt: 3.8
+    anchor: se
+  - guide: [3, 2]
+    to: x
+    dash: dotted
+  - text: $y = \sqrt{x+1}$
+    color: blue
+    at: [-2, 1.5]
+    anchor: e
+  - text: $X$
+    at: [1.1, 0.6]
+```
 
 ## 🟢 Integrale doppio con coordinate polari
 
@@ -89,7 +165,38 @@ Nell'insieme:
 $$
 X = \left \{(x,y)\in \mathbb R : 1 \leq x^2 + y^2 \leq 9, 0 \le y \le x \right\}
 $$
-![[Pasted image 20260119163238.jpg]]
+
+```plot
+x: [-4.2, 5]
+y: [-4, 4]
+height: 418
+xticks: [1, 3]
+yticks: false
+alt: L'insieme X, la parte della corona circolare tra le circonferenze di raggio 1 e 3 compresa tra l'asse x e la retta y = x, evidenziata in rosso.
+items:
+  - area: x
+    base: sqrt(1 - x^2)
+    from: 0.7071
+    to: 1
+    color: red
+  - area: x
+    from: 1
+    to: 2.1213
+    color: red
+  - area: sqrt(9 - x^2)
+    from: 2.1213
+    to: 3
+    color: red
+  - line: [[1.0, 0.0], [0.998, 0.07], [0.99, 0.139], [0.978, 0.208], [0.961, 0.276], [0.94, 0.342], [0.914, 0.407], [0.883, 0.469], [0.848, 0.53], [0.809, 0.588], [0.766, 0.643], [0.719, 0.695], [0.669, 0.743], [0.616, 0.788], [0.559, 0.829], [0.5, 0.866], [0.438, 0.899], [0.375, 0.927], [0.309, 0.951], [0.242, 0.97], [0.174, 0.985], [0.105, 0.995], [0.035, 0.999], [-0.035, 0.999], [-0.105, 0.995], [-0.174, 0.985], [-0.242, 0.97], [-0.309, 0.951], [-0.375, 0.927], [-0.438, 0.899], [-0.5, 0.866], [-0.559, 0.829], [-0.616, 0.788], [-0.669, 0.743], [-0.719, 0.695], [-0.766, 0.643], [-0.809, 0.588], [-0.848, 0.53], [-0.883, 0.469], [-0.914, 0.407], [-0.94, 0.342], [-0.961, 0.276], [-0.978, 0.208], [-0.99, 0.139], [-0.998, 0.07], [-1.0, 0.0], [-0.998, -0.07], [-0.99, -0.139], [-0.978, -0.208], [-0.961, -0.276], [-0.94, -0.342], [-0.914, -0.407], [-0.883, -0.469], [-0.848, -0.53], [-0.809, -0.588], [-0.766, -0.643], [-0.719, -0.695], [-0.669, -0.743], [-0.616, -0.788], [-0.559, -0.829], [-0.5, -0.866], [-0.438, -0.899], [-0.375, -0.927], [-0.309, -0.951], [-0.242, -0.97], [-0.174, -0.985], [-0.105, -0.995], [-0.035, -0.999], [0.035, -0.999], [0.105, -0.995], [0.174, -0.985], [0.242, -0.97], [0.309, -0.951], [0.375, -0.927], [0.438, -0.899], [0.5, -0.866], [0.559, -0.829], [0.616, -0.788], [0.669, -0.743], [0.719, -0.695], [0.766, -0.643], [0.809, -0.588], [0.848, -0.53], [0.883, -0.469], [0.914, -0.407], [0.94, -0.342], [0.961, -0.276], [0.978, -0.208], [0.99, -0.139], [0.998, -0.07], [1.0, -0.0]]
+  - line: [[3.0, 0.0], [2.993, 0.209], [2.971, 0.418], [2.934, 0.624], [2.884, 0.827], [2.819, 1.026], [2.741, 1.22], [2.649, 1.408], [2.544, 1.59], [2.427, 1.763], [2.298, 1.928], [2.158, 2.084], [2.007, 2.229], [1.847, 2.364], [1.678, 2.487], [1.5, 2.598], [1.315, 2.696], [1.124, 2.782], [0.927, 2.853], [0.726, 2.911], [0.521, 2.954], [0.314, 2.984], [0.105, 2.998], [-0.105, 2.998], [-0.314, 2.984], [-0.521, 2.954], [-0.726, 2.911], [-0.927, 2.853], [-1.124, 2.782], [-1.315, 2.696], [-1.5, 2.598], [-1.678, 2.487], [-1.847, 2.364], [-2.007, 2.229], [-2.158, 2.084], [-2.298, 1.928], [-2.427, 1.763], [-2.544, 1.59], [-2.649, 1.408], [-2.741, 1.22], [-2.819, 1.026], [-2.884, 0.827], [-2.934, 0.624], [-2.971, 0.418], [-2.993, 0.209], [-3.0, 0.0], [-2.993, -0.209], [-2.971, -0.418], [-2.934, -0.624], [-2.884, -0.827], [-2.819, -1.026], [-2.741, -1.22], [-2.649, -1.408], [-2.544, -1.59], [-2.427, -1.763], [-2.298, -1.928], [-2.158, -2.084], [-2.007, -2.229], [-1.847, -2.364], [-1.678, -2.487], [-1.5, -2.598], [-1.315, -2.696], [-1.124, -2.782], [-0.927, -2.853], [-0.726, -2.911], [-0.521, -2.954], [-0.314, -2.984], [-0.105, -2.998], [0.105, -2.998], [0.314, -2.984], [0.521, -2.954], [0.726, -2.911], [0.927, -2.853], [1.124, -2.782], [1.315, -2.696], [1.5, -2.598], [1.678, -2.487], [1.847, -2.364], [2.007, -2.229], [2.158, -2.084], [2.298, -1.928], [2.427, -1.763], [2.544, -1.59], [2.649, -1.408], [2.741, -1.22], [2.819, -1.026], [2.884, -0.827], [2.934, -0.624], [2.971, -0.418], [2.993, -0.209], [3.0, -0.0]]
+  - line: [[-3.8, -3.8], [4, 4]]
+  - text: $y = x$
+    at: [4, 4]
+    anchor: e
+  - text: $X$
+    at: [3.4, 1.9]
+```
+
 Allora poniamo 
 $$
 \begin{aligned}
@@ -160,7 +267,6 @@ $$
 \end{aligned}
 $$
 
-
 ## 🟠 Area di una funzione a due parametri
 
 Se vogliamo trovare l'area di una funzione, e non il volume, possiamo trovare il volume di altezza $1$ 
@@ -172,7 +278,46 @@ $$
 
 ## 🟢 Proprietà integrali doppi
 
-![[Pasted image 20250628132158.png]]
+**Proprietà dell'integrale.** Siano $f, g : X \to \mathbb{R}$ integrabili con $X \subset \mathbb{R}^2$ misurabile. Allora
+
+- $\alpha \cdot f + \beta \cdot g$ è integrabile per ogni $\alpha, \beta \in \mathbb{R}$ (cioè l'insieme delle funzioni integrabili con dominio $X$ è uno spazio vettoriale) e
+
+$$
+\iint_X \big(\alpha \cdot f(x,y) + \beta \cdot g(x,y)\big)\, dx\, dy = \alpha \cdot \iint_X f(x,y)\, dx\, dy + \beta \cdot \iint_X g(x,y)\, dx\, dy
+$$
+
+(cioè l'integrale è un'operazione *lineare*);
+
+- se $f(x,y) \le g(x,y)$ per ogni $(x,y) \in X$ allora
+
+$$
+\iint_X f(x,y)\, dx\, dy \le \iint_X g(x,y)\, dx\, dy
+$$
+
+(cioè l'integrale è *monotono*);
+
+- anche $\lvert f \rvert$ è integrabile e
+
+$$
+\left\lvert \iint_X f(x,y)\, dx\, dy \right\rvert \le \iint_X \lvert f(x,y) \rvert\, dx\, dy
+$$
+
+(*disuguaglianza triangolare*);
+
+- se $\lvert X \rvert = 0$, allora
+
+$$
+\iint_X f(x,y)\, dx\, dy = 0
+$$
+
+- se $X = X_1 \cup X_2$ e $\lvert X_1 \cap X_2 \rvert = 0$, allora
+
+$$
+\iint_X f(x,y)\, dx\, dy = \iint_{X_1} f(x,y)\, dx\, dy + \iint_{X_2} f(x,y)\, dx\, dy
+$$
+
+(*additività* dell'integrale rispetto alla decomposizione di insiemi).
+
 ## 🟢 Teorema di fubini tonelli
 
 Un insieme $X \subseteq \mathbb R^2$ limitato si dice:
@@ -193,12 +338,38 @@ Lo scopo è quello di mostrare che il calcolo dell'integrale doppio è equivalen
 
 Allora, sia $f: X \subset \mathbb R^2 \to \mathbb R$ una funzione continua e $X$ un dominio semplice, allora $f$ è integraile su $X$, e inoltre:
 
-![[Pasted image 20250628142945.png]]
+- (i) se $X$ è $y$-semplice
+
+$$
+\boxed{\iint_X f(x,y)\, dx\, dy = \int_{x=a}^{b} \left( \int_{y=g_1(x)}^{g_2(x)} f(x,y)\, dy \right) dx}
+$$
+
+- (ii) se $X$ è $x$-semplice
+
+$$
+\boxed{\iint_X f(x,y)\, dx\, dy = \int_{y=c}^{d} \left( \int_{x=h_1(y)}^{h_2(y)} f(x,y)\, dx \right) dy}
+$$
 
 L'idea del teorema per calcolare $V$ è quelloo di decomporlo in una unione di fette di spessore infinitesimale e poi sommare il volume di ogniuna di queste fette. 
 Per esempio:
-![[Pasted image 20250628143133.png]]
 
+$$
+A(x) = \int_{y=g_1(x)}^{g_2(x)} f(x,y)\, dy
+$$
+
+che rappresenta la superficie del taglio di $V$ al punto $x$. Moltiplicando per lo spessore $dx$ otteniamo $dV(x) := A(x) \cdot dx$ che rappresenta
+
+![[Pasted image 20250628143133 figura.png]]
+
+Il teorema di Fubini–Tonelli per $X$ $y$-semplice.
+
+il volume della $x$-esima fetta infinitesimale. L'integrale esterno
+
+$$
+\int_{x=a}^{b} dV(x) = \int_{x=a}^{b} A(x)\, dx = \int_{x=a}^{b} \left( \int_{y=g_1(x)}^{g_2(x)} f(x,y)\, dy \right) dx
+$$
+
+poi somma i volumi di tutte le fette infinitesimali e quindi rappresenta il volume complessivo $V$.
 
 Per esempio, $X = \left\{(x,y)\in \mathbb R^2 : x \in [-1, 3], x-1 \le y \le \sqrt{x+1}  \right \}$ 
 L'insieme è $y$ semplice dato che $y$ è vincolata da due funzioni $x -1$ e $\sqrt{x + 1}$. Allora 
