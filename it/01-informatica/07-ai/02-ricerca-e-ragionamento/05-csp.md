@@ -87,7 +87,25 @@ Possiamo controllare i vincoli ad ogni assegnamento parziale, e ignorare tutti i
 
 Uno degli algoritmi più noti per la risoluzione di CSP è la ricerca con backtracking che unisce la ricerca con backtracking, l'ordinamento delle variabili per evitare le permutazioni, e il pruning dei branch non validi.
 
-![[Pasted image 20241202210235.png]]
+```text
+function BACKTRACKING-SEARCH(csp) returns a solution or failure
+  return BACKTRACK(csp, {})
+
+function BACKTRACK(csp, assignment) returns a solution or failure
+  if assignment is complete then return assignment
+  var ← SELECT-UNASSIGNED-VARIABLE(csp, assignment)
+  for each value in ORDER-DOMAIN-VALUES(csp, var, assignment) do
+    if value is consistent with assignment then
+      add {var = value} to assignment
+      inferences ← INFERENCE(csp, var, assignment)
+      if inferences ≠ failure then
+        add inferences to csp
+        result ← BACKTRACK(csp, assignment)
+        if result ≠ failure then return result
+        remove inferences from csp
+      remove {var = value} from assignment
+  return failure
+```
 
 La selezione della variabile da aggiungere  `SELECT-UNASSIGNED-VARIABLE` può essere effettuata a caso, oppure scegliendo la prossima variabile più "ristretta" (con dominio più piccolo), che ci permette di tagliare lo spazio provando il minor numero possibile di varianti di questo spazio, raggiungendo più velocemente una soluzione.
 ## Propagazione dei vincoli
@@ -115,7 +133,26 @@ Una variabile $X_i$ è detta "arc consistent" (2-consistency) rispetto $X_j$ se 
 
 L'algoritmo più popolare per applicare l'arc-consistency è AC-3:
 
-![[Pasted image 20241202212626.png]]
+```text
+function AC-3(csp) returns false if an inconsistency is found and true otherwise
+  queue ← a queue of arcs, initially all the arcs in csp
+
+  while queue is not empty do
+    (X_i, X_j) ← POP(queue)
+    if REVISE(csp, X_i, X_j) then
+      if size of D_i = 0 then return false
+      for each X_k in X_i.NEIGHBORS - {X_j} do
+        add (X_k, X_i) to queue
+  return true
+
+function REVISE(csp, X_i, X_j) returns true iff we revise the domain of X_i
+  revised ← false
+  for each x in D_i do
+    if no value y in D_j allows (x,y) to satisfy the constraint between X_i and X_j then
+      delete x from D_i
+      revised ← true
+  return revised
+```
 
 L'algoritmo tiene una coda di archi ancora da considerare, che inizialmente contiene tutti gli archi nel CSP.
 
