@@ -6,7 +6,17 @@ type: exercise
 
 # Esercizi esame
 
-![[Pasted image 20241111091010.png]]
+**1. Indirizzamento IP e routing (10 punti)**
+
+Alla propria organizzazione è assegnato lo spazio di indirizzi 143.31.107.0/25.
+
+i. Data la struttura interna mostrata in figura, definire uno schema di indirizzamento, subnettando gli indirizzi a disposizione. Indicare per ogni sottorete: indirizzo di rete, indirizzo di broadcast e range di indirizzi utili. Specificare gli indirizzi IP da assegnare alle interfacce dei router.
+
+![[Pasted image 20241111091010 figura.png]]
+
+ii. Se per il protocollo di routing in uso i 3 link hanno uguale costo, mostrare, aggregando il più possibile le rotte, la tabella di routing di R3 (cioè tutte le coppie rete di destinazione/next-hop).
+
+iii. Se l'organizzazione volesse forzare il traffico da Net B a Net A a passare per R3, come potrebbe ottenerlo (senza eliminare il link 1)?
 
 # 1.i. Schema di indirizzamento
 
@@ -45,8 +55,20 @@ Descrivere lo scopo e il livello della pila internet in cui operano i seguenti p
 
 # 3.i
 
-![[Pasted image 20241111105837.png]]
+**3. NAT (5 punti).**
 
+![[Pasted image 20241111105837 figura.png]]
+
+I due host di una rete privata con NAT, con l'indirizzamento in figura, hanno entrambi una connessione TCP aperta con il server web. Le frecce numerate indicano:
+
+1. dati dall' host 1 verso il server, prima del NAT
+2. dati dall' host 1 verso il server, dopo il NAT
+3. dati dal server verso l'host 1, prima del NAT
+4. dati dal server verso l'host 1, dopo il NAT
+5. dati dall' host 2 verso il server, prima del NAT
+6. dati dall' host 2 verso il server, dopo il NAT
+7. dati dal server verso l'host 2, prima del NAT
+8. dati dal server verso l'host 2, dopo il NAT
 
 | Flusso | IP sorgente   | IP destinazione | Porta sorgente | Porta destinazione |
 | ------ | ------------- | --------------- | -------------- | ------------------ |
@@ -64,11 +86,9 @@ Descrivere lo scopo e il livello della pila internet in cui operano i seguenti p
 
 ![[Drawing 2024-11-12 12.11.40.excalidraw|100%]]
 
-
 # 5.i
 
 ![[Drawing 2024-11-11 11.01.39.excalidraw|100%]]
-
 
 | S2                                         |            |
 | ------------------------------------------ | ---------- |
@@ -91,7 +111,17 @@ Descrivere lo scopo e il livello della pila internet in cui operano i seguenti p
 
 # 6.i 
 
-![[Pasted image 20241111111022.png]]
+**HTTP (7 punti).**
+
+Un applicativo client richiede l'url http://www.reti.it/ciao.html
+
+Prima di poter effettuare la richiesta al server secondo il protocollo http, quali saranno le operazioni fondamentali che l'applicativo dovrà effettuare?
+
+Come sarà la struttura della richiesta http?
+
+In caso di pagina presente nel server, come sarà la struttura della risposta http?
+
+Se la pagina ciao.html contiene un'immagine, cosa farà il client per ottenere l'immagine?
 
 1) Client Richiede al DNS l'indirizzo IP del sito
 2) Client Effettua handshake con il sito
