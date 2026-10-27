@@ -30,7 +30,6 @@ Allora analizziamo i casi:
 | **2** | Scegli la **Scatola Vuota B** | Apre la Scatola Vuota A | **VINCI la Scatola Premio** |
 | **3** | Scegli la **Scatola Premio** | Apre una delle scatole vuote | **PERDI (Prendi Scatola Vuota)** |
 
-
 Ora calcoliamolo formalmente:
 - $A$ = probabilità che il premio è nella scatola A
 - $A^c$ = probabilità che il premio non è nella scatola A, ma è in $B \cup C$
@@ -38,7 +37,6 @@ Ora calcoliamolo formalmente:
 - $B$ = probabilità che il premio è nella scatola B
 
 Vogliamo calcolare $P(A | C^{con})$, vediamo i due casi, cioè se il premio è nella scatola A o se è nella scatola B:
-
 
 **Caso 1: Il premio è nella scatola A**
 $$
@@ -87,7 +85,6 @@ P(\{ \Omega \}) &= P(\{w \in \mathcal{F} : X(w) = \{0,1 \}\}) \\
 &= P(\{C\}) + P(\{T\}) = 1
 \end{aligned}
 $$
-
 
 ## Osservazione (Legge o Distribuzione di X)
 
@@ -177,7 +174,41 @@ $$
 
 ## Esempio
 
-![[Pasted image 20260318152544.png]]
+```plot
+x: [-0.3, 5]
+y: [-0.5, 7.2]
+height: 300
+xticks: [1, 2, 3, 4]
+yticks: { 6: "$P_X(1)$", 2: "$P_X(2)$", 1: "$P_X(3)$", 4: "$P_X(4)$" }
+xlabel: $X \in \mathbb{R}$
+ylabel: $\alpha P_X$
+items:
+  - guide: [1, 6]
+  - guide: [2, 2]
+  - guide: [3, 1]
+  - guide: [4, 4]
+  - point: [1, 6]
+  - point: [2, 2]
+    color: orange
+  - point: [3, 1]
+    color: teal
+  - point: [4, 4]
+    color: purple
+```
+
+*Normalizzazione*
+
+$$
+\begin{aligned}
+\sum_{i=1}^{4} P_X(i) &= 1 \qquad (\alpha P_X) \\
+(6+2+1+4)\,\alpha &= 1 \\
+\alpha &= \frac{1}{13}
+\end{aligned}
+$$
+
+$$
+\mathbb{E}(X) = \sum_{x \in A} x\,p(x) = \frac{1 \cdot p(1) + 2\,\textcolor{orange}{p(2)} + 3\,\textcolor{teal}{p(3)} + 4\,\textcolor{purple}{p(4)}}{13} = \frac{6 + \textcolor{orange}{4} + \textcolor{teal}{3} + \textcolor{purple}{16}}{13} = \frac{29}{13}
+$$
 
 ## Esempio
 
