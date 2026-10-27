@@ -42,8 +42,43 @@ può essere implementato a 2 dimensioni.
 Il Mittente e ricevente concordano su un polinomio generatore $G$ (es. 1001) di $r + 1$ bit, scegliendolo in modo tale che `<D,R>` (insieme) sono divisibili per G (modulo 2).
 In questo modo, il destinatario divide `<D,R>` per G, se il resto è diverso da 0, c'è stato un errore. Questo permette di rilevare errori consecutivi inferiori a $r + 1$ bit.
 
-![[Pasted image 20241104145510.png]]
-![[Pasted image 20241104145536.png]]
+| | $d$ bits | $r$ bits |
+| --- | --- | --- |
+| *bit pattern* | $D$: data bits to be sent | $R$: CRC bits |
+
+*mathematical formula*: $D \cdot 2^{r}\ \text{XOR}\ R$
+
+*vogliamo*:
+
+$$D \cdot 2^{r}\ \text{XOR}\ R = nG$$
+
+*ovvero*:
+
+$$D \cdot 2^{r} = nG\ \text{XOR}\ R$$
+
+*quindi*: se dividiamo $D \cdot 2^{r}$ per $G$, vogliamo che $R$ soddisfi:
+
+$$\boxed{R = \text{resto di}\left[\frac{D \cdot 2^{r}}{G}\right]}$$
+
+```text
+  G
+                     1 0 1 0 1 1
+              ┌──────────────────
+  1 0 0 1 )   │1 0 1 1 1 0 0 0 0
+               1 0 0 1
+                   1 0 1
+                   0 0 0
+                   1 0 1 0
+                   1 0 0 1
+                       1 1 0
+                       0 0 0
+                       1 1 0 0
+                       1 0 0 1
+                         1 0 1 0
+                         1 0 0 1
+                           0 1 1
+                           └─R─┘
+```
 
 ## Protocollo di accesso multiplo
 
@@ -69,7 +104,6 @@ Ci sono 3 categorie di protocolli MAC:
 Viene creato un "turno" composto da un certo numero di slot, ogni nodo ottiene uno slot di lunghezza prefissata dove può trasmettere pacchetti. Slot non utilizzati rimangono vuoti.
 ![[Pasted image 20241104151014.png]]
 
-
 #### FDMA (Frequency Division Multiple Access)
 
 Il canale è diviso in bande di frequenza, ogni nodo ottiene una banda di frequenza dove può trasmettere pacchetti.
@@ -87,7 +121,12 @@ Quando un nodo ha un nuovo pacchetto da spedire, aspetta che un nuovo slot inizi
 - **Se non c'è collisione**, il nodo può trasmettere un nuovo pacchetto al prossimo slot.
 - **Se c'è collisione**, il nodo ritrasmette con una probabilità $p$ (es. 0.5) negli slot successivi.
 
-![[Pasted image 20241104151852.png]]
+| | | | | | | | | | |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| node 1 | 1 | | 1 | | | 1 | | 1 | |
+| node 2 | 2 | | 2 | 2 | | | | | |
+| node 3 | 3 | | | | | 3 | | | 3 |
+| | C | E | C | S | E | C | E | S | S |
 
 Se c'è un solo nodo, esso può trasmettere alla massima velocità del canale, inoltre, questa implementazione è completamente decentralizzata.
 
