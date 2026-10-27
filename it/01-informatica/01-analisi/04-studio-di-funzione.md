@@ -25,109 +25,122 @@ Sia $I \subseteq \mathbb R$ un intervallo, e sia $f \in C(I)$, allora anche $J :
  
 
 ```plot
-x: [-1.5, 2.3]
-y: [-0.85, 2.0]
-width: 260
-height: 270
-axes: true
-xlabel: $x$
-xticks: { -1: "$x_1$", 1: "$x_2$" }
-caption: "(a)"
-alt: Grafico di f_1(x), una parabola con vertice nell'origine; la retta orizzontale y>0 la interseca in due punti x_1 e x_2, la retta y<0 non la interseca
+x: [1.1, 17.4]
+y: [-1.0, 2.5]
+width: 700
+height: 240
+axes: false
+alt: "Quattro grafici affiancati. (a) f_1(x), parabola con vertice nell'origine: la retta y>0 la interseca in due punti x_1 e x_2, la retta y<0 non la interseca. (b) f_2(x), parabola con valori solo y>=0: la retta y>0 la interseca in x_1 e x_2. (c) f_3(x), ramo destro della parabola: la retta y>0 lo interseca solo in x_2, la retta y<0 non lo interseca. (d) f_4(x), ramo destro della parabola con valori y>=0: la retta y>0 lo interseca in un solo punto x"
+let: { a: 2.61, b: 7.53, c: 11.34, d: 15.11 }   # posizione dell'asse y di ogni pannello
 items:
-  - fn: x^2
-    domain: [-1.35, 1.35]
+  # ── (a) ──
+  - text: (a)
+    at: [a, 2.3]
+  - line: [[a - 1.35, 0], [a + 2, 0]]
+    arrow: true
+  - text: $x$
+    at: [a + 2.05, 0]
+    anchor: e
+  - line: [[a, -0.95], [a, 2]]
+    arrow: true
   - text: $f_1(x)$
-    at: [0.1, 1.75]
+    at: [a + 0.12, 1.82]
     anchor: e
-  - line: [[-1.27, 1], [1.1, 1]]
+  - fn: (x - a)^2
+    domain: [a - 1.4, a + 1.37]
+  - line: [[a - 1.3, 1], [a + 1.3, 1]]
   - text: $y>0$
-    at: [1.2, 1]
+    at: [a + 1.4, 1]
     anchor: e
-  - line: [[-1, 1], [-1, 0]]
-  - line: [[1, 1], [1, 0]]
-  - line: [[-1.22, -0.46], [1.4, -0.46]]
+  - line: [[a - 1.3, -0.58], [a + 1.3, -0.58]]
   - text: $y<0$
-    at: [1.5, -0.46]
+    at: [a + 1.4, -0.58]
     anchor: e
-```
-
-```plot
-x: [-1.5, 2.3]
-y: [-0.2, 2.0]
-width: 260
-height: 200
-axes: x
-xlabel: $x$
-xticks: { -1: "$x_1$", 1: "$x_2$" }
-caption: "(b)"
-alt: Grafico di f_2(x), una parabola con vertice nell'origine definita su tutto R ma con valori solo y>=0; la retta orizzontale y>0 la interseca in due punti x_1 e x_2
-items:
-  - fn: x^2
-    domain: [-1.35, 1.35]
-  - line: [[0, 0], [0, 1.95]]
+  - line: [[a - 1, 1], [a - 1, 0]]
+  - text: $x_1$
+    at: [a - 1, -0.04]
+    anchor: s
+  - line: [[a + 1, 1], [a + 1, 0]]
+  - text: $x_2$
+    at: [a + 1, -0.04]
+    anchor: s
+  # ── (b) ──
+  - text: (b)
+    at: [b, 2.3]
+  - line: [[b - 1.35, 0], [b + 2, 0]]
+    arrow: true
+  - text: $x$
+    at: [b + 2.05, 0]
+    anchor: e
+  - line: [[b, 0], [b, 2]]
     arrow: true
   - text: $f_2(x)$
-    at: [0.1, 1.75]
+    at: [b + 0.12, 1.82]
     anchor: e
-  - line: [[-1.27, 1], [1.1, 1]]
+  - fn: (x - b)^2
+    domain: [b - 1.4, b + 1.37]
+  - line: [[b - 1.3, 1], [b + 1.3, 1]]
   - text: $y>0$
-    at: [1.2, 1]
+    at: [b + 1.4, 1]
     anchor: e
-  - line: [[-1, 1], [-1, 0]]
-  - line: [[1, 1], [1, 0]]
-```
-
-```plot
-x: [-0.2, 2.3]
-y: [-0.85, 2.0]
-width: 260
-height: 270
-axes: true
-xlabel: $x$
-xticks: { 1: "$x_2$" }
-caption: "(c)"
-alt: Grafico di f_3(x), il ramo destro di una parabola con vertice nell'origine; la retta y>0 lo interseca in un solo punto x_2, la retta y<0 non lo interseca
-items:
-  - fn: x^2
-    domain: [0, 1.35]
+  - line: [[b - 1, 1], [b - 1, 0]]
+  - text: $x_1$
+    at: [b - 1, -0.04]
+    anchor: s
+  - line: [[b + 1, 1], [b + 1, 0]]
+  - text: $x_2$
+    at: [b + 1, -0.04]
+    anchor: s
+  # ── (c) ──
+  - text: (c)
+    at: [c, 2.3]
+  - line: [[c, 0], [c + 2.1, 0]]
+    arrow: true
+  - text: $x$
+    at: [c + 2.15, 0]
+    anchor: e
+  - line: [[c, -0.95], [c, 2]]
+    arrow: true
   - text: $f_3(x)$
-    at: [0.1, 1.75]
+    at: [c + 0.12, 1.82]
     anchor: e
-  - line: [[-0.1, 1], [1.1, 1]]
+  - fn: (x - c)^2
+    domain: [c, c + 1.37]
+  - line: [[c, 1], [c + 1.3, 1]]
   - text: $y>0$
-    at: [1.2, 1]
+    at: [c + 1.4, 1]
     anchor: e
-  - line: [[1, 1], [1, 0]]
-  - line: [[-0.1, -0.46], [1.4, -0.46]]
+  - line: [[c, -0.58], [c + 1.3, -0.58]]
   - text: $y<0$
-    at: [1.5, -0.46]
+    at: [c + 1.4, -0.58]
     anchor: e
-```
-
-```plot
-x: [-0.2, 2.3]
-y: [-0.2, 2.0]
-width: 260
-height: 200
-axes: x
-xlabel: $x$
-xticks: { 1: "$x$" }
-caption: "(d)"
-alt: Grafico di f_4(x), il ramo destro di una parabola con vertice nell'origine; la retta y>0 lo interseca in un solo punto x
-items:
-  - fn: x^2
-    domain: [0, 1.35]
-  - line: [[0, 0], [0, 1.95]]
+  - line: [[c + 1, 1], [c + 1, 0]]
+  - text: $x_2$
+    at: [c + 1, -0.04]
+    anchor: s
+  # ── (d) ──
+  - text: (d)
+    at: [d, 2.3]
+  - line: [[d, 0], [d + 2.1, 0]]
+    arrow: true
+  - text: $x$
+    at: [d + 2.15, 0]
+    anchor: e
+  - line: [[d, 0], [d, 2]]
     arrow: true
   - text: $f_4(x)$
-    at: [0.1, 1.75]
+    at: [d + 0.12, 1.82]
     anchor: e
-  - line: [[-0.1, 1], [1.1, 1]]
+  - fn: (x - d)^2
+    domain: [d, d + 1.37]
+  - line: [[d, 1], [d + 1.3, 1]]
   - text: $y>0$
-    at: [1.2, 1]
+    at: [d + 1.4, 1]
     anchor: e
-  - line: [[1, 1], [1, 0]]
+  - line: [[d + 1, 1], [d + 1, 0]]
+  - text: $x$
+    at: [d + 1, -0.04]
+    anchor: s
 ```
 
 Funzione (a) non iniettiva, non suriettiva; (b) non iniettiva ma suriettiva; (c) iniettiva ma non suriettiva; (d) iniettiva e suriettiva cioè biettiva.
@@ -170,52 +183,135 @@ $$
 Vogliamo studiare una funzione per trovare i punti estremi, cioè punti in cui il valore della funzione è al minimo/massimo locale. Si può anche vedere come il punto in cui viene cambiata "direzione" della funzione (da crescente a decrescente, etc...)
 
 ```plot
-x: [-0.5, 2.5]
-y: [-10, 50]
-width: 330
+x: [-0.52, 5.97]
+y: [-10.4, 50.4]
+width: 700
 height: 330
-xticks: [1, 2]
-yticks: [10, 20, 30, 40]
-alt: Grafico di y = s(t), una parabola rivolta verso il basso che parte da s(0)=32, ha il vertice V in alto a circa t=0,75 e s=41 e scende fino a incrociare l'asse delle t poco oltre t=2.
+axes: false
+let: { pa: 3.698, pb: 4.15, pc: 5.055, k: 148.7 }
+alt: "A sinistra il grafico di y = s(t), una parabola rivolta verso il basso che parte da s(0)=32, ha il vertice V in alto a circa t=0,75 e s=41 e scende fino a incrociare l'asse delle t poco oltre t=2. A destra il grafico di y = g(x) con due massimi locali nei punti (a, g(a)) e (c, g(c)) e un minimo locale nel punto (b, g(b)) tra i due; g(c) è il massimo più alto."
 items:
+  # ── pannello sinistro: y = s(t) ──
+  - line: [[0.5, -10], [0.5, 50]]
+    color: muted
+    width: 0.3
+  - line: [[1, -10], [1, 50]]
+    color: muted
+    width: 0.3
+  - line: [[1.5, -10], [1.5, 50]]
+    color: muted
+    width: 0.3
+  - line: [[2, -10], [2, 50]]
+    color: muted
+    width: 0.3
+  - line: [[-0.5, 10], [2.5, 10]]
+    color: muted
+    width: 0.3
+  - line: [[-0.5, 20], [2.5, 20]]
+    color: muted
+    width: 0.3
+  - line: [[-0.5, 30], [2.5, 30]]
+    color: muted
+    width: 0.3
+  - line: [[-0.5, 40], [2.5, 40]]
+    color: muted
+    width: 0.3
+  - line: [[-0.5, -10], [2.5, -10], [2.5, 50], [-0.5, 50], [-0.5, -10]]
+    color: muted
+    width: 0.8
+  - line: [[-0.5, 0], [2.5, 0]]
+    width: 2.2
+  - line: [[0, -10], [0, 50]]
+    width: 2.2
+  - line: [[1, -1.2], [1, 1.2]]
+  - text: $1$
+    at: [1.03, -0.5]
+    anchor: se
+  - line: [[2, -1.2], [2, 1.2]]
+  - text: $2$
+    at: [2.03, -0.5]
+    anchor: se
+  - line: [[-0.04, 10], [0.04, 10]]
+  - text: $10$
+    at: [-0.05, 10]
+    anchor: w
+  - line: [[-0.04, 20], [0.04, 20]]
+  - text: $20$
+    at: [-0.05, 20]
+    anchor: w
+  - line: [[-0.04, 30], [0.04, 30]]
+  - text: $30$
+    at: [-0.05, 30]
+    anchor: w
+  - line: [[-0.04, 40], [0.04, 40]]
+  - text: $40$
+    at: [-0.05, 40]
+    anchor: w
   - fn: s(t) = 32 + 24t - 16t^2
     domain: [0, 2.5]
     color: blue
-    width: 2.4
+    width: 2.6
   - point: [0.75, 41]
     color: red
-    label: $V$
-    anchor: nw
+    size: 4
+  - text: $V$
+    at: [0.62, 44.5]
   - text: $y=s(t)$
-    at: [1.35, 43]
-    anchor: e
-```
-
-```plot
-x: [-1.63, 1.67]
-y: [-1.6, 1.65]
-width: 330
-height: 330
-alt: Grafico di y = g(x) con due massimi locali nei punti (a, g(a)) e (c, g(c)) e un minimo locale nel punto (b, g(b)) tra i due; g(c) è il massimo più alto.
-items:
-  - fn: g
-    through: [[-1.44, -1.6], [-0.82, 0.31], [-0.32, 0.15], [0.65, 1.07], [1.24, -1.6]]
+    at: [1.6, 43]
+  # ── pannello destro: y = g(x) (coordinate del pannello: x in [2.95, 5.95]) ──
+  - line: [[3.439, -10], [3.439, 50]]
+    color: muted
+    width: 0.3
+  - line: [[3.938, -10], [3.938, 50]]
+    color: muted
+    width: 0.3
+  - line: [[4.935, -10], [4.935, 50]]
+    color: muted
+    width: 0.3
+  - line: [[5.442, -10], [5.442, 50]]
+    color: muted
+    width: 0.3
+  - line: [[2.95, 39.66], [5.95, 39.66]]
+    color: muted
+    width: 0.3
+  - line: [[2.95, 29.69], [5.95, 29.69]]
+    color: muted
+    width: 0.3
+  - line: [[2.95, 9.57], [5.95, 9.57]]
+    color: muted
+    width: 0.3
+  - line: [[2.95, -0.4], [5.95, -0.4]]
+    color: muted
+    width: 0.3
+  - line: [[2.95, -10], [5.95, -10], [5.95, 50], [2.95, 50], [2.95, -10]]
+    color: muted
+    width: 0.8
+  - line: [[2.95, 19.72], [5.95, 19.72]]
+    width: 2.2
+  - line: [[4.445, -10], [4.445, 50]]
+    width: 2.2
+  # g' = -k(x - pa)(x - pb)(x - pc): massimi in pa e pc, minimo in pb
+  - fn: g(x) = 25.45 - k((x - pa)^4/4 - (pb + pc - 2pa)(x - pa)^3/3 + (pb - pa)(pc - pa)(x - pa)^2/2)
+    domain: [3.12, 5.61]
     color: blue
-    width: 2.4
-  - point: [-0.82, 0.31]
+    width: 2.6
+  - point: [pa, g(pa)]
     color: red
-    label: $(a,g(a))$
-    anchor: n
-  - point: [-0.32, 0.15]
+    size: 4
+  - point: [pb, g(pb)]
     color: red
-    label: $(b,g(b))$
-    anchor: s
-  - point: [0.65, 1.07]
+    size: 4
+  - point: [pc, g(pc)]
     color: red
-    label: $(c,g(c))$
-    anchor: ne
+    size: 4
+  - text: $(a,g(a))$
+    at: [3.43, 29.88]
+  - text: $(b,g(b))$
+    at: [3.827, 15.29]
+  - text: $(c,g(c))$
+    at: [5.442, 43.54]
   - text: $y=g(x)$
-    at: [-0.86, -1.05]
+    at: [3.661, 0.15]
 ```
 
 Per trovare i punti critici della funzione $f(x)$ ci basta: 
@@ -334,29 +430,31 @@ Data una funzione $f$, calcoliamo la derivata prima $f'(x)$ e il corrispettivo d
 ## 🟠 Studio derivata seconda (concavità/convessità)
 
 ```plot
-x: [-0.2, 1.65]
+x: [0.85, 5.4]
 y: [-0.2, 1.4]
-width: 260
+width: 560
 height: 200
-alt: Funzione convessa, il cui grafico ha la forma di una U con un minimo
+axes: false
+alt: "Due grafici affiancati: a sinistra una funzione convessa, il cui grafico ha la forma di una U con un minimo; a destra una funzione concava, a forma di U rovesciata con un massimo"
 items:
+  # ── f convessa ──
+  - line: [[0.95, 0], [2.7, 0]]
+    arrow: true
+  - line: [[1.12, -0.17], [1.12, 1.35]]
+    arrow: true
   - fn: f
-    through: [[0.18, 0.92], [0.73, 0.38], [1.43, 1.10]]
+    through: [[1.3, 0.92], [1.85, 0.38], [2.55, 1.12]]
   - text: $f$ convessa
-    at: [0.68, 1.2]
-```
-
-```plot
-x: [-0.2, 1.65]
-y: [-0.2, 1.4]
-width: 260
-height: 200
-alt: Funzione concava, il cui grafico ha la forma di una U rovesciata con un massimo
-items:
-  - fn: f
-    through: [[0.2, 0.45], [0.73, 0.98], [1.38, 0.2]]
+    at: [1.85, 1.18]
+  # ── f concava ──
+  - line: [[3.55, 0], [5.28, 0]]
+    arrow: true
+  - line: [[3.72, -0.17], [3.72, 1.35]]
+    arrow: true
+  - fn: g
+    through: [[3.9, 0.45], [4.47, 0.98], [5.1, 0.2]]
   - text: $f$ concava
-    at: [0.73, 1.2]
+    at: [4.44, 1.18]
 ```
 
 Per capire la concavità del punto (cioè se il punto fa parte di un minimo o massimo locale) allora dobbiamo studiare la derivata seconda nel punto di flesso.
@@ -463,11 +561,19 @@ y: [-0.4, 4]
 width: 440
 height: 380
 xticks: { 0.667: "$\\frac{2}{3}$", 1: "$1$" }
-yticks: [1, 2]
-alt: Grafico di f(x) = 3x^4 - 4x^3 + 2. La funzione decresce, ha un flesso a tangente orizzontale nel punto (0,2), prosegue a decrescere con un flesso in x = 2/3 dove cambia concavità, raggiunge il minimo locale nel punto (1,1) e poi cresce.
+yticks: [1]
+alt: Grafico di f(x) = 3x^4 - 4x^3 + 2. La funzione decresce, ha un flesso a tangente orizzontale nel punto (0,2), prosegue a decrescere con un flesso in x = 2/3 dove cambia concavità (tratto concavo tra 0 e 2/3 evidenziato), raggiunge il minimo locale nel punto (1,1) e poi cresce.
 items:
   - fn: f(x) = 3x^4 - 4x^3 + 2
-    domain: [-0.7, 1.45]
+    domain: [-0.7, 0]
+    color: blue
+    width: 2.4
+  - fn: f(x)
+    domain: [0, 2/3]
+    color: red
+    width: 2.4
+  - fn: f(x)
+    domain: [2/3, 1.45]
     color: blue
     width: 2.4
   - line: [[-0.35, 2], [0.35, 2]]
@@ -485,6 +591,7 @@ items:
     label: $(1,1)$
     anchor: se
   - text: $x=\tfrac{2}{3}$
-    at: [0.4, 3.3]
+    at: [0.12, 3.3]
+    color: red
 ```
 

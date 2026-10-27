@@ -103,37 +103,47 @@ Che sono due avvicinamenti diversi all'origine, dove $y = x^2$ ha limite $\frac{
 Un punto $P$ nel piano può essere rappresentato sia in coordinate cartesiane $(x,y)$ che in coordinate polari $(\rho,\theta)$:
 
 ```plot
-x: [-1, 15]
-y: [-1.5, 7.2]
-height: 260
+x: [-1.1, 18]
+y: [-1, 5.6]
+width: 600
+aspect: equal
+axes: false
 alt: Un punto P nel piano con coordinate cartesiane (x, y) e coordinate polari (ρ, θ), dove ρ è la distanza dall'origine e θ l'angolo con l'asse x.
 items:
-  - guide: [8, 4.2]
+  - line: [[-1, 0], [9.65, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[0, -0.95], [0, 5.5]]
+    width: 1.2
+    arrow: true
+  - line: [[0, 4.2], [8, 4.2], [8, 0]]
     color: red
     dash: dotted
+    width: 1.2
   - line: [[0, 0], [8, 4.2]]
     color: blue
-  - line: [[3.5, 0.0], [3.5, 0.056], [3.498, 0.113], [3.496, 0.169], [3.493, 0.225], [3.489, 0.282], [3.484, 0.338], [3.478, 0.394], [3.471, 0.45], [3.463, 0.506], [3.455, 0.562], [3.445, 0.617], [3.435, 0.673], [3.423, 0.728], [3.411, 0.783], [3.398, 0.838], [3.384, 0.892], [3.369, 0.947], [3.354, 1.001], [3.337, 1.055], [3.32, 1.109], [3.301, 1.162], [3.282, 1.215], [3.262, 1.268], [3.241, 1.32], [3.22, 1.372], [3.197, 1.424], [3.174, 1.475], [3.15, 1.526], [3.125, 1.577], [3.099, 1.627]]
+  - line: [[2.35, 0], [2.342, 0.189], [2.32, 0.377], [2.282, 0.563], [2.229, 0.744], [2.162, 0.921], [2.081, 1.092]]
     color: blue
     arrow: true
   - point: [8, 4.2]
+    size: 2.2
   - text: $\rho$
-    at: [4.3, 2.9]
+    at: [3.5, 2.45]
     color: blue
   - text: $\vartheta$
-    at: [2.2, 0.55]
+    at: [1.65, 0.33]
     color: blue
   - text: $y$
-    at: [-0.6, 4.2]
+    at: [-0.75, 4.2]
     color: red
   - text: $x$
-    at: [8, -0.8]
+    at: [8, -0.6]
     color: red
   - text: "$P = (\\textcolor{red}{x, y})$ in coordinate cartesiane"
-    at: [8.6, 4.2]
+    at: [8.3, 4.2]
     anchor: e
   - text: "$= (\\textcolor{blue}{\\rho, \\vartheta})$ in coordinate polari"
-    at: [8.9, 3.2]
+    at: [8.9, 3.45]
     anchor: e
 ```
 
@@ -540,32 +550,36 @@ $$
 Supponiamo che in $(x_0, y_0)$ esiste il versore tangente $\tau$ a $\Gamma_c$.
 
 ```plot
-x: [-0.2, 3.2]
-y: [-0.2, 1.6]
-height: 230
+x: [-0.1, 3.1]
+y: [-0.08, 1.45]
+width: 400
+aspect: equal
 axes: false
 let: { a: 1.15 }
 caption: Versore tangente $\tau$.
 alt: Una curva di livello Γ_c con il punto (x_0, y_0) e il versore tangente τ in quel punto, disegnato in blu.
 items:
   - fn: g
-    through: [[0, 0], [1.75, 1.17], [2.85, 0.8]]
+    through: [[0, 0], [0.45, 0.56], [0.85, 0.9], [1.15, 1.07], [1.6, 1.17], [2.2, 1.06], [2.83, 0.77]]
   - fn: t(x) = g(a) + g'(a)(x - a)
-    domain: [0.35, 1.15]
+    domain: [0.4, 1.15]
     color: blue
     dash: dotted
-  - line: [[1.15, 1.07], [2.0, 1.35]]
+    width: 1.2
+  - line: [[a, g(a)], [a + 0.75, g(a) + 0.75 g'(a)]]
     color: blue
+    width: 1.2
     arrow: true
   - point: [a, g(a)]
+    size: 2.2
   - text: $\tau$
-    at: [2.05, 1.4]
+    at: [1.95, 1.37]
     color: blue
     anchor: e
   - text: $(x_0, y_0)$
     at: [1.35, 0.9]
   - text: $\Gamma_c$
-    at: [2.85, 0.5]
+    at: [2.95, 0.58]
 ```
 
 Poiché $f$ è costante su $\Gamma_c$ e, partendo in $(x_0, y_0)$, muoversi lungo la direzione $\tau$ corrisponde, almeno in termini infinitesimali, a muovendosi lungo la curva $\Gamma_c$, si ha euristicamente

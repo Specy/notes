@@ -9,65 +9,62 @@ type: lecture
 La derivata è la pendenza della retta tangente di una funzione ad un certo punto 
 
 ```plot
-x: [-0.2, 6.2]
-y: [-0.2, 4.4]
-width: 560
-height: 320
+x: [-0.4, 6.3]
+y: [-0.4, 4.9]
+width: 500
+height: 400
 alt: "Curva y = f(x) convessa con il punto (x, f(x)), il punto (x+h, f(x+h)), la corda (Chord) che li unisce e la retta tangente in (x, f(x)); sono indicati gli incrementi h e f(x+h) - f(x)"
 let:
-  x0: 1.05
-  x1: 3.4
-  k: 1.6
+  x0: 1.24
+  x1: 4.06
 xlabel: $x$
 ylabel: $y$
 xticks: { x0: "$x$", x1: "$x+h$" }
 items:
-  - fn: f(x) = 0.83 + 0.1065x^2 + 0.00518(exp(k x) - 1)
-    domain: [0, 3.52]
+  - fn: f(x) = 1.04 + 0.133x^2 + 0.000034(exp(2.45x) - 1)
+    domain: [0, 4.27]
     color: blue
   - fn: t(x) = f(x0) + f'(x0)(x - x0)
-    domain: [0.1, 4.5]
+    domain: [0.15, 5.2]
     color: red
   - line: [[x0, f(x0)], [x1, f(x1)]]
     color: red
-  - line: [[x0, f(x0)], [x1 - 0.1, f(x0)]]
+  - line: [[x0, f(x0)], [x1 + 0.1, f(x0)]]
     arrow: true
+    dash: dotted
     color: muted
-  - line: [[x1, f(x0)], [x1, f(x1) - 0.1]]
+  - line: [[x1 + 0.14, f(x0)], [x1 + 0.14, f(x1) - 0.05]]
     arrow: true
+    dash: dotted
     color: muted
-  - guide: [x0, f(x0)]
-  - guide: [x1, f(x1)]
-  - point: [x0, f(x0)]
-  - point: [x1, f(x1)]
   - text: $y = f(x)$
-    at: [3.65, 3.95]
+    at: [4.1, 4.8]
     anchor: e
     color: purple
   - text: $(x+h,\, f(x+h))$
-    at: [3.25, 3.4]
+    at: [3.95, 4.05]
     anchor: w
     color: purple
   - text: $f(x+h) - f(x)$
-    at: [3.55, 2.4]
+    at: [4.3, 2.95]
     anchor: e
     color: purple
   - text: Chord
-    at: [1.0, 2.05]
+    at: [1.55, 2.5]
     color: purple
   - text: Tangent at $(x,\, f(x))$
-    at: [3.7, 1.35]
+    at: [4.5, 2.05]
     anchor: e
     color: purple
   - text: $(x,\, f(x))$
-    at: [0.65, 1.4]
+    at: [0.95, 1.6]
     color: purple
   - text: $h$
-    at: [2.2, 0.55]
+    at: [2.4, 0.75]
     color: purple
   - text: $O$
-    at: [-0.1, -0.16]
-    anchor: w
+    at: [-0.05, -0.05]
+    anchor: sw
 ```
 
 $$
@@ -300,71 +297,63 @@ $$
 $$
 
 ```plot
-x: [-0.3, 7.2]
-y: [-0.15, 3.7]
+x: [-0.25, 8.8]
+y: [-0.3, 4.0]
 width: 560
-height: 300
+height: 270
 alt: Grafico di una funzione con la retta secante s per (a, f(a)) e (b, f(b)) e due rette tangenti t_1 e t_2, parallele a s, nei punti di ascissa c_1 e c_2
 let:
-  a: 0.617
-  c1: 1.817
-  c2: 4.533
-  b: 6.167
-  fa: 0.783
-  f1: 1.817
-  f2: 1.317
-  fb: 2.75
-  xm: 0.117
-  ym: 0.527
-  xe: 6.767
-  ye: 3.039
-  m: 0.3544
+  a: 0.7
+  c1: 2.14
+  c2: 5.4
+  b: 7.36
+  fa: 0.96
+  fb: 3.34
+  m: (fb - fa)/(b - a)
+  hx: 4.25
 xlabel: $x$
 ylabel: $f(x)$
 xticks: { a: "$a$", c1: "$c_1$", c2: "$c_2$", b: "$b$" }
 items:
-  - fn: ym + (f1 - ym)(1 - cos(pi(x - xm)/(c1 - xm)))/2
-    domain: [a, c1]
-  - fn: f1 + (f2 - f1)(1 - cos(pi(x - c1)/(c2 - c1)))/2
-    domain: [c1, c2]
-  - fn: f2 + (ye - f2)(1 - cos(pi(x - c2)/(xe - c2)))/2
-    domain: [c2, b]
-  - fn: fa + m(x - a)
+  # g = scarto dalla secante: nullo in a e b, massimo in c1, minimo in c2
+  - fn: g
+    through: [[a, 0], [c1, 0.73], [c2, -1.04], [b, 0]]
+    hidden: true
+  - fn: s(x) = fa + m(x - a)
     domain: [a, b]
     color: blue
     label: $s$
-    labelAt: 6.167
+    labelAt: b
     anchor: e
-  - fn: f1 + m(x - c1)
-    domain: [a, 6.4]
+  - fn: t1(x) = s(x) + g(c1)
+    domain: [a, b]
     color: red
     label: $t_1$
-    labelAt: 6.4
+    labelAt: b
     anchor: e
-  - fn: f2 + m(x - c2)
-    domain: [a, 6.4]
+  - fn: t2(x) = s(x) + g(c2)
+    domain: [a, b]
     color: red
     label: $t_2$
-    labelAt: 6.4
+    labelAt: b
     anchor: e
-  - line: [[a, 0], [a, fa]]
-    dash: dotted
-    color: muted
-  - line: [[c1, 0], [c1, f1]]
-    dash: dotted
-    color: muted
-  - line: [[c2, 0], [c2, f2]]
-    dash: dotted
-    color: muted
-  - line: [[b, 0], [b, fb]]
-    dash: dotted
-    color: muted
-  - line: [[3.1599999999999997, f1 + m(3.3 - c1) - 0.15], [3.32, f1 + m(3.3 - c1) + 0.15]]
-  - line: [[3.28, f1 + m(3.3 - c1) - 0.15], [3.44, f1 + m(3.3 - c1) + 0.15]]
-  - line: [[3.1599999999999997, fa + m(3.3 - a) - 0.15], [3.32, fa + m(3.3 - a) + 0.15]]
-  - line: [[3.28, fa + m(3.3 - a) - 0.15], [3.44, fa + m(3.3 - a) + 0.15]]
-  - line: [[3.1599999999999997, f2 + m(3.3 - c2) - 0.15], [3.32, f2 + m(3.3 - c2) + 0.15]]
-  - line: [[3.28, f2 + m(3.3 - c2) - 0.15], [3.44, f2 + m(3.3 - c2) + 0.15]]
+  - fn: f(x) = s(x) + g(x)
+    domain: [a, b]
+  - guide: [a, f(a)]
+    to: x
+  - guide: [c1, f(c1)]
+    to: x
+  - guide: [c2, f(c2)]
+    to: x
+  - guide: [b, f(b)]
+    to: x
+  # segni di parallelismo
+  - line: [[hx - 0.14, t1(hx) - 0.17], [hx + 0.02, t1(hx) + 0.17]]
+  - line: [[hx + 0.00, t1(hx) - 0.17], [hx + 0.16, t1(hx) + 0.17]]
+  - line: [[hx - 0.14, s(hx) - 0.17], [hx + 0.02, s(hx) + 0.17]]
+  - line: [[hx + 0.00, s(hx) - 0.17], [hx + 0.16, s(hx) + 0.17]]
+  - line: [[hx - 0.14, t2(hx) - 0.17], [hx + 0.02, t2(hx) + 0.17]]
+  - line: [[hx + 0.00, t2(hx) - 0.17], [hx + 0.16, t2(hx) + 0.17]]
 ```
 
 Simile all'intuizione precedente.
@@ -414,79 +403,89 @@ Sia $f: (a,b) \in \mathbb{R}$ derivabile, e sia $x_0 \in (a,b)$ un punto critico
 - Un punto di *minimo locale* se  $f'(x)$ in $x_0$ cambia di segno da - a +
 
 ```plot
-x: [-5.3, 5.3]
-y: [-0.5, 4.5]
-width: 440
-height: 210
-alt: "Massimo locale in x_0: a sinistra la funzione è crescente (derivata positiva, segno +), a destra è decrescente (derivata negativa, segno -)"
+x: [0, 9.6]
+y: [-0.7, 4.0]
+width: 460
+height: 225
+alt: "Massimo locale in x_0: a sinistra la funzione è crescente (f'(x)>0, segno +), a destra è decrescente (f'(x)<0, segno -)"
 axes: false
+let: { p: 4.58 }
 items:
   - text: max locale
-    at: [0, 4.2]
-  - fn: 2.16 - 1.13x^2
-    domain: [-1, 0]
-  - fn: 2.16 - 0.65x^2
-    domain: [0, 1.6]
-  - line: [[-5.3, 0], [5.3, 0]]
-  - text: $x_0$
-    at: [0, -0.3]
-  - line: [[0, 0], [0, 3.4]]
+    at: [p, 3.6]
+  - line: [[0.45, 0], [9.1, 0]]
+  - line: [[p, 0], [p, 2.9]]
     dash: dotted
-    color: muted
-  - line: [[-1.63, 1.44], [-1.0, 2.28]]
+  - fn: 1.9 - 1.32(x - p)^2
+    domain: [p - 0.87, p]
+  - fn: 1.9 - 0.48(x - p)^2
+    domain: [p, p + 1.42]
+  - line: [[3.17, 1.25], [3.67, 1.98]]
     arrow: true
-  - line: [[1.08, 2.28], [1.92, 1.44]]
+  - line: [[5.52, 1.98], [6.29, 1.25]]
     arrow: true
   - text: $f'(x)>0 \Rightarrow$
-    at: [-3.15, 2.4]
+    at: [0.9, 2.05]
+    anchor: e
   - text: $f$ crescente
-    at: [-3.15, 1.75]
+    at: [0.9, 1.45]
+    anchor: e
   - text: $\pmb{+}$
-    at: [-3.3, 0.9]
+    at: [1.7, 0.67]
   - text: $f'(x)<0 \Rightarrow$
-    at: [3.6, 2.4]
+    at: [6.7, 2.05]
+    anchor: e
   - text: $f$ decrescente
-    at: [3.6, 1.75]
+    at: [6.7, 1.45]
+    anchor: e
   - text: $\pmb{-}$
-    at: [3.5, 0.9]
+    at: [7.55, 0.67]
+  - text: $x_0$
+    at: [p, -0.05]
+    anchor: s
 ```
 
 ```plot
-x: [-5.3, 5.3]
-y: [-0.5, 4.5]
-width: 440
-height: 210
-alt: "Minimo locale in x_0: a sinistra la funzione è decrescente (derivata negativa, segno -), a destra è crescente (derivata positiva, segno +)"
+x: [9.8, 19.4]
+y: [-0.7, 4.0]
+width: 460
+height: 225
+alt: "Minimo locale in x_0: a sinistra la funzione è decrescente (f'(x)<0, segno -), a destra è crescente (f'(x)>0, segno +)"
 axes: false
+let: { q: 14.38 }
 items:
   - text: min locale
-    at: [0, 4.2]
-  - fn: 1.85 + 1.1x^2
-    domain: [-1, 0]
-  - fn: 1.85 + 0.45x^2
-    domain: [0, 1.6]
-  - line: [[-5.3, 0], [5.3, 0]]
-  - text: $x_0$
-    at: [0, -0.3]
-  - line: [[0, 0], [0, 3.4]]
+    at: [q, 3.6]
+  - line: [[10.25, 0], [18.9, 0]]
+  - line: [[q, 0], [q, 2.9]]
     dash: dotted
-    color: muted
-  - line: [[-1.35, 2.4], [-0.82, 1.44]]
+  - fn: 1.58 + 1.28(x - q)^2
+    domain: [q - 0.88, q]
+  - fn: 1.58 + 0.49(x - q)^2
+    domain: [q, q + 1.42]
+  - line: [[13.19, 2.08], [13.67, 1.35]]
     arrow: true
-  - line: [[1.08, 1.63], [2.04, 2.4]]
+  - line: [[15.33, 1.42], [16.12, 2.08]]
     arrow: true
   - text: $f'(x)<0 \Rightarrow$
-    at: [-3.36, 2.4]
+    at: [10.7, 2.05]
+    anchor: e
   - text: $f$ decrescente
-    at: [-3.36, 1.75]
+    at: [10.7, 1.45]
+    anchor: e
   - text: $\pmb{-}$
-    at: [-3.3, 0.9]
+    at: [11.55, 0.67]
   - text: $f'(x)>0 \Rightarrow$
-    at: [3.37, 2.4]
+    at: [16.65, 2.05]
+    anchor: e
   - text: $f$ crescente
-    at: [3.37, 1.75]
+    at: [16.65, 1.45]
+    anchor: e
   - text: $\pmb{+}$
-    at: [3.5, 0.9]
+    at: [17.45, 0.67]
+  - text: $x_0$
+    at: [q, -0.05]
+    anchor: s
 ```
 
 ##  🟢Teorema di Hôpital
@@ -620,36 +619,37 @@ $$
 Dove $r(x)$ è l'errore dell'approssimazione: 
 
 ```plot
-x: [0, 5.8]
-y: [-0.3, 3.5]
-width: 420
-height: 260
+x: [-0.1, 7.6]
+y: [-0.2, 5.4]
+width: 430
+height: 310
 alt: "Grafico di una funzione f concava, della sua retta tangente t nel punto x_0 e del resto r(x) = t(x) - f(x), la distanza verticale tra tangente e funzione in x"
 let:
-  a: 1.55
-  b: 2.75
+  a: 2.25
+  b: 4.15
 xticks: { a: "$x_0$", b: "$x$" }
 yticks: { "f(a)": "$f(x_0)$", "f(b)": "$f(x)$", "t(b)": "$t(x)$" }
 items:
-  - fn: f(x) = 1 + 1.25(1 - exp(-1.4(x - a)))
-    domain: [1.4, 4]
+  - fn: f(x) = 1.45 + 1.27 ln((x - 1.5)/0.75)
+    domain: [1.86, 6]
     label: $f$
-    labelAt: 3.4
+    labelAt: 5
   - fn: t(x) = f(a) + f'(a)(x - a)
-    domain: [1.05, 2.95]
+    domain: [1.55, 4.45]
     color: blue
     label: $t$
-    labelAt: 2.95
+    labelAt: 4.45
     anchor: e
   - guide: [a, f(a)]
   - guide: [b, f(b)]
   - guide: [b, t(b)]
   - line: [[b, f(b)], [b, t(b)]]
     color: red
-  - brace: [[4.25, f(b)], [4.25, t(b)]]
+  - brace: [[6.3, f(b)], [6.3, t(b)]]
     color: red
     label: $=r(x)$
   - point: [a, f(a)]
+    size: 2.4
 ```
 
 E naturalmente, con $x \to x_0$ il resto $r(x)$ tende a 0, e nel punto $r(x_0) = 0$. Questa funzione è la migliore approssimante per $n = 1$

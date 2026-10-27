@@ -19,107 +19,161 @@ S(f, P) &:= \sum_{i=1}^{n} M_i \cdot \Delta x_i =: \; \textit{somma superiore}
 $$
 
 ```plot
-x: [0, 6.2]
-y: [0, 3.7]
-width: 340
-height: 230
-ylabel: $f(x)$
-xlabel: $x$
-xticks: { 0.44: "$a=x_0$", 1.18: "$x_1$", 2.04: "$x_2$", 3.24: "$x_3$", 4.38: "$x_4$", 5.64: "$x_5=b$" }
-yticks: { 1.0: "$m$", 3.2: "$M$" }
-alt: "Somma inferiore: rettangoli rossi sotto il grafico di f su una partizione di [a,b] in cinque intervalli"
+x: [-0.6, 16.8]
+y: [-0.45, 3.3]
+width: 700
+height: 190
+axes: false
+let: { p: 9.1 }   # inizio del secondo pannello
+alt: "Due grafici affiancati della stessa f su una partizione di [a,b] in cinque intervalli: a sinistra la somma inferiore s(f,P), rettangoli rossi sotto il grafico; a destra la somma superiore S(f,P), rettangoli verdi sopra il grafico. Le rette tratteggiate indicano m e M."
 items:
-  - hline: 3.2
+  # ── s(f,P) ──
+  - line: [[0, 2.56], [5.8, 2.56]]
     dash: dotted
-  - hline: 1.0
+  - line: [[0, 0.78], [5.8, 0.78]]
     dash: dotted
-  - area: 1.25
-    from: 0.44
-    to: 1.18
+  - area: 1.0
+    from: 0.5
+    to: 1.24
     color: red
     opacity: 0.5
-  - area: 1.5
-    from: 1.18
-    to: 2.04
+  - area: 1.3
+    from: 1.24
+    to: 2.1
     color: red
     opacity: 0.5
-  - area: 0.95
-    from: 2.04
-    to: 3.24
+  - area: 0.78
+    from: 2.1
+    to: 3.28
     color: red
     opacity: 0.5
-  - area: 1.15
-    from: 3.24
-    to: 4.38
+  - area: 1.1
+    from: 3.28
+    to: 4.42
     color: red
+    opacity: 0.5
+  - area: 1.92
+    from: 4.42
+    to: 5.7
+    color: red
+    opacity: 0.5
+  - line: [[0.5, 0], [0.5, 1.0], [1.24, 1.0], [1.24, 0]]
+  - line: [[1.24, 0], [1.24, 1.3], [2.1, 1.3], [2.1, 0]]
+  - line: [[2.1, 0], [2.1, 0.78], [3.28, 0.78], [3.28, 0]]
+  - line: [[3.28, 0], [3.28, 1.1], [4.42, 1.1], [4.42, 0]]
+  - line: [[4.42, 0], [4.42, 1.92], [5.7, 1.92], [5.7, 0]]
+  - fn: f
+    through: [[0.5, 1.0], [1.7, 1.66], [2.8, 0.8], [4.9, 2.56], [5.7, 1.96]]
+    domain: [0.5, 5.7]
+  - line: [[0, 0], [7.1, 0]]
+    arrow: true
+  - line: [[0, 0], [0, 3.05]]
+    arrow: true
+  - text: $x$
+    at: [7.2, 0]
+    anchor: e
+  - text: $f(x)$
+    at: [0.12, 2.98]
+    anchor: e
+  - text: $M$
+    at: [-0.08, 2.56]
+    anchor: w
+  - text: $m$
+    at: [-0.08, 0.78]
+    anchor: w
+  - text: $a=x_0$
+    at: [0.7, -0.04]
+    anchor: sw
+  - text: $x_1$
+    at: [1.24, -0.04]
+    anchor: s
+  - text: $x_2$
+    at: [2.1, -0.04]
+    anchor: s
+  - text: $x_3$
+    at: [3.28, -0.04]
+    anchor: s
+  - text: $x_4$
+    at: [4.42, -0.04]
+    anchor: s
+  - text: $x_5=b$
+    at: [5.7, -0.04]
+    anchor: s
+  - text: $s(f,P)$
+    at: [2.8, 1.95]
+  # ── S(f,P) ──
+  - line: [[p + 0, 2.56], [p + 5.8, 2.56]]
+    dash: dotted
+  - line: [[p + 0, 0.78], [p + 5.8, 0.78]]
+    dash: dotted
+  - area: 1.56
+    from: p + 0.5
+    to: p + 1.24
+    color: green
+    opacity: 0.5
+  - area: 1.7
+    from: p + 1.24
+    to: p + 2.1
+    color: green
+    opacity: 0.5
+  - area: 1.3
+    from: p + 2.1
+    to: p + 3.28
+    color: green
     opacity: 0.5
   - area: 2.4
-    from: 4.38
-    to: 5.64
-    color: red
-    opacity: 0.5
-  - line: [[0.44, 0], [0.44, 1.25], [1.18, 1.25], [1.18, 1.5], [2.04, 1.5], [2.04, 0.95], [3.24, 0.95], [3.24, 1.15], [4.38, 1.15], [4.38, 2.4], [5.64, 2.4], [5.64, 0]]
-  - line: [[1.18, 0], [1.18, 1.25]]
-  - line: [[2.04, 0], [2.04, 0.95]]
-  - line: [[3.24, 0], [3.24, 0.95]]
-  - line: [[4.38, 0], [4.38, 1.15]]
-  - fn: f
-    through: [[0.44, 1.25], [1.54, 2.1], [2.74, 0.95], [4.78, 3.2], [5.64, 2.45]]
-  - text: $s(f,P)$
-    at: [2.3, 2.5]
-    anchor: c
-```
-
-```plot
-x: [0, 6.2]
-y: [0, 3.7]
-width: 340
-height: 230
-ylabel: $f(x)$
-xlabel: $x$
-xticks: { 0.44: "$a=x_0$", 1.18: "$x_1$", 2.04: "$x_2$", 3.24: "$x_3$", 4.38: "$x_4$", 5.64: "$x_5=b$" }
-yticks: { 1.0: "$m$", 3.2: "$M$" }
-alt: "Somma superiore: rettangoli verdi sopra il grafico di f su una partizione di [a,b] in cinque intervalli"
-items:
-  - hline: 3.2
-    dash: dotted
-  - hline: 1.0
-    dash: dotted
-  - area: 1.85
-    from: 0.44
-    to: 1.18
+    from: p + 3.28
+    to: p + 4.42
     color: green
     opacity: 0.5
-  - area: 2.1
-    from: 1.18
-    to: 2.04
+  - area: 2.56
+    from: p + 4.42
+    to: p + 5.7
     color: green
     opacity: 0.5
-  - area: 1.5
-    from: 2.04
-    to: 3.24
-    color: green
-    opacity: 0.5
-  - area: 2.95
-    from: 3.24
-    to: 4.38
-    color: green
-    opacity: 0.5
-  - area: 3.2
-    from: 4.38
-    to: 5.64
-    color: green
-    opacity: 0.5
-  - line: [[0.44, 0], [0.44, 1.85], [1.18, 1.85], [1.18, 2.1], [2.04, 2.1], [2.04, 1.5], [3.24, 1.5], [3.24, 2.95], [4.38, 2.95], [4.38, 3.2], [5.64, 3.2], [5.64, 0]]
-  - line: [[1.18, 0], [1.18, 1.85]]
-  - line: [[2.04, 0], [2.04, 1.5]]
-  - line: [[3.24, 0], [3.24, 1.5]]
-  - line: [[4.38, 0], [4.38, 2.95]]
-  - fn: f
-    through: [[0.44, 1.25], [1.54, 2.1], [2.74, 0.95], [4.78, 3.2], [5.64, 2.45]]
+  - line: [[p + 0.5, 0], [p + 0.5, 1.56], [p + 1.24, 1.56], [p + 1.24, 0]]
+  - line: [[p + 1.24, 0], [p + 1.24, 1.7], [p + 2.1, 1.7], [p + 2.1, 0]]
+  - line: [[p + 2.1, 0], [p + 2.1, 1.3], [p + 3.28, 1.3], [p + 3.28, 0]]
+  - line: [[p + 3.28, 0], [p + 3.28, 2.4], [p + 4.42, 2.4], [p + 4.42, 0]]
+  - line: [[p + 4.42, 0], [p + 4.42, 2.56], [p + 5.7, 2.56], [p + 5.7, 0]]
+  - fn: f(x - p)
+    domain: [p + 0.5, p + 5.7]
+  - line: [[p + 0, 0], [p + 7.1, 0]]
+    arrow: true
+  - line: [[p + 0, 0], [p + 0, 3.05]]
+    arrow: true
+  - text: $x$
+    at: [p + 7.2, 0]
+    anchor: e
+  - text: $f(x)$
+    at: [p + 0.12, 2.98]
+    anchor: e
+  - text: $M$
+    at: [p + -0.08, 2.56]
+    anchor: w
+  - text: $m$
+    at: [p + -0.08, 0.78]
+    anchor: w
+  - text: $a=x_0$
+    at: [p + 0.7, -0.04]
+    anchor: sw
+  - text: $x_1$
+    at: [p + 1.24, -0.04]
+    anchor: s
+  - text: $x_2$
+    at: [p + 2.1, -0.04]
+    anchor: s
+  - text: $x_3$
+    at: [p + 3.28, -0.04]
+    anchor: s
+  - text: $x_4$
+    at: [p + 4.42, -0.04]
+    anchor: s
+  - text: $x_5=b$
+    at: [p + 5.7, -0.04]
+    anchor: s
   - text: $S(f,P)$
-    at: [2.3, 2.5]
-    anchor: c
+    at: [p + 2.2, 2.0]
 ```
 
 Per ogni partizione P di $[a,b]$ vale che $s(f, P) \lt A \lt S(f,P)$ 
@@ -167,10 +221,10 @@ E si chiama *integrale di $f$* in $[a,b]$
   (*additività* dell'integrale rispetto agli estremi di integrazione) ove definiamo
 
   ```plot
-  x: [-0.3, 7.6]
-  y: [-0.2, 3.6]
-  width: 460
-  height: 260
+  x: [-0.15, 8.0]
+  y: [-0.25, 3.5]
+  width: 500
+  height: 230
   ylabel: $f(x)$
   xlabel: $x$
   xticks: { 0.63: "$a$", 1.27: "$\\alpha$", 3.02: "$\\beta$", 6.02: "$\\gamma$", 6.8: "$b$" }
@@ -187,7 +241,7 @@ E si chiama *integrale di $f$* in $[a,b]$
       color: green
       opacity: 0.5
     - fn: f
-      through: [[0.63, 1.33], [1.88, 1.95], [3.25, 0.97], [5.3, 2.75], [6.8, 1.83]]
+      through: [[0.63, 1.33], [1.88, 1.95], [3.25, 0.98], [5.38, 2.78], [6.8, 1.83]]
     - guide: [0.63, 1.33]
       to: x
       dash: dotted
@@ -205,44 +259,18 @@ E si chiama *integrale di $f$* in $[a,b]$
 - $\displaystyle\int_{-a}^{a} f(x) \, dx = 2 \cdot \int_{0}^{a} f(x) \, dx$ *se* $f$ *è pari,*
 
 ```plot
-x: [-1.15, 1.2]
-y: [-0.9, 1]
-width: 340
-height: 250
-xlabel: $x$
-xticks: { -1: '$-a$', 1: '$a$' }
-alt: "Funzione dispari f(x) su [-a, a]: l'area rossa a sinistra e l'area verde a destra si compensano, la somma è 0."
+x: [-1.2, 4.4]
+y: [-0.95, 0.85]
+width: 700
+height: 225
+axes: false
+let: { p: 3.2, q: 0.7 }   # il pannello "pari" è spostato di p a destra e di q in basso
+alt: "Due grafici affiancati. A sinistra una funzione dispari f(x) su [-a, a]: l'area rossa a sinistra e l'area verde a destra si compensano, la somma è 0. A destra una funzione pari f(x) su [-a, a]: l'area rossa a sinistra e l'area verde a destra sono uguali, l'integrale su [-a, a] è il doppio di quello su [0, a]."
 items:
-  - area: f(x)
-    from: -1
-    to: 0
-    color: red
-    opacity: 0.5
-  - area: f(x)
-    from: 0
-    to: 1
-    color: green
-    opacity: 0.5
+  # ── f dispari ──
   - fn: f
     through: [[-1, -0.74], [-0.67, -0.1], [-0.29, -0.16], [0, 0], [0.29, 0.16], [0.67, 0.1], [1, 0.74]]
-  - line: [[1, 0], [1, 0.74]]
-  - text: '$f(x)$ dispari'
-    at: [0.1, 0.9]
-    anchor: e
-  - text: '$\textcolor{red}{\rule{1em}{0.7em}}+\textcolor{green}{\rule{1em}{0.7em}}=0$'
-    at: [-0.6, 0.7]
-    anchor: c
-```
-
-```plot
-x: [-1.15, 1.2]
-y: [-0.1, 1.55]
-width: 340
-height: 250
-xlabel: $x$
-xticks: { -1: '$-a$', 1: '$a$' }
-alt: "Funzione pari f(x) su [-a, a]: l'area rossa a sinistra e l'area verde a destra sono uguali, l'integrale su [-a, a] è il doppio di quello su [0, a]."
-items:
+    hidden: true
   - area: f(x)
     from: -1
     to: 0
@@ -253,16 +281,65 @@ items:
     to: 1
     color: green
     opacity: 0.5
-  - fn: f
-    through: [[-1, 1.21], [-0.74, 0.47], [-0.37, 0.82], [0, 0.32], [0.37, 0.82], [0.74, 0.47], [1, 1.21]]
-  - line: [[1, 0], [1, 1.21]]
-  - line: [[-1, 0], [-1, 1.21]]
-  - text: '$f(x)$ pari'
-    at: [0.1, 1.4]
+  - line: [[-1.12, 0], [1.15, 0]]
+    arrow: true
+  - line: [[0, -0.8], [0, 0.8]]
+    arrow: true
+  - fn: f(x)
+    domain: [-1, 1]
+  - line: [[1, 0], [1, f(1)]]
+  - text: $-a$
+    at: [-1.02, 0.02]
+    anchor: n
+  - text: $a$
+    at: [1, -0.02]
+    anchor: s
+  - text: $x$
+    at: [1.18, 0]
     anchor: e
-  - text: '$\textcolor{red}{\rule{1em}{0.7em}}+\textcolor{green}{\rule{1em}{0.7em}}=2\times \textcolor{green}{\rule{1em}{0.7em}}$'
-    at: [-0.6, 1.2]
-    anchor: c
+  - text: '$f(x)$ dispari'
+    at: [0.12, 0.66]
+    anchor: e
+  - text: '$\textcolor{red}{\rule{1.6em}{0.9em}}+\textcolor{green}{\rule{1.6em}{0.9em}}=0$'
+    at: [-0.62, 0.52]
+  # ── f pari ──
+  - fn: g
+    through: [[-1, 1.21], [-0.74, 0.47], [-0.37, 0.82], [0, 0.32], [0.37, 0.82], [0.74, 0.47], [1, 1.21]]
+    hidden: true
+  - area: g(x - p) - q
+    base: -q
+    from: p - 1
+    to: p
+    color: red
+    opacity: 0.5
+  - area: g(x - p) - q
+    base: -q
+    from: p
+    to: p + 1
+    color: green
+    opacity: 0.5
+  - line: [[p - 1.05, -q], [p + 1.2, -q]]
+    arrow: true
+  - line: [[p, -q - 0.1], [p, 1.5 - q]]
+    arrow: true
+  - fn: g(x - p) - q
+    domain: [p - 1, p + 1]
+  - line: [[p - 1, -q], [p - 1, g(-1) - q]]
+  - line: [[p + 1, -q], [p + 1, g(1) - q]]
+  - text: $-a$
+    at: [p - 1, -q - 0.02]
+    anchor: s
+  - text: $a$
+    at: [p + 1, -q - 0.02]
+    anchor: s
+  - text: $x$
+    at: [p + 1.23, -q]
+    anchor: e
+  - text: '$f(x)$ pari'
+    at: [p + 0.12, 1.32 - q]
+    anchor: e
+  - text: '$\textcolor{red}{\rule{1.6em}{0.9em}}+\textcolor{green}{\rule{1.6em}{0.9em}}=2\times \textcolor{green}{\rule{1.6em}{0.9em}}$'
+    at: [p - 0.1, 1.08 - q]
 ```
 
 ## 🟢 Teorema della media
@@ -273,13 +350,13 @@ $$
 $$
 
 ```plot
-x: [-0.3, 9.4]
-y: [-0.4, 5.2]
+x: [-0.15, 9.3]
+y: [-0.2, 5.6]
 width: 560
-height: 300
+height: 257
 ylabel: $f(x)$
 xlabel: $x$
-let: { a: 0.725, c: 4.96, b: 7.9 }
+let: { a: 0.725, c: 4.96, b: 7.95 }
 xticks: { a: '$a$', c: '$c$', b: '$b$' }
 yticks: { "f(c)": '$f(c)$' }
 alt: "Teorema della media: l'area rossa sotto la retta y = f(c) e sopra il grafico di f è uguale all'area verde sopra la retta e sotto il grafico."
@@ -296,7 +373,7 @@ items:
     to: y
     dash: dotted
   - fn: f
-    through: [[0.725, 2.12], [2.125, 3.08], [3.81, 1.55], [4.96, 2.97], [6.19, 4.33], [7.9, 2.9]]
+    through: [[0.725, 2.13], [2.18, 3.08], [3.81, 1.55], [4.96, 2.97], [6.2, 4.37], [7.95, 2.72]]
   - guide: [a, f(a)]
     to: x
     dash: dotted
@@ -306,9 +383,21 @@ items:
   - guide: [b, f(b)]
     to: x
     dash: dotted
-  - text: '$\textcolor{red}{\rule{1em}{0.7em}}=\textcolor{green}{\rule{1em}{0.7em}}$'
-    at: [3.2, 4.5]
-    anchor: c
+  # legenda: rettangolo rosso = rettangolo verde
+  - area: 4.75
+    base: 4.4
+    from: 2.05
+    to: 2.55
+    color: red
+    opacity: 0.5
+  - text: $=$
+    at: [2.75, 4.575]
+  - area: 4.75
+    base: 4.4
+    from: 2.95
+    to: 3.45
+    color: green
+    opacity: 0.5
 ```
 
 Per esempio, troviamo il punto $c$ per la funzione $f(x) = \frac{1}{x}$ nell'intervallo $[1, e^2]$ 

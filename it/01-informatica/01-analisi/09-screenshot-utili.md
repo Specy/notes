@@ -549,26 +549,26 @@ caption: "Convergenza della serie di Leibniz."
 items:
   - line: [[-1.15, 0], [0.15, 0]]
     arrow: true
-  - line: [[0.000, 0.000], [-0.013, -0.111], [-0.050, -0.217], [-0.109, -0.312], [-0.188, -0.391], [-0.283, -0.450], [-0.389, -0.487], [-0.500, -0.500], [-0.611, -0.487], [-0.717, -0.450], [-0.812, -0.391], [-0.891, -0.312], [-0.950, -0.217], [-0.987, -0.111], [-1.000, 0]]
+  - line: [[0.000, -0.000], [-0.004, -0.065], [-0.017, -0.129], [-0.038, -0.191], [-0.067, -0.250], [-0.103, -0.304], [-0.146, -0.354], [-0.196, -0.397], [-0.250, -0.433], [-0.309, -0.462], [-0.371, -0.483], [-0.435, -0.496], [-0.500, -0.500], [-0.565, -0.496], [-0.629, -0.483], [-0.691, -0.462], [-0.750, -0.433], [-0.804, -0.397], [-0.854, -0.354], [-0.897, -0.304], [-0.933, -0.250], [-0.962, -0.191], [-0.983, -0.129], [-0.996, -0.065], [-1.000, -0.000]]
     arrow: true
-  - line: [[-1.000, 0.000], [-0.994, 0.056], [-0.975, 0.108], [-0.945, 0.156], [-0.906, 0.195], [-0.858, 0.225], [-0.806, 0.244], [-0.750, 0.250], [-0.694, 0.244], [-0.642, 0.225], [-0.594, 0.195], [-0.555, 0.156], [-0.525, 0.108], [-0.506, 0.056], [-0.500, 0.000]]
+  - line: [[-1.000, 0.000], [-0.998, 0.033], [-0.991, 0.065], [-0.981, 0.096], [-0.967, 0.125], [-0.948, 0.152], [-0.927, 0.177], [-0.902, 0.198], [-0.875, 0.217], [-0.846, 0.231], [-0.815, 0.241], [-0.783, 0.248], [-0.750, 0.250], [-0.717, 0.248], [-0.685, 0.241], [-0.654, 0.231], [-0.625, 0.217], [-0.598, 0.198], [-0.573, 0.177], [-0.552, 0.152], [-0.533, 0.125], [-0.519, 0.096], [-0.509, 0.065], [-0.502, 0.033], [-0.500, 0.000]]
     arrow: true
-  - line: [[-0.500, 0.000], [-0.504, -0.037], [-0.517, -0.072], [-0.536, -0.104], [-0.563, -0.130], [-0.594, -0.150], [-0.630, -0.162], [-0.667, -0.167], [-0.704, -0.162], [-0.739, -0.150], [-0.771, -0.130], [-0.797, -0.104], [-0.817, -0.072], [-0.829, -0.037], [-0.833, 0]]
+  - line: [[-0.500, -0.000], [-0.501, -0.022], [-0.506, -0.043], [-0.513, -0.064], [-0.522, -0.083], [-0.534, -0.101], [-0.549, -0.118], [-0.565, -0.132], [-0.583, -0.144], [-0.603, -0.154], [-0.624, -0.161], [-0.645, -0.165], [-0.667, -0.167], [-0.688, -0.165], [-0.710, -0.161], [-0.730, -0.154], [-0.750, -0.144], [-0.768, -0.132], [-0.785, -0.118], [-0.799, -0.101], [-0.811, -0.083], [-0.821, -0.064], [-0.828, -0.043], [-0.832, -0.022], [-0.833, -0.000]]
     arrow: true
-  - line: [[-0.833, 0.000], [-0.830, 0.028], [-0.821, 0.054], [-0.806, 0.078], [-0.786, 0.098], [-0.763, 0.113], [-0.736, 0.122], [-0.708, 0.125], [-0.681, 0.122], [-0.654, 0.113], [-0.630, 0.098], [-0.611, 0.078], [-0.596, 0.054], [-0.586, 0.028], [-0.583, 0.000]]
+  - line: [[-0.833, 0.000], [-0.832, 0.016], [-0.829, 0.032], [-0.824, 0.048], [-0.817, 0.062], [-0.808, 0.076], [-0.797, 0.088], [-0.784, 0.099], [-0.771, 0.108], [-0.756, 0.115], [-0.741, 0.121], [-0.725, 0.124], [-0.708, 0.125], [-0.692, 0.124], [-0.676, 0.121], [-0.660, 0.115], [-0.646, 0.108], [-0.632, 0.099], [-0.620, 0.088], [-0.609, 0.076], [-0.600, 0.062], [-0.593, 0.048], [-0.588, 0.032], [-0.584, 0.016], [-0.583, 0.000]]
     arrow: true
-  - line: [[-0.583, 0.000], [-0.586, -0.022], [-0.593, -0.043], [-0.605, -0.062], [-0.621, -0.078], [-0.640, -0.090], [-0.661, -0.097], [-0.683, -0.100], [-0.706, -0.097], [-0.727, -0.090], [-0.746, -0.078], [-0.762, -0.062], [-0.773, -0.043], [-0.781, -0.022], [-0.783, 0]]
+  - line: [[-0.583, -0.000], [-0.584, -0.013], [-0.587, -0.026], [-0.591, -0.038], [-0.597, -0.050], [-0.604, -0.061], [-0.613, -0.071], [-0.622, -0.079], [-0.633, -0.087], [-0.645, -0.092], [-0.657, -0.097], [-0.670, -0.099], [-0.683, -0.100], [-0.696, -0.099], [-0.709, -0.097], [-0.722, -0.092], [-0.733, -0.087], [-0.744, -0.079], [-0.754, -0.071], [-0.763, -0.061], [-0.770, -0.050], [-0.776, -0.038], [-0.780, -0.026], [-0.782, -0.013], [-0.783, -0.000]]
     arrow: true
-  - line: [[-0.783, 0.000], [-0.781, 0.019], [-0.775, 0.036], [-0.765, 0.052], [-0.752, 0.065], [-0.736, 0.075], [-0.719, 0.081], [-0.700, 0.083], [-0.681, 0.081], [-0.664, 0.075], [-0.648, 0.065], [-0.635, 0.052], [-0.625, 0.036], [-0.619, 0.019], [-0.617, 0.000]]
+  - line: [[-0.783, 0.000], [-0.783, 0.011], [-0.780, 0.022], [-0.777, 0.032], [-0.772, 0.042], [-0.766, 0.051], [-0.759, 0.059], [-0.751, 0.066], [-0.742, 0.072], [-0.732, 0.077], [-0.722, 0.080], [-0.711, 0.083], [-0.700, 0.083], [-0.689, 0.083], [-0.678, 0.080], [-0.668, 0.077], [-0.658, 0.072], [-0.649, 0.066], [-0.641, 0.059], [-0.634, 0.051], [-0.628, 0.042], [-0.623, 0.032], [-0.620, 0.022], [-0.617, 0.011], [-0.617, 0.000]]
     arrow: true
   - text: "$0$"
     at: [0, 0.015]
     anchor: n
   - text: "$-1$"
-    at: [-1, -0.015]
-    anchor: sw
+    at: [-0.995, -0.01]
+    anchor: se
   - text: "$-1+\\frac12$"
-    at: [-0.47, 0.015]
+    at: [-0.49, 0.01]
     anchor: ne
   - text: "$+\\frac12$"
     at: [-0.75, 0.26]
@@ -597,78 +597,73 @@ Dalla Figura si può avere l'impressione che la serie converge. Ciò è infatti 
 allora la serie $\displaystyle\sum_{k=0}^{+\infty} (-1)^k\cdot a_k =: s\in\mathbb{R}$ converge. Inoltre vale $\lvert s - s_n\rvert \le a_{n+1}$ per ogni $n\in\mathbb{N}$.
 
 ```plot
-x: [0, 9.8]
-y: [-0.55, 2.1]
-width: 490
-height: 133
+x: [0, 20.8]
+y: [-0.6, 2.2]
+width: 680
+height: 110
 axes: false
-alt: "Retta reale con i punti s_n, s e s_{n+1} = s_n + a_{n+1} (con n+1 pari): s_n e s_{n+1} sono gli estremi di una graffa di lunghezza a_{n+1}, e s sta in mezzo; la distanza |s - s_n| è minore di a_{n+1}."
+alt: "Due rette reali affiancate. A sinistra (n+1 pari): i punti s_n, s e s_{n+1} = s_n + a_{n+1}; una graffa di lunghezza a_{n+1} va da s_n a s_{n+1}, una graffa più piccola |s - s_n| da s_n a s. A destra (n+1 dispari): i punti s_{n+1} = s_n - a_{n+1}, s e s_n; la graffa a_{n+1} va da s_{n+1} a s_n e la graffa |s - s_n| da s a s_n."
 items:
-  - line: [[0, 0], [9.8, 0]]
+  # n+1 pari
+  - line: [[0, 0], [9.66, 0]]
     arrow: true
   - text: "$n+1$ pari"
-    at: [0.05, 0.7]
+    at: [0, 0.66]
     anchor: e
-  - line: [[3.56, -0.08], [3.56, 0.08]]
-  - line: [[4.8, -0.08], [4.8, 0.08]]
-  - line: [[6.7, -0.08], [6.7, 0.08]]
-  - line: [[3.56, 0.08], [3.56, 1.3]]
+  - line: [[3.52, -0.08], [3.52, 0.08]]
+  - line: [[4.6, -0.08], [4.6, 0.08]]
+  - line: [[7.3, -0.08], [7.3, 0.08]]
+  - line: [[3.52, 0.08], [3.52, 1.3]]
     dash: dotted
     color: muted
-  - line: [[6.7, 0.08], [6.7, 1.3]]
+  - line: [[7.3, 0.08], [7.3, 1.3]]
     dash: dotted
     color: muted
-  - brace: [[6.7, 1.3], [3.56, 1.3]]
+  - brace: [[7.3, 1.35], [3.52, 1.35]]
     label: $a_{n+1}$
-  - brace: [[4.8, 0.45], [3.56, 0.45]]
+  - brace: [[4.6, 0.15], [3.52, 0.15]]
+  - text: $\lvert s - s_n\rvert$
+    at: [3.62, 0.95]
     color: red
-    label: $\lvert s - s_n\rvert$
+    anchor: e
   - text: "$s_n$"
-    at: [3.56, -0.1]
+    at: [3.52, -0.15]
     anchor: s
   - text: "$s$"
-    at: [4.8, -0.1]
+    at: [4.6, -0.15]
     anchor: s
   - text: "$s_{n+1}=s_n+a_{n+1}$"
-    at: [6.7, -0.1]
+    at: [7.3, -0.15]
     anchor: s
-```
-
-```plot
-x: [0, 9.8]
-y: [-0.55, 2.1]
-width: 490
-height: 133
-axes: false
-alt: "Retta reale con i punti s_{n+1} = s_n - a_{n+1}, s e s_n (con n+1 dispari): s_{n+1} e s_n sono gli estremi di una graffa di lunghezza a_{n+1}, e s sta in mezzo; la distanza |s - s_n| è minore di a_{n+1}."
-items:
-  - line: [[0, 0], [9.8, 0]]
+  # n+1 dispari
+  - line: [[11.7, 0], [20.80, 0]]
     arrow: true
   - text: "$n+1$ dispari"
-    at: [0.05, 0.7]
+    at: [11.7, 0.66]
     anchor: e
-  - line: [[4.1, -0.08], [4.1, 0.08]]
-  - line: [[5.3, -0.08], [5.3, 0.08]]
-  - line: [[7.26, -0.08], [7.26, 0.08]]
-  - line: [[4.1, 0.08], [4.1, 1.3]]
+  - line: [[15.8, -0.08], [15.8, 0.08]]
+  - line: [[17.0, -0.08], [17.0, 0.08]]
+  - line: [[18.96, -0.08], [18.96, 0.08]]
+  - line: [[15.8, 0.08], [15.8, 1.3]]
     dash: dotted
     color: muted
-  - line: [[7.26, 0.08], [7.26, 1.3]]
+  - line: [[18.96, 0.08], [18.96, 1.3]]
     dash: dotted
     color: muted
-  - brace: [[7.26, 1.3], [4.1, 1.3]]
+  - brace: [[18.96, 1.35], [15.80, 1.35]]
     label: $a_{n+1}$
-  - brace: [[7.26, 0.45], [5.3, 0.45]]
+  - brace: [[18.96, 0.15], [17.00, 0.15]]
+  - text: $\lvert s - s_n\rvert$
+    at: [17.98, 0.95]
     color: red
-    label: $\lvert s - s_n\rvert$
   - text: "$s_n-a_{n+1}=s_{n+1}$"
-    at: [4.2, -0.1]
+    at: [15.80, -0.15]
     anchor: sw
   - text: "$s$"
-    at: [5.3, -0.1]
+    at: [17.00, -0.15]
     anchor: s
   - text: "$s_n$"
-    at: [7.26, -0.1]
+    at: [18.96, -0.15]
     anchor: s
 ```
 
@@ -731,34 +726,43 @@ e quindi la serie $\displaystyle\sum_{k=0}^{+\infty} a_k$ converge.
 - $f$ è dispari $\Longleftrightarrow$ il grafico di $f$ è simmetrico rispetto all'origine.
 
 ```plot
-x: [-1.9, 1.9]
-y: [-1.15, 1.45]
-height: 240
-width: 400
-xlabel: $x$
-alt: Grafico di una funzione pari, simmetrico rispetto all'asse y
-caption: Funzione pari
+x: [-1.4, 5.4]
+y: [-0.88, 1.15]
+width: 620
+height: 185
+axes: false
+caption: Funzione pari e dispari.
+alt: "A sinistra il grafico di una funzione pari, simmetrico rispetto all'asse y; a destra il grafico di una funzione dispari, simmetrico rispetto all'origine."
 items:
+  # f pari
+  - line: [[-1.34, 0], [1.51, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[0, -0.79], [0, 1.13]]
+    width: 1.2
+    arrow: true
   - fn: f
-    through: [[-1.5, 1.25], [-1, -0.92], [0, 0.22], [1, -0.92], [1.5, 1.25]]
+    through: [[-1.17, 0.96], [-0.72, -0.69], [0, 0.16], [0.72, -0.69], [1.17, 0.96]]
   - text: $f$ pari
-    at: [0.1, 1.25]
+    at: [0.08, 0.92]
     anchor: e
-```
-
-```plot
-x: [-1.9, 1.9]
-y: [-1.15, 1.45]
-height: 240
-width: 400
-xlabel: $x$
-alt: Grafico di una funzione dispari, simmetrico rispetto all'origine
-caption: Funzione dispari
-items:
-  - fn: f
-    through: [[-1.7, 1.05], [-0.86, -0.66], [0, 0], [0.76, 0.63], [1.7, -1.03]]
+  - text: $x$
+    at: [1.55, 0]
+    anchor: e
+  # f dispari (asse y in x = 3.82)
+  - line: [[2.48, 0], [5.33, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[3.82, -0.85], [3.82, 1.13]]
+    width: 1.2
+    arrow: true
+  - fn: g
+    through: [[2.53, 0.8], [3.18, -0.5], [3.82, 0], [4.46, 0.5], [5.11, -0.8]]
   - text: $f$ dispari
-    at: [0.1, 1.25]
+    at: [3.9, 0.92]
+    anchor: e
+  - text: $x$
+    at: [5.37, 0]
     anchor: e
 ```
 
@@ -858,15 +862,28 @@ Queste regole seguono direttamente dalle regole corrispondenti per le succession
 Come già per le successioni anche per calcolare limiti di funzioni il Teorema dei Carabinieri è spesso molto utile. L'idea per la sua applicazione è di incastrare l'espressione che si vuole studiare ($= h(x)$) tra due carabinieri ($= f(x)$ e $g(x)$) che sono più semplici da studiare e ammettono lo stesso limite.
 
 ```plot
-x: [-0.4, 5.85]
-y: [-0.4, 3.1]
+x: [-0.42, 5.82]
+y: [-0.72, 3.1]
 width: 560
-height: 320
-xticks: { 2.84: "$c$" }
-yticks: { 1.11: "$l_1=l_2$" }
-xlabel: $x$
+aspect: equal
+axes: false
 alt: Teorema dei carabinieri. La funzione h(x) in blu oscilla tra f(x) in rosso, una parabola rivolta verso il basso, e g(x) in verde, una parabola rivolta verso l'alto, che si toccano nel punto di ascissa c, dove tutte e tre tendono a l_1 = l_2.
 items:
+  - line: [[-0.4, 0], [5.75, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[0, -0.4], [0, 3.05]]
+    width: 1.2
+    arrow: true
+  - text: $x$
+    at: [5.82, 0]
+    anchor: e
+  - text: $c$
+    at: [2.84, -0.08]
+    anchor: s
+  - text: $l_1=l_2$
+    at: [-0.38, 1.11]
+    anchor: w
   - fn: h
     through: [[0.30, 1.15], [0.80, 2.23], [1.38, 0.62], [1.57, 0.75], [1.80, 1.37], [2.10, 1.05], [2.35, 1.14], [2.55, 1.09], [2.84, 1.11], [3.25, 1.10], [3.45, 1.12], [3.62, 0.92], [4.20, 1.45], [4.80, 0.22], [5.33, 2.30], [5.77, 1.40]]
     color: blue
@@ -970,9 +987,9 @@ $$
 
 ```plot
 x: [-0.25, 6.3]
-y: [-1.6, 1.6]
+y: [-1.65, 1.6]
 width: 640
-height: 320
+height: 330
 axes: x
 xlabel: $x$
 alt: Il metodo di bisezione. La funzione f(x) continua parte positiva in a, scende sotto l'asse x e termina negativa in b. Gli intervalli successivi, con estremi a_0, a_1 = a_2 = a_3 e b_0 = b_1, b_2, b_3, si restringono attorno allo zero della funzione; in ogni estremo sinistro f è positiva (+), in ogni estremo destro f è negativa (−), e le parti scartate sono barrate.
@@ -1039,14 +1056,14 @@ items:
   - text: $f(x)$
     at: [0.12, 1.42]
     anchor: e
-  - text: $\frac{a_1+b_1}{2}=b_2$
-    at: [4.25, 1.2]
+  - text: $\dfrac{a_1+b_1}{2}=b_2$
+    at: [4.3, 1.15]
   - text: $b_3$
     at: [3.46, 1.0]
   - text: $a=a_0$
     at: [0.1, -1.4]
-  - text: $\frac{a_0+b_0}{2}=a_1=a_2=a_3$
-    at: [3.2, -1.4]
+  - text: $\dfrac{a_0+b_0}{2}=a_1=a_2=a_3$
+    at: [3.35, -1.38]
   - text: $b=b_0=b_1$
     at: [5.7, -1.4]
 ```
@@ -1349,29 +1366,29 @@ I punti delle prime due classi sono quelli per i quali $\textcolor{red}{\text{no
 **Teorema 5.6** (*Teorema di Rolle*). *Sia $f \in \mathrm{C}[a,b]$ derivabile in $(a,b)$. Se $f(a) = f(b)$ allora esiste $c \in (a,b)$ tale che $f'(c) = 0$*
 
 ```plot
-x: [-0.2, 6]
-y: [-0.3, 3.7]
-width: 520
-height: 300
+x: [-0.1, 4.8]
+y: [-0.15, 2.1]
+width: 540
+aspect: equal
 let:
-  a: 0.5
-  c1: 1.5
-  c2: 2.7
-  c3: 4.3
-  b: 5.5
+  a: 0.4
+  c1: 1.12
+  c2: 1.97
+  c3: 3.16
+  b: 4.07
 xticks: { a: "$a$", c1: "$c_1$", c2: "$c_2$", c3: "$c_3$", b: "$b$" }
-yticks: { 1: "$f(a)=f(b)$" }
+yticks: { 0.77: "$f(a)=f(b)$" }
 ylabel: $f(x)$
 xlabel: $x$
 alt: "Grafico di una funzione continua su [a,b] con f(a)=f(b), con due massimi in c1 e c3 e un minimo in c2, dove la tangente è orizzontale."
 items:
   - fn: f
-    through: [[a, 1], [c1, 1.875], [c2, 0.625], [c3, 2.85], [b, 1]]
-  - line: [[0, 1], [b, 1]]
+    through: [[a, 0.77], [c1, 1.18], [c2, 0.59], [c3, 1.64], [b, 0.77]]
+  - line: [[0, 0.77], [b, 0.77]]
     dash: dotted
     color: muted
     width: 1.2
-  - guide: [a, 1]
+  - guide: [a, 0.77]
     to: x
   - guide: [c1, f(c1)]
     to: x
@@ -1379,11 +1396,11 @@ items:
     to: x
   - guide: [c3, f(c3)]
     to: x
-  - guide: [b, 1]
+  - guide: [b, 0.77]
     to: x
-  - line: [[c1 - 0.45, f(c1)], [c1 + 0.45, f(c1)]]
-  - line: [[c2 - 0.45, f(c2)], [c2 + 0.45, f(c2)]]
-  - line: [[c3 - 0.45, f(c3)], [c3 + 0.45, f(c3)]]
+  - line: [[c1 - 0.29, f(c1)], [c1 + 0.29, f(c1)]]
+  - line: [[c2 - 0.29, f(c2)], [c2 + 0.29, f(c2)]]
+  - line: [[c3 - 0.29, f(c3)], [c3 + 0.29, f(c3)]]
 ```
 
 **Teorema 5.7** (*Teorema di Lagrange* (o del valor medio)). *Sia $f \in \mathrm{C}[a,b]$ derivabile in $(a,b)$. Allora esiste $c \in (a,b)$ (detto punto di Lagrange) tale che*
@@ -1393,17 +1410,17 @@ $$
 $$
 
 ```plot
-x: [-0.2, 4.4]
-y: [-0.2, 2.5]
+x: [-0.12, 4.4]
+y: [-0.15, 2.1]
 width: 520
-height: 300
+aspect: equal
 let:
-  a: 0.37
-  fa: 0.46
-  b: 3.69
-  fb: 1.65
-  c1: 1.1
-  c2: 2.73
+  a: 0.38
+  fa: 0.47
+  b: 3.71
+  fb: 1.64
+  c1: 1.13
+  c2: 2.74
   m: (fb - fa)/(b - a)
 xticks: { a: "$a$", c1: "$c_1$", c2: "$c_2$", b: "$b$" }
 ylabel: $f(x)$
@@ -1417,22 +1434,22 @@ items:
   - fn: f(x) = fa + m(x - a) + g(x)
     domain: [a, b]
   - fn: t1(x) = f(c1) + m(x - c1)
-    domain: [a - 0.1, b + 0.05]
+    domain: [a, b + 0.05]
     color: red
     label: $t_1$
-    labelAt: 3.74
+    labelAt: 3.76
     anchor: e
   - fn: s(x) = fa + m(x - a)
     domain: [a, b]
     color: blue
     label: $s$
-    labelAt: 3.69
+    labelAt: 3.71
     anchor: e
   - fn: t2(x) = f(c2) + m(x - c2)
-    domain: [0.55, b + 0.05]
+    domain: [a + 0.04, b + 0.05]
     color: red
     label: $t_2$
-    labelAt: 3.74
+    labelAt: 3.76
     anchor: e
   - guide: [a, fa]
     to: x
@@ -1477,73 +1494,75 @@ Prima di dimostrare il test osserviamo che nel punto 3 e 4 $\textcolor{red}{\tex
 - *minimo locale, se $f'(x)$ cambia in $x_0$ segno da "−" a "+";*
 
 ```plot
-x: [-4, 4.4]
-y: [-0.6, 3.3]
-width: 520
-height: 230
-axes: x
-xticks: { 0: "$x_0$" }
-alt: "Massimo locale: a sinistra di x0 f'(x)>0 e f è crescente (segno più), a destra f'(x)<0 e f è decrescente (segno meno)."
+x: [-2.1, 7.3]
+y: [-0.35, 1.85]
+width: 680
+height: 215
+axes: false
+alt: "Due grafici affiancati. Massimo locale: a sinistra di x0 f'(x)>0 e f è crescente (segno più), a destra f'(x)<0 e f è decrescente (segno meno). Minimo locale: a sinistra di x0 f'(x)<0 e f è decrescente (segno meno), a destra f'(x)>0 e f è crescente (segno più)."
 items:
+  # max locale
+  - line: [[-1.98, 0], [2.17, 0]]
+    width: 1.2
+  - line: [[0, 0], [0, 1.4]]
+    dash: dotted
+    width: 1.2
   - text: max locale
-    at: [0, 3.1]
-  - line: [[0, 0], [0, 2.75]]
-    dash: dotted
-    color: muted
+    at: [0.00, 1.72]
+  - text: $x_0$
+    at: [0, -0.06]
+    anchor: s
+  - fn: m
+    through: [[-0.43, 0.42], [-0.25, 0.75], [0.00, 0.92], [0.35, 0.8], [0.67, 0.47]]
+  - line: [[-0.68, 0.6], [-0.43, 0.95]]
     width: 1.2
-  - fn: m(x) = 1.84 - 0.95 x^2
-    domain: [-1.05, 1.05]
-  - line: [[-1.36, 0.9], [-0.86, 1.9]]
     arrow: true
-  - line: [[0.88, 1.76], [1.7, 1.26]]
+  - line: [[0.44, 0.9], [0.85, 0.62]]
+    width: 1.2
     arrow: true
   - text: "$f'(x)>0 \\Rightarrow$"
-    at: [-2.76, 2.06]
+    at: [-1.57, 1.03]
   - text: $f$ crescente
-    at: [-2.76, 1.46]
-  - text: $+$
-    at: [-2.76, 0.66]
+    at: [-1.57, 0.73]
+  - text: $\boldsymbol{+}$
+    at: [-1.54, 0.33]
   - text: "$f'(x)<0 \\Rightarrow$"
-    at: [2.98, 2.06]
+    at: [1.60, 1.03]
   - text: $f$ decrescente
-    at: [2.98, 1.46]
-  - text: $-$
-    at: [2.98, 0.66]
-```
-
-```plot
-x: [-4, 4.4]
-y: [-0.6, 3.3]
-width: 520
-height: 230
-axes: x
-xticks: { 0: "$x_0$" }
-alt: "Minimo locale: a sinistra di x0 f'(x)<0 e f è decrescente (segno meno), a destra f'(x)>0 e f è crescente (segno più)."
-items:
+    at: [1.60, 0.73]
+  - text: $\boldsymbol{-}$
+    at: [1.57, 0.33]
+  # min locale
+  - line: [[3.02, 0], [7.17, 0]]
+    width: 1.2
+  - line: [[5.00, 0], [5.00, 1.4]]
+    dash: dotted
+    width: 1.2
   - text: min locale
-    at: [0, 3.1]
-  - line: [[0, 0], [0, 2.75]]
-    dash: dotted
-    color: muted
+    at: [5.00, 1.72]
+  - text: $x_0$
+    at: [5.00, -0.06]
+    anchor: s
+  - fn: n
+    through: [[4.58, 1.23], [4.78, 0.9], [5.00, 0.78], [5.35, 0.9], [5.68, 1.22]]
+  - line: [[4.43, 1.0], [4.66, 0.65]]
     width: 1.2
-  - fn: m(x) = 1.5 + 1.2 x^2
-    domain: [-1.0, 1.05]
-  - line: [[-1.5, 2.4], [-0.9, 1.7]]
     arrow: true
-  - line: [[0.9, 1.7], [1.7, 2.5]]
+  - line: [[5.43, 0.68], [5.83, 1.02]]
+    width: 1.2
     arrow: true
   - text: "$f'(x)<0 \\Rightarrow$"
-    at: [-2.76, 2.06]
+    at: [3.43, 1.03]
   - text: $f$ decrescente
-    at: [-2.76, 1.46]
-  - text: $-$
-    at: [-2.76, 0.66]
+    at: [3.43, 0.73]
+  - text: $\boldsymbol{-}$
+    at: [3.46, 0.33]
   - text: "$f'(x)>0 \\Rightarrow$"
-    at: [2.98, 2.06]
+    at: [6.60, 1.03]
   - text: $f$ crescente
-    at: [2.98, 1.46]
-  - text: $+$
-    at: [2.98, 0.66]
+    at: [6.60, 0.73]
+  - text: $\boldsymbol{+}$
+    at: [6.57, 0.33]
 ```
 
 **Caratterizzazione di Funzioni Costanti.** *Se $f : (a,b) \to \mathbb{R}$ è derivabile, allora*
@@ -1691,37 +1710,58 @@ $$
 cioè $r(x) = f(x) - t(x)$.
 
 ```plot
-x: [-0.3, 3.5]
-y: [-0.3, 3.2]
-width: 460
-height: 300
+x: [-0.03, 2.75]
+y: [-0.03, 2.1]
+width: 400
+aspect: equal
+axes: false
 let:
-  a: 0.6
-  b: 2.2
-xticks: { a: "$x_0$", b: "$x$" }
-yticks: { "f(a)": "$f(x_0)$", "f(b)": "$f(x)$", "t(b)": "$t(x)$" }
+  a: 0.88
+  b: 1.58
 alt: "Grafico di f con la retta tangente t in x_0; il resto r(x) è il segmento verticale tra t(x) e f(x)"
 caption: "Il resto $r(x)$."
 items:
-  - fn: f(x) = 1.4 sqrt(x)
-    domain: [0.3, 3.1]
+  - line: [[0, 0], [2.4, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[0, 0], [0, 2.08]]
+    width: 1.2
+    arrow: true
+  - fn: f(x) = 1.317 - 5.8 exp(-2.33 x)
+    domain: [0.74, 2.3]
     label: $f$
-    labelAt: 2.7
+    labelAt: 1.95
   - fn: t(x) = f(a) + f'(a)(x - a)
-    domain: [0.15, 2.65]
+    domain: [0.6, 1.76]
     color: blue
     label: $t$
-    labelAt: 2.62
-    anchor: e
+    labelAt: 1.76
+    anchor: ne
   - guide: [a, f(a)]
   - guide: [b, f(b)]
   - guide: [b, t(b)]
   - line: [[b, f(b)], [b, t(b)]]
     color: red
-  - brace: [[3.2, f(b)], [3.2, t(b)]]
+  - brace: [[2.45, f(b)], [2.45, t(b)]]
     color: red
     label: $=r(x)$
   - point: [a, f(a)]
+    size: 2.6
+  - text: $x_0$
+    at: [a, -0.04]
+    anchor: s
+  - text: $x$
+    at: [b, -0.04]
+    anchor: s
+  - text: $f(x_0)$
+    at: [-0.04, f(a)]
+    anchor: w
+  - text: $f(x)$
+    at: [-0.04, f(b)]
+    anchor: w
+  - text: $t(x)$
+    at: [-0.04, t(b)]
+    anchor: w
 ```
 
 Studiamo le proprietà di $r(x)$:
@@ -2634,32 +2674,36 @@ Per risolvere questo problema conviene procedere cercando di seguire lo schema s
 - decrescente, allora si dice che $f$ è *concava* (oppure *concava verso il basso*) in $(a, b)$.
 
 ```plot
-x: [0, 3]
-y: [0, 2.4]
-width: 300
-height: 220
-axes: true
-items:
-  - fn: f(x) = 0.6 + 1.2*(x - 1.4)^2 / 1.4^2
-    domain: [0.3, 2.9]
-  - text: $f$ convessa
-    at: [1.5, 2.2]
-    anchor: e
-```
-
-```plot
-x: [0, 3]
-y: [0, 2.4]
-width: 300
-height: 220
-axes: true
+x: [-0.2, 4.05]
+y: [-0.2, 1.32]
+width: 460
+aspect: equal
+axes: false
 caption: Funzioni convesse e concave.
+alt: "A sinistra il grafico di una funzione convessa, a destra quello di una funzione concava."
 items:
-  - fn: f(x) = 1.9 - 1.2*(x - 1.3)^2 / 1.3^2
-    domain: [0.3, 2.7]
+  # f convessa
+  - line: [[-0.13, 0], [1.52, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[0, -0.15], [0, 1.3]]
+    width: 1.2
+    arrow: true
+  - fn: f(x) = 0.38 + 1.65 (x - 0.72)^2
+    domain: [0.19, 1.39]
+  - text: $f$ convessa
+    at: [0.75, 1.15]
+  # f concava (asse y in x = 2.49)
+  - line: [[2.35, 0], [3.99, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[2.49, -0.15], [2.49, 1.3]]
+    width: 1.2
+    arrow: true
+  - fn: g(x) = 0.93 - 1.89 (x - 3.27)^2 (1 + 0.384 (x - 3.27))
+    domain: [2.7, 3.84]
   - text: $f$ concava
-    at: [1.5, 2.2]
-    anchor: e
+    at: [3.21, 1.15]
 ```
 
 Dal test di monotonia segue che se $f \in C^2(a, b)$, allora
@@ -2697,58 +2741,69 @@ Si nota che per $f \in \mathrm{C}^2(a, b)$ in un punto di flesso $x_0 \in (a, b)
   Quindi $f$ non ammette tangente in $x_0 = 0$ e quindi $(0, 0)$ $\textcolor{red}{\textit{non}}$ è un punto di flesso di $f$, nonostante che $f$ cambia concavità in quel punto.
 
 ```plot
-x: [-1.6, 1.6]
-y: [-1.5, 1.5]
-width: 300
-height: 220
-axes: true
-xlabel: $x$
-items:
-  - fn: f(x) = x^3
-    domain: [-1.1, 1.1]
-  - text: $x^3$
-    at: [0.08, 1.35]
-    anchor: e
-  - text: flesso
-    at: [0.08, -0.25]
-    anchor: e
-```
-
-```plot
-x: [-1.6, 1.6]
-y: [-1.5, 1.5]
-width: 300
-height: 220
-axes: true
-xlabel: $x$
-items:
-  - fn: f(x) = sign(x) * abs(x)^(1/3)
-    domain: [-1.5, 1.5]
-  - text: $\sqrt[3]{x}$
-    at: [0.08, 1.35]
-    anchor: e
-  - text: flesso
-    at: [0.08, -0.25]
-    anchor: e
-```
-
-```plot
-x: [-1.6, 1.6]
-y: [-1.2, 1.8]
-width: 300
-height: 220
-axes: true
-xlabel: $x$
+x: [-1.3, 7.25]
+y: [-0.65, 0.95]
+width: 680
+aspect: equal
+axes: false
 caption: Punti di flesso e no.
+alt: "Tre grafici affiancati: x^3 e la radice cubica di x hanno un flesso nell'origine; |x| + x^3 cambia concavità nell'origine ma non è un flesso (ha un angolo)."
 items:
-  - fn: f(x) = abs(x) + x^3
-    domain: [-1.2, 0.9]
-  - text: $\lvert x \rvert + x^3$
-    at: [0.08, 1.65]
+  # x^3
+  - line: [[-1.23, 0], [1.27, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[0.00, -0.62], [0.00, 0.92]]
+    width: 1.2
+    arrow: true
+  - text: $x$
+    at: [1.15, 0.06]
+    anchor: n
+  - fn: 0.32 x^3
+    domain: [-1.23, 1.27]
+  - text: $x^3$
+    at: [0.08, 0.72]
+    anchor: e
+  - text: flesso
+    at: [0.06, -0.08]
+    anchor: se
+  # radice cubica (asse y in x = 2.83)
+  - line: [[1.57, 0], [4.07, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[2.83, -0.62], [2.83, 0.92]]
+    width: 1.2
+    arrow: true
+  - text: $x$
+    at: [3.95, 0.06]
+    anchor: n
+  - fn: 0.47 sign(x - 2.83) abs(x - 2.83)^(1/3)
+    domain: [1.62, 4.07]
+    samples: 1200
+  - text: $\sqrt[3]{x}$
+    at: [2.91, 0.72]
+    anchor: e
+  - text: flesso
+    at: [2.89, -0.08]
+    anchor: se
+  # |x| + x^3 (asse y in x = 5.97)
+  - line: [[4.72, 0], [7.17, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[5.97, -0.62], [5.97, 0.92]]
+    width: 1.2
+    arrow: true
+  - text: $x$
+    at: [7.05, 0.06]
+    anchor: n
+  - fn: 0.83 abs(x - 5.97) + 0.948 (x - 5.97)^3
+    domain: [4.95, 6.57]
+  - text: $\lvert x\rvert+x^3$
+    at: [6.03, 0.84]
     anchor: e
   - text: non flesso
-    at: [0.08, -0.5]
-    anchor: e
+    at: [5.93, -0.1]
+    anchor: sw
 ```
 
 Seguendo questo schema è utile tracciare il grafico gradualmente, inserendo le informazioni via via raccolte anziché raccogliere tutto e poi fare il grafico: i processi graduali aiutano a controllare la coerenza del procedimento e a capire quali informazioni è ancora utile raccogliere.
@@ -2955,6 +3010,7 @@ y: [-5.5, 25.5]
 width: 700
 height: 500
 axes: true
+xlabel: $x$
 xticks: { -3: "$-3$", 1: "$1$", 2.538: "$\\frac{33}{13}$", 6: "$6$" }
 yticks: { -4: "$-4$", 4: "$4$" }
 caption: "Grafico di $f(x)=e^{\\frac{1}{x-3}} \\cdot \\lvert x+3 \\rvert$."
@@ -3081,9 +3137,10 @@ che però dà una approssimazione troppo scarsa. Per migliorarla dividiamo l'int
   $$
 
 ```plot
-x: [0, 10.2]
-y: [0, 4.8]
-height: 230
+x: [0, 11]
+y: [0, 4.9]
+width: 460
+height: 210
 ylabel: $f(x)$
 xlabel: $x$
 xticks: { 1: "$a=x_0$", 2.2: "$x_1$", 3.6: "$x_2$", 5.5: "$x_3$", 7.3: "$x_4$", 9.3: "$x_5=b$" }
@@ -3098,22 +3155,27 @@ items:
     from: 1
     to: 2.2
     color: red
+    opacity: 0.5
   - area: 2.03
     from: 2.2
     to: 3.6
     color: red
+    opacity: 0.5
   - area: 1.2
     from: 3.6
     to: 5.5
     color: red
+    opacity: 0.5
   - area: 1.77
     from: 5.5
     to: 7.3
     color: red
+    opacity: 0.5
   - area: 3.1
     from: 7.3
     to: 9.3
     color: red
+    opacity: 0.5
   - line: [[1, 0], [1, 1.6], [2.2, 1.6], [2.2, 0]]
   - line: [[2.2, 2.03], [3.6, 2.03], [3.6, 0]]
   - line: [[3.6, 1.2], [5.5, 1.2], [5.5, 0]]
@@ -3126,9 +3188,10 @@ items:
 ```
 
 ```plot
-x: [0, 10.2]
-y: [0, 4.8]
-height: 230
+x: [0, 11]
+y: [0, 4.9]
+width: 460
+height: 210
 ylabel: $f(x)$
 xlabel: $x$
 xticks: { 1: "$a=x_0$", 2.2: "$x_1$", 3.6: "$x_2$", 5.5: "$x_3$", 7.3: "$x_4$", 9.3: "$x_5=b$" }
@@ -3143,22 +3206,27 @@ items:
     from: 1
     to: 2.2
     color: green
+    opacity: 0.5
   - area: 2.75
     from: 2.2
     to: 3.6
     color: green
+    opacity: 0.5
   - area: 2.05
     from: 3.6
     to: 5.5
     color: green
+    opacity: 0.5
   - area: 3.8
     from: 5.5
     to: 7.3
     color: green
+    opacity: 0.5
   - area: 4.13
     from: 7.3
     to: 9.3
     color: green
+    opacity: 0.5
   - line: [[1, 0], [1, 2.5], [2.2, 2.5], [2.2, 0]]
   - line: [[2.2, 2.75], [3.6, 2.75], [3.6, 0]]
   - line: [[3.6, 2.05], [5.5, 2.05], [5.5, 0]]
@@ -3213,9 +3281,10 @@ si dice *integrale* di $f$ (= funzione integranda) in $[a,b]$ (= dominio dell'in
   $$
 
 ```plot
-x: [0, 12]
-y: [-0.4, 5.3]
-height: 250
+x: [0, 12.2]
+y: [-0.3, 5.3]
+width: 500
+height: 230
 ylabel: $f(x)$
 xlabel: $x$
 xticks: { 0.9: "$a=x_0$", 2.23: "$x_1$", 3.8: "$x_2$", 5.93: "$x_3$", 7.97: "$x_4$", 10.23: "$x_5=b$" }
@@ -3228,26 +3297,31 @@ items:
     from: 0.9
     to: 2.23
     color: orange
+    opacity: 0.45
   - area: 3.0
     base: 2.3
     from: 2.23
     to: 3.8
     color: orange
+    opacity: 0.45
   - area: 2.3
     base: 1.37
     from: 3.8
     to: 5.93
     color: orange
+    opacity: 0.45
   - area: 4.3
     base: 2.0
     from: 5.93
     to: 7.97
     color: orange
+    opacity: 0.45
   - area: 4.63
     base: 3.47
     from: 7.97
     to: 10.23
     color: orange
+    opacity: 0.45
   - line: [[0.9, 0], [0.9, 2.8], [2.23, 2.8], [2.23, 0]]
   - line: [[2.23, 3.0], [3.8, 3.0], [3.8, 0]]
   - line: [[3.8, 2.3], [5.93, 2.3], [5.93, 0]]
@@ -3260,61 +3334,62 @@ items:
   - line: [[7.97, 3.47], [10.23, 3.47]]
   - fn: f
     through: [[0.9, 1.77], [2.9, 3.0], [5.07, 1.37], [9.07, 4.63], [10.23, 3.47]]
-  - area: 4.4 + 0.25 sqrt(1 - ((x - 3.0) / 0.55)^2)
-    base: 4.4 - 0.25 sqrt(1 - ((x - 3.0) / 0.55)^2)
-    from: 2.46
-    to: 3.54
+  - circle: [3.3, 4.2]
+    rx: 0.6
+    ry: 0.33
+    fill: true
     color: orange
+    opacity: 0.45
+    width: 0
   - text: $<\varepsilon$
-    at: [4.6, 4.4]
+    at: [4.15, 4.2]
+    anchor: e
 ```
 
 - L'integrale $\int_a^b f(x)\,dx$ rappresenta una somma continua di aree infinitesime. Questa interpretazione spiega l'uso della notazione
 
 ```plot
-x: [0, 8.8]
+x: [-0.2, 14.4]
 y: [-0.3, 4.4]
-height: 260
-xticks: { 0.7: "$a$", 3.15: "$x$", 8.1: "$b$" }
-yticks: { 1.6: "$f(x)$" }
+width: 620
+height: 200
+xticks: { 0.81: "$a$", 3.26: "$x$", 8.2: "$b$" }
+yticks: { "f(3.26)": "$f(x)$" }
 caption: Integrale come somma continua.
-alt: Area sotto il grafico di f tra a e b; una striscia verticale rossa di larghezza dx in x ha area dA(x)=f(x)dx.
+alt: Area A sotto il grafico di f tra a e b; una striscia verticale rossa di larghezza dx in x ha area dA(x)=f(x)dx, e A è l'integrale di dA(x) da a a b.
 items:
   - fn: f
-    through: [[0.7, 1.58], [2.125, 2.37], [3.8, 1.2], [6.875, 3.63], [8.1, 2.78]]
-    hidden: true
+    through: [[0.81, 1.43], [2.38, 2.34], [4.04, 1.08], [6.98, 3.64], [8.2, 2.8]]
   - area: f(x)
-    from: 0.7
-    to: 8.1
+    from: 0.81
+    to: 8.2
     color: teal
-  - fn: g(x) = f(x)
-    domain: [0.7, 8.1]
-  - line: [[0.7, 0], [0.7, 1.58]]
+    opacity: 0.4
+  - line: [[0.81, 0], [0.81, 1.43]]
     dash: dotted
-  - line: [[8.1, 0], [8.1, 2.78]]
+  - line: [[8.2, 0], [8.2, 2.8]]
     dash: dotted
-  - guide: [3.15, 1.6]
+  - guide: [3.26, f(3.26)]
     to: y
-  - line: [[3.15, 0], [3.15, 1.6]]
+  - line: [[3.26, 0], [3.26, f(3.26)]]
     color: red
     width: 2
-  - line: [[2.5, 0.4], [3.1, 0.4]]
+  - line: [[2.6, 0.4], [3.2, 0.4]]
     arrow: true
-  - line: [[3.85, 0.4], [3.2, 0.4]]
+  - line: [[3.92, 0.4], [3.32, 0.4]]
     arrow: true
   - text: $dx$
-    at: [3.5, 0.75]
+    at: [3.6, 0.62]
   - text: $dA(x)=f(x)\cdot dx$
-    at: [3.6, 3.4]
-  - line: [[3.3, 3.2], [3.9, 2.8], [4.1, 2.1], [3.5, 1.5], [3.25, 1.2]]
+    at: [3.55, 3.05]
+  - line: [[2.8, 2.86], [3.1, 2.45], [3.4, 2.07], [3.62, 1.78], [3.72, 1.6], [3.69, 1.48], [3.57, 1.36], [3.33, 1.2]]
     arrow: true
-  - text: $A$
-    at: [6.0, 1.5]
+  - text: $A=\displaystyle\int_{x=a}^{b} dA(x)=\int_a^b f(x)\,dx$
+    at: [8.4, 1.78]
+    anchor: e
+  - line: [[8.4, 1.76], [8.05, 1.74], [7.75, 1.66], [7.53, 1.5], [7.37, 1.28]]
+    arrow: true
 ```
-
-$$
-A=\int_{x=a}^{b} dA(x)=\int_a^b f(x)\,dx
-$$
 
 **Proprietà dell'Integrale.** Siano $f,g:[a,b]\to\mathbb{R}$ integrabili. Allora
 
@@ -3349,32 +3424,32 @@ $$
   (*additività* dell'integrale rispetto agli estremi di integrazione) ove definiamo
 
 ```plot
-x: [0, 9.2]
-y: [-0.3, 4.2]
-height: 260
+x: [-0.1, 10.4]
+y: [-0.25, 4.6]
+width: 520
+height: 240
 ylabel: $f(x)$
 xlabel: $x$
-xticks: { 0.7: "$a$", 1.5: "$\\alpha$", 3.65: "$\\beta$", 7.4: "$\\gamma$", 8.3: "$b$" }
+xticks: { 0.7: "$a$", 1.53: "$\\alpha$", 3.76: "$\\beta$", 7.62: "$\\gamma$", 8.55: "$b$" }
 yticks: []
 caption: Additività rispetto agli estremi di integrazione.
 alt: Grafico di f con l'area tra alfa e beta in rosso e l'area tra beta e gamma in verde.
 items:
   - fn: f
-    through: [[0.7, 1.75], [2.3, 2.5], [4.0, 1.28], [6.55, 3.48], [8.3, 2.4]]
-    hidden: true
+    through: [[0.7, 1.74], [2.33, 2.51], [4.09, 1.22], [6.48, 3.5], [8.55, 2.33]]
   - area: f(x)
-    from: 1.5
-    to: 3.65
+    from: 1.53
+    to: 3.76
     color: red
+    opacity: 0.5
   - area: f(x)
-    from: 3.65
-    to: 7.4
+    from: 3.76
+    to: 7.62
     color: green
-  - fn: g(x) = f(x)
-    domain: [0.7, 8.3]
-  - line: [[0.7, 0], [0.7, 1.75]]
+    opacity: 0.5
+  - line: [[0.7, 0], [0.7, 1.74]]
     dash: dotted
-  - line: [[8.3, 0], [8.3, 2.4]]
+  - line: [[8.55, 0], [8.55, 2.33]]
     dash: dotted
 ```
 
@@ -3392,53 +3467,95 @@ Se la funzione integranda e il dominio di integrazione hanno qualche simmetria, 
 - $\displaystyle\int_{-a}^{a} f(x)\,dx=2\cdot\int_{0}^{a} f(x)\,dx$ se $f$ è pari,
 
 ```plot
-x: [-3.8, 4.4]
-y: [-2.8, 3.1]
-height: 280
+x: [-3.7, 4.3]
+y: [-2.65, 2.65]
+width: 420
+height: 278
 ylabel: $f(x)$ dispari
 xlabel: $x$
-xticks: { -3.4: "$-a$", 3.4: "$a$" }
+xticks: { -3.4: "", 3.4: "$a$" }
 yticks: []
 alt: Funzione dispari su [-a,a]; l'area rossa sotto l'asse x e l'area verde sopra si compensano, per cui la somma è 0.
 items:
   - fn: f
-    through: [[-3.4, -2.46], [-2.2, -0.3], [-0.9, -0.56], [0, 0], [0.9, 0.56], [2.2, 0.3], [3.4, 2.46]]
-    hidden: true
+    through: [[-3.4, -2.5], [-2.28, -0.3], [-0.88, -0.56], [0, 0], [0.88, 0.56], [2.28, 0.3], [3.4, 2.5]]
   - area: f(x)
     from: -3.4
     to: 3.4
     signed: true
-  - fn: g(x) = f(x)
-    domain: [-3.4, 3.4]
-  - text: $\textcolor{red}{\blacksquare}+\textcolor{green}{\blacksquare}=0$
-    at: [-2.4, 2.4]
+    opacity: 0.5
+  - text: $-a$
+    at: [-3.4, 0.05]
+    anchor: n
+  # legenda: ■ + ■ = 0
+  - area: 1.96
+    base: 1.5
+    from: -3.22
+    to: -2.52
+    color: red
+    opacity: 0.5
+  - text: $+$
+    at: [-2.27, 1.73]
+  - area: 1.96
+    base: 1.5
+    from: -2.02
+    to: -1.32
+    color: green
+    opacity: 0.5
+  - text: $=0$
+    at: [-1.32, 1.73]
+    anchor: e
 ```
 
 ```plot
-x: [-3.8, 4.4]
-y: [-0.4, 4.4]
-height: 280
+x: [-3.45, 3.75]
+y: [-0.2, 4.6]
+width: 380
+height: 253
 ylabel: $f(x)$ pari
 xlabel: $x$
 xticks: { -3.2: "$-a$", 3.2: "$a$" }
 yticks: []
+caption: Integrazione di funzioni simmetriche.
 alt: Funzione pari su [-a,a]; l'area rossa a sinistra dell'asse y è uguale all'area verde a destra, per cui la somma è il doppio dell'area verde.
 items:
   - fn: f
-    through: [[-3.2, 3.9], [-2.3, 1.34], [-1.2, 2.44], [0, 0.9], [1.2, 2.44], [2.3, 1.34], [3.2, 3.9]]
-    hidden: true
+    through: [[-3.2, 3.89], [-2.46, 1.57], [-1.28, 2.57], [0, 1.05], [1.28, 2.57], [2.46, 1.57], [3.2, 3.89]]
   - area: f(x)
     from: -3.2
     to: 0
     color: red
+    opacity: 0.5
   - area: f(x)
     from: 0
     to: 3.2
     color: green
-  - fn: g(x) = f(x)
-    domain: [-3.2, 3.2]
-  - text: $\textcolor{red}{\blacksquare}+\textcolor{green}{\blacksquare}=2\times\textcolor{green}{\blacksquare}$
-    at: [-1.6, 3.6]
+    opacity: 0.5
+  # legenda: ■ + ■ = 2 × ■
+  - area: 3.68
+    base: 3.24
+    from: -2.65
+    to: -1.94
+    color: red
+    opacity: 0.5
+  - text: $+$
+    at: [-1.61, 3.46]
+  - area: 3.68
+    base: 3.24
+    from: -1.28
+    to: -0.57
+    color: green
+    opacity: 0.5
+  - text: $=$
+    at: [-0.28, 3.46]
+  - text: $2\times$
+    at: [0.47, 3.46]
+  - area: 3.68
+    base: 3.24
+    from: 0.79
+    to: 1.5
+    color: green
+    opacity: 0.5
 ```
 
 **Teorema 6.4.** Se $f:[a,b]\to\mathbb{R}$
@@ -3464,8 +3581,9 @@ sono integrabili in quanto $f$ (nonostante abbia un numero infinito di punti di 
 
 ```plot
 x: [0, 1.1]
-y: [0, 1.1]
-height: 260
+y: [0, 1.08]
+width: 330
+height: 300
 ylabel: $f(x)$
 xlabel: $x$
 xticks: [0.2, 0.4, 0.6, 0.8, 1]
@@ -3485,7 +3603,9 @@ items:
 ```plot
 x: [0, 3.3]
 y: [-1.1, 2.4]
-height: 280
+width: 330
+height: 300
+caption: Esempi di funzioni integrabili non continue.
 ylabel: $g(x)$
 xlabel: $x$
 xticks: [0.5, 1, 1.5, 2, 2.5, 3]
@@ -3500,8 +3620,6 @@ items:
     domain: [2, 3]
 ```
 
-Esempi di funzioni integrabili non continue.
-
 **Il Teorema Fondamentale del Calcolo Integrale**
 
 Passiamo ora al secondo problema, cioè cerchiamo modi per calcolare $A=\int_a^b f(x)\,dx$ visto che soltanto in casi particolarmente semplici è possibile di determinare $A$ usando la definizione.
@@ -3511,34 +3629,46 @@ Perciò ci serve prima il seguente
 **Teorema 6.5** (*Teorema della Media*). Se $f\in\mathrm{C}[a,b]$, allora esiste $c\in[a,b]$ tale che $\displaystyle\int_a^b f(x)\,dx=f(c)\cdot(b-a)$
 
 ```plot
-x: [0, 11.8]
-y: [-0.6, 5.2]
-height: 300
+x: [-0.15, 12.3]
+y: [-0.3, 5.5]
+width: 620
+height: 290
 ylabel: $f(x)$
 xlabel: $x$
-xticks: { 0.92: "$a$", 6.56: "$c$", 10.5: "$b$" }
-yticks: { 2.98: "$f(c)$" }
+xticks: { 0.94: "$a$", 6.55: "$c$", 10.5: "$b$" }
+yticks: { 2.89: "$f(c)$" }
 alt: Grafico di f su [a,b] e retta orizzontale all'altezza f(c); l'area rossa sotto la retta è uguale all'area verde sopra la retta.
 items:
   - fn: f
-    through: [[0.92, 2.12], [2.84, 3.06], [5.08, 1.56], [6.56, 2.98], [8.24, 4.34], [10.5, 2.7]]
-    hidden: true
+    through: [[0.94, 2.09], [2.83, 3.0], [5.02, 1.49], [6.55, 2.89], [8.31, 4.24], [10.5, 2.65]]
+    width: 2
   - area: f(x)
-    base: 2.98
-    from: 0.92
+    base: 2.89
+    from: 0.94
     to: 10.5
     signed: true
-  - line: [[0.92, 2.98], [10.5, 2.98]]
-  - fn: g(x) = f(x)
-    domain: [0.92, 10.5]
-    width: 2
-  - guide: [0.92, 2.12]
+    opacity: 0.5
+  - line: [[0.94, 2.89], [10.5, 2.89]]
+  - guide: [0.94, 2.09]
     to: x
-  - guide: [6.56, 2.98]
-  - guide: [10.5, 2.7]
+  - guide: [6.55, 2.89]
+  - guide: [10.5, 2.65]
     to: x
-  - text: $\textcolor{red}{\blacksquare}=\textcolor{green}{\blacksquare}$
-    at: [4.4, 4.5]
+  # legenda: ■ = ■
+  - area: 4.54
+    base: 4.18
+    from: 2.69
+    to: 3.37
+    color: red
+    opacity: 0.5
+  - text: $=$
+    at: [3.63, 4.36]
+  - area: 4.54
+    base: 4.18
+    from: 3.92
+    to: 4.6
+    color: green
+    opacity: 0.5
 ```
 
 **Dimostrazione.** Per Weierstraß esistono
@@ -4043,35 +4173,49 @@ $$
 $$
 
 ```plot
-x: [-0.1, 4.2]
-y: [-0.3, 3.4]
-height: 280
-xlabel: $x$
-xticks: [1]
+x: [-0.12, 4.0]
+y: [-0.06, 3.5]
+width: 360
+height: 311
+axes: y
 yticks: [1, 2, 3]
 alt: Grafico di 1/radice di x con l'area verde tra 0 e 1, che rappresenta l'integrale di 1/radice di x da 0 a 1.
 items:
+  # asse x corto, come nell'originale
+  - line: [[-0.06, 0], [2.45, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[1, -0.035], [1, 0.035]]
+    width: 1.2
+  - text: $1$
+    at: [1, -0.05]
+    anchor: s
+  - text: $x$
+    at: [2.72, 0]
   - area: 1/sqrt(x)
     from: 0.0005
     to: 1
     color: green
+    opacity: 0.45
   - fn: 1/sqrt(x)
-    domain: [0.0005, 2.2]
+    domain: [0.0005, 2.15]
     samples: 1500
     color: green
   - line: [[1, 0], [1, 1]]
   - text: $\dfrac{1}{\sqrt{x}}$
-    at: [0.65, 2.65]
+    at: [0.65, 2.68]
   - text: $\displaystyle\int_0^1\frac{1}{\sqrt{x}}\,dx$
-    at: [3.3, 2.05]
+    at: [2.32, 2.05]
+    anchor: e
   - line: [[2.30, 2.04], [2.08, 1.97], [1.88, 1.90], [1.68, 1.82], [1.50, 1.74], [1.34, 1.65], [1.19, 1.56], [1.05, 1.46], [0.92, 1.36], [0.81, 1.26], [0.71, 1.15], [0.63, 1.04], [0.55, 0.92], [0.50, 0.80], [0.45, 0.67]]
     arrow: true
 ```
 
 ```plot
-x: [-0.1, 5.8]
-y: [-0.3, 2.5]
-height: 260
+x: [-0.1, 5.5]
+y: [-0.15, 2.45]
+width: 480
+height: 223
 xlabel: $x$
 xticks: [1, 2, 3, 4, 5]
 yticks: [1, 2]
@@ -4082,14 +4226,16 @@ items:
     from: 1
     to: 5
     color: green
+    opacity: 0.45
   - fn: 1/x^2
     domain: [0.76, 5]
     color: green
   - line: [[1, 0], [1, 1]]
   - text: $\dfrac{1}{x^2}$
-    at: [0.5, 2.1]
+    at: [0.48, 2.05]
   - text: $\displaystyle\int_1^{+\infty}\frac{1}{x^2}\,dx$
-    at: [4.4, 1.3]
+    at: [3.4, 1.2]
+    anchor: e
   - line: [[3.32, 1.12], [3.11, 1.10], [2.91, 1.07], [2.72, 1.03], [2.55, 0.99], [2.38, 0.95], [2.22, 0.90], [2.08, 0.84], [1.94, 0.78], [1.82, 0.71], [1.70, 0.64], [1.60, 0.56], [1.51, 0.48], [1.42, 0.39], [1.35, 0.30]]
     arrow: true
 ```
@@ -4148,9 +4294,10 @@ allora converge anche $\int_a^b f(x)\,dx$. Un risultato simile vale anche per $f
 - Consideriamo l'integrale improprio $\displaystyle\int_{-\infty}^{+\infty}e^{-x^2}\,dx.$
 
 ```plot
-x: [-3.3, 3.3]
-y: [-0.12, 1.2]
-height: 280
+x: [-3.2, 3.5]
+y: [-0.03, 1.08]
+width: 480
+height: 320
 xlabel: $x$
 xticks: [-3, -2, -1, 1, 2, 3]
 yticks: []
@@ -4158,16 +4305,17 @@ caption: Integrale improprio della "Campana di Gauss".
 alt: Grafico della campana di Gauss e^(-x^2), con l'area sotto la curva evidenziata, che vale radice di pi greco.
 items:
   - area: exp(-x^2)
-    from: -3.3
-    to: 3.3
+    from: -3.2
+    to: 3.5
     color: orange
+    opacity: 0.45
   - fn: exp(-x^2)
-    domain: [-3.3, 3.3]
+    domain: [-3.2, 3.5]
   - text: $e^{-x^2}$
     at: [0.75, 0.96]
   - text: $\sqrt{\pi}$
-    at: [2.7, 0.47]
-  - line: [[2.22, 0.47], [2.03, 0.46], [1.84, 0.45], [1.67, 0.44], [1.51, 0.43], [1.37, 0.42], [1.23, 0.41], [1.11, 0.40], [0.99, 0.39], [0.89, 0.37], [0.80, 0.36], [0.72, 0.35], [0.66, 0.34], [0.60, 0.33], [0.56, 0.31], [0.53, 0.30], [0.51, 0.29]]
+    at: [2.62, 0.48]
+  - line: [[2.20, 0.480], [2.00, 0.474], [1.82, 0.466], [1.64, 0.456], [1.48, 0.444], [1.32, 0.431], [1.18, 0.415], [1.04, 0.397], [0.91, 0.378], [0.79, 0.356], [0.69, 0.333], [0.59, 0.307], [0.50, 0.280]]
     arrow: true
 ```
 
@@ -4210,9 +4358,10 @@ Quindi $\int_1^{+\infty}g(x)\,dx$ converge e per il criterio del confronto conve
 - Verifichiamo che $\displaystyle\int_0^{+\infty}\frac{\sin(x)}{x}\,dx$ converge.
 
 ```plot
-x: [-0.5, 33]
-y: [-0.3, 1.15]
-height: 280
+x: [-0.3, 31.8]
+y: [-0.25, 1.05]
+width: 480
+height: 330
 xlabel: $x$
 xticks: [10, 20, 30]
 yticks: [0.5, 1]
@@ -4223,11 +4372,12 @@ items:
     from: 0.0001
     to: 30
     signed: true
+    opacity: 0.5
   - fn: sin(x)/x
     domain: [0.0001, 30]
     samples: 1200
-  - text: $\dfrac{\sin(x)}{x}$
-    at: [6.5, 0.9]
+  - text: $\Large\dfrac{\sin(x)}{x}$
+    at: [5, 0.93]
 ```
 
 Visto che $\displaystyle\lim_{x\to0^+}\frac{\sin(x)}{x}=1$ solo l'estremo $b=+\infty$ è "critico". Quindi l'integrale converge su $[0,+\infty)$ se e solo se converge su $[1,+\infty)$. Integrando per parti risulta
@@ -4403,37 +4553,32 @@ $\textcolor{red}{\textit{non}}$ esiste.
 
 *Coordinate polari:* Ricordiamo (cfr. corso di Geometria) che un punto $P$ del piano, oltre che con le sue coordinate cartesiane $(x,y)$, può essere rappresentato con le *coordinate polari* $(\rho,\vartheta)\in[0,\infty)\times[0,2\pi)$.
 
-```plot
-x: [-0.4, 8.2]
-y: [-0.5, 2.7]
-width: 640
-height: 250
-xticks: { 3.4: "$\\textcolor{red}{x}$" }
-yticks: { 1.95: "$\\textcolor{red}{y}$" }
-alt: "Coordinate polari: il punto P = (x, y) ha distanza rho dall'origine e angolo theta rispetto all'asse x"
-items:
-  - guide: [3.4, 1.95]
-    color: red
-  - line: [[0, 0], [3.4, 1.95]]
-    color: blue
-  - line: [[1.100, 0.000], [1.100, 0.023], [1.099, 0.045], [1.098, 0.068], [1.096, 0.091], [1.094, 0.113], [1.091, 0.136], [1.087, 0.158], [1.083, 0.180], [1.079, 0.203], [1.074, 0.225], [1.069, 0.247], [1.063, 0.269], [1.057, 0.291], [1.050, 0.313], [1.042, 0.334], [1.034, 0.356], [1.026, 0.377], [1.017, 0.398], [1.008, 0.419], [0.998, 0.439], [0.988, 0.460], [0.977, 0.480], [0.966, 0.500], [0.954, 0.520]]
-    color: blue
-    arrow: true
-  - text: $\vartheta$
-    at: [0.75, 0.2]
-    color: blue
-    anchor: c
-  - text: $\rho$
-    at: [1.5, 1.2]
-    color: blue
-  - point: [3.4, 1.95]
-  - text: "$P=\\textcolor{red}{(x,y)}$ in coordinate cartesiane"
-    at: [3.65, 2.25]
-    anchor: e
-  - text: "$=\\textcolor{blue}{(\\rho,\\vartheta)}$ in coordinate polari"
-    at: [3.65, 1.8]
-    anchor: e
-```
+<svg viewBox="0 0 600 225" width="100%" style="max-width:600px;display:block;margin:1.5rem auto" role="img" aria-label="Coordinate polari: il punto P = (x, y) ha distanza ρ dall'origine e angolo ϑ rispetto all'asse x">
+<defs><marker id="i20250619123955-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:currentColor;fill:context-stroke"/></marker></defs>
+<!-- assi -->
+<g stroke="currentColor" stroke-width="1.2" fill="none">
+<path d="M22 188H350" marker-end="url(#i20250619123955-arrow)"/>
+<path d="M52 218V17" marker-end="url(#i20250619123955-arrow)"/>
+</g>
+<!-- proiezioni di P sugli assi -->
+<path d="M52 57H298V188" fill="none" stroke="var(--palette-red)" stroke-width="1.2" stroke-dasharray="1.5 3.5" stroke-linecap="round"/>
+<!-- raggio rho e angolo theta -->
+<g stroke="var(--palette-blue)" stroke-width="1.6" fill="none">
+<path d="M52 188L298 57"/>
+<path d="M125 188A73 73 0 0 0 117 154" marker-end="url(#i20250619123955-arrow)"/>
+</g>
+<circle cx="298" cy="57" r="3" fill="currentColor"/>
+<g font-size="15" font-style="italic">
+<text x="36" y="62" fill="var(--palette-red)" text-anchor="end">y</text>
+<text x="298" y="210" fill="var(--palette-red)" text-anchor="middle">x</text>
+<text x="102" y="182" fill="var(--palette-blue)" text-anchor="middle">ϑ</text>
+<text x="162" y="118" fill="var(--palette-blue)" text-anchor="middle">ρ</text>
+</g>
+<g font-size="15" fill="currentColor">
+<text x="310" y="62"><tspan font-style="italic">P</tspan> = <tspan fill="var(--palette-red)">(<tspan font-style="italic">x</tspan>, <tspan font-style="italic">y</tspan>)</tspan> in coordinate cartesiane</text>
+<text x="324" y="86">= <tspan fill="var(--palette-blue)">(<tspan font-style="italic">ρ</tspan>, <tspan font-style="italic">ϑ</tspan>)</tspan> in coordinate polari</text>
+</g>
+</svg>
 
 Le formule di passaggio da coordinate cartesiane a coordinate polari sono date da
 
@@ -4896,11 +5041,12 @@ $$
 Il dominio si presenta già nella forma di un dominio $y$-semplice.
 
 ```plot
-x: [-0.15, 3.3]
-y: [-0.15, 2.5]
-width: 520
-height: 300
-xticks: { 0: "$a=0$", 1: "$b=1$" }
+x: [-0.2, 4.75]
+y: [-0.12, 2.45]
+width: 600
+aspect: equal
+axes: y
+ylabel: $y$
 yticks: [1, 2]
 alt: "Il triangolo X di vertici (0,1), (0,2), (1,2), compreso tra la retta y = x + 1 e la retta y = 2, per x in [0,1]"
 items:
@@ -4908,25 +5054,42 @@ items:
     base: x + 1
     from: 0
     to: 1
-    color: "#888888"
+    color: muted
+    opacity: 0.35
+  # asse x corto, come nell'originale
+  - line: [[-0.13, 0], [1.72, 0]]
+    width: 1.2
+    arrow: true
+  - line: [[1, -0.03], [1, 0.03]]
+    width: 1.2
+  - text: $a=0$
+    at: [0, -0.04]
+    anchor: s
+  - text: $b=1$
+    at: [1, -0.04]
+    anchor: s
+  - text: $x$
+    at: [1.8, 0]
   - fn: x + 1
-    domain: [0, 1]
+    domain: [-0.1, 1.17]
     color: red
   - fn: 2
-    domain: [0, 1]
+    domain: [0, 1.15]
     color: green
   - guide: [1, 2]
     to: x
-  - text: "$\\textcolor{red}{y=x+1=g_1(x)}$"
-    at: [1.08, 2.3]
+  - text: $y=x+1=g_1(x)$
+    at: [1.17, 2.2]
     anchor: e
-  - text: "$\\textcolor{green}{y=2=g_2(x)}$"
-    at: [1.08, 2.08]
+    color: red
+  - text: $y=2=g_2(x)$
+    at: [1.17, 2.01]
     anchor: e
-  - line: [[1.4, 1.72], [1.0, 1.72], [0.75, 1.7], [0.5, 1.78], [0.38, 1.78]]
+    color: green
+  - line: [[1.14, 1.30], [1.04, 1.30], [0.94, 1.30], [0.85, 1.32], [0.77, 1.33], [0.69, 1.35], [0.62, 1.38], [0.56, 1.41], [0.50, 1.45], [0.46, 1.50], [0.41, 1.54], [0.38, 1.60], [0.35, 1.66]]
     arrow: true
   - text: "$X=\\{(x,y)\\in\\mathbb{R}^2: x\\in[0,1],\\ x+1\\le y\\le2\\}$"
-    at: [1.4, 1.7]
+    at: [1.14, 1.3]
     anchor: e
 ```
 

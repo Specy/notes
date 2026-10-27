@@ -264,9 +264,10 @@ $$
 Osserviamo la sua convergenza:
 
 ```plot
-x: [-1.25, 0.15]
-y: [-0.62, 0.42]
-height: 300
+x: [-1.14, 0.12]
+y: [-0.6, 0.34]
+width: 480
+aspect: equal
 axes: x
 xticks: []
 items:
@@ -284,8 +285,8 @@ items:
     at: [0, 0.02]
     anchor: n
   - text: $-1$
-    at: [-1, -0.02]
-    anchor: nw
+    at: [-0.99, -0.01]
+    anchor: se
   - text: $-1+\tfrac{1}{2}$
     at: [-0.5, 0.01]
     anchor: ne
