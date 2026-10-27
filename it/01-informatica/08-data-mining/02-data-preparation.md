@@ -26,14 +26,33 @@ It is formed by a multistage process:
 - **Document/text data**: available in a raw and unstructured form of text, it contains linguistic relationships between entities. One feature extraction would be to remove stop words, stem the data and collect the words that are used in the text, as a "dictionary" of words.
 ## Data type portability
 
-![[Pasted image 20231204125245.png]]
+| Source data type | Destination data type | Methods |
+|---|---|---|
+| Numeric | Categorical | Discretization |
+| Categorical | Numeric | Binarization |
+| Text | Numeric | Latent semantic analysis (*LSA*) |
+| Time series | Discrete sequence | *SAX* |
+| Time series | Numeric multidimensional | *DWT*, *DFT* |
+| Discrete sequence | Numeric multidimensional | *DWT*, *DFT* |
+| Spatial | Numeric multidimensional | 2-d *DWT* |
+| Graphs | Numeric multidimensional | *MDS*, spectral |
+| Any type | Graphs | Similarity graph (Restricted applicability) |
 
 ## Numeric to Categorical data: Discretization 
 The process of discretization divides the numeric ranges into $\phi$ categorical ranges, going from 1 to $\phi$ depending on the range where the original attribute lies
 The discretization process can be performed in various ways:
 - **Equi-width(log) ranges**: each range `[a,b]` is chosen in such way that $b - a$ or $log(b) - log(a)$ is the same for each range. This works only on data sets that are distributed uniformly across the ranges. the `[min, max]` values are found and then divided in $\phi$ ranges of equal length. The equi-log is useful when attributes have exponential distribution
 - **Equi-depth ranges (equi frequency)**: the ranges are selected so that each range has an equal number of records. The records are first sorted then split into groups of equal length
-![[Pasted image 20231204133750.png]]
+
+- **Data**: 0, 4, 12, 16, 16, 18, 24, 26, 28
+- **Equal width**
+  - Bin 1: 0, 4 — [-,10)
+  - Bin 2: 12, 16, 16, 18 — [10,20)
+  - Bin 3: 24, 26, 28 — [20,+)
+- **Equal frequency**
+  - Bin 1: 0, 4, 12 — [-, 14)
+  - Bin 2: 16, 16, 18 — [14, 21)
+  - Bin 3: 24, 26, 28 — [21,+)
 
 ## Categorical to numeric data: binarization
 if a categorical attribute has $\phi$ different values, then $\phi$ binary attributes must be created, with each binary attribute corresponding to a possible value of that categorical attribute. In a single record, only one of the $\phi$ attributes take the value of 1, the rest take the value of 0 ![[Pasted image 20231204134015.png]]
