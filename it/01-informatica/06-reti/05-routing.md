@@ -88,7 +88,11 @@ BGP consente ai router di annunciare i prefissi IP che possono instradare, una r
 - **AS-PATH**: lista degli AS dove il prefisso è passato. usato per evitare loop.
 - **NEXT-HOP**: indirizzo IP del prossimo router di next-hop.
 
-![[Pasted image 20241103164845.png]]
+![[Pasted image 20241103164845 figura.png]]
+
+- il router 2c dell'AS2 riceve il path advertisement *AS3,X* (via eBGP) dal router 3a dell'AS3
+- seguendo la policy dell'AS2, il router 2c accetta il path AS3,X, e lo propaga (via iBGP) a tutti i router dell'AS2
+- se la policy di AS2 lo prevede, il router 2a di AS2 annuncia (via eBGP) il path *AS2,AS3,X* al router 1c dell'AS1
 
 i messaggi BGP sono scambiati tra peer tramite TCP, e sono di 4 tipi:
 - **OPEN**: apre una connessione TCP e autentica il mittente.
@@ -98,8 +102,28 @@ i messaggi BGP sono scambiati tra peer tramite TCP, e sono di 4 tipi:
 
 Esempio di inserimento di una entry verso prefissi distanti:
 
-![[Pasted image 20241103165223.png]]
-![[Pasted image 20241103165233.png]]
+![[Pasted image 20241103165223 figura.png]]
+
+| dest | interface |
+| ---- | --------- |
+| ... | ... |
+| **X** | **1** |
+| ... | ... |
+
+- richiamo: 1a, 1b, 1c apprendono la destinazione X via iBGP da 1c: "path verso X passa da 1c"
+- 1d: routing OSPF intra-domain : per andare a 1c, inoltra sull'interfaccia di uscita 1
+
+![[Pasted image 20241103165233 figura.png]]
+
+| dest | interface |
+| ---- | --------- |
+| ... | ... |
+| **X** | **2** |
+| ... | ... |
+
+- richiamo: 1a, 1b, 1c apprendono la destinazione X via iBGP da 1c: "path verso X passa da 1c"
+- 1d: routing OSPF intra-domain : per andare a 1c, inoltra sull'interfaccia di uscita 1
+- 1a: routing OSPF intra-domain : per andare a 1c, inoltra sull'interfaccia di uscita 2
 
 Naturalmente esistono più rotte verso un determinato prefisso, il router sceglierà la rotta migliore in base a:
 - **Local preference**: preferenza locale assegnata dal router.
@@ -142,21 +166,35 @@ Ha 3 classi di messaggi:
     - **port-status**: lo switch informa il controller che lo stato di una porta è cambiato
 - **Simmetriche**: messaggi misti
 
-![[Frame 12.png]]
+![[Frame 12 figura.png]]
+
+1. S1, constata la caduta del link con s2 e usa il messaggio OpenFlow port status per notificarla al controller
+2. Il controller SDN riceve il messaggio OpenFlow, aggiorna le info sullo stato dei link
+3. L'applicazione che esegue l'algoritmo di Dijkstra si è registrata sul controller per essere chiamata in caso di cambiamenti sullo stato dei link.
+4. L'algoritmo di routing Dijkstra accede le info sul grafo della rete e sullo stato dei link nel controller, calcola i nuovi cammini
+5. L'applicazione link state routing interagisce con la componente di calcolo delle flow table del controller SDN, che calcola le nuove flow table necessarie
+6. Il controller usa OpenFlow per installare le nuove table negli switch dove è necessario
 
 ### Controller ODL (OpenDayLight)
 
 Le applicazioni di rete possono essere contenute o esterne al controller, ed usa il service abstraction layer per interconnettere applicazioni interne e esterne.
 
-![[Pasted image 20241104141804.png]]
+![[Pasted image 20241104141804 figura.png]]
+
+- ODL Lithium controller
+- Le applicazioni di rete possono essere contenute, o esterne al controller SDN
+- Service Abstraction Layer: interconnette servizi e applicazioni interne ed esterne
 
 ### Controller ONOS
 
 Le applicazioni di controllo sono separate dal controller.
 Usa un framework per intenti dove le specifiche di servizio sono ad alto livello, specificando che "cosa" vogliono e non il "come".
 
-![[Pasted image 20241104141831.png]]
+![[Pasted image 20241104141831 figura.png]]
 
+- applicazioni di controllo separate dal controller
+- framework per gli intenti: specifiche di servizio ad alto livello: 'cosa' piuttosto che 'come'
+- notevole enfasi sul core distribuito: affidabilità del servizio, repliche, scaling delle performance
 
 ## ICMP (Internet Control Message Protocol)
 
