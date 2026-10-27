@@ -56,7 +56,17 @@ In una connessione persistente, il tempo di risposta per la prima richiesta è 2
 
 è un protocollo puramente testuale di questo formato:
 
-![[Pasted image 20241102123621.png]]
+```text
+[ metodo ][sp][ URL ][sp][ versione ][cr][lf]       riga di richiesta
+
+[ campo di intestazione ][ ][ value ][cr][lf]       righe di
+                  ...                               intestazione
+[ campo di intestazione ][ ][ value ][cr][lf]
+
+[cr][lf]
+
+[            corpo dell'entità            ]          corpo
+```
 
 Una richiesta HTTP ha diversi metodi per specificare l'azione che il server deve fare:
 - GET: richiede una risorsa, utilizza l'URL per specificare la risorsa
@@ -99,7 +109,19 @@ Usato per inviare mail. Un client da affidamento alla propria casella mail ad un
 
 Il protocollo usa TCP sulla porta 25, ed un trasferimento è formato da 3 parti, una parte di inizializzazione chiamato handshaking, il trasferimento dei dati, e la chiusura della connessione.
 
-![[Pasted image 20241102125306.png]]
+```mermaid
+sequenceDiagram
+    participant UJ as user agent di Jane
+    participant MJ as mail server di Jane
+    participant MB as mail server di Bob
+    participant UB as user agent di Bob
+    Note over UJ: 1) Jane usa il suo user agent per<br/>comporre il messaggio da inviare "a"<br/>bob@someschool.edu
+    UJ->>MJ: 2) l'UA di Jane invia un messaggio al server di posta<br/>di Jane#59; il messaggio è posto nella coda di messaggi
+    Note over MJ: 3) il lato client di SMTP apre una connessione TCP<br/>con il server di posta di Bob
+    MJ->>MB: 4) il client SMTP invia il messaggio di Jane<br/>sulla connessione TCP
+    Note over MB: 5) il server di posta di Bob pone il messaggio<br/>nella casella di posta di Bob
+    MB->>UB: 6) Bob invoca il suo user agent<br/>per leggere il messaggio
+```
 
 ### POP, IMAP, HTTP
 
@@ -124,9 +146,51 @@ Un client richiede al root server per trovare il server DNS TLD del dominio rich
 
 Esistono anche DNS locali che vengono usati per memorizzare i record DNS per un certo periodo di tempo (TTL), in questo modo si evita di dover richiedere sempre al server DNS autoritativo e scendere per tutta la gerarchia.
 
-![[Pasted image 20241102130437.png]]
+**query iterativa:**
 
-![[Pasted image 20241102130504.png]]
+- il server contattato risponde con il nome del server da contattare
+- “non conosco questo nome, ma chiedi a questo server”
+
+```mermaid
+sequenceDiagram
+    participant H as requesting host at<br/>engineering.nyu.edu
+    participant L as local DNS server<br/>dns.nyu.edu
+    participant R as root DNS server
+    participant T as TLD DNS server
+    participant A as authoritative DNS server<br/>dns.cs.umass.edu
+    H->>L: 1
+    L->>R: 2
+    R->>L: 3
+    L->>T: 4
+    T->>L: 5
+    L->>A: 6
+    A->>L: 7
+    L->>H: 8
+    Note right of A: gaia.cs.umass.edu
+```
+
+**query ricorsiva:**
+
+- affida il compito di tradurre il nome al server DNS contattato
+- grosso carico per gli alti livelli della gerarchia?
+
+```mermaid
+sequenceDiagram
+    participant H as requesting host at<br/>engineering.nyu.edu
+    participant L as local DNS server<br/>dns.nyu.edu
+    participant R as root DNS server
+    participant T as TLD DNS server
+    participant A as authoritative DNS server<br/>dns.cs.umass.edu
+    H->>L: 1
+    L->>R: 2
+    R->>T: 3
+    T->>A: 4
+    A->>T: 5
+    T->>R: 6
+    R->>L: 7
+    L->>H: 8
+    Note right of A: gaia.cs.umass.edu
+```
 
 ## Record DNS
 
