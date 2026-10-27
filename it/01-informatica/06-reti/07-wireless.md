@@ -61,7 +61,22 @@ Il protocollo MAC802.11 usa CSMA/CA (Carrier Sense Multiple Access with Collisio
 
 Per evitare collisioni quando si vuole inviare grandi dati, un host può inviare un frame di richiesta RTS (Request To Send) all'AP tramite CSMA/CA, se l'AP risponde con un frame CTS (Clear To Send) allora l'host può trasmettere. Il CTS è rilevato da tutti i nodi vicini, che ritardano la trasmissione.
 
-![[Pasted image 20241104172153.png]]
+```mermaid
+sequenceDiagram
+  participant A
+  participant AP
+  participant B
+  A->>AP: RTS(A)
+  B->>AP: RTS(B)
+  Note over AP: collisione in prenotazione
+  A->>AP: RTS(A)
+  AP->>A: CTS(A)
+  AP->>B: CTS(A)
+  Note over B: ritardo
+  A->>AP: DATA (A)
+  AP->>A: ACK(A)
+  AP->>B: ACK(A)
+```
 
 ## Indirizzamento Frame 802.11
 
@@ -73,7 +88,40 @@ Un frame 802.11 ha 4 indirizzi:
 
 Quando un host comunica un frame verso un AP, il frame contiene tutti e 4 gli indirizzi, e quando l'AP lo riceve, li rimuove e li sostituisce con l'indirizzo di destinazione e di sorgente.
 
-![[Pasted image 20241104172755.png]]
+Frame 802.11, campi in ordine (dimensione in byte):
+
+| campo | byte |
+|---|---|
+| frame control | 2 |
+| *duration* | 2 |
+| address 1 | 6 |
+| address 2 | 6 |
+| address 3 | 6 |
+| *seq control* | 2 |
+| address 4 | 6 |
+| payload | 0 - 2312 |
+| CRC | 4 |
+
+- *duration*: durata del tempo di trasmissione prenotato (RTS/CTS)
+- *seq control*: numero di sequenza del frame (per RDT)
+
+Campo *frame control*, sottocampi in ordine (dimensione in bit):
+
+| sottocampo | bit |
+|---|---|
+| Protocol version | 2 |
+| *Type* | 2 |
+| Subtype | 4 |
+| To AP | 1 |
+| From AP | 1 |
+| More frag | 1 |
+| Retry | 1 |
+| Power mgt | 1 |
+| More data | 1 |
+| WEP | 1 |
+| Rsvd | 1 |
+
+- *Type*: tipo di frame (RTS, CTS, ACK, data)
 
 ## Altre capacità di 802.11
 
