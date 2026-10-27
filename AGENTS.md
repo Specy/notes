@@ -183,7 +183,56 @@ credit someone else.
 - **Math** (KaTeX): `$x^2$` inline, `$$ … $$` for display blocks.
 - **Callouts**: `> [!tip] Title` / `> [!warning]` … (Obsidian syntax).
 - **Code fences** with a language get syntax highlighting; ` ```mermaid ` fences
-  render as diagrams.
+  render as diagrams, ` ```plot ` fences as function plots (see [Plots](#plots)).
+- **Colours**: use the palette names `blue`, `red`, `green`, `orange`, `purple`,
+  `teal` — in math `\textcolor{blue}{…}`, in plots `color: blue`. The site swaps
+  them for shades that read well in both light and dark theme; other colours
+  (e.g. `#ff0000`) are kept as-is, so avoid them.
+
+## Plots
+
+Prefer rewriting screenshots as text: formulas in `$…$`, tables as Markdown
+tables, flowcharts/state machines/sequences as ` ```mermaid `, function graphs
+as ` ```plot `, and anything freeform as an Excalidraw drawing. A ` ```plot `
+fence holds YAML and is rendered on the site as a static SVG (Obsidian shows
+the source):
+
+````
+```plot
+x: [-0.3, 3.5]            # visible window (default [-5, 5])
+y: [-0.3, 3.2]
+height: 300               # px, default 480×300
+let: { a: 0.6, b: 2.2 }   # named numbers, usable in any expression
+xticks: { a: "$x_0$", b: "$x$" }          # labelled ticks (or ticks: true / 1)
+yticks: { "f(a)": "$f(x_0)$" }
+items:
+  - fn: f(x) = 1.4 sqrt(x)                # named → usable by later items
+    domain: [0.3, 3.1]
+    label: $f$
+  - fn: t(x) = f(a) + f'(a)(x - a)        # f' = numeric derivative
+    color: blue
+  - guide: [a, f(a)]                      # dotted lines down/across to the axes
+  - point: [a, f(a)]
+  - brace: [[3.2, f(b)], [3.2, t(b)]]
+    label: $=r(x)$
+```
+````
+
+Item types: `fn`, `area` (`from`/`to`, `base`, `signed: true` → green/red by
+sign), `riemann` (`from`/`to`, `n`, `mode`: left/right/mid/lower/upper), `line`
+(list of points, `arrow: true`), `vline`/`hline`, `point` (`open: true` for a
+hollow dot), `guide`, `text` (`at: [x, y]`), `brace`. Common options: `color`,
+`dash` (`true` / `dotted`), `width`, `label`, `anchor` (`n s e w ne nw se sw c`).
+Top level also takes `grid`, `ticks`, `xlabel`/`ylabel`, `caption`, `alt`.
+Expressions support `+ - * / ^`, implicit multiplication (`2x`, `3(x+1)`),
+`sin cos tan exp ln log sqrt abs …` (`log` is the natural log), `pi`, `e`.
+
+## Checking content
+
+From the app repo run `npm run check:content`: it renders every note and
+reports math KaTeX can't parse, broken ` ```plot ` / ` ```mermaid ` fences,
+embeds of missing images, and images no note uses any more (add
+`-- --delete-orphans` to remove those after replacing a screenshot).
 
 ## Assets
 
