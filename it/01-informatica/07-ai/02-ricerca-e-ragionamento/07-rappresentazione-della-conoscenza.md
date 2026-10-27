@@ -99,9 +99,29 @@ Un algoritmo di inferenza è detto **Completo** (completeness) se può derivare 
 
 # Logica proposizionale 
 Sintassi:
-![[Pasted image 20241217161419.png]]
+
+*Atomic sentence*: a *proposition* that can be *true* or *false*, represented by a *single proposition symbol*.
+
+- E.g., $P$, $Q$, $R$, $W_{1,1}$, FacingEast
+- *Names* are *arbitrary* but are often chosen to have some *mnemonic value*.
+- There *are two special proposition symbols* with fixed meanings: $\textcolor{red}{True}$ is the always-true proposition and $\textcolor{red}{False}$ is the always-false proposition
+
+*Complex sentence*: constructed from simpler sentences, using *parentheses* and *operators* called *logical connectives*.
+
+- Not ($\neg$): $\neg A$ is called the *negation* of $A$. A *literal* is either an atomic sentence (*positive literal*) or a negated atomic sentence (*negative literal*).
+- And ($\wedge$): $A_1 \wedge A_2 \wedge \cdots \wedge A_k$ is called *conjunction*. $A_1, A_2, \ldots, A_k$ are its *conjuncts*.
+- Or ($\vee$): $A_1 \vee A_2 \vee \cdots \vee A_k$ is called *disjunction*. $A_1, A_2, \ldots, A_k$ are its *disjuncts*.
+- Implies ($\Rightarrow$): $A \Rightarrow B$ is called *implication*. $A$ is its *premise* (or *antecedent*), and $B$ is its *conclusion* (or *consequent*). Implications are also known as "*rules*" or "*if-then statements*".
+- *If and only if* ($\Leftrightarrow$): $A \Leftrightarrow B$ is called *biconditional*.
+
 Semantica:
-![[Pasted image 20241217161434.png]]
+
+| $\mathcal{I}(X,m)$ | $\mathcal{I}(Y,m)$ | $\mathcal{I}(\neg X,m)$ | $\mathcal{I}(X \wedge Y,m)$ | $\mathcal{I}(X \vee Y,m)$ | $\mathcal{I}(X \Rightarrow Y,m)$ | $\mathcal{I}(X \Leftrightarrow Y,m)$ |
+|---|---|---|---|---|---|---|
+| false | false | true | false | false | true | true |
+| false | true | true | false | true | true | false |
+| true | false | false | false | true | false | false |
+| true | true | false | true | true | true | true |
 
 ## Esempio KB in logica proposizionale:
 
@@ -161,7 +181,22 @@ Se il numero di modelli è grane ma la lunghezza della dimostrazione è corta, l
 
 Due proposizioni $\alpha$, $\beta$ sono logicamente equivalenti, $\alpha \equiv \beta$ se tutti i modelli veri di $\alpha$ sono veri anche per $\beta$ e viceversa.
 
-![[Pasted image 20241217175255.png]]
+$$
+\begin{array}{rcll}
+(\alpha \wedge \beta) & \equiv & (\beta \wedge \alpha) & \text{commutativity of } \wedge \\
+(\alpha \vee \beta) & \equiv & (\beta \vee \alpha) & \text{commutativity of } \vee \\
+((\alpha \wedge \beta) \wedge \gamma) & \equiv & (\alpha \wedge (\beta \wedge \gamma)) & \text{associativity of } \wedge \\
+((\alpha \vee \beta) \vee \gamma) & \equiv & (\alpha \vee (\beta \vee \gamma)) & \text{associativity of } \vee \\
+\neg(\neg\alpha) & \equiv & \alpha & \text{double-negation elimination} \\
+(\alpha \Rightarrow \beta) & \equiv & (\neg\beta \Rightarrow \neg\alpha) & \text{contraposition} \\
+(\alpha \Rightarrow \beta) & \equiv & (\neg\alpha \vee \beta) & \text{implication elimination} \\
+(\alpha \Leftrightarrow \beta) & \equiv & ((\alpha \Rightarrow \beta) \wedge (\beta \Rightarrow \alpha)) & \text{biconditional elimination} \\
+\neg(\alpha \wedge \beta) & \equiv & (\neg\alpha \vee \neg\beta) & \text{De Morgan} \\
+\neg(\alpha \vee \beta) & \equiv & (\neg\alpha \wedge \neg\beta) & \text{De Morgan} \\
+(\alpha \wedge (\beta \vee \gamma)) & \equiv & ((\alpha \wedge \beta) \vee (\alpha \wedge \gamma)) & \text{distributivity of } \wedge \text{ over } \vee \\
+(\alpha \vee (\beta \wedge \gamma)) & \equiv & ((\alpha \vee \beta) \wedge (\alpha \vee \gamma)) & \text{distributivity of } \vee \text{ over } \wedge
+\end{array}
+$$
 
 Una proposizione è detta una *tautologia* (o valida) se è sempre vera per ogni modello. Per esempio $\alpha \land \beta \vDash \alpha$ è sempre vera. 
 
@@ -193,7 +228,22 @@ $$
 $$
 Data due proposizioni del tipo $\alpha \implies \beta$ dove e $\alpha$, possiamo fare inferenza su $\beta$ 
 
-![[Pasted image 20241217180731.png]]
+In other words:
+
+$$((\alpha \Rightarrow \beta) \wedge \alpha) \vDash \beta,$$
+
+or, equivalently, according to the *deduction theorem*:
+
+$$((\alpha \Rightarrow \beta) \wedge \alpha) \Rightarrow \beta \text{ is a tautology.}$$
+
+In fact:
+
+| $\alpha$ | $\beta$ | $\alpha \Rightarrow \beta$ | $(\alpha \Rightarrow \beta) \wedge \alpha$ | $((\alpha \Rightarrow \beta) \wedge \alpha) \Rightarrow \beta$ |
+|---|---|---|---|---|
+| 0 | 0 | 1 | 0 | 1 |
+| 0 | 1 | 1 | 0 | 1 |
+| 1 | 0 | 0 | 0 | 1 |
+| 1 | 1 | 1 | 1 | 1 |
 
 ## Eliminazione della congiunzione
 $$
@@ -201,8 +251,20 @@ $$
 $$
 Date due proposizioni $\alpha \wedge \beta$ e $\alpha$, si può fare inferenza su uno qualsiasi dei termini della congiunzione. Cioè che se abbiamo una proposizione del tipo $\alpha \wedge \beta$, possiamo fare inferenza su $\alpha$ o $\beta$ singolarmente, cioè che $(\alpha \wedge \beta) \vDash \alpha$  
 
-![[Pasted image 20241217182522.png]]
+$$(\alpha \wedge \beta) \vDash \alpha,$$
 
+or, equivalently, according to the *deduction theorem*:
+
+$$(\alpha \wedge \beta) \Rightarrow \alpha \text{ is a tautology.}$$
+
+In fact:
+
+| $\alpha$ | $\beta$ | $\alpha \wedge \beta$ | $(\alpha \wedge \beta) \Rightarrow \alpha$ |
+|---|---|---|---|
+| 0 | 0 | 0 | 1 |
+| 0 | 1 | 0 | 1 |
+| 1 | 0 | 0 | 1 |
+| 1 | 1 | 1 | 1 |
 
 ## Dimostrazione tramite ricerca 
 
@@ -214,8 +276,42 @@ Creiamo un problema dimostrazione come un problema di ricerca:
 
 Questo può essere risolto tramite qualsiasi algoritmo di ricerca
 
-![[Pasted image 20241217183956.png]]
-![[Pasted image 20241217184008.png]]
+*Proposition symbols*: $R$ ("rain"), $WE$ ("wet"), $SL$ ("slippery"), $SU$ ("sunny"), $WA$ ("warm").
+
+*KB*:
+
+$$
+\begin{aligned}
+\alpha_1 &= R \Rightarrow WE \\
+\alpha_2 &= WE \Rightarrow SL \\
+\alpha_3 &= SU \Rightarrow WA
+\end{aligned}
+\qquad \text{(Background knowledge)}
+$$
+
+$$
+\alpha_4 = R \wedge SU \qquad \text{(Percept)}
+$$
+
+*Goal*: Derive $\beta = SL$
+
+> This could be a reasoning module of a (simple) self-driving car agent, which needs to determine, e.g., whether the road surface is slippery, in order to make proper decisions about how to drive.
+> Real-world self-driving car agents have indeed, among others, logic-based reasoning modules like this (though more sophisticated).
+
+```mermaid
+flowchart TD
+    S0(["α₁, α₂, α₃, α₄"])
+    S1(["α₁, α₂, α₃, α₄, α₅, α₆"])
+    S2(["α₁, α₂, α₃, α₄, α₅, α₆, α₇"])
+    S3(["α₁, α₂, α₃, α₄, α₅, α₆, α₈<br/>⋮"])
+    S4(["α₁, α₂, α₃, α₄, α₅, α₆, α₇, α₈<br/>⋮"])
+    S5(["α₁, α₂, α₃, α₄, α₅, α₆, α₇, β<br/>GOAL"])
+    S0 -- "And-Elimination on α₄ = R ∧ SU<br/>Result: α₅ = R, α₆ = SU" --- S1
+    S1 -- "Modus Ponens on α₁ = R ⇒ WE, α₅<br/>Result: α₇ = WE" --- S2
+    S1 -- "Modus Ponens on α₃ = SU ⇒ WA, α₆<br/>Result: α₈ = WA" --- S3
+    S2 -- "Modus Ponens on α₃ = SU ⇒ WA, α₆<br/>Result: α₈ = WA" --- S4
+    S2 -- "Modus Ponens on α₂ = WE ⇒ SL, α₇<br/>Result: β = SL" --- S5
+```
 
 # Theorem proving by resolution
 
@@ -231,7 +327,10 @@ La completezza delle regole di inferenza ci fa pensare che idealmente, l'inferen
 
 Questo è quello che facciamo tramite algoritmi di inferenza che usano una singola regola generale, chiamata "resolution", e unendo un algoritmo di ricerca completo insieme ad una regola di inferenza completa ci porta ad un algoritmo di inferenza completo.
 
-![[Pasted image 20241217191221.png]]
+$$
+\frac{\ell_1 \vee \cdots \vee \ell_k, \qquad m_1 \vee \cdots \vee m_n}{\ell_1 \vee \cdots \vee \ell_{i-1} \vee \ell_{i+1} \vee \cdots \vee \ell_k \vee m_1 \vee \cdots \vee m_{j-1} \vee m_{j+1} \vee \cdots \vee m_n}
+$$
+
 - ogni $l$ e $m$ sono letterali e $l_i$ e $m_j$ sono letterali complemento, cioè che $l_i = \neg m_j$ , cioè che uno è la negazione dell'altro.
 - ogni $l_1 \vee ... \vee l_k$ e $m_1 \vee ... \vee m_n$ sono chiamate clausole, cioè una disgiunzione di letterali  
 
@@ -243,7 +342,12 @@ Dato che $l_i$ può essere vera o falsa, una di queste conclusioni deve essere v
 # Conjunctive normal form (CNF)
 La Resolution Rule si applica solo a clausole (quindi disgiunzione di letterali), ma possiamo convertire ogni proposizione logica in una equivalente che è congiunzione di clausole.
 
-![[Pasted image 20241217192316.png]]
+- Eliminate $\leftrightarrow$: $\dfrac{f \leftrightarrow g}{(f \to g) \wedge (g \to f)}$
+- Eliminate $\to$: $\dfrac{f \to g}{\neg f \vee g}$
+- Move $\neg$ inwards: $\dfrac{\neg(f \wedge g)}{\neg f \vee \neg g}$
+- Move $\neg$ inwards: $\dfrac{\neg(f \vee g)}{\neg f \wedge \neg g}$
+- Eliminate double negation: $\dfrac{\neg\neg f}{f}$
+- Distribute $\vee$ over $\wedge$: $\dfrac{f \vee (g \wedge h)}{(f \vee g) \wedge (f \vee h)}$
 
 # Un algoritmo che usa resolution (PL-RESOLUTION)
 
@@ -255,7 +359,21 @@ Procedure di inferenza che usano la resolution funzionano tramite il principio d
    - Aggiungi la nuova clausola al set delle clausole correnti, se non è già presente
    - Ripeti questo procedimento finchè o non ci sono più clausole da aggiungere, e quindi $KB$ non implica $\alpha$, oppure due clausole risultano la clausola vuota, e in quel caso $KB$ implica $\alpha$  
 
-![[Pasted image 20241217193533.png]]
+```text
+function PL-RESOLUTION(KB, α) returns true or false
+  inputs: KB, the knowledge base, a sentence in propositional logic
+          α, the query, a sentence in propositional logic
+
+  clauses ← the set of clauses in the CNF representation of KB ∧ ¬α
+  new ← {}
+  while true do
+      for each pair of clauses Cᵢ, Cⱼ in clauses do
+          resolvents ← PL-RESOLVE(Cᵢ, Cⱼ)
+          if resolvents contains the empty clause then return true
+          new ← new ∪ resolvents
+      if new ⊆ clauses then return false
+      clauses ← clauses ∪ new
+```
 
 La completezza di questo algoritmo può essere dimostrata tramite il *ground resolution theorem* che prova formalmente che, se un set di clausole non è soddisfacibile, allora la resolution closure (tutte le clausole derivabili da applicazione ripetuta del resolution rule) di queste clausole contengono la clausola vuota 
 
@@ -300,25 +418,62 @@ I **Simboli**, come in logica proposizionale, sono gli elementi base, e possono 
 - *Predicato*, solo le relazioni fra oggetti
 - *Funzione*, solo le funzioni
 
-![[Pasted image 20241218125755.png]]
+$$
+\begin{array}{rcl}
+\mathit{Constant} & \rightarrow & A \mid X_1 \mid John \mid \cdots \\
+\mathit{Predicate} & \rightarrow & True \mid False \mid After \mid Loves \mid Raining \mid \cdots \\
+\mathit{Function} & \rightarrow & Mother \mid LeftLeg \mid \cdots
+\end{array}
+$$
 
 I **Termini** sono un espressione logica che fa riferimento ad un oggetto, possono essere del tipo:
 - *Costante*, Identifica un oggetto specifico
 - *Variabile*, fa riferimento ad un oggetti non specificato, da determinare tramite i quantificatori
 - *Funzioni*, è una funzione che viene applicata ad un insieme di parametri, che sono essi stessi termini
 
-![[Pasted image 20241218130647.png]]
+$$
+\begin{array}{rcl}
+\mathit{Term} & \rightarrow & \mathit{Function}(\mathit{Term}, \ldots) \\
+ & \mid & \mathit{Constant} \\
+ & \mid & \mathit{Variable} \\
+\mathit{Variable} & \rightarrow & a \mid x \mid s \mid \cdots \\
+\mathit{Function} & \rightarrow & Mother \mid LeftLeg \mid \cdots
+\end{array}
+$$
 
 Normalmente diremo "La gamba sinistra di John" e questo potrebbe essere espresso come una variabile "GambaSinistraJohn", ma tramite funzioni possiamo definirla come "GambaSinistra(John)"
 
 Un **Atomo** nella logica proposizionale è definito come un singolo simbolo, mentre in logica di primo ordine, può essere un qualsiasi predicato, opzionalmente seguito da una parentesi e una lista di termini. 
 Possiamo anche usare il simbolo di uguaglianza per specificare che due termini fanno riferimento allo stesso valore
 
-![[Pasted image 20241218131341.png]]
+$$
+\begin{array}{rcl}
+\mathit{AtomicSentence} & \rightarrow & \mathit{Predicate} \\
+ & \mid & \mathit{Predicate}(\mathit{Term}, \ldots) \\
+ & \mid & \mathit{Term} = \mathit{Term}
+\end{array}
+$$
 
 Una proposizione complessa è composta tramite l'utilizzo di connettivi logici o quantificatori 
 
-![[Pasted image 20241218131442.png]]
+$$
+\begin{array}{rcl}
+\mathit{Sentence} & \rightarrow & \mathit{AtomicSentence} \mid \mathit{ComplexSentence} \\
+\mathit{ComplexSentence} & \rightarrow & (\ \mathit{Sentence}\ ) \\
+ & \mid & \neg\ \mathit{Sentence} \\
+ & \mid & \mathit{Sentence} \wedge \mathit{Sentence} \\
+ & \mid & \mathit{Sentence} \vee \mathit{Sentence} \\
+ & \mid & \mathit{Sentence} \Rightarrow \mathit{Sentence} \\
+ & \mid & \mathit{Sentence} \Leftrightarrow \mathit{Sentence} \\
+ & \mid & \mathit{Quantifier}\ \mathit{Variable}, \ldots\ \mathit{Sentence} \\
+\mathit{Quantifier} & \rightarrow & \forall \mid \exists
+\end{array}
+$$
+
+$$
+\text{OPERATOR PRECEDENCE} \quad : \quad \neg, =, \wedge, \vee, \Rightarrow, \Leftrightarrow
+$$
+
 Dove i quantificatori:
 - $\forall$ indica il "per ogni", per esempio:
   $\forall x  \ King(x) \implies Person(x)$ "Per ogni x, se x è un re, allora x è una persona", e questo naturalmente è vero se per tutti i valori di $x$, il predicato è vero
@@ -328,11 +483,32 @@ Possiamo naturalmente innestare questi quantificatori, come esempio $\forall x \
 
 Sia il per ogni che l'esiste seguono le leggi di demorgan, come il "and" e "or"
 
-![[Pasted image 20241218172641.png]]
+$$
+\begin{array}{rclcrcl}
+\neg\exists x\ P & \equiv & \forall x\ \neg P & \qquad & \neg(P \vee Q) & \equiv & \neg P \wedge \neg Q \\
+\neg\forall x\ P & \equiv & \exists x\ \neg P & \qquad & \neg(P \wedge Q) & \equiv & \neg P \vee \neg Q \\
+\forall x\ P & \equiv & \neg\exists x\ \neg P & \qquad & P \wedge Q & \equiv & \neg(\neg P \vee \neg Q) \\
+\exists x\ P & \equiv & \neg\forall x\ \neg P & \qquad & P \vee Q & \equiv & \neg(\neg P \wedge \neg Q)
+\end{array}
+$$
 
 Esempi:
 
-![[Pasted image 20241218172703.png]]
+*"There is some course that every student has taken".*
+
+- Predicates: $\mathit{Course}$, $\mathit{Student}$, $\mathit{Takes}$.
+- $\exists y\ \mathit{Course}(y) \wedge (\forall x\ \mathit{Student}(x) \Rightarrow \mathit{Takes}(x, y))$.
+
+*"Every even integer greater than 2 is the sum of two primes".*
+
+- Predicates: $\mathit{EvenInt}$, $\mathit{Greater}$, $\mathit{Prime}$.
+- Functions: $\mathit{Sum}$.
+- $\forall x\ \mathit{EvenInt}(x) \wedge \mathit{Greater}(x, 2) \Rightarrow \exists y, z\ \mathit{Prime}(y) \wedge \mathit{Prime}(z) \wedge \mathit{Sum}(y, z) = x$.
+
+*"If a student takes a course and the course covers a concept, then the student knows that concept".*
+
+- Predicates: $\mathit{Student}$, $\mathit{Course}$, $\mathit{Concept}$, $\mathit{Takes}$, $\mathit{Covers}$, $\mathit{Knows}$.
+- $\forall x, y, z\ \mathit{Student}(x) \wedge \mathit{Course}(y) \wedge \mathit{Concept}(z) \wedge \mathit{Takes}(x, y) \wedge \mathit{Covers}(y, z) \Rightarrow \mathit{Knows}(x, z)$.
 
 # Semantica in logica di primo ordine
 
@@ -370,7 +546,6 @@ Prendendo l'esempio precedente:
 - $\mathcal{I}(\text{Syllabus}, (o_3)) = o_5$ 
 - $\mathcal{I}(\text{Syllabus}, (o_4)) = o_6$
 
-
 ## Semantica in logica del primo ordine
 
 Ci sono molte interpretazioni possibili, solo nell'esempio precedente ci sono 36 possibili interpretazioni per le costanti alice e bob.
@@ -395,7 +570,25 @@ Un modo per risolvere la logica di primo ordine è quello di convertirla in logi
 - Per i $\forall \ x$, rimpiazza tutte le $x$ nel predicato con con i possibili valori di $x$, per poi unire i risultanti predicati insieme con $\wedge$ 
 - Per i $\exists \ x$, stessa cosa del $\forall$ ma unendo i predicati con $\vee$ 
 
-![[Pasted image 20241218183809.png]]
+**Knowledge base in first-order logic**
+
+$$
+\begin{aligned}
+& \mathsf{Student}(\mathsf{alice}) \wedge \mathsf{Student}(\mathsf{bob}) \\
+& \forall x\ \mathsf{Student}(x) \rightarrow \mathsf{Person}(x) \\
+& \exists x\ \mathsf{Student}(x) \wedge \mathsf{Creative}(x)
+\end{aligned}
+$$
+
+**Knowledge base in propositional logic**
+
+$$
+\begin{aligned}
+& \mathsf{Studentalice} \wedge \mathsf{Studentbob} \\
+& (\mathsf{Studentalice} \rightarrow \mathsf{Personalice}) \wedge (\mathsf{Studentbob} \rightarrow \mathsf{Personbob}) \\
+& (\mathsf{Studentalice} \wedge \mathsf{Creativealice}) \vee (\mathsf{Studentbob} \wedge \mathsf{Creativebob})
+\end{aligned}
+$$
 
 Un problema con questo approccio è il rimpiazzo di simboli di funzione, che potrebbe causare la costruzione di infiniti termini, per esempio $Father(Father(Father(...)))$, ma fortunatamente esiste il teorema di Herbrand che ci dice che se una proposizione è deducibile dalla KB, allora esiste una prova che usa un sottoinsieme finito della proposizionalizzazione.
 
