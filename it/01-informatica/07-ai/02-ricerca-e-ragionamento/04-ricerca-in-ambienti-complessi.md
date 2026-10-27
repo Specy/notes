@@ -19,7 +19,6 @@ In un ambiente parzialmente osservabile/non deterministico, la soluzione ad un p
 
 In ambienti non deterministici, il risultato dell'esecuzione di un azione possono essere un insieme di stati output, non più solo uno stato come negli ambienti deterministici. 
 
-
 Esempio:
 
 ![[Pasted image 20241201165727.png]]
@@ -39,7 +38,49 @@ Nell'esempio precedente, in un nodo "OR", l'agente sceglierebbe se andare a dest
 
 La soluzione ad un problema AND-OR è un sottoalbero dell'albero di ricerca dove i goal sono in ogni nodo foglia, ed ogni azione specifica un azione per ogni nodo OR, e il risultato di OGNI branch per i nodi AND 
 
-![[Pasted image 20241201170854.png]]
+```mermaid
+flowchart TD
+    s1["1"]
+    a1(("●"))
+    a2(("●"))
+    s7["7<br>GOAL"]
+    s5["5"]
+    s2["2"]
+    a3(("●"))
+    a4(("●"))
+    a7(("●"))
+    a8(("●"))
+    s5l["5<br>LOOP"]
+    s1l["1<br>LOOP"]
+    s6["6"]
+    s1l2["1<br>LOOP"]
+    s8g["8<br>GOAL"]
+    s4["4<br>⋮"]
+    a5(("●"))
+    a6(("●"))
+    s8["8<br>GOAL"]
+    s5l2["5<br>LOOP"]
+    s1 -->|Suck| a1
+    s1 -->|Right| a2
+    a1 --> s7
+    a1 --> s5
+    a2 --> s2
+    s5 -->|Suck| a3
+    s5 -->|Right| a4
+    a3 --> s5l
+    a3 --> s1l
+    a4 --> s6
+    s2 -->|Left| a7
+    s2 -->|Suck| a8
+    a7 --> s1l2
+    a8 --> s8g
+    a8 --> s4
+    s6 -->|Suck| a5
+    s6 -->|Left| a6
+    a5 --> s8
+    a6 --> s5l2
+    linkStyle 0,2,3,6,8,15,17 stroke-width:4px
+```
 
 Questi alberi possono essere generati modificando gli algoritmi precedentemente visti, permettendo all'algoritmo di ritornare un albero come soluzione, anzichè un singolo percorso
 
@@ -84,7 +125,6 @@ La difficolta di questi problemi è la dimensione dello spazio di ricerca di $2^
 Per semplificare questo, possiamo invece iniziare da un agente che non conosce "nulla", e man mano aumentare cosa "sa". Per esempio, dopo essersi mosso a destra, sappiamo che l'agente non si trova a sinistra. 
 
 Alternativamente, possiamo costruire la ricerca in maniera incrementale. Partendo dal belief state di tutti gli stati possibli, dobbiamo trovare un azione che funziona per tutti e 8 gli stati, possiamo farlo trovando un azione che funziona per lo stato 1, poi controlliamo se funziona anche per stato 2, se non lo è, torniamo indietro e troviamo un altra soluzione per stato 1, etc...
-
 
 ## Ricerca con osservazioni parziali
 
